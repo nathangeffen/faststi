@@ -3,24 +3,29 @@
  * It will not be overwritten when fastSTI is upgraded.
  */
 
-// Add members to the simulation struct here. Separate them with
-// semicolons, but don't put a semicolon after the last element
 
-#define FSTI_USER_SIMULATION_VARS
+#ifndef FSTI_USERDEFS // Don't remove these guards
+#define FSTI_USERDEFS
 
-// EXAMPLE
 
-/* #define FSTI_USER_SIMULATION_VARS	\
-     int num_hiv_infections;                  \
-     double avg_hiv_infection_period;         \
-     int num_deaths
+
+/*
+   Add fields to the struct fsti_agent definition here. Note the semicolon at
+   the end of the last field.
+   E.g.
+
+#define FSTI_AGENT_FIELDS                    \
+float date_last_had_sex;                     \
+unsigned char profession;                    \
+unsigned char socioeconomic_bracket;         \
+bool employed;
+
 */
+#define FSTI_AGENT_FIELDS
 
-#define FSTI_USER_SIMULATION_INIT_VARS
+/*
+   Override the maximum number of partners an agent can have concurrently.
+*/
+#define FSTI_MAX_PARTNERS 3
 
-#define FSTI_USER_AGENT_VARS			\
-	double age
-
-void fsti_event_age(struct fsti_simulation *simulation);
-void fsti_event_report(struct fsti_simulation *simulation);
-void fsti_event_stop(struct fsti_simulation *simulation);
+#endif

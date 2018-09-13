@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#include "fsti-userdefs.h"
+
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
 
@@ -20,6 +22,17 @@
 #define FSTI_AGENT_DATA_FIELD(structure, member, var_type ) \
     { FSTI_AGENT_DATA_OFFSET(structure, member), var_type }
 
+
+/* Useful constants */
+#define FSTI_MALE 0
+#define FSTI_FEMALE 1
+#define FSTI_HETEROSEXUAL 0
+#define FSTI_HOMOSEXUAL 1
+#define FSTI_MSM 0
+#define FSTI_MSW 1
+#define FSTI_WSM 2
+#define FSTI_WSW 3
+
 enum fsti_struct_part {
     AGENT,
     DATA
@@ -29,7 +42,9 @@ enum fsti_type {
     NONE = -1,
     UNKNOWN = 0,
     CHAR,
+    UCHAR,
     LONG,
+    FLOAT,
     DBL,
     STR,
     BOOL,

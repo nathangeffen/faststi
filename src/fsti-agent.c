@@ -3,28 +3,22 @@
 #include "fsti-agent.h"
 #include "fsti-error.h"
 
+
+struct fsti_agent fsti_global_agent;
 struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0};
 
-static struct fsti_agent * new_agent(size_t bytes)
+static struct fsti_agent * new_agent()
 {
-    struct fsti_agent *agent =  malloc(bytes);
+    struct fsti_agent *agent =  malloc(sizeof(*agent));
     FSTI_ASSERT(agent, FSTI_ERR_NOMEM, NULL);
     return agent;
 }
 
-inline
-size_t fsti_agent_arr_size(struct fsti_agent_arr *agent_arr)
-{
-    return agent_arr->agent_size;
-}
-
-
-void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr, size_t data_size)
+void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr)
 {
     agent_arr->agents = NULL;
     agent_arr->len = 0;
     agent_arr->capacity = 0;
-    agent_arr->agent_size = sizeof(struct fsti_agent) + data_size;
 }
 
 inline struct fsti_agent *
@@ -81,8 +75,8 @@ void fsti_agent_arr_deep_copy(struct fsti_agent_arr *dest,
     dest->agents = malloc(sizeof(struct fsti_agent *) * src->len);
     FSTI_ASSERT(dest->agents, FSTI_ERR_NOMEM, NULL);
     for (size_t i = 0; i < src->len; ++i) {
-        dest->agents[i] = new_agent(src->agent_size);
-        memcpy(dest->agents[i], src->agents[i], src->agent_size);
+        dest->agents[i] = new_agent();
+        memcpy(dest->agents[i], src->agents[i], sizeof(struct fsti_agent));
     }
     dest->capacity = dest->len = src->len;
 }
@@ -90,7 +84,7 @@ void fsti_agent_arr_deep_copy(struct fsti_agent_arr *dest,
 struct fsti_agent *
 fsti_agent_arr_new_agent(struct fsti_agent_arr *agent_arr)
 {
-    struct fsti_agent *agent = new_agent(agent_arr->agent_size);
+    struct fsti_agent *agent = new_agent();
     fsti_agent_arr_push(agent_arr, agent);
     return agent;
 }

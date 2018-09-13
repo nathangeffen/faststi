@@ -75,8 +75,7 @@ int main(int argc, char *argv[])
 
     fsti_simset_set_csv(&simset, fsti_default_csv_entries,
                         sizeof(fsti_default_csv_entries) /
-                        sizeof(struct fsti_agent_csv_entry),
-                        sizeof(struct fsti_agent_default_data));
+                        sizeof(struct fsti_agent_csv_entry));
     fsti_simset_exec(&simset);
 
     fsti_simset_free(&simset);

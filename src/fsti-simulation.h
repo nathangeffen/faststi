@@ -52,8 +52,7 @@ void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
                              struct fsti_agent_csv_entry entries[],
-                             size_t num_entries,
-                             size_t agent_size);
+                             size_t num_entries);
 void fsti_deep_copy_agents(struct fsti_agent **dest,
                            struct fsti_agent **from,
                            size_t num_agents,

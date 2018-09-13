@@ -11,43 +11,41 @@
     } while(0)
 
 struct fsti_agent {
-    unsigned long id;
-    size_t len;
-    size_t capacity;
-    char data[];
+    unsigned id;
+    unsigned char sex;
+    unsigned char sex_preferred;
+    float age;
+    float infected; // Date of last infection, else 0
+    float cured; // Date last cured of last infection
+    float date_death; // 0 if still alive
+    unsigned char cause_of_death;
+    struct fsti_agent *partners[FSTI_MAX_PARTNERS];
+    void *data; // Users can use this as they please. Initialized to NULL.
+#ifdef FSTI_USER_AGENT_FIELDS
+    FSTI_AGENT_FIELDS
+#endif
 };
 
-#ifndef FSTI_CUSTOM_AGENT
-
-struct fsti_agent_default_data {
-    double age;
-    bool infected;
-    int sex;
-    int sex_preferred;
-};
+extern struct fsti_agent fsti_global_agent;
 
 static const struct fsti_agent_csv_entry fsti_default_csv_entries[] = {
     FSTI_AGENT_FIELD(id, LONG),
-    FSTI_AGENT_DATA_FIELD(struct fsti_agent_default_data, age, DBL),
-    FSTI_AGENT_DATA_FIELD(struct fsti_agent_default_data, infected, UNSIGNED),
-    FSTI_AGENT_DATA_FIELD(struct fsti_agent_default_data, sex, UNSIGNED),
-    FSTI_AGENT_DATA_FIELD(struct fsti_agent_default_data,
-                          sex_preferred, UNSIGNED)
+    FSTI_AGENT_FIELD(age, FLOAT),
+    FSTI_AGENT_FIELD(infected, FLOAT),
+    FSTI_AGENT_FIELD(sex, UCHAR),
+    FSTI_AGENT_FIELD(sex_preferred, UCHAR)
 };
 
 
-#endif
-
 struct fsti_agent_arr {
     struct fsti_agent **agents;
-    size_t agent_size;
     size_t len;
     size_t capacity;
 };
 
 extern struct fsti_agent_arr fsti_saved_agent_arr;
 
-void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr, size_t data_size);
+void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr);
 void fsti_agent_arr_push(struct fsti_agent_arr *agent_arr, struct fsti_agent *agent);
 struct fsti_agent * fsti_agent_arr_pop(struct fsti_agent_arr *agent_arr);
 struct fsti_agent * fsti_agent_arr_remove(struct fsti_agent_arr *agent_arr,

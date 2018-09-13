@@ -16,12 +16,10 @@ struct fsti_simset {
     int config_sim_number;
     struct fsti_agent_csv_entry *csv_entries;
     size_t num_csv_entries;
-    size_t agent_data_size;
     // A key file consists of groups of simulations
     char **groups;
     // We need a ptr to track stepping through groups
     char **group_ptr;
-    unsigned thread_no;
 };
 
 void fsti_simset_init_with_config(struct fsti_simset *simset,
@@ -36,8 +34,7 @@ void fsti_simset_load_config_strings(struct fsti_simset *simset,
 
 void fsti_simset_set_csv(struct fsti_simset *simset,
                          const struct fsti_agent_csv_entry entries[],
-                         size_t num_entries,
-                         size_t agent_size);
+                         size_t num_entries);
 
 void fsti_simset_init(struct fsti_simset *simset);
 

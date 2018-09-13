@@ -66,8 +66,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     else
 	simulation->stop_event = NULL;
 
-    fsti_agent_arr_init(&simulation->agent_arr,
-                        sizeof(struct fsti_agent_default_data));
+    fsti_agent_arr_init(&simulation->agent_arr);
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
     ARRAY_NEW(simulation->before_events, events);
     ARRAY_NEW(simulation->during_events, events);
@@ -83,12 +82,10 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
                              struct fsti_agent_csv_entry entries[],
-                             size_t num_entries,
-                             size_t agent_size)
+                             size_t num_entries)
 {
     simulation->csv_entries = entries;
     simulation->num_csv_entries = num_entries;
-    simulation->agent_data_size = agent_size;
 }
 
 
