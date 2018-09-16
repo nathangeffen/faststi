@@ -5,33 +5,22 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#include "fsti-userdefs.h"
-
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
-
-#define FSTI_AGENT_OFFSET(member)               \
-    offsetof(struct fsti_agent, member)
-
-#define FSTI_AGENT_DATA_OFFSET(structure, member)                       \
-    offsetof(structure, member) + offsetof(struct fsti_agent, data)
-
-#define FSTI_AGENT_FIELD(member, var_type ) \
-    { FSTI_AGENT_OFFSET(member), var_type }
-
-#define FSTI_AGENT_DATA_FIELD(structure, member, var_type ) \
-    { FSTI_AGENT_DATA_OFFSET(structure, member), var_type }
-
 
 /* Useful constants */
 #define FSTI_MALE 0
 #define FSTI_FEMALE 1
+#define FSTI_NONBINARY 2
 #define FSTI_HETEROSEXUAL 0
 #define FSTI_HOMOSEXUAL 1
 #define FSTI_MSM 0
 #define FSTI_MSW 1
 #define FSTI_WSM 2
 #define FSTI_WSW 3
+
+#define FSTI_CSV_ENTRY(member, function) \
+    {&fsti_global_agent.member, function},
 
 enum fsti_struct_part {
     AGENT,
@@ -55,11 +44,14 @@ enum fsti_type {
     COVARY
 };
 
-struct fsti_agent_csv_entry {
-    size_t offset;
-    enum fsti_type type;
-};
+struct fsti_agent;
+struct fsti_simulation;
 
+struct fsti_csv_agent {
+    struct fsti_agent *agent;
+    size_t num_entries;
+    const struct fsti_csv_entry *entries;
+};
 
 union fsti_value {
     long longint;
@@ -76,6 +68,14 @@ struct fsti_variant_array {
     size_t len;
     size_t capacity;
     struct fsti_variant *variants;
+};
+
+typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
+                                    struct fsti_simulation *simulation);
+
+struct fsti_csv_entry {
+     void *dest;
+     fsti_transform_func transformer;
 };
 
 struct fsti_variant fsti_identify_token(char *token);

@@ -50,6 +50,8 @@ const char *fsti_error_message(int code)
 	return "event not found";
     case FSTI_ERR_AGENT_FILE:
 	return "error processing agent file";
+    case FSTI_ERR_FILE:
+	return "error doing file processing";
     case FSTI_ERR_INVALID_VALUE:
 	return "invalid value";
     default:

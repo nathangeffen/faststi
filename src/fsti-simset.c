@@ -8,6 +8,10 @@
 #include "fsti-events.h"
 #include "fsti-config.h"
 
+static GMutex thread_mutex;
+static GCond thread_cond;
+static unsigned thread_no = 0;
+
 static void init(struct fsti_simset *simset)
 {
     fsti_config_init(&simset->config);
@@ -19,8 +23,8 @@ static void init(struct fsti_simset *simset)
     simset->sim_number = 0;
     simset->groups = NULL;
     simset->group_ptr = NULL;
-    simset->csv_entries = NULL;
-    simset->num_csv_entries = 0;
+    simset->csv = NULL;
+    simset->close_results_file = simset->close_agents_output_file = false;
     fsti_event_register_standard_events();
     simset->key_file = g_key_file_new();
     FSTI_ASSERT(simset->key_file, FSTI_ERR_KEY_FILE_OPEN, "\n");
@@ -66,11 +70,9 @@ void fsti_simset_load_config_strings(struct fsti_simset *simset,
 }
 
 void fsti_simset_set_csv(struct fsti_simset *simset,
-                         const struct fsti_agent_csv_entry entries[],
-                         size_t num_entries)
+                         const struct fsti_csv_agent *csv)
 {
-    simset->csv_entries = (struct fsti_agent_csv_entry *) entries;
-    simset->num_csv_entries = num_entries;
+    simset->csv = csv;
 }
 
 static void set_keys(struct fsti_simset *simset)
@@ -98,6 +100,34 @@ static void set_keys(struct fsti_simset *simset)
     FSTI_ASSERT(simset->config_num_sims > 0, FSTI_ERR_INVALID_VALUE, NULL);
 }
 
+static void set_output_files(struct fsti_simset *simset,
+                             struct fsti_simulation *simulation)
+{
+    char *results_file_name,  *agents_file_name;
+
+    if (simset->sim_number == 0) {
+        results_file_name = fsti_config_at0_str(&simset->config,
+                                                "RESULTS_FILE");
+
+        if(strcmp(results_file_name, "")) {
+            simset->results_file =
+                simulation->results_file = fopen(results_file_name, "w");
+            FSTI_ASSERT(simulation->results_file, FSTI_ERR_FILE, strerror(errno));
+            simset->close_results_file = true;
+        }
+
+        agents_file_name = fsti_config_at0_str(&simset->config,
+                                               "AGENTS_OUTPUT_FILE");
+        if(strcmp(agents_file_name, "")) {
+            simset->agents_output_file =
+                simulation->agents_output_file = fopen(agents_file_name, "w");
+            FSTI_ASSERT(simulation->agents_output_file, FSTI_ERR_FILE,
+                        strerror(errno));
+            simset->close_agents_output_file = true;
+        }
+    }
+}
+
 static void update_config(struct fsti_simset *simset)
 {
 
@@ -112,10 +142,6 @@ static void update_config(struct fsti_simset *simset)
     }
 }
 
-static GMutex thread_mutex;
-static GCond thread_cond;
-static unsigned thread_no = 0;
-
 static void *threaded_sim(void *simulation)
 {
     fsti_simulation_run(simulation);
@@ -127,57 +153,6 @@ static void *threaded_sim(void *simulation)
     g_mutex_unlock(&thread_mutex);
     return NULL;
 }
-
-/* /\* static void exec(struct fsti_simset *simset) *\/ */
-/* /\* { *\/ */
-/* /\*     char thread_name[10]; *\/ */
-/* /\*     GThread *thread; *\/ */
-/* /\*     struct fsti_simulation simulation; *\/ */
-/* /\*     unsigned max_threads; *\/ */
-
-/* /\*     if (*simset->group_ptr) { *\/ */
-/* /\*         fsti_simulation_init(&simulation, &simset->config, *\/ */
-/* /\*                              simset->sim_number, *\/ */
-/* /\*                              simset->config_sim_number); *\/ */
-/* /\*         fsti_simulation_set_csv(&simulation, simset->csv_entries, *\/ */
-/* /\*                                 simset->num_csv_entries); *\/ */
-/* /\*         simulation.name = *simset->group_ptr; *\/ */
-/* /\*         max_threads = (unsigned) *\/ */
-/* /\*                 fsti_config_at0_long(&simset->config,"THREADS"); *\/ */
-/* /\*         if (max_threads == 0) *\/ */
-/* /\*             max_threads = g_get_num_processors(); *\/ */
-
-/* /\*         if (max_threads > 1) { *\/ */
-/* /\*             snprintf(thread_name, 10, "%u", simset->thread_no); *\/ */
-
-/* /\*             g_mutex_lock(&thread_mutex); *\/ */
-
-/* /\*             while (thread_no >= max_threads) *\/ */
-/* /\*                 g_cond_wait (&thread_cond, &thread_mutex); *\/ */
-
-/* /\*             thread = g_thread_new(thread_name, threaded_sim, &simulation); *\/ */
-/* /\*             thread_no++; *\/ */
-/* /\*             g_mutex_unlock(&thread_mutex); *\/ */
-/* /\*         } else { *\/ */
-/* /\*             threaded_sim(&simulation); *\/ */
-/* /\*         } *\/ */
-/* /\*         ++simset->config_sim_number; *\/ */
-/* /\*         ++simset->sim_number; *\/ */
-/* /\*         update_config(simset); *\/ */
-/* /\*         exec(simset); *\/ */
-/* /\*         if (max_threads > 1) *\/ */
-/* /\*             g_thread_join(thread); *\/ */
-/* /\*     } *\/ */
-/* /\* } *\/ */
-
-/* /\* void fsti_simset_exec_(struct fsti_simset *simset) *\/ */
-/* /\* { *\/ */
-/* /\*     if (simset->group_ptr && *simset->group_ptr) { *\/ */
-/* /\*         set_keys(simset); *\/ */
-/* /\*         exec(simset); *\/ */
-/* /\*     } *\/ */
-/* } */
-
 
 void fsti_simset_exec(struct fsti_simset *simset)
 {
@@ -201,12 +176,11 @@ void fsti_simset_exec(struct fsti_simset *simset)
         fsti_simulation_init(simulation, &simset->config,
                              simset->sim_number,
                              simset->config_sim_number);
-        fsti_simulation_set_csv(simulation, simset->csv_entries,
-                                simset->num_csv_entries);
+        fsti_simulation_set_csv(simulation, simset->csv);
+        set_output_files(simset, simulation);
         simulation->name = *simset->group_ptr;
         if (max_threads > 1) {
             snprintf(thread_name, 10, "%u", thread_no);
-
             g_mutex_lock(&thread_mutex);
             while (thread_no >= max_threads)
                 g_cond_wait (&thread_cond, &thread_mutex);
@@ -226,5 +200,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
         while (thread_no > 0)
             g_cond_wait (&thread_cond, &thread_mutex);
         g_mutex_unlock(&thread_mutex);
+        if (simset->close_results_file) fclose(simset->results_file);
+        if (simset->close_agents_output_file) fclose(simset->agents_output_file);
     }
 }

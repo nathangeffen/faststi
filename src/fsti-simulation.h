@@ -13,9 +13,7 @@ struct fsti_simulation {
     struct fsti_agent_arr agent_arr;
     size_t capacity;
 
-    struct fsti_agent_csv_entry *csv_entries;
-    size_t num_csv_entries;
-    size_t agent_data_size;
+    const struct fsti_csv_agent *csv;
 
     int sim_number;
     int config_sim_number;
@@ -27,7 +25,6 @@ struct fsti_simulation {
     struct fsti_event_array after_events;
     const gsl_rng_type *T;
     gsl_rng *rng;
-    FILE *report;
 
     // Useful event variables available to all simulations
     double start_date;
@@ -38,6 +35,8 @@ struct fsti_simulation {
     unsigned num_iterations;
     unsigned iteration;
     unsigned report_frequency;
+    FILE *results_file;
+    FILE *agents_output_file;
     void *data;
 };
 
@@ -51,12 +50,12 @@ fsti_simulation_new_agent(struct fsti_simulation *simulation);
 void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
-                             struct fsti_agent_csv_entry entries[],
-                             size_t num_entries);
+                             const struct fsti_csv_agent *csv);
 void fsti_deep_copy_agents(struct fsti_agent **dest,
                            struct fsti_agent **from,
                            size_t num_agents,
                            size_t agent_size);
 void fsti_copy_agents(struct fsti_agent **dest, struct fsti_agent **from, size_t n);
 void fsti_simulation_free(struct fsti_simulation *simulation);
+
 #endif

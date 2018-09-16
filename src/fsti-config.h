@@ -19,7 +19,8 @@
                  char *: fsti_config_add_str,			\
                  int: fsti_config_add_long,			\
                  long: fsti_config_add_long,			\
-                 double: fsti_config_add_double			\
+                 double: fsti_config_add_double,                \
+                 struct fsti_variant *: fsti_config_add_arr     \
             ) (config, key, description, value);		\
     } while(0)
 

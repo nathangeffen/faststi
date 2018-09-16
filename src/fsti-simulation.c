@@ -54,7 +54,9 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     simulation->sim_number = sim_number;
     simulation->config_sim_number = config_sim_number;
     simulation->iteration = 0;
-    simulation->report = stdout;
+
+    simulation->results_file = simulation->agents_output_file = stdout;
+
     simulation->report_frequency =
         fsti_config_at0_long(&simulation->config, "REPORT_FREQUENCY");
     FSTI_ASSERT(simulation->report_frequency, FSTI_ERR_INVALID_VALUE,
@@ -81,11 +83,9 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 }
 
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
-                             struct fsti_agent_csv_entry entries[],
-                             size_t num_entries)
+                             const struct fsti_csv_agent *csv)
 {
-    simulation->csv_entries = entries;
-    simulation->num_csv_entries = num_entries;
+    simulation->csv = csv;
 }
 
 
