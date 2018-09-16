@@ -36,6 +36,7 @@ extern struct fsti_agent_arr fsti_saved_agent_arr;
 
 void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent);
 void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);
+bool fsti_agent_has_partner(const struct fsti_agent *agent);
 void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr);
 void fsti_agent_arr_push(struct fsti_agent_arr *agent_arr, struct fsti_agent *agent);
 struct fsti_agent * fsti_agent_arr_pop(struct fsti_agent_arr *agent_arr);

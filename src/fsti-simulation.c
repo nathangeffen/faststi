@@ -90,7 +90,7 @@ void fsti_simulation_set_csv(struct fsti_simulation *simulation,
 
 
 
-void fsti_event_hash_strings_to_vars(struct fsti_simulation *simulation)
+void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
     simulation->start_date = fsti_config_at0_double(&simulation->config,
 						    "START_DATE");
@@ -105,21 +105,23 @@ void fsti_event_hash_strings_to_vars(struct fsti_simulation *simulation)
     simulation->num_iterations = (unsigned)
 	(simulation->end_date - simulation->start_date) /
 	simulation->time_step;
+    simulation->match_k = (unsigned) fsti_config_at0_long(&simulation->config,
+                                                          "MATCH_K");
+    FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation);
 }
 
 void fsti_simulation_run(struct fsti_simulation *simulation)
 {
-    fsti_event_hash_strings_to_vars(simulation);
+    fsti_simulation_config_to_vars(simulation);
+    simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
-    if (fsti_error)
-	return;
-    assert(simulation->stop_event);
+    FSTI_ASSERT(simulation->stop_event, FSTI_ERR_NO_STOP_EVENT, NULL);
+    simulation->state = DURING;
     for (simulation->stop_event(simulation);
 	 simulation->stop == false; simulation->stop_event(simulation)) {
 	exec_events(simulation, &simulation->during_events);
-	if (fsti_error)
-	    return;
     }
+    simulation->state = AFTER;
     exec_events(simulation, &simulation->after_events);
 }
 
@@ -131,4 +133,5 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
+    FSTI_SIMULATION_FREE(simulation);
 }

@@ -1,4 +1,5 @@
 #include <string.h>
+#include <math.h>
 
 #include "useful.h"
 #include "fsti-agent.h"
@@ -25,6 +26,26 @@ void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
     FSTI_AGENT_PRINT_PRETTY(f, id, agent);
 
 
+}
+
+bool fsti_agent_has_partner(const struct fsti_agent *agent)
+{
+    if (agent->partners[0])
+        return true;
+    else
+        return false;
+}
+
+float fsti_agent_default_distance(const struct fsti_agent *a,
+                                  const struct fsti_agent *b)
+{
+    float result = 0.0;
+    if (a->sex_preferred != b->sex)
+        result += 25.0;
+    if (b->sex_preferred != a->sex)
+        result += 25.0;
+    result += fabs(a->age - b->age);
+    return result;
 }
 
 void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr)
@@ -134,6 +155,8 @@ void fsti_agent_arr_deep_copy(struct fsti_agent_arr *dest,
     }
 
     free(p);
+
+    FSTI_DEEP_COPY(dest, src);
 }
 
 struct fsti_agent *
@@ -152,7 +175,9 @@ inline size_t fsti_agent_arr_count(struct fsti_agent_arr *agent_arr)
 
 void fsti_agent_arr_free(struct fsti_agent_arr *agent_arr)
 {
-    for (size_t i = 0; i < agent_arr->len; ++i)
+    for (size_t i = 0; i < agent_arr->len; ++i) {
         free(agent_arr->agents[i]);
+        FSTI_AGENT_FREE(agent_arr, i);
+    }
     free(agent_arr->agents);
 }

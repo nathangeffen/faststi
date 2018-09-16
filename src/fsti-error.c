@@ -52,6 +52,8 @@ const char *fsti_error_message(int code)
 	return "error processing agent file";
     case FSTI_ERR_FILE:
 	return "error doing file processing";
+    case FSTI_ERR_NO_STOP_EVENT:
+        return "no event defined to check for end of simulation";
     case FSTI_ERR_INVALID_VALUE:
 	return "invalid value";
     default:

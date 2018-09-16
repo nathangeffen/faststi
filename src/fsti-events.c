@@ -193,8 +193,12 @@ void fsti_event_report(struct fsti_simulation *simulation)
     double age_avg = 0.0;
     unsigned infections = 0;
 
-    if (simulation->iteration % simulation->report_frequency == 0)
-        output(simulation, "POPULATION",(double) simulation->agent_arr.len);
+
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+        return;
+
+    output(simulation, "POPULATION",(double) simulation->agent_arr.len);
 
     for (agent = simulation->agent_arr.agents;
          agent < (simulation->agent_arr.agents + simulation->agent_arr.len);
@@ -230,6 +234,37 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
                                 *agent);
 }
 
+void fsti_event_knn_match(struct fsti_simulation *simulation)
+{
+    struct fsti_agent **agent = simulation->mating_pool.agents;
+    size_t num_agents = simulation->mating_pool.len;
+    size_t n, start, best_index;
+    float d, best_dist;
+    size_t k = simulation->match_k;
+
+    if (num_agents < 2) return; // Too few agents to bother
+    if (num_agents % 2) --num_agents; // Can only match even number of agents
+
+    for (size_t i = 0; i < num_agents - 1; ++i) {
+        if (FSTI_AGENT_HAS_PARTNER(agent[i])) continue;
+        start = i + 1;
+        best_index = n = (start + k) < num_agents ? k : num_agents - start;
+        best_dist = FLT_MAX;
+        for (size_t j = start; j < start + n; j++) {
+            if (FSTI_AGENT_HAS_PARTNER(agent[j])) continue;
+            d = FSTI_AGENT_DISTANCE(agent[i], agent[j]);
+            if (d < best_dist) {
+                best_dist = d;
+                best_index = j;
+            }
+        }
+        if (best_index < n) {
+            agent[i]->partners[0] = agent[best_index];
+            agent[best_index]->partners[0] = agent[i];
+	}
+    }
+}
+
 void fsti_event_stop(struct fsti_simulation *simulation)
 {
     if (simulation->iteration >= simulation->num_iterations)
@@ -247,6 +282,7 @@ void fsti_event_register_standard_events()
         fsti_register_add("_READ_AGENTS", fsti_event_read_agents);
         fsti_register_add("_AGE", fsti_event_age);
         fsti_register_add("_SHUFFLE", fsti_event_shuffle);
+        fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
