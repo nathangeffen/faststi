@@ -70,6 +70,8 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 
     fsti_agent_arr_init(&simulation->agent_arr);
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
+    fsti_agent_arr_init(&simulation->mating_pool);
+    FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
     ARRAY_NEW(simulation->before_events, events);
     ARRAY_NEW(simulation->during_events, events);
     ARRAY_NEW(simulation->after_events, events);
@@ -107,6 +109,8 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 	simulation->time_step;
     simulation->match_k = (unsigned) fsti_config_at0_long(&simulation->config,
                                                           "MATCH_K");
+    simulation->mating_pool_prob =
+        (float) fsti_config_at0_double(&simulation->config, "MATING_PROB");
     FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation);
 }
 
@@ -129,6 +133,7 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
 {
     gsl_rng_free(simulation->rng);
     fsti_agent_arr_free(&simulation->agent_arr);
+    free(simulation->mating_pool.agents);
     ARRAY_FREE(simulation->before_events, events);
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);

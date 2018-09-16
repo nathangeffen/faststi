@@ -173,11 +173,17 @@ inline size_t fsti_agent_arr_count(struct fsti_agent_arr *agent_arr)
     return agent_arr->len;
 }
 
+void fsti_agent_arr_clear(struct fsti_agent_arr *agent_arr)
+{
+    agent_arr->len = 0;
+    agent_arr->capacity = 0;
+}
+
 void fsti_agent_arr_free(struct fsti_agent_arr *agent_arr)
 {
     for (size_t i = 0; i < agent_arr->len; ++i) {
-        free(agent_arr->agents[i]);
         FSTI_AGENT_FREE(agent_arr, i);
+        free(agent_arr->agents[i]);
     }
     free(agent_arr->agents);
 }

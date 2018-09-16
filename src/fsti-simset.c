@@ -25,7 +25,7 @@ static void init(struct fsti_simset *simset)
     simset->group_ptr = NULL;
     simset->csv = NULL;
     simset->close_results_file = simset->close_agents_output_file = false;
-    fsti_event_register_standard_events();
+    fsti_event_register_events();
     simset->key_file = g_key_file_new();
     FSTI_ASSERT(simset->key_file, FSTI_ERR_KEY_FILE_OPEN, "\n");
 }

@@ -6,6 +6,13 @@
 #include "fsti-userdefs.h"
 #include "fsti-agent.h"
 
+#define FSTI_LOOP_AGENTS(simulation, agent, code) do {                  \
+        for (size_t __i__=0; __i__<simulation->agent_arr.len;__i__++) { \
+            agent = simulation->agent_arr.agents[__i__];                \
+            { code }                                                    \
+        }                                                               \
+    } while(0)
+
 void fsti_to_float(void *to, const struct fsti_variant *from,
                    struct fsti_simulation *simulation);
 void fsti_to_double(void *to, const struct fsti_variant *from,
@@ -23,7 +30,7 @@ void fsti_event_age(struct fsti_simulation *simulation);
 void fsti_event_report(struct fsti_simulation *simulation);
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation);
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation);
-void fsti_event_register_standard_events();
+void fsti_event_register_events();
 
 static struct fsti_agent fsti_global_agent;
 static const struct fsti_csv_entry fsti_csv_entries[] = {

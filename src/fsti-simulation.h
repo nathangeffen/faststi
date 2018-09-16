@@ -35,10 +35,11 @@ struct fsti_simulation {
     gsl_rng *rng;
 
     // Useful event variables available to all simulations
-    double start_date;
-    double end_date;
-    double current_date;
-    double time_step;
+    float start_date;
+    float end_date;
+    float current_date;
+    float time_step;
+    float mating_pool_prob;
     unsigned stabilization_steps;
     unsigned num_iterations;
     unsigned iteration;

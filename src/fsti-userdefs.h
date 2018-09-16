@@ -150,4 +150,12 @@ unsigned total_partners;
 #define FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation)  do {        \
     } while(0)
 
+/*
+  ADVANCED
+  Register additional events here.
+*/
+
+#define FSTI_ADDITIONAL_EVENTS_REGISTER do {    \
+    } while(0)
+
 #endif

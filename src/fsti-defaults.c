@@ -26,6 +26,9 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "MATCH_K",
                     "Value for k when using matching algorithms.",
                     100);
+    FSTI_CONFIG_ADD(config, "MATING_PROB",
+                    "Value for k when using matching algorithms.",
+                    0.05);
     FSTI_CONFIG_ADD(config, "BEFORE_EVENTS",
 		    "Events executed before a simulation starts",
 		    "_READ_AGENTS");

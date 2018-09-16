@@ -234,6 +234,21 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
                                 *agent);
 }
 
+void fsti_event_mating_pool(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+    fsti_agent_arr_clear(&simulation->mating_pool);
+    FSTI_LOOP_AGENTS(simulation, agent,
+                     {
+                         if (agent->partners[0] == NULL) {
+                             double prob = gsl_rng_uniform(simulation->rng);
+                             if (prob < simulation->mating_pool_prob)
+                                 fsti_agent_arr_push(&simulation->mating_pool,
+                                                     agent);
+                         }
+                     });
+}
+
 void fsti_event_knn_match(struct fsti_simulation *simulation)
 {
     struct fsti_agent **agent = simulation->mating_pool.agents;
@@ -273,7 +288,7 @@ void fsti_event_stop(struct fsti_simulation *simulation)
 	++simulation->iteration;
 }
 
-void fsti_event_register_standard_events()
+void fsti_event_register_events()
 {
     static bool initialized_events = false;
 
@@ -282,10 +297,12 @@ void fsti_event_register_standard_events()
         fsti_register_add("_READ_AGENTS", fsti_event_read_agents);
         fsti_register_add("_AGE", fsti_event_age);
         fsti_register_add("_SHUFFLE", fsti_event_shuffle);
+        fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
         fsti_register_add("_STOP", fsti_event_stop);
+        FSTI_ADDITIONAL_EVENTS_REGISTER;
     }
 }
