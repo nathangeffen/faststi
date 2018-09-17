@@ -106,7 +106,7 @@ static void set_output_files(struct fsti_simset *simset,
     char *results_file_name,  *agents_file_name;
 
     if (simset->sim_number == 0) {
-        results_file_name = fsti_config_at0_str(&simset->config,
+        results_file_name = fsti_config_at0_str(&simulation->config,
                                                 "RESULTS_FILE");
 
         if(strcmp(results_file_name, "")) {
@@ -114,9 +114,11 @@ static void set_output_files(struct fsti_simset *simset,
                 simulation->results_file = fopen(results_file_name, "w");
             FSTI_ASSERT(simulation->results_file, FSTI_ERR_FILE, strerror(errno));
             simset->close_results_file = true;
+        } else {
+            simset->results_file = simulation->results_file = stdout;
         }
 
-        agents_file_name = fsti_config_at0_str(&simset->config,
+        agents_file_name = fsti_config_at0_str(&simulation->config,
                                                "AGENTS_OUTPUT_FILE");
         if(strcmp(agents_file_name, "")) {
             simset->agents_output_file =
@@ -124,13 +126,17 @@ static void set_output_files(struct fsti_simset *simset,
             FSTI_ASSERT(simulation->agents_output_file, FSTI_ERR_FILE,
                         strerror(errno));
             simset->close_agents_output_file = true;
+        } else {
+            simset->agents_output_file = simulation->agents_output_file = stdout;
         }
+    } else {
+        simulation->results_file = simset->results_file;
+        simulation->agents_output_file = simset->agents_output_file;
     }
 }
 
 static void update_config(struct fsti_simset *simset)
 {
-
     if (simset->config_sim_number == 0) {
         set_keys(simset);
     } else if (simset->config_sim_number >= simset->config_num_sims) {

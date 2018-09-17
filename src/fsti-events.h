@@ -23,7 +23,7 @@ void fsti_to_unsigned(void *to, const struct fsti_variant *from,
                    struct fsti_simulation *simulation);
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
                    struct fsti_simulation *simulation);
-void fsti_to_partner(void *to, const struct fsti_variant *from,
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
                      struct fsti_simulation *simulation);
 
 void fsti_event_age(struct fsti_simulation *simulation);

@@ -58,10 +58,10 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Frequency that report event is generated", 1);
     FSTI_CONFIG_ADD(config, "RESULTS_FILE",
                     "File name to output results to ('stdout' for stdout)",
-                    "stdout");
+                    "");
     FSTI_CONFIG_ADD(config, "AGENTS_OUTPUT_FILE",
                     "File name to output results to ('stdout' for stdout)",
-                    "stdout");
+                    "");
     FSTI_CONFIG_ADD(config, "THREADS",
                     "Number of threads (1=no threading, 0=system determined)",
                     0);

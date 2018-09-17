@@ -53,21 +53,21 @@ unsigned total_partners;
 */
 
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%u,%u,%u,%.3f,%.0f,%u\n",                \
+    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%.0f,%zu\n",              \
             id,                                                       \
             agent->id,                                                \
             (unsigned) agent->sex,                                    \
             (unsigned) agent->sex_preferred,                          \
             agent->age,                                               \
             agent->infected,                                          \
-            (agent->partners[0] ? agent->partners[0]->id : 0))
+            agent->partners[0])
 
 
 /*
    Change this macro to pretty print an agent.
 */
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %u: Age: %.0f, %s %s %s\n",     \
+    fprintf(file_handle, "Sim %u, Agent %zu: Age: %.0f, %s %s %s %zu\n", \
             id,                                                         \
             agent->id,                                                  \
             agent->age,                                                 \
@@ -78,19 +78,20 @@ unsigned total_partners;
              ((agent->sex == FSTI_FEMALE &&                             \
                agent->sex_preferred == FSTI_MALE) ? "WSM" : "WSW")),    \
             agent->infected ? "Positive" : "Negative",                  \
-            agent->partners[0] ? "Relationship" : "Single")
+            agent->partners[0] ? "Relationship" : "Single",             \
+            agent->partners[0])
 
 
 /*
   Define the format of the CSV input file here.
  */
 #define FSTI_CSV_ENTRIES                                        \
-    FSTI_CSV_ENTRY(id, fsti_to_unsigned)                        \
+    FSTI_CSV_ENTRY(id, fsti_to_size_t)                          \
     FSTI_CSV_ENTRY(age, fsti_to_float)                          \
     FSTI_CSV_ENTRY(infected, fsti_to_float)                     \
     FSTI_CSV_ENTRY(sex, fsti_to_uchar)                          \
     FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
-    FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
+    FSTI_CSV_ENTRY(partners[0], fsti_to_size_t)
 
 
 
@@ -129,7 +130,7 @@ unsigned total_partners;
   Put additonal code needed to successfully free an agent.
 */
 
-#define FSTI_AGENT_FREE(agent_arr, index)  do {    \
+#define FSTI_AGENT_FREE(agent_arr)  do {    \
     } while(0)
 
 

@@ -51,6 +51,18 @@ void fsti_to_unsigned(void *to, const struct fsti_variant *from,
     memcpy(to, &v, sizeof(unsigned));
 }
 
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                    struct fsti_simulation *simulation)
+{
+    size_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    }
+    memcpy(to, &v, sizeof(size_t));
+}
+
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
                    struct fsti_simulation *simulation)
 {
@@ -61,32 +73,6 @@ void fsti_to_uchar(void *to, const struct fsti_variant *from,
     default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
     }
     memcpy(to, &v, sizeof(unsigned char));
-}
-
-void fsti_to_partner(void *to, const struct fsti_variant *from,
-                     struct fsti_simulation *simulation)
-{
-    unsigned id;
-    struct fsti_agent **agent, **first, **last;
-
-    switch(from->type) {
-    case DBL: id = (unsigned) from->value.dbl; break;
-    case LONG: id = (unsigned) from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
-    }
-
-    memset(to, 0, sizeof(struct fsti_agent *));
-    if (id && simulation->agent_arr.len) {
-        first = simulation->agent_arr.agents;
-        last = simulation->agent_arr.agents + simulation->agent_arr.len - 1;
-
-        for (agent = last; agent >= first; --agent) {
-            if ( (*agent)->id == id) {
-                memcpy(to, agent, sizeof(struct fsti_agent *));
-                return;
-            }
-        }
-    }
 }
 
 static void
@@ -101,10 +87,18 @@ process_cell(struct fsti_simulation *simulation, char *cell, void *to,
 
 static void make_partnerships_mutual(struct fsti_agent_arr *arr)
 {
-    struct fsti_agent **agent;
-    for(agent = arr->agents; agent != arr->agents + arr->len; ++agent)
-        if ((*agent)->partners[0])
-            (*agent)->partners[0]->partners[0] = *agent;
+    struct fsti_agent **it;
+    for(it = arr->agents; it != arr->agents + arr->len; ++it) {
+        struct fsti_agent *a = *it;
+        for (size_t i = 0; i < FSTI_MAX_PARTNERS; i++) {
+            size_t j = a->partners[i];
+            if (j) {
+                fsti_agent_make_partners(a, arr->first + j - 1);
+            } else {
+                break;
+            }
+        }
+    }
 }
 
 static void read_agents(struct fsti_simulation *simulation)
@@ -125,6 +119,7 @@ static void read_agents(struct fsti_simulation *simulation)
     cs = csv_read(f, true, ',');
     FSTI_ASSERT(errno == 0, FSTI_ERR_AGENT_FILE, filename);
 
+    fsti_agent_arr_init_n(&simulation->agent_arr, cs.len);
     for (i = 0; i < cs.len; ++i) {
         for (j = 0; j < cs.rows[i].len; ++j) {
             assert(j < simulation->csv->num_entries);
@@ -132,8 +127,9 @@ static void read_agents(struct fsti_simulation *simulation)
                          simulation->csv->entries[j].dest,
                          simulation->csv->entries[j].transformer);
         }
-        agent = fsti_agent_arr_new_agent(&simulation->agent_arr);
+        agent = simulation->agent_arr.first + i;
         *agent = *simulation->csv->agent;
+        agent->id = i + 1;
     }
     if (process_partners)
         make_partnerships_mutual(&simulation->agent_arr);
@@ -193,7 +189,6 @@ void fsti_event_report(struct fsti_simulation *simulation)
     double age_avg = 0.0;
     unsigned infections = 0;
 
-
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
         return;
@@ -217,10 +212,12 @@ void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
     struct fsti_agent **agent;
     for(agent = simulation->agent_arr.agents;
         agent != simulation->agent_arr.agents + simulation->agent_arr.len;
-        ++agent)
+        ++agent) {
         fsti_agent_print_csv(simulation->agents_output_file,
                              simulation->sim_number,
                              *agent);
+
+    }
 }
 
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
@@ -240,7 +237,7 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
     fsti_agent_arr_clear(&simulation->mating_pool);
     FSTI_LOOP_AGENTS(simulation, agent,
                      {
-                         if (agent->partners[0] == NULL) {
+                         if (agent->partners[0] == 0) {
                              double prob = gsl_rng_uniform(simulation->rng);
                              if (prob < simulation->mating_pool_prob)
                                  fsti_agent_arr_push(&simulation->mating_pool,
@@ -273,10 +270,8 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
                 best_index = j;
             }
         }
-        if (best_index < n) {
-            agent[i]->partners[0] = agent[best_index];
-            agent[best_index]->partners[0] = agent[i];
-	}
+        if (best_index < n)
+            fsti_agent_make_partners(agent[i], agent[best_index]);
     }
 }
 
