@@ -6,9 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <useful.h>
+#include "utils/utils.h"
 
-#include "uthash.h"
 #include "fsti-defs.h"
 
 #define FSTI_HASHSIZE 101

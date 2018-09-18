@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 #include <glib.h>
-#include <useful.h>
+#include "utils/utils.h"
 
 #include "fsti.h"
 

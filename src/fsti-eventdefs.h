@@ -1,7 +1,7 @@
 #ifndef FSTI_EVENTDEFS_H
 #define FSTI_EVENTDEFS_H
 
-#include "uthash.h"
+#include "utils/uthash.h"
 #include "fsti-defs.h"
 #include "fsti-error.h"
 

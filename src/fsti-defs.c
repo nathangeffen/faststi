@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <glib.h>
-#include <useful.h>
 
+#include "utils/utils.h"
 #include "fsti-error.h"
 #include "fsti-defs.h"
 

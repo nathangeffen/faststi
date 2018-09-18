@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <useful/test.h>
+#include "utils/test.h"
 
 #include "fsti-tests.h"
 #include "fsti-config.h"

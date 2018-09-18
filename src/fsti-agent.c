@@ -1,7 +1,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "useful.h"
+#include "utils/utils.h"
 #include "fsti-agent.h"
 #include "fsti-error.h"
 
