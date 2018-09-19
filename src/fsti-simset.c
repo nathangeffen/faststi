@@ -15,7 +15,7 @@ static unsigned thread_no = 0;
 static void init(struct fsti_simset *simset)
 {
     fsti_config_init(&simset->config);
-    fsti_agent_arr_init(&fsti_saved_agent_arr);
+    fsti_agent_arr_init(&fsti_saved_agent_arr, NULL);
     simset->config_strings = NULL;
     simset->more_configs = true;
     simset->config_num_sims = 0;

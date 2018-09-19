@@ -53,21 +53,21 @@ unsigned total_partners;
 */
 
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%.0f,%zu\n",              \
+    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%.0f,%ld\n",              \
             id,                                                       \
             agent->id,                                                \
             (unsigned) agent->sex,                                    \
             (unsigned) agent->sex_preferred,                          \
             agent->age,                                               \
             agent->infected,                                          \
-            agent->partners[0])
+            agent->num_partners ? (long) agent->partners[0] : -1)
 
 
 /*
    Change this macro to pretty print an agent.
 */
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %zu: Age: %.0f, %s %s %s %zu\n", \
+    fprintf(file_handle, "Sim %u, Agent %zu: Age: %.0f, %s %s %s %ld\n", \
             id,                                                         \
             agent->id,                                                  \
             agent->age,                                                 \
@@ -78,8 +78,8 @@ unsigned total_partners;
              ((agent->sex == FSTI_FEMALE &&                             \
                agent->sex_preferred == FSTI_MALE) ? "WSM" : "WSW")),    \
             agent->infected ? "Positive" : "Negative",                  \
-            agent->partners[0] ? "Relationship" : "Single",             \
-            agent->partners[0])
+            agent->num_partners ? "Relationship" : "Single",             \
+            agent->num_partners ? (long) agent->partners[0] : -1)
 
 
 /*
@@ -91,7 +91,7 @@ unsigned total_partners;
     FSTI_CSV_ENTRY(infected, fsti_to_float)                     \
     FSTI_CSV_ENTRY(sex, fsti_to_uchar)                          \
     FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
-    FSTI_CSV_ENTRY(partners[0], fsti_to_size_t)
+    FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
 
 
 
@@ -118,10 +118,10 @@ unsigned total_partners;
 
 /*
   ADVANCED
-  Put additonal code needed to successfully deep copy an agent array here.
+  Put additonal code needed to successfully copy an agent array here.
 */
 
-#define FSTI_DEEP_COPY(dest, src) do {      \
+#define FSTI_AGENT_ARR_COPY(dest_arr, src_arr) do {      \
     } while(0)
 
 

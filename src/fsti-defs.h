@@ -71,7 +71,7 @@ struct fsti_variant_array {
 };
 
 typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
-                                    struct fsti_simulation *simulation);
+                                    struct fsti_agent *agent);
 
 struct fsti_csv_entry {
      void *dest;

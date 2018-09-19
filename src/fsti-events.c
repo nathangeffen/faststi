@@ -4,7 +4,7 @@
 #include "fsti-events.h"
 
 void fsti_to_float(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation)
+                   struct fsti_agent *agent)
 {
     float v;
     switch(from->type) {
@@ -16,7 +16,7 @@ void fsti_to_float(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation)
+                   struct fsti_agent *agent)
 {
     double v;
     switch(from->type) {
@@ -28,7 +28,7 @@ void fsti_to_double(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_int(void *to, const struct fsti_variant *from,
-                  struct fsti_simulation *simulation)
+                  struct fsti_agent *agent)
 {
     int v;
     switch(from->type) {
@@ -40,7 +40,7 @@ void fsti_to_int(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,
-                      struct fsti_simulation *simulation)
+                      struct fsti_agent *agent)
 {
     unsigned v;
     switch(from->type) {
@@ -52,7 +52,7 @@ void fsti_to_unsigned(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_size_t(void *to, const struct fsti_variant *from,
-                    struct fsti_simulation *simulation)
+                    struct fsti_agent *agent)
 {
     size_t v;
     switch(from->type) {
@@ -64,7 +64,7 @@ void fsti_to_size_t(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation)
+                   struct fsti_agent *agent)
 {
     unsigned char v;
     switch(from->type) {
@@ -75,30 +75,48 @@ void fsti_to_uchar(void *to, const struct fsti_variant *from,
     memcpy(to, &v, sizeof(unsigned char));
 }
 
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     struct fsti_agent *agent)
+{
+    long v;
+    size_t i;
+    switch(from->type) {
+    case DBL: v = (long) from->value.dbl; break;
+    case LONG: v = (long) from->value.longint; break;
+    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    }
+    if (v >= 0) {
+        i = (unsigned) v;
+        agent->num_partners++;
+        memcpy(to, &i, sizeof(size_t));
+    } else {
+        memset(to, 0, sizeof(size_t));
+    }
+}
+
+
 static void
-process_cell(struct fsti_simulation *simulation, char *cell, void *to,
+process_cell(struct fsti_agent *agent, char *cell, void *to,
              fsti_transform_func transformer)
 {
     struct fsti_variant variant;
 
     variant = fsti_identify_token(cell);
-    transformer(to, &variant, simulation);
+    transformer(to, &variant, agent);
 }
 
-static void make_partnerships_mutual(struct fsti_agent_arr *arr)
+static void make_partnerships_mutual(struct fsti_agent_arr *agent_arr)
 {
-    struct fsti_agent **it;
-    for(it = arr->agents; it != arr->agents + arr->len; ++it) {
-        struct fsti_agent *a = *it;
-        for (size_t i = 0; i < FSTI_MAX_PARTNERS; i++) {
-            size_t j = a->partners[i];
-            if (j) {
-                fsti_agent_make_partners(a, arr->first + j - 1);
-            } else {
-                break;
+    struct fsti_agent *a, *b;
+    size_t i;
+    FSTI_LOOP_AGENTS(*agent_arr, a, {
+            for (i = 0; i < a->num_partners; i++) {
+                b = fsti_agent_partner_at(agent_arr, a, i);
+                FSTI_ASSERT(b->num_partners < FSTI_MAX_PARTNERS,
+                            FSTI_ERR_OUT_OF_BOUNDS, NULL);
+                b->partners[b->num_partners++] = a->id;
             }
-        }
-    }
+        });
 }
 
 static void read_agents(struct fsti_simulation *simulation)
@@ -107,7 +125,6 @@ static void read_agents(struct fsti_simulation *simulation)
     bool process_partners;
     FILE *f;
     struct csv cs;
-    struct fsti_agent *agent;
     const char *filename;
 
     filename = fsti_config_at0_str(&simulation->config, "AGENT_FILE");
@@ -119,17 +136,18 @@ static void read_agents(struct fsti_simulation *simulation)
     cs = csv_read(f, true, ',');
     FSTI_ASSERT(errno == 0, FSTI_ERR_AGENT_FILE, filename);
 
-    fsti_agent_arr_init_n(&simulation->agent_arr, cs.len);
+    fsti_agent_arr_init_n(&simulation->agent_arr, cs.len, NULL);
     for (i = 0; i < cs.len; ++i) {
+        memset(simulation->csv->agent, 0, sizeof(struct fsti_agent));
         for (j = 0; j < cs.rows[i].len; ++j) {
             assert(j < simulation->csv->num_entries);
-            process_cell(simulation, cs.rows[i].cells[j],
+            process_cell(simulation->csv->agent,
+                         cs.rows[i].cells[j],
                          simulation->csv->entries[j].dest,
                          simulation->csv->entries[j].transformer);
         }
-        agent = simulation->agent_arr.first + i;
-        *agent = *simulation->csv->agent;
-        agent->id = i + 1;
+        *(simulation->agent_arr.agents + i) = *simulation->csv->agent;
+        (simulation->agent_arr.agents + i)->id = i;
     }
     if (process_partners)
         make_partnerships_mutual(&simulation->agent_arr);
@@ -146,14 +164,14 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
     g_mutex_lock (&mutex);
     if (initialized_agents == false)  {
         read_agents(simulation);
-        fsti_agent_arr_deep_copy(&fsti_saved_agent_arr,
-                                 &simulation->agent_arr);
+        fsti_agent_arr_copy(&fsti_saved_agent_arr,
+                            &simulation->agent_arr);
         initialized_agents = true;
         g_mutex_unlock (&mutex);
     } else {
         g_mutex_unlock (&mutex);
-        fsti_agent_arr_deep_copy(&simulation->agent_arr,
-                                 &fsti_saved_agent_arr);
+        fsti_agent_arr_copy(&simulation->agent_arr,
+                            &fsti_saved_agent_arr);
     }
 }
 
@@ -162,118 +180,132 @@ void fsti_event_shuffle(struct fsti_simulation *simulation)
     if (simulation->agent_arr.len > 1) {
         for (size_t i = simulation->agent_arr.len - 1; i > 0; i--) {
             size_t j = (size_t) gsl_rng_uniform_int(simulation->rng, i + 1);
-            struct fsti_agent *t = simulation->agent_arr.agents[j];
-            simulation->agent_arr.agents[j] = simulation->agent_arr.agents[i];
-            simulation->agent_arr.agents[i] = t;
+            size_t t = simulation->agent_arr.indices[j];
+            simulation->agent_arr.indices[j] = simulation->agent_arr.indices[i];
+            simulation->agent_arr.indices[i] = t;
         }
     }
 }
 
 void fsti_event_age(struct fsti_simulation *simulation)
 {
-    for (size_t i = 0; i < simulation->agent_arr.len; i++) {
-        simulation->agent_arr.agents[i]->age += simulation->time_step;
-    }
+    struct fsti_agent *a;
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, a,
+                                {
+                                    a->age += simulation->time_step;
+                                });
 }
 
-static void output(struct fsti_simulation *simulation, char *desc, double val)
+static void outputf(struct fsti_simulation *simulation, char *desc, double val)
 {
     fprintf(simulation->results_file, "%s,%d,%d,%s,%f\n",
             simulation->name, simulation->sim_number,
             simulation->config_sim_number, desc, val);
 }
 
+static void outputl(struct fsti_simulation *simulation, char *desc, long val)
+{
+    fprintf(simulation->results_file, "%s,%d,%d,%s,%ld\n",
+            simulation->name, simulation->sim_number,
+            simulation->config_sim_number, desc, val);
+}
+
+
 void fsti_event_report(struct fsti_simulation *simulation)
 {
-    struct fsti_agent **agent;
+    struct fsti_agent *agent;
     double age_avg = 0.0;
     unsigned infections = 0;
+    long num_partners = 0;
 
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
         return;
 
-    output(simulation, "POPULATION",(double) simulation->agent_arr.len);
+    outputl(simulation, "POPULATION", simulation->agent_arr.len);
 
-    for (agent = simulation->agent_arr.agents;
-         agent < (simulation->agent_arr.agents + simulation->agent_arr.len);
-         agent++) {
-        age_avg += (*agent)->age;
-        infections += (bool) (*agent)->infected;
-    }
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, agent, {
+            age_avg += agent->age;
+            infections += (bool) agent->infected;
+            num_partners += agent->num_partners;
+        });
 
-    output(simulation, "AVERAGE_AGE", age_avg / simulation->agent_arr.len);
-    output(simulation, "INFECTION_RATE",
+    outputf(simulation, "AVERAGE_AGE", age_avg / simulation->agent_arr.len);
+    outputf(simulation, "INFECTION_RATE",
            (double) infections / simulation->agent_arr.len);
+    outputl(simulation, "NUM_PARTNERS", num_partners);
 }
 
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
 {
-    struct fsti_agent **agent;
-    for(agent = simulation->agent_arr.agents;
-        agent != simulation->agent_arr.agents + simulation->agent_arr.len;
-        ++agent) {
-        fsti_agent_print_csv(simulation->agents_output_file,
-                             simulation->sim_number,
-                             *agent);
-
-    }
+    struct fsti_agent *agent;
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, agent, {
+            fsti_agent_print_csv(simulation->agents_output_file,
+                                 simulation->sim_number,
+                                 agent);
+        });
 }
 
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
 {
-    struct fsti_agent **agent;
-    for(agent = simulation->agent_arr.agents;
-        agent != simulation->agent_arr.agents + simulation->agent_arr.len;
-        ++agent)
-        fsti_agent_print_pretty(simulation->agents_output_file,
-                                simulation->sim_number,
-                                *agent);
+    struct fsti_agent *agent;
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, agent, {
+            fsti_agent_print_pretty(simulation->agents_output_file,
+                                    simulation->sim_number,
+                                    agent);
+        });
 }
 
 void fsti_event_mating_pool(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     fsti_agent_arr_clear(&simulation->mating_pool);
-    FSTI_LOOP_AGENTS(simulation, agent,
-                     {
-                         if (agent->partners[0] == 0) {
-                             double prob = gsl_rng_uniform(simulation->rng);
-                             if (prob < simulation->mating_pool_prob)
-                                 fsti_agent_arr_push(&simulation->mating_pool,
-                                                     agent);
-                         }
-                     });
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, agent, {
+            if (agent->num_partners == 0) {
+                double prob = gsl_rng_uniform(simulation->rng);
+                if (prob < simulation->mating_pool_prob)
+                    fsti_agent_arr_push_index(&simulation->mating_pool,
+                                              agent->id);
+            }
+        });
 }
 
 void fsti_event_knn_match(struct fsti_simulation *simulation)
 {
-    struct fsti_agent **agent = simulation->mating_pool.agents;
+    struct fsti_agent *agent, *candidate, *partner;
+    size_t *it, *jt, *start, *n, *begin, *end;
     size_t num_agents = simulation->mating_pool.len;
-    size_t n, start, best_index;
     float d, best_dist;
     size_t k = simulation->match_k;
 
     if (num_agents < 2) return; // Too few agents to bother
     if (num_agents % 2) --num_agents; // Can only match even number of agents
 
-    for (size_t i = 0; i < num_agents - 1; ++i) {
-        if (FSTI_AGENT_HAS_PARTNER(agent[i])) continue;
-        start = i + 1;
-        best_index = n = (start + k) < num_agents ? k : num_agents - start;
+    begin = fsti_agent_arr_begin(&simulation->mating_pool);
+    end = fsti_agent_arr_end(&simulation->mating_pool);
+
+    for (it = begin; it < end - 1; it++) {
+        DBG("%zu %zu", it - begin, simulation->mating_pool.indices[it-begin]);
+        agent = fsti_agent_arr_at(&simulation->mating_pool, it);
+        fsti_agent_print_pretty(stdout, 9999, agent);
+        if (FSTI_AGENT_HAS_PARTNER(agent)) continue;
+        start = it + 1;
+        n = (start + k) < end ? (start + k) : end;
         best_dist = FLT_MAX;
-        for (size_t j = start; j < start + n; j++) {
-            if (FSTI_AGENT_HAS_PARTNER(agent[j])) continue;
-            d = FSTI_AGENT_DISTANCE(agent[i], agent[j]);
+        partner = NULL;
+        for (jt = start; jt < n; jt++) {
+            candidate = fsti_agent_arr_at(&simulation->mating_pool, jt);
+            if (FSTI_AGENT_HAS_PARTNER(candidate)) continue;
+            d = FSTI_AGENT_DISTANCE(agent, candidate);
             if (d < best_dist) {
                 best_dist = d;
-                best_index = j;
+                partner = candidate;
             }
         }
-        if (best_index < n)
-            fsti_agent_make_partners(agent[i], agent[best_index]);
+        if (partner) fsti_agent_make_partners(agent, partner);
     }
 }
+
 
 void fsti_event_stop(struct fsti_simulation *simulation)
 {

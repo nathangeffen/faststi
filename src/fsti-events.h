@@ -6,25 +6,23 @@
 #include "fsti-userdefs.h"
 #include "fsti-agent.h"
 
-#define FSTI_LOOP_AGENTS(simulation, agent, code) do {                  \
-        for (size_t __i__=0; __i__<simulation->agent_arr.len;__i__++) { \
-            agent = simulation->agent_arr.agents[__i__];                \
-            { code }                                                    \
-        }                                                               \
-    } while(0)
+#define FSTI_LOOP_SIMULATION_AGENTS(simulation, agent, code)       \
+    FSTI_LOOP_AGENTS((simulation).agent_arr, agent, code)
 
 void fsti_to_float(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation);
+                   struct fsti_agent *agent);
 void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation);
+                   struct fsti_agent *agent);
 void fsti_to_int(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation);
+                   struct fsti_agent *agent);
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation);
+                   struct fsti_agent *agent);
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
-                   struct fsti_simulation *simulation);
+                   struct fsti_agent *agent);
 void fsti_to_size_t(void *to, const struct fsti_variant *from,
-                     struct fsti_simulation *simulation);
+                     struct fsti_agent *agent);
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     struct fsti_agent *agent);
 
 void fsti_event_age(struct fsti_simulation *simulation);
 void fsti_event_report(struct fsti_simulation *simulation);

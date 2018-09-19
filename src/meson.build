@@ -3,8 +3,6 @@ m_dep = cc.find_library('m', required : false)
 glib_dep = dependency('glib-2.0')
 gsl_dep = dependency('gsl')
 thread_dep = dependency('threads')
-#src = ['fsti-main.c', 'fsti-error.c', 'fsti-tests.c', 'fsti-config.c',
-#       'fsti-defaults.c', 'fsti-procini.c', 'fsti-simset.c']
 
 src = ['fsti-main.c', 'fsti-simset.c', 'fsti-procini.c', 'fsti-agent.c',
        'fsti-events.c', 'fsti-error.c', 'fsti-eventdefs.c', 'fsti-defaults.c',

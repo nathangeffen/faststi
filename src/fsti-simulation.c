@@ -68,9 +68,9 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     else
 	simulation->stop_event = NULL;
 
-    fsti_agent_arr_init(&simulation->agent_arr);
+    fsti_agent_arr_init(&simulation->agent_arr, NULL);
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
-    fsti_agent_arr_init(&simulation->mating_pool);
+    fsti_agent_arr_init(&simulation->mating_pool, &simulation->agent_arr);
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
     ARRAY_NEW(simulation->before_events, events);
     ARRAY_NEW(simulation->during_events, events);
@@ -133,7 +133,7 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
 {
     gsl_rng_free(simulation->rng);
     fsti_agent_arr_free(&simulation->agent_arr);
-    free(simulation->mating_pool.agents);
+    fsti_agent_arr_free(&simulation->mating_pool);
     ARRAY_FREE(simulation->before_events, events);
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);

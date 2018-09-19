@@ -72,6 +72,6 @@ int fsti_error_msg(int errnum,
             fputs(extra_message, stderr);
         }
     }
-    fputs(".\n", stderr);
+    fputs("\n", stderr);
     return errnum;
 }
