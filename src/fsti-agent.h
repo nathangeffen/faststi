@@ -49,6 +49,7 @@ struct fsti_agent_arr {
     size_t len;
     size_t capacity;
     struct fsti_agent_arr *owner;
+    struct fsti_agent_arr *dependency;
 };
 
 extern struct fsti_agent_arr fsti_saved_agent_arr;
@@ -74,6 +75,8 @@ void fsti_agent_remove(struct fsti_agent_arr *agent_arr, size_t index);
 void fsti_agent_arr_push_agent(struct fsti_agent_arr *agent_arr, struct fsti_agent *agent);
 struct fsti_agent *fsti_agent_arr_pop_agent(struct fsti_agent_arr *agent_arr);
 void fsti_agent_arr_copy(struct fsti_agent_arr *dest, struct fsti_agent_arr *src);
+void fsti_agent_arr_add_dependency(struct fsti_agent_arr *owner,
+                                   struct fsti_agent_arr *dependent);
 void fsti_agent_arr_clear(struct fsti_agent_arr *agent_arr);
 void fsti_agent_arr_free_indices(struct fsti_agent_arr *agent_arr);
 void fsti_agent_arr_free(struct fsti_agent_arr *agent_arr);

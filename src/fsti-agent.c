@@ -52,6 +52,15 @@ void fsti_agent_break_partners(struct fsti_agent *a, struct fsti_agent *b)
         }
 }
 
+void fsti_agent_arr_add_dependency(struct fsti_agent_arr *owner,
+                                   struct fsti_agent_arr *dependent)
+{
+    assert(owner->owner == NULL);
+    dependent->agents = owner->agents;
+    dependent->dependency = owner->dependency;
+    owner->dependency = dependent;
+}
+
 void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr,
                          struct fsti_agent_arr *owner)
 {
@@ -59,13 +68,16 @@ void fsti_agent_arr_init(struct fsti_agent_arr *agent_arr,
     agent_arr->indices = NULL;
     agent_arr->len = 0;
     agent_arr->capacity = 0;
+    agent_arr->dependency = NULL;
     agent_arr->owner = owner;
+    if (owner) fsti_agent_arr_add_dependency(owner, agent_arr);
 }
 
 void fsti_agent_arr_init_n(struct fsti_agent_arr *agent_arr, size_t n,
                            struct fsti_agent_arr *owner)
 {
     agent_arr->owner = owner;
+    agent_arr->dependency = NULL;
     agent_arr->len = agent_arr->capacity = n;
     agent_arr->indices = calloc(n, sizeof(size_t));
     FSTI_ASSERT(agent_arr->indices, FSTI_ERR_NOMEM, NULL);
@@ -75,7 +87,7 @@ void fsti_agent_arr_init_n(struct fsti_agent_arr *agent_arr, size_t n,
         for (size_t i = 0; i < n; i++)
             agent_arr->indices[i] = agent_arr->agents[i].id = i;
     } else {
-        agent_arr->agents = owner->agents;
+        fsti_agent_arr_add_dependency(owner, agent_arr);
     }
 }
 
@@ -94,10 +106,7 @@ size_t * fsti_agent_arr_end(struct fsti_agent_arr *agent_arr)
 struct fsti_agent * fsti_agent_arr_at(struct fsti_agent_arr *agent_arr,
                                       size_t *it)
 {
-    if (agent_arr->owner)
-        return agent_arr->owner->agents + *it;
-    else
-        return agent_arr->agents + *it;
+    return agent_arr->agents + *it;
 }
 
 struct fsti_agent * fsti_agent_arr_front(struct fsti_agent_arr *agent_arr)
@@ -137,6 +146,7 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
 
 static void allocate(struct fsti_agent_arr *agent_arr)
 {
+    struct fsti_agent_arr *it;
     if (agent_arr->capacity == 0)
         agent_arr->capacity = 5;
     else
@@ -146,6 +156,9 @@ static void allocate(struct fsti_agent_arr *agent_arr)
                                     sizeof(struct fsti_agent) *
                                     agent_arr->capacity);
         FSTI_ASSERT(agent_arr->agents, FSTI_ERR_NOMEM, NULL);
+        for (it = agent_arr->dependency; it; it = it->dependency) {
+            it->agents = agent_arr->agents;
+        }
     }
     agent_arr->indices = realloc(agent_arr->indices,
                                  sizeof(size_t) *
@@ -214,7 +227,7 @@ void fsti_agent_arr_copy(struct fsti_agent_arr *dest,
     dest->indices = malloc(src->len * sizeof(size_t));
     FSTI_ASSERT(dest->indices, FSTI_ERR_NOMEM, NULL);
     dest->capacity = dest->len = src->len;
-    dest->owner = src->owner;
+    dest->owner = dest->dependency = NULL;
 
     memcpy(dest->indices, src->indices, sizeof(size_t) * src->len);
     memcpy(dest->agents, src->agents, sizeof(struct fsti_agent) * src->len);

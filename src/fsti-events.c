@@ -172,6 +172,8 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
         g_mutex_unlock (&mutex);
         fsti_agent_arr_copy(&simulation->agent_arr,
                             &fsti_saved_agent_arr);
+        fsti_agent_arr_add_dependency(&simulation->agent_arr,
+                                      &simulation->mating_pool);
     }
 }
 
@@ -285,9 +287,7 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
     end = fsti_agent_arr_end(&simulation->mating_pool);
 
     for (it = begin; it < end - 1; it++) {
-        DBG("%zu %zu", it - begin, simulation->mating_pool.indices[it-begin]);
         agent = fsti_agent_arr_at(&simulation->mating_pool, it);
-        fsti_agent_print_pretty(stdout, 9999, agent);
         if (FSTI_AGENT_HAS_PARTNER(agent)) continue;
         start = it + 1;
         n = (start + k) < end ? (start + k) : end;
