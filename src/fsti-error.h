@@ -9,8 +9,6 @@
 #define FSTI_NAME "FastSTI"
 #define FSTI_ERROR_STRING_LEN 200
 
-extern char fsti_error_string[FSTI_ERROR_STRING_LEN + 1];
-
 #define FSTI_MSG(msg1, msg2)                                            \
     strncat(strncpy(fsti_error_string, msg1, FSTI_ERROR_STRING_LEN / 2), \
            msg2, FSTI_ERROR_STRING_LEN / 2)
@@ -51,6 +49,7 @@ enum {
     FSTI_ERR_CONFIG_ADD,
     FSTI_ERR_NO_VALUE_FOR_KEY,
     FSTI_ERR_KEY_NOT_FOUND,
+    FSTI_ERR_INVALID_CSV_FILE,
     FSTI_ERR_OUT_OF_BOUNDS,
     FSTI_ERR_STR_EXPECTED,
     FSTI_ERR_LONG_EXPECTED,
@@ -64,11 +63,13 @@ enum {
     FSTI_ERR_INVALID_VALUE
 };
 
-extern atomic_int fsti_error;
-
 extern bool fsti_output_error_messages;
+extern _Thread_local int fsti_error;
+extern _Thread_local char fsti_error_string[FSTI_ERROR_STRING_LEN + 1];
 
 int fsti_error_msg(int errnum, const char *file, int line,
 		   const char *extra_message);
+
+char *fsti_sprintf(char *fmt, ...);
 
 #endif

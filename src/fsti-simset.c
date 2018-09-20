@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <unistd.h>
 #include <glib.h>
 #include "fsti-simset.h"
@@ -209,4 +210,72 @@ void fsti_simset_exec(struct fsti_simset *simset)
         if (simset->close_results_file) fclose(simset->results_file);
         if (simset->close_agents_output_file) fclose(simset->agents_output_file);
     }
+}
+
+void fsti_simset_test(struct test_group *tg)
+{
+    struct fsti_simset simset;
+    FILE *agents_in_file;
+    char *agents_in_filename = "fsti_test_agents_in_1234.csv";
+    FILE *config_file;
+    char *config_filename = "fsti_test_config_1234.csv";
+    const size_t num_agents = 101;
+
+    const char *config_text =
+        "[Simulation_0]\n"
+        "NUM_SIMULATIONS=1\n"
+        "BEFORE_EVENTS=_READ_AGENTS\n"
+        "DURING_EVENTS=_AGE\n"
+        "AFTER_EVENTS=_REPORT;_WRITE_AGENTS_CSV;_WRITE_AGENTS_PRETTY\n"
+        "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
+        "RESULTS_FILE=fsti_test_results_1234.csv\n"
+        "THREADS=1\n"
+        "[Simulation_1]\n"
+        "NUM_SIMULATIONS=7\n"
+        "DURING_EVENTS=_AGE;_SHUFFLE;_MATING_POOL;_RKPM\n"
+        "THREADS=3\n"
+        "MATCH_K=1\n"
+        "[Simulation_2]\n"
+        "MATCH_K=10\n"
+        "[Simulation_3]\n"
+        "MATCH_K=200\n";
+
+    // Write an agents file
+    agents_in_file = fopen(agents_in_filename, "w");
+    assert(agents_in_file);
+    fprintf(agents_in_file, "id,age,infected,sex,sex_preferred,partner\n");
+    for (size_t i = 0; i < num_agents; i++) {
+        double age = (double) rand() / RAND_MAX * 30.0 + 20.0;
+        int infected = ( ( (double) rand()/RAND_MAX)  < 0.3) ? 1 : 0;
+        int sex = ( ( (double) rand()/RAND_MAX) <0.5) ? FSTI_MALE : FSTI_FEMALE;
+        int sex_preferred = ( ( (double) rand()/RAND_MAX)  < 0.06) ? sex : !sex;
+        long partner;
+        if (i % 2 == 0) {
+            partner = -1;
+        } else {
+            if ( ( (double) rand() / RAND_MAX) < 0.5) partner = i - 1;
+        }
+        fprintf(agents_in_file, "%zu,%.2f,%d,%d,%d,%ld\n",
+                i,
+                age,
+                infected,
+                sex,
+                sex_preferred,
+                partner);
+    }
+    fclose(agents_in_file);
+
+    // Write config file
+    config_file = fopen(config_filename, "w");
+    assert(config_file);
+    fprintf(config_file, "%s", config_text);
+    fclose(config_file);
+
+    fsti_simset_init(&simset);
+    fsti_simset_load_config_file(&simset, config_filename);
+    fsti_simset_set_csv(&simset, &fsti_global_csv);
+    fsti_simset_exec(&simset);
+    TESTEQ(simset.sim_number, 22, *tg);
+
+    fsti_simset_free(&simset);
 }

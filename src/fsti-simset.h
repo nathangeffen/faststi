@@ -27,22 +27,15 @@ struct fsti_simset {
 
 void fsti_simset_init_with_config(struct fsti_simset *simset,
                                   const struct fsti_config *config);
-
 void fsti_simset_load_config_file(struct fsti_simset *simset,
                                   const char *filename);
-
-
 void fsti_simset_load_config_strings(struct fsti_simset *simset,
 				     char **config_strings);
-
 void fsti_simset_set_csv(struct fsti_simset *simset,
                          const struct fsti_csv_agent *csv);
-
 void fsti_simset_init(struct fsti_simset *simset);
-
 void fsti_simset_exec(struct fsti_simset *simset);
-
 void fsti_simset_free(struct fsti_simset *simset);
-
+void fsti_simset_test(struct test_group *tg);
 
 #endif

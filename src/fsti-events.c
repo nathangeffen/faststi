@@ -10,7 +10,7 @@ void fsti_to_float(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = from->value.dbl; break;
     case LONG: v = from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(float));
 }
@@ -22,7 +22,7 @@ void fsti_to_double(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = from->value.dbl; break;
     case LONG: v = from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(double));
 }
@@ -34,7 +34,7 @@ void fsti_to_int(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = from->value.dbl; break;
     case LONG: v = from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(int));
 }
@@ -46,7 +46,7 @@ void fsti_to_unsigned(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = from->value.dbl; break;
     case LONG: v = from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(unsigned));
 }
@@ -58,7 +58,7 @@ void fsti_to_size_t(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = from->value.dbl; break;
     case LONG: v = from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(size_t));
 }
@@ -70,7 +70,7 @@ void fsti_to_uchar(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = (unsigned char) from->value.dbl; break;
     case LONG: v = (unsigned char) from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(unsigned char));
 }
@@ -83,7 +83,7 @@ void fsti_to_partner(void *to, const struct fsti_variant *from,
     switch(from->type) {
     case DBL: v = (long) from->value.dbl; break;
     case LONG: v = (long) from->value.longint; break;
-    default: FSTI_ASSERT(0, FSTI_ERR_INVALID_VALUE, NULL);
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     if (v >= 0) {
         i = (unsigned) v;
@@ -113,7 +113,10 @@ static void make_partnerships_mutual(struct fsti_agent_arr *agent_arr)
             for (i = 0; i < a->num_partners; i++) {
                 b = fsti_agent_partner_at(agent_arr, a, i);
                 FSTI_ASSERT(b->num_partners < FSTI_MAX_PARTNERS,
-                            FSTI_ERR_OUT_OF_BOUNDS, NULL);
+                            FSTI_ERR_OUT_OF_BOUNDS,
+                            fsti_sprintf("Cannot make partnership "
+                                         "for agents with ids: %zu %zu",
+                                         a->id, b->id));
                 b->partners[b->num_partners++] = a->id;
             }
         });
@@ -139,12 +142,20 @@ static void read_agents(struct fsti_simulation *simulation)
     fsti_agent_arr_init_n(&simulation->agent_arr, cs.len, NULL);
     for (i = 0; i < cs.len; ++i) {
         memset(simulation->csv->agent, 0, sizeof(struct fsti_agent));
+        FSTI_ASSERT(cs.rows[i].len == simulation->csv->num_entries,
+                    FSTI_ERR_INVALID_CSV_FILE,
+                    fsti_sprintf("File: %s at line %zu", filename, i+2));
         for (j = 0; j < cs.rows[i].len; ++j) {
-            assert(j < simulation->csv->num_entries);
+            FSTI_ASSERT(j < simulation->csv->num_entries,
+                        FSTI_ERR_INVALID_CSV_FILE,
+                        fsti_sprintf("File: %s at line %zu", filename, i+2));
             process_cell(simulation->csv->agent,
                          cs.rows[i].cells[j],
                          simulation->csv->entries[j].dest,
                          simulation->csv->entries[j].transformer);
+            FSTI_ASSERT(fsti_error == 0,
+                        FSTI_ERR_INVALID_CSV_FILE,
+                        fsti_sprintf("File: %s at line %zu", filename, i+2));
         }
         *(simulation->agent_arr.agents + i) = *simulation->csv->agent;
         (simulation->agent_arr.agents + i)->id = i;
@@ -192,10 +203,9 @@ void fsti_event_shuffle(struct fsti_simulation *simulation)
 void fsti_event_age(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
-    FSTI_LOOP_SIMULATION_AGENTS(*simulation, a,
-                                {
-                                    a->age += simulation->time_step;
-                                });
+    FSTI_LOOP_SIMULATION_AGENTS(*simulation, a, {
+            a->age += simulation->time_step;
+        });
 }
 
 static void outputf(struct fsti_simulation *simulation, char *desc, double val)

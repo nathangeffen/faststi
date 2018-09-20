@@ -23,10 +23,7 @@ struct fsti_variant fsti_identify_token(char *token)
 	d = strtod(token, &err);
 	if (errno || *err != 0) {
 	    result.value.str = strdup(token);
-	    if (FSTI_ERROR(result.value.str == NULL, FSTI_ERR_NOMEM, NULL)) {
-		result.type = NONE;
-		return result;
-	    }
+            FSTI_ASSERT(result.value.str, FSTI_ERR_NOMEM, NULL);
 	    result.type = STR;
 	} else {
 	    result.value.dbl = d;
