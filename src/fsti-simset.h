@@ -2,6 +2,7 @@
 #define FSTI_SIMSET_H
 
 #include <stdbool.h>
+#include <glib.h>
 
 #include "fsti-config.h"
 #include "fsti-simulation.h"

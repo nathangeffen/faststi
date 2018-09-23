@@ -5,6 +5,8 @@
 #include "fsti-error.h"
 #include "fsti-simulation.h"
 
+void fsti_event_register_events();
+
 static void set_events(struct fsti_event_array *event_arr,
                        struct fsti_config_entry *entry)
 {
@@ -68,10 +70,11 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     else
 	simulation->stop_event = NULL;
 
-    fsti_agent_arr_init(&simulation->agent_arr, NULL);
-    FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
-    fsti_agent_arr_init(&simulation->mating_pool, &simulation->agent_arr);
-    FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
+    fsti_agent_arr_init(&simulation->agent_arr);
+    fsti_agent_ind_init(&simulation->living, &simulation->agent_arr);
+    fsti_agent_ind_init(&simulation->dead, &simulation->agent_arr);
+    fsti_agent_ind_init(&simulation->mating_pool, &simulation->agent_arr);
+
     ARRAY_NEW(simulation->before_events, events);
     ARRAY_NEW(simulation->during_events, events);
     ARRAY_NEW(simulation->after_events, events);
@@ -109,8 +112,9 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 	simulation->time_step;
     simulation->match_k = (unsigned) fsti_config_at0_long(&simulation->config,
                                                           "MATCH_K");
-    simulation->mating_pool_prob =
-        (float) fsti_config_at0_double(&simulation->config, "MATING_PROB");
+    simulation->mating_pool_prob = (float)
+        fsti_config_at0_double(&simulation->config, "MATING_PROB");
+
     FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation);
 }
 
@@ -129,14 +133,111 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
     exec_events(simulation, &simulation->after_events);
 }
 
+void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
+                                size_t *it)
+{
+    struct fsti_agent *agent = fsti_agent_ind_arrp(&simulation->living, it);
+    fsti_agent_ind_push(&simulation->dead, agent->id);
+    agent->date_death = simulation->current_date;
+    fsti_agent_ind_remove(&simulation->living, it);
+}
+
 void fsti_simulation_free(struct fsti_simulation *simulation)
 {
     gsl_rng_free(simulation->rng);
     fsti_agent_arr_free(&simulation->agent_arr);
-    fsti_agent_arr_free(&simulation->mating_pool);
     ARRAY_FREE(simulation->before_events, events);
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
     FSTI_SIMULATION_FREE(simulation);
+}
+
+void fsti_simulation_test(struct test_group *tg)
+{
+    struct fsti_simulation simulation;
+    struct fsti_config config;
+    struct fsti_agent *agent;
+    unsigned partners = 0;
+    float actual_single_rate, single_rate;
+    size_t *it;
+    bool correct;
+
+    fsti_event_register_events();
+    fsti_config_init(&config);
+    fsti_config_set_default(&config);
+
+    FSTI_CONFIG_ADD(&config, "AFTER_EVENTS", "Write nothing", "_NO_OP");
+
+    fsti_simulation_init(&simulation, &config, 0, 0);
+    fsti_simulation_run(&simulation);
+
+    FSTI_FOR_LIVING(simulation, agent, {
+            if (agent->num_partners) ++partners;
+        });
+
+    single_rate = fsti_config_at0_double(&config, "INITIAL_SINGLE_RATE");
+
+    actual_single_rate = (float) partners / simulation.living.len;
+    TESTEQ(actual_single_rate > single_rate / 2.0, true, *tg);
+    TESTEQ(actual_single_rate < single_rate * 1.5, true, *tg);
+    FSTI_FOR_LIVING(simulation, agent, {
+            if (agent->num_partners) ++partners;
+        });
+
+    size_t c = 0;
+    it = fsti_agent_ind_begin(&simulation.living);
+    while (it < fsti_agent_ind_end(&simulation.living)) {
+            if (fsti_agent_ind_arrp(&simulation.living, it)->id % 5 == 0) {
+                fsti_simulation_kill_agent(&simulation, it);
+                ++c;
+            } else {
+                ++it;
+            }
+    }
+
+    TESTEQ(simulation.living.len + simulation.dead.len,
+           simulation.agent_arr.len, *tg);
+    TESTEQ(simulation.dead.len > 0, true, *tg);
+    size_t arr[simulation.agent_arr.len];
+    memset(arr, 0, sizeof(size_t) * simulation.agent_arr.len);
+    correct = true;
+    for (size_t i = 0; i < simulation.agent_arr.len; i++)
+        if (arr[i]) {
+            correct = false;
+            break;
+        }
+    TESTEQ(correct, true, *tg);
+
+    correct = true;
+    FSTI_FOR(simulation.living, agent, {
+            arr[agent->id]++;
+            if (agent->id % 5 == 0) {
+                correct = false;
+                break;
+            }
+        });
+    TESTEQ(correct, true, *tg);
+
+    correct = true;
+    FSTI_FOR(simulation.dead, agent, {
+            arr[agent->id]++;
+            if (agent->id % 5) {
+                correct = false;
+                break;
+            }
+        });
+    TESTEQ(correct, true, *tg);
+
+    correct = true;
+    for (size_t i = 0; i < simulation.agent_arr.len; i++) {
+        if (arr[i] != 1) {
+            correct = false;
+            break;
+        }
+    }
+    TESTEQ(correct, true, *tg);
+
+    fsti_config_free(&config);
+    fsti_simulation_free(&simulation);
 }

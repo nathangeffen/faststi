@@ -16,7 +16,7 @@ static unsigned thread_no = 0;
 static void init(struct fsti_simset *simset)
 {
     fsti_config_init(&simset->config);
-    fsti_agent_arr_init(&fsti_saved_agent_arr, NULL);
+    fsti_agent_arr_init(&fsti_saved_agent_arr);
     simset->config_strings = NULL;
     simset->more_configs = true;
     simset->config_num_sims = 0;
@@ -227,13 +227,13 @@ void fsti_simset_test(struct test_group *tg)
         "BEFORE_EVENTS=_READ_AGENTS\n"
         "DURING_EVENTS=_AGE\n"
         "AFTER_EVENTS=_REPORT;_WRITE_AGENTS_CSV;_WRITE_AGENTS_PRETTY\n"
+        "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
         "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
         "RESULTS_FILE=fsti_test_results_1234.csv\n"
-        "THREADS=1\n"
+        "THREADS=3\n"
         "[Simulation_1]\n"
         "NUM_SIMULATIONS=7\n"
-        "DURING_EVENTS=_AGE;_SHUFFLE;_MATING_POOL;_RKPM\n"
-        "THREADS=3\n"
+        "DURING_EVENTS=_AGE;_MATING_POOL;_SHUFFLE_MATING;_RKPM\n"
         "MATCH_K=1\n"
         "[Simulation_2]\n"
         "MATCH_K=10\n"

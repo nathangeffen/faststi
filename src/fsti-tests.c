@@ -6,6 +6,7 @@
 #include "fsti-tests.h"
 #include "fsti-config.h"
 #include "fsti-agent.h"
+#include "fsti-simset.h"
 
 int fsti_tests()
 {
@@ -15,6 +16,7 @@ int fsti_tests()
 
     fsti_config_test(&tg);
     fsti_agent_test(&tg);
+    fsti_simulation_test(&tg);
     fsti_simset_test(&tg);
 
     test_group_summary(&tg);

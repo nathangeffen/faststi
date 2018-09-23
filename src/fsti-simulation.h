@@ -8,6 +8,10 @@
 #include "fsti-config.h"
 #include "fsti-defaults.h"
 
+#define FSTI_FOR_LIVING(simulation, agent, code)       \
+    FSTI_FOR((simulation).living, agent, code)
+
+
 enum fsti_simulation_state {
     BEFORE,
     DURING,
@@ -17,8 +21,9 @@ enum fsti_simulation_state {
 struct fsti_simulation {
     struct fsti_config config;
     struct fsti_agent_arr agent_arr;
-    struct fsti_agent_arr mating_pool;
-    size_t capacity;
+    struct fsti_agent_ind living;
+    struct fsti_agent_ind dead;
+    struct fsti_agent_ind mating_pool;
 
     const struct fsti_csv_agent *csv;
 
@@ -61,11 +66,8 @@ void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
                              const struct fsti_csv_agent *csv);
-void fsti_deep_copy_agents(struct fsti_agent **dest,
-                           struct fsti_agent **from,
-                           size_t num_agents,
-                           size_t agent_size);
-void fsti_copy_agents(struct fsti_agent **dest, struct fsti_agent **from, size_t n);
+void fsti_simulation_kill_agent(struct fsti_simulation *simulation, size_t *it);
 void fsti_simulation_free(struct fsti_simulation *simulation);
+void fsti_simulation_test(struct test_group *tg);
 
 #endif
