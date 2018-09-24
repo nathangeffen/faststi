@@ -151,6 +151,17 @@ unsigned total_partners;
 #define FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation)  do {        \
     } while(0)
 
+
+/*
+  ADVANCED
+  Additional code for creating a new agent in the fsti_event_generate_agents
+  event.
+*/
+
+#define FSTI_ADDITIONAL_GENERATE_AGENT(simulation, agent) do {    \
+    } while(0)
+
+
 /*
   ADVANCED
   Register additional events here.

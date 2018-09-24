@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <glib.h>
 
 #include "fsti-procini.h"
 #include "fsti-error.h"

@@ -238,6 +238,7 @@ void fsti_event_generate_agents(struct fsti_simulation *simulation)
             agent.num_partners = 1;
             agent.partners[0] = i - 1;
         }
+        FSTI_ADDITIONAL_GENERATE_AGENT(simulation, agent);
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
     fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
