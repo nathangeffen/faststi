@@ -145,7 +145,7 @@ struct fsti_agent *fsti_agent_partner_get(struct fsti_agent_arr *agent_arr,
 struct fsti_agent *fsti_agent_partner_get0(struct fsti_agent_arr *agent_arr,
                                           struct fsti_agent *agent)
 {
-    return fsti_agent_partner_get0(agent_arr, agent);
+    return fsti_agent_partner_get(agent_arr, agent, 0);
 }
 
 static void arr_allocate(struct fsti_agent_arr *agent_arr)

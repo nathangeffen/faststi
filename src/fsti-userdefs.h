@@ -93,8 +93,6 @@ unsigned total_partners;
     FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
     FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
 
-
-
 /*
    Define this to call the function that returns true if  an agent
    has a partner, else false. The default function simply looks at the

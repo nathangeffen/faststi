@@ -172,12 +172,12 @@ void fsti_simset_exec(struct fsti_simset *simset)
         return;
 
     set_keys(simset);
-    max_threads = (unsigned)
-        fsti_config_at0_long(&simset->config,"THREADS");
-    if (max_threads == 0)
-        max_threads = g_get_num_processors();
 
     while (*simset->group_ptr) {
+        max_threads = (unsigned)
+            fsti_config_at0_long(&simset->config,"THREADS");
+        if (max_threads == 0)
+            max_threads = g_get_num_processors();
         simulation = malloc(sizeof(*simulation));
         FSTI_ASSERT(simulation, FSTI_ERR_NOMEM, NULL);
         fsti_simulation_init(simulation, &simset->config,
@@ -186,30 +186,26 @@ void fsti_simset_exec(struct fsti_simset *simset)
         fsti_simulation_set_csv(simulation, simset->csv);
         set_output_files(simset, simulation);
         simulation->name = *simset->group_ptr;
-        if (max_threads > 1) {
-            snprintf(thread_name, 10, "%u", thread_no);
-            g_mutex_lock(&thread_mutex);
-            while (thread_no >= max_threads)
-                g_cond_wait (&thread_cond, &thread_mutex);
-            thread = g_thread_new(thread_name, threaded_sim, simulation);
-            g_thread_unref(thread);
-            thread_no++;
-            g_mutex_unlock(&thread_mutex);
-        } else {
-            threaded_sim(simulation);
-        }
+        snprintf(thread_name, 10, "%u", thread_no);
+
+        g_mutex_lock(&thread_mutex);
+        while (thread_no >= max_threads)
+            g_cond_wait (&thread_cond, &thread_mutex);
+        thread = g_thread_new(thread_name, threaded_sim, simulation);
+        g_thread_unref(thread);
+        thread_no++;
+        g_mutex_unlock(&thread_mutex);
+
         ++simset->config_sim_number;
         ++simset->sim_number;
         update_config(simset);
     }
-    if (max_threads > 1) {
-        g_mutex_lock(&thread_mutex);
-        while (thread_no > 0)
-            g_cond_wait (&thread_cond, &thread_mutex);
-        g_mutex_unlock(&thread_mutex);
-        if (simset->close_results_file) fclose(simset->results_file);
-        if (simset->close_agents_output_file) fclose(simset->agents_output_file);
-    }
+
+    g_mutex_lock(&thread_mutex);
+    while (thread_no > 0) g_cond_wait (&thread_cond, &thread_mutex);
+    g_mutex_unlock(&thread_mutex);
+    if (simset->close_results_file) fclose(simset->results_file);
+    if (simset->close_agents_output_file) fclose(simset->agents_output_file);
 }
 
 void fsti_simset_test(struct test_group *tg)
@@ -230,8 +226,9 @@ void fsti_simset_test(struct test_group *tg)
         "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
         "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
         "RESULTS_FILE=fsti_test_results_1234.csv\n"
-        "THREADS=3\n"
+        "THREADS=1\n"
         "[Simulation_1]\n"
+        "THREADS=3\n"
         "NUM_SIMULATIONS=7\n"
         "DURING_EVENTS=_AGE;_MATING_POOL;_SHUFFLE_MATING;_RKPM\n"
         "MATCH_K=1\n"
@@ -253,7 +250,10 @@ void fsti_simset_test(struct test_group *tg)
         if (i % 2 == 0) {
             partner = -1;
         } else {
-            if ( ( (double) rand() / RAND_MAX) < 0.5) partner = i - 1;
+            if ( ( (double) rand() / RAND_MAX) < 0.5)
+                partner = i - 1;
+            else
+                partner = -1;
         }
         fprintf(agents_in_file, "%zu,%.2f,%d,%d,%d,%ld\n",
                 i,

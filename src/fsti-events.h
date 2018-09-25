@@ -32,17 +32,9 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation);
 void fsti_event_no_op(struct fsti_simulation *simulation);
 void fsti_event_register_events();
 
-static struct fsti_agent fsti_global_agent;
-static const struct fsti_csv_entry fsti_csv_entries[] = {
-    FSTI_CSV_ENTRIES
-};
+extern struct fsti_agent fsti_global_agent;
+extern const struct fsti_csv_entry fsti_csv_entries[];
 
-static const struct fsti_csv_agent fsti_global_csv =
-{
-    .agent = &fsti_global_agent,
-    .num_entries = sizeof(fsti_csv_entries) / sizeof(struct fsti_csv_entry),
-    .entries = fsti_csv_entries
-};
-
+extern const struct fsti_csv_agent fsti_global_csv;
 
 #endif

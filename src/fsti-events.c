@@ -3,6 +3,21 @@
 #include "fsti-defs.h"
 #include "fsti-events.h"
 
+
+struct fsti_agent fsti_global_agent;
+
+const struct fsti_csv_entry fsti_csv_entries[] = {
+    FSTI_CSV_ENTRIES
+};
+
+const struct fsti_csv_agent fsti_global_csv =
+{
+    .agent = &fsti_global_agent,
+    .num_entries = sizeof(fsti_csv_entries) / sizeof(struct fsti_csv_entry),
+    .entries = fsti_csv_entries
+};
+
+
 void fsti_to_float(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent)
 {
