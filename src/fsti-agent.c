@@ -252,7 +252,7 @@ fsti_agent_ind_arrp(struct fsti_agent_ind *agent_ind, size_t *it)
 struct fsti_agent *
 fsti_agent_ind_arr(struct fsti_agent_ind *agent_ind, size_t index)
 {
-    return fsti_agent_arr_at(agent_ind->agent_arr, index);
+    return fsti_agent_arr_at(agent_ind->agent_arr, agent_ind->indices[index]);
 }
 
 

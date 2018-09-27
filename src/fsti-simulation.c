@@ -136,10 +136,17 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
 void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
                                 size_t *it)
 {
-    struct fsti_agent *agent = fsti_agent_ind_arrp(&simulation->living, it);
+    struct fsti_agent *agent, *partner;
+    agent = fsti_agent_ind_arrp(&simulation->living, it);
+    for (size_t i = 0; i < agent->num_partners; i++) {
+        size_t id = agent->partners[i];
+        partner =  fsti_agent_arr_at(&simulation->agent_arr, id);
+        fsti_agent_break_partners(agent, partner);
+    }
     fsti_agent_ind_push(&simulation->dead, agent->id);
     agent->date_death = simulation->current_date;
     fsti_agent_ind_remove(&simulation->living, it);
+
 }
 
 void fsti_simulation_free(struct fsti_simulation *simulation)
@@ -157,7 +164,7 @@ void fsti_simulation_test(struct test_group *tg)
 {
     struct fsti_simulation simulation;
     struct fsti_config config;
-    struct fsti_agent *agent;
+    struct fsti_agent *agent, *a, *b;
     unsigned partners = 0;
     float actual_single_rate, single_rate;
     size_t *it;
@@ -237,6 +244,21 @@ void fsti_simulation_test(struct test_group *tg)
         }
     }
     TESTEQ(correct, true, *tg);
+
+    fsti_agent_make_partners(fsti_agent_ind_arr(&simulation.living, 0),
+                             fsti_agent_ind_arr(&simulation.living, 1));
+
+    a = fsti_agent_ind_arr(&simulation.living, 0);
+    b = fsti_agent_ind_arr(&simulation.living, 1);
+    TESTEQ(a->num_partners, 1, *tg);
+    TESTEQ(a->num_partners, 1, *tg);
+    TESTEQ(b->partners[0], a->id, *tg);
+    fsti_simulation_kill_agent(&simulation,
+                               fsti_agent_ind_at(&simulation.living, 0));
+    TESTEQ(a->partners[0], b->id, *tg);
+    TESTEQ(b->partners[0], a->id, *tg);
+    TESTEQ(a->num_partners, 0, *tg);
+    TESTEQ(a->num_partners, 0, *tg);
 
     fsti_config_free(&config);
     fsti_simulation_free(&simulation);
