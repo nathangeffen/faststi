@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <gsl/gsl_rng.h>
+#include <stdint.h>
 
 #include "utils/utils.h"
 #include "fsti-defs.h"
@@ -27,8 +28,20 @@
 struct fsti_agent {
     size_t id;
     unsigned char sex;
-    unsigned char sex_preferred;
-    float age;
+    union {
+        unsigned char sex_preferred;
+        unsigned char orientation;
+    };
+    union {
+        union {
+            float age;
+            float birth_date;
+        };
+        struct {
+            uint16_t birthday;
+            uint16_t age_group;
+        };
+    };
     float infected; // Date of last infection (or 1.0 for simplicity), else 0
     float cured; // Date last cured of last infection
     float date_death; // 0 if still alive
