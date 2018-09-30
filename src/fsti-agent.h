@@ -27,10 +27,10 @@
 
 struct fsti_agent {
     size_t id;
-    unsigned char sex;
+    uint8_t sex;
     union {
-        unsigned char sex_preferred;
-        unsigned char orientation;
+        uint8_t sex_preferred;
+        uint8_t orientation;
     };
     union {
         union {
@@ -45,7 +45,7 @@ struct fsti_agent {
     float infected; // Date of last infection (or 1.0 for simplicity), else 0
     float cured; // Date last cured of last infection
     float date_death; // 0 if still alive
-    unsigned char cause_of_death;
+    uint8_t cause_of_death;
     size_t partners[FSTI_MAX_PARTNERS];
     size_t num_partners;
     FSTI_AGENT_FIELDS
