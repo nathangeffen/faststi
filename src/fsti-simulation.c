@@ -115,7 +115,7 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->mating_pool_prob = (float)
         fsti_config_at0_double(&simulation->config, "MATING_PROB");
 
-    FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation);
+    FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
 
 void fsti_simulation_run(struct fsti_simulation *simulation)
@@ -157,7 +157,7 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
-    FSTI_SIMULATION_FREE(simulation);
+    FSTI_HOOK_SIMULATION_FREE(simulation);
 }
 
 void fsti_simulation_test(struct test_group *tg)

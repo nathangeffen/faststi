@@ -305,7 +305,7 @@ void fsti_agent_arr_copy(struct fsti_agent_arr *dest,
 
     memcpy(dest->agents, src->agents, sizeof(struct fsti_agent) * src->len);
 
-    FSTI_AGENT_ARR_COPY(dest, src);
+    FSTI_HOOK_AGENT_ARR_COPY(dest, src);
 }
 
 void fsti_agent_ind_copy(struct fsti_agent_ind *dest,
@@ -344,7 +344,7 @@ void fsti_agent_ind_free(struct fsti_agent_ind *agent_ind)
 void fsti_agent_arr_free(struct fsti_agent_arr *agent_arr)
 {
     struct fsti_ind_list *node, *prev;
-    FSTI_AGENT_FREE(agent_arr);
+    FSTI_HOOK_AGENT_ARR_FREE(agent_arr);
     free(agent_arr->agents);
 
     node = agent_arr->ind_list;

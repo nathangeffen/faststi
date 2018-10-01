@@ -22,7 +22,7 @@ void fsti_to_partner(void *to, const struct fsti_variant *from,
                      struct fsti_agent *agent);
 
 void fsti_event_read_agents(struct fsti_simulation *simulation);
-void fsti_event_generate_agents(struct fsti_simulation *simulation);
+void fsti_event_create_agents(struct fsti_simulation *simulation);
 void fsti_event_age(struct fsti_simulation *simulation);
 void fsti_event_report(struct fsti_simulation *simulation);
 void fsti_event_shuffle_living(struct fsti_simulation *simulation);

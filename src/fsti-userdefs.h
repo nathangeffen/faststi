@@ -101,7 +101,7 @@ unsigned total_partners;
 #define FSTI_AGENT_HAS_PARTNER(agent) fsti_agent_has_partner(agent)
 
 /*
-  Define this to calle a distance function to measure suitability for two agents
+  Define this to call a distance function to measure suitability for two agents
   to match. The default version makes people with compatible sexual orientations
   and close ages more likely to match.
 */
@@ -114,58 +114,53 @@ unsigned total_partners;
  * good understanding of both C and the FastSTI code.
  *******************************************************************/
 
+/* Hooks */
+
 /*
-  ADVANCED
-  Put additonal code needed to successfully copy an agent array here.
+  Hook after copying an agent array.
 */
 
-#define FSTI_AGENT_ARR_COPY(dest_arr, src_arr) do {      \
+#define FSTI_HOOK_AGENT_ARR_COPY(dest_arr, src_arr) do {      \
     } while(0)
 
 
 /*
-  ADVANCED
-  Put additonal code needed to successfully free an agent.
+  Hook before freeing an agent array.
 */
 
-#define FSTI_AGENT_FREE(agent_arr)  do {    \
+#define FSTI_HOOK_AGENT_ARR_FREE(agent_arr)  do {    \
     } while(0)
 
 
 /*
-  ADVANCED
-  Put additonal code needed to successfully free a simulation
+  Hook before freeing a simulation
 */
 
-#define FSTI_SIMULATION_FREE(simulation)  do {    \
+#define FSTI_HOOK_SIMULATION_FREE(simulation)  do {    \
     } while(0)
 
 /*
-  ADVANCED
-  For optimal speed, put frequently used config entries into simulation
-  variables.
+  Speed optimization hook. Use it to put frequently used config entries into
+  simulation variables.
 */
 
-#define FSTI_ADDITIONAL_CONFIG_TO_VARS(simulation)  do {        \
-    } while(0)
-
-
-/*
-  ADVANCED
-  Additional code for creating a new agent in the fsti_event_generate_agents
-  event.
-*/
-
-#define FSTI_ADDITIONAL_GENERATE_AGENT(simulation, agent) do {    \
+#define FSTI_HOOK_CONFIG_TO_VARS(simulation)  do {        \
     } while(0)
 
 
 /*
-  ADVANCED
-  Register additional events here.
+  Hook after an agent is created, but before being put in the agent array.
 */
 
-#define FSTI_ADDITIONAL_EVENTS_REGISTER do {    \
+#define FSTI_HOOK_CREATE_AGENT(simulation, agent) do {    \
+    } while(0)
+
+
+/*
+  Hook to register events.
+*/
+
+#define FSTI_HOOK_EVENTS_REGISTER do {    \
     } while(0)
 
 #endif

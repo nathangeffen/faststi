@@ -204,7 +204,7 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_generate_agents(struct fsti_simulation *simulation)
+void fsti_event_create_agents(struct fsti_simulation *simulation)
 {
     size_t i;
     struct fsti_agent agent;
@@ -253,7 +253,7 @@ void fsti_event_generate_agents(struct fsti_simulation *simulation)
             agent.num_partners = 1;
             agent.partners[0] = i - 1;
         }
-        FSTI_ADDITIONAL_GENERATE_AGENT(simulation, agent);
+        FSTI_HOOK_CREATE_AGENT(simulation, agent);
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
     fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
@@ -409,7 +409,7 @@ void fsti_event_register_events()
     if (initialized_events == false) {
         initialized_events = true;
         fsti_register_add("_READ_AGENTS", fsti_event_read_agents);
-        fsti_register_add("_GENERATE_AGENTS", fsti_event_generate_agents);
+        fsti_register_add("_GENERATE_AGENTS", fsti_event_create_agents);
         fsti_register_add("_AGE", fsti_event_age);
         fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
         fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
@@ -420,6 +420,6 @@ void fsti_event_register_events()
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
         fsti_register_add("_STOP", fsti_event_stop);
         fsti_register_add("_NO_OP", fsti_event_no_op);
-        FSTI_ADDITIONAL_EVENTS_REGISTER;
+        FSTI_HOOK_EVENTS_REGISTER;
     }
 }
