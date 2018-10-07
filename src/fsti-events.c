@@ -54,6 +54,19 @@ void fsti_to_int(void *to, const struct fsti_variant *from,
     memcpy(to, &v, sizeof(int));
 }
 
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  struct fsti_agent *agent)
+{
+    bool v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(bool));
+}
+
+
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,
                       struct fsti_agent *agent)
 {

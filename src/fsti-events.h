@@ -12,6 +12,8 @@ void fsti_to_double(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
 void fsti_to_int(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  struct fsti_agent *agent);
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
