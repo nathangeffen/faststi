@@ -1,6 +1,8 @@
 #ifndef FSTI_EVENTS_H
 #define FSTI_EVENTS_H
 
+#include <stdint.h>
+
 #include "fsti-simulation.h"
 #include "fsti-defs.h"
 #include "fsti-userdefs.h"
@@ -12,6 +14,14 @@ void fsti_to_double(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
 void fsti_to_int(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
 void fsti_to_bool(void *to, const struct fsti_variant *from,
                   struct fsti_agent *agent);
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,

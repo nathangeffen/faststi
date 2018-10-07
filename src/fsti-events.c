@@ -10,6 +10,8 @@ const struct fsti_csv_entry fsti_csv_entries[] = {
     FSTI_CSV_ENTRIES
 };
 
+
+
 const struct fsti_csv_agent fsti_global_csv =
 {
     .agent = &fsti_global_agent,
@@ -53,6 +55,55 @@ void fsti_to_int(void *to, const struct fsti_variant *from,
     }
     memcpy(to, &v, sizeof(int));
 }
+
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint8_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint8_t));
+}
+
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint16_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint16_t));
+}
+
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint32_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint32_t));
+}
+
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint64_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint64_t));
+}
+
 
 void fsti_to_bool(void *to, const struct fsti_variant *from,
                   struct fsti_agent *agent)
