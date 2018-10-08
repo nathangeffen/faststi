@@ -7,7 +7,7 @@
 
 #include "utils/utils.h"
 #include "fsti-defs.h"
-#include "fsti-userdefs.h"
+#include "fsti-defaults.h"
 
 #define FSTI_FOR(agent_ind, agent, code) do {                           \
         size_t *_it;                                                    \
