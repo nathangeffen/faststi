@@ -6,7 +6,7 @@ infections (STIs).
 FastSTI is written in C and designed to be fast and efficient. It is capable of
 running simulations of tens of millions of agents on modern consumer hardware.
 
-## Installation
+## Installation on GNU/Linux
 
 Carry out these steps to install FastSTI on a GNU/Linux PC.
 
@@ -41,6 +41,10 @@ debugging and development. To create an optimised version for running big,
 CPU-intensive simulations, do this:
 
 XX Fill in steps
+
+## Installation on macOS
+
+Switch the the `macos` branch to see detailed instructions and access macOS-compatible code.
 
 ## Using the framework
 
