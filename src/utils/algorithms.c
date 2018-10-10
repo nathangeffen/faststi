@@ -1,6 +1,6 @@
 /* Generic C functions */
 
-#include <error.h>
+#include <mach/error.h>
 #include <errno.h>
 #include "algorithms.h"
 
@@ -17,8 +17,9 @@ char * strdup(const char * src)
 {
 	char *dest = malloc(strlen(src) + 1), *p = dest;
         if (dest == NULL)
-            error(EXIT_FAILURE, errno,
-                  "Failed to allocate space for string.");
+						unix_err(errno);
+            // error(EXIT_FAILURE, errno,
+            //       "Failed to allocate space for string.");
 
 	while (*src)
 		*p++ = *src++;

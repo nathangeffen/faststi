@@ -20,8 +20,9 @@ static struct csv_row csv_append_row(const char * strings[], size_t n)
 	ARRAY_NEW(row, cells);
 	for (size_t i = 0; i < n; ++i) {
 		if ( NULL == (s = strdup(strings[i])) )
-				error(EXIT_FAILURE, errno,
-					"Failed to allocate space for cell.");
+				unix_err(errno);
+				// error(EXIT_FAILURE, errno,
+				// 	"Failed to allocate space for cell.");
 		ARRAY_PUSH(row, cells, s);
 	}
 
@@ -97,8 +98,9 @@ static struct csv_row csv_read_row(FILE *f, const char delim)
 		if (endcell || inrow == false) {
 			ARRAY_PUSH(cell, str, '\0');
 			if ( NULL == (s = strdup(cell.str)) )
-				error(EXIT_FAILURE, errno,
-					"Failed to allocate space for cell.");
+				unix_err(errno);
+				// error(EXIT_FAILURE, errno,
+				// 	"Failed to allocate space for cell.");
 			if (strlen(s) || !(c == EOF || c == '\n'))
 				ARRAY_PUSH(row, cells, s);
 			else
@@ -273,9 +275,10 @@ static struct csv_row rowdup(const struct csv_row * row)
 	ARRAY_NEW(result, cells);
 	for (size_t i = 0; i < row->len; ++i) {
 		if (NULL == (s = strdup(row->cells[i]) ) )
-			error(EXIT_FAILURE, errno,
-				"Failed to allocate space for "
-				"string in duplicate row.");
+			unix_err(errno);
+			// error(EXIT_FAILURE, errno,
+			// 	"Failed to allocate space for "
+			// 	"string in duplicate row.");
 		ARRAY_PUSH(result, cells, s);
 	}
 
@@ -304,8 +307,9 @@ struct dataframe dataframe_new(size_t cols, const char * strings[],
 	df.header = csv_append_row(strings, cols);
 
 	if ( NULL == (df.type = malloc(cols * sizeof(enum val_type))))
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for dataframe types.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for dataframe types.");
 
 	for (size_t i = 0; i < cols; ++i) df.type[i] = types[i];
 
@@ -343,12 +347,14 @@ struct dataframe csv_to_dataframe(const struct csv * cs,
 	df.cols = cols;
 	df.vals = malloc(rows * cols * sizeof(union str_dbl));
 	if (NULL == df.vals)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for dataframe cells.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for dataframe cells.");
 	df.type = malloc(cols * sizeof(enum val_type));
 	if (NULL == df.type)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for dataframe types.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for dataframe types.");
 	for (size_t i = 0; i < cols; ++i) df.type[i] = col_types[i];
 
 	for (size_t i = 0; i < rows; ++i)
@@ -406,16 +412,18 @@ void dataframe_append(struct dataframe *df, const union str_dbl vals[])
 
 	df->vals = realloc(df->vals, rows * cols * sizeof(union str_dbl));
 	if (NULL == df->vals)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for dataframe column.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for dataframe column.");
 
 	for (size_t i = 0, j = df->rows * cols; i < cols; ++i, ++j) {
 		switch(df->type[i]) {
 		case str:
 			df->vals[j].str = strdup(vals[i].str);
 			if (NULL == df->vals[j].str)
-				error(EXIT_FAILURE, errno, "Failed to allocate "
-					"space for dataframe cell.");
+				unix_err(errno);
+				// error(EXIT_FAILURE, errno, "Failed to allocate "
+				// 	"space for dataframe cell.");
 			break;
 		case dbl:
 			df->vals[j].dbl = vals[i].dbl;
@@ -443,16 +451,18 @@ void dataframe_append_var(struct dataframe *df, ...)
 	va_start(ap, df);
 	df->vals = realloc(df->vals, rows * cols * sizeof(union str_dbl));
 	if (NULL == df->vals)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for dataframe column.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for dataframe column.");
 
 	for (size_t i = 0, j = df->rows * cols; i < cols; ++i, ++j) {
 		switch(df->type[i]) {
 		case str:
 			df->vals[j].str = strdup(va_arg(ap, char *));
 			if (NULL == df->vals[j].str)
-				error(EXIT_FAILURE, errno, "Failed to allocate "
-					"space for dataframe cell.");
+				unix_err(errno);
+				// error(EXIT_FAILURE, errno, "Failed to allocate "
+				// 	"space for dataframe cell.");
 			break;
 		case dbl:
 			df->vals[j].dbl = va_arg(ap, double);
@@ -505,15 +515,17 @@ struct  csv dataframe_to_csv(const struct dataframe * df)
 				char s[50];
 				snprintf(s, 50, "%f", df->vals[i*cols+j].dbl);
 				if ( (strings[j] = strdup(s) ) == NULL)
-					error(EXIT_FAILURE, errno,
-						"Failed to allocate space for "
-						"csv cell.");
+					unix_err(errno);
+					// error(EXIT_FAILURE, errno,
+					// 	"Failed to allocate space for "
+					// 	"csv cell.");
 			} else {
 				strings[j] = strdup(df->vals[i*cols + j].str);
 				if (NULL == strings[j])
-					error(EXIT_FAILURE, errno,
-						"Failed to allocate space for "
-						"csv cell.");
+					unix_err(errno);
+					// error(EXIT_FAILURE, errno,
+					// 	"Failed to allocate space for "
+					// 	"csv cell.");
 			}
 		}
 		row = csv_append_row( (const char **) strings, cols);
@@ -540,8 +552,10 @@ struct matrix dataframe_to_matrix(const struct dataframe * df)
 	mat.rows = rows;
 	mat.cols = cols;
 	mat.vals = malloc(rows * cols * sizeof(double));
-	if (NULL == mat.vals) error(EXIT_FAILURE, errno,
-				"Failed to allocate matrix.");
+	if (NULL == mat.vals)
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 		"Failed to allocate matrix.");
 
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols; ++j) {
@@ -603,8 +617,10 @@ struct matrix csv_to_matrix(const struct csv * cs)
 	mat.rows = rows;
 	mat.cols = cols;
 	mat.vals = malloc(rows * cols * sizeof(double));
-	if (NULL == mat.vals) error(EXIT_FAILURE, errno,
-				"Failed to allocate matrix.");
+	if (NULL == mat.vals)
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 		"Failed to allocate matrix.");
 
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols; ++j) {

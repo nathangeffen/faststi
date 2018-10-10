@@ -4,7 +4,7 @@
    \brief Definitions of array management functions
 
 */
-#include <error.h>
+#include <mach/error.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -25,7 +25,9 @@ size_t array_grow(void **array, size_t current_capacity, size_t object_size)
 	new_size = new_capacity * object_size;
 	*array = realloc(*array, new_size);
 	if (NULL == array)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for array.");
+		unix_err(errno);
+		// error(EXIT_FAILURE, errno,
+		// 	"Failed to allocate space for array.");
+
 	return new_capacity;
 }

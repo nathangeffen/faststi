@@ -1,12 +1,17 @@
 # FastSTI: Agent-based simulator of sexually transmitted infections
 
+* Written by Nathan Geffen
+* macOS port by Eduard Grebe (minimal changes to error handling)
+
+**Forked from [https://github.com/nathangeffen/faststi](https://github.com/nathangeffen/faststi)**
+
 FastSTI is a microsimulation framework for modelling sexually transmitted
 infections (STIs).
 
 FastSTI is written in C and designed to be fast and efficient. It is capable of
 running simulations of tens of millions of agents on modern consumer hardware.
 
-## Installation
+## Installation on GNU/Linux
 
 Carry out these steps to install FastSTI on a GNU/Linux PC.
 
@@ -41,6 +46,30 @@ debugging and development. To create an optimised version for running big,
 CPU-intensive simulations, do this:
 
 XX Fill in steps
+
+## Installation on macOS
+
+Compiling faststi on macOS is easy, but involves a few additional steps
+
+Install and configure the dependencies with [Homebrew](https://brew.sh):
+
+* (If you don't have Homebrew installed): `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+* `brew install gcc pkg-config glib gsl meson ninja`
+* `pkg-config --cflags --libs gsl`
+* `pkg-config --cflags --libs glib-2.0`
+
+Clone the repository: `git clone https://github.com/eduardgrebe/faststi` and
+switch to the macOS port branch (from within the local directory): `git checkout macos`
+
+Build using meson and ninja using the gcc toolchain:
+
+* `CC=/usr/local/bin/cc meson debug`
+* `cd debug`
+* `ninja`
+
+## Installation on Windows
+
+**Instructions to follow**
 
 ## Using the framework
 
