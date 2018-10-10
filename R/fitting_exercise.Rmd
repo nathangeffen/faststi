@@ -1,0 +1,486 @@
+---
+title: "faststi Calibration"
+output: html_notebook
+---
+
+# General set-up
+
+```{r "setup", include=FALSE}
+knitr::opts_knit$set(root.dir = "~/dev/faststi")
+library(tidyverse)
+library(ggplot2)
+```
+
+Let's set up a function to create the parameter file for faststi, using
+specified initial prevalences and infection probability parameters:
+
+```{r}
+initial_prevs <- function(msw_1550 = 0.01,
+                          msm_1550 = 0.01,
+                          wsm_1550 = 0.01,
+                          wsw_1550 = 0.01) {
+  return(as.list(environment()))
+}
+
+infection_parms <- function(inf_msw = 0.15,
+                            inf_msm = 0.3,
+                            inf_wsm = 0.075,
+                            inf_wsw = 0.05) {
+  return(as.list(environment()))
+}
+
+write_input <- function(name = "RTEST_", 
+                        n_simulations = 128, 
+                        n_agents = 100000, 
+                        start_date = 2015, 
+                        end_date = 2020,
+                        analysis_step_days = 365,
+                        n_threads = 4,
+                        match_event = "CSPM", # CSPM / RKPM / BLOSSOMV
+                        match_neighbours = 30,
+                        match_clusters = 5,
+                        breakup_event = "FREQUENCY", # FREQUENCY / LIMIT
+                        mating_pool_event = "FREQUENCY", # FREQUENCY / LIMIT
+                        age_truncate = NULL, # c(min,max)
+                        prevs = initial_prevs(),
+                        parms = infection_parms()) {
+  # Write initial rates to file
+  with(prevs, {
+    initial_rates <- data.frame(AGE = c(14,19,24,29,34,39,44,49,100), # 14 - everyone up to 14.99999, 19 = 15-19.9999
+                                MSW = c(0, rep(msw_1550,7), 0),
+                                MSM = c(0, rep(msw_1550,7), 0),
+                                WSM = c(0, rep(wsm_1550,7), 0),
+                                WSW = c(0, rep(wsw_1550,7), 0))
+    write.csv(initial_rates, "InitialRates.csv", row.names = FALSE, quote = FALSE)
+  })
+  # Write parameters to file
+  with(parms, {
+    lines <- ""
+    simulation_name <- paste0(name, toString(inf_msw))
+    line <- sprintf("SIMULATION_NAME %s\n", simulation_name)
+    lines <- paste0(lines, line)
+    lines <- paste0(lines, "NUM_SIMULATIONS ", n_simulations, "\n")
+    lines <- paste0(lines, "NUM_AGENTS ", n_agents, "\n")
+    lines <- paste0(lines, "NUM_THREADS ", n_threads, "\n")
+    lines <- paste0(lines, "START_DATE ", start_date, "\nEND_DATE ", end_date, "\n")
+    lines <- paste0(lines, "MATCH_EVENT ", match_event, "\n")
+    lines <- paste0(lines, "MATCH_NEIGHBORS ",match_neighbours, "\n") # 
+    lines <- paste0(lines, "MATCH_CLUSTERS ", match_clusters, "\n") #
+    lines <- paste0(lines, "ANALYZE_DURING_SIM ", analysis_step_days, "\n")
+    lines <- paste0(lines, "BREAKUP_EVENT ", breakup_event, "\n") 
+    lines <- paste0(lines, "MATING_POOL_EVENT ", mating_pool_event, "\n") 
+    lines <- paste0(lines, "OUTPUT_NUM_MATINGPOOL 1\n")
+    if(!is.null(age_truncate)) {
+      if(length(age_truncate) != 2 | !is.integer(age_truncate[1]) | !is.integer(age_truncate[2])) {
+        stop("age_truncate must be NULL or a vector containing 2 integers")
+        }
+       lines <- paste0(lines, "MIN_AGE_TRUNCATE ", age_truncate[1], "\n")
+       lines <- paste0(lines, "MAX_AGE_TRUNCATE ", age_truncate[2], "\n")
+    }
+    lines <- paste0(lines, "HET_MALE_INFECTIOUSNESS ", inf_msw, "\n")
+    lines <- paste0(lines, "HOM_MALE_INFECTIOUSNESS ", inf_msm, "\n")
+    lines <- paste0(lines, "HET_FEMALE_INFECTIOUSNESS ", inf_wsm, "\n")
+    lines <- paste0(lines, "HOM_FEMALE_INFECTIOUSNESS ", inf_wsw, "\n")
+    lines <- paste0(lines, "INITIAL_INFECTION_RATES_CSV InitialRates.csv")
+    write(lines, file="FaststiInput.txt")
+  })
+}
+
+```
+
+Now let's set up a function that runs the simulation the specified number of times
+(with true stochasticity or a specified seed.
+
+```{r}
+faststi_simulation <- function(seed = 123, param.fixed, param.set) {
+  # This is an ugly workaround for the fact that EasyABC only allows parameters
+  # for which priors are set
+  #fixed <- get("fixed_params",env=globalenv())
+  
+  with(param.fixed, {
+    write_input(n_simulations = n_simulations,
+                n_agents = n_agents,
+                start_date = start_date,
+                end_date = end_date,
+                prevs = prevs,
+                parms = infection_parms(inf_msw = param.set[1],
+                                        inf_msm = param.set[2],
+                                        inf_wsm = param.set[3],
+                                        inf_wsw = param.set[4]))
+  })
+  #time <- toString(lubridate::now())
+  #outfilename <- paste0("FaststiOutput_",gsub(" ","_",gsub(":","-",time)),".csv")
+  outfilename <- "FaststiOutput.csv"
+  cmd = sprintf("./faststi -s %i -f %s >%s", seed, "FaststiInput.txt", outfilename)
+  system(cmd)
+  results <- read.csv(outfilename, TRUE)
+  final_prevalences <- dplyr::filter(results, Desc2 == "PREVALENCE", Date == max(Date))
+  mean_final_prevalence = mean(final_prevalences$Value)
+  sd_final_prevalence = sd(final_prevalences$Value)
+  #browser()  
+  # years <- unique(results$Date)[3:length(unique(results$Date))-1]
+  #   mean_prevs <- vector(length = length(years))
+  #   for (i in 1:length(years)) {
+  #     mean_prevs[i] <- mean(dplyr::filter(results, Desc2 == "PREVALENCE", Date == years[i])$Value)
+  #   } 
+  print(paste0("Mean final prevlances: ", mean_final_prevalence))
+  print(paste0("SD final prevlances: ", sd_final_prevalence))
+  return(results)
+}
+```
+
+Now let's test it with 4 runs (4 threads), using a seed value and default
+parameter values. (We are not controlling for stochasticity well - we would need 
+many more runs to do that.)
+
+```{r}
+fixed.params <-  list(n_simulations = 4,
+                      n_threads = 4,
+                      start_date = 2015,
+                      end_date = 2020,
+                      n_agents = 100000,
+                      age_truncate = c(15,50),
+                      breakup_event = "FREQUENCY",
+                      mating_pool_event = "FREQUENCY",
+                      prevs = initial_prevs())
+true.params <- unlist(infection_parms())
+sim.output <- faststi_simulation(seed = 123, param.fixed = fixed.params, param.set = true.params)
+sim.prev <- sim.output %>%
+  filter(Desc2 == "PREVALENCE", Date > 2015, Date < 2020) %>%
+  group_by(Date) %>%
+  summarise(prev.mean = mean(Value), prev.sd = sd(Value))
+print(sim.prev)
+```
+
+Now, let's simulate data from these values, assuming a survey in each year with sample size of 1000:
+
+```{r}
+set.seed(123)
+sim.data <- data_frame(date = sim.prev$Date,
+                       N = rep(1000,nrow(sim.prev)),
+                       n_pos = rbinom(n = nrow(sim.prev), size = 1000, prob = sim.prev$prev.mean)
+                      )
+sim.data <- sim.data %>%
+  mutate(prev = n_pos/1000)
+print(sim.data)
+```
+
+Let's use simply the prevalence from the surveys as a target statistic for ABC 
+sequential. Later we will be more sophisticated.
+
+First, let's set up a function that can call faststi but returns only the 
+mean prevalences from the years between min and max and returns them as a numeric
+vector (EasyABC does not accept any other output from the model function).
+
+Note that the seed now needs to be inside the parameter set, because EasyABC simply 
+provides a vector of seed and parameter values to the function.
+
+```{r}
+faststi_sim_prev <- function(param.set) {
+  # This is an ugly workaround for the fact that EasyABC only allows parameters
+  # for which priors are set
+  param.fixed <- get("fixed.params",env=globalenv())
+  
+  with(param.fixed, {
+    write_input(n_simulations = n_simulations,
+                n_agents = n_agents,
+                start_date = start_date,
+                end_date = end_date,
+                prevs = prevs,
+                parms = infection_parms(inf_msw = param.set[2],
+                                        inf_msm = param.set[3],
+                                        inf_wsm = param.set[4],
+                                        inf_wsw = param.set[5]))
+  })
+  #time <- toString(lubridate::now())
+  #outfilename <- paste0("FaststiOutput_",gsub(" ","_",gsub(":","-",time)),".csv")
+  outfilename <- "FaststiOutput.csv"
+  cmd = sprintf("./faststi -s %i -f %s >%s", param.set[1], "FaststiInput.txt", outfilename)
+  system(cmd)
+  results <- read.csv(outfilename, TRUE)
+  final_prevalences <- dplyr::filter(results, Desc2 == "PREVALENCE", Date == max(Date))
+  mean_final_prevalence = mean(final_prevalences$Value)
+  sd_final_prevalence = sd(final_prevalences$Value)
+  #browser()  
+  # years <- unique(results$Date)[3:length(unique(results$Date))-1]
+  #   mean_prevs <- vector(length = length(years))
+  #   for (i in 1:length(years)) {
+  #     mean_prevs[i] <- mean(dplyr::filter(results, Desc2 == "PREVALENCE", Date == years[i])$Value)
+  #   } 
+  prev.df <- results %>%
+    filter(Desc2 == "PREVALENCE", Date > param.fixed$start_date, Date < param.fixed$end_date) %>%
+    group_by(Date) %>%
+    summarise(prev.mean = mean(Value))
+  print("Parameters:")
+  print(param.set)
+  print(paste0("Mean final prevlances: ", mean_final_prevalence))
+  print(paste0("SD final prevlances: ", sd_final_prevalence))
+  print("All prevalences:")
+  print(prev.df$prev.mean)
+  return(prev.df$prev.mean)
+}
+```
+
+And now we can load EasyABC and set up uniform (uninformative) priors on the 
+four parameters that we are fitting. We'll only do 4 simulations per parameter
+set but we probably need more to control stochasticity. We will also use the seed 
+option that EasyABC supports. We will first fit to our known prevalences - so 
+eliminating observation error to see how well the procedure performs.
+
+Note that with Lenormand only uniform priors are supported.
+
+```{r}
+library(EasyABC)
+fixed.params <-  list(n_simulations = 4,
+                      n_threads = 4,
+                      start_date = 2015,
+                      end_date = 2020,
+                      n_agents = 100000,
+                      age_truncate = c(15,50),
+                      breakup_event = "FREQUENCY",
+                      mating_pool_event = "FREQUENCY",
+                      prevs = initial_prevs())
+priors <- list(prior.msw.tprob = c("unif",0,1),
+               prior.msm.tprob = c("unif",0,1),
+               prior.wsm.tprob = c("unif",0,1),
+               prior.wsw.tprob = c("unif",0,1))
+# sim.fit <- ABC_sequential(model=faststi_sim_prev,
+#                              method = "Lenormand",
+#                              prior=priors,
+#                              prior_test = "X2 > X1 && X3 < X1 && X3 > X4",
+#                              summary_stat_target = sim.prev$prev.mean,
+#                              use_seed = TRUE,
+#                              progress_bar=TRUE,
+#                              nb_simul = 20,
+#                              alpha = 0.5,
+#                              p_acc_min = 0.05)
+# sim.fit.df <- as.data.frame(sim.fit)
+# print(sim.fit.df)
+```
+
+Let's do the same thing but set our priors more tightly - we'll assume we know 
+fairly well in what range the parameters must be.
+
+```{r}
+priors <- list(prior.msw.tprob = c("unif",0.05,0.3),
+               prior.msm.tprob = c("unif",0.1,0.6),
+               prior.wsm.tprob = c("unif",0.025,0.15),
+               prior.wsw.tprob = c("unif",0.02,0.1))
+# sim.fit <- ABC_sequential(model=faststi_sim_prev,
+#                              method = "Lenormand",
+#                              prior=priors,
+#                              prior_test = "X2 > X1 && X3 < X1 && X3 > X4",
+#                              summary_stat_target = sim.prev$prev.mean,
+#                              use_seed = TRUE,
+#                              progress_bar=TRUE,
+#                              nb_simul = 20,
+#                              alpha = 0.5,
+#                              p_acc_min = 0.05)
+# sim.fit.df <- as.data.frame(sim.fit)
+# print(sim.fit.df)
+```
+
+
+Now let's see what happens if we specify beta priors how the same algorithm 
+performs when we use our imperfect dataset.
+
+
+# Bayesian fitting
+
+## Johnson approach
+
+Jonhson (2010) assumes that the number of positives in any prevalence study 
+($Y_i$) is binomially distributed with parameters $n_i$ (number tested) and $\theta_i$, 
+the prevalence one would expect to observe in the $i$th study:
+
+\begin{equation}
+  Y_i \sim binom(n_i,\theta_i)
+\end{equation}
+
+and to allow for additional variation in observations owing to variation in prevalence
+between communities (and in diagnostic accuracy, ignored here), it is assumed that
+
+\begin{equation}
+  \theta_i \sim beta(\alpha_i,\beta_i)
+\end{equation}
+
+therefore, the number of individuals testing positive follows a beta-binomial 
+distribution:
+
+\begin{equation}
+  Y_i\vert\alpha_i,\beta_i \sim betabin(n_i,\alpha_i,\beta_i)
+\end{equation}
+
+Now, if the model estimate of prevalence in subpopulation $s_i$ in year $t_i$ is
+$M(s_i,t_i,\phi)$, with $\phi$ the parameter vector, and $p_i$ the true prevalence
+in the study population, then Johnson proposes a logit-transformed model for the
+distribution of $\rho_i$:
+
+\begin{equation}
+  \ln\left(\frac{\rho_i}{1-\rho_i}\right) = \ln\left(\frac{M(s_i,t_i,\phi)}{1-M(s_i,t_i,\phi)}\right) + b_i
+\end{equation}
+
+* $\phi$ is a particular parameter set
+* $M_i(\phi)$ - model estimate of prevalence of STI in year $t_i$ in subpopulation $s_i$
+* $b_i$ the difference on the logit scale between prevalence in the $i$th study
+and the prevalence that would be expected in a nationally representative sample.
+He assumes that $b_i$ is normally distributed with a mean of 0
+
+\begin{equation}
+ b_i \sim \mathcal{N}(0,\sigma_{b}^{2})
+\end{equation}
+
+Since $\sigma_{b}$ is unknown, a gamma prior is placed on it, with mean and variance 
+based on logit-transformed STI prevalence levels before fitting model to data.
+
+Previous equation solving for $\rho_i$:
+
+\begin{equation}
+ \rho_i = \left( 1 + \left( \frac{M(s_i,t_i,\phi)}{1-M(s_i,t_i,\phi)} \right) e^{-b_i} \right)^{-1}
+\end{equation}
+
+$\theta_i$ is calculated, taking into account sensitivty and specificity of the 
+test for the STI:
+
+\begin{equation}
+ \theta_i = (Se_{i} + Sp_{i} -1) \rho_i + 1 - Sp_{i}
+\end{equation}
+
+Mean and variance of $\theta_i$ is obtained as follows:
+
+\begin{equation}
+ \theta_i = (Se_{i} + Sp_{i} -1) p_i + 1 - Sp_{i}
+\end{equation}
+
+\begin{equation}
+ E(\theta_i) = E(\rho_i) (E(Se_i) + E(Sp_i) -1) + 1 - E(Sp_i)
+\end{equation}
+
+\begin{equation}
+ Var(\theta_i) = E(Var(\theta_i \vert b_i)) + Var(E(\theta_i \vert b_i))
+               = Var(Se_i) (Var(\rho_i) + E(\rho_i)^2) + Var(Sp_i)(Var(\rho_i) + (1 - E(\rho_i))^2) + (E(Se_i) + E(Sp_i) - 1)^2 Var(\rho_i)
+\end{equation}
+
+The steps in the calculation of the likelhihood are:
+
+1. Obtain means and variances of $Se_i$ and $Sp_i$ terms from literature
+2. For a given $\phi$, obtain a third-order tailor approximation to $\rho_i$ about point $b_i = 0$ to obtain mean and variance of $\rho_i$
+3. Obtain mean and variance of $\theta_i$ using the equations above
+4. calculate parameters $\alpha_i$ and $\beta_i$ using method of moments
+5. compute beta-binomial likelihood for the $i$th observation
+
+For the caluclation of $\alpha_i$ and $\beta_i$ we need to observe (eq 4.15) in 
+Johnson's PhD thesis:
+
+\begin{equation}
+
+\alpha_i = E[\theta_i] \left( \frac{E[\theta_i] (1 - E[\theta_i])}{Var[\theta_i]} - 1 \right)\\
+
+\beta_i = (1 - E[\theta_i]) \left( \frac{E[\theta_i] (1 - E[\theta_i])}{Var[\theta_i]} - 1 \right)
+
+\end{equation}
+
+For the sake of simplicity, we will in the first instance ignore sensitivity and 
+specificity of the tests used to measure prevalence of the STI and set both to 1.
+
+The full fitting procedure is:
+
+1. Draw 20 000 parameter combinations from the join prior
+2. Run model for each parameter combination
+3. Resample 500 parameter combinations using the likelihoods as sample weights
+
+```{r}
+
+
+calculate_loglikelihood <- function() {
+  
+  
+  
+  for (i in 1:nrow(data)) {
+    study <- data[i,]
+    model_prev <- dplyr::filter(model_output, year == study$year)$prev
+    if (model_prev < 0.0001) {model_prev <- 0.0001}
+    if (model_prev > 0.9999) {model_prev <- 0.9999}
+    
+    mean_f_b <- model_prev + var_study_effect * model_prev * (1 - model_prev) *
+      (0.5 - model_prev) # Third order Taylor approximation Eq 4.9 in PhD
+    var_f_b <- (model_prev * (1 - model_prev))^2 * 
+      (var_study_effect + (1.5 - 8.0 * model_prev + 8.0 * model_prev^2)) * 
+      var_study_effect^2 + (model_prev^2 - model_prev + 1.0 / 6.0)^2 * 15 * 
+      var_study_effect^3 # Third order Taylor approximation Eq 4.11 in PhD
+    mean <- 
+    var <- 
+    study_pos <- study$N * study$prev
+  }
+}
+```
+
+
+
+
+<!-- ## Simplified case where we can calculate the posterior. -->
+
+<!-- Now, let's keep things very simple, and use the beta-binomial model (i.e.  -->
+<!-- beta prior and binomial likelihood). We will reduce the problem to one parameter -->
+<!-- and only one prevalence - the final prevalence. -->
+
+<!-- In this extreme case we can calculate the posterior, because we have only -->
+<!-- one parameter and we know the posterior is beta distributed. We also know that  -->
+<!-- the posterior integrates to one. -->
+
+<!-- \begin{equation} -->
+<!-- L(\theta | y) = p(y | \theta) -->
+<!-- \end{equation} -->
+
+<!-- \begin{equation} -->
+<!-- p(\theta | y) \propto L(\theta | y) \cdot p(\theta)\\ -->
+<!-- \end{equation} -->
+
+<!-- \begin{equation} -->
+<!-- \int_{-\infty}^{\infty} p(\theta | y) = 1 -->
+<!-- \end{equation} -->
+
+<!-- ```{r} -->
+
+<!-- nllikelihood <- function(param.fixed = param.fixed, param.set = param.set, data=obsdat, debug = FALSE) { -->
+<!--   if (debug) browser()   -->
+<!--   sim.output <- faststi_simulation(seed = 123, param.fixed = param.fixed, param.set = param.set) -->
+<!--     sim.prev <- sim.output %>% -->
+<!--       filter(Desc2 == "PREVALENCE") %>% -->
+<!--       rename(date = Date) %>% -->
+<!--       group_by(date) %>% -->
+<!--       summarise(prev = mean(Value)) %>% -->
+<!--       filter(date %in% data$date) # keep only rows for times where we have observed data -->
+<!--     nlls <- - dbinom(data$n_pos, data$N, prob = sim.prev$prev, log = T) -->
+<!--     return(sum(nlls)) -->
+<!-- } -->
+
+<!-- # calculate using true params and guessed params -->
+<!-- nllikelihood(param.fixed = fixed.params, param.set = true.params, data = sim.data) -->
+<!-- nllikelihood(param.fixed = fixed.params, param.set = infection_parms(inf_msw = 0.8), data = sim.data)  # significantly higher (i.e. lower likelihood) -->
+
+<!-- logBetaPrior <- function(param, alpha = 1, beta = 1) { # defaults to uninformative -->
+<!--   dbeta(param, shape1 = alpha, shape2 = beta, log = TRUE) -->
+<!-- } -->
+
+<!-- logPriors <- function(param.set = param.set, alphas = rep(1,4), betas = rep(1,4)) { -->
+<!--   sum(logBetaPrior(param = param.set, alpha = alphas, beta = betas)) -->
+<!-- } -->
+
+<!-- logPriorLikelihood <- function(param.fixed = fixed.params, param.set = true.params, alphas = rep(1,4), betas = rep(1,4), data = data) { -->
+<!--   -nllikelihood(param.fixed = param.fixed, param.set = param.set, data = data) + logPriors(param.set = param.set, alphas = alphas, betas = betas) -->
+<!-- } -->
+
+<!-- logPriorLikelihood(param.fixed = fixed.params, param.set = true.params, data = sim.data) # since we're using uninformative priors should be the same as nll -->
+
+<!-- model_variance <- function() -->
+
+<!-- test.msw <- seq(0.05,0.25,0.05) -->
+
+<!-- for (i in test.msw) { -->
+<!--   print(i) -->
+<!--   print(logPriorLikelihood(param.fixed = fixed.params, param.set = c(i,true.params[2:4]), data = sim.data)) -->
+<!-- } -->
+
+<!-- ``` -->
+

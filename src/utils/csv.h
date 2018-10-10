@@ -22,7 +22,7 @@
 #define USEFUL_CSV_H
 
 #include <assert.h>
-#include <error.h>
+#include <mach/error.h>
 #include <errno.h>
 #include <stdarg.h>
 #include <stdbool.h>
