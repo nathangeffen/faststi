@@ -1,5 +1,10 @@
 # FastSTI: Agent-based simulator of sexually transmitted infections
 
+* Written by Nathan Geffen
+* macOS port by Eduard Grebe (minimal changes to error handling)
+
+**Forked from [https://github.com/nathangeffen/faststi](https://github.com/nathangeffen/faststi)**
+
 FastSTI is a microsimulation framework for modelling sexually transmitted
 infections (STIs).
 
