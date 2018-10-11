@@ -448,7 +448,11 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
                 partner = candidate;
             }
         }
-        if (partner) fsti_agent_make_partners(agent, partner);
+        if (partner) {
+            fsti_agent_make_partners(agent, partner);
+            FSTI_HOOK_AFTER_MATCH(agent, partner);
+        }
+
     }
 }
 

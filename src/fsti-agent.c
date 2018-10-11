@@ -34,6 +34,7 @@ void fsti_agent_make_partners(struct fsti_agent *a, struct fsti_agent *b)
 {
     fsti_agent_make_half_partner(a, b);
     fsti_agent_make_half_partner(b, a);
+    FSTI_HOOK_AFTER_MAKE_PARTNERS(a, b);
 }
 
 void fsti_agent_break_half_partner(struct fsti_agent *a, struct fsti_agent *b)
