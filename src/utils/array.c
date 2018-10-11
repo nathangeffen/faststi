@@ -4,13 +4,13 @@
    \brief Definitions of array management functions
 
 */
-#include <error.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
 
+#include "../fsti-error.h"
 #include "array.h"
 
 /**
@@ -24,8 +24,6 @@ size_t array_grow(void **array, size_t current_capacity, size_t object_size)
 		? INIT_CAPACITY : current_capacity * GROWTH;
 	new_size = new_capacity * object_size;
 	*array = realloc(*array, new_size);
-	if (NULL == array)
-		error(EXIT_FAILURE, errno,
-			"Failed to allocate space for array.");
+        FSTI_ASSERT(array, FSTI_ERR_NOMEM, NULL);
 	return new_capacity;
 }

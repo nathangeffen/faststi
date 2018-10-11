@@ -1,8 +1,8 @@
 /* Generic C functions */
 
-#include <error.h>
 #include <errno.h>
 #include "algorithms.h"
+#include "../fsti-error.h"
 
 /**
    Makes a duplicate of a string. It is the caller's responsibility to
@@ -16,9 +16,7 @@
 char * strdup(const char * src)
 {
 	char *dest = malloc(strlen(src) + 1), *p = dest;
-        if (dest == NULL)
-            error(EXIT_FAILURE, errno,
-                  "Failed to allocate space for string.");
+        FSTI_ASSERT(dest, FSTI_ERR_NOMEM, NULL);
 
 	while (*src)
 		*p++ = *src++;
