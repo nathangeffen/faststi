@@ -34,6 +34,7 @@ void fsti_agent_make_partners(struct fsti_agent *a, struct fsti_agent *b)
 {
     fsti_agent_make_half_partner(a, b);
     fsti_agent_make_half_partner(b, a);
+    FSTI_HOOK_AFTER_MAKE_PARTNERS(a, b);
 }
 
 void fsti_agent_break_half_partner(struct fsti_agent *a, struct fsti_agent *b)
@@ -138,8 +139,10 @@ struct fsti_agent *fsti_agent_partner_get(struct fsti_agent_arr *agent_arr,
                                           struct fsti_agent *agent,
                                           size_t index)
 {
-    assert(index < agent->num_partners);
-    return agent_arr->agents + agent->partners[index];
+    if (index < agent->num_partners)
+        return agent_arr->agents + agent->partners[index];
+    else
+        return NULL;
 }
 
 struct fsti_agent *fsti_agent_partner_get0(struct fsti_agent_arr *agent_arr,

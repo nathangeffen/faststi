@@ -57,7 +57,7 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%.0f,%ld\n",              \
+    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%ld\n",              \
             id,                                                       \
             agent->id,                                                \
             (unsigned) agent->sex,                                    \
@@ -139,16 +139,29 @@ unsigned total_partners;
   Hook before freeing an agent array.
 */
 #ifndef FSTI_HOOK_AGENT_ARR_FREE
-#define FSTI_HOOK_AGENT_ARR_FREE(agent_arr)  do {    \
-    } while(0)
+#define FSTI_HOOK_AGENT_ARR_FREE(agent_arr)
 #endif
+
+/*
+  Hook after two agents have been made partners
+*/
+#ifndef FSTI_HOOK_AFTER_MAKE_PARTNERS
+#define FSTI_HOOK_AFTER_MAKE_PARTNERS(a, b)
+#endif
+
+/*
+  Hook after two agents have been made partners in a pair-matching event
+*/
+#ifndef FSTI_HOOK_AFTER_MATCH
+#define FSTI_HOOK_AFTER_MATCH(simulation, a, b)
+#endif
+
 
 /*
   Hook before freeing a simulation
 */
 #ifndef FSTI_HOOK_SIMULATION_FREE
-#define FSTI_HOOK_SIMULATION_FREE(simulation)  do {    \
-    } while(0)
+#define FSTI_HOOK_SIMULATION_FREE(simulation)
 #endif
 
 /*
@@ -156,16 +169,14 @@ unsigned total_partners;
   simulation variables.
 */
 #ifndef FSTI_HOOK_CONFIG_TO_VARS
-#define FSTI_HOOK_CONFIG_TO_VARS(simulation)  do {        \
-    } while(0)
+#define FSTI_HOOK_CONFIG_TO_VARS(simulation)
 #endif
 
 /*
   Hook after an agent is created, but before being put in the agent array.
 */
 #ifndef FSTI_HOOK_CREATE_AGENT
-#define FSTI_HOOK_CREATE_AGENT(simulation, agent) do {    \
-    } while(0)
+#define FSTI_HOOK_CREATE_AGENT(simulation, agent)
 #endif
 
 /*

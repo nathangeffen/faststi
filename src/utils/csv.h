@@ -22,7 +22,6 @@
 #define USEFUL_CSV_H
 
 #include <assert.h>
-#include <error.h>
 #include <errno.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -30,6 +29,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../fsti-error.h"
 #include "array.h"
 #include "test.h"
 #include "algorithms.h"
