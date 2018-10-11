@@ -138,8 +138,10 @@ struct fsti_agent *fsti_agent_partner_get(struct fsti_agent_arr *agent_arr,
                                           struct fsti_agent *agent,
                                           size_t index)
 {
-    assert(index < agent->num_partners);
-    return agent_arr->agents + agent->partners[index];
+    if (index < agent->num_partners)
+        return agent_arr->agents + agent->partners[index];
+    else
+        return NULL;
 }
 
 struct fsti_agent *fsti_agent_partner_get0(struct fsti_agent_arr *agent_arr,
