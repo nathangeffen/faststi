@@ -153,7 +153,7 @@ unsigned total_partners;
   Hook after two agents have been made partners in a pair-matching event
 */
 #ifndef FSTI_HOOK_AFTER_MATCH
-#define FSTI_HOOK_AFTER_MATCH(a, b)
+#define FSTI_HOOK_AFTER_MATCH(simulation, a, b)
 #endif
 
 
