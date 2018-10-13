@@ -57,13 +57,14 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%ld\n",              \
+    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%f,%ld\n",                \
             id,                                                       \
             agent->id,                                                \
             (unsigned) agent->sex,                                    \
             (unsigned) agent->sex_preferred,                          \
             agent->age,                                               \
             agent->infected,                                          \
+            agent->date_death,                                        \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
 

@@ -62,6 +62,9 @@ size_t fsti_simulation_agent_size(struct fsti_simulation *simulation);
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation);
 struct fsti_agent *
 fsti_simulation_new_agent(struct fsti_simulation *simulation);
+void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
+                                          struct fsti_agent_ind *agent_ind);
+void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation);
 void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
 void fsti_simulation_set_csv(struct fsti_simulation *simulation,
