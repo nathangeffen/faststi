@@ -1,0 +1,87 @@
+[
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-main.c.o' -MF 'src/src@@faststi@exe/fsti-main.c.o.d' -o 'src/src@@faststi@exe/fsti-main.c.o' -c ../src/fsti-main.c",
+    "file": "../src/fsti-main.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-simset.c.o' -MF 'src/src@@faststi@exe/fsti-simset.c.o.d' -o 'src/src@@faststi@exe/fsti-simset.c.o' -c ../src/fsti-simset.c",
+    "file": "../src/fsti-simset.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-procini.c.o' -MF 'src/src@@faststi@exe/fsti-procini.c.o.d' -o 'src/src@@faststi@exe/fsti-procini.c.o' -c ../src/fsti-procini.c",
+    "file": "../src/fsti-procini.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-agent.c.o' -MF 'src/src@@faststi@exe/fsti-agent.c.o.d' -o 'src/src@@faststi@exe/fsti-agent.c.o' -c ../src/fsti-agent.c",
+    "file": "../src/fsti-agent.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-events.c.o' -MF 'src/src@@faststi@exe/fsti-events.c.o.d' -o 'src/src@@faststi@exe/fsti-events.c.o' -c ../src/fsti-events.c",
+    "file": "../src/fsti-events.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-error.c.o' -MF 'src/src@@faststi@exe/fsti-error.c.o.d' -o 'src/src@@faststi@exe/fsti-error.c.o' -c ../src/fsti-error.c",
+    "file": "../src/fsti-error.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-eventdefs.c.o' -MF 'src/src@@faststi@exe/fsti-eventdefs.c.o.d' -o 'src/src@@faststi@exe/fsti-eventdefs.c.o' -c ../src/fsti-eventdefs.c",
+    "file": "../src/fsti-eventdefs.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-defaults.c.o' -MF 'src/src@@faststi@exe/fsti-defaults.c.o.d' -o 'src/src@@faststi@exe/fsti-defaults.c.o' -c ../src/fsti-defaults.c",
+    "file": "../src/fsti-defaults.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-config.c.o' -MF 'src/src@@faststi@exe/fsti-config.c.o.d' -o 'src/src@@faststi@exe/fsti-config.c.o' -c ../src/fsti-config.c",
+    "file": "../src/fsti-config.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-simulation.c.o' -MF 'src/src@@faststi@exe/fsti-simulation.c.o.d' -o 'src/src@@faststi@exe/fsti-simulation.c.o' -c ../src/fsti-simulation.c",
+    "file": "../src/fsti-simulation.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-userdefs.c.o' -MF 'src/src@@faststi@exe/fsti-userdefs.c.o.d' -o 'src/src@@faststi@exe/fsti-userdefs.c.o' -c ../src/fsti-userdefs.c",
+    "file": "../src/fsti-userdefs.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-defs.c.o' -MF 'src/src@@faststi@exe/fsti-defs.c.o.d' -o 'src/src@@faststi@exe/fsti-defs.c.o' -c ../src/fsti-defs.c",
+    "file": "../src/fsti-defs.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/fsti-tests.c.o' -MF 'src/src@@faststi@exe/fsti-tests.c.o.d' -o 'src/src@@faststi@exe/fsti-tests.c.o' -c ../src/fsti-tests.c",
+    "file": "../src/fsti-tests.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/utils_array.c.o' -MF 'src/src@@faststi@exe/utils_array.c.o.d' -o 'src/src@@faststi@exe/utils_array.c.o' -c ../src/utils/array.c",
+    "file": "../src/utils/array.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/utils_algorithms.c.o' -MF 'src/src@@faststi@exe/utils_algorithms.c.o.d' -o 'src/src@@faststi@exe/utils_algorithms.c.o' -c ../src/utils/algorithms.c",
+    "file": "../src/utils/algorithms.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/utils_csv.c.o' -MF 'src/src@@faststi@exe/utils_csv.c.o.d' -o 'src/src@@faststi@exe/utils_csv.c.o' -c ../src/utils/csv.c",
+    "file": "../src/utils/csv.c"
+  },
+  {
+    "directory": "/home/nathan/workspace/C/faststi/releasegcc",
+    "command": "cc -Isrc/src@@faststi@exe -Isrc -I../src -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c11 -O3 -pthread  -MD -MQ 'src/src@@faststi@exe/utils_test.c.o' -MF 'src/src@@faststi@exe/utils_test.c.o.d' -o 'src/src@@faststi@exe/utils_test.c.o' -c ../src/utils/test.c",
+    "file": "../src/utils/test.c"
+  }
+]
