@@ -89,6 +89,25 @@ unsigned total_partners;
 #endif
 
 /*
+   Default flex report event output. Can be appended to with the
+   FST_HOOK_FLEX_REPORT hook below as well.
+*/
+
+#ifndef FSTI_FLEX_REPORT
+#define FSTI_FLEX_REPORT do {                                           \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE");   \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, living, , "POP_ALIVE", "%.0f"); \
+        FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,   \
+                                      "NUM_PARTNERS", FSTI_HALF, "%.0f"); \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD");      \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, "INFECT_RATE_DEAD"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , "POP_DEAD", "%.0f");        \
+    } while(0)
+#endif
+
+
+/*
   Define the format of the CSV input file here.
  */
 #ifndef FSTI_CSV_ENTRIES
@@ -126,6 +145,15 @@ unsigned total_partners;
  *******************************************************************/
 
 /* Hooks */
+
+
+/*
+   Hook for flex report event. Use this to add additional report lines.
+*/
+
+#ifndef FSTI_HOOK_FLEX_REPORT
+#define FSTI_HOOK_FLEX_REPORT
+#endif
 
 /*
   Hook after copying an agent array.

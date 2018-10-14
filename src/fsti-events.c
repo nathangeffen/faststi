@@ -369,7 +369,7 @@ void fsti_event_report(struct fsti_simulation *simulation)
         simulation->iteration % simulation->report_frequency != 0)
         return;
 
-    outputl(simulation, "POPULATION", simulation->agent_arr.len);
+    outputl(simulation, "POPULATION_ALIVE", simulation->living.len);
 
     FSTI_FOR_LIVING(*simulation, agent, {
             age_avg += agent->age;
@@ -381,6 +381,12 @@ void fsti_event_report(struct fsti_simulation *simulation)
     outputf(simulation, "INFECTION_RATE",
            (double) infections / simulation->agent_arr.len);
     outputl(simulation, "NUM_PARTNERS", num_partners);
+}
+
+void fsti_event_flex_report(struct fsti_simulation *simulation)
+{
+    FSTI_FLEX_REPORT;
+    FSTI_HOOK_FLEX_REPORT;
 }
 
 void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
@@ -489,6 +495,7 @@ void fsti_event_register_events()
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
+        fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
         fsti_register_add("_WRITE_LIVING_AGENTS_CSV",
                           fsti_event_write_living_agents_csv);
