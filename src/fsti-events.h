@@ -2,11 +2,78 @@
 #define FSTI_EVENTS_H
 
 #include <stdint.h>
+#include <limits.h>
+#include <float.h>
+#include <math.h>
 
 #include "fsti-simulation.h"
 #include "fsti-defs.h"
 #include "fsti-userdefs.h"
 #include "fsti-agent.h"
+
+#define FSTI_MIN_VAL(x) _Generic((x),                                   \
+                                 char: CHAR_MIN,                        \
+                                 signed char: SCHAR_MIN,                \
+                                 unsigned char: 0,                      \
+                                 short: SHRT_MIN,                       \
+                                 unsigned short: 0,                     \
+                                 int: INT_MIN,                          \
+                                 unsigned int: 0,                       \
+                                 long: LONG_MIN,                        \
+                                 unsigned long int: 0,                  \
+                                 long long int: LLONG_MIN,              \
+                                 unsigned long long int: 0,             \
+                                 float: -FLT_MAX,                       \
+                                 double: -DBL_MAX,                      \
+                                 long double: -LDBL_MAX)
+
+#define FSTI_MAX_VAL(x) _Generic((x),                                   \
+                                 char: CHAR_MAX,                        \
+                                 signed char: SCHAR_MAX,                \
+                                 unsigned char: UCHAR_MAX,              \
+                                 short: SHRT_MAX,                       \
+                                 unsigned short: USHRT_MAX,             \
+                                 int: INT_MAX,                          \
+                                 unsigned int: UINT_MAX,                \
+                                 long: LONG_MAX,                        \
+                                 unsigned long int: ULONG_MAX,          \
+                                 long long int: LLONG_MAX,              \
+                                 unsigned long long int: ULLONG_MAX,    \
+                                 float: FLT_MAX,                       \
+                                 double: DBL_MAX,                      \
+                                 long double: LDBL_MAX)
+
+
+#define FSTI_MIN(agent_ind, elem, result) do {                          \
+        struct fsti_agent *_agent;                                      \
+        size_t *_it;                                                    \
+        result = FSTI_MAX_VAL(result);                                  \
+        if (agent_ind.len == 0) {                                       \
+            result = NAN;                                               \
+        } else {                                                        \
+            for (_it = fsti_agent_ind_begin(&(agent_ind));              \
+                 _it != fsti_agent_ind_end(&(agent_ind)); _it++) {      \
+                _agent = fsti_agent_ind_arrp(&(agent_ind), _it);        \
+                if (_agent->elem < result) result = _agent->elem;       \
+            }                                                           \
+        }                                                               \
+    } while(0)
+
+#define FSTI_MAX(agent_ind, elem, result) do {                          \
+        struct fsti_agent *_agent;                                      \
+        size_t *_it;                                                    \
+        result = FSTI_MIN_VAL(result);                                  \
+        if (agent_ind.len == 0) {                                       \
+            result = NAN;                                               \
+        } else {                                                        \
+            for (_it = fsti_agent_ind_begin(&(agent_ind));              \
+                 _it != fsti_agent_ind_end(&(agent_ind)); _it++) {      \
+                _agent = fsti_agent_ind_arrp(&(agent_ind), _it);        \
+                if (_agent->elem > result) result = _agent->elem;       \
+            }                                                           \
+        }                                                               \
+    } while(0)
+
 
 #define FSTI_MEAN(agent_ind, elem, result) do {                         \
         struct fsti_agent *_agent_;                                     \
