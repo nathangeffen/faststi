@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include "fsti-defs.h"
 #include "fsti-events.h"
-
+#include "fsti-report.h"
 
 struct fsti_agent fsti_global_agent;
 
