@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-report_8h" kind="file" language="C++">
+    <compoundname>fsti-report.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">limits.h</includes>
+    <includes local="no">float.h</includes>
+    <includes local="no">math.h</includes>
+    <includes refid="fsti-simulation_8h" local="yes">fsti-simulation.h</includes>
+    <includes refid="fsti-defs_8h" local="yes">fsti-defs.h</includes>
+    <includes refid="fsti-agent_8h" local="yes">fsti-agent.h</includes>
+    <includedby refid="fsti-events_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</includedby>
+    <includedby refid="fsti-events_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</includedby>
+    <includedby refid="fsti-report_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</includedby>
+    <incdepgraph>
+      <node id="415">
+        <label>stdbool.h</label>
+      </node>
+      <node id="425">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="420">
+        <label>fsti-userdefs.h</label>
+        <link refid="fsti-userdefs_8h"/>
+      </node>
+      <node id="418">
+        <label>assert.h</label>
+      </node>
+      <node id="423">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h"/>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="415" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+      </node>
+      <node id="405">
+        <label>float.h</label>
+      </node>
+      <node id="422">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="403">
+        <label>stdint.h</label>
+      </node>
+      <node id="413">
+        <label>stdlib.h</label>
+      </node>
+      <node id="424">
+        <label>errno.h</label>
+      </node>
+      <node id="414">
+        <label>stddef.h</label>
+      </node>
+      <node id="404">
+        <label>limits.h</label>
+      </node>
+      <node id="417">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h"/>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="410" relation="include">
+        </childnode>
+        <childnode refid="413" relation="include">
+        </childnode>
+        <childnode refid="419" relation="include">
+        </childnode>
+        <childnode refid="411" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+      </node>
+      <node id="419">
+        <label>string.h</label>
+      </node>
+      <node id="411">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="416">
+        <label>fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="417" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+        <childnode refid="420" relation="include">
+        </childnode>
+      </node>
+      <node id="412">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="413" relation="include">
+        </childnode>
+        <childnode refid="414" relation="include">
+        </childnode>
+        <childnode refid="415" relation="include">
+        </childnode>
+      </node>
+      <node id="409">
+        <label>fsti-agent.h</label>
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="410" relation="include">
+        </childnode>
+        <childnode refid="408" relation="include">
+        </childnode>
+        <childnode refid="403" relation="include">
+        </childnode>
+        <childnode refid="411" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+        <childnode refid="416" relation="include">
+        </childnode>
+      </node>
+      <node id="421">
+        <label>fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+        <childnode refid="423" relation="include">
+        </childnode>
+      </node>
+      <node id="406">
+        <label>math.h</label>
+      </node>
+      <node id="407">
+        <label>fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="408" relation="include">
+        </childnode>
+        <childnode refid="409" relation="include">
+        </childnode>
+        <childnode refid="421" relation="include">
+        </childnode>
+        <childnode refid="417" relation="include">
+        </childnode>
+        <childnode refid="416" relation="include">
+        </childnode>
+      </node>
+      <node id="408">
+        <label>gsl/gsl_rng.h</label>
+      </node>
+      <node id="410">
+        <label>stdio.h</label>
+      </node>
+      <node id="402">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h"/>
+        <childnode refid="403" relation="include">
+        </childnode>
+        <childnode refid="404" relation="include">
+        </childnode>
+        <childnode refid="405" relation="include">
+        </childnode>
+        <childnode refid="406" relation="include">
+        </childnode>
+        <childnode refid="407" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+        <childnode refid="409" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="431">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="428">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</label>
+        <link refid="fsti-events_8c"/>
+      </node>
+      <node id="427">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h"/>
+        <childnode refid="428" relation="include">
+        </childnode>
+        <childnode refid="429" relation="include">
+        </childnode>
+        <childnode refid="432" relation="include">
+        </childnode>
+      </node>
+      <node id="430">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="432">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</label>
+        <link refid="fsti-simset_8c"/>
+      </node>
+      <node id="433">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</label>
+        <link refid="fsti-report_8c"/>
+      </node>
+      <node id="426">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h"/>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+      </node>
+      <node id="429">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h"/>
+        <childnode refid="430" relation="include">
+        </childnode>
+        <childnode refid="431" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fsti-report_8h_1abd86f17f25e9c940c74a103963b43a29" prot="public" static="no">
+        <name>FSTI_MIN_VAL</name>
+        <param><defname>x</defname></param>
+        <initializer>_Generic((x),                                   \
+                                 char: CHAR_MIN,                        \
+                                 signed char: SCHAR_MIN,                \
+                                 unsigned char: 0,                      \
+                                 short: SHRT_MIN,                       \
+                                 unsigned short: 0,                     \
+                                 int: INT_MIN,                          \
+                                 unsigned int: 0,                       \
+                                 long: LONG_MIN,                        \
+                                 unsigned long int: 0,                  \
+                                 long long int: LLONG_MIN,              \
+                                 unsigned long long int: 0,             \
+                                 float: -FLT_MAX,                       \
+                                 double: -DBL_MAX,                      \
+                                 long double: -LDBL_MAX)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="13" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a7a3f630a5d02d8f4d130a45685e3bc79" prot="public" static="no">
+        <name>FSTI_MAX_VAL</name>
+        <param><defname>x</defname></param>
+        <initializer>_Generic((x),                                   \
+                                 char: CHAR_MAX,                        \
+                                 signed char: SCHAR_MAX,                \
+                                 unsigned char: UCHAR_MAX,              \
+                                 short: SHRT_MAX,                       \
+                                 unsigned short: USHRT_MAX,             \
+                                 int: INT_MAX,                          \
+                                 unsigned int: UINT_MAX,                \
+                                 long: LONG_MAX,                        \
+                                 unsigned long int: ULONG_MAX,          \
+                                 long long int: LLONG_MAX,              \
+                                 unsigned long long int: ULLONG_MAX,    \
+                                 float: FLT_MAX,                       \
+                                 double: DBL_MAX,                      \
+                                 long double: LDBL_MAX)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="29" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a23a8b3ad8faaf4c4f0f645486e27faeb" prot="public" static="no">
+        <name>FSTI_MIN</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {                          \
+        struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent;                                      \
+        size_t *_it;                                                    \
+        result = <ref refid="fsti-report_8h_1a7a3f630a5d02d8f4d130a45685e3bc79" kindref="member">FSTI_MAX_VAL</ref>(result);                                  \
+        if (agent_ind.len == 0) {                                       \
+            result = NAN;                                               \
+        } else {                                                        \
+            for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));              \
+                 _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {      \
+                _agent = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);        \
+                if (_agent-&gt;elem &lt; result) result = _agent-&gt;elem;       \
+            }                                                           \
+        }                                                               \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="45" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1ab932f3ee72d85924f642c9adfce84dc3" prot="public" static="no">
+        <name>FSTI_MAX</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {                          \
+        struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent;                                      \
+        size_t *_it;                                                    \
+        result = <ref refid="fsti-report_8h_1abd86f17f25e9c940c74a103963b43a29" kindref="member">FSTI_MIN_VAL</ref>(result);                                  \
+        if (agent_ind.len == 0) {                                       \
+            result = NAN;                                               \
+        } else {                                                        \
+            for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));              \
+                 _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {      \
+                _agent = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);        \
+                if (_agent-&gt;elem &gt; result) result = _agent-&gt;elem;       \
+            }                                                           \
+        }                                                               \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="60" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1abecbb06bd9bca39305faadb443899fa9" prot="public" static="no">
+        <name>FSTI_MEDIAN</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {                       \
+        size_t *_it, mid;                                               \
+        if (agent_ind.len &gt; 0) {                                        \
+            float *_vals = malloc(sizeof(*_vals) * agent_ind.len);      \
+            <ref refid="fsti-error_8h_1a45677a0c04d632802de437b7a4cdec01" kindref="member">FSTI_ASSERT</ref>(_vals, <ref refid="fsti-error_8h_1a385c44f6fb256e5716a2302a5b940388a06189e86eed4d9c1d3b1f69cfb58a41e" kindref="member">FSTI_ERR_NOMEM</ref>, NULL);                   \
+            float *_d = _vals;                                          \
+            for (_it = agent_ind.indices;                               \
+                 _it &lt; agent_ind.indices + agent_ind.len; _it++)  {     \
+                *_d = agent_ind.agent_arr-&gt;agents[*_it].elem;           \
+                _d++;                                                   \
+            }                                                           \
+            qsort(_vals, agent_ind.len, sizeof(float), <ref refid="fsti-report_8h_1a01f88429a83ea714459262c661ba9859" kindref="member">fsti_cmpf</ref>);      \
+            mid = agent_ind.len / 2;                                    \
+            if (agent_ind.len % 2 == 0)                                 \
+                result = (_vals[mid] + _vals[mid + 1]) / 2.0;           \
+            else                                                        \
+                result = _vals[mid];                                    \
+            free(_vals);                                                \
+        } else {                                                        \
+            result = NAN;                                               \
+        }                                                               \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="77" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a56c545164f457022ec874321798f99af" prot="public" static="no">
+        <name>FSTI_MEAN</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {                         \
+        struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent_;                                     \
+        size_t *_it;                                                    \
+        result = 0;                                                     \
+        for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));                  \
+             _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {          \
+            _agent_ = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);           \
+            result += _agent_-&gt;elem;                                    \
+        }                                                               \
+        result = (double) result / agent_ind.len;                       \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="100" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a5bb9a155a22683696d8123919e84c132" prot="public" static="no">
+        <name>FSTI_SUM</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {                          \
+        struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent_;                                     \
+        size_t *_it;                                                    \
+        result = 0;                                                     \
+        for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));                  \
+             _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {          \
+            _agent_ = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);           \
+            result += _agent_-&gt;elem;                                    \
+        }                                                               \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="112" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a43cc0a51906bd2c2ec0c77a15d50f145" prot="public" static="no">
+        <name>FSTI_SIZE</name>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>result</defname></param>
+        <initializer>do {  \
+        result = agent_ind.len;                 \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="123" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a37590f808a79f88b2369a0f77cb1b47e" prot="public" static="no">
+        <name>FSTI_HALF</name>
+        <param><defname>x</defname></param>
+        <initializer>x /= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="127" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a1d142e2f26d2af3100e4bd1a76aee1d1" prot="public" static="no">
+        <name>FSTI_FMT</name>
+        <param><defname>x</defname></param>
+        <initializer>_Generic((x),                                   \
+                                 char: &quot;%c&quot;,                            \
+                                 _Bool: &quot;%u&quot;,                           \
+                                 signed char: &quot;%hhd&quot;,                   \
+                                 unsigned char: &quot;%hhu&quot;,                 \
+                                 signed short: &quot;%hd&quot;,                   \
+                                 unsigned short: &quot;%hu&quot;,                 \
+                                 signed int: &quot;%d&quot;,                      \
+                                 unsigned int: &quot;%u&quot;,                    \
+                                 long int: &quot;%ld&quot;,                       \
+                                 unsigned long int: &quot;%lu&quot;,              \
+                                 long long int: &quot;%lld&quot;,                 \
+                                 unsigned long long int: &quot;%llu&quot;,        \
+                                 float: &quot;%f&quot;,                           \
+                                 double: &quot;%f&quot;,                          \
+                                 long double: &quot;%Lf&quot;,                    \
+                                 char *: &quot;%s&quot;,                          \
+                                 void *: &quot;%p&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="130" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a69fb6754f171ddae0a378657b60f8ae3" prot="public" static="no">
+        <name>FSTI_FMT__</name>
+        <param><defname>x</defname></param>
+        <initializer><ref refid="fsti-report_8h_1a1d142e2f26d2af3100e4bd1a76aee1d1" kindref="member">FSTI_FMT</ref>(x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="149" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a257c53cc76bb683bc90f00a972456432" prot="public" static="no">
+        <name>FSTI_REPORT_OUTPUT_POST_PREC</name>
+        <param><defname>func</defname></param>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>desc</defname></param>
+        <param><defname>post</defname></param>
+        <param><defname>spec</defname></param>
+        <initializer>do {                                                                \
+        double __result__;                                              \
+        func(simulation-&gt;agent_ind, elem, __result__);                  \
+        post(__result__);                                               \
+        fprintf(simulation-&gt;results_file, &quot;%s,%d,%d,%s,&quot; spec &quot;\n&quot;,     \
+                simulation-&gt;name, simulation-&gt;sim_number,               \
+                simulation-&gt;config_sim_number, desc, __result__);       \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="151" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a40a22c32155c8f01c2a9ed380aec87cb" prot="public" static="no">
+        <name>FSTI_REPORT_OUTPUT_PREC</name>
+        <param><defname>func</defname></param>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>desc</defname></param>
+        <param><defname>spec</defname></param>
+        <initializer>do { \
+        double __result__;                                              \
+        func(simulation-&gt;agent_ind, elem, __result__);                  \
+        fprintf(simulation-&gt;results_file, &quot;%s,%d,%d,%s,&quot; spec &quot;\n&quot;,     \
+                simulation-&gt;name, simulation-&gt;sim_number,               \
+                simulation-&gt;config_sim_number, desc, __result__);       \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="161" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-report_8h_1a1ca2804ea269ac3530af9dbf5449e443" prot="public" static="no">
+        <name>FSTI_REPORT_OUTPUT</name>
+        <param><defname>func</defname></param>
+        <param><defname>agent_ind</defname></param>
+        <param><defname>elem</defname></param>
+        <param><defname>desc</defname></param>
+        <initializer>do {            \
+        double __result__;                                              \
+        func(simulation-&gt;agent_ind, elem, __result__);                  \
+        fprintf(simulation-&gt;results_file, &quot;%s,%d,%d,%s,%f\n&quot;,           \
+                simulation-&gt;name, simulation-&gt;sim_number,               \
+                simulation-&gt;config_sim_number, desc, __result__);       \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="169" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-report_8h_1a01f88429a83ea714459262c661ba9859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int fsti_cmpf</definition>
+        <argsstring>(const void *a, const void *b)</argsstring>
+        <name>fsti_cmpf</name>
+        <param>
+          <type>const void *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h" line="177" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c" bodystart="3" bodyend="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_REPORT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;float.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-simulation_8h" kindref="compound">fsti-simulation.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-agent_8h" kindref="compound">fsti-agent.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="fsti-report_8h_1abd86f17f25e9c940c74a103963b43a29" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>CHAR_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>SCHAR_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>short:<sp/>SHRT_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>short:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int:<sp/>INT_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long:<sp/>LONG_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>int:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>long<sp/>int:<sp/>LLONG_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>long<sp/>int:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float:<sp/>-FLT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>-DBL_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>double:<sp/>-LDBL_MAX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="fsti-report_8h_1a7a3f630a5d02d8f4d130a45685e3bc79" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>CHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>SCHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char:<sp/>UCHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>short:<sp/>SHRT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>short:<sp/>USHRT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int:<sp/>INT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int:<sp/>UINT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long:<sp/>LONG_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>int:<sp/>ULONG_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>long<sp/>int:<sp/>LLONG_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>long<sp/>int:<sp/>ULLONG_MAX,<sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float:<sp/>FLT_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>DBL_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>double:<sp/>LDBL_MAX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="fsti-report_8h_1a23a8b3ad8faaf4c4f0f645486e27faeb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>FSTI_MAX_VAL(result);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(agent_ind.len<sp/>==<sp/>0)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>NAN;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_agent<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(_agent-&gt;elem<sp/>&lt;<sp/>result)<sp/>result<sp/>=<sp/>_agent-&gt;elem;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="fsti-report_8h_1ab932f3ee72d85924f642c9adfce84dc3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>FSTI_MIN_VAL(result);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(agent_ind.len<sp/>==<sp/>0)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>NAN;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_agent<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(_agent-&gt;elem<sp/>&gt;<sp/>result)<sp/>result<sp/>=<sp/>_agent-&gt;elem;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>median<sp/>function<sp/>is<sp/>generic<sp/>but<sp/>not<sp/>efficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="fsti-report_8h_1abecbb06bd9bca39305faadb443899fa9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEDIAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it,<sp/>mid;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(agent_ind.len<sp/>&gt;<sp/>0)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*_vals<sp/>=<sp/>malloc(sizeof(*_vals)<sp/>*<sp/>agent_ind.len);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_ASSERT(_vals,<sp/>FSTI_ERR_NOMEM,<sp/>NULL);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*_d<sp/>=<sp/>_vals;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>agent_ind.indices;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>&lt;<sp/>agent_ind.indices<sp/>+<sp/>agent_ind.len;<sp/>_it++)<sp/><sp/>{<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*_d<sp/>=<sp/>agent_ind.agent_arr-&gt;agents[*_it].elem;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_d++;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qsort(_vals,<sp/>agent_ind.len,<sp/>sizeof(float),<sp/>fsti_cmpf);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mid<sp/>=<sp/>agent_ind.len<sp/>/<sp/>2;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(agent_ind.len<sp/>%<sp/>2<sp/>==<sp/>0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>(_vals[mid]<sp/>+<sp/>_vals[mid<sp/>+<sp/>1])<sp/>/<sp/>2.0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>_vals[mid];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(_vals);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>NAN;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="fsti-report_8h_1a56c545164f457022ec874321798f99af" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_agent_<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>_agent_-&gt;elem;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>(double)<sp/>result<sp/>/<sp/>agent_ind.len;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="fsti-report_8h_1a5bb9a155a22683696d8123919e84c132" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SUM(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="115"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_agent_<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>_agent_-&gt;elem;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="fsti-report_8h_1a43cc0a51906bd2c2ec0c77a15d50f145" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SIZE(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/>\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>agent_ind.len;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="fsti-report_8h_1a37590f808a79f88b2369a0f77cb1b47e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HALF(x)<sp/>x<sp/>/=<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="fsti-report_8h_1a1d142e2f26d2af3100e4bd1a76aee1d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>&quot;%c&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Bool:<sp/>&quot;%u&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="133"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>&quot;%hhd&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char:<sp/>&quot;%hhu&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>short:<sp/>&quot;%hd&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>short:<sp/>&quot;%hu&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>int:<sp/>&quot;%d&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int:<sp/>&quot;%u&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>int:<sp/>&quot;%ld&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="140"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>int:<sp/>&quot;%lu&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>long<sp/>int:<sp/>&quot;%lld&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>long<sp/>long<sp/>int:<sp/>&quot;%llu&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float:<sp/>&quot;%f&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>&quot;%f&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>double:<sp/>&quot;%Lf&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>*:<sp/>&quot;%s&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>*:<sp/>&quot;%p&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="fsti-report_8h_1a69fb6754f171ddae0a378657b60f8ae3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT__(x)<sp/>FSTI_FMT(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="fsti-report_8h_1a257c53cc76bb683bc90f00a972456432" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_POST_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>post,<sp/>spec)<sp/>\</highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="153"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="154"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>post(__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="156"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(simulation-&gt;results_file,<sp/>&quot;%s,%d,%d,%s,&quot;<sp/>spec<sp/>&quot;\n&quot;,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="157"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;name,<sp/>simulation-&gt;sim_number,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="fsti-report_8h_1a40a22c32155c8f01c2a9ed380aec87cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>spec)<sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(simulation-&gt;results_file,<sp/>&quot;%s,%d,%d,%s,&quot;<sp/>spec<sp/>&quot;\n&quot;,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="165"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;name,<sp/>simulation-&gt;sim_number,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="166"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="fsti-report_8h_1a1ca2804ea269ac3530af9dbf5449e443" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT(func,<sp/>agent_ind,<sp/>elem,<sp/>desc)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(simulation-&gt;results_file,<sp/>&quot;%s,%d,%d,%s,%f\n&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;name,<sp/>simulation-&gt;sim_number,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-report_8h_1a01f88429a83ea714459262c661ba9859" kindref="member">fsti_cmpf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*b);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h"/>
+  </compounddef>
+</doxygen>

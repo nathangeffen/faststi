@@ -1,0 +1,212 @@
+\hypertarget{fsti-config_8c}{}\section{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/config.c File Reference}
+\label{fsti-config_8c}\index{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/config.\+c@{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/config.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$glib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsti-\/error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsti-\/config.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fsti-config_8c_abf23f5142b201c8f6e9db888be75f924}{fsti\+\_\+config\+\_\+init}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_acc33ddba0191f4d6013a23e52e0b16c2}{fsti\+\_\+config\+\_\+print\+\_\+entry}} (const struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}} $\ast$entry)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a0ac007ff2f6adaabfb434a239cf36b6c}{fsti\+\_\+config\+\_\+print\+\_\+all}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config)
+\item 
+struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}} $\ast$ \mbox{\hyperlink{fsti-config_8c_a83fb2b9e2caaf46ab1c6ff13c618718f}{fsti\+\_\+config\+\_\+find}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key)
+\item 
+struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$ \mbox{\hyperlink{fsti-config_8c_a7e65ede372ff1c72a9eb5e6c26f499e4}{fsti\+\_\+config\+\_\+at}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, size\+\_\+t index)
+\item 
+struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$ \mbox{\hyperlink{fsti-config_8c_a720dc18f76126042749bd5bab32fcc14}{fsti\+\_\+config\+\_\+at0}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key)
+\item 
+char $\ast$ \mbox{\hyperlink{fsti-config_8c_aa51f915ff212933ab1b10a22b82b1464}{fsti\+\_\+config\+\_\+at\+\_\+str}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, size\+\_\+t index)
+\item 
+char $\ast$ \mbox{\hyperlink{fsti-config_8c_a50a8eef9690263f45e229ce63cdefbfc}{fsti\+\_\+config\+\_\+at0\+\_\+str}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key)
+\item 
+long \mbox{\hyperlink{fsti-config_8c_a66e20fd6ac731a2183f5f303d9707058}{fsti\+\_\+config\+\_\+at\+\_\+long}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, size\+\_\+t index)
+\item 
+long \mbox{\hyperlink{fsti-config_8c_a9f3d5723f366dc5de1ed8c23c32db499}{fsti\+\_\+config\+\_\+at0\+\_\+long}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key)
+\item 
+double \mbox{\hyperlink{fsti-config_8c_a62f94d64fed8d92993151b3fcbfa6a3f}{fsti\+\_\+config\+\_\+at\+\_\+double}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, size\+\_\+t index)
+\item 
+double \mbox{\hyperlink{fsti-config_8c_a3e479a269882550f86538865a4c76d1e}{fsti\+\_\+config\+\_\+at0\+\_\+double}} (const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a3ee06dfcfc2e683469ca7ed25f9dc7a4}{fsti\+\_\+config\+\_\+add\+\_\+str}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$description, const char $\ast$val)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_ac687fc8ca6887aae337ce8ef4188f089}{fsti\+\_\+config\+\_\+add\+\_\+double}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$description, double val)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_aeeb0d90b0edb706662e123f6747b2a3c}{fsti\+\_\+config\+\_\+add\+\_\+long}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$description, long val)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a5d0a69eb0415adc0b32d29a92c002890}{fsti\+\_\+config\+\_\+add\+\_\+arr}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$description, const struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$variants, size\+\_\+t n)
+\item 
+struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}} $\ast$ \mbox{\hyperlink{fsti-config_8c_ac8ebb30eef8cc1e532c95a9bb31e0853}{fsti\+\_\+config\+\_\+replace\+\_\+arr}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$description, const struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$variants, size\+\_\+t n)
+\item 
+size\+\_\+t \mbox{\hyperlink{fsti-config_8c_a508022bb109124636ed4c7e0002c2c08}{fsti\+\_\+config\+\_\+count}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a89af0836846de6cf965e78643823705c}{fsti\+\_\+config\+\_\+free}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_ad11a9e59945cf4619a85164441ea5fd8}{fsti\+\_\+config\+\_\+replace\+\_\+values}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, const char $\ast$key, const char $\ast$values)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a966baf752f37fcb8177ec0d42d9f103f}{fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, char $\ast$key\+\_\+value\+\_\+str)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_ae86ff853ac86294d03a317636cdcbdaa}{fsti\+\_\+config\+\_\+process\+\_\+strings}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, char $\ast$$\ast$config\+\_\+strings)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a634d47df34013cf7bba0c3dc67d8e45f}{fsti\+\_\+config\+\_\+copy}} (struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$dest, const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$src)
+\item 
+struct \mbox{\hyperlink{structfsti__variant__array}{fsti\+\_\+variant\+\_\+array}} \mbox{\hyperlink{fsti-config_8c_a58182343b78c10550b55c54b4c61ea20}{fsti\+\_\+variant\+\_\+array\+\_\+fill}} (const enum \mbox{\hyperlink{fsti-defs_8h_ab12bd8dfbafbc55e2015aac7926007cf}{fsti\+\_\+type}} types\mbox{[}$\,$\mbox{]}, const union \mbox{\hyperlink{unionfsti__value}{fsti\+\_\+value}} vals\mbox{[}$\,$\mbox{]}, size\+\_\+t len)
+\item 
+void \mbox{\hyperlink{fsti-config_8c_a56851785b4dd54466e2d92ef3d55fc2f}{fsti\+\_\+config\+\_\+test}} (struct test\+\_\+group $\ast$tg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsti-config_8c_a5d0a69eb0415adc0b32d29a92c002890}\label{fsti-config_8c_a5d0a69eb0415adc0b32d29a92c002890}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+add\+\_\+arr@{fsti\+\_\+config\+\_\+add\+\_\+arr}}
+\index{fsti\+\_\+config\+\_\+add\+\_\+arr@{fsti\+\_\+config\+\_\+add\+\_\+arr}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+add\+\_\+arr()}{fsti\_config\_add\_arr()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+add\+\_\+arr (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{description,  }\item[{const struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$}]{variants,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_ac687fc8ca6887aae337ce8ef4188f089}\label{fsti-config_8c_ac687fc8ca6887aae337ce8ef4188f089}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+add\+\_\+double@{fsti\+\_\+config\+\_\+add\+\_\+double}}
+\index{fsti\+\_\+config\+\_\+add\+\_\+double@{fsti\+\_\+config\+\_\+add\+\_\+double}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+add\+\_\+double()}{fsti\_config\_add\_double()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+add\+\_\+double (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{description,  }\item[{double}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_aeeb0d90b0edb706662e123f6747b2a3c}\label{fsti-config_8c_aeeb0d90b0edb706662e123f6747b2a3c}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+add\+\_\+long@{fsti\+\_\+config\+\_\+add\+\_\+long}}
+\index{fsti\+\_\+config\+\_\+add\+\_\+long@{fsti\+\_\+config\+\_\+add\+\_\+long}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+add\+\_\+long()}{fsti\_config\_add\_long()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+add\+\_\+long (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{description,  }\item[{long}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a3ee06dfcfc2e683469ca7ed25f9dc7a4}\label{fsti-config_8c_a3ee06dfcfc2e683469ca7ed25f9dc7a4}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+add\+\_\+str@{fsti\+\_\+config\+\_\+add\+\_\+str}}
+\index{fsti\+\_\+config\+\_\+add\+\_\+str@{fsti\+\_\+config\+\_\+add\+\_\+str}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+add\+\_\+str()}{fsti\_config\_add\_str()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+add\+\_\+str (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{description,  }\item[{const char $\ast$}]{val }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a7e65ede372ff1c72a9eb5e6c26f499e4}\label{fsti-config_8c_a7e65ede372ff1c72a9eb5e6c26f499e4}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at@{fsti\+\_\+config\+\_\+at}}
+\index{fsti\+\_\+config\+\_\+at@{fsti\+\_\+config\+\_\+at}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at()}{fsti\_config\_at()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}}$\ast$ fsti\+\_\+config\+\_\+at (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a720dc18f76126042749bd5bab32fcc14}\label{fsti-config_8c_a720dc18f76126042749bd5bab32fcc14}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at0@{fsti\+\_\+config\+\_\+at0}}
+\index{fsti\+\_\+config\+\_\+at0@{fsti\+\_\+config\+\_\+at0}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at0()}{fsti\_config\_at0()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}}$\ast$ fsti\+\_\+config\+\_\+at0 (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a3e479a269882550f86538865a4c76d1e}\label{fsti-config_8c_a3e479a269882550f86538865a4c76d1e}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at0\+\_\+double@{fsti\+\_\+config\+\_\+at0\+\_\+double}}
+\index{fsti\+\_\+config\+\_\+at0\+\_\+double@{fsti\+\_\+config\+\_\+at0\+\_\+double}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at0\+\_\+double()}{fsti\_config\_at0\_double()}}
+{\footnotesize\ttfamily double fsti\+\_\+config\+\_\+at0\+\_\+double (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a9f3d5723f366dc5de1ed8c23c32db499}\label{fsti-config_8c_a9f3d5723f366dc5de1ed8c23c32db499}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at0\+\_\+long@{fsti\+\_\+config\+\_\+at0\+\_\+long}}
+\index{fsti\+\_\+config\+\_\+at0\+\_\+long@{fsti\+\_\+config\+\_\+at0\+\_\+long}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at0\+\_\+long()}{fsti\_config\_at0\_long()}}
+{\footnotesize\ttfamily long fsti\+\_\+config\+\_\+at0\+\_\+long (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a50a8eef9690263f45e229ce63cdefbfc}\label{fsti-config_8c_a50a8eef9690263f45e229ce63cdefbfc}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at0\+\_\+str@{fsti\+\_\+config\+\_\+at0\+\_\+str}}
+\index{fsti\+\_\+config\+\_\+at0\+\_\+str@{fsti\+\_\+config\+\_\+at0\+\_\+str}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at0\+\_\+str()}{fsti\_config\_at0\_str()}}
+{\footnotesize\ttfamily char$\ast$ fsti\+\_\+config\+\_\+at0\+\_\+str (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a62f94d64fed8d92993151b3fcbfa6a3f}\label{fsti-config_8c_a62f94d64fed8d92993151b3fcbfa6a3f}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at\+\_\+double@{fsti\+\_\+config\+\_\+at\+\_\+double}}
+\index{fsti\+\_\+config\+\_\+at\+\_\+double@{fsti\+\_\+config\+\_\+at\+\_\+double}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at\+\_\+double()}{fsti\_config\_at\_double()}}
+{\footnotesize\ttfamily double fsti\+\_\+config\+\_\+at\+\_\+double (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a66e20fd6ac731a2183f5f303d9707058}\label{fsti-config_8c_a66e20fd6ac731a2183f5f303d9707058}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at\+\_\+long@{fsti\+\_\+config\+\_\+at\+\_\+long}}
+\index{fsti\+\_\+config\+\_\+at\+\_\+long@{fsti\+\_\+config\+\_\+at\+\_\+long}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at\+\_\+long()}{fsti\_config\_at\_long()}}
+{\footnotesize\ttfamily long fsti\+\_\+config\+\_\+at\+\_\+long (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_aa51f915ff212933ab1b10a22b82b1464}\label{fsti-config_8c_aa51f915ff212933ab1b10a22b82b1464}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+at\+\_\+str@{fsti\+\_\+config\+\_\+at\+\_\+str}}
+\index{fsti\+\_\+config\+\_\+at\+\_\+str@{fsti\+\_\+config\+\_\+at\+\_\+str}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+at\+\_\+str()}{fsti\_config\_at\_str()}}
+{\footnotesize\ttfamily char$\ast$ fsti\+\_\+config\+\_\+at\+\_\+str (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a634d47df34013cf7bba0c3dc67d8e45f}\label{fsti-config_8c_a634d47df34013cf7bba0c3dc67d8e45f}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+copy@{fsti\+\_\+config\+\_\+copy}}
+\index{fsti\+\_\+config\+\_\+copy@{fsti\+\_\+config\+\_\+copy}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+copy()}{fsti\_config\_copy()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+copy (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{dest,  }\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{src }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a508022bb109124636ed4c7e0002c2c08}\label{fsti-config_8c_a508022bb109124636ed4c7e0002c2c08}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+count@{fsti\+\_\+config\+\_\+count}}
+\index{fsti\+\_\+config\+\_\+count@{fsti\+\_\+config\+\_\+count}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+count()}{fsti\_config\_count()}}
+{\footnotesize\ttfamily size\+\_\+t fsti\+\_\+config\+\_\+count (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a83fb2b9e2caaf46ab1c6ff13c618718f}\label{fsti-config_8c_a83fb2b9e2caaf46ab1c6ff13c618718f}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+find@{fsti\+\_\+config\+\_\+find}}
+\index{fsti\+\_\+config\+\_\+find@{fsti\+\_\+config\+\_\+find}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+find()}{fsti\_config\_find()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}}$\ast$ fsti\+\_\+config\+\_\+find (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a89af0836846de6cf965e78643823705c}\label{fsti-config_8c_a89af0836846de6cf965e78643823705c}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+free@{fsti\+\_\+config\+\_\+free}}
+\index{fsti\+\_\+config\+\_\+free@{fsti\+\_\+config\+\_\+free}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+free()}{fsti\_config\_free()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+free (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_abf23f5142b201c8f6e9db888be75f924}\label{fsti-config_8c_abf23f5142b201c8f6e9db888be75f924}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+init@{fsti\+\_\+config\+\_\+init}}
+\index{fsti\+\_\+config\+\_\+init@{fsti\+\_\+config\+\_\+init}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+init()}{fsti\_config\_init()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a0ac007ff2f6adaabfb434a239cf36b6c}\label{fsti-config_8c_a0ac007ff2f6adaabfb434a239cf36b6c}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+print\+\_\+all@{fsti\+\_\+config\+\_\+print\+\_\+all}}
+\index{fsti\+\_\+config\+\_\+print\+\_\+all@{fsti\+\_\+config\+\_\+print\+\_\+all}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+print\+\_\+all()}{fsti\_config\_print\_all()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+print\+\_\+all (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_acc33ddba0191f4d6013a23e52e0b16c2}\label{fsti-config_8c_acc33ddba0191f4d6013a23e52e0b16c2}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+print\+\_\+entry@{fsti\+\_\+config\+\_\+print\+\_\+entry}}
+\index{fsti\+\_\+config\+\_\+print\+\_\+entry@{fsti\+\_\+config\+\_\+print\+\_\+entry}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+print\+\_\+entry()}{fsti\_config\_print\_entry()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+print\+\_\+entry (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}} $\ast$}]{entry }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a966baf752f37fcb8177ec0d42d9f103f}\label{fsti-config_8c_a966baf752f37fcb8177ec0d42d9f103f}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values@{fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values}}
+\index{fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values@{fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values()}{fsti\_config\_process\_key\_values()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+process\+\_\+key\+\_\+values (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{char $\ast$}]{key\+\_\+value\+\_\+str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_ae86ff853ac86294d03a317636cdcbdaa}\label{fsti-config_8c_ae86ff853ac86294d03a317636cdcbdaa}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+process\+\_\+strings@{fsti\+\_\+config\+\_\+process\+\_\+strings}}
+\index{fsti\+\_\+config\+\_\+process\+\_\+strings@{fsti\+\_\+config\+\_\+process\+\_\+strings}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+process\+\_\+strings()}{fsti\_config\_process\_strings()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+process\+\_\+strings (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{char $\ast$$\ast$}]{config\+\_\+strings }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_ac8ebb30eef8cc1e532c95a9bb31e0853}\label{fsti-config_8c_ac8ebb30eef8cc1e532c95a9bb31e0853}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+replace\+\_\+arr@{fsti\+\_\+config\+\_\+replace\+\_\+arr}}
+\index{fsti\+\_\+config\+\_\+replace\+\_\+arr@{fsti\+\_\+config\+\_\+replace\+\_\+arr}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+replace\+\_\+arr()}{fsti\_config\_replace\_arr()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__config__entry}{fsti\+\_\+config\+\_\+entry}}$\ast$ fsti\+\_\+config\+\_\+replace\+\_\+arr (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{description,  }\item[{const struct \mbox{\hyperlink{structfsti__variant}{fsti\+\_\+variant}} $\ast$}]{variants,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_ad11a9e59945cf4619a85164441ea5fd8}\label{fsti-config_8c_ad11a9e59945cf4619a85164441ea5fd8}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+replace\+\_\+values@{fsti\+\_\+config\+\_\+replace\+\_\+values}}
+\index{fsti\+\_\+config\+\_\+replace\+\_\+values@{fsti\+\_\+config\+\_\+replace\+\_\+values}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+replace\+\_\+values()}{fsti\_config\_replace\_values()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+replace\+\_\+values (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{values }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a56851785b4dd54466e2d92ef3d55fc2f}\label{fsti-config_8c_a56851785b4dd54466e2d92ef3d55fc2f}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+config\+\_\+test@{fsti\+\_\+config\+\_\+test}}
+\index{fsti\+\_\+config\+\_\+test@{fsti\+\_\+config\+\_\+test}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+config\+\_\+test()}{fsti\_config\_test()}}
+{\footnotesize\ttfamily void fsti\+\_\+config\+\_\+test (\begin{DoxyParamCaption}\item[{struct test\+\_\+group $\ast$}]{tg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-config_8c_a58182343b78c10550b55c54b4c61ea20}\label{fsti-config_8c_a58182343b78c10550b55c54b4c61ea20}} 
+\index{fsti-\/config.\+c@{fsti-\/config.\+c}!fsti\+\_\+variant\+\_\+array\+\_\+fill@{fsti\+\_\+variant\+\_\+array\+\_\+fill}}
+\index{fsti\+\_\+variant\+\_\+array\+\_\+fill@{fsti\+\_\+variant\+\_\+array\+\_\+fill}!fsti-\/config.\+c@{fsti-\/config.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+variant\+\_\+array\+\_\+fill()}{fsti\_variant\_array\_fill()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__variant__array}{fsti\+\_\+variant\+\_\+array}} fsti\+\_\+variant\+\_\+array\+\_\+fill (\begin{DoxyParamCaption}\item[{const enum \mbox{\hyperlink{fsti-defs_8h_ab12bd8dfbafbc55e2015aac7926007cf}{fsti\+\_\+type}}}]{types\mbox{[}$\,$\mbox{]},  }\item[{const union \mbox{\hyperlink{unionfsti__value}{fsti\+\_\+value}}}]{vals\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+

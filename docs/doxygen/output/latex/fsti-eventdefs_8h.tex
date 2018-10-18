@@ -1,0 +1,56 @@
+\hypertarget{fsti-eventdefs_8h}{}\section{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/eventdefs.h File Reference}
+\label{fsti-eventdefs_8h}\index{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/eventdefs.\+h@{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/eventdefs.\+h}}
+{\ttfamily \#include \char`\"{}utils/uthash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsti-\/defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsti-\/error.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfsti__event__array}{fsti\+\_\+event\+\_\+array}}
+\item 
+struct \mbox{\hyperlink{structfsti__event__register}{fsti\+\_\+event\+\_\+register}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}{fsti\+\_\+event}}) (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fsti-eventdefs_8h_aa0b6464d8da748522498a11bc033fee1}{fsti\+\_\+register\+\_\+add}} (const char $\ast$event\+\_\+name, \mbox{\hyperlink{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}{fsti\+\_\+event}} event)
+\item 
+\mbox{\hyperlink{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}{fsti\+\_\+event}} \mbox{\hyperlink{fsti-eventdefs_8h_ab8a67816c82580412dd9c89b610d43ef}{fsti\+\_\+register\+\_\+get}} (const char $\ast$event\+\_\+name)
+\item 
+void \mbox{\hyperlink{fsti-eventdefs_8h_a57f74d766c59e7d2ad998981c4c00a1e}{fsti\+\_\+register\+\_\+free}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}\label{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}} 
+\index{fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}!fsti\+\_\+event@{fsti\+\_\+event}}
+\index{fsti\+\_\+event@{fsti\+\_\+event}!fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}}
+\subsubsection{\texorpdfstring{fsti\+\_\+event}{fsti\_event}}
+{\footnotesize\ttfamily typedef void($\ast$ fsti\+\_\+event) (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsti-eventdefs_8h_aa0b6464d8da748522498a11bc033fee1}\label{fsti-eventdefs_8h_aa0b6464d8da748522498a11bc033fee1}} 
+\index{fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}!fsti\+\_\+register\+\_\+add@{fsti\+\_\+register\+\_\+add}}
+\index{fsti\+\_\+register\+\_\+add@{fsti\+\_\+register\+\_\+add}!fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}}
+\subsubsection{\texorpdfstring{fsti\+\_\+register\+\_\+add()}{fsti\_register\_add()}}
+{\footnotesize\ttfamily void fsti\+\_\+register\+\_\+add (\begin{DoxyParamCaption}\item[{const char $\ast$}]{event\+\_\+name,  }\item[{\mbox{\hyperlink{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}{fsti\+\_\+event}}}]{event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-eventdefs_8h_a57f74d766c59e7d2ad998981c4c00a1e}\label{fsti-eventdefs_8h_a57f74d766c59e7d2ad998981c4c00a1e}} 
+\index{fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}!fsti\+\_\+register\+\_\+free@{fsti\+\_\+register\+\_\+free}}
+\index{fsti\+\_\+register\+\_\+free@{fsti\+\_\+register\+\_\+free}!fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}}
+\subsubsection{\texorpdfstring{fsti\+\_\+register\+\_\+free()}{fsti\_register\_free()}}
+{\footnotesize\ttfamily void fsti\+\_\+register\+\_\+free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-eventdefs_8h_ab8a67816c82580412dd9c89b610d43ef}\label{fsti-eventdefs_8h_ab8a67816c82580412dd9c89b610d43ef}} 
+\index{fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}!fsti\+\_\+register\+\_\+get@{fsti\+\_\+register\+\_\+get}}
+\index{fsti\+\_\+register\+\_\+get@{fsti\+\_\+register\+\_\+get}!fsti-\/eventdefs.\+h@{fsti-\/eventdefs.\+h}}
+\subsubsection{\texorpdfstring{fsti\+\_\+register\+\_\+get()}{fsti\_register\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fsti-eventdefs_8h_abce6b23e84620b4f4433c952fa10f0b9}{fsti\+\_\+event}} fsti\+\_\+register\+\_\+get (\begin{DoxyParamCaption}\item[{const char $\ast$}]{event\+\_\+name }\end{DoxyParamCaption})}
+

@@ -1,0 +1,931 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-config_8h" kind="file" language="C++">
+    <compoundname>fsti-config.h</compoundname>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="yes">utils/utils.h</includes>
+    <includes refid="fsti-defs_8h" local="yes">fsti-defs.h</includes>
+    <includedby refid="fsti-defaults_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</includedby>
+    <includedby refid="fsti-config_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c</includedby>
+    <includedby refid="fsti-simulation_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</includedby>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <includedby refid="fsti-procini_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</includedby>
+    <includedby refid="fsti-simset_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</includedby>
+    <includedby refid="fsti-simset_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</includedby>
+    <includedby refid="fsti-tests_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</includedby>
+    <incdepgraph>
+      <node id="76">
+        <label>stdbool.h</label>
+      </node>
+      <node id="69">
+        <label>assert.h</label>
+      </node>
+      <node id="71">
+        <label>stdlib.h</label>
+      </node>
+      <node id="75">
+        <label>stddef.h</label>
+      </node>
+      <node id="68">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h</label>
+        <link refid="fsti-config_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>string.h</label>
+      </node>
+      <node id="73">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="74">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="86">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="83">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</label>
+        <link refid="fsti-events_8c"/>
+      </node>
+      <node id="82">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c</label>
+        <link refid="fsti-config_8c"/>
+      </node>
+      <node id="77">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h</label>
+        <link refid="fsti-config_8h"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c</label>
+        <link refid="fsti-defaults_8c"/>
+      </node>
+      <node id="78">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c</label>
+        <link refid="fsti-agent_8c"/>
+      </node>
+      <node id="79">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h</label>
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="87">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</label>
+        <link refid="fsti-simset_8c"/>
+      </node>
+      <node id="90">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</label>
+        <link refid="fsti-simset_8h"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c</label>
+        <link refid="fsti-simulation_8c"/>
+      </node>
+      <node id="81">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c</label>
+        <link refid="fsti-procini_8c"/>
+      </node>
+      <node id="95">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
+        <link refid="fsti-procini_8h"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</label>
+        <link refid="fsti-report_8c"/>
+      </node>
+      <node id="88">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</label>
+        <link refid="fsti-tests_8c"/>
+      </node>
+      <node id="84">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfsti__config__entry" prot="public">fsti_config_entry</innerclass>
+    <innerclass refid="structfsti__config" prot="public">fsti_config</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fsti-config_8h_1a461de2e96a72548147bd4de3730af2a5" prot="public" static="no">
+        <name>FSTI_HASHSIZE</name>
+        <initializer>101</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="13" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" prot="public" static="no">
+        <name>FSTI_CONFIG_ADD</name>
+        <param><defname>config</defname></param>
+        <param><defname>key</defname></param>
+        <param><defname>description</defname></param>
+        <param><defname>value</defname></param>
+        <initializer>do {                                                        \
+        _Generic((value),					\
+                 char *: <ref refid="fsti-config_8h_1a3ee06dfcfc2e683469ca7ed25f9dc7a4" kindref="member">fsti_config_add_str</ref>,			\
+                 int: <ref refid="fsti-config_8h_1aeeb0d90b0edb706662e123f6747b2a3c" kindref="member">fsti_config_add_long</ref>,			\
+                 long: <ref refid="fsti-config_8h_1aeeb0d90b0edb706662e123f6747b2a3c" kindref="member">fsti_config_add_long</ref>,			\
+                 double: <ref refid="fsti-config_8h_1ac687fc8ca6887aae337ce8ef4188f089" kindref="member">fsti_config_add_double</ref>,                \
+                 struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *: <ref refid="fsti-config_8h_1a5d0a69eb0415adc0b32d29a92c002890" kindref="member">fsti_config_add_arr</ref>     \
+            ) (config, key, description, value);		\
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="15" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-config_8h_1abf23f5142b201c8f6e9db888be75f924" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_init</definition>
+        <argsstring>(struct fsti_config *config)</argsstring>
+        <name>fsti_config_init</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="39" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1acc33ddba0191f4d6013a23e52e0b16c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_print_entry</definition>
+        <argsstring>(const struct fsti_config_entry *entry)</argsstring>
+        <name>fsti_config_print_entry</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref> *</type>
+          <declname>entry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="40" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="44" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a0ac007ff2f6adaabfb434a239cf36b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_print_all</definition>
+        <argsstring>(struct fsti_config *config)</argsstring>
+        <name>fsti_config_print_all</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="41" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="68" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a83fb2b9e2caaf46ab1c6ff13c618718f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref> *</type>
+        <definition>struct fsti_config_entry* fsti_config_find</definition>
+        <argsstring>(const struct fsti_config *config, const char *key)</argsstring>
+        <name>fsti_config_find</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="42" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="79" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a7e65ede372ff1c72a9eb5e6c26f499e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+        <definition>struct fsti_variant* fsti_config_at</definition>
+        <argsstring>(const struct fsti_config *config, const char *key, size_t index)</argsstring>
+        <name>fsti_config_at</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="43" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="90" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a720dc18f76126042749bd5bab32fcc14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+        <definition>struct fsti_variant* fsti_config_at0</definition>
+        <argsstring>(const struct fsti_config *config, const char *key)</argsstring>
+        <name>fsti_config_at0</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="44" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="102" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1aa51f915ff212933ab1b10a22b82b1464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* fsti_config_at_str</definition>
+        <argsstring>(const struct fsti_config *config, const char *key, size_t index)</argsstring>
+        <name>fsti_config_at_str</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="45" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="108" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a50a8eef9690263f45e229ce63cdefbfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* fsti_config_at0_str</definition>
+        <argsstring>(const struct fsti_config *config, const char *key)</argsstring>
+        <name>fsti_config_at0_str</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="46" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="118" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a66e20fd6ac731a2183f5f303d9707058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long fsti_config_at_long</definition>
+        <argsstring>(const struct fsti_config *config, const char *key, size_t index)</argsstring>
+        <name>fsti_config_at_long</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="47" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="125" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a9f3d5723f366dc5de1ed8c23c32db499" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long fsti_config_at0_long</definition>
+        <argsstring>(const struct fsti_config *config, const char *key)</argsstring>
+        <name>fsti_config_at0_long</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="49" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a62f94d64fed8d92993151b3fcbfa6a3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double fsti_config_at_double</definition>
+        <argsstring>(const struct fsti_config *config, const char *key, size_t index)</argsstring>
+        <name>fsti_config_at_double</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="50" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="144" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a3e479a269882550f86538865a4c76d1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double fsti_config_at0_double</definition>
+        <argsstring>(const struct fsti_config *config, const char *key)</argsstring>
+        <name>fsti_config_at0_double</name>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="52" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="159" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a3ee06dfcfc2e683469ca7ed25f9dc7a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_add_str</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *description, const char *val)</argsstring>
+        <name>fsti_config_add_str</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="53" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="246" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1ac687fc8ca6887aae337ce8ef4188f089" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_add_double</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *description, double val)</argsstring>
+        <name>fsti_config_add_double</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="55" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="259" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1aeeb0d90b0edb706662e123f6747b2a3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_add_long</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *description, long val)</argsstring>
+        <name>fsti_config_add_long</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="57" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="270" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a5d0a69eb0415adc0b32d29a92c002890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_add_arr</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *description, const struct fsti_variant *variants, size_t n)</argsstring>
+        <name>fsti_config_add_arr</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+          <declname>variants</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="281" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1ac8ebb30eef8cc1e532c95a9bb31e0853" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref> *</type>
+        <definition>struct fsti_config_entry* fsti_config_replace_arr</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *description, const struct fsti_variant *variants, size_t n)</argsstring>
+        <name>fsti_config_replace_arr</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+          <declname>variants</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="63" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="290" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a508022bb109124636ed4c7e0002c2c08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t fsti_config_count</definition>
+        <argsstring>(struct fsti_config *config)</argsstring>
+        <name>fsti_config_count</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="66" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="304" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a89af0836846de6cf965e78643823705c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_free</definition>
+        <argsstring>(struct fsti_config *config)</argsstring>
+        <name>fsti_config_free</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="67" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="315" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1ad11a9e59945cf4619a85164441ea5fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_replace_values</definition>
+        <argsstring>(struct fsti_config *config, const char *key, const char *values)</argsstring>
+        <name>fsti_config_replace_values</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="68" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="351" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a966baf752f37fcb8177ec0d42d9f103f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_process_key_values</definition>
+        <argsstring>(struct fsti_config *config, char *key_value_str)</argsstring>
+        <name>fsti_config_process_key_values</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>key_value_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="70" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="369" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1ae86ff853ac86294d03a317636cdcbdaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_process_strings</definition>
+        <argsstring>(struct fsti_config *config, char **config_strings)</argsstring>
+        <name>fsti_config_process_strings</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>config_strings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="72" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="387" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a634d47df34013cf7bba0c3dc67d8e45f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_copy</definition>
+        <argsstring>(struct fsti_config *dest, const struct fsti_config *src)</argsstring>
+        <name>fsti_config_copy</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="74" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="396" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a58182343b78c10550b55c54b4c61ea20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__variant__array" kindref="compound">fsti_variant_array</ref></type>
+        <definition>struct fsti_variant_array fsti_variant_array_fill</definition>
+        <argsstring>(const enum fsti_type types[], const union fsti_value vals[], size_t len)</argsstring>
+        <name>fsti_variant_array_fill</name>
+        <param>
+          <type>const enum <ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cf" kindref="member">fsti_type</ref></type>
+          <declname>types</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const union <ref refid="unionfsti__value" kindref="compound">fsti_value</ref></type>
+          <declname>vals</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="74" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="408" bodyend="423"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-config_8h_1a56851785b4dd54466e2d92ef3d55fc2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_config_test</definition>
+        <argsstring>(struct test_group *tg)</argsstring>
+        <name>fsti_config_test</name>
+        <param>
+          <type>struct test_group *</type>
+          <declname>tg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="78" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.c" bodystart="425" bodyend="542"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/utils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="fsti-config_8h_1a461de2e96a72548147bd4de3730af2a5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HASHSIZE<sp/>101</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_CONFIG_ADD(config,<sp/>key,<sp/>description,<sp/>value)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Generic((value),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>*:<sp/>fsti_config_add_str,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int:<sp/>fsti_config_add_long,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long:<sp/>fsti_config_add_long,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>fsti_config_add_double,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_variant<sp/>*:<sp/>fsti_config_add_arr<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>(config,<sp/>key,<sp/>description,<sp/>value);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structfsti__config__entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" kindref="member">key</ref>[<ref refid="fsti-defs_8h_1a3699e9ccc973983d2007d73eb31d6fcf" kindref="member">FSTI_KEY_LEN</ref>];</highlight></codeline>
+<codeline lineno="29" refid="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" kindref="member">description</ref>[<ref refid="fsti-defs_8h_1adc8804b27630bb18f9845921e268be24" kindref="member">FSTI_DESC_LEN</ref>];</highlight></codeline>
+<codeline lineno="30" refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*<ref refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" kindref="member">variants</ref>;</highlight></codeline>
+<codeline lineno="31" refid="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" kindref="member">len</ref>;</highlight></codeline>
+<codeline lineno="32" refid="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>*<ref refid="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="structfsti__config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="structfsti__config_1a40fb82d864e3f7f8feaf9501d966ed28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>*<ref refid="structfsti__config_1a40fb82d864e3f7f8feaf9501d966ed28" kindref="member">entry</ref>[<ref refid="fsti-config_8h_1a461de2e96a72548147bd4de3730af2a5" kindref="member">FSTI_HASHSIZE</ref>];</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1abf23f5142b201c8f6e9db888be75f924" kindref="member">fsti_config_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1acc33ddba0191f4d6013a23e52e0b16c2" kindref="member">fsti_config_print_entry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>*entry);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a0ac007ff2f6adaabfb434a239cf36b6c" kindref="member">fsti_config_print_all</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>*<ref refid="fsti-config_8h_1a83fb2b9e2caaf46ab1c6ff13c618718f" kindref="member">fsti_config_find</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" kindref="member">key</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*<ref refid="fsti-config_8h_1a7e65ede372ff1c72a9eb5e6c26f499e4" kindref="member">fsti_config_at</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*<ref refid="fsti-config_8h_1a720dc18f76126042749bd5bab32fcc14" kindref="member">fsti_config_at0</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="fsti-config_8h_1aa51f915ff212933ab1b10a22b82b1464" kindref="member">fsti_config_at_str</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="fsti-config_8h_1a50a8eef9690263f45e229ce63cdefbfc" kindref="member">fsti_config_at0_str</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a66e20fd6ac731a2183f5f303d9707058" kindref="member">fsti_config_at_long</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a9f3d5723f366dc5de1ed8c23c32db499" kindref="member">fsti_config_at0_long</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a62f94d64fed8d92993151b3fcbfa6a3f" kindref="member">fsti_config_at_double</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a3e479a269882550f86538865a4c76d1e" kindref="member">fsti_config_at0_double</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a3ee06dfcfc2e683469ca7ed25f9dc7a4" kindref="member">fsti_config_add_str</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*description,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*val);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1ac687fc8ca6887aae337ce8ef4188f089" kindref="member">fsti_config_add_double</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*description,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1aeeb0d90b0edb706662e123f6747b2a3c" kindref="member">fsti_config_add_long</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*description,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>val);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a5d0a69eb0415adc0b32d29a92c002890" kindref="member">fsti_config_add_arr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*description,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*variants,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><ref refid="fsti-config_8h_1ac8ebb30eef8cc1e532c95a9bb31e0853" kindref="member">fsti_config_replace_arr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" kindref="member">key</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" kindref="member">description</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*<ref refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" kindref="member">variants</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a508022bb109124636ed4c7e0002c2c08" kindref="member">fsti_config_count</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a89af0836846de6cf965e78643823705c" kindref="member">fsti_config_free</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1ad11a9e59945cf4619a85164441ea5fd8" kindref="member">fsti_config_replace_values</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" kindref="member">key</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*values);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a966baf752f37fcb8177ec0d42d9f103f" kindref="member">fsti_config_process_key_values</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*key_value_str);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1ae86ff853ac86294d03a317636cdcbdaa" kindref="member">fsti_config_process_strings</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**config_strings);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a634d47df34013cf7bba0c3dc67d8e45f" kindref="member">fsti_config_copy</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*dest,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*src);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant__array" kindref="compound">fsti_variant_array</ref><sp/><ref refid="fsti-config_8h_1a58182343b78c10550b55c54b4c61ea20" kindref="member">fsti_variant_array_fill</ref>(const<sp/>enum<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cf" kindref="member">fsti_type</ref><sp/>types[],</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>union<sp/><ref refid="unionfsti__value" kindref="compound">fsti_value</ref><sp/>vals[],</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/><ref refid="structfsti__variant__array_1a39cfdcdfbafab25eecf67428eb070030" kindref="member">len</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-config_8h_1a56851785b4dd54466e2d92ef3d55fc2f" kindref="member">fsti_config_test</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>test_group<sp/>*tg);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h"/>
+  </compounddef>
+</doxygen>

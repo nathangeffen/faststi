@@ -1,0 +1,716 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-defaults_8h" kind="file" language="C++">
+    <compoundname>fsti-defaults.h</compoundname>
+    <includes refid="fsti-config_8h" local="yes">fsti-config.h</includes>
+    <includes refid="fsti-defs_8h" local="yes">fsti-defs.h</includes>
+    <includes refid="fsti-userdefs_8h" local="yes">fsti-userdefs.h</includes>
+    <includedby refid="fsti-agent_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h</includedby>
+    <includedby refid="fsti-defaults_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c</includedby>
+    <includedby refid="fsti-simulation_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</includedby>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <includedby refid="fsti-simset_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</includedby>
+    <incdepgraph>
+      <node id="119">
+        <label>stdbool.h</label>
+      </node>
+      <node id="120">
+        <label>fsti-userdefs.h</label>
+        <link refid="fsti-userdefs_8h"/>
+      </node>
+      <node id="112">
+        <label>assert.h</label>
+      </node>
+      <node id="114">
+        <label>stdlib.h</label>
+      </node>
+      <node id="118">
+        <label>stddef.h</label>
+      </node>
+      <node id="111">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h"/>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>string.h</label>
+      </node>
+      <node id="116">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="110">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="129">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="126">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</label>
+        <link refid="fsti-events_8c"/>
+      </node>
+      <node id="125">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h"/>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c</label>
+        <link refid="fsti-defaults_8c"/>
+      </node>
+      <node id="121">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c</label>
+        <link refid="fsti-agent_8c"/>
+      </node>
+      <node id="122">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h</label>
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="130">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</label>
+        <link refid="fsti-simset_8c"/>
+      </node>
+      <node id="133">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</label>
+        <link refid="fsti-simset_8h"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+      </node>
+      <node id="135">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c</label>
+        <link refid="fsti-simulation_8c"/>
+      </node>
+      <node id="124">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</label>
+        <link refid="fsti-report_8c"/>
+      </node>
+      <node id="131">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h"/>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</label>
+        <link refid="fsti-tests_8c"/>
+      </node>
+      <node id="127">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h"/>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fsti-defaults_8h_1ae8d43f5c182bec36fb3c3d06e72c6e3a" prot="public" static="no">
+        <name>FSTI_AGENT_FIELDS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="22" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1aaece3a015f9dfc102b4c62343cb24aef" prot="public" static="no">
+        <name>FSTI_SIMULATION_FIELDS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="34" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a63eab3d9e5c24ef228101d5acabc8220" prot="public" static="no">
+        <name>FSTI_MAX_PARTNERS</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="41" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1afddc44c41cd9a27367b2e0b713a8d8db" prot="public" static="no">
+        <name>FSTI_ADDITIONAL_CONFIG_VARS</name>
+        <param><defname>config</defname></param>
+        <initializer><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config, &quot;EXAMPLE_1&quot;, &quot;Example configuration field&quot;, 0); \
+    FSTI_CONFIG_ADD(config, &quot;EXAMPLE_2&quot;,                                \
+                    &quot;Example configuration field&quot;, &quot;String field&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="47" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1ae9615756f2e94085e1246bcdf2f47633" prot="public" static="no">
+        <name>FSTI_AGENT_PRINT_CSV</name>
+        <param><defname>file_handle</defname></param>
+        <param><defname>id</defname></param>
+        <param><defname>agent</defname></param>
+        <initializer>fprintf(file_handle, &quot;%u,%zu,%u,%u,%.3f,%u,%f,%ld\n&quot;,                \
+            id,                                                       \
+            agent-&gt;id,                                                \
+            (unsigned) agent-&gt;sex,                                    \
+            (unsigned) agent-&gt;sex_preferred,                          \
+            agent-&gt;age,                                               \
+            agent-&gt;infected,                                          \
+            agent-&gt;date_death,                                        \
+            agent-&gt;num_partners ? (long) agent-&gt;partners[0] : -1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="59" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1af542dd893b712cd81a7cd58113daf26f" prot="public" static="no">
+        <name>FSTI_AGENT_PRINT_PRETTY</name>
+        <param><defname>file_handle</defname></param>
+        <param><defname>id</defname></param>
+        <param><defname>agent</defname></param>
+        <initializer>fprintf(file_handle, &quot;Sim %u, Agent %zu: Age: %.0f, %s %s %s %ld\n&quot;, \
+            id,                                                         \
+            agent-&gt;id,                                                  \
+            agent-&gt;age,                                                 \
+            (agent-&gt;sex == FSTI_MALE &amp;&amp;                                 \
+             agent-&gt;sex_preferred == FSTI_FEMALE) ? &quot;MSW&quot; :             \
+            ((agent-&gt;sex == FSTI_MALE &amp;&amp;                                \
+              agent-&gt;sex_preferred == FSTI_MALE) ? &quot;MSM&quot; :              \
+             ((agent-&gt;sex == FSTI_FEMALE &amp;&amp;                             \
+               agent-&gt;sex_preferred == FSTI_MALE) ? &quot;WSM&quot; : &quot;WSW&quot;)),    \
+            agent-&gt;infected ? &quot;Positive&quot; : &quot;Negative&quot;,                  \
+            agent-&gt;num_partners ? &quot;Relationship&quot; : &quot;Single&quot;,             \
+            agent-&gt;num_partners ? (long) agent-&gt;partners[0] : -1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="75" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a36529309a147495750fc57470a781acf" prot="public" static="no">
+        <name>FSTI_FLEX_REPORT</name>
+        <initializer>do {                                           \
+        <ref refid="fsti-report_8h_1a1ca2804ea269ac3530af9dbf5449e443" kindref="member">FSTI_REPORT_OUTPUT</ref>(<ref refid="fsti-report_8h_1a23a8b3ad8faaf4c4f0f645486e27faeb" kindref="member">FSTI_MIN</ref>, living, age, &quot;MIN_AGE_ALIVE&quot;);     \
+        FSTI_REPORT_OUTPUT(<ref refid="fsti-report_8h_1ab932f3ee72d85924f642c9adfce84dc3" kindref="member">FSTI_MAX</ref>, living, age, &quot;MAX_AGE_ALIVE&quot;);     \
+        FSTI_REPORT_OUTPUT(<ref refid="fsti-report_8h_1a56c545164f457022ec874321798f99af" kindref="member">FSTI_MEAN</ref>, living, age, &quot;MEAN_AGE_ALIVE&quot;);   \
+        FSTI_REPORT_OUTPUT(<ref refid="fsti-report_8h_1abecbb06bd9bca39305faadb443899fa9" kindref="member">FSTI_MEDIAN</ref>, living, age, &quot;MEDIAN_AGE_ALIVE&quot;); \
+        FSTI_REPORT_OUTPUT(<ref refid="fsti-report_8h_1a56c545164f457022ec874321798f99af" kindref="member">FSTI_MEAN</ref>, living, infected, &quot;INFECT_RATE_ALIVE&quot;); \
+        FSTI_REPORT_OUTPUT_PREC(<ref refid="fsti-report_8h_1a43cc0a51906bd2c2ec0c77a15d50f145" kindref="member">FSTI_SIZE</ref>, living, , &quot;POP_ALIVE&quot;, &quot;%.0f&quot;); \
+        FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,    \
+                                     &quot;NUM_PARTNERS&quot;, FSTI_HALF, &quot;%.0f&quot;); \
+        FSTI_REPORT_OUTPUT(FSTI_MIN, dead, age, &quot;MIN_AGE_DEAD&quot;);        \
+        FSTI_REPORT_OUTPUT(FSTI_MAX, dead, age, &quot;MAX_AGE_DEAD&quot;);        \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, age, &quot;MEAN_AGE_DEAD&quot;);      \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, &quot;INFECT_RATE_DEAD&quot;); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , &quot;POP_DEAD&quot;, &quot;%.0f&quot;); \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="97" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1af8002fd5fc80bf52218b8b590a284c53" prot="public" static="no">
+        <name>FSTI_CSV_ENTRIES</name>
+        <initializer><ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(id, <ref refid="fsti-events_8h_1ace7211e8e83bb5273066bc5fe50585a6" kindref="member">fsti_to_size_t</ref>)                          \
+    <ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(age, <ref refid="fsti-events_8h_1af4a768af0f5d827f7b40da95c29879da" kindref="member">fsti_to_float</ref>)                          \
+    <ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(infected, <ref refid="fsti-events_8h_1af4a768af0f5d827f7b40da95c29879da" kindref="member">fsti_to_float</ref>)                     \
+    <ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(sex, <ref refid="fsti-events_8h_1aad3a0605b88803863e016f9409df45ba" kindref="member">fsti_to_uchar</ref>)                          \
+    <ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(sex_preferred, <ref refid="fsti-events_8h_1aad3a0605b88803863e016f9409df45ba" kindref="member">fsti_to_uchar</ref>)                \
+    <ref refid="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" kindref="member">FSTI_CSV_ENTRY</ref>(partners[0], <ref refid="fsti-events_8h_1aad5bd92a57743b08d6c9eb5bac33c78b" kindref="member">fsti_to_partner</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="119" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a4e2befc284c33dd74c9d9947f9eaf899" prot="public" static="no">
+        <name>FSTI_AGENT_HAS_PARTNER</name>
+        <param><defname>agent</defname></param>
+        <initializer><ref refid="fsti-agent_8h_1ae4a719a71a7f8a2687d05976340b1ffb" kindref="member">fsti_agent_has_partner</ref>(agent)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="134" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a89dc08f474071d0d1e96eeb185b69bec" prot="public" static="no">
+        <name>FSTI_AGENT_DISTANCE</name>
+        <param><defname>agent_a</defname></param>
+        <param><defname>agent_b</defname></param>
+        <initializer><ref refid="fsti-agent_8h_1a0624a840237ec82520be71b241220226" kindref="member">fsti_agent_default_distance</ref>(agent_a, agent_b)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="143" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a5332f6a4a3474ddbfc73380a470713fc" prot="public" static="no">
+        <name>FSTI_HOOK_FLEX_REPORT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="160" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1ad93324b43e43bc3e93c1689c5cf5fdb6" prot="public" static="no">
+        <name>FSTI_HOOK_AGENT_ARR_COPY</name>
+        <param><defname>dest_arr</defname></param>
+        <param><defname>src_arr</defname></param>
+        <initializer>do {      \
+    } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="168" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a02a2fb1caec540e1c1d364b37ee7dcdf" prot="public" static="no">
+        <name>FSTI_HOOK_AGENT_ARR_FREE</name>
+        <param><defname>agent_arr</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="176" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a70184631a66cf835159c37db6b145a74" prot="public" static="no">
+        <name>FSTI_HOOK_AFTER_MAKE_PARTNERS</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="183" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a2799df986d42080afd9cd8e98e8f9e6c" prot="public" static="no">
+        <name>FSTI_HOOK_AFTER_MATCH</name>
+        <param><defname>simulation</defname></param>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="190" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1ad642cdfb6c422b0cacba4620b959dbd9" prot="public" static="no">
+        <name>FSTI_HOOK_SIMULATION_FREE</name>
+        <param><defname>simulation</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="198" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1a3a7ef20fa909e6260788f2af6efc3aca" prot="public" static="no">
+        <name>FSTI_HOOK_CONFIG_TO_VARS</name>
+        <param><defname>simulation</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="206" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1ad16639c93ae02d6c0aeb0861271d3666" prot="public" static="no">
+        <name>FSTI_HOOK_CREATE_AGENT</name>
+        <param><defname>simulation</defname></param>
+        <param><defname>agent</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="213" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defaults_8h_1ae0dc24adedcc11d693ecfd29edf90434" prot="public" static="no">
+        <name>FSTI_HOOK_EVENTS_REGISTER</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="221" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-defaults_8h_1ac17ffcd08e1c5eff41d7a65f637c4b06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int fsti_config_set_default</definition>
+        <argsstring>(struct fsti_config *config)</argsstring>
+        <name>fsti_config_set_default</name>
+        <param>
+          <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h" line="224" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c" bodystart="9" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_DEFAULTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_DEFAULTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-config_8h" kindref="compound">fsti-config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-userdefs_8h" kindref="compound">fsti-userdefs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/><sp/>Add<sp/>fields<sp/>to<sp/>the<sp/>struct<sp/>fsti_agent<sp/>definition<sp/>here.<sp/>Note<sp/>the<sp/>semicolon<sp/>at</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/><sp/><sp/>the<sp/>end<sp/>of<sp/>the<sp/>last<sp/>field.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/><sp/>E.g.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment">#define<sp/>FSTI_AGENT_FIELDS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">float<sp/>date_last_had_sex;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">unsigned<sp/>char<sp/>profession;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">unsigned<sp/>char<sp/>socioeconomic_bracket;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">bool<sp/>employed;</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"></highlight></codeline>
+<codeline lineno="20"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_AGENT_FIELDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="fsti-defaults_8h_1ae8d43f5c182bec36fb3c3d06e72c6e3a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_AGENT_FIELDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/>Add<sp/>fields<sp/>to<sp/>the<sp/>struct<sp/>fsti_simulation<sp/>definition<sp/>here.<sp/>Note<sp/>the<sp/>semicolon</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/>at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>last<sp/>field.<sp/><sp/>E.g.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">#define<sp/>FSTI_SIMULATION_FIELDS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">bool<sp/>track_agent_partners;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">unsigned<sp/>total_partners;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_SIMULATION_FIELDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="fsti-defaults_8h_1aaece3a015f9dfc102b4c62343cb24aef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SIMULATION_FIELDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/>Override<sp/>the<sp/>maximum<sp/>number<sp/>of<sp/>partners<sp/>an<sp/>agent<sp/>can<sp/>have<sp/>concurrently.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_MAX_PARTNERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="fsti-defaults_8h_1a63eab3d9e5c24ef228101d5acabc8220" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX_PARTNERS<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Add<sp/>your<sp/>own<sp/>configuration<sp/>variables<sp/>here.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_ADDITIONAL_CONFIG_VARS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="fsti-defaults_8h_1afddc44c41cd9a27367b2e0b713a8d8db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_ADDITIONAL_CONFIG_VARS(config)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/>&quot;EXAMPLE_1&quot;,<sp/>&quot;Example<sp/>configuration<sp/>field&quot;,<sp/>0);<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/>&quot;EXAMPLE_2&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Example<sp/>configuration<sp/>field&quot;,<sp/>&quot;String<sp/>field&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/>This<sp/>is<sp/>the<sp/>default<sp/>code<sp/>to<sp/>print<sp/>an<sp/>agent<sp/>in<sp/>csv<sp/>format.<sp/>Change<sp/>it<sp/>to<sp/>print<sp/>another</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/>way.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_AGENT_PRINT_CSV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="fsti-defaults_8h_1ae9615756f2e94085e1246bcdf2f47633" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_AGENT_PRINT_CSV(file_handle,<sp/>id,<sp/>agent)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>fprintf(file_handle,<sp/>&quot;%u,%zu,%u,%u,%.3f,%u,%f,%ld\n&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;id,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(unsigned)<sp/>agent-&gt;sex,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(unsigned)<sp/>agent-&gt;sex_preferred,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;age,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;infected,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;date_death,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;num_partners<sp/>?<sp/>(long)<sp/>agent-&gt;partners[0]<sp/>:<sp/>-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>Change<sp/>this<sp/>macro<sp/>to<sp/>pretty<sp/>print<sp/>an<sp/>agent.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_AGENT_PRINT_PRETTY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="fsti-defaults_8h_1af542dd893b712cd81a7cd58113daf26f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_AGENT_PRINT_PRETTY(file_handle,<sp/>id,<sp/>agent)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>fprintf(file_handle,<sp/>&quot;Sim<sp/>%u,<sp/>Agent<sp/>%zu:<sp/>Age:<sp/>%.0f,<sp/>%s<sp/>%s<sp/>%s<sp/>%ld\n&quot;,<sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;id,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;age,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(agent-&gt;sex<sp/>==<sp/>FSTI_MALE<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;sex_preferred<sp/>==<sp/>FSTI_FEMALE)<sp/>?<sp/>&quot;MSW&quot;<sp/>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((agent-&gt;sex<sp/>==<sp/>FSTI_MALE<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;sex_preferred<sp/>==<sp/>FSTI_MALE)<sp/>?<sp/>&quot;MSM&quot;<sp/>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((agent-&gt;sex<sp/>==<sp/>FSTI_FEMALE<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;sex_preferred<sp/>==<sp/>FSTI_MALE)<sp/>?<sp/>&quot;WSM&quot;<sp/>:<sp/>&quot;WSW&quot;)),<sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;infected<sp/>?<sp/>&quot;Positive&quot;<sp/>:<sp/>&quot;Negative&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;num_partners<sp/>?<sp/>&quot;Relationship&quot;<sp/>:<sp/>&quot;Single&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent-&gt;num_partners<sp/>?<sp/>(long)<sp/>agent-&gt;partners[0]<sp/>:<sp/>-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>Default<sp/>flex<sp/>report<sp/>event<sp/>output.<sp/>Can<sp/>be<sp/>appended<sp/>to<sp/>with<sp/>the</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>FST_HOOK_FLEX_REPORT<sp/>hook<sp/>below<sp/>as<sp/>well.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_FLEX_REPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="fsti-defaults_8h_1a36529309a147495750fc57470a781acf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FLEX_REPORT<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MIN,<sp/>living,<sp/>age,<sp/>&quot;MIN_AGE_ALIVE&quot;);<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MAX,<sp/>living,<sp/>age,<sp/>&quot;MAX_AGE_ALIVE&quot;);<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MEAN,<sp/>living,<sp/>age,<sp/>&quot;MEAN_AGE_ALIVE&quot;);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MEDIAN,<sp/>living,<sp/>age,<sp/>&quot;MEDIAN_AGE_ALIVE&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MEAN,<sp/>living,<sp/>infected,<sp/>&quot;INFECT_RATE_ALIVE&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE,<sp/>living,<sp/>,<sp/>&quot;POP_ALIVE&quot;,<sp/>&quot;%.0f&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM,<sp/>living,<sp/>num_partners,<sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;NUM_PARTNERS&quot;,<sp/>FSTI_HALF,<sp/>&quot;%.0f&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MIN,<sp/>dead,<sp/>age,<sp/>&quot;MIN_AGE_DEAD&quot;);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MAX,<sp/>dead,<sp/>age,<sp/>&quot;MAX_AGE_DEAD&quot;);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MEAN,<sp/>dead,<sp/>age,<sp/>&quot;MEAN_AGE_DEAD&quot;);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT(FSTI_MEAN,<sp/>dead,<sp/>infected,<sp/>&quot;INFECT_RATE_DEAD&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE,<sp/>dead,<sp/>,<sp/>&quot;POP_DEAD&quot;,<sp/>&quot;%.0f&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/>Define<sp/>the<sp/>format<sp/>of<sp/>the<sp/>CSV<sp/>input<sp/>file<sp/>here.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_CSV_ENTRIES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="fsti-defaults_8h_1af8002fd5fc80bf52218b8b590a284c53" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_CSV_ENTRIES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(id,<sp/>fsti_to_size_t)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(age,<sp/>fsti_to_float)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(infected,<sp/>fsti_to_float)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(sex,<sp/>fsti_to_uchar)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(sex_preferred,<sp/>fsti_to_uchar)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_CSV_ENTRY(partners[0],<sp/>fsti_to_partner)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/>Define<sp/>this<sp/>to<sp/>call<sp/>the<sp/>function<sp/>that<sp/>returns<sp/>true<sp/>if<sp/><sp/>an<sp/>agent</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/>has<sp/>a<sp/>partner,<sp/>else<sp/>false.<sp/>The<sp/>default<sp/>function<sp/>simply<sp/>looks<sp/>at<sp/>the</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/>first<sp/>entry<sp/>in<sp/>the<sp/>partner<sp/>array.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_AGENT_HAS_PARTNER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="fsti-defaults_8h_1a4e2befc284c33dd74c9d9947f9eaf899" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_AGENT_HAS_PARTNER(agent)<sp/>fsti_agent_has_partner(agent)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/>Define<sp/>this<sp/>to<sp/>call<sp/>a<sp/>distance<sp/>function<sp/>to<sp/>measure<sp/>suitability<sp/>for<sp/>two<sp/>agents</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/>to<sp/>match.<sp/>The<sp/>default<sp/>version<sp/>makes<sp/>people<sp/>with<sp/>compatible<sp/>sexual<sp/>orientations</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/>and<sp/>close<sp/>ages<sp/>more<sp/>likely<sp/>to<sp/>match.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_AGENT_DISTANCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="fsti-defaults_8h_1a89dc08f474071d0d1e96eeb185b69bec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_AGENT_DISTANCE(agent_a,<sp/>agent_b)<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>fsti_agent_default_distance(agent_a,<sp/>agent_b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/>Advanced<sp/>macros:<sp/>Please<sp/>only<sp/>override<sp/>these<sp/>if<sp/>you<sp/>have<sp/>a</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/>good<sp/>understanding<sp/>of<sp/>both<sp/>C<sp/>and<sp/>the<sp/>FastSTI<sp/>code.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*******************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Hooks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/>Hook<sp/>for<sp/>flex<sp/>report<sp/>event.<sp/>Use<sp/>this<sp/>to<sp/>add<sp/>additional<sp/>report<sp/>lines.</highlight></codeline>
+<codeline lineno="157"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_FLEX_REPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="fsti-defaults_8h_1a5332f6a4a3474ddbfc73380a470713fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_FLEX_REPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/>Hook<sp/>after<sp/>copying<sp/>an<sp/>agent<sp/>array.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_AGENT_ARR_COPY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="fsti-defaults_8h_1ad93324b43e43bc3e93c1689c5cf5fdb6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_AGENT_ARR_COPY(dest_arr,<sp/>src_arr)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="169"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/>Hook<sp/>before<sp/>freeing<sp/>an<sp/>agent<sp/>array.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_AGENT_ARR_FREE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="fsti-defaults_8h_1a02a2fb1caec540e1c1d364b37ee7dcdf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_AGENT_ARR_FREE(agent_arr)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/>Hook<sp/>after<sp/>two<sp/>agents<sp/>have<sp/>been<sp/>made<sp/>partners</highlight></codeline>
+<codeline lineno="181"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_AFTER_MAKE_PARTNERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="fsti-defaults_8h_1a70184631a66cf835159c37db6b145a74" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_AFTER_MAKE_PARTNERS(a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/>Hook<sp/>after<sp/>two<sp/>agents<sp/>have<sp/>been<sp/>made<sp/>partners<sp/>in<sp/>a<sp/>pair-matching<sp/>event</highlight></codeline>
+<codeline lineno="188"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_AFTER_MATCH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="fsti-defaults_8h_1a2799df986d42080afd9cd8e98e8f9e6c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_AFTER_MATCH(simulation,<sp/>a,<sp/>b)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/>Hook<sp/>before<sp/>freeing<sp/>a<sp/>simulation</highlight></codeline>
+<codeline lineno="196"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_SIMULATION_FREE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="fsti-defaults_8h_1ad642cdfb6c422b0cacba4620b959dbd9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_SIMULATION_FREE(simulation)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/>Speed<sp/>optimization<sp/>hook.<sp/>Use<sp/>it<sp/>to<sp/>put<sp/>frequently<sp/>used<sp/>config<sp/>entries<sp/>into</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/>simulation<sp/>variables.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_CONFIG_TO_VARS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="fsti-defaults_8h_1a3a7ef20fa909e6260788f2af6efc3aca" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_CONFIG_TO_VARS(simulation)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/>Hook<sp/>after<sp/>an<sp/>agent<sp/>is<sp/>created,<sp/>but<sp/>before<sp/>being<sp/>put<sp/>in<sp/>the<sp/>agent<sp/>array.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_CREATE_AGENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="fsti-defaults_8h_1ad16639c93ae02d6c0aeb0861271d3666" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_CREATE_AGENT(simulation,<sp/>agent)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/>Hook<sp/>to<sp/>register<sp/>events.</highlight></codeline>
+<codeline lineno="218"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FSTI_HOOK_EVENTS_REGISTER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="fsti-defaults_8h_1ae0dc24adedcc11d693ecfd29edf90434" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOOK_EVENTS_REGISTER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-defaults_8h_1ac17ffcd08e1c5eff41d7a65f637c4b06" kindref="member">fsti_config_set_default</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h"/>
+  </compounddef>
+</doxygen>

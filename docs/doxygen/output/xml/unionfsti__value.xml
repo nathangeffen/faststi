@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="unionfsti__value" kind="union" language="C++" prot="public">
+    <compoundname>fsti_value</compoundname>
+    <includes refid="fsti-defs_8h" local="no">fsti-defs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionfsti__value_1a447fe3b0025c905b135bd83644de1835" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long fsti_value::longint</definition>
+        <argsstring></argsstring>
+        <name>longint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="57" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionfsti__value_1abc19a0fa0d2b51651557de2996a20ae7" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double fsti_value::dbl</definition>
+        <argsstring></argsstring>
+        <name>dbl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="58" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionfsti__value_1a516816f638918a4896c2405c707d37c9" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* fsti_value::str</definition>
+        <argsstring></argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="56" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="56" bodyend="60"/>
+    <listofallmembers>
+      <member refid="unionfsti__value_1abc19a0fa0d2b51651557de2996a20ae7" prot="public" virt="non-virtual"><scope>fsti_value</scope><name>dbl</name></member>
+      <member refid="unionfsti__value_1a447fe3b0025c905b135bd83644de1835" prot="public" virt="non-virtual"><scope>fsti_value</scope><name>longint</name></member>
+      <member refid="unionfsti__value_1a516816f638918a4896c2405c707d37c9" prot="public" virt="non-virtual"><scope>fsti_value</scope><name>str</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

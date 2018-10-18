@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__event__array" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_event_array</compoundname>
+    <includes refid="fsti-eventdefs_8h" local="no">fsti-eventdefs.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__event__array_1ada6ee09934336597d954b693677a93ad" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_event_array::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="13" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__event__array_1aa84e4bbb164ccb3c949f051f5ef4db5e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_event_array::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="14" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__event__array_1a71cfad0ae250352091479f8bfebd6fcb" prot="public" static="no" mutable="no">
+        <type><ref refid="fsti-eventdefs_8h_1abce6b23e84620b4f4433c952fa10f0b9" kindref="member">fsti_event</ref> *</type>
+        <definition>fsti_event* fsti_event_array::events</definition>
+        <argsstring></argsstring>
+        <name>events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="15" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="12" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" bodystart="12" bodyend="16"/>
+    <listofallmembers>
+      <member refid="structfsti__event__array_1aa84e4bbb164ccb3c949f051f5ef4db5e" prot="public" virt="non-virtual"><scope>fsti_event_array</scope><name>capacity</name></member>
+      <member refid="structfsti__event__array_1a71cfad0ae250352091479f8bfebd6fcb" prot="public" virt="non-virtual"><scope>fsti_event_array</scope><name>events</name></member>
+      <member refid="structfsti__event__array_1ada6ee09934336597d954b693677a93ad" prot="public" virt="non-virtual"><scope>fsti_event_array</scope><name>len</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

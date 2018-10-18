@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-defs_8c" kind="file" language="C++">
+    <compoundname>fsti-defs.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">glib.h</includes>
+    <includes local="yes">utils/utils.h</includes>
+    <includes refid="fsti-error_8h" local="yes">fsti-error.h</includes>
+    <includes refid="fsti-defs_8h" local="yes">fsti-defs.h</includes>
+    <incdepgraph>
+      <node id="144">
+        <label>stdbool.h</label>
+      </node>
+      <node id="145">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="142">
+        <label>assert.h</label>
+      </node>
+      <node id="141">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h"/>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+      </node>
+      <node id="147">
+        <label>stdlib.h</label>
+      </node>
+      <node id="143">
+        <label>errno.h</label>
+      </node>
+      <node id="148">
+        <label>stddef.h</label>
+      </node>
+      <node id="140">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="137">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c</label>
+        <link refid="fsti-defs_8c"/>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="146">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="139">
+        <label>glib.h</label>
+      </node>
+      <node id="138">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-defs_8c_1a9bbd967a26845252b0a412468c33b0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref></type>
+        <definition>struct fsti_variant fsti_identify_token</definition>
+        <argsstring>(char *token)</argsstring>
+        <name>fsti_identify_token</name>
+        <param>
+          <type>char *</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c" line="224" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c" bodystart="9" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;glib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/utils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-error_8h" kindref="compound">fsti-error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/><ref refid="fsti-defs_8c_1a9bbd967a26845252b0a412468c33b0d4" kindref="member">fsti_identify_token</ref>(char<sp/>*token)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>result;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*err<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>errno<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>g_strstrip(token);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>strtol(token,<sp/>&amp;err,<sp/>10);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(errno<sp/>||<sp/>*err<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>errno<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>err<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>=<sp/>strtod(token,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(errno<sp/>||<sp/>*err<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.value.str<sp/>=<sp/>strdup(token);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-error_8h_1a45677a0c04d632802de437b7a4cdec01" kindref="member">FSTI_ASSERT</ref>(result.value.str,<sp/><ref refid="fsti-error_8h_1a385c44f6fb256e5716a2302a5b940388a06189e86eed4d9c1d3b1f69cfb58a41e" kindref="member">FSTI_ERR_NOMEM</ref>,<sp/>NULL);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.type<sp/>=<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaec41e801b43cfbec49d343c900360bf9" kindref="member">STR</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.value.dbl<sp/>=<sp/>d;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.type<sp/>=<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaa7b7ad27665e918c9b35318101379529" kindref="member">DBL</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>result.value.longint<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>result.type<sp/>=<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaaee055c4a5aba7d55774e4f1c01dacea" kindref="member">LONG</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c"/>
+  </compounddef>
+</doxygen>
