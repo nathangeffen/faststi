@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include "fsti-defs.h"
 #include "fsti-events.h"
-
+#include "fsti-report.h"
 
 struct fsti_agent fsti_global_agent;
 
@@ -369,7 +369,7 @@ void fsti_event_report(struct fsti_simulation *simulation)
         simulation->iteration % simulation->report_frequency != 0)
         return;
 
-    outputl(simulation, "POPULATION", simulation->agent_arr.len);
+    outputl(simulation, "POPULATION_ALIVE", simulation->living.len);
 
     FSTI_FOR_LIVING(*simulation, agent, {
             age_avg += agent->age;
@@ -383,14 +383,26 @@ void fsti_event_report(struct fsti_simulation *simulation)
     outputl(simulation, "NUM_PARTNERS", num_partners);
 }
 
+void fsti_event_flex_report(struct fsti_simulation *simulation)
+{
+    FSTI_FLEX_REPORT;
+    FSTI_HOOK_FLEX_REPORT;
+}
+
+void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
+{
+    fsti_simulation_write_agents_ind_csv(simulation, &simulation->living);
+}
+
+void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
+{
+    fsti_simulation_write_agents_ind_csv(simulation, &simulation->dead);
+}
+
+
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *agent;
-    FSTI_FOR_LIVING(*simulation, agent, {
-            fsti_agent_print_csv(simulation->agents_output_file,
-                                 simulation->sim_number,
-                                 agent);
-        });
+    fsti_simulation_write_agents_arr_csv(simulation);
 }
 
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
@@ -483,7 +495,12 @@ void fsti_event_register_events()
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
+        fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
+        fsti_register_add("_WRITE_LIVING_AGENTS_CSV",
+                          fsti_event_write_living_agents_csv);
+        fsti_register_add("_WRITE_DEAD_AGENTS_CSV",
+                          fsti_event_write_dead_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
         fsti_register_add("_STOP", fsti_event_stop);
         fsti_register_add("_NO_OP", fsti_event_no_op);

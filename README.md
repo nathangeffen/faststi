@@ -10,15 +10,11 @@ The code is available under the GPL-3 license.
 
 ## Installation on GNU/Linux
 
-Carry out these steps to install FastSTI on a GNU/Linux PC.
+Carry out these steps to install FastSTI on a GNU/Linux PC that uses apt (e.g. Ubuntu).
 
-Install the depenendencies:
+Install the dependencies:
 
-- *sudo apt install build-tools*
-- *sudo apt install git*
-- *sudo apt install meson-build*
-- *sudo apt install valgrind* (optional but extremely useful if you write code)
-
+*sudo apt install git build-essential meson valgrind libgsl-dev libglib2.0-dev*
 
 Installing the framework is quick and easy.
 
@@ -29,7 +25,7 @@ Installing the framework is quick and easy.
 Installations are cheap and easy. Install as often as you like and, if an
 installation is no longer needed, simply remove its folder with "rm -f".
 
-Test that it works by running:
+Test that it works:
 
 - *meson debug*
 - *cd debug; ninja*
@@ -40,9 +36,14 @@ should be reported.
 
 You've created an unoptimised version of the faststi executable, useful for
 debugging and development. To create an optimised version for running big,
-CPU-intensive simulations, do this:
+CPU-intensive simulations, do this from the root directory of your simulation
+(*mysim* in the above example):
 
-XX Fill in steps
+*meson --buildtype release release*
+
+To test that it's working:
+
+*cd release;ninja test*
 
 ## Installation on macOS
 

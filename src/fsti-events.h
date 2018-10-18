@@ -2,11 +2,15 @@
 #define FSTI_EVENTS_H
 
 #include <stdint.h>
+#include <limits.h>
+#include <float.h>
+#include <math.h>
 
 #include "fsti-simulation.h"
 #include "fsti-defs.h"
-#include "fsti-userdefs.h"
+#include "fsti-report.h"
 #include "fsti-agent.h"
+#include "fsti-userdefs.h"
 
 void fsti_to_float(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent);
@@ -37,9 +41,12 @@ void fsti_event_read_agents(struct fsti_simulation *simulation);
 void fsti_event_create_agents(struct fsti_simulation *simulation);
 void fsti_event_age(struct fsti_simulation *simulation);
 void fsti_event_report(struct fsti_simulation *simulation);
+void fsti_event_flex_report(struct fsti_simulation *simulation);
 void fsti_event_shuffle_living(struct fsti_simulation *simulation);
 void fsti_event_shuffle_mating(struct fsti_simulation *simulation);
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation);
+void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation);
+void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation);
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation);
 void fsti_event_no_op(struct fsti_simulation *simulation);
 void fsti_event_register_events();

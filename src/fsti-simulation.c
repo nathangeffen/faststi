@@ -118,6 +118,34 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
 
+
+
+void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
+                                          struct fsti_agent_ind *agent_ind)
+{
+    struct fsti_agent *agent;
+    FSTI_FOR(*agent_ind, agent, {
+            fsti_agent_print_csv(simulation->agents_output_file,
+                                 simulation->sim_number,
+                                 agent);
+        });
+}
+
+void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+
+    for (agent = simulation->agent_arr.agents;
+         agent < simulation->agent_arr.agents + simulation->agent_arr.len;
+         ++agent) {
+        fsti_agent_print_csv(simulation->agents_output_file,
+                             simulation->sim_number,
+                             agent);
+    }
+}
+
+
+
 void fsti_simulation_run(struct fsti_simulation *simulation)
 {
     fsti_simulation_config_to_vars(simulation);

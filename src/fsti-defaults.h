@@ -57,13 +57,14 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%ld\n",              \
+    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%f,%ld\n",                \
             id,                                                       \
             agent->id,                                                \
             (unsigned) agent->sex,                                    \
             (unsigned) agent->sex_preferred,                          \
             agent->age,                                               \
             agent->infected,                                          \
+            agent->date_death,                                        \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
 
@@ -86,6 +87,30 @@ unsigned total_partners;
             agent->num_partners ? "Relationship" : "Single",             \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
+
+/*
+   Default flex report event output. Can be appended to with the
+   FST_HOOK_FLEX_REPORT hook below as well.
+*/
+
+#ifndef FSTI_FLEX_REPORT
+#define FSTI_FLEX_REPORT do {                                           \
+        FSTI_REPORT_OUTPUT(FSTI_MIN, living, age, "MIN_AGE_ALIVE");     \
+        FSTI_REPORT_OUTPUT(FSTI_MAX, living, age, "MAX_AGE_ALIVE");     \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE");   \
+        FSTI_REPORT_OUTPUT(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE"); \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, living, , "POP_ALIVE", "%.0f"); \
+        FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,    \
+                                     "NUM_PARTNERS", FSTI_HALF, "%.0f"); \
+        FSTI_REPORT_OUTPUT(FSTI_MIN, dead, age, "MIN_AGE_DEAD");        \
+        FSTI_REPORT_OUTPUT(FSTI_MAX, dead, age, "MAX_AGE_DEAD");        \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD");      \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, "INFECT_RATE_DEAD"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , "POP_DEAD", "%.0f"); \
+    } while(0)
+#endif
+
 
 /*
   Define the format of the CSV input file here.
@@ -125,6 +150,15 @@ unsigned total_partners;
  *******************************************************************/
 
 /* Hooks */
+
+
+/*
+   Hook for flex report event. Use this to add additional report lines.
+*/
+
+#ifndef FSTI_HOOK_FLEX_REPORT
+#define FSTI_HOOK_FLEX_REPORT
+#endif
 
 /*
   Hook after copying an agent array.
