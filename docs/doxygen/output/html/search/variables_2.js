@@ -9,6 +9,7 @@ var searchData=
   ['config_5fsim_5fnumber',['config_sim_number',['../structfsti__simset.html#a0798e1d03a30f50a05a1f70c2fd5c3bb',1,'fsti_simset::config_sim_number()'],['../structfsti__simulation.html#ac57d2ade56d4449859e872a4aae48236',1,'fsti_simulation::config_sim_number()']]],
   ['config_5fstrings',['config_strings',['../structfsti__simset.html#a7610ad16eda85f1951f06e9543701f41',1,'fsti_simset']]],
   ['csv',['csv',['../structfsti__simset.html#aeb197e0d40c9abe228e68794bb16c788',1,'fsti_simset::csv()'],['../structfsti__simulation.html#ac24c89a9b7794355c1f8395b7fc0b898',1,'fsti_simulation::csv()']]],
+  ['csv_5fdelimiter',['csv_delimiter',['../structfsti__simulation.html#a2be9818c9a2ba151f4ffaafda2768477',1,'fsti_simulation']]],
   ['cured',['cured',['../structfsti__agent.html#ad17ed58432c11de69fed459c6bdb4351',1,'fsti_agent']]],
   ['current_5fdate',['current_date',['../structfsti__simulation.html#a79f4bbb55b32e131cafcdb6697ab4768',1,'fsti_simulation']]]
 ];

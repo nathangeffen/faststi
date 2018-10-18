@@ -109,6 +109,8 @@
     <member refid="structfsti__simulation_1a1455e197a5df3af32d96438c784d0bd5" kind="variable"><name>iteration</name></member>
     <member refid="structfsti__simulation_1a933d795a18a61dccea12db86da0e120b" kind="variable"><name>report_frequency</name></member>
     <member refid="structfsti__simulation_1abbe99680ea150fa87b562f12fed6a088" kind="variable"><name>match_k</name></member>
+    <member refid="structfsti__simulation_1a27584b4efd761d93248a3e1ef9a7e503" kind="variable"><name>agent_csv_header</name></member>
+    <member refid="structfsti__simulation_1a2be9818c9a2ba151f4ffaafda2768477" kind="variable"><name>csv_delimiter</name></member>
     <member refid="structfsti__simulation_1aee76cdc2d8e408930d2801b9d6099c51" kind="variable"><name>results_file</name></member>
     <member refid="structfsti__simulation_1ab9a74be6298bbfe4ea5d2bbdbeef3b95" kind="variable"><name>agents_output_file</name></member>
   </compound>

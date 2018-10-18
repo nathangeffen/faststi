@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c" line="9" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c" bodystart="9" bodyend="87"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c" line="9" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c" bodystart="9" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -220,10 +220,14 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;THREADS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>threads<sp/>(1=no<sp/>threading,<sp/>0=system<sp/>determined)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8h_1afddc44c41cd9a27367b2e0b713a8d8db" kindref="member">FSTI_ADDITIONAL_CONFIG_VARS</ref>(config);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;CSV_DELIMITER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Character<sp/>that<sp/>separates<sp/>CSV<sp/>fields&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AGENT_CSV_HEADER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Whether<sp/>or<sp/>not<sp/>the<sp/>agent<sp/>csv<sp/>input<sp/>file<sp/>has<sp/>a<sp/>header&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8h_1afddc44c41cd9a27367b2e0b713a8d8db" kindref="member">FSTI_ADDITIONAL_CONFIG_VARS</ref>(config);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c"/>
   </compounddef>

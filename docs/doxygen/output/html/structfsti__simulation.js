@@ -2,11 +2,13 @@ var structfsti__simulation =
 [
     [ "after_events", "structfsti__simulation.html#aeecb9bdd114d396d70dcb274eada625c", null ],
     [ "agent_arr", "structfsti__simulation.html#a897c352e69c8a3bd46c1a602d6380750", null ],
+    [ "agent_csv_header", "structfsti__simulation.html#a27584b4efd761d93248a3e1ef9a7e503", null ],
     [ "agents_output_file", "structfsti__simulation.html#ab9a74be6298bbfe4ea5d2bbdbeef3b95", null ],
     [ "before_events", "structfsti__simulation.html#afdc6cdfba5f8f8a1d72a1c2e1b2775c0", null ],
     [ "config", "structfsti__simulation.html#a093e3692784567c1afd416022ace5b62", null ],
     [ "config_sim_number", "structfsti__simulation.html#ac57d2ade56d4449859e872a4aae48236", null ],
     [ "csv", "structfsti__simulation.html#ac24c89a9b7794355c1f8395b7fc0b898", null ],
+    [ "csv_delimiter", "structfsti__simulation.html#a2be9818c9a2ba151f4ffaafda2768477", null ],
     [ "current_date", "structfsti__simulation.html#a79f4bbb55b32e131cafcdb6697ab4768", null ],
     [ "dead", "structfsti__simulation.html#a1e6af515eb855cb2fa8af101bd0f9cb8", null ],
     [ "during_events", "structfsti__simulation.html#ad5f30f66f41c8bd1bb6c12fa2d254132", null ],
