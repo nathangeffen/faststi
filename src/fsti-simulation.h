@@ -50,6 +50,8 @@ struct fsti_simulation {
     unsigned iteration;
     unsigned report_frequency;
     unsigned match_k;
+    bool agent_csv_header;
+    char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;
     FSTI_SIMULATION_FIELDS

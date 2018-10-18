@@ -114,6 +114,10 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
                                                           "MATCH_K");
     simulation->mating_pool_prob = (float)
         fsti_config_at0_double(&simulation->config, "MATING_PROB");
+    simulation->csv_delimiter =
+        fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
+    simulation->agent_csv_header =
+        fsti_config_at0_long(&simulation->config, "AGENT_CSV_HEADER");
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }

@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 {
     struct fsti_simset simset;
 
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "C");
     get_command_line(argc, argv);
 
 
