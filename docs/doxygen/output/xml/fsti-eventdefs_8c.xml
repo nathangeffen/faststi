@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-eventdefs_8c" kind="file" language="C++">
+    <compoundname>fsti-eventdefs.c</compoundname>
+    <includes local="yes">utils/utils.h</includes>
+    <includes refid="fsti-eventdefs_8h" local="yes">fsti-eventdefs.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <incdepgraph>
+      <node id="166">
+        <label>stdbool.h</label>
+      </node>
+      <node id="170">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="168">
+        <label>assert.h</label>
+      </node>
+      <node id="167">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h_source"/>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="164">
+        <label>stdlib.h</label>
+      </node>
+      <node id="169">
+        <label>errno.h</label>
+      </node>
+      <node id="165">
+        <label>stddef.h</label>
+      </node>
+      <node id="171">
+        <label>string.h</label>
+      </node>
+      <node id="160">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="163">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h_source"/>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="159">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c</label>
+        <link refid="fsti-eventdefs_8c"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+      </node>
+      <node id="161">
+        <label>fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h_source"/>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="fsti-eventdefs_8c_1a251ddf9ac95ed26d6601adfa3589d1ed" prot="public" static="yes" mutable="no">
+        <type>struct <ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref> *</type>
+        <definition>struct fsti_event_register* event_register</definition>
+        <argsstring></argsstring>
+        <name>event_register</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" line="4" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-eventdefs_8c_1aa0b6464d8da748522498a11bc033fee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_register_add</definition>
+        <argsstring>(const char *event_name, fsti_event event)</argsstring>
+        <name>fsti_register_add</name>
+        <param>
+          <type>const char *</type>
+          <declname>event_name</declname>
+        </param>
+        <param>
+          <type>fsti_event</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" line="6" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="6" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-eventdefs_8c_1ab8a67816c82580412dd9c89b610d43ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>fsti_event</type>
+        <definition>fsti_event fsti_register_get</definition>
+        <argsstring>(const char *event_name)</argsstring>
+        <name>fsti_register_get</name>
+        <param>
+          <type>const char *</type>
+          <declname>event_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" line="20" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="20" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-eventdefs_8c_1a57f74d766c59e7d2ad998981c4c00a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_register_free</definition>
+        <argsstring>()</argsstring>
+        <name>fsti_register_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" line="29" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="29" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;utils/utils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-eventdefs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref><sp/>*event_register<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_register_add(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*event_name,<sp/>fsti_event<sp/>event)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref><sp/>*entry;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>HASH_FIND_STR(event_register,<sp/>event_name,<sp/>entry);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(entry<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>entry<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry));</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(FSTI_ERROR(entry<sp/>==<sp/>NULL,<sp/>FSTI_ERR_NOMEM,<sp/>NULL))</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>strncpy(entry-&gt;event_name,<sp/>event_name,<sp/>FSTI_KEY_LEN);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>HASH_ADD_STR(event_register,<sp/>event_name,<sp/>entry);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>entry-&gt;event<sp/>=<sp/>event;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">fsti_event<sp/>fsti_register_get(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*event_name)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref><sp/>*entry;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>HASH_FIND_STR(event_register,<sp/>event_name,<sp/>entry);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_ASSERT(entry<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>entry-&gt;event<sp/>!=<sp/>NULL,<sp/>FSTI_ERR_EVENT_NOT_FOUND,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>event_name);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>entry-&gt;event;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_register_free()</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref><sp/>*entry,<sp/>*tmp;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>HASH_ITER(hh,<sp/>event_register,<sp/>entry,<sp/>tmp)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>HASH_DEL(event_register,<sp/>entry);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>free(entry);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c"/>
+  </compounddef>
+</doxygen>

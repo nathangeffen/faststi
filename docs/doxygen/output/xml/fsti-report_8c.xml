@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-report_8c" kind="file" language="C++">
+    <compoundname>fsti-report.c</compoundname>
+    <includes refid="fsti-report_8h" local="yes">fsti-report.h</includes>
+    <incdepgraph>
+      <node id="320">
+        <label>stdbool.h</label>
+      </node>
+      <node id="330">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="325">
+        <label>fsti-userdefs.h</label>
+        <link refid="fsti-userdefs_8h_source"/>
+      </node>
+      <node id="323">
+        <label>assert.h</label>
+      </node>
+      <node id="328">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h_source"/>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="329" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="330" relation="include">
+        </childnode>
+      </node>
+      <node id="310">
+        <label>float.h</label>
+      </node>
+      <node id="327">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="308">
+        <label>stdint.h</label>
+      </node>
+      <node id="318">
+        <label>stdlib.h</label>
+      </node>
+      <node id="329">
+        <label>errno.h</label>
+      </node>
+      <node id="319">
+        <label>stddef.h</label>
+      </node>
+      <node id="309">
+        <label>limits.h</label>
+      </node>
+      <node id="322">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h_source"/>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="324" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+      <node id="324">
+        <label>string.h</label>
+      </node>
+      <node id="316">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="321">
+        <label>fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h_source"/>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h_source"/>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+      </node>
+      <node id="314">
+        <label>fsti-agent.h</label>
+        <link refid="fsti-agent_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="313" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+      </node>
+      <node id="326">
+        <label>fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h_source"/>
+        <childnode refid="327" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+      </node>
+      <node id="311">
+        <label>math.h</label>
+      </node>
+      <node id="312">
+        <label>fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h_source"/>
+        <childnode refid="313" relation="include">
+        </childnode>
+        <childnode refid="314" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+      </node>
+      <node id="313">
+        <label>gsl/gsl_rng.h</label>
+      </node>
+      <node id="306">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</label>
+        <link refid="fsti-report_8c"/>
+        <childnode refid="307" relation="include">
+        </childnode>
+      </node>
+      <node id="315">
+        <label>stdio.h</label>
+      </node>
+      <node id="307">
+        <label>fsti-report.h</label>
+        <link refid="fsti-report_8h_source"/>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+        <childnode refid="311" relation="include">
+        </childnode>
+        <childnode refid="312" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="314" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-report_8c_1a01f88429a83ea714459262c661ba9859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int fsti_cmpf</definition>
+        <argsstring>(const void *a, const void *b)</argsstring>
+        <name>fsti_cmpf</name>
+        <param>
+          <type>const void *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c" line="3" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c" bodystart="3" bodyend="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;fsti-report.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fsti_cmpf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*b)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*x<sp/>=<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*)<sp/>a;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*y<sp/>=<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*)<sp/>b;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*x<sp/>&lt;<sp/>*y)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*x<sp/>&gt;<sp/>*y)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c"/>
+  </compounddef>
+</doxygen>

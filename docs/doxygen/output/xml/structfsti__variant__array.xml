@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__variant__array" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_variant_array</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__variant__array_1a39cfdcdfbafab25eecf67428eb070030" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_variant_array::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="68" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__variant__array_1a73ea0e7e2dd113ab36f38f1dfeac1cc1" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_variant_array::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="69" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__variant__array_1a1dfd401c440b5b040c3ff373c3f04930" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+        <definition>struct fsti_variant* fsti_variant_array::variants</definition>
+        <argsstring></argsstring>
+        <name>variants</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="70" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="82">
+        <label>fsti_value</label>
+        <link refid="unionfsti__value"/>
+      </node>
+      <node id="81">
+        <label>fsti_variant</label>
+        <link refid="structfsti__variant"/>
+        <childnode refid="82" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="80">
+        <label>fsti_variant_array</label>
+        <link refid="structfsti__variant__array"/>
+        <childnode refid="81" relation="usage">
+          <edgelabel>variants</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="67" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="67" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structfsti__variant__array_1a73ea0e7e2dd113ab36f38f1dfeac1cc1" prot="public" virt="non-virtual"><scope>fsti_variant_array</scope><name>capacity</name></member>
+      <member refid="structfsti__variant__array_1a39cfdcdfbafab25eecf67428eb070030" prot="public" virt="non-virtual"><scope>fsti_variant_array</scope><name>len</name></member>
+      <member refid="structfsti__variant__array_1a1dfd401c440b5b040c3ff373c3f04930" prot="public" virt="non-virtual"><scope>fsti_variant_array</scope><name>variants</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

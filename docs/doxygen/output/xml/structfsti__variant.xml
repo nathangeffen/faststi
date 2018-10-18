@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__variant" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_variant</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__variant_1a0cc10d0720f34ac052f489c080762b30" prot="public" static="no" mutable="no">
+        <type>union <ref refid="unionfsti__value" kindref="compound">fsti_value</ref></type>
+        <definition>union fsti_value fsti_variant::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__variant_1a9354fcc6fb77572e22ed830cdd4c99e2" prot="public" static="no" mutable="no">
+        <type>enum fsti_type</type>
+        <definition>enum fsti_type fsti_variant::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="78">
+        <label>fsti_value</label>
+        <link refid="unionfsti__value"/>
+      </node>
+      <node id="77">
+        <label>fsti_variant</label>
+        <link refid="structfsti__variant"/>
+        <childnode refid="78" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="62" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="62" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structfsti__variant_1a9354fcc6fb77572e22ed830cdd4c99e2" prot="public" virt="non-virtual"><scope>fsti_variant</scope><name>type</name></member>
+      <member refid="structfsti__variant_1a0cc10d0720f34ac052f489c080762b30" prot="public" virt="non-virtual"><scope>fsti_variant</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

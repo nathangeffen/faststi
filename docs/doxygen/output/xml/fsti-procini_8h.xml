@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-procini_8h" kind="file" language="C++">
+    <compoundname>fsti-procini.h</compoundname>
+    <includes local="no">glib.h</includes>
+    <includes refid="fsti-config_8h" local="yes">fsti-config.h</includes>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <includedby refid="fsti-procini_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c</includedby>
+    <includedby refid="fsti-simset_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</includedby>
+    <incdepgraph>
+      <node id="303">
+        <label>stdbool.h</label>
+      </node>
+      <node id="296">
+        <label>assert.h</label>
+      </node>
+      <node id="298">
+        <label>stdlib.h</label>
+      </node>
+      <node id="302">
+        <label>stddef.h</label>
+      </node>
+      <node id="295">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h_source"/>
+        <childnode refid="296" relation="include">
+        </childnode>
+        <childnode refid="297" relation="include">
+        </childnode>
+        <childnode refid="298" relation="include">
+        </childnode>
+        <childnode refid="299" relation="include">
+        </childnode>
+        <childnode refid="300" relation="include">
+        </childnode>
+        <childnode refid="301" relation="include">
+        </childnode>
+      </node>
+      <node id="299">
+        <label>string.h</label>
+      </node>
+      <node id="300">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="301">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h_source"/>
+        <childnode refid="298" relation="include">
+        </childnode>
+        <childnode refid="302" relation="include">
+        </childnode>
+        <childnode refid="303" relation="include">
+        </childnode>
+      </node>
+      <node id="294">
+        <label>glib.h</label>
+      </node>
+      <node id="293">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
+        <link refid="fsti-procini_8h"/>
+        <childnode refid="294" relation="include">
+        </childnode>
+        <childnode refid="295" relation="include">
+        </childnode>
+      </node>
+      <node id="297">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="304">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
+        <link refid="fsti-procini_8h"/>
+        <childnode refid="305" relation="include">
+        </childnode>
+      </node>
+      <node id="305">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-procini_8h_1a438ad09d742e78ab09216d2b532f02bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_read_ini</definition>
+        <argsstring>(const char *filename, GKeyFile *key_file)</argsstring>
+        <name>fsti_read_ini</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>GKeyFile *</type>
+          <declname>key_file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h" line="7" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c" bodystart="7" bodyend="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_PROCINI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_PROCINI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;glib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_read_ini(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename,<sp/>GKeyFile<sp/>*<sp/>key_file);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h"/>
+  </compounddef>
+</doxygen>

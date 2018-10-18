@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-simulation_8h" kind="file" language="C++">
+    <compoundname>fsti-simulation.h</compoundname>
+    <includes local="no">gsl/gsl_rng.h</includes>
+    <includes refid="fsti-agent_8h" local="yes">fsti-agent.h</includes>
+    <includes refid="fsti-eventdefs_8h" local="yes">fsti-eventdefs.h</includes>
+    <includes refid="fsti-config_8h" local="yes">fsti-config.h</includes>
+    <includes refid="fsti-defaults_8h" local="yes">fsti-defaults.h</includes>
+    <includedby refid="fsti-events_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</includedby>
+    <includedby refid="fsti-report_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</includedby>
+    <includedby refid="fsti-simset_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</includedby>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <includedby refid="fsti-simulation_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c</includedby>
+    <incdepgraph>
+      <node id="445">
+        <label>stdbool.h</label>
+      </node>
+      <node id="455">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="450">
+        <label>fsti-userdefs.h</label>
+        <link refid="fsti-userdefs_8h_source"/>
+      </node>
+      <node id="448">
+        <label>assert.h</label>
+      </node>
+      <node id="453">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h_source"/>
+        <childnode refid="448" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+        <childnode refid="455" relation="include">
+        </childnode>
+      </node>
+      <node id="452">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="440">
+        <label>stdint.h</label>
+      </node>
+      <node id="443">
+        <label>stdlib.h</label>
+      </node>
+      <node id="454">
+        <label>errno.h</label>
+      </node>
+      <node id="444">
+        <label>stddef.h</label>
+      </node>
+      <node id="447">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h_source"/>
+        <childnode refid="448" relation="include">
+        </childnode>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="449" relation="include">
+        </childnode>
+        <childnode refid="441" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="449">
+        <label>string.h</label>
+      </node>
+      <node id="441">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="446">
+        <label>fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h_source"/>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+        <childnode refid="450" relation="include">
+        </childnode>
+      </node>
+      <node id="442">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h_source"/>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+      </node>
+      <node id="438">
+        <label>fsti-agent.h</label>
+        <link refid="fsti-agent_8h_source"/>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="437" relation="include">
+        </childnode>
+        <childnode refid="440" relation="include">
+        </childnode>
+        <childnode refid="441" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+      </node>
+      <node id="451">
+        <label>fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h_source"/>
+        <childnode refid="452" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+      </node>
+      <node id="436">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="437" relation="include">
+        </childnode>
+        <childnode refid="438" relation="include">
+        </childnode>
+        <childnode refid="451" relation="include">
+        </childnode>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+      </node>
+      <node id="437">
+        <label>gsl/gsl_rng.h</label>
+      </node>
+      <node id="439">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="457">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h_source"/>
+        <childnode refid="458" relation="include">
+        </childnode>
+      </node>
+      <node id="460">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</label>
+        <link refid="fsti-simset_8h_source"/>
+        <childnode refid="458" relation="include">
+        </childnode>
+      </node>
+      <node id="456">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="457" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+        <childnode refid="460" relation="include">
+        </childnode>
+        <childnode refid="458" relation="include">
+        </childnode>
+      </node>
+      <node id="459">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h_source"/>
+        <childnode refid="457" relation="include">
+        </childnode>
+      </node>
+      <node id="458">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfsti__simulation" prot="public">fsti_simulation</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fsti-simulation_8h_1ab09972db973bc8382592ffc0d0c9b1ec" prot="public" static="no">
+        <name>FSTI_FOR_LIVING</name>
+        <param><defname>simulation</defname></param>
+        <param><defname>agent</defname></param>
+        <param><defname>code</defname></param>
+        <initializer>FSTI_FOR((simulation).living, agent, code)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="11" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="fsti-simulation_8h_1aa4feb4e18e0a72b142f028a7ddf75047" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fsti_simulation_state</name>
+        <enumvalue id="fsti-simulation_8h_1aa4feb4e18e0a72b142f028a7ddf75047ae6b900100d080b3b2a415a74287ac51d" prot="public">
+          <name>BEFORE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-simulation_8h_1aa4feb4e18e0a72b142f028a7ddf75047ac52a80f28bdc6b1cd181af2bfe35a326" prot="public">
+          <name>DURING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-simulation_8h_1aa4feb4e18e0a72b142f028a7ddf75047a7b7a4cb38549c6293e591b1efc6b8521" prot="public">
+          <name>AFTER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="15" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" bodystart="15" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-simulation_8h_1a5e7080c9230e123dc212cc19bb209487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_init</definition>
+        <argsstring>(struct fsti_simulation *simulation, const struct fsti_config *config, int sim_number, int config_sim_number)</argsstring>
+        <name>fsti_simulation_init</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sim_number</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>config_sim_number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="58" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="47" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1a293d3e3e15958886f1e180a285e749cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t fsti_simulation_agent_size</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_agent_size</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1a8fd28c7a573e98f3785b5f3b7b6b08e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_config_to_vars</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_config_to_vars</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="62" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="98" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1ae23ac2ea7e48646d502421fc0c32962a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
+        <definition>struct fsti_agent* fsti_simulation_new_agent</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_new_agent</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1adac2d348ab392af024a2cbeabfb0c739" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_write_agents_ind_csv</definition>
+        <argsstring>(struct fsti_simulation *simulation, struct fsti_agent_ind *agent_ind)</argsstring>
+        <name>fsti_simulation_write_agents_ind_csv</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref> *</type>
+          <declname>agent_ind</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="65" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="123" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1acf97be6cf8883189d51292eceea0c43e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_write_agents_arr_csv</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_write_agents_arr_csv</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="67" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="134" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1ab512e1f50ac5ac9bdde81f48d73137b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_run</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_run</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="68" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="149" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1a8f4c7d0a06b617bd410f0d213aba1dc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>fsti_event</type>
+        <definition>fsti_event fsti_get_event</definition>
+        <argsstring>(const char *event_name)</argsstring>
+        <name>fsti_get_event</name>
+        <param>
+          <type>const char *</type>
+          <declname>event_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1acfe68dac880c7a6112ac0d13bfc34cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_set_csv</definition>
+        <argsstring>(struct fsti_simulation *simulation, const struct fsti_csv_agent *csv)</argsstring>
+        <name>fsti_simulation_set_csv</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structfsti__csv__agent" kindref="compound">fsti_csv_agent</ref> *</type>
+          <declname>csv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="70" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="90" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1a9d76145c517a59cb16affaf38f6da235" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_kill_agent</definition>
+        <argsstring>(struct fsti_simulation *simulation, size_t *it)</argsstring>
+        <name>fsti_simulation_kill_agent</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>it</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="72" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="164" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1ae29f6c96793ab175ff8021f853c0b898" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_free</definition>
+        <argsstring>(struct fsti_simulation *simulation)</argsstring>
+        <name>fsti_simulation_free</name>
+        <param>
+          <type>struct <ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref> *</type>
+          <declname>simulation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="73" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="180" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-simulation_8h_1a86e77278da10e20688210e211787e7d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_simulation_test</definition>
+        <argsstring>(struct test_group *tg)</argsstring>
+        <name>fsti_simulation_test</name>
+        <param>
+          <type>struct test_group *</type>
+          <declname>tg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="74" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.c" bodystart="191" bodyend="293"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_SIMULATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SIMULATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_rng.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-agent.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-eventdefs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-defaults.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FOR_LIVING(simulation,<sp/>agent,<sp/>code)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>FSTI_FOR((simulation).living,<sp/>agent,<sp/>code)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>fsti_simulation_state<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>BEFORE,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>DURING,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>AFTER</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="structfsti__simulation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>config;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>agent_arr;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>living;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>dead;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>mating_pool;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__csv__agent" kindref="compound">fsti_csv_agent</ref><sp/>*csv;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sim_number;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>config_sim_number;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>stop;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_event<sp/>stop_event;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__array" kindref="compound">fsti_event_array</ref><sp/>before_events;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__array" kindref="compound">fsti_event_array</ref><sp/>during_events;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__array" kindref="compound">fsti_event_array</ref><sp/>after_events;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>fsti_simulation_state<sp/>state;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gsl_rng_type<sp/>*T;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_rng<sp/>*rng;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Useful<sp/>event<sp/>variables<sp/>available<sp/>to<sp/>all<sp/>simulations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>start_date;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>end_date;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>current_date;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>time_step;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mating_pool_prob;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>stabilization_steps;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>num_iterations;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>iteration;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>report_frequency;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>match_k;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*results_file;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*agents_output_file;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_SIMULATION_FIELDS</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_init(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sim_number,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>config_sim_number);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>fsti_simulation_agent_size(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_config_to_vars(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">fsti_simulation_new_agent(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_write_agents_ind_csv(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_write_agents_arr_csv(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_run(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">fsti_event<sp/>fsti_get_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*event_name);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_set_csv(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__csv__agent" kindref="compound">fsti_csv_agent</ref><sp/>*csv);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_kill_agent(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*it);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_free(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*simulation);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_simulation_test(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>test_group<sp/>*tg);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h"/>
+  </compounddef>
+</doxygen>

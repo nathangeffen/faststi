@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__config__entry" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_config_entry</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__config__entry_1ad93155316f1351abbc99b94a9d781b28" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char fsti_config_entry::key[FSTI_KEY_LEN]</definition>
+        <argsstring>[FSTI_KEY_LEN]</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="28" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__config__entry_1a31c11ad557aab27565763928b6180363" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char fsti_config_entry::description[FSTI_DESC_LEN]</definition>
+        <argsstring>[FSTI_DESC_LEN]</argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="29" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref> *</type>
+        <definition>struct fsti_variant* fsti_config_entry::variants</definition>
+        <argsstring></argsstring>
+        <name>variants</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="30" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_config_entry::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="31" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref> *</type>
+        <definition>struct fsti_config_entry* fsti_config_entry::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="32" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="18">
+        <label>fsti_config_entry</label>
+        <link refid="structfsti__config__entry"/>
+        <childnode refid="18" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>variants</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>fsti_value</label>
+        <link refid="unionfsti__value"/>
+      </node>
+      <node id="19">
+        <label>fsti_variant</label>
+        <link refid="structfsti__variant"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="27" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="27" bodyend="33"/>
+    <listofallmembers>
+      <member refid="structfsti__config__entry_1a31c11ad557aab27565763928b6180363" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>description</name></member>
+      <member refid="structfsti__config__entry_1ad93155316f1351abbc99b94a9d781b28" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>key</name></member>
+      <member refid="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>len</name></member>
+      <member refid="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>next</name></member>
+      <member refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>variants</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

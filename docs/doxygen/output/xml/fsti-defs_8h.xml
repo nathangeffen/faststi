@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-defs_8h" kind="file" language="C++">
+    <compoundname>fsti-defs.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="fsti-agent_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h</includedby>
+    <includedby refid="fsti-config_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h</includedby>
+    <includedby refid="fsti-defaults_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</includedby>
+    <includedby refid="fsti-defaults_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c</includedby>
+    <includedby refid="fsti-defs_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c</includedby>
+    <includedby refid="fsti-eventdefs_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h</includedby>
+    <includedby refid="fsti-events_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</includedby>
+    <includedby refid="fsti-events_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</includedby>
+    <includedby refid="fsti-report_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</includedby>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <incdepgraph>
+      <node id="125">
+        <label>stdbool.h</label>
+      </node>
+      <node id="123">
+        <label>stdlib.h</label>
+      </node>
+      <node id="124">
+        <label>stddef.h</label>
+      </node>
+      <node id="122">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="129">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h_source"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h</label>
+        <link refid="fsti-config_8h_source"/>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h_source"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h</label>
+        <link refid="fsti-agent_8h_source"/>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h_source"/>
+        <childnode refid="128" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</label>
+        <link refid="fsti-simset_8h_source"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h_source"/>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="135">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
+        <link refid="fsti-procini_8h_source"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="131">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h_source"/>
+        <childnode refid="129" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfsti__csv__agent" prot="public">fsti_csv_agent</innerclass>
+    <innerclass refid="unionfsti__value" prot="public">fsti_value</innerclass>
+    <innerclass refid="structfsti__variant" prot="public">fsti_variant</innerclass>
+    <innerclass refid="structfsti__variant__array" prot="public">fsti_variant_array</innerclass>
+    <innerclass refid="structfsti__csv__entry" prot="public">fsti_csv_entry</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fsti-defs_8h_1a3699e9ccc973983d2007d73eb31d6fcf" prot="public" static="no">
+        <name>FSTI_KEY_LEN</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="8" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1adc8804b27630bb18f9845921e268be24" prot="public" static="no">
+        <name>FSTI_DESC_LEN</name>
+        <initializer>200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="9" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1aeaf09b414ab500eefd42d663a14a5342" prot="public" static="no">
+        <name>FSTI_MALE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="12" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a243d8f3ff09be428475a77101bfc398a" prot="public" static="no">
+        <name>FSTI_FEMALE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="13" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1ac9f99ffb7cd594d061cc3beda55e0f2c" prot="public" static="no">
+        <name>FSTI_NONBINARY</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="14" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1aa9e96662d71c0d3b57d5c08664cf03d4" prot="public" static="no">
+        <name>FSTI_HETEROSEXUAL</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="15" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1aacfb6b965ae63e46f010cdc6d65d6f1c" prot="public" static="no">
+        <name>FSTI_HOMOSEXUAL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="16" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a66afd29dbd82700ead935eb070a55200" prot="public" static="no">
+        <name>FSTI_MSM</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="17" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a336d92f918c694ac3884f3e867f50023" prot="public" static="no">
+        <name>FSTI_MSW</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="18" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a647bd285bc2230a00edf1dcaa45c8e50" prot="public" static="no">
+        <name>FSTI_WSM</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="19" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a92abfa348861e34b6ef7f141b2d33c5b" prot="public" static="no">
+        <name>FSTI_WSW</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="20" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fsti-defs_8h_1a2f02b006df671555a32425a13bb1a22e" prot="public" static="no">
+        <name>FSTI_CSV_ENTRY</name>
+        <param><defname>member</defname></param>
+        <param><defname>function</defname></param>
+        <initializer>{&amp;fsti_global_agent.member, function},</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="22" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="fsti-defs_8h_1ad49d9d3ef63646df36df5c19b4e181ea" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fsti_struct_part</name>
+        <enumvalue id="fsti-defs_8h_1ad49d9d3ef63646df36df5c19b4e181eaa40e60d510aa885cf9334b0c0175cd2b2" prot="public">
+          <name>AGENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ad49d9d3ef63646df36df5c19b4e181eaa9d7d6f31868d66330397c967c4afd2d2" prot="public">
+          <name>DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="25" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cf" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fsti_type</name>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfac157bdf0b85a40d2619cbc8bc1ae5fe2" prot="public">
+          <name>NONE</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfa6ce26a62afab55d7606ad4e92428b30c" prot="public">
+          <name>UNKNOWN</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfa4618cf21306b3c647741afa7ebefcab8" prot="public">
+          <name>CHAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaa128cc25ea26621e08b18387b0fcb01c" prot="public">
+          <name>UCHAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaaee055c4a5aba7d55774e4f1c01dacea" prot="public">
+          <name>LONG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfa9cf4a0866224b0bb4a7a895da27c9c4c" prot="public">
+          <name>FLOAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaa7b7ad27665e918c9b35318101379529" prot="public">
+          <name>DBL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaec41e801b43cfbec49d343c900360bf9" prot="public">
+          <name>STR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfae663dbb8f8244e122acb5bd6b2c216e1" prot="public">
+          <name>BOOL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfafd5a5f51ce25953f3db2c7e93eb7864a" prot="public">
+          <name>INT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfa7165f9a47792f47c718ca128556fb3ae" prot="public">
+          <name>UNSIGNED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfafd783e97d92382805c87eac47b6f208a" prot="public">
+          <name>UNKNOWN_COMMAND</name>
+          <initializer>= 64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfae211a90596cf03c6fa2a55a497a4db8f" prot="public">
+          <name>VARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfa12dfc389dd6dad6d92053b56b4c5b4f8" prot="public">
+          <name>COVARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="30" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="30" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="fsti-defs_8h_1ae5b65c9cc706efded6267d78bbf70593" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* fsti_transform_func) (void *to, const struct fsti_variant *from, struct fsti_agent *agent)</definition>
+        <argsstring>)(void *to, const struct fsti_variant *from, struct fsti_agent *agent)</argsstring>
+        <name>fsti_transform_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="73" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-defs_8h_1a9bbd967a26845252b0a412468c33b0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structfsti__variant" kindref="compound">fsti_variant</ref></type>
+        <definition>struct fsti_variant fsti_identify_token</definition>
+        <argsstring>(char *token)</argsstring>
+        <name>fsti_identify_token</name>
+        <param>
+          <type>char *</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="73" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.c" bodystart="9" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_DEFS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_DEFS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_KEY_LEN<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_DESC_LEN<sp/>200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Useful<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MALE<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FEMALE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_NONBINARY<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HETEROSEXUAL<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HOMOSEXUAL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MSM<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MSW<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_WSM<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_WSW<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_CSV_ENTRY(member,<sp/>function)<sp/>\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{&amp;fsti_global_agent.member,<sp/>function},</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>fsti_struct_part<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>AGENT,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>DATA</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>fsti_type<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>NONE<sp/>=<sp/>-1,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>UNKNOWN<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>CHAR,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>UCHAR,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>LONG,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>FLOAT,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>DBL,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>STR,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>INT,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>UNSIGNED,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>UNKNOWN_COMMAND<sp/>=<sp/>64,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>VARY,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>COVARY</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="structfsti__csv__agent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__csv__agent" kindref="compound">fsti_csv_agent</ref><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_entries;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__csv__entry" kindref="compound">fsti_csv_entry</ref><sp/>*entries;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="unionfsti__value" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>longint;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dbl;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structfsti__variant" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref><sp/>value;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>fsti_type<sp/>type;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="structfsti__variant__array" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant__array" kindref="compound">fsti_variant_array</ref><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>capacity;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*variants;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*fsti_transform_func)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>*from,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="structfsti__csv__entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__csv__entry" kindref="compound">fsti_csv_entry</ref><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dest;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>fsti_transform_func<sp/>transformer;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>fsti_identify_token(char<sp/>*token);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h"/>
+  </compounddef>
+</doxygen>

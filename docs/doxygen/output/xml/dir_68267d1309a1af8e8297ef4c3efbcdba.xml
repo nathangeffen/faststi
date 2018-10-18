@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>/Users/eduardgrebe/dev/faststi-eduard/src</compoundname>
+    <innerfile refid="fsti-agent_8c">fsti-agent.c</innerfile>
+    <innerfile refid="fsti-agent_8h">fsti-agent.h</innerfile>
+    <innerfile refid="fsti-config_8c">fsti-config.c</innerfile>
+    <innerfile refid="fsti-config_8h">fsti-config.h</innerfile>
+    <innerfile refid="fsti-defaults_8c">fsti-defaults.c</innerfile>
+    <innerfile refid="fsti-defaults_8h">fsti-defaults.h</innerfile>
+    <innerfile refid="fsti-defs_8c">fsti-defs.c</innerfile>
+    <innerfile refid="fsti-defs_8h">fsti-defs.h</innerfile>
+    <innerfile refid="fsti-error_8c">fsti-error.c</innerfile>
+    <innerfile refid="fsti-error_8h">fsti-error.h</innerfile>
+    <innerfile refid="fsti-eventdefs_8c">fsti-eventdefs.c</innerfile>
+    <innerfile refid="fsti-eventdefs_8h">fsti-eventdefs.h</innerfile>
+    <innerfile refid="fsti-events_8c">fsti-events.c</innerfile>
+    <innerfile refid="fsti-events_8h">fsti-events.h</innerfile>
+    <innerfile refid="fsti-main_8c">fsti-main.c</innerfile>
+    <innerfile refid="fsti-procini_8c">fsti-procini.c</innerfile>
+    <innerfile refid="fsti-procini_8h">fsti-procini.h</innerfile>
+    <innerfile refid="fsti-report_8c">fsti-report.c</innerfile>
+    <innerfile refid="fsti-report_8h">fsti-report.h</innerfile>
+    <innerfile refid="fsti-simset_8c">fsti-simset.c</innerfile>
+    <innerfile refid="fsti-simset_8h">fsti-simset.h</innerfile>
+    <innerfile refid="fsti-simulation_8c">fsti-simulation.c</innerfile>
+    <innerfile refid="fsti-simulation_8h">fsti-simulation.h</innerfile>
+    <innerfile refid="fsti-tests_8c">fsti-tests.c</innerfile>
+    <innerfile refid="fsti-tests_8h">fsti-tests.h</innerfile>
+    <innerfile refid="fsti-userdefs_8c">fsti-userdefs.c</innerfile>
+    <innerfile refid="fsti-userdefs_8h">fsti-userdefs.h</innerfile>
+    <innerfile refid="fsti-variants_8h">fsti-variants.h</innerfile>
+    <innerfile refid="fsti_8h">fsti.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/"/>
+  </compounddef>
+</doxygen>

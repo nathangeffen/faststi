@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__csv__agent" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_csv_agent</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__csv__agent_1a4323ae2babc1ce9fe676937a98e25d23" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
+        <definition>struct fsti_agent* fsti_csv_agent::agent</definition>
+        <argsstring></argsstring>
+        <name>agent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="51" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__csv__agent_1aa57cdad849a5aa0fd9a32a4813c0a5a9" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_csv_agent::num_entries</definition>
+        <argsstring></argsstring>
+        <name>num_entries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="52" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__csv__agent_1ac58e0cb940257410f80ba13098a96d04" prot="public" static="no" mutable="no">
+        <type>const struct <ref refid="structfsti__csv__entry" kindref="compound">fsti_csv_entry</ref> *</type>
+        <definition>const struct fsti_csv_entry* fsti_csv_agent::entries</definition>
+        <argsstring></argsstring>
+        <name>entries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="53" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="24">
+        <label>fsti_csv_entry</label>
+        <link refid="structfsti__csv__entry"/>
+        <childnode refid="25" relation="usage">
+          <edgelabel>transformer</edgelabel>
+        </childnode>
+      </node>
+      <node id="26">
+        <label>fsti_value</label>
+        <link refid="unionfsti__value"/>
+      </node>
+      <node id="25">
+        <label>fsti_variant</label>
+        <link refid="structfsti__variant"/>
+        <childnode refid="26" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="23">
+        <label>fsti_agent</label>
+        <link refid="structfsti__agent"/>
+      </node>
+      <node id="22">
+        <label>fsti_csv_agent</label>
+        <link refid="structfsti__csv__agent"/>
+        <childnode refid="23" relation="usage">
+          <edgelabel>agent</edgelabel>
+        </childnode>
+        <childnode refid="24" relation="usage">
+          <edgelabel>entries</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="50" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="50" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structfsti__csv__agent_1a4323ae2babc1ce9fe676937a98e25d23" prot="public" virt="non-virtual"><scope>fsti_csv_agent</scope><name>agent</name></member>
+      <member refid="structfsti__csv__agent_1ac58e0cb940257410f80ba13098a96d04" prot="public" virt="non-virtual"><scope>fsti_csv_agent</scope><name>entries</name></member>
+      <member refid="structfsti__csv__agent_1aa57cdad849a5aa0fd9a32a4813c0a5a9" prot="public" virt="non-virtual"><scope>fsti_csv_agent</scope><name>num_entries</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

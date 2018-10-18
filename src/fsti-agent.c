@@ -6,6 +6,9 @@
 
 struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
+/**
+ * Description of the fsti_agent_print_csv function
+ */
 void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent)
 {
     FSTI_AGENT_PRINT_CSV(f, id, agent);

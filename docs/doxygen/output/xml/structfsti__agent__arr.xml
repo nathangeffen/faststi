@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__agent__arr" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_agent_arr</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
+        <definition>struct fsti_agent* fsti_agent_arr::agents</definition>
+        <argsstring></argsstring>
+        <name>agents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="66" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_agent_arr::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="67" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t fsti_agent_arr::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="68" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref> *</type>
+        <definition>struct fsti_ind_list* fsti_agent_arr::ind_list</definition>
+        <argsstring></argsstring>
+        <name>ind_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="69" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="6">
+        <label>fsti_agent_ind</label>
+        <link refid="structfsti__agent__ind"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>agent_arr</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>fsti_ind_list</label>
+        <link refid="structfsti__ind__list"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>ind</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>fsti_agent</label>
+        <link refid="structfsti__agent"/>
+      </node>
+      <node id="3">
+        <label>fsti_agent_arr</label>
+        <link refid="structfsti__agent__arr"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>agents</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>ind_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="65" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="65" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" prot="public" virt="non-virtual"><scope>fsti_agent_arr</scope><name>agents</name></member>
+      <member refid="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" prot="public" virt="non-virtual"><scope>fsti_agent_arr</scope><name>capacity</name></member>
+      <member refid="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" prot="public" virt="non-virtual"><scope>fsti_agent_arr</scope><name>ind_list</name></member>
+      <member refid="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" prot="public" virt="non-virtual"><scope>fsti_agent_arr</scope><name>len</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

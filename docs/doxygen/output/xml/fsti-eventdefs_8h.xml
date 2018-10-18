@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-eventdefs_8h" kind="file" language="C++">
+    <compoundname>fsti-eventdefs.h</compoundname>
+    <includes local="yes">utils/uthash.h</includes>
+    <includes refid="fsti-defs_8h" local="yes">fsti-defs.h</includes>
+    <includes refid="fsti-error_8h" local="yes">fsti-error.h</includes>
+    <includedby refid="fsti-eventdefs_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c</includedby>
+    <includedby refid="fsti-simulation_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</includedby>
+    <incdepgraph>
+      <node id="178">
+        <label>stdbool.h</label>
+      </node>
+      <node id="182">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="180">
+        <label>assert.h</label>
+      </node>
+      <node id="179">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h_source"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+      </node>
+      <node id="174">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="176">
+        <label>stdlib.h</label>
+      </node>
+      <node id="181">
+        <label>errno.h</label>
+      </node>
+      <node id="177">
+        <label>stddef.h</label>
+      </node>
+      <node id="175">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h_source"/>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+      </node>
+      <node id="173">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="185">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
+        <link refid="fsti-events_8h_source"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.h</label>
+        <link refid="fsti-simset_8h_source"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+      </node>
+      <node id="184">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h_source"/>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
+        <link refid="fsti-report_8h_source"/>
+        <childnode refid="185" relation="include">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfsti__event__array" prot="public">fsti_event_array</innerclass>
+    <innerclass refid="structfsti__event__register" prot="public">fsti_event_register</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="fsti-eventdefs_8h_1abce6b23e84620b4f4433c952fa10f0b9" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* fsti_event) (struct fsti_simulation *)</definition>
+        <argsstring>)(struct fsti_simulation *)</argsstring>
+        <name>fsti_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="10" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-eventdefs_8h_1aa0b6464d8da748522498a11bc033fee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_register_add</definition>
+        <argsstring>(const char *event_name, fsti_event event)</argsstring>
+        <name>fsti_register_add</name>
+        <param>
+          <type>const char *</type>
+          <declname>event_name</declname>
+        </param>
+        <param>
+          <type>fsti_event</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="24" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="6" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-eventdefs_8h_1ab8a67816c82580412dd9c89b610d43ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>fsti_event</type>
+        <definition>fsti_event fsti_register_get</definition>
+        <argsstring>(const char *event_name)</argsstring>
+        <name>fsti_register_get</name>
+        <param>
+          <type>const char *</type>
+          <declname>event_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="25" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="20" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="fsti-eventdefs_8h_1a57f74d766c59e7d2ad998981c4c00a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fsti_register_free</definition>
+        <argsstring>()</argsstring>
+        <name>fsti_register_free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h" line="26" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.c" bodystart="29" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_EVENTDEFS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_EVENTDEFS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/uthash.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-defs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*fsti_event)<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simulation" kindref="compound">fsti_simulation</ref><sp/>*);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structfsti__event__array" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__array" kindref="compound">fsti_event_array</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>capacity;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_event<sp/>*events;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="structfsti__event__register" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__event__register" kindref="compound">fsti_event_register</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>event_name[FSTI_KEY_LEN];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_event<sp/>event;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>UT_hash_handle<sp/>hh;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_register_add(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*event_name,<sp/>fsti_event<sp/>event);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">fsti_event<sp/>fsti_register_get(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*event_name);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_register_free();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-eventdefs.h"/>
+  </compounddef>
+</doxygen>
