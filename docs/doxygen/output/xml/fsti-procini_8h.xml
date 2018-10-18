@@ -8,75 +8,99 @@
     <includedby refid="fsti-procini_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c</includedby>
     <includedby refid="fsti-simset_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</includedby>
     <incdepgraph>
-      <node id="303">
+      <node id="369">
         <label>stdbool.h</label>
       </node>
-      <node id="296">
+      <node id="362">
         <label>assert.h</label>
       </node>
-      <node id="298">
+      <node id="364">
         <label>stdlib.h</label>
       </node>
-      <node id="302">
+      <node id="368">
         <label>stddef.h</label>
       </node>
-      <node id="295">
+      <node id="361">
         <label>fsti-config.h</label>
-        <link refid="fsti-config_8h_source"/>
-        <childnode refid="296" relation="include">
+        <link refid="fsti-config_8h"/>
+        <childnode refid="362" relation="include">
         </childnode>
-        <childnode refid="297" relation="include">
+        <childnode refid="363" relation="include">
         </childnode>
-        <childnode refid="298" relation="include">
+        <childnode refid="364" relation="include">
         </childnode>
-        <childnode refid="299" relation="include">
+        <childnode refid="365" relation="include">
         </childnode>
-        <childnode refid="300" relation="include">
+        <childnode refid="366" relation="include">
         </childnode>
-        <childnode refid="301" relation="include">
+        <childnode refid="367" relation="include">
         </childnode>
       </node>
-      <node id="299">
+      <node id="365">
         <label>string.h</label>
       </node>
-      <node id="300">
+      <node id="366">
         <label>utils/utils.h</label>
       </node>
-      <node id="301">
+      <node id="367">
         <label>fsti-defs.h</label>
-        <link refid="fsti-defs_8h_source"/>
-        <childnode refid="298" relation="include">
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="364" relation="include">
         </childnode>
-        <childnode refid="302" relation="include">
+        <childnode refid="368" relation="include">
         </childnode>
-        <childnode refid="303" relation="include">
+        <childnode refid="369" relation="include">
         </childnode>
       </node>
-      <node id="294">
+      <node id="360">
         <label>glib.h</label>
       </node>
-      <node id="293">
+      <node id="359">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
         <link refid="fsti-procini_8h"/>
-        <childnode refid="294" relation="include">
+        <childnode refid="360" relation="include">
         </childnode>
-        <childnode refid="295" relation="include">
+        <childnode refid="361" relation="include">
         </childnode>
       </node>
-      <node id="297">
+      <node id="363">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="304">
+      <node id="373">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="372">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="375">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</label>
+        <link refid="fsti-simset_8c"/>
+      </node>
+      <node id="374">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c</label>
+        <link refid="fsti-procini_8c"/>
+      </node>
+      <node id="370">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.h</label>
         <link refid="fsti-procini_8h"/>
-        <childnode refid="305" relation="include">
+        <childnode refid="371" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="375" relation="include">
         </childnode>
       </node>
-      <node id="305">
+      <node id="371">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
-        <link refid="fsti_8h_source"/>
+        <link refid="fsti_8h"/>
+        <childnode refid="372" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
       <sectiondef kind="func">
@@ -111,9 +135,9 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_PROCINI_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;glib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-config_8h" kindref="compound">fsti-config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_read_ini(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename,<sp/>GKeyFile<sp/>*<sp/>key_file);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-procini_8h_1a438ad09d742e78ab09216d2b532f02bd" kindref="member">fsti_read_ini</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename,<sp/>GKeyFile<sp/>*<sp/><ref refid="structfsti__simset_1a8375a8f4e415c4a93ad7c00c9bea3f11" kindref="member">key_file</ref>);</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>

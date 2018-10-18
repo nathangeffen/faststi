@@ -12,260 +12,260 @@
     <includes local="yes">utils/utils.h</includes>
     <includes refid="fsti_8h" local="yes">fsti.h</includes>
     <incdepgraph>
-      <node id="250">
+      <node id="316">
         <label>stdbool.h</label>
       </node>
-      <node id="256">
+      <node id="322">
         <label>stdatomic.h</label>
       </node>
-      <node id="259">
+      <node id="325">
         <label>fsti-userdefs.h</label>
-        <link refid="fsti-userdefs_8h_source"/>
+        <link refid="fsti-userdefs_8h"/>
       </node>
-      <node id="245">
+      <node id="311">
         <label>assert.h</label>
       </node>
-      <node id="254">
+      <node id="320">
         <label>fsti-error.h</label>
-        <link refid="fsti-error_8h_source"/>
-        <childnode refid="245" relation="include">
+        <link refid="fsti-error_8h"/>
+        <childnode refid="311" relation="include">
         </childnode>
-        <childnode refid="255" relation="include">
+        <childnode refid="321" relation="include">
         </childnode>
-        <childnode refid="250" relation="include">
+        <childnode refid="316" relation="include">
         </childnode>
-        <childnode refid="256" relation="include">
+        <childnode refid="322" relation="include">
         </childnode>
       </node>
-      <node id="269">
+      <node id="335">
         <label>float.h</label>
       </node>
-      <node id="273">
+      <node id="339">
         <label>utils/uthash.h</label>
       </node>
-      <node id="262">
+      <node id="328">
         <label>stdint.h</label>
       </node>
-      <node id="267">
+      <node id="333">
         <label>fsti-events.h</label>
-        <link refid="fsti-events_8h_source"/>
-        <childnode refid="262" relation="include">
+        <link refid="fsti-events_8h"/>
+        <childnode refid="328" relation="include">
         </childnode>
-        <childnode refid="268" relation="include">
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="269" relation="include">
+        <childnode refid="335" relation="include">
         </childnode>
-        <childnode refid="270" relation="include">
+        <childnode refid="336" relation="include">
         </childnode>
-        <childnode refid="271" relation="include">
+        <childnode refid="337" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="274" relation="include">
+        <childnode refid="340" relation="include">
         </childnode>
-        <childnode refid="260" relation="include">
+        <childnode refid="326" relation="include">
         </childnode>
-        <childnode refid="259" relation="include">
+        <childnode refid="325" relation="include">
         </childnode>
       </node>
-      <node id="248">
+      <node id="314">
         <label>stdlib.h</label>
       </node>
-      <node id="255">
+      <node id="321">
         <label>errno.h</label>
       </node>
-      <node id="258">
+      <node id="324">
         <label>stddef.h</label>
       </node>
-      <node id="268">
+      <node id="334">
         <label>limits.h</label>
       </node>
-      <node id="264">
+      <node id="330">
         <label>fsti-config.h</label>
-        <link refid="fsti-config_8h_source"/>
-        <childnode refid="245" relation="include">
+        <link refid="fsti-config_8h"/>
+        <childnode refid="311" relation="include">
         </childnode>
-        <childnode refid="247" relation="include">
+        <childnode refid="313" relation="include">
         </childnode>
-        <childnode refid="248" relation="include">
+        <childnode refid="314" relation="include">
         </childnode>
-        <childnode refid="249" relation="include">
+        <childnode refid="315" relation="include">
         </childnode>
-        <childnode refid="252" relation="include">
+        <childnode refid="318" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
       </node>
-      <node id="249">
+      <node id="315">
         <label>string.h</label>
       </node>
-      <node id="252">
+      <node id="318">
         <label>utils/utils.h</label>
       </node>
-      <node id="263">
+      <node id="329">
         <label>fsti-defaults.h</label>
-        <link refid="fsti-defaults_8h_source"/>
-        <childnode refid="264" relation="include">
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="330" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="259" relation="include">
+        <childnode refid="325" relation="include">
         </childnode>
       </node>
-      <node id="257">
+      <node id="323">
         <label>fsti-defs.h</label>
-        <link refid="fsti-defs_8h_source"/>
-        <childnode refid="248" relation="include">
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="314" relation="include">
         </childnode>
-        <childnode refid="258" relation="include">
+        <childnode refid="324" relation="include">
         </childnode>
-        <childnode refid="250" relation="include">
+        <childnode refid="316" relation="include">
         </childnode>
       </node>
-      <node id="260">
+      <node id="326">
         <label>fsti-agent.h</label>
-        <link refid="fsti-agent_8h_source"/>
-        <childnode refid="247" relation="include">
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="313" relation="include">
         </childnode>
-        <childnode refid="261" relation="include">
+        <childnode refid="327" relation="include">
         </childnode>
-        <childnode refid="262" relation="include">
+        <childnode refid="328" relation="include">
         </childnode>
-        <childnode refid="252" relation="include">
+        <childnode refid="318" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="263" relation="include">
+        <childnode refid="329" relation="include">
         </childnode>
       </node>
-      <node id="272">
+      <node id="338">
         <label>fsti-eventdefs.h</label>
-        <link refid="fsti-eventdefs_8h_source"/>
-        <childnode refid="273" relation="include">
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="339" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="254" relation="include">
+        <childnode refid="320" relation="include">
         </childnode>
       </node>
-      <node id="244">
+      <node id="310">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
         <link refid="fsti-main_8c"/>
-        <childnode refid="245" relation="include">
+        <childnode refid="311" relation="include">
         </childnode>
-        <childnode refid="246" relation="include">
+        <childnode refid="312" relation="include">
         </childnode>
-        <childnode refid="247" relation="include">
+        <childnode refid="313" relation="include">
         </childnode>
-        <childnode refid="248" relation="include">
+        <childnode refid="314" relation="include">
         </childnode>
-        <childnode refid="249" relation="include">
+        <childnode refid="315" relation="include">
         </childnode>
-        <childnode refid="250" relation="include">
+        <childnode refid="316" relation="include">
         </childnode>
-        <childnode refid="251" relation="include">
+        <childnode refid="317" relation="include">
         </childnode>
-        <childnode refid="252" relation="include">
+        <childnode refid="318" relation="include">
         </childnode>
-        <childnode refid="253" relation="include">
+        <childnode refid="319" relation="include">
         </childnode>
       </node>
-      <node id="251">
+      <node id="317">
         <label>glib.h</label>
       </node>
-      <node id="270">
+      <node id="336">
         <label>math.h</label>
       </node>
-      <node id="275">
+      <node id="341">
         <label>fsti-simset.h</label>
-        <link refid="fsti-simset_8h_source"/>
-        <childnode refid="250" relation="include">
+        <link refid="fsti-simset_8h"/>
+        <childnode refid="316" relation="include">
         </childnode>
-        <childnode refid="251" relation="include">
+        <childnode refid="317" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
+        <childnode refid="330" relation="include">
         </childnode>
-        <childnode refid="271" relation="include">
+        <childnode refid="337" relation="include">
         </childnode>
       </node>
-      <node id="271">
+      <node id="337">
         <label>fsti-simulation.h</label>
-        <link refid="fsti-simulation_8h_source"/>
-        <childnode refid="261" relation="include">
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="327" relation="include">
         </childnode>
-        <childnode refid="260" relation="include">
+        <childnode refid="326" relation="include">
         </childnode>
-        <childnode refid="272" relation="include">
+        <childnode refid="338" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
+        <childnode refid="330" relation="include">
         </childnode>
-        <childnode refid="263" relation="include">
+        <childnode refid="329" relation="include">
         </childnode>
       </node>
-      <node id="266">
+      <node id="332">
         <label>fsti-procini.h</label>
-        <link refid="fsti-procini_8h_source"/>
-        <childnode refid="251" relation="include">
+        <link refid="fsti-procini_8h"/>
+        <childnode refid="317" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
+        <childnode refid="330" relation="include">
         </childnode>
       </node>
-      <node id="261">
+      <node id="327">
         <label>gsl/gsl_rng.h</label>
       </node>
-      <node id="247">
+      <node id="313">
         <label>stdio.h</label>
       </node>
-      <node id="274">
+      <node id="340">
         <label>fsti-report.h</label>
-        <link refid="fsti-report_8h_source"/>
-        <childnode refid="262" relation="include">
+        <link refid="fsti-report_8h"/>
+        <childnode refid="328" relation="include">
         </childnode>
-        <childnode refid="268" relation="include">
+        <childnode refid="334" relation="include">
         </childnode>
-        <childnode refid="269" relation="include">
+        <childnode refid="335" relation="include">
         </childnode>
-        <childnode refid="270" relation="include">
+        <childnode refid="336" relation="include">
         </childnode>
-        <childnode refid="271" relation="include">
+        <childnode refid="337" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="260" relation="include">
+        <childnode refid="326" relation="include">
         </childnode>
       </node>
-      <node id="246">
+      <node id="312">
         <label>locale.h</label>
       </node>
-      <node id="253">
+      <node id="319">
         <label>fsti.h</label>
-        <link refid="fsti_8h_source"/>
-        <childnode refid="254" relation="include">
+        <link refid="fsti_8h"/>
+        <childnode refid="320" relation="include">
         </childnode>
-        <childnode refid="257" relation="include">
+        <childnode refid="323" relation="include">
         </childnode>
-        <childnode refid="259" relation="include">
+        <childnode refid="325" relation="include">
         </childnode>
-        <childnode refid="260" relation="include">
+        <childnode refid="326" relation="include">
         </childnode>
-        <childnode refid="265" relation="include">
+        <childnode refid="331" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
+        <childnode refid="330" relation="include">
         </childnode>
-        <childnode refid="263" relation="include">
+        <childnode refid="329" relation="include">
         </childnode>
-        <childnode refid="266" relation="include">
+        <childnode refid="332" relation="include">
         </childnode>
-        <childnode refid="267" relation="include">
+        <childnode refid="333" relation="include">
         </childnode>
-        <childnode refid="275" relation="include">
+        <childnode refid="341" relation="include">
         </childnode>
-        <childnode refid="271" relation="include">
+        <childnode refid="337" relation="include">
         </childnode>
       </node>
-      <node id="265">
+      <node id="331">
         <label>fsti-tests.h</label>
-        <link refid="fsti-tests_8h_source"/>
+        <link refid="fsti-tests_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="var">
@@ -425,7 +425,7 @@
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;glib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/utils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti_8h" kindref="compound">fsti.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>test<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>print_config<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*config_filename<sp/>=<sp/>NULL;</highlight></codeline>
@@ -463,14 +463,14 @@
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>g_option_context_free(context);</highlight></codeline>
 <codeline lineno="47"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free_statics()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-main_8c_1a8efc163df9c5301b50fcffeb39782b62" kindref="member">free_statics</ref>()</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>free(config_filename);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>g_strfreev(config_strings);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simset" kindref="compound">fsti_simset</ref><sp/>simset;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
@@ -479,22 +479,22 @@
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test)</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fsti_tests();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8c_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>();</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_simset_init(&amp;simset);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ae663244aa372d7aec96fc021986b5cd3" kindref="member">fsti_simset_init</ref>(&amp;simset);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config_filename)</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsti_simset_load_config_file(&amp;simset,<sp/>config_filename);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config_strings)</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsti_simset_load_config_strings(&amp;simset,<sp/>config_strings);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a8635ad080108f9d35e1e0f01d9e7c855" kindref="member">fsti_simset_load_config_file</ref>(&amp;simset,<sp/>config_filename);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab81c9af7043163aa922dd03128d18f91" kindref="member">fsti_simset_load_config_strings</ref>(&amp;simset,<sp/><ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(print_config)</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_config_print_all(&amp;simset.config);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8c_1a0ac007ff2f6adaabfb434a239cf36b6c" kindref="member">fsti_config_print_all</ref>(&amp;simset.config);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_simset_set_csv(&amp;simset,<sp/>&amp;fsti_global_csv);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_simset_exec(&amp;simset);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a08f81ac2f9dab77ce689ffb90499d4c5" kindref="member">fsti_simset_set_csv</ref>(&amp;simset,<sp/>&amp;<ref refid="fsti-events_8c_1a7f2bcfae00114763a58e88a609eacf3e" kindref="member">fsti_global_csv</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab874d71469d5e16d9dbff4aea5faf945" kindref="member">fsti_simset_exec</ref>(&amp;simset);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>fsti_simset_free(&amp;simset);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>free_statics();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1aea0fceda1ad3ad46c434837f7eee4fb4" kindref="member">fsti_simset_free</ref>(&amp;simset);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-main_8c_1a8efc163df9c5301b50fcffeb39782b62" kindref="member">free_statics</ref>();</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal">}</highlight></codeline>

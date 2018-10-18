@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="unionfsti__value" kind="union" language="C++" prot="public">
     <compoundname>fsti_value</compoundname>
+    <includes refid="fsti-defs_8h" local="no">fsti-defs.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="unionfsti__value_1a447fe3b0025c905b135bd83644de1835" prot="public" static="no" mutable="no">
         <type>long</type>

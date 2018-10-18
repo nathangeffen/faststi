@@ -6,75 +6,75 @@
     <includes refid="fsti-userdefs_8h" local="yes">fsti-userdefs.h</includes>
     <includes refid="fsti-defaults_8h" local="yes">fsti-defaults.h</includes>
     <incdepgraph>
-      <node id="82">
+      <node id="101">
         <label>stdbool.h</label>
       </node>
-      <node id="83">
+      <node id="102">
         <label>fsti-userdefs.h</label>
-        <link refid="fsti-userdefs_8h_source"/>
+        <link refid="fsti-userdefs_8h"/>
       </node>
-      <node id="86">
+      <node id="105">
         <label>assert.h</label>
       </node>
-      <node id="80">
+      <node id="99">
         <label>stdlib.h</label>
       </node>
-      <node id="81">
+      <node id="100">
         <label>stddef.h</label>
       </node>
-      <node id="85">
+      <node id="104">
         <label>fsti-config.h</label>
-        <link refid="fsti-config_8h_source"/>
-        <childnode refid="86" relation="include">
+        <link refid="fsti-config_8h"/>
+        <childnode refid="105" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
+        <childnode refid="107" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="108" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
       </node>
-      <node id="88">
+      <node id="107">
         <label>string.h</label>
       </node>
-      <node id="89">
+      <node id="108">
         <label>utils/utils.h</label>
       </node>
-      <node id="78">
+      <node id="97">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defaults.c</label>
         <link refid="fsti-defaults_8c"/>
-        <childnode refid="79" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="102" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="103" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="103">
         <label>fsti-defaults.h</label>
-        <link refid="fsti-defaults_8h_source"/>
-        <childnode refid="85" relation="include">
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="102" relation="include">
         </childnode>
       </node>
-      <node id="79">
+      <node id="98">
         <label>fsti-defs.h</label>
-        <link refid="fsti-defs_8h_source"/>
-        <childnode refid="80" relation="include">
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="99" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="100" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="101" relation="include">
         </childnode>
       </node>
-      <node id="87">
+      <node id="106">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
@@ -137,90 +137,90 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;fsti-defs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-userdefs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-defaults.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-userdefs_8h" kindref="compound">fsti-userdefs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defaults_8h" kindref="compound">fsti-defaults.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_YEAR<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MONTH<sp/>12.0<sp/>/<sp/>365.0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_DAY<sp/>1.0<sp/>/<sp/>365.0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fsti_config_set_default(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-defaults_8c_1ac17ffcd08e1c5eff41d7a65f637c4b06" kindref="member">fsti_config_set_default</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__config" kindref="compound">fsti_config</ref><sp/>*config)</highlight></codeline>
 <codeline lineno="10"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_SIMULATIONS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_SIMULATIONS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>simulations<sp/>to<sp/>execute<sp/>(default<sp/>is<sp/>1)&quot;</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_THREADS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_THREADS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>threads.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Default<sp/>is<sp/>1<sp/>thread.<sp/>0<sp/>uses<sp/>number<sp/>of<sp/>cores.&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;TIME_STEP&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;TIME_STEP&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Time<sp/>step<sp/>for<sp/>each<sp/>iteration<sp/>of<sp/>simulation&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FSTI_DAY);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_AGENTS&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>agents&quot;</highlight><highlight class="normal">,<sp/>1000);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;START_DATE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Start<sp/>date<sp/>of<sp/>simulation&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8c_1a0f432da276170c31a022497ecb26c0db" kindref="member">FSTI_DAY</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;NUM_AGENTS&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>agents&quot;</highlight><highlight class="normal">,<sp/>1000);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;START_DATE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Start<sp/>date<sp/>of<sp/>simulation&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2018);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;END_DATE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;End<sp/>date<sp/>of<sp/>simulation&quot;</highlight><highlight class="normal">,<sp/>2028);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;STABILIZATION_STEPS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;END_DATE&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;End<sp/>date<sp/>of<sp/>simulation&quot;</highlight><highlight class="normal">,<sp/>2028);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;STABILIZATION_STEPS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>time<sp/>steps<sp/>to<sp/>run<sp/>before<sp/>executing<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;various<sp/>events&quot;</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;MATCH_K&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;MATCH_K&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Value<sp/>for<sp/>k<sp/>when<sp/>using<sp/>matching<sp/>algorithms.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;MATING_PROB&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;MATING_PROB&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Value<sp/>for<sp/>k<sp/>when<sp/>using<sp/>matching<sp/>algorithms.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.05);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_MALE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_MALE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Probability<sp/>an<sp/>agent<sp/>is<sp/>males.&quot;</highlight><highlight class="normal">,<sp/>0.5);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_MSM&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_MSM&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Probability<sp/>a<sp/>male<sp/>is<sp/>MSM.&quot;</highlight><highlight class="normal">,<sp/>0.05);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_WSW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;PROB_WSW&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Probability<sp/>a<sp/>female<sp/>is<sp/>WSW.&quot;</highlight><highlight class="normal">,<sp/>0.05);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;AGE_MIN&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AGE_MIN&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Lower<sp/>end<sp/>of<sp/>uniformly<sp/>distributed<sp/>age<sp/>for<sp/>new<sp/>agents.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>15.0);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;AGE_RANGE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AGE_RANGE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Uniformly<sp/>distributed<sp/>size<sp/>of<sp/>age<sp/>range<sp/>for<sp/>new<sp/>agents.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>25.0);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;INITIAL_INFECTION_RATE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;INITIAL_INFECTION_RATE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Initial<sp/>infection<sp/>rate<sp/>for<sp/>the<sp/>population.&quot;</highlight><highlight class="normal">,<sp/><sp/>0.01);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;INITIAL_SINGLE_RATE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;INITIAL_SINGLE_RATE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Initial<sp/>proportion<sp/>of<sp/>population<sp/>that<sp/>is<sp/>single.&quot;</highlight><highlight class="normal">,<sp/><sp/>0.5);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;BEFORE_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;BEFORE_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Events<sp/>executed<sp/>before<sp/>a<sp/>simulation<sp/>starts&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;_GENERATE_AGENTS&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;DURING_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;DURING_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Events<sp/>executed<sp/>on<sp/>every<sp/>time<sp/>step<sp/>of<sp/>a<sp/>simulation&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;_AGE&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref><sp/>variant[]<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{(</highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref>)<sp/>{.str=</highlight><highlight class="stringliteral">&quot;_REPORT&quot;</highlight><highlight class="normal">},<sp/>STR},</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{(</highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref>)<sp/>{.str=</highlight><highlight class="stringliteral">&quot;_WRITE_AGENTS_CSV&quot;</highlight><highlight class="normal">},<sp/>STR}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{(</highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref>)<sp/>{.str=</highlight><highlight class="stringliteral">&quot;_REPORT&quot;</highlight><highlight class="normal">},<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaec41e801b43cfbec49d343c900360bf9" kindref="member">STR</ref>},</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{(</highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionfsti__value" kindref="compound">fsti_value</ref>)<sp/>{.str=</highlight><highlight class="stringliteral">&quot;_WRITE_AGENTS_CSV&quot;</highlight><highlight class="normal">},<sp/><ref refid="fsti-defs_8h_1ab12bd8dfbafbc55e2015aac7926007cfaec41e801b43cfbec49d343c900360bf9" kindref="member">STR</ref>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsti_config_add_arr(config,<sp/></highlight><highlight class="stringliteral">&quot;AFTER_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-config_8c_1a5d0a69eb0415adc0b32d29a92c002890" kindref="member">fsti_config_add_arr</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AFTER_EVENTS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Events<sp/>executed<sp/>before<sp/>a<sp/>simulation<sp/>starts&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>variant,</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(variant)<sp/>/</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__variant" kindref="compound">fsti_variant</ref>));</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;STOP_EVENT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;STOP_EVENT&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Event<sp/>that<sp/>decides<sp/>if<sp/>simulation<sp/>should<sp/>stop&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;_STOP&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;AGENTS_INPUT_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AGENTS_INPUT_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Name<sp/>of<sp/>csv<sp/>file<sp/>containing<sp/>agents&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;agents_in.csv&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;MUTUAL_CSV_PARTNERS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;MUTUAL_CSV_PARTNERS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;After<sp/>initializing<sp/>agents,<sp/>make<sp/>all<sp/>partnerships<sp/>mutual&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;REPORT_FREQUENCY&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;REPORT_FREQUENCY&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Frequency<sp/>that<sp/>report<sp/>event<sp/>is<sp/>generated&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;RESULTS_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;RESULTS_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;File<sp/>name<sp/>to<sp/>output<sp/>results<sp/>to<sp/>(empty<sp/>string<sp/>for<sp/>stdout)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;AGENTS_OUTPUT_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;AGENTS_OUTPUT_FILE&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;File<sp/>name<sp/>to<sp/>output<sp/>results<sp/>to<sp/>(empty<sp/>string<sp/>for<sp/>stdout)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_CONFIG_ADD(config,<sp/></highlight><highlight class="stringliteral">&quot;THREADS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8h_1afa6ddaacee2774aa511014d325d62d84" kindref="member">FSTI_CONFIG_ADD</ref>(config,<sp/></highlight><highlight class="stringliteral">&quot;THREADS&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>threads<sp/>(1=no<sp/>threading,<sp/>0=system<sp/>determined)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_ADDITIONAL_CONFIG_VARS(config);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8h_1afddc44c41cd9a27367b2e0b713a8d8db" kindref="member">FSTI_ADDITIONAL_CONFIG_VARS</ref>(config);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal">}</highlight></codeline>

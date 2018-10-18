@@ -17,7 +17,7 @@
     <member refid="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" kind="variable"><name>cured</name></member>
     <member refid="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" kind="variable"><name>date_death</name></member>
     <member refid="structfsti__agent_1a292854517270b640c6fdc35980e66637" kind="variable"><name>cause_of_death</name></member>
-    <member refid="structfsti__agent_1a318923c6b94c80da4f27fdad77c711ab" kind="variable"><name>partners</name></member>
+    <member refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" kind="variable"><name>partners</name></member>
     <member refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" kind="variable"><name>num_partners</name></member>
   </compound>
   <compound refid="structfsti__agent__arr" kind="struct"><name>fsti_agent_arr</name>
@@ -33,11 +33,11 @@
     <member refid="structfsti__agent__ind_1a6fb589d3c9ed085bff1be5f3e90f6ccb" kind="variable"><name>agent_arr</name></member>
   </compound>
   <compound refid="structfsti__config" kind="struct"><name>fsti_config</name>
-    <member refid="structfsti__config_1a81f93171eff88117abb294a1a168c245" kind="variable"><name>entry</name></member>
+    <member refid="structfsti__config_1a40fb82d864e3f7f8feaf9501d966ed28" kind="variable"><name>entry</name></member>
   </compound>
   <compound refid="structfsti__config__entry" kind="struct"><name>fsti_config_entry</name>
-    <member refid="structfsti__config__entry_1ad93155316f1351abbc99b94a9d781b28" kind="variable"><name>key</name></member>
-    <member refid="structfsti__config__entry_1a31c11ad557aab27565763928b6180363" kind="variable"><name>description</name></member>
+    <member refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" kind="variable"><name>key</name></member>
+    <member refid="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" kind="variable"><name>description</name></member>
     <member refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" kind="variable"><name>variants</name></member>
     <member refid="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" kind="variable"><name>len</name></member>
     <member refid="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" kind="variable"><name>next</name></member>
@@ -57,7 +57,7 @@
     <member refid="structfsti__event__array_1a71cfad0ae250352091479f8bfebd6fcb" kind="variable"><name>events</name></member>
   </compound>
   <compound refid="structfsti__event__register" kind="struct"><name>fsti_event_register</name>
-    <member refid="structfsti__event__register_1ac8fc7fe0daffe4f15f269295a45391df" kind="variable"><name>event_name</name></member>
+    <member refid="structfsti__event__register_1a53599c5b66b6ffb395ab8db972da363a" kind="variable"><name>event_name</name></member>
     <member refid="structfsti__event__register_1af0894dde71c78fbcbb04733de4bd4857" kind="variable"><name>event</name></member>
     <member refid="structfsti__event__register_1a0e7eff8a88f39452ca3e25ef6616ebbf" kind="variable"><name>hh</name></member>
   </compound>
@@ -350,7 +350,7 @@
   <compound refid="fsti-error_8c" kind="file"><name>fsti-error.c</name>
     <member refid="fsti-error_8c_1a73e3216fb5d7453e74727559c51b2582" kind="define"><name>ERROR_MSG_LEN</name></member>
     <member refid="fsti-error_8c_1a2fa89546149e592da51f9cd5324ddb1a" kind="variable"><name>fsti_error</name></member>
-    <member refid="fsti-error_8c_1aba3e0e3ec6306eb22ae30124357a878e" kind="variable"><name>fsti_error_string</name></member>
+    <member refid="fsti-error_8c_1a99f70ec33b72be8e72a89fc904bcdb36" kind="variable"><name>fsti_error_string</name></member>
     <member refid="fsti-error_8c_1aa816d4518d32fccf93d6989309eefa04" kind="variable"><name>fsti_output_error_messages</name></member>
     <member refid="fsti-error_8c_1af06abad6908dc30d87bb7602f867afb5" kind="function"><name>fsti_error_message</name></member>
     <member refid="fsti-error_8c_1a07bba2015aafadb550151f076c6b7843" kind="function"><name>fsti_error_msg</name></member>
@@ -389,7 +389,7 @@
     <member refid="fsti-error_8h_1a385c44f6fb256e5716a2302a5b940388aecf4a87c0022e71eaf6341ed19f0baee" kind="enumvalue"><name>FSTI_ERR_INVALID_VALUE</name></member>
     <member refid="fsti-error_8h_1aa816d4518d32fccf93d6989309eefa04" kind="variable"><name>fsti_output_error_messages</name></member>
     <member refid="fsti-error_8h_1a2fa89546149e592da51f9cd5324ddb1a" kind="variable"><name>fsti_error</name></member>
-    <member refid="fsti-error_8h_1aba3e0e3ec6306eb22ae30124357a878e" kind="variable"><name>fsti_error_string</name></member>
+    <member refid="fsti-error_8h_1a99f70ec33b72be8e72a89fc904bcdb36" kind="variable"><name>fsti_error_string</name></member>
     <member refid="fsti-error_8h_1a07bba2015aafadb550151f076c6b7843" kind="function"><name>fsti_error_msg</name></member>
     <member refid="fsti-error_8h_1a43bc036e5103ed01c68a28a583ce7e3b" kind="function"><name>fsti_sprintf</name></member>
   </compound>

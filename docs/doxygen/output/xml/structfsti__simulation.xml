@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__simulation" kind="struct" language="C++" prot="public">
     <compoundname>fsti_simulation</compoundname>
+    <includes refid="fsti-simulation_8h" local="no">fsti-simulation.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__simulation_1a093e3692784567c1afd416022ace5b62" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref></type>
@@ -134,7 +135,7 @@
         <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="33" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__simulation_1a736379cc4da7cf9e95fb33a44c865f2f" prot="public" static="no" mutable="no">
-        <type>fsti_event</type>
+        <type><ref refid="fsti-eventdefs_8h_1abce6b23e84620b4f4433c952fa10f0b9" kindref="member">fsti_event</ref></type>
         <definition>fsti_event fsti_simulation::stop_event</definition>
         <argsstring></argsstring>
         <name>stop_event</name>
@@ -186,7 +187,7 @@
         <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" line="34" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simulation.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__simulation_1a235faa3cc9ec5bd16cd89fa80cdadff5" prot="public" static="no" mutable="no">
-        <type>enum fsti_simulation_state</type>
+        <type>enum <ref refid="fsti-simulation_8h_1aa4feb4e18e0a72b142f028a7ddf75047" kindref="member">fsti_simulation_state</ref></type>
         <definition>enum fsti_simulation_state fsti_simulation::state</definition>
         <argsstring></argsstring>
         <name>state</name>

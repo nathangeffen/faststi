@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__agent" kind="struct" language="C++" prot="public">
     <compoundname>fsti_agent</compoundname>
+    <includes refid="fsti-agent_8h" local="no">fsti-agent.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__agent_1a132b33c9ffca7e9e89d2a04045b4b7bb" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -211,10 +212,10 @@
         </inbodydescription>
         <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="54" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="54" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structfsti__agent_1a318923c6b94c80da4f27fdad77c711ab" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" prot="public" static="no" mutable="no">
         <type>size_t</type>
-        <definition>size_t fsti_agent::partners[FSTI_MAX_PARTNERS]</definition>
-        <argsstring>[FSTI_MAX_PARTNERS]</argsstring>
+        <definition>size_t fsti_agent::partners[3]</definition>
+        <argsstring>[3]</argsstring>
         <name>partners</name>
         <briefdescription>
         </briefdescription>
@@ -256,7 +257,7 @@
       <member refid="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>infected_date</name></member>
       <member refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>num_partners</name></member>
       <member refid="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>orientation</name></member>
-      <member refid="structfsti__agent_1a318923c6b94c80da4f27fdad77c711ab" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>partners</name></member>
+      <member refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>partners</name></member>
       <member refid="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>sex</name></member>
       <member refid="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>sex_preferred</name></member>
     </listofallmembers>

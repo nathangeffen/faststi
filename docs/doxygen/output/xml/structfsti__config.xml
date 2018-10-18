@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__config" kind="struct" language="C++" prot="public">
     <compoundname>fsti_config</compoundname>
+    <includes refid="fsti-config_8h" local="no">fsti-config.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structfsti__config_1a81f93171eff88117abb294a1a168c245" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structfsti__config_1a40fb82d864e3f7f8feaf9501d966ed28" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structfsti__config__entry" kindref="compound">fsti_config_entry</ref> *</type>
-        <definition>struct fsti_config_entry* fsti_config::entry[FSTI_HASHSIZE]</definition>
-        <argsstring>[FSTI_HASHSIZE]</argsstring>
+        <definition>struct fsti_config_entry* fsti_config::entry[101]</definition>
+        <argsstring>[101]</argsstring>
         <name>entry</name>
         <briefdescription>
         </briefdescription>
@@ -53,7 +54,7 @@
     </collaborationgraph>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="35" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="35" bodyend="37"/>
     <listofallmembers>
-      <member refid="structfsti__config_1a81f93171eff88117abb294a1a168c245" prot="public" virt="non-virtual"><scope>fsti_config</scope><name>entry</name></member>
+      <member refid="structfsti__config_1a40fb82d864e3f7f8feaf9501d966ed28" prot="public" virt="non-virtual"><scope>fsti_config</scope><name>entry</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

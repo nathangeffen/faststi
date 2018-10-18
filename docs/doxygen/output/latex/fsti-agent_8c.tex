@@ -1,0 +1,353 @@
+\hypertarget{fsti-agent_8c}{}\section{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/agent.c File Reference}
+\label{fsti-agent_8c}\index{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/agent.\+c@{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/agent.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsti-\/agent.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_ad24c55a9a2a07b7a0a07a0fb74be112e}{fsti\+\_\+agent\+\_\+print\+\_\+csv}} (F\+I\+LE $\ast$f, unsigned id, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a067437e70d5fe4d1e6f139bab513c6ac}{fsti\+\_\+agent\+\_\+print\+\_\+pretty}} (F\+I\+LE $\ast$f, unsigned id, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent)
+\item 
+bool \mbox{\hyperlink{fsti-agent_8c_ac3681ff2f8616442d578a983ec0c17ea}{fsti\+\_\+agent\+\_\+has\+\_\+partner}} (const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_afaf3c076c60db61e182fb1e5a8eabc77}{fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner}} (struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$a, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$b)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_aab565f3b1fa1cb77b6a83efd3faa72e7}{fsti\+\_\+agent\+\_\+make\+\_\+partners}} (struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$a, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$b)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a69108c3779a3689185b833a70f589225}{fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner}} (struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$a, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$b)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a66a819f51531e6f89f92addab960ae3a}{fsti\+\_\+agent\+\_\+break\+\_\+partners}} (struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$a, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$b)
+\item 
+float \mbox{\hyperlink{fsti-agent_8c_a0624a840237ec82520be71b241220226}{fsti\+\_\+agent\+\_\+default\+\_\+distance}} (const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$a, const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$b)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a63a22afc13737a55174adb97f2cbcfc1}{fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a87de33f5c064440c162d0c8d0f9ccbf8}{fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a2dc08a5f50e57b979f50f6efb927d57c}{fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_ab657b71989567b40adc4ccea49292540}{fsti\+\_\+agent\+\_\+arr\+\_\+init}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a30c755dbd7cd8e98b76ebe65b8dc54a2}{fsti\+\_\+agent\+\_\+arr\+\_\+begin}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a1a5fc4621ece587a603b9b970bc3bd7c}{fsti\+\_\+agent\+\_\+arr\+\_\+end}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a9f01e2df0acb48b1e9cef63d4314c209}{fsti\+\_\+agent\+\_\+arr\+\_\+at}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, size\+\_\+t index)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_aaad30933ebf477fc44ee2f7123d335b6}{fsti\+\_\+agent\+\_\+arr\+\_\+front}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a88eb4bd7a7df9dcbc5b57d3e3e22f9c6}{fsti\+\_\+agent\+\_\+arr\+\_\+back}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a8ea9850f51ba1cc3f842f3730cf22139}{fsti\+\_\+agent\+\_\+partner\+\_\+get}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent, size\+\_\+t index)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_abe4c0c13ceb1a50eb8d9223a7122f269}{fsti\+\_\+agent\+\_\+partner\+\_\+get0}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a0cf9bb69026e48287e83f9d73841f90f}{fsti\+\_\+agent\+\_\+arr\+\_\+push}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$agent)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a140245276760c5ca1467b816dfdb16d9}{fsti\+\_\+agent\+\_\+arr\+\_\+pop}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_ad710a67a71582f5e8a63490c1afe3a3c}{fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a863d835b0643a8d62d8621bd512fd902}{fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a15fb161e3b2c757f6dc7d67af4e6ef3d}{fsti\+\_\+agent\+\_\+ind\+\_\+init}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{fsti-agent_8c_af8ec082c043d0719f2933f78c9b74879}{fsti\+\_\+agent\+\_\+ind\+\_\+begin}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{fsti-agent_8c_a0a007fca1a85b26dc9f890b5c9f5649a}{fsti\+\_\+agent\+\_\+ind\+\_\+end}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{fsti-agent_8c_a4c099994dc5a8cedc1de073fa64bfbcc}{fsti\+\_\+agent\+\_\+ind\+\_\+at}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t index)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a0d3fcfadb1159b63508be133b30f8df7}{fsti\+\_\+agent\+\_\+ind\+\_\+arrp}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t $\ast$it)
+\item 
+struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$ \mbox{\hyperlink{fsti-agent_8c_a0e45e82b7f4f019b1813daf04717b894}{fsti\+\_\+agent\+\_\+ind\+\_\+arr}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t index)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_aeb0ffefe572b09e4e3d8e33571e256da}{fsti\+\_\+agent\+\_\+ind\+\_\+push}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t index)
+\item 
+size\+\_\+t \mbox{\hyperlink{fsti-agent_8c_a40bb88f7ef7f1adc5b3bf76964f5ce03}{fsti\+\_\+agent\+\_\+ind\+\_\+pop}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a9005e4c20f02aff3ad90dafbaa630583}{fsti\+\_\+agent\+\_\+ind\+\_\+remove}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, size\+\_\+t $\ast$it)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_ae598f299bc63165f2f0b5c9d5c72e52c}{fsti\+\_\+agent\+\_\+ind\+\_\+shuffle}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind, gsl\+\_\+rng $\ast$rng)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a762cb927867ee04651d4464b300445de}{fsti\+\_\+agent\+\_\+arr\+\_\+copy}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$dest, struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$src, bool init\+\_\+members)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a6681f5dfe9ce93defe0d395774010080}{fsti\+\_\+agent\+\_\+ind\+\_\+copy}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$dest, struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$src)
+\item 
+size\+\_\+t \mbox{\hyperlink{fsti-agent_8c_a6ec54eca95530e863760046101ac02e1}{fsti\+\_\+agent\+\_\+arr\+\_\+count}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+size\+\_\+t \mbox{\hyperlink{fsti-agent_8c_ab6a4276af0e80540add3d0a612b91071}{fsti\+\_\+agent\+\_\+ind\+\_\+count}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a6ea0014798a460e51b30b2d8af0dda25}{fsti\+\_\+agent\+\_\+ind\+\_\+clear}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_ab9adb18f274475832c5a763be7d001d7}{fsti\+\_\+agent\+\_\+ind\+\_\+free}} (struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_a0c1f310e7cd98b4122a4348b0ec26b4f}{fsti\+\_\+agent\+\_\+arr\+\_\+free}} (struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$agent\+\_\+arr)
+\item 
+void \mbox{\hyperlink{fsti-agent_8c_aa9fa3865ab9658915f20e4212ca4cbe4}{fsti\+\_\+agent\+\_\+test}} (struct test\+\_\+group $\ast$tg)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} \mbox{\hyperlink{fsti-agent_8c_a0d0890f5771bd3efa056881d37f4c6b9}{fsti\+\_\+saved\+\_\+agent\+\_\+arr}} = \{N\+U\+LL, 0, 0, N\+U\+LL\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsti-agent_8c_a63a22afc13737a55174adb97f2cbcfc1}\label{fsti-agent_8c_a63a22afc13737a55174adb97f2cbcfc1}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency@{fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency@{fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency()}{fsti\_agent\_arr\_add\_dependency()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+add\+\_\+dependency (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a9f01e2df0acb48b1e9cef63d4314c209}\label{fsti-agent_8c_a9f01e2df0acb48b1e9cef63d4314c209}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+at@{fsti\+\_\+agent\+\_\+arr\+\_\+at}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+at@{fsti\+\_\+agent\+\_\+arr\+\_\+at}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+at()}{fsti\_agent\_arr\_at()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+at (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a88eb4bd7a7df9dcbc5b57d3e3e22f9c6}\label{fsti-agent_8c_a88eb4bd7a7df9dcbc5b57d3e3e22f9c6}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+back@{fsti\+\_\+agent\+\_\+arr\+\_\+back}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+back@{fsti\+\_\+agent\+\_\+arr\+\_\+back}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+back()}{fsti\_agent\_arr\_back()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+back (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a30c755dbd7cd8e98b76ebe65b8dc54a2}\label{fsti-agent_8c_a30c755dbd7cd8e98b76ebe65b8dc54a2}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+begin@{fsti\+\_\+agent\+\_\+arr\+\_\+begin}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+begin@{fsti\+\_\+agent\+\_\+arr\+\_\+begin}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+begin()}{fsti\_agent\_arr\_begin()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+begin (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a762cb927867ee04651d4464b300445de}\label{fsti-agent_8c_a762cb927867ee04651d4464b300445de}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+copy@{fsti\+\_\+agent\+\_\+arr\+\_\+copy}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+copy@{fsti\+\_\+agent\+\_\+arr\+\_\+copy}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+copy()}{fsti\_agent\_arr\_copy()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+copy (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{dest,  }\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{src,  }\item[{bool}]{init\+\_\+members }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a6ec54eca95530e863760046101ac02e1}\label{fsti-agent_8c_a6ec54eca95530e863760046101ac02e1}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+count@{fsti\+\_\+agent\+\_\+arr\+\_\+count}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+count@{fsti\+\_\+agent\+\_\+arr\+\_\+count}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+count()}{fsti\_agent\_arr\_count()}}
+{\footnotesize\ttfamily size\+\_\+t fsti\+\_\+agent\+\_\+arr\+\_\+count (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{fsti-agent_8c_a1a5fc4621ece587a603b9b970bc3bd7c}\label{fsti-agent_8c_a1a5fc4621ece587a603b9b970bc3bd7c}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+end@{fsti\+\_\+agent\+\_\+arr\+\_\+end}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+end@{fsti\+\_\+agent\+\_\+arr\+\_\+end}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+end()}{fsti\_agent\_arr\_end()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+end (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a87de33f5c064440c162d0c8d0f9ccbf8}\label{fsti-agent_8c_a87de33f5c064440c162d0c8d0f9ccbf8}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n@{fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n@{fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n()}{fsti\_agent\_arr\_fill\_n()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+fill\+\_\+n (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0c1f310e7cd98b4122a4348b0ec26b4f}\label{fsti-agent_8c_a0c1f310e7cd98b4122a4348b0ec26b4f}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+free@{fsti\+\_\+agent\+\_\+arr\+\_\+free}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+free@{fsti\+\_\+agent\+\_\+arr\+\_\+free}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+free()}{fsti\_agent\_arr\_free()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+free (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_aaad30933ebf477fc44ee2f7123d335b6}\label{fsti-agent_8c_aaad30933ebf477fc44ee2f7123d335b6}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+front@{fsti\+\_\+agent\+\_\+arr\+\_\+front}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+front@{fsti\+\_\+agent\+\_\+arr\+\_\+front}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+front()}{fsti\_agent\_arr\_front()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+front (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ab657b71989567b40adc4ccea49292540}\label{fsti-agent_8c_ab657b71989567b40adc4ccea49292540}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+init@{fsti\+\_\+agent\+\_\+arr\+\_\+init}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+init@{fsti\+\_\+agent\+\_\+arr\+\_\+init}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+init()}{fsti\_agent\_arr\_init()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a2dc08a5f50e57b979f50f6efb927d57c}\label{fsti-agent_8c_a2dc08a5f50e57b979f50f6efb927d57c}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n@{fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n@{fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n()}{fsti\_agent\_arr\_init\_n()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+init\+\_\+n (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a140245276760c5ca1467b816dfdb16d9}\label{fsti-agent_8c_a140245276760c5ca1467b816dfdb16d9}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+pop@{fsti\+\_\+agent\+\_\+arr\+\_\+pop}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+pop@{fsti\+\_\+agent\+\_\+arr\+\_\+pop}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+pop()}{fsti\_agent\_arr\_pop()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+arr\+\_\+pop (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0cf9bb69026e48287e83f9d73841f90f}\label{fsti-agent_8c_a0cf9bb69026e48287e83f9d73841f90f}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+arr\+\_\+push@{fsti\+\_\+agent\+\_\+arr\+\_\+push}}
+\index{fsti\+\_\+agent\+\_\+arr\+\_\+push@{fsti\+\_\+agent\+\_\+arr\+\_\+push}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+arr\+\_\+push()}{fsti\_agent\_arr\_push()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+arr\+\_\+push (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a69108c3779a3689185b833a70f589225}\label{fsti-agent_8c_a69108c3779a3689185b833a70f589225}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner@{fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner}}
+\index{fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner@{fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner()}{fsti\_agent\_break\_half\_partner()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+break\+\_\+half\+\_\+partner (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{a,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a66a819f51531e6f89f92addab960ae3a}\label{fsti-agent_8c_a66a819f51531e6f89f92addab960ae3a}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+break\+\_\+partners@{fsti\+\_\+agent\+\_\+break\+\_\+partners}}
+\index{fsti\+\_\+agent\+\_\+break\+\_\+partners@{fsti\+\_\+agent\+\_\+break\+\_\+partners}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+break\+\_\+partners()}{fsti\_agent\_break\_partners()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+break\+\_\+partners (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{a,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0624a840237ec82520be71b241220226}\label{fsti-agent_8c_a0624a840237ec82520be71b241220226}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+default\+\_\+distance@{fsti\+\_\+agent\+\_\+default\+\_\+distance}}
+\index{fsti\+\_\+agent\+\_\+default\+\_\+distance@{fsti\+\_\+agent\+\_\+default\+\_\+distance}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+default\+\_\+distance()}{fsti\_agent\_default\_distance()}}
+{\footnotesize\ttfamily float fsti\+\_\+agent\+\_\+default\+\_\+distance (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{a,  }\item[{const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ac3681ff2f8616442d578a983ec0c17ea}\label{fsti-agent_8c_ac3681ff2f8616442d578a983ec0c17ea}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+has\+\_\+partner@{fsti\+\_\+agent\+\_\+has\+\_\+partner}}
+\index{fsti\+\_\+agent\+\_\+has\+\_\+partner@{fsti\+\_\+agent\+\_\+has\+\_\+partner}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+has\+\_\+partner()}{fsti\_agent\_has\_partner()}}
+{\footnotesize\ttfamily bool fsti\+\_\+agent\+\_\+has\+\_\+partner (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0e45e82b7f4f019b1813daf04717b894}\label{fsti-agent_8c_a0e45e82b7f4f019b1813daf04717b894}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+arr@{fsti\+\_\+agent\+\_\+ind\+\_\+arr}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+arr@{fsti\+\_\+agent\+\_\+ind\+\_\+arr}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+arr()}{fsti\_agent\_ind\_arr()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+ind\+\_\+arr (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0d3fcfadb1159b63508be133b30f8df7}\label{fsti-agent_8c_a0d3fcfadb1159b63508be133b30f8df7}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+arrp@{fsti\+\_\+agent\+\_\+ind\+\_\+arrp}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+arrp@{fsti\+\_\+agent\+\_\+ind\+\_\+arrp}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+arrp()}{fsti\_agent\_ind\_arrp()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+ind\+\_\+arrp (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t $\ast$}]{it }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a4c099994dc5a8cedc1de073fa64bfbcc}\label{fsti-agent_8c_a4c099994dc5a8cedc1de073fa64bfbcc}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+at@{fsti\+\_\+agent\+\_\+ind\+\_\+at}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+at@{fsti\+\_\+agent\+\_\+ind\+\_\+at}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+at()}{fsti\_agent\_ind\_at()}}
+{\footnotesize\ttfamily size\+\_\+t$\ast$ fsti\+\_\+agent\+\_\+ind\+\_\+at (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_af8ec082c043d0719f2933f78c9b74879}\label{fsti-agent_8c_af8ec082c043d0719f2933f78c9b74879}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+begin@{fsti\+\_\+agent\+\_\+ind\+\_\+begin}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+begin@{fsti\+\_\+agent\+\_\+ind\+\_\+begin}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+begin()}{fsti\_agent\_ind\_begin()}}
+{\footnotesize\ttfamily size\+\_\+t$\ast$ fsti\+\_\+agent\+\_\+ind\+\_\+begin (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a6ea0014798a460e51b30b2d8af0dda25}\label{fsti-agent_8c_a6ea0014798a460e51b30b2d8af0dda25}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+clear@{fsti\+\_\+agent\+\_\+ind\+\_\+clear}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+clear@{fsti\+\_\+agent\+\_\+ind\+\_\+clear}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+clear()}{fsti\_agent\_ind\_clear()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+clear (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a6681f5dfe9ce93defe0d395774010080}\label{fsti-agent_8c_a6681f5dfe9ce93defe0d395774010080}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+copy@{fsti\+\_\+agent\+\_\+ind\+\_\+copy}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+copy@{fsti\+\_\+agent\+\_\+ind\+\_\+copy}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+copy()}{fsti\_agent\_ind\_copy()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+copy (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{dest,  }\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{src }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ab6a4276af0e80540add3d0a612b91071}\label{fsti-agent_8c_ab6a4276af0e80540add3d0a612b91071}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+count@{fsti\+\_\+agent\+\_\+ind\+\_\+count}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+count@{fsti\+\_\+agent\+\_\+ind\+\_\+count}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+count()}{fsti\_agent\_ind\_count()}}
+{\footnotesize\ttfamily size\+\_\+t fsti\+\_\+agent\+\_\+ind\+\_\+count (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{fsti-agent_8c_a0a007fca1a85b26dc9f890b5c9f5649a}\label{fsti-agent_8c_a0a007fca1a85b26dc9f890b5c9f5649a}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+end@{fsti\+\_\+agent\+\_\+ind\+\_\+end}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+end@{fsti\+\_\+agent\+\_\+ind\+\_\+end}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+end()}{fsti\_agent\_ind\_end()}}
+{\footnotesize\ttfamily size\+\_\+t$\ast$ fsti\+\_\+agent\+\_\+ind\+\_\+end (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ad710a67a71582f5e8a63490c1afe3a3c}\label{fsti-agent_8c_ad710a67a71582f5e8a63490c1afe3a3c}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n@{fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n@{fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n()}{fsti\_agent\_ind\_fill\_n()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+fill\+\_\+n (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ab9adb18f274475832c5a763be7d001d7}\label{fsti-agent_8c_ab9adb18f274475832c5a763be7d001d7}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+free@{fsti\+\_\+agent\+\_\+ind\+\_\+free}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+free@{fsti\+\_\+agent\+\_\+ind\+\_\+free}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+free()}{fsti\_agent\_ind\_free()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+free (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a15fb161e3b2c757f6dc7d67af4e6ef3d}\label{fsti-agent_8c_a15fb161e3b2c757f6dc7d67af4e6ef3d}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+init@{fsti\+\_\+agent\+\_\+ind\+\_\+init}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+init@{fsti\+\_\+agent\+\_\+ind\+\_\+init}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+init()}{fsti\_agent\_ind\_init()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a863d835b0643a8d62d8621bd512fd902}\label{fsti-agent_8c_a863d835b0643a8d62d8621bd512fd902}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n@{fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n@{fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n()}{fsti\_agent\_ind\_init\_n()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+init\+\_\+n (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a40bb88f7ef7f1adc5b3bf76964f5ce03}\label{fsti-agent_8c_a40bb88f7ef7f1adc5b3bf76964f5ce03}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+pop@{fsti\+\_\+agent\+\_\+ind\+\_\+pop}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+pop@{fsti\+\_\+agent\+\_\+ind\+\_\+pop}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+pop()}{fsti\_agent\_ind\_pop()}}
+{\footnotesize\ttfamily size\+\_\+t fsti\+\_\+agent\+\_\+ind\+\_\+pop (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_aeb0ffefe572b09e4e3d8e33571e256da}\label{fsti-agent_8c_aeb0ffefe572b09e4e3d8e33571e256da}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+push@{fsti\+\_\+agent\+\_\+ind\+\_\+push}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+push@{fsti\+\_\+agent\+\_\+ind\+\_\+push}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+push()}{fsti\_agent\_ind\_push()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+push (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a9005e4c20f02aff3ad90dafbaa630583}\label{fsti-agent_8c_a9005e4c20f02aff3ad90dafbaa630583}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+remove@{fsti\+\_\+agent\+\_\+ind\+\_\+remove}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+remove@{fsti\+\_\+agent\+\_\+ind\+\_\+remove}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+remove()}{fsti\_agent\_ind\_remove()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+remove (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{size\+\_\+t $\ast$}]{it }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ae598f299bc63165f2f0b5c9d5c72e52c}\label{fsti-agent_8c_ae598f299bc63165f2f0b5c9d5c72e52c}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+ind\+\_\+shuffle@{fsti\+\_\+agent\+\_\+ind\+\_\+shuffle}}
+\index{fsti\+\_\+agent\+\_\+ind\+\_\+shuffle@{fsti\+\_\+agent\+\_\+ind\+\_\+shuffle}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+ind\+\_\+shuffle()}{fsti\_agent\_ind\_shuffle()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+ind\+\_\+shuffle (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind,  }\item[{gsl\+\_\+rng $\ast$}]{rng }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_afaf3c076c60db61e182fb1e5a8eabc77}\label{fsti-agent_8c_afaf3c076c60db61e182fb1e5a8eabc77}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner@{fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner}}
+\index{fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner@{fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner()}{fsti\_agent\_make\_half\_partner()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+make\+\_\+half\+\_\+partner (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{a,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_aab565f3b1fa1cb77b6a83efd3faa72e7}\label{fsti-agent_8c_aab565f3b1fa1cb77b6a83efd3faa72e7}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+make\+\_\+partners@{fsti\+\_\+agent\+\_\+make\+\_\+partners}}
+\index{fsti\+\_\+agent\+\_\+make\+\_\+partners@{fsti\+\_\+agent\+\_\+make\+\_\+partners}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+make\+\_\+partners()}{fsti\_agent\_make\_partners()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+make\+\_\+partners (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{a,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_a8ea9850f51ba1cc3f842f3730cf22139}\label{fsti-agent_8c_a8ea9850f51ba1cc3f842f3730cf22139}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+partner\+\_\+get@{fsti\+\_\+agent\+\_\+partner\+\_\+get}}
+\index{fsti\+\_\+agent\+\_\+partner\+\_\+get@{fsti\+\_\+agent\+\_\+partner\+\_\+get}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+partner\+\_\+get()}{fsti\_agent\_partner\_get()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+partner\+\_\+get (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_abe4c0c13ceb1a50eb8d9223a7122f269}\label{fsti-agent_8c_abe4c0c13ceb1a50eb8d9223a7122f269}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+partner\+\_\+get0@{fsti\+\_\+agent\+\_\+partner\+\_\+get0}}
+\index{fsti\+\_\+agent\+\_\+partner\+\_\+get0@{fsti\+\_\+agent\+\_\+partner\+\_\+get0}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+partner\+\_\+get0()}{fsti\_agent\_partner\_get0()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}}$\ast$ fsti\+\_\+agent\+\_\+partner\+\_\+get0 (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} $\ast$}]{agent\+\_\+arr,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_ad24c55a9a2a07b7a0a07a0fb74be112e}\label{fsti-agent_8c_ad24c55a9a2a07b7a0a07a0fb74be112e}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+print\+\_\+csv@{fsti\+\_\+agent\+\_\+print\+\_\+csv}}
+\index{fsti\+\_\+agent\+\_\+print\+\_\+csv@{fsti\+\_\+agent\+\_\+print\+\_\+csv}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+print\+\_\+csv()}{fsti\_agent\_print\_csv()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+print\+\_\+csv (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{unsigned}]{id,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent }\end{DoxyParamCaption})}
+
+Description of the fsti\+\_\+agent\+\_\+print\+\_\+csv function \mbox{\Hypertarget{fsti-agent_8c_a067437e70d5fe4d1e6f139bab513c6ac}\label{fsti-agent_8c_a067437e70d5fe4d1e6f139bab513c6ac}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+print\+\_\+pretty@{fsti\+\_\+agent\+\_\+print\+\_\+pretty}}
+\index{fsti\+\_\+agent\+\_\+print\+\_\+pretty@{fsti\+\_\+agent\+\_\+print\+\_\+pretty}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+print\+\_\+pretty()}{fsti\_agent\_print\_pretty()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+print\+\_\+pretty (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{unsigned}]{id,  }\item[{struct \mbox{\hyperlink{structfsti__agent}{fsti\+\_\+agent}} $\ast$}]{agent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-agent_8c_aa9fa3865ab9658915f20e4212ca4cbe4}\label{fsti-agent_8c_aa9fa3865ab9658915f20e4212ca4cbe4}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+agent\+\_\+test@{fsti\+\_\+agent\+\_\+test}}
+\index{fsti\+\_\+agent\+\_\+test@{fsti\+\_\+agent\+\_\+test}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+agent\+\_\+test()}{fsti\_agent\_test()}}
+{\footnotesize\ttfamily void fsti\+\_\+agent\+\_\+test (\begin{DoxyParamCaption}\item[{struct test\+\_\+group $\ast$}]{tg }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{fsti-agent_8c_a0d0890f5771bd3efa056881d37f4c6b9}\label{fsti-agent_8c_a0d0890f5771bd3efa056881d37f4c6b9}} 
+\index{fsti-\/agent.\+c@{fsti-\/agent.\+c}!fsti\+\_\+saved\+\_\+agent\+\_\+arr@{fsti\+\_\+saved\+\_\+agent\+\_\+arr}}
+\index{fsti\+\_\+saved\+\_\+agent\+\_\+arr@{fsti\+\_\+saved\+\_\+agent\+\_\+arr}!fsti-\/agent.\+c@{fsti-\/agent.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+saved\+\_\+agent\+\_\+arr}{fsti\_saved\_agent\_arr}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structfsti__agent__arr}{fsti\+\_\+agent\+\_\+arr}} fsti\+\_\+saved\+\_\+agent\+\_\+arr = \{N\+U\+LL, 0, 0, N\+U\+LL\}}
+

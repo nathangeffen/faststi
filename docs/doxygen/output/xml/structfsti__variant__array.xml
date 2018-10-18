@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__variant__array" kind="struct" language="C++" prot="public">
     <compoundname>fsti_variant_array</compoundname>
+    <includes refid="fsti-defs_8h" local="no">fsti-defs.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__variant__array_1a39cfdcdfbafab25eecf67428eb070030" prot="public" static="no" mutable="no">
         <type>size_t</type>

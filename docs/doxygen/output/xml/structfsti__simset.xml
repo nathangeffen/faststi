@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__simset" kind="struct" language="C++" prot="public">
     <compoundname>fsti_simset</compoundname>
+    <includes refid="fsti-simset_8h" local="no">fsti-simset.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__simset_1add8d85ac062f5eff4ad3342c4a9cae75" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structfsti__config" kindref="compound">fsti_config</ref></type>

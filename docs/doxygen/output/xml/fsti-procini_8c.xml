@@ -7,92 +7,92 @@
     <includes refid="fsti-procini_8h" local="yes">fsti-procini.h</includes>
     <includes refid="fsti-error_8h" local="yes">fsti-error.h</includes>
     <incdepgraph>
-      <node id="288">
+      <node id="354">
         <label>stdbool.h</label>
       </node>
-      <node id="291">
+      <node id="357">
         <label>stdatomic.h</label>
       </node>
-      <node id="283">
+      <node id="349">
         <label>assert.h</label>
       </node>
-      <node id="289">
+      <node id="355">
         <label>fsti-error.h</label>
-        <link refid="fsti-error_8h_source"/>
-        <childnode refid="283" relation="include">
+        <link refid="fsti-error_8h"/>
+        <childnode refid="349" relation="include">
         </childnode>
-        <childnode refid="290" relation="include">
+        <childnode refid="356" relation="include">
         </childnode>
-        <childnode refid="288" relation="include">
+        <childnode refid="354" relation="include">
         </childnode>
-        <childnode refid="291" relation="include">
+        <childnode refid="357" relation="include">
         </childnode>
       </node>
-      <node id="278">
+      <node id="344">
         <label>stdlib.h</label>
       </node>
-      <node id="290">
+      <node id="356">
         <label>errno.h</label>
       </node>
-      <node id="287">
+      <node id="353">
         <label>stddef.h</label>
       </node>
-      <node id="282">
+      <node id="348">
         <label>fsti-config.h</label>
-        <link refid="fsti-config_8h_source"/>
-        <childnode refid="283" relation="include">
+        <link refid="fsti-config_8h"/>
+        <childnode refid="349" relation="include">
         </childnode>
-        <childnode refid="279" relation="include">
+        <childnode refid="345" relation="include">
         </childnode>
-        <childnode refid="278" relation="include">
+        <childnode refid="344" relation="include">
         </childnode>
-        <childnode refid="284" relation="include">
+        <childnode refid="350" relation="include">
         </childnode>
-        <childnode refid="285" relation="include">
+        <childnode refid="351" relation="include">
         </childnode>
-        <childnode refid="286" relation="include">
+        <childnode refid="352" relation="include">
         </childnode>
       </node>
-      <node id="284">
+      <node id="350">
         <label>string.h</label>
       </node>
-      <node id="285">
+      <node id="351">
         <label>utils/utils.h</label>
       </node>
-      <node id="286">
+      <node id="352">
         <label>fsti-defs.h</label>
-        <link refid="fsti-defs_8h_source"/>
-        <childnode refid="278" relation="include">
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="344" relation="include">
         </childnode>
-        <childnode refid="287" relation="include">
+        <childnode refid="353" relation="include">
         </childnode>
-        <childnode refid="288" relation="include">
+        <childnode refid="354" relation="include">
         </childnode>
       </node>
-      <node id="281">
+      <node id="347">
         <label>glib.h</label>
       </node>
-      <node id="277">
+      <node id="343">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c</label>
         <link refid="fsti-procini_8c"/>
-        <childnode refid="278" relation="include">
+        <childnode refid="344" relation="include">
         </childnode>
-        <childnode refid="279" relation="include">
+        <childnode refid="345" relation="include">
         </childnode>
-        <childnode refid="280" relation="include">
+        <childnode refid="346" relation="include">
         </childnode>
-        <childnode refid="289" relation="include">
+        <childnode refid="355" relation="include">
         </childnode>
       </node>
-      <node id="280">
+      <node id="346">
         <label>fsti-procini.h</label>
-        <link refid="fsti-procini_8h_source"/>
-        <childnode refid="281" relation="include">
+        <link refid="fsti-procini_8h"/>
+        <childnode refid="347" relation="include">
         </childnode>
-        <childnode refid="282" relation="include">
+        <childnode refid="348" relation="include">
         </childnode>
       </node>
-      <node id="279">
+      <node id="345">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
@@ -127,14 +127,14 @@
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-procini.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-procini_8h" kindref="compound">fsti-procini.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-error_8h" kindref="compound">fsti-error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fsti_read_ini(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename,<sp/>GKeyFile<sp/>*<sp/>key_file)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-procini_8c_1a438ad09d742e78ab09216d2b532f02bd" kindref="member">fsti_read_ini</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename,<sp/>GKeyFile<sp/>*<sp/><ref refid="structfsti__simset_1a8375a8f4e415c4a93ad7c00c9bea3f11" kindref="member">key_file</ref>)</highlight></codeline>
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>GError<sp/>*error<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>g_key_file_load_from_file(key_file,<sp/>filename,<sp/>G_KEY_FILE_NONE,<sp/>&amp;error);</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>FSTI_ASSERT(error<sp/>==<sp/>NULL,<sp/>FSTI_ERR_KEY_FILE_LOAD,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>g_key_file_load_from_file(<ref refid="structfsti__simset_1a8375a8f4e415c4a93ad7c00c9bea3f11" kindref="member">key_file</ref>,<sp/>filename,<sp/>G_KEY_FILE_NONE,<sp/>&amp;error);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-error_8h_1a45677a0c04d632802de437b7a4cdec01" kindref="member">FSTI_ASSERT</ref>(error<sp/>==<sp/>NULL,<sp/><ref refid="fsti-error_8h_1a385c44f6fb256e5716a2302a5b940388a51668c5651e99466a2cdc49b52deb9dc" kindref="member">FSTI_ERR_KEY_FILE_LOAD</ref>,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="12"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-procini.c"/>

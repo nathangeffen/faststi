@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__agent__arr" kind="struct" language="C++" prot="public">
     <compoundname>fsti_agent_arr</compoundname>
+    <includes refid="fsti-agent_8h" local="no">fsti-agent.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>

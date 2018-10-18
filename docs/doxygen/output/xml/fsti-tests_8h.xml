@@ -5,14 +5,32 @@
     <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
     <includedby refid="fsti-tests_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</includedby>
     <invincdepgraph>
-      <node id="489">
-        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
-        <link refid="fsti_8h_source"/>
+      <node id="577">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
       </node>
-      <node id="488">
+      <node id="576">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="578">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</label>
+        <link refid="fsti-tests_8c"/>
+      </node>
+      <node id="575">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h"/>
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+      </node>
+      <node id="574">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.h</label>
         <link refid="fsti-tests_8h"/>
-        <childnode refid="489" relation="include">
+        <childnode refid="575" relation="include">
+        </childnode>
+        <childnode refid="578" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -39,7 +57,7 @@
 <codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_TESTS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_TESTS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fsti_tests();</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8h_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>();</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>

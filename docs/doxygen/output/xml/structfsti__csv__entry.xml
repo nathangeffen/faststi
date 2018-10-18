@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__csv__entry" kind="struct" language="C++" prot="public">
     <compoundname>fsti_csv_entry</compoundname>
+    <includes refid="fsti-defs_8h" local="no">fsti-defs.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structfsti__csv__entry_1a6a86c8654ea3c73fcd2af1a9e35dfa3a" prot="public" static="no" mutable="no">
         <type>void *</type>
@@ -17,7 +18,7 @@
         <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" line="77" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-defs.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__csv__entry_1aafde0fea0a3c1bb497a45553c300bd79" prot="public" static="no" mutable="no">
-        <type>fsti_transform_func</type>
+        <type><ref refid="fsti-defs_8h_1ae5b65c9cc706efded6267d78bbf70593" kindref="member">fsti_transform_func</ref></type>
         <definition>fsti_transform_func fsti_csv_entry::transformer</definition>
         <argsstring></argsstring>
         <name>transformer</name>

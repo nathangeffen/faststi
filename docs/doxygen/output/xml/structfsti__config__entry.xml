@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="structfsti__config__entry" kind="struct" language="C++" prot="public">
     <compoundname>fsti_config_entry</compoundname>
+    <includes refid="fsti-config_8h" local="no">fsti-config.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structfsti__config__entry_1ad93155316f1351abbc99b94a9d781b28" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" prot="public" static="no" mutable="no">
         <type>char</type>
-        <definition>char fsti_config_entry::key[FSTI_KEY_LEN]</definition>
-        <argsstring>[FSTI_KEY_LEN]</argsstring>
+        <definition>char fsti_config_entry::key[30]</definition>
+        <argsstring>[30]</argsstring>
         <name>key</name>
         <briefdescription>
         </briefdescription>
@@ -16,10 +17,10 @@
         </inbodydescription>
         <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="28" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structfsti__config__entry_1a31c11ad557aab27565763928b6180363" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" prot="public" static="no" mutable="no">
         <type>char</type>
-        <definition>char fsti_config_entry::description[FSTI_DESC_LEN]</definition>
-        <argsstring>[FSTI_DESC_LEN]</argsstring>
+        <definition>char fsti_config_entry::description[200]</definition>
+        <argsstring>[200]</argsstring>
         <name>description</name>
         <briefdescription>
         </briefdescription>
@@ -98,8 +99,8 @@
     </collaborationgraph>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" line="27" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-config.h" bodystart="27" bodyend="33"/>
     <listofallmembers>
-      <member refid="structfsti__config__entry_1a31c11ad557aab27565763928b6180363" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>description</name></member>
-      <member refid="structfsti__config__entry_1ad93155316f1351abbc99b94a9d781b28" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>key</name></member>
+      <member refid="structfsti__config__entry_1a04240c49953dafa8879450149c3954d1" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>description</name></member>
+      <member refid="structfsti__config__entry_1ac9d616365f25f18d04fa9cd4d141860a" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>key</name></member>
       <member refid="structfsti__config__entry_1ab780e8c7002b1b0dccfbcafe0b7f1216" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>len</name></member>
       <member refid="structfsti__config__entry_1a3900e815b95ddedbfe86b63639804835" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>next</name></member>
       <member refid="structfsti__config__entry_1a0cde1f42c2d28c442930678728cae461" prot="public" virt="non-virtual"><scope>fsti_config_entry</scope><name>variants</name></member>

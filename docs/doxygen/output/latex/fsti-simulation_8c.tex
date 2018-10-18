@@ -1,0 +1,93 @@
+\hypertarget{fsti-simulation_8c}{}\section{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/simulation.c File Reference}
+\label{fsti-simulation_8c}\index{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/simulation.\+c@{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/simulation.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsti-\/error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsti-\/simulation.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_a0922fc7e9d2a95b59e3f1df672f3bdc4}{fsti\+\_\+event\+\_\+register\+\_\+events}} ()
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_a5e7080c9230e123dc212cc19bb209487}{fsti\+\_\+simulation\+\_\+init}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation, const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$config, int sim\+\_\+number, int config\+\_\+sim\+\_\+number)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_acfe68dac880c7a6112ac0d13bfc34cce}{fsti\+\_\+simulation\+\_\+set\+\_\+csv}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation, const struct \mbox{\hyperlink{structfsti__csv__agent}{fsti\+\_\+csv\+\_\+agent}} $\ast$csv)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_a8fd28c7a573e98f3785b5f3b7b6b08e7}{fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_adac2d348ab392af024a2cbeabfb0c739}{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation, struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$agent\+\_\+ind)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_acf97be6cf8883189d51292eceea0c43e}{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_ab512e1f50ac5ac9bdde81f48d73137b6}{fsti\+\_\+simulation\+\_\+run}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_a9d76145c517a59cb16affaf38f6da235}{fsti\+\_\+simulation\+\_\+kill\+\_\+agent}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation, size\+\_\+t $\ast$it)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_ae29f6c96793ab175ff8021f853c0b898}{fsti\+\_\+simulation\+\_\+free}} (struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$simulation)
+\item 
+void \mbox{\hyperlink{fsti-simulation_8c_a86e77278da10e20688210e211787e7d2}{fsti\+\_\+simulation\+\_\+test}} (struct test\+\_\+group $\ast$tg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsti-simulation_8c_a0922fc7e9d2a95b59e3f1df672f3bdc4}\label{fsti-simulation_8c_a0922fc7e9d2a95b59e3f1df672f3bdc4}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+event\+\_\+register\+\_\+events@{fsti\+\_\+event\+\_\+register\+\_\+events}}
+\index{fsti\+\_\+event\+\_\+register\+\_\+events@{fsti\+\_\+event\+\_\+register\+\_\+events}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+event\+\_\+register\+\_\+events()}{fsti\_event\_register\_events()}}
+{\footnotesize\ttfamily void fsti\+\_\+event\+\_\+register\+\_\+events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_a8fd28c7a573e98f3785b5f3b7b6b08e7}\label{fsti-simulation_8c_a8fd28c7a573e98f3785b5f3b7b6b08e7}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars@{fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars}}
+\index{fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars@{fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars()}{fsti\_simulation\_config\_to\_vars()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+config\+\_\+to\+\_\+vars (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_ae29f6c96793ab175ff8021f853c0b898}\label{fsti-simulation_8c_ae29f6c96793ab175ff8021f853c0b898}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+free@{fsti\+\_\+simulation\+\_\+free}}
+\index{fsti\+\_\+simulation\+\_\+free@{fsti\+\_\+simulation\+\_\+free}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+free()}{fsti\_simulation\_free()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+free (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_a5e7080c9230e123dc212cc19bb209487}\label{fsti-simulation_8c_a5e7080c9230e123dc212cc19bb209487}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+init@{fsti\+\_\+simulation\+\_\+init}}
+\index{fsti\+\_\+simulation\+\_\+init@{fsti\+\_\+simulation\+\_\+init}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+init()}{fsti\_simulation\_init()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation,  }\item[{const struct \mbox{\hyperlink{structfsti__config}{fsti\+\_\+config}} $\ast$}]{config,  }\item[{int}]{sim\+\_\+number,  }\item[{int}]{config\+\_\+sim\+\_\+number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_a9d76145c517a59cb16affaf38f6da235}\label{fsti-simulation_8c_a9d76145c517a59cb16affaf38f6da235}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+kill\+\_\+agent@{fsti\+\_\+simulation\+\_\+kill\+\_\+agent}}
+\index{fsti\+\_\+simulation\+\_\+kill\+\_\+agent@{fsti\+\_\+simulation\+\_\+kill\+\_\+agent}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+kill\+\_\+agent()}{fsti\_simulation\_kill\_agent()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+kill\+\_\+agent (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation,  }\item[{size\+\_\+t $\ast$}]{it }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_ab512e1f50ac5ac9bdde81f48d73137b6}\label{fsti-simulation_8c_ab512e1f50ac5ac9bdde81f48d73137b6}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+run@{fsti\+\_\+simulation\+\_\+run}}
+\index{fsti\+\_\+simulation\+\_\+run@{fsti\+\_\+simulation\+\_\+run}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+run()}{fsti\_simulation\_run()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+run (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_acfe68dac880c7a6112ac0d13bfc34cce}\label{fsti-simulation_8c_acfe68dac880c7a6112ac0d13bfc34cce}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+set\+\_\+csv@{fsti\+\_\+simulation\+\_\+set\+\_\+csv}}
+\index{fsti\+\_\+simulation\+\_\+set\+\_\+csv@{fsti\+\_\+simulation\+\_\+set\+\_\+csv}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+set\+\_\+csv()}{fsti\_simulation\_set\_csv()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+set\+\_\+csv (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation,  }\item[{const struct \mbox{\hyperlink{structfsti__csv__agent}{fsti\+\_\+csv\+\_\+agent}} $\ast$}]{csv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_a86e77278da10e20688210e211787e7d2}\label{fsti-simulation_8c_a86e77278da10e20688210e211787e7d2}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+test@{fsti\+\_\+simulation\+\_\+test}}
+\index{fsti\+\_\+simulation\+\_\+test@{fsti\+\_\+simulation\+\_\+test}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+test()}{fsti\_simulation\_test()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+test (\begin{DoxyParamCaption}\item[{struct test\+\_\+group $\ast$}]{tg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_acf97be6cf8883189d51292eceea0c43e}\label{fsti-simulation_8c_acf97be6cf8883189d51292eceea0c43e}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv@{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv}}
+\index{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv@{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv()}{fsti\_simulation\_write\_agents\_arr\_csv()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+arr\+\_\+csv (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-simulation_8c_adac2d348ab392af024a2cbeabfb0c739}\label{fsti-simulation_8c_adac2d348ab392af024a2cbeabfb0c739}} 
+\index{fsti-\/simulation.\+c@{fsti-\/simulation.\+c}!fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv@{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv}}
+\index{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv@{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv}!fsti-\/simulation.\+c@{fsti-\/simulation.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv()}{fsti\_simulation\_write\_agents\_ind\_csv()}}
+{\footnotesize\ttfamily void fsti\+\_\+simulation\+\_\+write\+\_\+agents\+\_\+ind\+\_\+csv (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structfsti__simulation}{fsti\+\_\+simulation}} $\ast$}]{simulation,  }\item[{struct \mbox{\hyperlink{structfsti__agent__ind}{fsti\+\_\+agent\+\_\+ind}} $\ast$}]{agent\+\_\+ind }\end{DoxyParamCaption})}
+

@@ -13,178 +13,210 @@
     <includedby refid="fsti-events_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</includedby>
     <includedby refid="fsti-report_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</includedby>
     <incdepgraph>
-      <node id="345">
+      <node id="415">
         <label>stdbool.h</label>
       </node>
-      <node id="355">
+      <node id="425">
         <label>stdatomic.h</label>
       </node>
-      <node id="350">
+      <node id="420">
         <label>fsti-userdefs.h</label>
-        <link refid="fsti-userdefs_8h_source"/>
+        <link refid="fsti-userdefs_8h"/>
       </node>
-      <node id="348">
+      <node id="418">
         <label>assert.h</label>
       </node>
-      <node id="353">
+      <node id="423">
         <label>fsti-error.h</label>
-        <link refid="fsti-error_8h_source"/>
-        <childnode refid="348" relation="include">
+        <link refid="fsti-error_8h"/>
+        <childnode refid="418" relation="include">
         </childnode>
-        <childnode refid="354" relation="include">
+        <childnode refid="424" relation="include">
         </childnode>
-        <childnode refid="345" relation="include">
+        <childnode refid="415" relation="include">
         </childnode>
-        <childnode refid="355" relation="include">
+        <childnode refid="425" relation="include">
         </childnode>
       </node>
-      <node id="335">
+      <node id="405">
         <label>float.h</label>
       </node>
-      <node id="352">
+      <node id="422">
         <label>utils/uthash.h</label>
       </node>
-      <node id="333">
+      <node id="403">
         <label>stdint.h</label>
       </node>
-      <node id="343">
+      <node id="413">
         <label>stdlib.h</label>
       </node>
-      <node id="354">
+      <node id="424">
         <label>errno.h</label>
       </node>
-      <node id="344">
+      <node id="414">
         <label>stddef.h</label>
       </node>
-      <node id="334">
+      <node id="404">
         <label>limits.h</label>
       </node>
-      <node id="347">
+      <node id="417">
         <label>fsti-config.h</label>
-        <link refid="fsti-config_8h_source"/>
-        <childnode refid="348" relation="include">
+        <link refid="fsti-config_8h"/>
+        <childnode refid="418" relation="include">
         </childnode>
-        <childnode refid="340" relation="include">
+        <childnode refid="410" relation="include">
         </childnode>
-        <childnode refid="343" relation="include">
+        <childnode refid="413" relation="include">
         </childnode>
-        <childnode refid="349" relation="include">
+        <childnode refid="419" relation="include">
         </childnode>
-        <childnode refid="341" relation="include">
+        <childnode refid="411" relation="include">
         </childnode>
-        <childnode refid="342" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
       </node>
-      <node id="349">
+      <node id="419">
         <label>string.h</label>
       </node>
-      <node id="341">
+      <node id="411">
         <label>utils/utils.h</label>
       </node>
-      <node id="346">
+      <node id="416">
         <label>fsti-defaults.h</label>
-        <link refid="fsti-defaults_8h_source"/>
-        <childnode refid="347" relation="include">
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="417" relation="include">
         </childnode>
-        <childnode refid="342" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="350" relation="include">
+        <childnode refid="420" relation="include">
         </childnode>
       </node>
-      <node id="342">
+      <node id="412">
         <label>fsti-defs.h</label>
-        <link refid="fsti-defs_8h_source"/>
-        <childnode refid="343" relation="include">
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="413" relation="include">
         </childnode>
-        <childnode refid="344" relation="include">
+        <childnode refid="414" relation="include">
         </childnode>
-        <childnode refid="345" relation="include">
+        <childnode refid="415" relation="include">
         </childnode>
       </node>
-      <node id="339">
+      <node id="409">
         <label>fsti-agent.h</label>
-        <link refid="fsti-agent_8h_source"/>
-        <childnode refid="340" relation="include">
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="410" relation="include">
         </childnode>
-        <childnode refid="338" relation="include">
+        <childnode refid="408" relation="include">
         </childnode>
-        <childnode refid="333" relation="include">
+        <childnode refid="403" relation="include">
         </childnode>
-        <childnode refid="341" relation="include">
+        <childnode refid="411" relation="include">
         </childnode>
-        <childnode refid="342" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="346" relation="include">
+        <childnode refid="416" relation="include">
         </childnode>
       </node>
-      <node id="351">
+      <node id="421">
         <label>fsti-eventdefs.h</label>
-        <link refid="fsti-eventdefs_8h_source"/>
-        <childnode refid="352" relation="include">
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="422" relation="include">
         </childnode>
-        <childnode refid="342" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="353" relation="include">
+        <childnode refid="423" relation="include">
         </childnode>
       </node>
-      <node id="336">
+      <node id="406">
         <label>math.h</label>
       </node>
-      <node id="337">
+      <node id="407">
         <label>fsti-simulation.h</label>
-        <link refid="fsti-simulation_8h_source"/>
-        <childnode refid="338" relation="include">
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="408" relation="include">
         </childnode>
-        <childnode refid="339" relation="include">
+        <childnode refid="409" relation="include">
         </childnode>
-        <childnode refid="351" relation="include">
+        <childnode refid="421" relation="include">
         </childnode>
-        <childnode refid="347" relation="include">
+        <childnode refid="417" relation="include">
         </childnode>
-        <childnode refid="346" relation="include">
+        <childnode refid="416" relation="include">
         </childnode>
       </node>
-      <node id="338">
+      <node id="408">
         <label>gsl/gsl_rng.h</label>
       </node>
-      <node id="340">
+      <node id="410">
         <label>stdio.h</label>
       </node>
-      <node id="332">
+      <node id="402">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
         <link refid="fsti-report_8h"/>
-        <childnode refid="333" relation="include">
+        <childnode refid="403" relation="include">
         </childnode>
-        <childnode refid="334" relation="include">
+        <childnode refid="404" relation="include">
         </childnode>
-        <childnode refid="335" relation="include">
+        <childnode refid="405" relation="include">
         </childnode>
-        <childnode refid="336" relation="include">
+        <childnode refid="406" relation="include">
         </childnode>
-        <childnode refid="337" relation="include">
+        <childnode refid="407" relation="include">
         </childnode>
-        <childnode refid="342" relation="include">
+        <childnode refid="412" relation="include">
         </childnode>
-        <childnode refid="339" relation="include">
+        <childnode refid="409" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="357">
+      <node id="431">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="428">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.c</label>
+        <link refid="fsti-events_8c"/>
+      </node>
+      <node id="427">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-events.h</label>
-        <link refid="fsti-events_8h_source"/>
-        <childnode refid="358" relation="include">
+        <link refid="fsti-events_8h"/>
+        <childnode refid="428" relation="include">
+        </childnode>
+        <childnode refid="429" relation="include">
+        </childnode>
+        <childnode refid="432" relation="include">
         </childnode>
       </node>
-      <node id="356">
+      <node id="430">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="432">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-simset.c</label>
+        <link refid="fsti-simset_8c"/>
+      </node>
+      <node id="433">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.c</label>
+        <link refid="fsti-report_8c"/>
+      </node>
+      <node id="426">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-report.h</label>
         <link refid="fsti-report_8h"/>
-        <childnode refid="357" relation="include">
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
         </childnode>
       </node>
-      <node id="358">
+      <node id="429">
         <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
-        <link refid="fsti_8h_source"/>
+        <link refid="fsti_8h"/>
+        <childnode refid="430" relation="include">
+        </childnode>
+        <childnode refid="431" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -248,13 +280,13 @@
         <initializer>do {                          \
         struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent;                                      \
         size_t *_it;                                                    \
-        result = FSTI_MAX_VAL(result);                                  \
+        result = <ref refid="fsti-report_8h_1a7a3f630a5d02d8f4d130a45685e3bc79" kindref="member">FSTI_MAX_VAL</ref>(result);                                  \
         if (agent_ind.len == 0) {                                       \
             result = NAN;                                               \
         } else {                                                        \
-            for (_it = fsti_agent_ind_begin(&amp;(agent_ind));              \
-                 _it != fsti_agent_ind_end(&amp;(agent_ind)); _it++) {      \
-                _agent = fsti_agent_ind_arrp(&amp;(agent_ind), _it);        \
+            for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));              \
+                 _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {      \
+                _agent = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);        \
                 if (_agent-&gt;elem &lt; result) result = _agent-&gt;elem;       \
             }                                                           \
         }                                                               \
@@ -275,13 +307,13 @@
         <initializer>do {                          \
         struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent;                                      \
         size_t *_it;                                                    \
-        result = FSTI_MIN_VAL(result);                                  \
+        result = <ref refid="fsti-report_8h_1abd86f17f25e9c940c74a103963b43a29" kindref="member">FSTI_MIN_VAL</ref>(result);                                  \
         if (agent_ind.len == 0) {                                       \
             result = NAN;                                               \
         } else {                                                        \
-            for (_it = fsti_agent_ind_begin(&amp;(agent_ind));              \
-                 _it != fsti_agent_ind_end(&amp;(agent_ind)); _it++) {      \
-                _agent = fsti_agent_ind_arrp(&amp;(agent_ind), _it);        \
+            for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));              \
+                 _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {      \
+                _agent = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);        \
                 if (_agent-&gt;elem &gt; result) result = _agent-&gt;elem;       \
             }                                                           \
         }                                                               \
@@ -303,14 +335,14 @@
         size_t *_it, mid;                                               \
         if (agent_ind.len &gt; 0) {                                        \
             float *_vals = malloc(sizeof(*_vals) * agent_ind.len);      \
-            FSTI_ASSERT(_vals, FSTI_ERR_NOMEM, NULL);                   \
+            <ref refid="fsti-error_8h_1a45677a0c04d632802de437b7a4cdec01" kindref="member">FSTI_ASSERT</ref>(_vals, <ref refid="fsti-error_8h_1a385c44f6fb256e5716a2302a5b940388a06189e86eed4d9c1d3b1f69cfb58a41e" kindref="member">FSTI_ERR_NOMEM</ref>, NULL);                   \
             float *_d = _vals;                                          \
             for (_it = agent_ind.indices;                               \
                  _it &lt; agent_ind.indices + agent_ind.len; _it++)  {     \
                 *_d = agent_ind.agent_arr-&gt;agents[*_it].elem;           \
                 _d++;                                                   \
             }                                                           \
-            qsort(_vals, agent_ind.len, sizeof(float), fsti_cmpf);      \
+            qsort(_vals, agent_ind.len, sizeof(float), <ref refid="fsti-report_8h_1a01f88429a83ea714459262c661ba9859" kindref="member">fsti_cmpf</ref>);      \
             mid = agent_ind.len / 2;                                    \
             if (agent_ind.len % 2 == 0)                                 \
                 result = (_vals[mid] + _vals[mid + 1]) / 2.0;           \
@@ -338,9 +370,9 @@
         struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent_;                                     \
         size_t *_it;                                                    \
         result = 0;                                                     \
-        for (_it = fsti_agent_ind_begin(&amp;(agent_ind));                  \
-             _it != fsti_agent_ind_end(&amp;(agent_ind)); _it++) {          \
-            _agent_ = fsti_agent_ind_arrp(&amp;(agent_ind), _it);           \
+        for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));                  \
+             _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {          \
+            _agent_ = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);           \
             result += _agent_-&gt;elem;                                    \
         }                                                               \
         result = (double) result / agent_ind.len;                       \
@@ -362,9 +394,9 @@
         struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *_agent_;                                     \
         size_t *_it;                                                    \
         result = 0;                                                     \
-        for (_it = fsti_agent_ind_begin(&amp;(agent_ind));                  \
-             _it != fsti_agent_ind_end(&amp;(agent_ind)); _it++) {          \
-            _agent_ = fsti_agent_ind_arrp(&amp;(agent_ind), _it);           \
+        for (_it = <ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(&amp;(agent_ind));                  \
+             _it != <ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(&amp;(agent_ind)); _it++) {          \
+            _agent_ = <ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(&amp;(agent_ind), _it);           \
             result += _agent_-&gt;elem;                                    \
         }                                                               \
     } while(0)</initializer>
@@ -436,7 +468,7 @@
       <memberdef kind="define" id="fsti-report_8h_1a69fb6754f171ddae0a378657b60f8ae3" prot="public" static="no">
         <name>FSTI_FMT__</name>
         <param><defname>x</defname></param>
-        <initializer>FSTI_FMT(x)</initializer>
+        <initializer><ref refid="fsti-report_8h_1a1d142e2f26d2af3100e4bd1a76aee1d1" kindref="member">FSTI_FMT</ref>(x)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -549,11 +581,11 @@
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;float.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-simulation.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-defs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fsti-agent.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-simulation_8h" kindref="compound">fsti-simulation.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-agent_8h" kindref="compound">fsti-agent.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="13" refid="fsti-report_8h_1abd86f17f25e9c940c74a103963b43a29" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="14"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>CHAR_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="15"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>SCHAR_MIN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char:<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -569,7 +601,7 @@
 <codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>-DBL_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>double:<sp/>-LDBL_MAX)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="29" refid="fsti-report_8h_1a7a3f630a5d02d8f4d130a45685e3bc79" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX_VAL(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>CHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>SCHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>char:<sp/>UCHAR_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -585,7 +617,7 @@
 <codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double:<sp/>DBL_MAX,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>double:<sp/>LDBL_MAX)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45" refid="fsti-report_8h_1a23a8b3ad8faaf4c4f0f645486e27faeb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MIN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>FSTI_MAX_VAL(result);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -600,7 +632,7 @@
 <codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60" refid="fsti-report_8h_1ab932f3ee72d85924f642c9adfce84dc3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MAX(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>FSTI_MIN_VAL(result);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -617,7 +649,7 @@
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>median<sp/>function<sp/>is<sp/>generic<sp/>but<sp/>not<sp/>efficient.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEDIAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77" refid="fsti-report_8h_1abecbb06bd9bca39305faadb443899fa9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEDIAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it,<sp/>mid;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(agent_ind.len<sp/>&gt;<sp/>0)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>*_vals<sp/>=<sp/>malloc(sizeof(*_vals)<sp/>*<sp/>agent_ind.len);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -640,7 +672,7 @@
 <codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="100" refid="fsti-report_8h_1a56c545164f457022ec874321798f99af" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_MEAN(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -652,7 +684,7 @@
 <codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>(double)<sp/>result<sp/>/<sp/>agent_ind.len;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SUM(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="112" refid="fsti-report_8h_1a5bb9a155a22683696d8123919e84c132" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SUM(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="113"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>struct<sp/>fsti_agent<sp/>*_agent_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="114"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="115"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -663,14 +695,14 @@
 <codeline lineno="120"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="121"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SIZE(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/>\</highlight></codeline>
+<codeline lineno="123" refid="fsti-report_8h_1a43cc0a51906bd2c2ec0c77a15d50f145" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_SIZE(agent_ind,<sp/>elem,<sp/>result)<sp/>do<sp/>{<sp/><sp/>\</highlight></codeline>
 <codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>agent_ind.len;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HALF(x)<sp/>x<sp/>/=<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="fsti-report_8h_1a37590f808a79f88b2369a0f77cb1b47e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_HALF(x)<sp/>x<sp/>/=<sp/>2</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="130" refid="fsti-report_8h_1a1d142e2f26d2af3100e4bd1a76aee1d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT(x)<sp/>_Generic((x),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char:<sp/>&quot;%c&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="132"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Bool:<sp/>&quot;%u&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="133"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>signed<sp/>char:<sp/>&quot;%hhd&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -689,9 +721,9 @@
 <codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>*:<sp/>&quot;%s&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>*:<sp/>&quot;%p&quot;)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT__(x)<sp/>FSTI_FMT(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="fsti-report_8h_1a69fb6754f171ddae0a378657b60f8ae3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FMT__(x)<sp/>FSTI_FMT(x)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_POST_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>post,<sp/>spec)<sp/>\</highlight></codeline>
+<codeline lineno="151" refid="fsti-report_8h_1a257c53cc76bb683bc90f00a972456432" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_POST_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>post,<sp/>spec)<sp/>\</highlight></codeline>
 <codeline lineno="152"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="153"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="154"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -701,7 +733,7 @@
 <codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>spec)<sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="161" refid="fsti-report_8h_1a40a22c32155c8f01c2a9ed380aec87cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT_PREC(func,<sp/>agent_ind,<sp/>elem,<sp/>desc,<sp/>spec)<sp/>do<sp/>{<sp/>\</highlight></codeline>
 <codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(simulation-&gt;results_file,<sp/>&quot;%s,%d,%d,%s,&quot;<sp/>spec<sp/>&quot;\n&quot;,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -709,7 +741,7 @@
 <codeline lineno="166"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT(func,<sp/>agent_ind,<sp/>elem,<sp/>desc)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="169" refid="fsti-report_8h_1a1ca2804ea269ac3530af9dbf5449e443" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_REPORT_OUTPUT(func,<sp/>agent_ind,<sp/>elem,<sp/>desc)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>__result__;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(simulation-&gt;agent_ind,<sp/>elem,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(simulation-&gt;results_file,<sp/>&quot;%s,%d,%d,%s,%f\n&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
@@ -717,7 +749,7 @@
 <codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation-&gt;config_sim_number,<sp/>desc,<sp/>__result__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fsti_cmpf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*b);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-report_8h_1a01f88429a83ea714459262c661ba9859" kindref="member">fsti_cmpf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*b);</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
