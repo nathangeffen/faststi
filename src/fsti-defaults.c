@@ -81,6 +81,10 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "THREADS",
                     "Number of threads (1=no threading, 0=system determined)",
                     0);
+    FSTI_CONFIG_ADD(config, "CSV_DELIMITER",
+                    "Character that separates CSV fields", ";");
+    FSTI_CONFIG_ADD(config, "AGENT_CSV_HEADER",
+                    "Whether or not the agent csv input file has a header", 1);
     FSTI_ADDITIONAL_CONFIG_VARS(config);
 
     return 0;
