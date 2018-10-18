@@ -1,0 +1,82 @@
+\hypertarget{fsti-error_8c}{}\section{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/error.c File Reference}
+\label{fsti-error_8c}\index{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/error.\+c@{/\+Users/eduardgrebe/dev/faststi-\/eduard/src/fsti-\/error.\+c}}
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdatomic.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsti-\/error.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fsti-error_8c_a73e3216fb5d7453e74727559c51b2582}{E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN}}~200
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{fsti-error_8c_af06abad6908dc30d87bb7602f867afb5}{fsti\+\_\+error\+\_\+message}} (int code)
+\item 
+int \mbox{\hyperlink{fsti-error_8c_a07bba2015aafadb550151f076c6b7843}{fsti\+\_\+error\+\_\+msg}} (int errnum, const char $\ast$file, int line, const char $\ast$extra\+\_\+message)
+\item 
+char $\ast$ \mbox{\hyperlink{fsti-error_8c_a43bc036e5103ed01c68a28a583ce7e3b}{fsti\+\_\+sprintf}} (char $\ast$fmt,...)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+Thread\+\_\+local int \mbox{\hyperlink{fsti-error_8c_a2fa89546149e592da51f9cd5324ddb1a}{fsti\+\_\+error}}
+\item 
+\+\_\+\+Thread\+\_\+local char \mbox{\hyperlink{fsti-error_8c_a99f70ec33b72be8e72a89fc904bcdb36}{fsti\+\_\+error\+\_\+string}} \mbox{[}200+1\mbox{]} = \char`\"{}\char`\"{}
+\item 
+bool \mbox{\hyperlink{fsti-error_8c_aa816d4518d32fccf93d6989309eefa04}{fsti\+\_\+output\+\_\+error\+\_\+messages}} = true
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fsti-error_8c_a73e3216fb5d7453e74727559c51b2582}\label{fsti-error_8c_a73e3216fb5d7453e74727559c51b2582}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN@{E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN}}
+\index{E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN@{E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN}{ERROR\_MSG\_LEN}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+M\+S\+G\+\_\+\+L\+EN~200}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsti-error_8c_af06abad6908dc30d87bb7602f867afb5}\label{fsti-error_8c_af06abad6908dc30d87bb7602f867afb5}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+error\+\_\+message@{fsti\+\_\+error\+\_\+message}}
+\index{fsti\+\_\+error\+\_\+message@{fsti\+\_\+error\+\_\+message}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+error\+\_\+message()}{fsti\_error\_message()}}
+{\footnotesize\ttfamily const char$\ast$ fsti\+\_\+error\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-error_8c_a07bba2015aafadb550151f076c6b7843}\label{fsti-error_8c_a07bba2015aafadb550151f076c6b7843}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+error\+\_\+msg@{fsti\+\_\+error\+\_\+msg}}
+\index{fsti\+\_\+error\+\_\+msg@{fsti\+\_\+error\+\_\+msg}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+error\+\_\+msg()}{fsti\_error\_msg()}}
+{\footnotesize\ttfamily int fsti\+\_\+error\+\_\+msg (\begin{DoxyParamCaption}\item[{int}]{errnum,  }\item[{const char $\ast$}]{file,  }\item[{int}]{line,  }\item[{const char $\ast$}]{extra\+\_\+message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fsti-error_8c_a43bc036e5103ed01c68a28a583ce7e3b}\label{fsti-error_8c_a43bc036e5103ed01c68a28a583ce7e3b}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+sprintf@{fsti\+\_\+sprintf}}
+\index{fsti\+\_\+sprintf@{fsti\+\_\+sprintf}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+sprintf()}{fsti\_sprintf()}}
+{\footnotesize\ttfamily char$\ast$ fsti\+\_\+sprintf (\begin{DoxyParamCaption}\item[{char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{fsti-error_8c_a2fa89546149e592da51f9cd5324ddb1a}\label{fsti-error_8c_a2fa89546149e592da51f9cd5324ddb1a}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+error@{fsti\+\_\+error}}
+\index{fsti\+\_\+error@{fsti\+\_\+error}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+error}{fsti\_error}}
+{\footnotesize\ttfamily \+\_\+\+Thread\+\_\+local int fsti\+\_\+error}
+
+\mbox{\Hypertarget{fsti-error_8c_a99f70ec33b72be8e72a89fc904bcdb36}\label{fsti-error_8c_a99f70ec33b72be8e72a89fc904bcdb36}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+error\+\_\+string@{fsti\+\_\+error\+\_\+string}}
+\index{fsti\+\_\+error\+\_\+string@{fsti\+\_\+error\+\_\+string}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+error\+\_\+string}{fsti\_error\_string}}
+{\footnotesize\ttfamily \+\_\+\+Thread\+\_\+local char fsti\+\_\+error\+\_\+string\mbox{[}200+1\mbox{]} = \char`\"{}\char`\"{}}
+
+\mbox{\Hypertarget{fsti-error_8c_aa816d4518d32fccf93d6989309eefa04}\label{fsti-error_8c_aa816d4518d32fccf93d6989309eefa04}} 
+\index{fsti-\/error.\+c@{fsti-\/error.\+c}!fsti\+\_\+output\+\_\+error\+\_\+messages@{fsti\+\_\+output\+\_\+error\+\_\+messages}}
+\index{fsti\+\_\+output\+\_\+error\+\_\+messages@{fsti\+\_\+output\+\_\+error\+\_\+messages}!fsti-\/error.\+c@{fsti-\/error.\+c}}
+\subsubsection{\texorpdfstring{fsti\+\_\+output\+\_\+error\+\_\+messages}{fsti\_output\_error\_messages}}
+{\footnotesize\ttfamily bool fsti\+\_\+output\+\_\+error\+\_\+messages = true}
+

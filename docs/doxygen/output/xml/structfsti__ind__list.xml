@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structfsti__ind__list" kind="struct" language="C++" prot="public">
+    <compoundname>fsti_ind_list</compoundname>
+    <includes refid="fsti-agent_8h" local="no">fsti-agent.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref> *</type>
+        <definition>struct fsti_agent_ind* fsti_ind_list::ind</definition>
+        <argsstring></argsstring>
+        <name>ind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="58" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref> *</type>
+        <definition>struct fsti_ind_list* fsti_ind_list::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="49">
+        <label>fsti_agent_ind</label>
+        <link refid="structfsti__agent__ind"/>
+        <childnode refid="50" relation="usage">
+          <edgelabel>agent_arr</edgelabel>
+        </childnode>
+      </node>
+      <node id="48">
+        <label>fsti_ind_list</label>
+        <link refid="structfsti__ind__list"/>
+        <childnode refid="49" relation="usage">
+          <edgelabel>ind</edgelabel>
+        </childnode>
+        <childnode refid="48" relation="usage">
+          <edgelabel>next</edgelabel>
+        </childnode>
+      </node>
+      <node id="51">
+        <label>fsti_agent</label>
+        <link refid="structfsti__agent"/>
+      </node>
+      <node id="50">
+        <label>fsti_agent_arr</label>
+        <link refid="structfsti__agent__arr"/>
+        <childnode refid="51" relation="usage">
+          <edgelabel>agents</edgelabel>
+        </childnode>
+        <childnode refid="48" relation="usage">
+          <edgelabel>ind_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="57" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="57" bodyend="60"/>
+    <listofallmembers>
+      <member refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" prot="public" virt="non-virtual"><scope>fsti_ind_list</scope><name>ind</name></member>
+      <member refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" prot="public" virt="non-virtual"><scope>fsti_ind_list</scope><name>next</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

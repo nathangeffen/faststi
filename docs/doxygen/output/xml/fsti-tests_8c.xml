@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-tests_8c" kind="file" language="C++">
+    <compoundname>fsti-tests.c</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="yes">utils/test.h</includes>
+    <includes refid="fsti-tests_8h" local="yes">fsti-tests.h</includes>
+    <includes refid="fsti-config_8h" local="yes">fsti-config.h</includes>
+    <includes refid="fsti-agent_8h" local="yes">fsti-agent.h</includes>
+    <includes refid="fsti-simset_8h" local="yes">fsti-simset.h</includes>
+    <incdepgraph>
+      <node id="558">
+        <label>stdbool.h</label>
+      </node>
+      <node id="571">
+        <label>stdatomic.h</label>
+      </node>
+      <node id="563">
+        <label>fsti-userdefs.h</label>
+        <link refid="fsti-userdefs_8h"/>
+      </node>
+      <node id="553">
+        <label>assert.h</label>
+      </node>
+      <node id="569">
+        <label>fsti-error.h</label>
+        <link refid="fsti-error_8h"/>
+        <childnode refid="553" relation="include">
+        </childnode>
+        <childnode refid="570" relation="include">
+        </childnode>
+        <childnode refid="558" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+      </node>
+      <node id="568">
+        <label>utils/uthash.h</label>
+      </node>
+      <node id="561">
+        <label>stdint.h</label>
+      </node>
+      <node id="548">
+        <label>stdlib.h</label>
+      </node>
+      <node id="570">
+        <label>errno.h</label>
+      </node>
+      <node id="557">
+        <label>stddef.h</label>
+      </node>
+      <node id="552">
+        <label>fsti-config.h</label>
+        <link refid="fsti-config_8h"/>
+        <childnode refid="553" relation="include">
+        </childnode>
+        <childnode refid="549" relation="include">
+        </childnode>
+        <childnode refid="548" relation="include">
+        </childnode>
+        <childnode refid="554" relation="include">
+        </childnode>
+        <childnode refid="555" relation="include">
+        </childnode>
+        <childnode refid="556" relation="include">
+        </childnode>
+      </node>
+      <node id="554">
+        <label>string.h</label>
+      </node>
+      <node id="555">
+        <label>utils/utils.h</label>
+      </node>
+      <node id="562">
+        <label>fsti-defaults.h</label>
+        <link refid="fsti-defaults_8h"/>
+        <childnode refid="552" relation="include">
+        </childnode>
+        <childnode refid="556" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+      </node>
+      <node id="556">
+        <label>fsti-defs.h</label>
+        <link refid="fsti-defs_8h"/>
+        <childnode refid="548" relation="include">
+        </childnode>
+        <childnode refid="557" relation="include">
+        </childnode>
+        <childnode refid="558" relation="include">
+        </childnode>
+      </node>
+      <node id="559">
+        <label>fsti-agent.h</label>
+        <link refid="fsti-agent_8h"/>
+        <childnode refid="549" relation="include">
+        </childnode>
+        <childnode refid="560" relation="include">
+        </childnode>
+        <childnode refid="561" relation="include">
+        </childnode>
+        <childnode refid="555" relation="include">
+        </childnode>
+        <childnode refid="556" relation="include">
+        </childnode>
+        <childnode refid="562" relation="include">
+        </childnode>
+      </node>
+      <node id="567">
+        <label>fsti-eventdefs.h</label>
+        <link refid="fsti-eventdefs_8h"/>
+        <childnode refid="568" relation="include">
+        </childnode>
+        <childnode refid="556" relation="include">
+        </childnode>
+        <childnode refid="569" relation="include">
+        </childnode>
+      </node>
+      <node id="565">
+        <label>glib.h</label>
+      </node>
+      <node id="550">
+        <label>utils/test.h</label>
+      </node>
+      <node id="564">
+        <label>fsti-simset.h</label>
+        <link refid="fsti-simset_8h"/>
+        <childnode refid="558" relation="include">
+        </childnode>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+        <childnode refid="566" relation="include">
+        </childnode>
+      </node>
+      <node id="566">
+        <label>fsti-simulation.h</label>
+        <link refid="fsti-simulation_8h"/>
+        <childnode refid="560" relation="include">
+        </childnode>
+        <childnode refid="559" relation="include">
+        </childnode>
+        <childnode refid="567" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+        <childnode refid="562" relation="include">
+        </childnode>
+      </node>
+      <node id="560">
+        <label>gsl/gsl_rng.h</label>
+      </node>
+      <node id="549">
+        <label>stdio.h</label>
+      </node>
+      <node id="547">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</label>
+        <link refid="fsti-tests_8c"/>
+        <childnode refid="548" relation="include">
+        </childnode>
+        <childnode refid="549" relation="include">
+        </childnode>
+        <childnode refid="550" relation="include">
+        </childnode>
+        <childnode refid="551" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+        <childnode refid="559" relation="include">
+        </childnode>
+        <childnode refid="564" relation="include">
+        </childnode>
+      </node>
+      <node id="551">
+        <label>fsti-tests.h</label>
+        <link refid="fsti-tests_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-tests_8c_1a6d22e84aa78560b52172df37e4c4923f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int fsti_tests</definition>
+        <argsstring>()</argsstring>
+        <name>fsti_tests</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c" line="11" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c" bodystart="11" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/test.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-tests_8h" kindref="compound">fsti-tests.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-config_8h" kindref="compound">fsti-config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-agent_8h" kindref="compound">fsti-agent.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-simset_8h" kindref="compound">fsti-simset.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8c_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>()</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">test_group<sp/>tg;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>test_group_new(&amp;tg);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8c_1a56851785b4dd54466e2d92ef3d55fc2f" kindref="member">fsti_config_test</ref>(&amp;tg);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-agent_8c_1aa9fa3865ab9658915f20e4212ca4cbe4" kindref="member">fsti_agent_test</ref>(&amp;tg);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simulation_8c_1a86e77278da10e20688210e211787e7d2" kindref="member">fsti_simulation_test</ref>(&amp;tg);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a14d71a5961f0b595d706a5a43e7350d3" kindref="member">fsti_simset_test</ref>(&amp;tg);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>test_group_summary(&amp;tg);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tg.failures;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c"/>
+  </compounddef>
+</doxygen>

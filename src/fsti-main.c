@@ -52,6 +52,10 @@ void free_statics()
     g_strfreev(config_strings);
 }
 
+/**
+ * \public
+ * Description of the main() function. We will pretend it is public
+ */
 
 int main(int argc, char *argv[])
 {

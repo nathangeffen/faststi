@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="fsti-tests_8h" kind="file" language="C++">
+    <compoundname>fsti-tests.h</compoundname>
+    <includedby refid="fsti_8h" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</includedby>
+    <includedby refid="fsti-tests_8c" local="yes">/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</includedby>
+    <invincdepgraph>
+      <node id="577">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-userdefs.c</label>
+        <link refid="fsti-userdefs_8c"/>
+      </node>
+      <node id="576">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c</label>
+        <link refid="fsti-main_8c"/>
+      </node>
+      <node id="578">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c</label>
+        <link refid="fsti-tests_8c"/>
+      </node>
+      <node id="575">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti.h</label>
+        <link refid="fsti_8h"/>
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+      </node>
+      <node id="574">
+        <label>/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.h</label>
+        <link refid="fsti-tests_8h"/>
+        <childnode refid="575" relation="include">
+        </childnode>
+        <childnode refid="578" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fsti-tests_8h_1a6d22e84aa78560b52172df37e4c4923f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int fsti_tests</definition>
+        <argsstring>()</argsstring>
+        <name>fsti_tests</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.h" line="4" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.c" bodystart="11" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FSTI_TESTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_TESTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8h_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>();</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-tests.h"/>
+  </compounddef>
+</doxygen>
