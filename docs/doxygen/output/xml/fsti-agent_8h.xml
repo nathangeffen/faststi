@@ -225,10 +225,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>A macro called FSRI_FOR </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="15" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="15" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="12" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="fsti-agent_8h_1a9cdc0f2e5160a06cdbbbd9a0807513f5" prot="public" static="no">
         <name>FSTI_FOR_IT</name>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="24" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="24" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="21" column="9" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="365" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="7" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="362" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="7" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -286,10 +286,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Description of the fsti_agent_print_csv function </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="81" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="12" bodyend="15"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="78" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a067437e70d5fe4d1e6f139bab513c6ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -314,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="82" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="17" bodyend="20"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="79" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="14" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ae4a719a71a7f8a2687d05976340b1ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>_Bool</type>
@@ -331,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="83" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="22" bodyend="28"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="80" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="19" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1afaf3c076c60db61e182fb1e5a8eabc77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="84" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="31" bodyend="34"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="81" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1aab565f3b1fa1cb77b6a83efd3faa72e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -373,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="85" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="36" bodyend="41"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="82" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="33" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a69108c3779a3689185b833a70f589225" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -394,7 +394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="86" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="43" bodyend="54"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="83" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="40" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a66a819f51531e6f89f92addab960ae3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -415,7 +415,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="87" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="56" bodyend="62"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="84" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="53" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0624a840237ec82520be71b241220226" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -436,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="88" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="64" bodyend="74"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="85" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="61" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a63a22afc13737a55174adb97f2cbcfc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -457,7 +457,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="89" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="76" bodyend="86"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="86" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="73" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a87de33f5c064440c162d0c8d0f9ccbf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -478,7 +478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="90" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="88" bodyend="95"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="87" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="85" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ab657b71989567b40adc4ccea49292540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="91" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="109" bodyend="112"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="88" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a2dc08a5f50e57b979f50f6efb927d57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -516,7 +516,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="92" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="97" bodyend="107"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="89" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="94" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a30c755dbd7cd8e98b76ebe65b8dc54a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -533,7 +533,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="93" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="114" bodyend="117"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="90" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a1a5fc4621ece587a603b9b970bc3bd7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -550,7 +550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="94" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="119" bodyend="122"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="91" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a9f01e2df0acb48b1e9cef63d4314c209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -571,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="95" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="125" bodyend="129"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="92" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="122" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1aaad30933ebf477fc44ee2f7123d335b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -588,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="96" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="131" bodyend="134"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="93" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="128" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a88eb4bd7a7df9dcbc5b57d3e3e22f9c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="97" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="136" bodyend="139"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="94" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="133" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a8ea9850f51ba1cc3f842f3730cf22139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -630,7 +630,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="98" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="141" bodyend="149"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="95" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="138" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1abe4c0c13ceb1a50eb8d9223a7122f269" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -651,7 +651,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="99" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="151" bodyend="155"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="96" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="148" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0cf9bb69026e48287e83f9d73841f90f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -672,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="100" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="184" bodyend="197"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="97" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="181" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a140245276760c5ca1467b816dfdb16d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -689,7 +689,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="101" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="199" bodyend="204"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="98" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="196" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ad710a67a71582f5e8a63490c1afe3a3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -710,7 +710,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="102" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="206" bodyend="213"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="99" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="203" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a863d835b0643a8d62d8621bd512fd902" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -735,7 +735,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="103" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="215" bodyend="229"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="100" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="212" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a15fb161e3b2c757f6dc7d67af4e6ef3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -756,7 +756,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="106" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="231" bodyend="235"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="103" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="228" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t *</type>
@@ -773,7 +773,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="108" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="237" bodyend="240"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="105" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="234" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t *</type>
@@ -790,7 +790,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="109" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="242" bodyend="245"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="106" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="239" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a4c099994dc5a8cedc1de073fa64bfbcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t *</type>
@@ -811,7 +811,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="110" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="247" bodyend="250"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="107" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="244" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1aeb0ffefe572b09e4e3d8e33571e256da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -832,7 +832,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="111" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="265" bodyend="273"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="108" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="262" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a40bb88f7ef7f1adc5b3bf76964f5ce03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -849,7 +849,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="112" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="275" bodyend="280"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="109" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="272" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a9005e4c20f02aff3ad90dafbaa630583" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -870,7 +870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="113" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="282" bodyend="287"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="110" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="279" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0e45e82b7f4f019b1813daf04717b894" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -891,7 +891,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="114" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="259" bodyend="262"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="111" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="256" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -912,7 +912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="116" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="253" bodyend="256"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="113" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="250" bodyend="253"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ade2459f6fc82794b3fe9bca7585bdfa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -929,7 +929,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="118" column="1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="115" column="1"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1aac56f2d510cd312bdb5b32a221e00309" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structfsti__agent" kindref="compound">fsti_agent</ref> *</type>
@@ -946,7 +946,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="119" column="1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="116" column="1"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ae9ffb7f208aa2ca7f0e5a1999ae69425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -971,7 +971,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="120" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="301" bodyend="315"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="117" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="298" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ae598f299bc63165f2f0b5c9d5c72e52c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -992,7 +992,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="123" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="289" bodyend="299"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="120" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="286" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a6681f5dfe9ce93defe0d395774010080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1013,7 +1013,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="124" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="317" bodyend="326"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="121" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="314" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a6ea0014798a460e51b30b2d8af0dda25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1030,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="125" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="340" bodyend="343"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="122" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="337" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1ab9adb18f274475832c5a763be7d001d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1047,7 +1047,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="126" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="345" bodyend="348"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="123" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="342" bodyend="345"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1a0c1f310e7cd98b4122a4348b0ec26b4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1064,7 +1064,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="127" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="350" bodyend="363"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="124" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="347" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="fsti-agent_8h_1aa9fa3865ab9658915f20e4212ca4cbe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1081,7 +1081,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="128" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="365" bodyend="541"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="125" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.c" bodystart="362" bodyend="538"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1100,122 +1100,122 @@
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defs_8h" kindref="compound">fsti-defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fsti-defaults_8h" kindref="compound">fsti-defaults.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="fsti-agent_8h_1a4c03aa904df401cdd442c95af046e217" refkind="member"><highlight class="preprocessor">#define<sp/>FSTI_FOR(agent_ind,<sp/>agent,<sp/>code)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="19"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="20"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>code<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="fsti-agent_8h_1a9cdc0f2e5160a06cdbbbd9a0807513f5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FOR_IT(agent_ind,<sp/>it,<sp/>code)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>code<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="structfsti__agent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>{</highlight></codeline>
-<codeline lineno="32" refid="structfsti__agent_1a132b33c9ffca7e9e89d2a04045b4b7bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a132b33c9ffca7e9e89d2a04045b4b7bb" kindref="member">id</ref>;</highlight></codeline>
-<codeline lineno="33" refid="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" kindref="member">sex</ref>;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="35" refid="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" kindref="member">sex_preferred</ref>;</highlight></codeline>
-<codeline lineno="36" refid="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" kindref="member">orientation</ref>;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="40" refid="structfsti__agent_1a44c237039bb02720a770b625f905cf76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a44c237039bb02720a770b625f905cf76" kindref="member">age</ref>;</highlight></codeline>
-<codeline lineno="41" refid="structfsti__agent_1ac5f2eceb7fd6a171ea7116ed87c9a759" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ac5f2eceb7fd6a171ea7116ed87c9a759" kindref="member">birth_date</ref>;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="44" refid="structfsti__agent_1a3643293559e2359cbf0ace373d53e22d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structfsti__agent_1a3643293559e2359cbf0ace373d53e22d" kindref="member">birthday</ref>;</highlight></codeline>
-<codeline lineno="45" refid="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" kindref="member">age_group</ref>;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="49" refid="structfsti__agent_1ae726e3b1cb42878ef3ca3148fe597a56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ae726e3b1cb42878ef3ca3148fe597a56" kindref="member">infected</ref>;</highlight></codeline>
-<codeline lineno="50" refid="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" kindref="member">infected_date</ref>;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="52" refid="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" kindref="member">cured</ref>;<sp/></highlight><highlight class="comment">//<sp/>Date<sp/>last<sp/>cured<sp/>of<sp/>last<sp/>infection</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53" refid="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" kindref="member">date_death</ref>;<sp/></highlight><highlight class="comment">//<sp/>0<sp/>if<sp/>still<sp/>alive</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="structfsti__agent_1a292854517270b640c6fdc35980e66637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a292854517270b640c6fdc35980e66637" kindref="member">cause_of_death</ref>;</highlight></codeline>
-<codeline lineno="55" refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" kindref="member">partners</ref>[<ref refid="fsti-defaults_8h_1a63eab3d9e5c24ef228101d5acabc8220" kindref="member">FSTI_MAX_PARTNERS</ref>];</highlight></codeline>
-<codeline lineno="56" refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" kindref="member">num_partners</ref>;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8h_1ae8d43f5c182bec36fb3c3d06e72c6e3a" kindref="member">FSTI_AGENT_FIELDS</ref></highlight></codeline>
-<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="structfsti__ind__list" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>{</highlight></codeline>
-<codeline lineno="61" refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*<ref refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" kindref="member">ind</ref>;</highlight></codeline>
-<codeline lineno="62" refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>*<ref refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" kindref="member">next</ref>;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="structfsti__agent__arr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>{</highlight></codeline>
-<codeline lineno="66" refid="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" kindref="member">agents</ref>;</highlight></codeline>
-<codeline lineno="67" refid="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" kindref="member">len</ref>;</highlight></codeline>
-<codeline lineno="68" refid="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" kindref="member">capacity</ref>;</highlight></codeline>
-<codeline lineno="69" refid="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>*<ref refid="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" kindref="member">ind_list</ref>;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="structfsti__agent__ind" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>{</highlight></codeline>
-<codeline lineno="73" refid="structfsti__agent__ind_1a2892aba8fbb99f0ceb363c434c861e4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__agent__ind_1a2892aba8fbb99f0ceb363c434c861e4f" kindref="member">indices</ref>;</highlight></codeline>
-<codeline lineno="74" refid="structfsti__agent__ind_1aa1deb5291b58997006ed73cdfdacb946" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind_1aa1deb5291b58997006ed73cdfdacb946" kindref="member">len</ref>;</highlight></codeline>
-<codeline lineno="75" refid="structfsti__agent__ind_1a04dc165ff5ad97307c8881aa2e230455" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind_1a04dc165ff5ad97307c8881aa2e230455" kindref="member">capacity</ref>;</highlight></codeline>
-<codeline lineno="76" refid="structfsti__agent__ind_1a6fb589d3c9ed085bff1be5f3e90f6ccb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*<ref refid="structfsti__agent__ind_1a6fb589d3c9ed085bff1be5f3e90f6ccb" kindref="member">agent_arr</ref>;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/><ref refid="fsti-agent_8h_1a0d0890f5771bd3efa056881d37f4c6b9" kindref="member">fsti_saved_agent_arr</ref>;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ad24c55a9a2a07b7a0a07a0fb74be112e" kindref="member">fsti_agent_print_csv</ref>(FILE<sp/>*f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a067437e70d5fe4d1e6f139bab513c6ac" kindref="member">fsti_agent_print_pretty</ref>(FILE<sp/>*f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">_Bool<sp/><ref refid="fsti-agent_8h_1ae4a719a71a7f8a2687d05976340b1ffb" kindref="member">fsti_agent_has_partner</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1afaf3c076c60db61e182fb1e5a8eabc77" kindref="member">fsti_agent_make_half_partner</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aab565f3b1fa1cb77b6a83efd3faa72e7" kindref="member">fsti_agent_make_partners</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a69108c3779a3689185b833a70f589225" kindref="member">fsti_agent_break_half_partner</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a66a819f51531e6f89f92addab960ae3a" kindref="member">fsti_agent_break_partners</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0624a840237ec82520be71b241220226" kindref="member">fsti_agent_default_distance</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a63a22afc13737a55174adb97f2cbcfc1" kindref="member">fsti_agent_arr_add_dependency</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a87de33f5c064440c162d0c8d0f9ccbf8" kindref="member">fsti_agent_arr_fill_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ab657b71989567b40adc4ccea49292540" kindref="member">fsti_agent_arr_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a2dc08a5f50e57b979f50f6efb927d57c" kindref="member">fsti_agent_arr_init_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a30c755dbd7cd8e98b76ebe65b8dc54a2" kindref="member">fsti_agent_arr_begin</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a1a5fc4621ece587a603b9b970bc3bd7c" kindref="member">fsti_agent_arr_end</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a9f01e2df0acb48b1e9cef63d4314c209" kindref="member">fsti_agent_arr_at</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1aaad30933ebf477fc44ee2f7123d335b6" kindref="member">fsti_agent_arr_front</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a88eb4bd7a7df9dcbc5b57d3e3e22f9c6" kindref="member">fsti_agent_arr_back</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a8ea9850f51ba1cc3f842f3730cf22139" kindref="member">fsti_agent_partner_get</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1abe4c0c13ceb1a50eb8d9223a7122f269" kindref="member">fsti_agent_partner_get0</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0cf9bb69026e48287e83f9d73841f90f" kindref="member">fsti_agent_arr_push</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a140245276760c5ca1467b816dfdb16d9" kindref="member">fsti_agent_arr_pop</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ad710a67a71582f5e8a63490c1afe3a3c" kindref="member">fsti_agent_ind_fill_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a863d835b0643a8d62d8621bd512fd902" kindref="member">fsti_agent_ind_init_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a15fb161e3b2c757f6dc7d67af4e6ef3d" kindref="member">fsti_agent_ind_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1a4c099994dc5a8cedc1de073fa64bfbcc" kindref="member">fsti_agent_ind_at</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aeb0ffefe572b09e4e3d8e33571e256da" kindref="member">fsti_agent_ind_push</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a40bb88f7ef7f1adc5b3bf76964f5ce03" kindref="member">fsti_agent_ind_pop</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a9005e4c20f02aff3ad90dafbaa630583" kindref="member">fsti_agent_ind_remove</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*it);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1a0e45e82b7f4f019b1813daf04717b894" kindref="member">fsti_agent_ind_arr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*it);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1ade2459f6fc82794b3fe9bca7585bdfa1" kindref="member">fsti_agent_ind_arr_front</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1aac56f2d510cd312bdb5b32a221e00309" kindref="member">fsti_agent_ind_arr_back</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ae9ffb7f208aa2ca7f0e5a1999ae69425" kindref="member">fsti_agent_arr_copy</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*dest,</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*src,</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>reset_members);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ae598f299bc63165f2f0b5c9d5c72e52c" kindref="member">fsti_agent_ind_shuffle</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/>gsl_rng<sp/>*rng);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a6681f5dfe9ce93defe0d395774010080" kindref="member">fsti_agent_ind_copy</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*dest,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*src);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a6ea0014798a460e51b30b2d8af0dda25" kindref="member">fsti_agent_ind_clear</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ab9adb18f274475832c5a763be7d001d7" kindref="member">fsti_agent_ind_free</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0c1f310e7cd98b4122a4348b0ec26b4f" kindref="member">fsti_agent_arr_free</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aa9fa3865ab9658915f20e4212ca4cbe4" kindref="member">fsti_agent_test</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>test_group<sp/>*tg);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="12" refid="fsti-agent_8h_1a4c03aa904df401cdd442c95af046e217" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FOR(agent_ind,<sp/>agent,<sp/>code)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>*_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(_it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>_it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>agent<sp/>=<sp/>fsti_agent_ind_arrp(&amp;(agent_ind),<sp/>_it);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>code<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="fsti-agent_8h_1a9cdc0f2e5160a06cdbbbd9a0807513f5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FSTI_FOR_IT(agent_ind,<sp/>it,<sp/>code)<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(it<sp/>=<sp/>fsti_agent_ind_begin(&amp;(agent_ind));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>!=<sp/>fsti_agent_ind_end(&amp;(agent_ind));<sp/>it++)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>code<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="structfsti__agent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>{</highlight></codeline>
+<codeline lineno="29" refid="structfsti__agent_1a132b33c9ffca7e9e89d2a04045b4b7bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a132b33c9ffca7e9e89d2a04045b4b7bb" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" kindref="member">sex</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32" refid="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" kindref="member">sex_preferred</ref>;</highlight></codeline>
+<codeline lineno="33" refid="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" kindref="member">orientation</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37" refid="structfsti__agent_1a44c237039bb02720a770b625f905cf76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a44c237039bb02720a770b625f905cf76" kindref="member">age</ref>;</highlight></codeline>
+<codeline lineno="38" refid="structfsti__agent_1ac5f2eceb7fd6a171ea7116ed87c9a759" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ac5f2eceb7fd6a171ea7116ed87c9a759" kindref="member">birth_date</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41" refid="structfsti__agent_1a3643293559e2359cbf0ace373d53e22d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structfsti__agent_1a3643293559e2359cbf0ace373d53e22d" kindref="member">birthday</ref>;</highlight></codeline>
+<codeline lineno="42" refid="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" kindref="member">age_group</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46" refid="structfsti__agent_1ae726e3b1cb42878ef3ca3148fe597a56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ae726e3b1cb42878ef3ca3148fe597a56" kindref="member">infected</ref>;</highlight></codeline>
+<codeline lineno="47" refid="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" kindref="member">infected_date</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49" refid="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" kindref="member">cured</ref>;<sp/></highlight><highlight class="comment">//<sp/>Date<sp/>last<sp/>cured<sp/>of<sp/>last<sp/>infection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" kindref="member">date_death</ref>;<sp/></highlight><highlight class="comment">//<sp/>0<sp/>if<sp/>still<sp/>alive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structfsti__agent_1a292854517270b640c6fdc35980e66637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structfsti__agent_1a292854517270b640c6fdc35980e66637" kindref="member">cause_of_death</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" kindref="member">partners</ref>[<ref refid="fsti-defaults_8h_1a63eab3d9e5c24ef228101d5acabc8220" kindref="member">FSTI_MAX_PARTNERS</ref>];</highlight></codeline>
+<codeline lineno="53" refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" kindref="member">num_partners</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-defaults_8h_1ae8d43f5c182bec36fb3c3d06e72c6e3a" kindref="member">FSTI_AGENT_FIELDS</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structfsti__ind__list" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>{</highlight></codeline>
+<codeline lineno="58" refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*<ref refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" kindref="member">ind</ref>;</highlight></codeline>
+<codeline lineno="59" refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>*<ref refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structfsti__agent__arr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>{</highlight></codeline>
+<codeline lineno="63" refid="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="structfsti__agent__arr_1a7e4787915398bdddff99fa7526ffd1df" kindref="member">agents</ref>;</highlight></codeline>
+<codeline lineno="64" refid="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr_1a7a3aad9a85b02c5bdeac139912f2dd94" kindref="member">len</ref>;</highlight></codeline>
+<codeline lineno="65" refid="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr_1a6b584cff02d8f68448a2c1a948880279" kindref="member">capacity</ref>;</highlight></codeline>
+<codeline lineno="66" refid="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref><sp/>*<ref refid="structfsti__agent__arr_1ae71448f56b3474ebeb7efecab3651968" kindref="member">ind_list</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="structfsti__agent__ind" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>{</highlight></codeline>
+<codeline lineno="70" refid="structfsti__agent__ind_1a2892aba8fbb99f0ceb363c434c861e4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="structfsti__agent__ind_1a2892aba8fbb99f0ceb363c434c861e4f" kindref="member">indices</ref>;</highlight></codeline>
+<codeline lineno="71" refid="structfsti__agent__ind_1aa1deb5291b58997006ed73cdfdacb946" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind_1aa1deb5291b58997006ed73cdfdacb946" kindref="member">len</ref>;</highlight></codeline>
+<codeline lineno="72" refid="structfsti__agent__ind_1a04dc165ff5ad97307c8881aa2e230455" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind_1a04dc165ff5ad97307c8881aa2e230455" kindref="member">capacity</ref>;</highlight></codeline>
+<codeline lineno="73" refid="structfsti__agent__ind_1a6fb589d3c9ed085bff1be5f3e90f6ccb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*<ref refid="structfsti__agent__ind_1a6fb589d3c9ed085bff1be5f3e90f6ccb" kindref="member">agent_arr</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/><ref refid="fsti-agent_8h_1a0d0890f5771bd3efa056881d37f4c6b9" kindref="member">fsti_saved_agent_arr</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ad24c55a9a2a07b7a0a07a0fb74be112e" kindref="member">fsti_agent_print_csv</ref>(FILE<sp/>*f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a067437e70d5fe4d1e6f139bab513c6ac" kindref="member">fsti_agent_print_pretty</ref>(FILE<sp/>*f,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">_Bool<sp/><ref refid="fsti-agent_8h_1ae4a719a71a7f8a2687d05976340b1ffb" kindref="member">fsti_agent_has_partner</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1afaf3c076c60db61e182fb1e5a8eabc77" kindref="member">fsti_agent_make_half_partner</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aab565f3b1fa1cb77b6a83efd3faa72e7" kindref="member">fsti_agent_make_partners</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a69108c3779a3689185b833a70f589225" kindref="member">fsti_agent_break_half_partner</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a66a819f51531e6f89f92addab960ae3a" kindref="member">fsti_agent_break_partners</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0624a840237ec82520be71b241220226" kindref="member">fsti_agent_default_distance</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*b);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a63a22afc13737a55174adb97f2cbcfc1" kindref="member">fsti_agent_arr_add_dependency</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a87de33f5c064440c162d0c8d0f9ccbf8" kindref="member">fsti_agent_arr_fill_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ab657b71989567b40adc4ccea49292540" kindref="member">fsti_agent_arr_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a2dc08a5f50e57b979f50f6efb927d57c" kindref="member">fsti_agent_arr_init_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a30c755dbd7cd8e98b76ebe65b8dc54a2" kindref="member">fsti_agent_arr_begin</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a1a5fc4621ece587a603b9b970bc3bd7c" kindref="member">fsti_agent_arr_end</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a9f01e2df0acb48b1e9cef63d4314c209" kindref="member">fsti_agent_arr_at</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1aaad30933ebf477fc44ee2f7123d335b6" kindref="member">fsti_agent_arr_front</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a88eb4bd7a7df9dcbc5b57d3e3e22f9c6" kindref="member">fsti_agent_arr_back</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a8ea9850f51ba1cc3f842f3730cf22139" kindref="member">fsti_agent_partner_get</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1abe4c0c13ceb1a50eb8d9223a7122f269" kindref="member">fsti_agent_partner_get0</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0cf9bb69026e48287e83f9d73841f90f" kindref="member">fsti_agent_arr_push</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*agent);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<ref refid="fsti-agent_8h_1a140245276760c5ca1467b816dfdb16d9" kindref="member">fsti_agent_arr_pop</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ad710a67a71582f5e8a63490c1afe3a3c" kindref="member">fsti_agent_ind_fill_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a863d835b0643a8d62d8621bd512fd902" kindref="member">fsti_agent_ind_init_n</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a15fb161e3b2c757f6dc7d67af4e6ef3d" kindref="member">fsti_agent_ind_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1af8ec082c043d0719f2933f78c9b74879" kindref="member">fsti_agent_ind_begin</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1a0a007fca1a85b26dc9f890b5c9f5649a" kindref="member">fsti_agent_ind_end</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*<ref refid="fsti-agent_8h_1a4c099994dc5a8cedc1de073fa64bfbcc" kindref="member">fsti_agent_ind_at</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aeb0ffefe572b09e4e3d8e33571e256da" kindref="member">fsti_agent_ind_push</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a40bb88f7ef7f1adc5b3bf76964f5ce03" kindref="member">fsti_agent_ind_pop</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a9005e4c20f02aff3ad90dafbaa630583" kindref="member">fsti_agent_ind_remove</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*it);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1a0e45e82b7f4f019b1813daf04717b894" kindref="member">fsti_agent_ind_arr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1a0d3fcfadb1159b63508be133b30f8df7" kindref="member">fsti_agent_ind_arrp</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*it);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1ade2459f6fc82794b3fe9bca7585bdfa1" kindref="member">fsti_agent_ind_arr_front</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__agent" kindref="compound">fsti_agent</ref><sp/>*<sp/><ref refid="fsti-agent_8h_1aac56f2d510cd312bdb5b32a221e00309" kindref="member">fsti_agent_ind_arr_back</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ae9ffb7f208aa2ca7f0e5a1999ae69425" kindref="member">fsti_agent_arr_copy</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*dest,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*src,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>reset_members);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ae598f299bc63165f2f0b5c9d5c72e52c" kindref="member">fsti_agent_ind_shuffle</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind,<sp/>gsl_rng<sp/>*rng);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a6681f5dfe9ce93defe0d395774010080" kindref="member">fsti_agent_ind_copy</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*dest,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*src);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a6ea0014798a460e51b30b2d8af0dda25" kindref="member">fsti_agent_ind_clear</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1ab9adb18f274475832c5a763be7d001d7" kindref="member">fsti_agent_ind_free</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__ind" kindref="compound">fsti_agent_ind</ref><sp/>*agent_ind);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1a0c1f310e7cd98b4122a4348b0ec26b4f" kindref="member">fsti_agent_arr_free</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structfsti__agent__arr" kindref="compound">fsti_agent_arr</ref><sp/>*agent_arr);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="fsti-agent_8h_1aa9fa3865ab9658915f20e4212ca4cbe4" kindref="member">fsti_agent_test</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>test_group<sp/>*tg);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h"/>
   </compounddef>

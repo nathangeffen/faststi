@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="61" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="61" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="58" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structfsti__ind__list" kindref="compound">fsti_ind_list</ref> *</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="62" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="62" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="59" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -68,7 +68,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="60" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="60" bodyend="63"/>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="57" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="57" bodyend="60"/>
     <listofallmembers>
       <member refid="structfsti__ind__list_1a0eecb3b3d6ceef9b204fd869ec33e35b" prot="public" virt="non-virtual"><scope>fsti_ind_list</scope><name>ind</name></member>
       <member refid="structfsti__ind__list_1a98e94b5030efc261759e3e39660bedca" prot="public" virt="non-virtual"><scope>fsti_ind_list</scope><name>next</name></member>

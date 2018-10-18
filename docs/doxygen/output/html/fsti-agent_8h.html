@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('fsti-agent_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +84,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
@@ -223,11 +243,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                           \</div><div class="line">        size_t *_it;                                                    \</div><div class="line">        for (_it = <a class="code" href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a>(&amp;(agent_ind));                  \</div><div class="line">             _it != <a class="code" href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a>(&amp;(agent_ind)); _it++) {          \</div><div class="line">            agent = <a class="code" href="fsti-agent_8h.html#a0d3fcfadb1159b63508be133b30f8df7">fsti_agent_ind_arrp</a>(&amp;(agent_ind), _it);             \</div><div class="line">            { code }                                                    \</div><div class="line">        }                                                               \</div><div class="line">    } <span class="keywordflow">while</span>(0)</div><div class="ttc" id="fsti-agent_8h_html_af8ec082c043d0719f2933f78c9b74879"><div class="ttname"><a href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a></div><div class="ttdeci">size_t * fsti_agent_ind_begin(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:237</div></div>
-<div class="ttc" id="fsti-agent_8h_html_a0a007fca1a85b26dc9f890b5c9f5649a"><div class="ttname"><a href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a></div><div class="ttdeci">size_t * fsti_agent_ind_end(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:242</div></div>
-<div class="ttc" id="fsti-agent_8h_html_a0d3fcfadb1159b63508be133b30f8df7"><div class="ttname"><a href="fsti-agent_8h.html#a0d3fcfadb1159b63508be133b30f8df7">fsti_agent_ind_arrp</a></div><div class="ttdeci">struct fsti_agent * fsti_agent_ind_arrp(struct fsti_agent_ind *agent_ind, size_t *it)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:253</div></div>
-</div><!-- fragment --><p>A macro called FSRI_FOR </p>
-
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                           \</div><div class="line">        size_t *_it;                                                    \</div><div class="line">        for (_it = <a class="code" href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a>(&amp;(agent_ind));                  \</div><div class="line">             _it != <a class="code" href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a>(&amp;(agent_ind)); _it++) {          \</div><div class="line">            agent = <a class="code" href="fsti-agent_8h.html#a0d3fcfadb1159b63508be133b30f8df7">fsti_agent_ind_arrp</a>(&amp;(agent_ind), _it);             \</div><div class="line">            { code }                                                    \</div><div class="line">        }                                                               \</div><div class="line">    } <span class="keywordflow">while</span>(0)</div><div class="ttc" id="fsti-agent_8h_html_af8ec082c043d0719f2933f78c9b74879"><div class="ttname"><a href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a></div><div class="ttdeci">size_t * fsti_agent_ind_begin(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:234</div></div>
+<div class="ttc" id="fsti-agent_8h_html_a0a007fca1a85b26dc9f890b5c9f5649a"><div class="ttname"><a href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a></div><div class="ttdeci">size_t * fsti_agent_ind_end(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:239</div></div>
+<div class="ttc" id="fsti-agent_8h_html_a0d3fcfadb1159b63508be133b30f8df7"><div class="ttname"><a href="fsti-agent_8h.html#a0d3fcfadb1159b63508be133b30f8df7">fsti_agent_ind_arrp</a></div><div class="ttdeci">struct fsti_agent * fsti_agent_ind_arrp(struct fsti_agent_ind *agent_ind, size_t *it)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:250</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9cdc0f2e5160a06cdbbbd9a0807513f5"></a>
@@ -261,8 +280,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                           \</div><div class="line">        for (it = <a class="code" href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a>(&amp;(agent_ind));                   \</div><div class="line">             it != <a class="code" href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a>(&amp;(agent_ind)); it++) {            \</div><div class="line">            { code }                                                    \</div><div class="line">        }                                                               \</div><div class="line">    } <span class="keywordflow">while</span>(0)</div><div class="ttc" id="fsti-agent_8h_html_af8ec082c043d0719f2933f78c9b74879"><div class="ttname"><a href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a></div><div class="ttdeci">size_t * fsti_agent_ind_begin(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:237</div></div>
-<div class="ttc" id="fsti-agent_8h_html_a0a007fca1a85b26dc9f890b5c9f5649a"><div class="ttname"><a href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a></div><div class="ttdeci">size_t * fsti_agent_ind_end(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:242</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                           \</div><div class="line">        for (it = <a class="code" href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a>(&amp;(agent_ind));                   \</div><div class="line">             it != <a class="code" href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a>(&amp;(agent_ind)); it++) {            \</div><div class="line">            { code }                                                    \</div><div class="line">        }                                                               \</div><div class="line">    } <span class="keywordflow">while</span>(0)</div><div class="ttc" id="fsti-agent_8h_html_af8ec082c043d0719f2933f78c9b74879"><div class="ttname"><a href="fsti-agent_8h.html#af8ec082c043d0719f2933f78c9b74879">fsti_agent_ind_begin</a></div><div class="ttdeci">size_t * fsti_agent_ind_begin(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:234</div></div>
+<div class="ttc" id="fsti-agent_8h_html_a0a007fca1a85b26dc9f890b5c9f5649a"><div class="ttname"><a href="fsti-agent_8h.html#a0a007fca1a85b26dc9f890b5c9f5649a">fsti_agent_ind_end</a></div><div class="ttdeci">size_t * fsti_agent_ind_end(struct fsti_agent_ind *agent_ind)</div><div class="ttdef"><b>Definition:</b> fsti-agent.c:239</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1230,7 +1249,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Description of the fsti_agent_print_csv function </p>
 
 </div>
 </div>
@@ -1302,11 +1320,15 @@ Variables</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="fsti-agent_8h.html">fsti-agent.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

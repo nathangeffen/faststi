@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="32" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="32" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="29" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a81efd8aa28057dcf6fcee094eff29738" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="33" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="33" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="30" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1abd0962451cba251baf607ff0e568a2ba" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="35" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="35" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="32" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a7a235e92690ede9894e55f499f8813e0" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="36" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="36" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="33" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1ab3b3bd19ac6be32b26f9f34f9d45a787" prot="public" static="no" mutable="no">
         <type>union fsti_agent::@0</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="37" column="1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="34" column="1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a44c237039bb02720a770b625f905cf76" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="40" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="40" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="37" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1ac5f2eceb7fd6a171ea7116ed87c9a759" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="41" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="41" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="38" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a3643293559e2359cbf0ace373d53e22d" prot="public" static="no" mutable="no">
         <type>uint16_t</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="44" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="44" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="41" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" prot="public" static="no" mutable="no">
         <type>uint16_t</type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="45" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="45" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="42" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a713e17295609286002f9a6d3d382aa38" prot="public" static="no" mutable="no">
         <type>union fsti_agent::@2</type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="47" column="1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="44" column="1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1ae726e3b1cb42878ef3ca3148fe597a56" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="49" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="49" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="46" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1abd26d368387b3507ca7a1214058eca8e" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="50" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="50" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="47" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a52bb574705012b7c4866aab627e81a53" prot="public" static="no" mutable="no">
         <type>union fsti_agent::@4</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="51" column="1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="48" column="1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1ad17ed58432c11de69fed459c6bdb4351" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="52" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="52" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="49" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a2f42afcd91c70a986d7a6c786e310260" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="53" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="53" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="50" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a292854517270b640c6fdc35980e66637" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="54" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="54" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="51" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1a4ba0bd37a8c83bfdc08392a1cde56978" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -223,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="55" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="55" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="52" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structfsti__agent_1aedbbb1bf31d18d91dd6b05f6d217755e" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -236,14 +236,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="56" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="56" bodyend="-1"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="53" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="31" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="31" bodyend="58"/>
+    <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" line="28" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-agent.h" bodystart="28" bodyend="55"/>
     <listofallmembers>
       <member refid="structfsti__agent_1a44c237039bb02720a770b625f905cf76" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>age</name></member>
       <member refid="structfsti__agent_1a767fe31626e29a8239d1fb7e6f7dbbdb" prot="public" virt="non-virtual"><scope>fsti_agent</scope><name>age_group</name></member>

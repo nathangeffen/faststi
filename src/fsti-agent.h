@@ -9,9 +9,6 @@
 #include "fsti-defs.h"
 #include "fsti-defaults.h"
 
-/**
- * A macro called FSRI_FOR
- */
 #define FSTI_FOR(agent_ind, agent, code) do {                           \
         size_t *_it;                                                    \
         for (_it = fsti_agent_ind_begin(&(agent_ind));                  \

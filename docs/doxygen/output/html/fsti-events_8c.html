@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('fsti-events_8c.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +84,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
@@ -854,17 +874,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">     {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a132b33c9ffca7e9e89d2a04045b4b7bb">id</a> ,  <a class="code" href="fsti-events_8c.html#ace7211e8e83bb5273066bc5fe50585a6">fsti_to_size_t</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a44c237039bb02720a770b625f905cf76">age</a> ,  <a class="code" href="fsti-events_8c.html#af4a768af0f5d827f7b40da95c29879da">fsti_to_float</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#ae726e3b1cb42878ef3ca3148fe597a56">infected</a> ,  <a class="code" href="fsti-events_8c.html#af4a768af0f5d827f7b40da95c29879da">fsti_to_float</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a81efd8aa28057dcf6fcee094eff29738">sex</a> ,  <a class="code" href="fsti-events_8c.html#aad3a0605b88803863e016f9409df45ba">fsti_to_uchar</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#abd0962451cba251baf607ff0e568a2ba">sex_preferred</a> ,  <a class="code" href="fsti-events_8c.html#aad3a0605b88803863e016f9409df45ba">fsti_to_uchar</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a4ba0bd37a8c83bfdc08392a1cde56978">partners</a>[0] ,  <a class="code" href="fsti-events_8c.html#aad5bd92a57743b08d6c9eb5bac33c78b">fsti_to_partner</a> }, </div><div class="line">}</div><div class="ttc" id="structfsti__agent_html_abd0962451cba251baf607ff0e568a2ba"><div class="ttname"><a href="structfsti__agent.html#abd0962451cba251baf607ff0e568a2ba">fsti_agent::sex_preferred</a></div><div class="ttdeci">uint8_t sex_preferred</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:35</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">     {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a132b33c9ffca7e9e89d2a04045b4b7bb">id</a> ,  <a class="code" href="fsti-events_8c.html#ace7211e8e83bb5273066bc5fe50585a6">fsti_to_size_t</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a44c237039bb02720a770b625f905cf76">age</a> ,  <a class="code" href="fsti-events_8c.html#af4a768af0f5d827f7b40da95c29879da">fsti_to_float</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#ae726e3b1cb42878ef3ca3148fe597a56">infected</a> ,  <a class="code" href="fsti-events_8c.html#af4a768af0f5d827f7b40da95c29879da">fsti_to_float</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a81efd8aa28057dcf6fcee094eff29738">sex</a> ,  <a class="code" href="fsti-events_8c.html#aad3a0605b88803863e016f9409df45ba">fsti_to_uchar</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#abd0962451cba251baf607ff0e568a2ba">sex_preferred</a> ,  <a class="code" href="fsti-events_8c.html#aad3a0605b88803863e016f9409df45ba">fsti_to_uchar</a> },   {&amp;<a class="code" href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a>. <a class="code" href="structfsti__agent.html#a4ba0bd37a8c83bfdc08392a1cde56978">partners</a>[0] ,  <a class="code" href="fsti-events_8c.html#aad5bd92a57743b08d6c9eb5bac33c78b">fsti_to_partner</a> }, </div><div class="line">}</div><div class="ttc" id="structfsti__agent_html_abd0962451cba251baf607ff0e568a2ba"><div class="ttname"><a href="structfsti__agent.html#abd0962451cba251baf607ff0e568a2ba">fsti_agent::sex_preferred</a></div><div class="ttdeci">uint8_t sex_preferred</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:32</div></div>
 <div class="ttc" id="fsti-events_8c_html_ace7211e8e83bb5273066bc5fe50585a6"><div class="ttname"><a href="fsti-events_8c.html#ace7211e8e83bb5273066bc5fe50585a6">fsti_to_size_t</a></div><div class="ttdeci">void fsti_to_size_t(void *to, const struct fsti_variant *from, struct fsti_agent *agent)</div><div class="ttdef"><b>Definition:</b> fsti-events.c:133</div></div>
-<div class="ttc" id="structfsti__agent_html_a44c237039bb02720a770b625f905cf76"><div class="ttname"><a href="structfsti__agent.html#a44c237039bb02720a770b625f905cf76">fsti_agent::age</a></div><div class="ttdeci">float age</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:40</div></div>
+<div class="ttc" id="structfsti__agent_html_a44c237039bb02720a770b625f905cf76"><div class="ttname"><a href="structfsti__agent.html#a44c237039bb02720a770b625f905cf76">fsti_agent::age</a></div><div class="ttdeci">float age</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:37</div></div>
 <div class="ttc" id="fsti-events_8c_html_aad5bd92a57743b08d6c9eb5bac33c78b"><div class="ttname"><a href="fsti-events_8c.html#aad5bd92a57743b08d6c9eb5bac33c78b">fsti_to_partner</a></div><div class="ttdeci">void fsti_to_partner(void *to, const struct fsti_variant *from, struct fsti_agent *agent)</div><div class="ttdef"><b>Definition:</b> fsti-events.c:157</div></div>
-<div class="ttc" id="structfsti__agent_html_a132b33c9ffca7e9e89d2a04045b4b7bb"><div class="ttname"><a href="structfsti__agent.html#a132b33c9ffca7e9e89d2a04045b4b7bb">fsti_agent::id</a></div><div class="ttdeci">size_t id</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:32</div></div>
-<div class="ttc" id="structfsti__agent_html_a81efd8aa28057dcf6fcee094eff29738"><div class="ttname"><a href="structfsti__agent.html#a81efd8aa28057dcf6fcee094eff29738">fsti_agent::sex</a></div><div class="ttdeci">uint8_t sex</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:33</div></div>
+<div class="ttc" id="structfsti__agent_html_a132b33c9ffca7e9e89d2a04045b4b7bb"><div class="ttname"><a href="structfsti__agent.html#a132b33c9ffca7e9e89d2a04045b4b7bb">fsti_agent::id</a></div><div class="ttdeci">size_t id</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:29</div></div>
+<div class="ttc" id="structfsti__agent_html_a81efd8aa28057dcf6fcee094eff29738"><div class="ttname"><a href="structfsti__agent.html#a81efd8aa28057dcf6fcee094eff29738">fsti_agent::sex</a></div><div class="ttdeci">uint8_t sex</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:30</div></div>
 <div class="ttc" id="fsti-events_8c_html_aad3a0605b88803863e016f9409df45ba"><div class="ttname"><a href="fsti-events_8c.html#aad3a0605b88803863e016f9409df45ba">fsti_to_uchar</a></div><div class="ttdeci">void fsti_to_uchar(void *to, const struct fsti_variant *from, struct fsti_agent *agent)</div><div class="ttdef"><b>Definition:</b> fsti-events.c:145</div></div>
-<div class="ttc" id="structfsti__agent_html_a4ba0bd37a8c83bfdc08392a1cde56978"><div class="ttname"><a href="structfsti__agent.html#a4ba0bd37a8c83bfdc08392a1cde56978">fsti_agent::partners</a></div><div class="ttdeci">size_t partners[3]</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:55</div></div>
+<div class="ttc" id="structfsti__agent_html_a4ba0bd37a8c83bfdc08392a1cde56978"><div class="ttname"><a href="structfsti__agent.html#a4ba0bd37a8c83bfdc08392a1cde56978">fsti_agent::partners</a></div><div class="ttdeci">size_t partners[3]</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:52</div></div>
 <div class="ttc" id="fsti-events_8c_html_af4a768af0f5d827f7b40da95c29879da"><div class="ttname"><a href="fsti-events_8c.html#af4a768af0f5d827f7b40da95c29879da">fsti_to_float</a></div><div class="ttdeci">void fsti_to_float(void *to, const struct fsti_variant *from, struct fsti_agent *agent)</div><div class="ttdef"><b>Definition:</b> fsti-events.c:23</div></div>
 <div class="ttc" id="fsti-events_8c_html_a0c5214ba8681a0691658466b19dde4d5"><div class="ttname"><a href="fsti-events_8c.html#a0c5214ba8681a0691658466b19dde4d5">fsti_global_agent</a></div><div class="ttdeci">struct fsti_agent fsti_global_agent</div><div class="ttdef"><b>Definition:</b> fsti-events.c:7</div></div>
-<div class="ttc" id="structfsti__agent_html_ae726e3b1cb42878ef3ca3148fe597a56"><div class="ttname"><a href="structfsti__agent.html#ae726e3b1cb42878ef3ca3148fe597a56">fsti_agent::infected</a></div><div class="ttdeci">bool infected</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:49</div></div>
+<div class="ttc" id="structfsti__agent_html_ae726e3b1cb42878ef3ca3148fe597a56"><div class="ttname"><a href="structfsti__agent.html#ae726e3b1cb42878ef3ca3148fe597a56">fsti_agent::infected</a></div><div class="ttdeci">bool infected</div><div class="ttdef"><b>Definition:</b> fsti-agent.h:46</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -900,11 +920,15 @@ Variables</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="fsti-events_8c.html">fsti-events.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -404,10 +404,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Description of the <ref refid="fsti-main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main()</ref> function. We will pretend it is public </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c" line="56" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c" bodystart="56" bodyend="83"/>
+        <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c" line="60" column="1" bodyfile="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c" bodystart="60" bodyend="87"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -469,35 +469,34 @@
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>g_strfreev(config_strings);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simset" kindref="compound">fsti_simset</ref><sp/>simset;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>setlocale(LC_ALL,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>get_command_line(argc,<sp/>argv);</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fsti-main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structfsti__simset" kindref="compound">fsti_simset</ref><sp/>simset;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test)</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8c_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>setlocale(LC_ALL,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>get_command_line(argc,<sp/>argv);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ae663244aa372d7aec96fc021986b5cd3" kindref="member">fsti_simset_init</ref>(&amp;simset);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config_filename)</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a8635ad080108f9d35e1e0f01d9e7c855" kindref="member">fsti_simset_load_config_file</ref>(&amp;simset,<sp/>config_filename);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>)</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab81c9af7043163aa922dd03128d18f91" kindref="member">fsti_simset_load_config_strings</ref>(&amp;simset,<sp/><ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(print_config)</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8c_1a0ac007ff2f6adaabfb434a239cf36b6c" kindref="member">fsti_config_print_all</ref>(&amp;simset.config);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a08f81ac2f9dab77ce689ffb90499d4c5" kindref="member">fsti_simset_set_csv</ref>(&amp;simset,<sp/>&amp;<ref refid="fsti-events_8c_1a7f2bcfae00114763a58e88a609eacf3e" kindref="member">fsti_global_csv</ref>);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab874d71469d5e16d9dbff4aea5faf945" kindref="member">fsti_simset_exec</ref>(&amp;simset);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1aea0fceda1ad3ad46c434837f7eee4fb4" kindref="member">fsti_simset_free</ref>(&amp;simset);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-main_8c_1a8efc163df9c5301b50fcffeb39782b62" kindref="member">free_statics</ref>();</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="fsti-tests_8c_1a6d22e84aa78560b52172df37e4c4923f" kindref="member">fsti_tests</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ae663244aa372d7aec96fc021986b5cd3" kindref="member">fsti_simset_init</ref>(&amp;simset);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config_filename)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a8635ad080108f9d35e1e0f01d9e7c855" kindref="member">fsti_simset_load_config_file</ref>(&amp;simset,<sp/>config_filename);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab81c9af7043163aa922dd03128d18f91" kindref="member">fsti_simset_load_config_strings</ref>(&amp;simset,<sp/><ref refid="structfsti__simset_1a7610ad16eda85f1951f06e9543701f41" kindref="member">config_strings</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(print_config)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-config_8c_1a0ac007ff2f6adaabfb434a239cf36b6c" kindref="member">fsti_config_print_all</ref>(&amp;simset.config);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1a08f81ac2f9dab77ce689ffb90499d4c5" kindref="member">fsti_simset_set_csv</ref>(&amp;simset,<sp/>&amp;<ref refid="fsti-events_8c_1a7f2bcfae00114763a58e88a609eacf3e" kindref="member">fsti_global_csv</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1ab874d71469d5e16d9dbff4aea5faf945" kindref="member">fsti_simset_exec</ref>(&amp;simset);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-simset_8c_1aea0fceda1ad3ad46c434837f7eee4fb4" kindref="member">fsti_simset_free</ref>(&amp;simset);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fsti-main_8c_1a8efc163df9c5301b50fcffeb39782b62" kindref="member">free_statics</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/eduardgrebe/dev/faststi-eduard/src/fsti-main.c"/>
   </compounddef>
