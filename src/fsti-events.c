@@ -215,7 +215,7 @@ static void read_agents(struct fsti_simulation *simulation)
     f = fopen(filename, "r");
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
-    cs = csv_read(f, true, ',');
+    cs = csv_read(f, simulation->agent_csv_header, simulation->csv_delimiter);
     FSTI_ASSERT(errno == 0, FSTI_ERR_AGENT_FILE, filename);
 
     //fsti_agent_arr_fill_n(&simulation->agent_arr, cs.len);
