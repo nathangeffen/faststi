@@ -391,6 +391,14 @@ void fsti_event_flex_report(struct fsti_simulation *simulation)
     FSTI_HOOK_FLEX_REPORT;
 }
 
+void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
+{
+    // BUG: In multithreaded run, no guarantee that this will be the top line
+    // in the agent csv output, although unlikely not to be.
+    if (simulation->sim_number == 0)
+        FSTI_REPORT_OUTPUT_HEADER(simulation->csv_delimiter);
+}
+
 void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
 {
     // BUG: In multithreaded run, no guarantee that this will be the top line
@@ -509,6 +517,8 @@ void fsti_event_register_events()
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
+        fsti_register_add("_WRITE_RESULTS_CSV_HEADER",
+                          fsti_event_write_results_csv_header);
         fsti_register_add("_WRITE_AGENTS_CSV_HEADER",
                           fsti_event_write_agents_csv_header);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);

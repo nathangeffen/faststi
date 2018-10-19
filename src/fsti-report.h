@@ -148,6 +148,10 @@
 
 #define FSTI_FMT__(x) FSTI_FMT(x)
 
+#define FSTI_REPORT_OUTPUT_HEADER(delim)                                \
+    fprintf(simulation->results_file, "%s%c%s%c%s%c%s%c%s\n",           \
+            "name",delim,"sim",delim,"num",delim,"description",delim,"value")
+
 #define FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, post, spec) \
     do {                                                                \
         double __result__;                                              \
