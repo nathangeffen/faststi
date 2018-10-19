@@ -17,7 +17,7 @@
 #define FSTI_HOOK_AFTER_MATCH(simulation, a, b) hestia(simulation, a, b)
 
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
             "sim", delim,                                               \
             "id", delim,                                                \
             "sex", delim,                                               \
@@ -34,14 +34,14 @@
 
 #define FSTI_AGENT_PRINT_CSV(file_handle, id, agent, delim)           \
     fprintf(file_handle,                                              \
-            "%u%c%zu%c%u%c%u%c%u%c%u%c%.2f%c%u%c%u%c%f%c%f%c%ld\n",   \
+            "%u%c%zu%c%u%c%u%c%u%c%u%c%f%c%u%c%u%c%f%c%f%c%ld\n",   \
             id,  delim,                                               \
             agent->id, delim,                                         \
             (unsigned) agent->sex, delim,                             \
             (unsigned) agent->sex_preferred, delim,                   \
             (unsigned) agent->birthday, delim,                        \
             (unsigned) agent->age_group, delim,                       \
-            agent->death_date, delim,                                 \
+            agent->date_death, delim,                                 \
             agent->infected, delim,                                   \
             agent->hiv, delim,                                        \
             agent->re_sexact, delim,                                  \
