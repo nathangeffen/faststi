@@ -416,7 +416,6 @@ fsti_variant_array_fill(const enum fsti_type types[],
 	v.type = types[i];
 	v.value = vals[i];
 	ARRAY_PUSH(variant_arr, variants, v);
-        FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
     }
 
     return variant_arr;

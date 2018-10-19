@@ -345,16 +345,18 @@ void fsti_event_age(struct fsti_simulation *simulation)
 
 static void outputf(struct fsti_simulation *simulation, char *desc, double val)
 {
-    fprintf(simulation->results_file, "%s,%d,%d,%s,%f\n",
-            simulation->name, simulation->sim_number,
-            simulation->config_sim_number, desc, val);
+    char c = simulation->csv_delimiter;
+    fprintf(simulation->results_file, "%s%c%d%c%d%c%s%c%f\n",
+            simulation->name, c, simulation->sim_number,c,
+            simulation->config_sim_number, c, desc, c, val);
 }
 
 static void outputl(struct fsti_simulation *simulation, char *desc, long val)
 {
-    fprintf(simulation->results_file, "%s,%d,%d,%s,%ld\n",
-            simulation->name, simulation->sim_number,
-            simulation->config_sim_number, desc, val);
+    char c = simulation->csv_delimiter;
+    fprintf(simulation->results_file, "%s%c%d%c%d%c%s%c%ld\n",
+            simulation->name, c, simulation->sim_number, c,
+            simulation->config_sim_number, c, desc, c, val);
 }
 
 
@@ -387,6 +389,16 @@ void fsti_event_flex_report(struct fsti_simulation *simulation)
 {
     FSTI_FLEX_REPORT;
     FSTI_HOOK_FLEX_REPORT;
+}
+
+void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
+{
+    // BUG: In multithreaded run, no guarantee that this will be the top line
+    // in the agent csv output, although unlikely not to be.
+    if (simulation->sim_number == 0) {
+        FSTI_AGENT_PRINT_CSV_HEADER(simulation->agents_output_file,
+                                    simulation->csv_delimiter);
+    }
 }
 
 void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
@@ -496,6 +508,8 @@ void fsti_event_register_events()
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
+        fsti_register_add("_WRITE_AGENTS_CSV_HEADER",
+                          fsti_event_write_agents_csv_header);
         fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
         fsti_register_add("_WRITE_LIVING_AGENTS_CSV",
                           fsti_event_write_living_agents_csv);

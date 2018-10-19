@@ -44,6 +44,7 @@ void fsti_event_report(struct fsti_simulation *simulation);
 void fsti_event_flex_report(struct fsti_simulation *simulation);
 void fsti_event_shuffle_living(struct fsti_simulation *simulation);
 void fsti_event_shuffle_mating(struct fsti_simulation *simulation);
+void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation);
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation);
 void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation);
 void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation);

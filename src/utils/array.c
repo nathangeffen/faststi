@@ -19,11 +19,13 @@
 size_t array_grow(void **array, size_t current_capacity, size_t object_size)
 {
 	size_t new_capacity, new_size;
+        void *t;
 
 	new_capacity = current_capacity == 0
 		? INIT_CAPACITY : current_capacity * GROWTH;
 	new_size = new_capacity * object_size;
-	*array = realloc(*array, new_size);
-        FSTI_ASSERT(array, FSTI_ERR_NOMEM, NULL);
+	t = realloc(*array, new_size);
+        FSTI_ASSERT(t, FSTI_ERR_NOMEM, NULL);
+        *array = t;
 	return new_capacity;
 }

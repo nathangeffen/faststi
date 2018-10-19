@@ -50,21 +50,36 @@ unsigned total_partners;
                     "Example configuration field", "String field")
 #endif
 
+#ifndef FSTI_AGENT_CSV_OUT_HEADER
+#define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                   \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
+            "sim", delim,                                               \
+            "id", delim,                                                \
+            "age", delim,                                               \
+            "infected", delim,                                          \
+            "sex", delim,                                               \
+            "sex_preferred", delim,                                     \
+            "date_death", delim,                                        \
+            "partner")
+
+#endif
+
+
 /*
    This is the default code to print an agent in csv format. Change it to print another
    way.
 */
 
 #ifndef FSTI_AGENT_PRINT_CSV
-#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%.3f,%u,%f,%ld\n",                \
-            id,                                                       \
-            agent->id,                                                \
-            (unsigned) agent->sex,                                    \
-            (unsigned) agent->sex_preferred,                          \
-            agent->age,                                               \
-            agent->infected,                                          \
-            agent->date_death,                                        \
+#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent, delim)             \
+    fprintf(file_handle, "%u%c%zu%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",      \
+            id, delim,                                                  \
+            agent->id, delim,                                           \
+            agent->age, delim,                                          \
+            agent->infected, delim,                                     \
+            (unsigned) agent->sex, delim,                               \
+            (unsigned) agent->sex_preferred, delim,                     \
+            agent->date_death, delim,                                   \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
 

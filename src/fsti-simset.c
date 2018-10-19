@@ -220,9 +220,9 @@ void fsti_simset_test(struct test_group *tg)
     const char *config_text =
         "[Simulation_0]\n"
         "NUM_SIMULATIONS=1\n"
-        "BEFORE_EVENTS=_READ_AGENTS\n"
+        "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER\n"
         "DURING_EVENTS=_AGE\n"
-        "AFTER_EVENTS=_REPORT;_WRITE_AGENTS_CSV;_WRITE_AGENTS_PRETTY\n"
+        "AFTER_EVENTS=_REPORT;_WRITE_AGENTS_CSV\n"
         "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
         "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
         "RESULTS_FILE=fsti_test_results_1234.csv\n"
