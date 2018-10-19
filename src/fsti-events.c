@@ -482,10 +482,11 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
 
 void fsti_event_stop(struct fsti_simulation *simulation)
 {
-    if (simulation->iteration >= simulation->num_iterations)
+    if (simulation->iteration >= simulation->num_iterations) {
 	simulation->stop = true;
-    else
+    }  else {
 	++simulation->iteration;
+    }
 }
 
 void fsti_event_no_op(struct fsti_simulation *simulation)
