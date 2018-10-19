@@ -158,7 +158,9 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
     FSTI_ASSERT(simulation->stop_event, FSTI_ERR_NO_STOP_EVENT, NULL);
     simulation->state = DURING;
     for (simulation->stop_event(simulation);
-	 simulation->stop == false; simulation->stop_event(simulation)) {
+	 simulation->stop == false;
+         simulation->stop_event(simulation),
+             simulation->current_date += simulation->time_step) {
 	exec_events(simulation, &simulation->during_events);
     }
     simulation->state = AFTER;
