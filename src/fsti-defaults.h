@@ -50,7 +50,7 @@ unsigned total_partners;
                     "Example configuration field", "String field")
 #endif
 
-#ifndef FSTI_AGENT_CSV_OUT_HEADER
+#ifndef FSTI_AGENT_PRINT_CSV_HEADER
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                   \
     fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
             "sim", delim,                                               \
