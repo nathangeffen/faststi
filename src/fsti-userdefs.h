@@ -16,18 +16,36 @@
 
 #define FSTI_HOOK_AFTER_MATCH(simulation, a, b) hestia(simulation, a, b)
 
-#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent)                  \
-    fprintf(file_handle, "%u,%zu,%u,%u,%u,%u,%u,%u,%f,%f,%ld\n",     \
-            id,                                                       \
-            agent->id,                                                \
-            (unsigned) agent->sex,                                    \
-            (unsigned) agent->sex_preferred,                          \
-            (unsigned) agent->birthday,                               \
-            (unsigned) agent->age_group,                              \
-            agent->infected,                                          \
-            agent->hiv,                                               \
-            agent->re_sexact,                                         \
-            agent->relstat,                                           \
+#define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
+            "sim", delim,                                               \
+            "id", delim,                                                \
+            "sex", delim,                                               \
+            "sex_preferred", delim,                                     \
+            "birthday", delim,                                          \
+            "age_group", delim,                                         \
+            "death_date", delim,                                        \
+            "infected", delim,                                          \
+            "hiv", delim,                                               \
+            "re_sexact", delim,                                         \
+            "relstat", delim,                                           \
+            "partner")
+
+
+#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent, delim)           \
+    fprintf(file_handle,                                              \
+            "%u%c%zu%c%u%c%u%c%u%c%u%c%.2f%c%u%c%u%c%f%c%f%c%ld\n",   \
+            id,  delim,                                               \
+            agent->id, delim,                                         \
+            (unsigned) agent->sex, delim,                             \
+            (unsigned) agent->sex_preferred, delim,                   \
+            (unsigned) agent->birthday, delim,                        \
+            (unsigned) agent->age_group, delim,                       \
+            agent->death_date, delim,                                 \
+            agent->infected, delim,                                   \
+            agent->hiv, delim,                                        \
+            agent->re_sexact, delim,                                  \
+            agent->relstat, delim,                                    \
             agent->num_partners ? (long) agent->partners[0] : -1)
 
 #define FSTI_CSV_ENTRIES                                        \
