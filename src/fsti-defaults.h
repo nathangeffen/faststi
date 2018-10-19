@@ -51,7 +51,7 @@ unsigned total_partners;
 #endif
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
-#define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                   \
+#define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
     fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
             "sim", delim,                                               \
             "id", delim,                                                \
