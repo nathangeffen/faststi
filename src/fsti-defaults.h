@@ -140,6 +140,34 @@ unsigned total_partners;
     FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
 #endif
 
+/* If any members of the agent struct need to be associated with a string
+   they are defined here in alphabetical order. (Alphabetical order is
+   essential because a binary search used to locate the entry.)
+   Unfortunately because it's in alphabetical order, if you want to append
+   to the definition below, you need to copy and paste the entire
+   definition into the fsti-userdefs.h file and insert your appended variable
+   names in the correct place alphabetically.
+*/
+#ifndef FSTI_AGENT_ELEM_NAMES
+#define FSTI_AGENT_ELEM_NAMES {                                         \
+        FSTI_AGENT_ELEM_NAME_ENTRY(age),                                \
+        FSTI_AGENT_ELEM_NAME_ENTRY(age_group),                          \
+        FSTI_AGENT_ELEM_NAME_ENTRY(birth_date),                         \
+        FSTI_AGENT_ELEM_NAME_ENTRY(birthday),                           \
+        FSTI_AGENT_ELEM_NAME_ENTRY(cured),                              \
+        FSTI_AGENT_ELEM_NAME_ENTRY(cause_of_death),                     \
+        FSTI_AGENT_ELEM_NAME_ENTRY(date_death),                         \
+        FSTI_AGENT_ELEM_NAME_ENTRY(id),                                 \
+        FSTI_AGENT_ELEM_NAME_ENTRY(infected),                           \
+        FSTI_AGENT_ELEM_NAME_ENTRY(infected_date),                      \
+        FSTI_AGENT_ELEM_NAME_ENTRY(num_partners),                       \
+        FSTI_AGENT_ELEM_NAME_ENTRY(orientation),                        \
+        {"partners_0", offsetof(struct fsti_agent, partners), UINT},    \
+        FSTI_AGENT_ELEM_NAME_ENTRY(sex),                                \
+        FSTI_AGENT_ELEM_NAME_ENTRY(sex_preferred)                       \
+    }
+#endif
+
 /*
    Define this to call the function that returns true if  an agent
    has a partner, else false. The default function simply looks at the

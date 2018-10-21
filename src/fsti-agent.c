@@ -6,6 +6,12 @@
 
 struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
+_Thread_local struct fsti_agent fsti_thread_local_agent;
+
+static const struct fsti_agent_element_name agent_element_names[] =
+    FSTI_AGENT_ELEM_NAMES;
+
+
 void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent,
                           char delimiter)
 {
@@ -69,6 +75,115 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
         result += 25.0;
     result += fabs(a->age - b->age);
     return result;
+}
+
+static int cmps(const void *a, const void *b)
+{
+    struct fsti_agent_element_name *x = (struct fsti_agent_element_name *) a;
+    struct fsti_agent_element_name *y = (struct fsti_agent_element_name *) b;
+    return strcmp(x->name, y->name);
+}
+
+long fsti_agent_get_val_by_strname_l(const char *name, struct fsti_agent *agent)
+{
+    struct fsti_agent_element_name *elem;
+    unsigned char *addr;
+
+    elem = bsearch(name, agent_element_names,
+                   sizeof(agent_element_names) /
+                   sizeof(struct fsti_agent_element_name),
+                   sizeof(struct fsti_agent_element_name),
+                   cmps);
+    FSTI_ASSERT(elem, FSTI_ERR_KEY_NOT_FOUND, name);
+
+    addr = (unsigned char *) agent;
+    switch (elem->type) {
+    case BOOL: {
+        _Bool v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case CHAR: {
+        char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case SCHAR: {
+        signed char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case UCHAR: {
+        unsigned char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case SHRT: {
+        short v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case USHRT: {
+        unsigned short v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case INT: {
+        int v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case UINT: {
+        unsigned int v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case LONG: {
+        long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case ULONG: {
+        unsigned long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case LLONG: {
+        long long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case ULLONG: {
+        unsigned long long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case FLT: {
+        float v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) round(v);
+    }
+    case DBL: {
+        double v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) round(v);
+    }
+    case LDBL: {
+        long double v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+
+    default: FSTI_ASSERT(false, FSTI_ERR_WRONG_TYPE, NULL);
+    };
+}
+
+
+// Not implemented yet. Don't use.
+double fsti_agent_get_val_by_strname_d(const char *name,
+                                       struct fsti_agent *agent)
+{
+    return 0.0;
 }
 
 void fsti_agent_arr_add_dependency(struct fsti_agent_arr *agent_arr,

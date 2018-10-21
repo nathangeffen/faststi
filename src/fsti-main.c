@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
     setlocale(LC_NUMERIC, "C");
     get_command_line(argc, argv);
 
-
     if (test)
         return fsti_tests();
 
