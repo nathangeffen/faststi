@@ -7,6 +7,7 @@
 
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
+#define FSTI_TOKEN_LEN 200
 
 /* Useful constants */
 #define FSTI_MALE 0
@@ -39,7 +40,7 @@
                                      double: DBL,                       \
                                      long double: LDBL)
 
-#define FSTI_AGENT_ELEM_NAME_ENTRY(member)        \
+#define FSTI_AGENT_ELEM_ENTRY(member)        \
     {                                             \
         #member,                                 \
         offsetof(struct fsti_agent, member),      \
@@ -74,6 +75,7 @@ enum fsti_type {
     UINT16_T,
     SIZE_T,
     UNKNOWN_COMMAND = 64,
+    DATASET,
     VARY,
     COVARY
 };
@@ -87,10 +89,13 @@ struct fsti_csv_agent {
     const struct fsti_csv_entry *entries;
 };
 
+struct fsti_dataset;
+
 union fsti_value {
     long longint;
     double dbl;
     char *str;
+    struct fsti_dataset *dataset;
 };
 
 struct fsti_variant {
@@ -113,5 +118,6 @@ struct fsti_csv_entry {
 };
 
 struct fsti_variant fsti_identify_token(char *token);
+struct fsti_variant fsti_identify_token_const(const char *token);
 
 #endif

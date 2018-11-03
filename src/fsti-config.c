@@ -3,12 +3,17 @@
 
 #include "fsti-error.h"
 #include "fsti-config.h"
+#include "fsti-dataset.h"
 
 static void free_vals(struct fsti_config_entry *entry)
 {
     for (size_t i = 0; i < entry->len; ++i) {
         if (entry->variants[i].type == STR)
             free(entry->variants[i].value.str);
+        else if (entry->variants[i].type == DATASET) {
+            fsti_dataset_free(entry->variants[i].value.dataset);
+            free(entry->variants[i].value.dataset);
+        }
     }
     free(entry->variants);
     entry->len = 0;
@@ -339,9 +344,7 @@ static void parse_values(struct fsti_variant_array *variant_arr,
 	g_strstrip(*value);
         FSTI_ASSERT(strcmp(*value, ""), FSTI_ERR_NO_VALUE_FOR_KEY, NULL);
 	variant = fsti_identify_token(*value);
-	FSTI_ASSERT(fsti_error == 0, FSTI_ERR_INVALID_VALUE, *value);
 	ARRAY_PUSH(*variant_arr, variants, variant);
-        FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
 	++value;
     }
     g_strfreev(split_values);
@@ -354,7 +357,6 @@ void fsti_config_replace_values(struct fsti_config *config,
     struct fsti_variant_array variant_arr;
 
     ARRAY_NEW(variant_arr, variants);
-    FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
     parse_values(&variant_arr, values);
     fsti_config_replace_arr(config, key, NULL,
                            variant_arr.variants, variant_arr.len);

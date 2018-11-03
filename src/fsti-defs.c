@@ -6,6 +6,8 @@
 #include "fsti-defs.h"
 
 
+
+
 struct fsti_variant fsti_identify_token(char *token)
 {
     double d;
@@ -35,4 +37,15 @@ struct fsti_variant fsti_identify_token(char *token)
     }
 
     return result;
+}
+
+
+struct fsti_variant fsti_identify_token_const(const char *token)
+{
+    char s[FSTI_TOKEN_LEN + 1];
+    strncpy(s, token, FSTI_TOKEN_LEN);
+    s[FSTI_TOKEN_LEN] = 0;
+    FSTI_ASSERT(s, FSTI_ERR_NOMEM, NULL);
+
+    return fsti_identify_token(s);
 }

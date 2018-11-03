@@ -148,23 +148,23 @@ unsigned total_partners;
    definition into the fsti-userdefs.h file and insert your appended variable
    names in the correct place alphabetically.
 */
-#ifndef FSTI_AGENT_ELEM_NAMES
-#define FSTI_AGENT_ELEM_NAMES {                                         \
-        FSTI_AGENT_ELEM_NAME_ENTRY(age),                                \
-        FSTI_AGENT_ELEM_NAME_ENTRY(age_group),                          \
-        FSTI_AGENT_ELEM_NAME_ENTRY(birth_date),                         \
-        FSTI_AGENT_ELEM_NAME_ENTRY(birthday),                           \
-        FSTI_AGENT_ELEM_NAME_ENTRY(cured),                              \
-        FSTI_AGENT_ELEM_NAME_ENTRY(cause_of_death),                     \
-        FSTI_AGENT_ELEM_NAME_ENTRY(date_death),                         \
-        FSTI_AGENT_ELEM_NAME_ENTRY(id),                                 \
-        FSTI_AGENT_ELEM_NAME_ENTRY(infected),                           \
-        FSTI_AGENT_ELEM_NAME_ENTRY(infected_date),                      \
-        FSTI_AGENT_ELEM_NAME_ENTRY(num_partners),                       \
-        FSTI_AGENT_ELEM_NAME_ENTRY(orientation),                        \
+#ifndef FSTI_AGENT_ELEM
+#define FSTI_AGENT_ELEM {                                         \
+        FSTI_AGENT_ELEM_ENTRY(age),                                \
+        FSTI_AGENT_ELEM_ENTRY(age_group),                          \
+        FSTI_AGENT_ELEM_ENTRY(birth_date),                         \
+        FSTI_AGENT_ELEM_ENTRY(birthday),                           \
+        FSTI_AGENT_ELEM_ENTRY(cause_of_death),                     \
+        FSTI_AGENT_ELEM_ENTRY(cured),                              \
+        FSTI_AGENT_ELEM_ENTRY(date_death),                         \
+        FSTI_AGENT_ELEM_ENTRY(id),                                 \
+        FSTI_AGENT_ELEM_ENTRY(infected),                           \
+        FSTI_AGENT_ELEM_ENTRY(infected_date),                      \
+        FSTI_AGENT_ELEM_ENTRY(num_partners),                       \
+        FSTI_AGENT_ELEM_ENTRY(orientation),                        \
         {"partners_0", offsetof(struct fsti_agent, partners), UINT},    \
-        FSTI_AGENT_ELEM_NAME_ENTRY(sex),                                \
-        FSTI_AGENT_ELEM_NAME_ENTRY(sex_preferred)                       \
+        FSTI_AGENT_ELEM_ENTRY(sex),                                \
+        FSTI_AGENT_ELEM_ENTRY(sex_preferred)                       \
     }
 #endif
 
