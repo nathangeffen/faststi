@@ -7,6 +7,7 @@
 
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
+#define FSTI_TOKEN_LEN 200
 
 /* Useful constants */
 #define FSTI_MALE 0
@@ -22,6 +23,30 @@
 #define FSTI_CSV_ENTRY(member, function) \
     {&fsti_global_agent.member, function},
 
+#define FSTI_GET_TYPE(var)  _Generic((var),                             \
+                                     _Bool: BOOL,                       \
+                                     char: CHAR,                        \
+                                     signed char: SCHAR,                \
+                                     unsigned char: UCHAR,              \
+                                     short: SHRT,                       \
+                                     unsigned short: USHRT,             \
+                                     int: INT,                          \
+                                     unsigned int: UINT,                \
+                                     long: LONG,                        \
+                                     unsigned long int: ULONG,          \
+                                     long long int: LLONG,              \
+                                     unsigned long long int: ULLONG,    \
+                                     float: FLT,                        \
+                                     double: DBL,                       \
+                                     long double: LDBL)
+
+#define FSTI_AGENT_ELEM_ENTRY(member)        \
+    {                                             \
+        #member,                                 \
+        offsetof(struct fsti_agent, member),      \
+        FSTI_GET_TYPE(fsti_thread_local_agent.member) \
+    }
+
 enum fsti_struct_part {
     AGENT,
     DATA
@@ -31,15 +56,26 @@ enum fsti_type {
     NONE = -1,
     UNKNOWN = 0,
     CHAR,
+    SCHAR,
     UCHAR,
+    SHRT,
+    USHRT,
+    INT,
+    UINT,
     LONG,
-    FLOAT,
+    ULONG,
+    LLONG,
+    ULLONG,
+    FLT,
     DBL,
+    LDBL,
     STR,
     BOOL,
-    INT,
-    UNSIGNED,
+    UINT8_T,
+    UINT16_T,
+    SIZE_T,
     UNKNOWN_COMMAND = 64,
+    DATASET,
     VARY,
     COVARY
 };
@@ -53,10 +89,13 @@ struct fsti_csv_agent {
     const struct fsti_csv_entry *entries;
 };
 
+struct fsti_dataset;
+
 union fsti_value {
     long longint;
     double dbl;
     char *str;
+    struct fsti_dataset *dataset;
 };
 
 struct fsti_variant {
@@ -79,5 +118,6 @@ struct fsti_csv_entry {
 };
 
 struct fsti_variant fsti_identify_token(char *token);
+struct fsti_variant fsti_identify_token_const(const char *token);
 
 #endif

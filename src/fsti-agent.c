@@ -6,6 +6,12 @@
 
 struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
+_Thread_local struct fsti_agent fsti_thread_local_agent;
+
+static const struct fsti_agent_elem agent_elem[] =
+    FSTI_AGENT_ELEM;
+
+
 void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent,
                           char delimiter)
 {
@@ -69,6 +75,124 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
         result += 25.0;
     result += fabs(a->age - b->age);
     return result;
+}
+
+static int cmps(const void *a, const void *b)
+{
+    struct fsti_agent_elem *x = (struct fsti_agent_elem *) a;
+    struct fsti_agent_elem *y = (struct fsti_agent_elem *) b;
+    return strcmp(x->name, y->name);
+}
+
+struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
+{
+    struct fsti_agent_elem *elem;
+
+    elem = bsearch(name, agent_elem,
+                   sizeof(agent_elem) /
+                   sizeof(struct fsti_agent_elem),
+                   sizeof(struct fsti_agent_elem),
+                   cmps);
+    FSTI_ASSERT(elem, FSTI_ERR_KEY_NOT_FOUND, name);
+
+    return elem;
+}
+
+long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
+                           struct fsti_agent *agent)
+{
+    unsigned char *addr;
+
+    addr = (unsigned char *) agent;
+    switch (elem->type) {
+    case BOOL: {
+        _Bool v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case CHAR: {
+        char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case SCHAR: {
+        signed char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case UCHAR: {
+        unsigned char v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case SHRT: {
+        short v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case USHRT: {
+        unsigned short v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case INT: {
+        int v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case UINT: {
+        unsigned int v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case LONG: {
+        long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case ULONG: {
+        unsigned long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case LLONG: {
+        long long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case ULLONG: {
+        unsigned long long v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    case FLT: {
+        float v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) round(v);
+    }
+    case DBL: {
+        double v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) round(v);
+    }
+    case LDBL: {
+        long double v;
+        memcpy(&v, addr + elem->offset, sizeof(v));
+        return (long) v;
+    }
+    default: FSTI_ASSERT(false, FSTI_ERR_WRONG_TYPE, NULL);
+    };
+
+    return 0;
+}
+
+long fsti_agent_elem_val_by_strname_l(const char *name, struct fsti_agent *agent)
+{
+    struct fsti_agent_elem *elem;
+
+    elem = fsti_agent_elem_by_strname(name);
+
+    return fsti_agent_elem_val_l(elem, agent);
 }
 
 void fsti_agent_arr_add_dependency(struct fsti_agent_arr *agent_arr,
@@ -369,6 +493,7 @@ void fsti_agent_test(struct test_group *tg)
     struct fsti_agent a, *x, *y;
     bool correct, ordered;
     gsl_rng *rng;
+    long l;
 
     fsti_agent_arr_init_n(&agent_arr, 101);
     fsti_agent_ind_init(&living, &agent_arr);
@@ -536,4 +661,18 @@ void fsti_agent_test(struct test_group *tg)
     gsl_rng_free(rng);
     fsti_agent_arr_free(&copy_arr);
     fsti_agent_arr_free(&agent_arr);
+
+    a.id = 10;
+    a.age = 23.7;
+    a.cured = 2018.9;
+    a.date_death = 2023.1;
+
+    l = fsti_agent_elem_val_by_strname_l("id", &a);
+    TESTEQ(l, 10, *tg);
+    l = fsti_agent_elem_val_by_strname_l("age", &a);
+    TESTEQ(l, 24, *tg);
+    l = fsti_agent_elem_val_by_strname_l("cured", &a);
+    TESTEQ(l, 2019, *tg);
+    l = fsti_agent_elem_val_by_strname_l("date_death", &a);
+    TESTEQ(l, 2023, *tg);
 }

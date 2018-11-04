@@ -216,7 +216,6 @@ static void read_agents(struct fsti_simulation *simulation)
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
     cs = csv_read(f, simulation->agent_csv_header, simulation->csv_delimiter);
-    FSTI_ASSERT(errno == 0, FSTI_ERR_AGENT_FILE, filename);
 
     //fsti_agent_arr_fill_n(&simulation->agent_arr, cs.len);
 
@@ -387,6 +386,10 @@ void fsti_event_report(struct fsti_simulation *simulation)
 
 void fsti_event_flex_report(struct fsti_simulation *simulation)
 {
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+        return;
+
     FSTI_FLEX_REPORT;
     FSTI_HOOK_FLEX_REPORT;
 }

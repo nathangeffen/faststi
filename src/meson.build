@@ -7,7 +7,7 @@ thread_dep = dependency('threads')
 src = ['fsti-main.c', 'fsti-simset.c', 'fsti-procini.c', 'fsti-agent.c',
        'fsti-events.c', 'fsti-error.c', 'fsti-eventdefs.c', 'fsti-defaults.c',
        'fsti-config.c', 'fsti-simulation.c', 'fsti-userdefs.c', 'fsti-defs.c',
-       'fsti-report.c', 'fsti-tests.c',
+       'fsti-report.c', 'fsti-tests.c', 'fsti-dataset.c',
        'utils/array.c', 'utils/algorithms.c',  'utils/array.c',
        'utils/csv.c', 'utils/test.c']
 
