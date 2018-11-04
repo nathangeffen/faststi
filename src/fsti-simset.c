@@ -149,6 +149,17 @@ static void update_config(struct fsti_simset *simset)
     }
 }
 
+static void setup_simulation(struct fsti_simset *simset,
+                             struct fsti_simulation *simulation)
+{
+    fsti_simulation_init(simulation, &simset->config,
+                         simset->sim_number,
+                         simset->config_sim_number);
+    fsti_simulation_set_csv(simulation, simset->csv);
+    set_output_files(simset, simulation);
+    simulation->name = *simset->group_ptr;
+}
+
 static void *threaded_sim(void *simulation)
 {
     fsti_simulation_run(simulation);
@@ -163,35 +174,25 @@ static void *threaded_sim(void *simulation)
 
 void fsti_simset_exec(struct fsti_simset *simset)
 {
-    char thread_name[10];
     struct fsti_simulation *simulation;
     unsigned max_threads;
     GThread *thread;
 
-    if (simset->group_ptr == NULL || *simset->group_ptr == NULL)
-        return;
-
+    if (simset->group_ptr == NULL || *simset->group_ptr == NULL) return;
     set_keys(simset);
 
     while (*simset->group_ptr) {
-        max_threads = (unsigned)
-            fsti_config_at0_long(&simset->config,"THREADS");
-        if (max_threads == 0)
-            max_threads = g_get_num_processors();
+        max_threads = (unsigned) fsti_config_at0_long(&simset->config,"THREADS");
+        if (max_threads == 0) max_threads = g_get_num_processors();
+
         simulation = malloc(sizeof(*simulation));
         FSTI_ASSERT(simulation, FSTI_ERR_NOMEM, NULL);
-        fsti_simulation_init(simulation, &simset->config,
-                             simset->sim_number,
-                             simset->config_sim_number);
-        fsti_simulation_set_csv(simulation, simset->csv);
-        set_output_files(simset, simulation);
-        simulation->name = *simset->group_ptr;
-        snprintf(thread_name, 10, "%u", thread_no);
+        setup_simulation(simset, simulation);
 
         g_mutex_lock(&thread_mutex);
         while (thread_no >= max_threads)
             g_cond_wait (&thread_cond, &thread_mutex);
-        thread = g_thread_new(thread_name, threaded_sim, simulation);
+        thread = g_thread_new(NULL, threaded_sim, simulation);
         g_thread_unref(thread);
         thread_no++;
         g_mutex_unlock(&thread_mutex);
@@ -204,6 +205,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
     g_mutex_lock(&thread_mutex);
     while (thread_no > 0) g_cond_wait (&thread_cond, &thread_mutex);
     g_mutex_unlock(&thread_mutex);
+
     if (simset->close_results_file) fclose(simset->results_file);
     if (simset->close_agents_output_file) fclose(simset->agents_output_file);
 }

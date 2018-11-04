@@ -386,6 +386,10 @@ void fsti_event_report(struct fsti_simulation *simulation)
 
 void fsti_event_flex_report(struct fsti_simulation *simulation)
 {
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+        return;
+
     FSTI_FLEX_REPORT;
     FSTI_HOOK_FLEX_REPORT;
 }
