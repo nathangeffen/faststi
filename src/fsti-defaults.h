@@ -113,6 +113,7 @@ unsigned total_partners;
         FSTI_REPORT_OUTPUT(FSTI_MIN, living, age, "MIN_AGE_ALIVE");     \
         FSTI_REPORT_OUTPUT(FSTI_MAX, living, age, "MAX_AGE_ALIVE");     \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE");   \
+        FSTI_REPORT_OUTPUT(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE"); \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, living, , "POP_ALIVE", "%.0f"); \
         FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,    \
