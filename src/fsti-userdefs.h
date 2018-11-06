@@ -17,8 +17,9 @@
 #define FSTI_HOOK_AFTER_MATCH(simulation, a, b) hestia(simulation, a, b)
 
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
             "sim", delim,                                               \
+            "date", delim,                                              \
             "id", delim,                                                \
             "sex", delim,                                               \
             "sex_preferred", delim,                                     \
@@ -32,20 +33,21 @@
             "partner")
 
 
-#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent, delim)           \
-    fprintf(file_handle,                                              \
-            "%u%c%zu%c%u%c%u%c%u%c%u%c%f%c%u%c%u%c%f%c%f%c%ld\n",   \
-            id,  delim,                                               \
-            agent->id, delim,                                         \
-            (unsigned) agent->sex, delim,                             \
-            (unsigned) agent->sex_preferred, delim,                   \
-            (unsigned) agent->birthday, delim,                        \
-            (unsigned) agent->age_group, delim,                       \
-            agent->date_death, delim,                                 \
-            agent->infected, delim,                                   \
-            agent->hiv, delim,                                        \
-            agent->re_sexact, delim,                                  \
-            agent->relstat, delim,                                    \
+#define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
+    fprintf(file_handle,                                                \
+            "%u%c%f%c%zu%c%u%c%u%c%u%c%u%c%f%c%u%c%u%c%f%c%f%c%ld\n",   \
+            sim_num,  delim,                                            \
+            date, delim,                                                \
+            agent->id, delim,                                           \
+            (unsigned) agent->sex, delim,                               \
+            (unsigned) agent->sex_preferred, delim,                     \
+            (unsigned) agent->birthday, delim,                          \
+            (unsigned) agent->age_group, delim,                         \
+            agent->date_death, delim,                                   \
+            agent->infected, delim,                                     \
+            agent->hiv, delim,                                          \
+            agent->re_sexact, delim,                                    \
+            agent->relstat, delim,                                      \
             agent->num_partners ? (long) agent->partners[0] : -1)
 
 #define FSTI_CSV_ENTRIES                                        \
