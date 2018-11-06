@@ -6,7 +6,18 @@
 #include "fsti-defs.h"
 
 
+size_t fsti_hash(const char *str)
+{
+    unsigned long hash = 5381;
+    int c;
+    size_t result;
 
+    while ( (c = *str++) )
+        hash = ((hash << 5) + hash) + c;
+
+    result = hash % FSTI_HASHSIZE;
+    return result;
+}
 
 struct fsti_variant fsti_identify_token(char *token)
 {

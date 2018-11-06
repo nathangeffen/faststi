@@ -52,8 +52,9 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",            \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",        \
             "sim", delim,                                               \
+            "date", delim,                                              \
             "id", delim,                                                \
             "age", delim,                                               \
             "infected", delim,                                          \
@@ -71,9 +72,10 @@ unsigned total_partners;
 */
 
 #ifndef FSTI_AGENT_PRINT_CSV
-#define FSTI_AGENT_PRINT_CSV(file_handle, id, agent, delim)             \
-    fprintf(file_handle, "%u%c%zu%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",      \
-            id, delim,                                                  \
+#define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
+    fprintf(file_handle, "%u%c%f%c%zu%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",  \
+            sim_num, delim,                                             \
+            date, delim,                                                \
             agent->id, delim,                                           \
             agent->age, delim,                                          \
             agent->infected, delim,                                     \
@@ -193,7 +195,6 @@ unsigned total_partners;
  *******************************************************************/
 
 /* Hooks */
-
 
 /*
    Hook for flex report event. Use this to add additional report lines.

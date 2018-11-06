@@ -414,17 +414,26 @@ void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
 
 void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
 {
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+        return;
     fsti_simulation_write_agents_ind_csv(simulation, &simulation->living);
 }
 
 void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
 {
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+        return;
     fsti_simulation_write_agents_ind_csv(simulation, &simulation->dead);
 }
 
 
 void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
 {
+    if (simulation->state == DURING && simulation->iteration &&
+        simulation->iteration % simulation->report_frequency != 0)
+            return;
     fsti_simulation_write_agents_arr_csv(simulation);
 }
 

@@ -10,8 +10,6 @@
 
 #include "fsti-defs.h"
 
-#define FSTI_HASHSIZE 101
-
 #define FSTI_CONFIG_ADD(config, key, description, value)        \
     do {                                                        \
         _Generic((value),					\
@@ -67,8 +65,8 @@ size_t fsti_config_count(struct fsti_config *config);
 void fsti_config_free(struct fsti_config *config);
 void fsti_config_replace_values(struct fsti_config *config, const char *key,
                                 const char *values);
-    void fsti_config_process_key_values(struct fsti_config *config,
-                                        char *key_value_str);
+void fsti_config_process_key_values(struct fsti_config *config,
+                                    char *key_value_str);
 void fsti_config_process_strings(struct fsti_config *config,
                                  char **config_strings);
 void fsti_config_copy(struct fsti_config *dest, const struct fsti_config *src);

@@ -12,10 +12,10 @@ static const struct fsti_agent_elem agent_elem[] =
     FSTI_AGENT_ELEM;
 
 
-void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent,
-                          char delimiter)
+void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
+                          struct fsti_agent *agent, char delimiter)
 {
-    FSTI_AGENT_PRINT_CSV(f, id, agent, delimiter);
+    FSTI_AGENT_PRINT_CSV(f, sim_no, date, agent, delimiter);
 }
 
 void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)

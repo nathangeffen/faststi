@@ -130,7 +130,7 @@ void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
     struct fsti_agent *agent;
     FSTI_FOR(*agent_ind, agent, {
             fsti_agent_print_csv(simulation->agents_output_file,
-                                 simulation->sim_number,
+                                 simulation->sim_number, simulation->current_date,
                                  agent, simulation->csv_delimiter);
         });
 }
@@ -143,7 +143,7 @@ void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation)
          agent < simulation->agent_arr.agents + simulation->agent_arr.len;
          ++agent) {
         fsti_agent_print_csv(simulation->agents_output_file,
-                             simulation->sim_number,
+                             simulation->sim_number, simulation->current_date,
                              agent, simulation->csv_delimiter);
     }
 }

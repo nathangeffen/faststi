@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#define FSTI_HASHSIZE 101
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
 #define FSTI_TOKEN_LEN 200
@@ -75,7 +76,6 @@ enum fsti_type {
     UINT16_T,
     SIZE_T,
     UNKNOWN_COMMAND = 64,
-    DATASET,
     VARY,
     COVARY
 };
@@ -117,6 +117,7 @@ struct fsti_csv_entry {
      fsti_transform_func transformer;
 };
 
+size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
 

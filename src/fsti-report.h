@@ -159,34 +159,20 @@
         char _c = simulation->csv_delimiter;                            \
         func(simulation->agent_ind, elem, __result__);                  \
         post(__result__);                                               \
-        fprintf(simulation->results_file, "%s%c%d%c%d%c%.3f%c%s%c" spec "\n", \
+        fprintf(simulation->results_file,                               \
+                "%s%c%d%c%d%c%.3f%c%s%c" spec "\n",                     \
                 simulation->name, _c, simulation->sim_number, _c,       \
                 simulation->config_sim_number, _c,                      \
                 simulation->current_date, _c,                           \
                 desc, _c,  __result__);                                 \
     } while(0)
 
-#define FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, spec) do { \
-        double __result__;                                              \
-        char _c = simulation->csv_delimiter;                            \
-        func(simulation->agent_ind, elem, __result__);                  \
-        fprintf(simulation->results_file, "%s%c%d%c%d%c%.3f%c%s%c" spec "\n", \
-                simulation->name, _c, simulation->sim_number, _c,       \
-                simulation->config_sim_number, _c,                      \
-                simulation->current_date, _c,                           \
-                desc, _c,  __result__);                                 \
-    } while(0)
+#define FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, spec)      \
+        FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, (void), spec)
 
-#define FSTI_REPORT_OUTPUT(func, agent_ind, elem, desc) do {            \
-        double __result__;                                              \
-        char _c = simulation->csv_delimiter;                            \
-        func(simulation->agent_ind, elem, __result__);                  \
-        fprintf(simulation->results_file, "%s%c%d%c%d%c%.3f%c%s%c%f\n", \
-                simulation->name, _c, simulation->sim_number, _c,       \
-                simulation->config_sim_number, _c,                      \
-                simulation->current_date, _c,                           \
-                desc, _c, __result__);                                  \
-    } while(0)
+#define FSTI_REPORT_OUTPUT(func, agent_ind, elem, desc)                 \
+    FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, "%f")
+
 
 int fsti_cmpf(const void *a, const void *b);
 

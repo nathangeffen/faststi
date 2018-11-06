@@ -17,9 +17,18 @@ struct fsti_dataset {
     unsigned *divisors;
     unsigned *multiplicands;
     double *dependents;
+    struct fsti_dataset *next;
 };
 
-void fsti_read_dataset(const char *filename, struct fsti_dataset *dataset,
+struct fsti_dataset_hash {
+    struct fsti_dataset *datasets[FSTI_HASHSIZE];
+};
+
+extern const char const *fsti_dataset_names[];
+
+void fsti_dataset_add(struct fsti_dataset_hash *dataset_hash,
+                      const char *filename);
+void fsti_dataset_read(const char *filename, struct fsti_dataset *dataset,
                        char delim);
 void fsti_dataset_test(struct test_group *tg);
 void fsti_dataset_free(struct fsti_dataset *dataset);

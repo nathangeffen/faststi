@@ -15,6 +15,7 @@ static void alloc_dataset(struct fsti_dataset *dataset,
     FSTI_ASSERT(dataset->multiplicands, FSTI_ERR_NOMEM, NULL);
     dataset->dependents = malloc(sizeof(*dataset->dependents) * rows);
     FSTI_ASSERT(dataset->dependents, FSTI_ERR_NOMEM, NULL);
+    dataset->next = NULL;
 }
 
 static size_t get_index(unsigned multiplicands[], unsigned indices[], size_t n)
@@ -94,7 +95,7 @@ static void convert_csv_to_dataevent(struct fsti_dataset *dataset,
     set_dependents(dataset, cs, rows, cols);
 }
 
-void fsti_read_dataset(const char *filename,
+void fsti_dataset_read(const char *filename,
                        struct fsti_dataset *dataset, char delim)
 {
     struct csv cs;
@@ -152,7 +153,7 @@ void fsti_dataset_test(struct test_group *tg)
                 (i * 4) / 20.0);
     fclose(f);
 
-    fsti_read_dataset(filename, &dataset, ';');
+    fsti_dataset_read(filename, &dataset, ';');
     for (i = 0; i < 5; i++) {
         agent.age = i * 20.5;
         double d = fsti_dataset_lookup(&dataset, &agent);
@@ -176,7 +177,7 @@ void fsti_dataset_test(struct test_group *tg)
 
     fclose(f);
 
-    fsti_read_dataset(filename, &dataset, ';');
+    fsti_dataset_read(filename, &dataset, ';');
     for (i = 0; i < 5; i++)
         for (j = 0; j < 2; j++)
             for (k = 0; k < 2; k++) {
