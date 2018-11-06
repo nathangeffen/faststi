@@ -10,10 +10,6 @@ static void free_vals(struct fsti_config_entry *entry)
     for (size_t i = 0; i < entry->len; ++i) {
         if (entry->variants[i].type == STR)
             free(entry->variants[i].value.str);
-        else if (entry->variants[i].type == DATASET) {
-            fsti_dataset_free(entry->variants[i].value.dataset);
-            free(entry->variants[i].value.dataset);
-        }
     }
     free(entry->variants);
     entry->len = 0;
@@ -25,21 +21,6 @@ static void free_entry(struct fsti_config_entry *entry)
     free_vals(entry);
     free(entry);
 }
-
-static size_t hash(const char *str)
-{
-    unsigned long hash = 5381;
-    int c;
-    size_t result;
-
-    while ( (c = *str++) )
-        hash = ((hash << 5) + hash) + c;
-
-    result = hash % FSTI_HASHSIZE;
-    return result;
-}
-
-
 
 void fsti_config_init(struct fsti_config *config)
 {
@@ -86,7 +67,7 @@ struct fsti_config_entry *fsti_config_find(const struct fsti_config *config,
 {
     struct fsti_config_entry *np;
 
-    for (np = config->entry[hash(key)]; np != NULL; np = np->next)
+    for (np = config->entry[fsti_hash(key)]; np != NULL; np = np->next)
         if (strcmp(key, np->key) == 0)
             return np;
     return NULL;
@@ -199,7 +180,7 @@ static struct fsti_config_entry *fsti_config_add(struct fsti_config *config,
         FSTI_ASSERT(entry, FSTI_ERR_NOMEM, NULL);
         strncpy(entry->key, key, FSTI_KEY_LEN);
         entry->key[FSTI_KEY_LEN - 1] = '\0';
-        hashval = hash(key);
+        hashval = fsti_hash(key);
         entry->next = config->entry[hashval];
         config->entry[hashval] = entry;
     }
@@ -213,16 +194,15 @@ static struct fsti_config_entry *fsti_config_add(struct fsti_config *config,
 static void set_types(struct fsti_config_entry *entry,
 		      const enum fsti_type *types, size_t n)
 {
-    if (entry->variants) {
+    if (entry->variants)
 	free_vals(entry);
-    }
 
     entry->variants = calloc(n, sizeof(*entry->variants));
     FSTI_ASSERT(entry->variants, FSTI_ERR_NOMEM, NULL);
 
-    for (size_t i = 0; i < n; ++i) {
+    for (size_t i = 0; i < n; ++i)
 	entry->variants[i].type = types[i];
-    }
+
     entry->len = n;
 }
 
@@ -384,7 +364,6 @@ void fsti_config_process_key_values(struct fsti_config *config,
     fsti_config_replace_values(config, key_values[0], key_values[1]);
     g_strfreev(key_values);
 }
-
 
 void fsti_config_process_strings(struct fsti_config *config,
 				 char **config_strings)

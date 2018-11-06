@@ -81,8 +81,8 @@ struct fsti_agent_ind {
 
 extern struct fsti_agent_arr fsti_saved_agent_arr;
 
-void fsti_agent_print_csv(FILE *f, unsigned id, struct fsti_agent *agent,
-                          char delimiter);
+void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
+                          struct fsti_agent *agent, char delimiter);
 void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);
 _Bool fsti_agent_has_partner(const struct fsti_agent *agent);
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b);
