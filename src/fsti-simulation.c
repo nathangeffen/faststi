@@ -4,6 +4,7 @@
 
 #include "fsti-error.h"
 #include "fsti-simulation.h"
+#include "fsti-dataset.h"
 
 void fsti_event_register_events();
 
@@ -93,7 +94,19 @@ void fsti_simulation_set_csv(struct fsti_simulation *simulation,
     simulation->csv = csv;
 }
 
+struct fsti_dataset *
+fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
+{
+    struct fsti_dataset * dataset = NULL;
+    char *filename = fsti_config_at0_str(&simulation->config, key);
 
+    if (strcmp(NO_OP, filename)) {
+        dataset = fsti_dataset_hash_find(simulation->dataset_hash, filename);
+        FSTI_ASSERT(dataset, FSTI_ERR_KEY_NOT_FOUND, key);
+    }
+
+    return dataset;
+}
 
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
@@ -118,6 +131,10 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
     simulation->agent_csv_header =
         fsti_config_at0_long(&simulation->config, "AGENT_CSV_HEADER");
+    simulation->dataset_mortality =
+        fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
+    simulation->dataset_mating_pool =
+        fsti_simulation_get_dataset(simulation, "DATASET_MATING_POOL");
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }

@@ -1,0 +1,20 @@
+#!/bin/bash -x
+
+FSTI_BASE=`dirname "$0"`
+FSTI_DATA=$FSTI_BASE/data
+
+if [ "$1" == "release" ]; then
+    COMPDIR=$FSTI_BASE/release/
+    EXE=$FSTI_BASE/release/src/faststi
+else
+    COMPDIR=$FSTI_BASE/debug/
+    EXE=$FSTI_BASE/debug/src/faststi
+fi
+
+CURRENT_DIR=`pwd`
+echo $CURRENT_DIR
+cd $COMPDIR
+ninja
+cd $CURRENT_DIR
+
+$EXE $*

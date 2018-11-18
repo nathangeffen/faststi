@@ -60,3 +60,31 @@ struct fsti_variant fsti_identify_token_const(const char *token)
 
     return fsti_identify_token(s);
 }
+
+static _Thread_local char full_filename[FILENAME_MAX];
+
+char *fsti_make_full_data_filename(const char *filename)
+{
+    const char *path;
+
+    path = g_environ_getenv (g_get_environ(), "FSTI_DATA");
+
+    if (path)
+        snprintf(full_filename, FILENAME_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S,
+                 filename);
+    else
+        strncpy(full_filename, filename, FILENAME_MAX);
+
+    DBG("%s %s", path, full_filename);
+    return full_filename;
+}
+
+FILE *fsti_open_data_file(const char *filename, const char *mode)
+{
+    return fopen(fsti_make_full_data_filename(filename), mode);
+}
+
+void fsti_remove_data_file(const char *filename)
+{
+    remove(fsti_make_full_data_filename(filename));
+}

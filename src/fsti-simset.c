@@ -26,6 +26,7 @@ static void init(struct fsti_simset *simset)
     simset->group_ptr = NULL;
     simset->csv = NULL;
     simset->close_results_file = simset->close_agents_output_file = false;
+    fsti_dataset_hash_init(&simset->dataset_hash);
     fsti_event_register_events();
     simset->key_file = g_key_file_new();
     FSTI_ASSERT(simset->key_file, FSTI_ERR_KEY_FILE_OPEN, "\n");
@@ -149,6 +150,26 @@ static void update_config(struct fsti_simset *simset)
     }
 }
 
+static struct fsti_dataset_hash *load_datasets(struct fsti_simset *simset)
+{
+    struct fsti_config_entry *entry;
+    size_t i;
+    char delim;
+
+    delim = fsti_config_at0_str(&simset->config, "CSV_DELIMITER")[0];
+    for (i = 0; i < FSTI_HASHSIZE; i++) {
+        entry = simset->config.entry[i];
+        while (entry) {
+            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")) == 0)
+                if (entry->variants[0].type == STR)
+                    fsti_dataset_hash_add(&simset->dataset_hash,
+                                          entry->variants[0].value.str, delim);
+            entry = entry->next;
+        }
+    }
+    return &simset->dataset_hash;
+}
+
 static void setup_simulation(struct fsti_simset *simset,
                              struct fsti_simulation *simulation)
 {
@@ -158,6 +179,7 @@ static void setup_simulation(struct fsti_simset *simset,
     fsti_simulation_set_csv(simulation, simset->csv);
     set_output_files(simset, simulation);
     simulation->name = *simset->group_ptr;
+    simulation->dataset_hash = load_datasets(simset);
 }
 
 static void *threaded_sim(void *simulation)

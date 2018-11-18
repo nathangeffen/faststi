@@ -306,8 +306,7 @@ void fsti_event_create_agents(struct fsti_simulation *simulation)
             + age_min;
         agent.infected = gsl_rng_uniform(simulation->rng) <
             initial_infection_rate ? 1.0 : 0.0;
-        agent.cured = 0.0;
-        agent.date_death = 0.0;
+        agent.cured = agent.date_death = 0.0;
         agent.cause_of_death = 0;
         if (i % 2 == 0  ||
             (gsl_rng_uniform(simulation->rng) < initial_single_rate)){
@@ -540,7 +539,7 @@ void fsti_event_register_events()
                           fsti_event_write_dead_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
         fsti_register_add("_STOP", fsti_event_stop);
-        fsti_register_add("_NO_OP", fsti_event_no_op);
+        fsti_register_add(NO_OP, fsti_event_no_op);
         FSTI_HOOK_EVENTS_REGISTER;
     }
 }
