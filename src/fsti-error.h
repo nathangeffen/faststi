@@ -6,6 +6,10 @@
 #include <stdbool.h>
 #include <stdatomic.h>
 
+#ifdef __linux__
+#include <execinfo.h>
+#endif
+
 #define FSTI_NAME "FastSTI"
 #define FSTI_ERROR_STRING_LEN 200
 
@@ -26,11 +30,35 @@
 	       :							\
 	       0
 
+#ifdef __linux__
+
+#define FSTI_BACKTRACE                                                  \
+    do {                                                                \
+        int j, nptrs;                                                   \
+        void *buffer[100];                                              \
+        char **strings;                                                 \
+        nptrs = backtrace(buffer, 100);                                 \
+        printf("backtrace() returned %d addresses\n", nptrs);           \
+        strings = backtrace_symbols(buffer, nptrs);                     \
+        if (strings)                                                    \
+            for (j = 0; j < nptrs; j++)                                 \
+                printf("%s\n", strings[j]);                             \
+        free(strings);                                                  \
+    } while(0)
+
+#else
+
+#define FSTI_BACKTRACE
+
+#endif
+
+
 #ifndef FSTI_ASSERT
 #define FSTI_ASSERT(cond, errnum, msg)                                  \
     do {                                                                \
         if( ((cond) == 0)) {                                            \
             fsti_error_msg(errnum, __FILE__, __LINE__, msg);            \
+            FSTI_BACKTRACE;                                             \
             exit(1);                                                    \
         }                                                               \
     } while(0)
@@ -50,6 +78,7 @@ enum {
     FSTI_ERR_NO_VALUE_FOR_KEY,
     FSTI_ERR_KEY_NOT_FOUND,
     FSTI_ERR_INVALID_CSV_FILE,
+    FSTI_ERR_DATASET_FILE,
     FSTI_ERR_OUT_OF_BOUNDS,
     FSTI_ERR_STR_EXPECTED,
     FSTI_ERR_LONG_EXPECTED,

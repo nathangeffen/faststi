@@ -54,6 +54,9 @@ struct fsti_simulation {
     char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;
+    struct fsti_dataset_hash *dataset_hash;
+    struct fsti_dataset *dataset_mortality;
+    struct fsti_dataset *dataset_mating_pool;
     FSTI_SIMULATION_FIELDS
 };
 
@@ -61,6 +64,8 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 			  const struct fsti_config *config,
 			  int sim_number, int config_sim_number);
 size_t fsti_simulation_agent_size(struct fsti_simulation *simulation);
+struct fsti_dataset *
+fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key);
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation);
 struct fsti_agent *
 fsti_simulation_new_agent(struct fsti_simulation *simulation);

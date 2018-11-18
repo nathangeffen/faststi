@@ -6,6 +6,7 @@
 
 #include "fsti-config.h"
 #include "fsti-simulation.h"
+#include "fsti-dataset.h"
 
 struct fsti_simset {
     struct fsti_config config;
@@ -24,6 +25,7 @@ struct fsti_simset {
     FILE *results_file;
     bool close_agents_output_file;
     FILE *agents_output_file;
+    struct fsti_dataset_hash dataset_hash;
 };
 
 void fsti_simset_init_with_config(struct fsti_simset *simset,

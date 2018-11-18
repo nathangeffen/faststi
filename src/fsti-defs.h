@@ -2,6 +2,7 @@
 #define FSTI_DEFS_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <stddef.h>
 #include <stdbool.h>
 
@@ -20,6 +21,8 @@
 #define FSTI_MSW 1
 #define FSTI_WSM 2
 #define FSTI_WSW 3
+
+#define NO_OP "_NO_OP"
 
 #define FSTI_CSV_ENTRY(member, function) \
     {&fsti_global_agent.member, function},
@@ -120,5 +123,8 @@ struct fsti_csv_entry {
 size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
+char *fsti_make_full_data_filename(const char *filename);
+FILE *fsti_open_data_file(const char *filename, const char *mode);
+void fsti_remove_data_file(const char *filename);
 
 #endif

@@ -7,8 +7,8 @@
 #include "fsti-error.h"
 
 #define ERROR_MSG_LEN 200
-_Thread_local int fsti_error;
 
+_Thread_local int fsti_error;
 _Thread_local char fsti_error_string[FSTI_ERROR_STRING_LEN + 1] = "";
 
 bool fsti_output_error_messages = true;
@@ -38,6 +38,8 @@ const char *fsti_error_message(int code)
 	return "Key not found";
     case FSTI_ERR_INVALID_CSV_FILE:
         return "Error in csv file";
+    case FSTI_ERR_DATASET_FILE:
+        return "Error in dataset file";
     case FSTI_ERR_OUT_OF_BOUNDS:
 	return "Index for value is out of bounds";
     case FSTI_ERR_STR_EXPECTED:
