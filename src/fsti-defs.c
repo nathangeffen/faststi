@@ -75,7 +75,6 @@ char *fsti_make_full_data_filename(const char *filename)
     else
         strncpy(full_filename, filename, FILENAME_MAX);
 
-    DBG("%s %s", path, full_filename);
     return full_filename;
 }
 

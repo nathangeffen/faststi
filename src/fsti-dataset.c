@@ -215,7 +215,7 @@ static void dataset_test(struct test_group *tg)
 
     // Test with only 2 columns (the minimum needed)
     f = fsti_open_data_file(filename, "w");
-    assert(f);
+    FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
     fprintf(f, "age;infected\n");
     fprintf(f, "20;0\n");
 
@@ -280,7 +280,8 @@ static void dataset_hash_test(struct test_group *tg)
 
     for (size_t i = 0; i < 3 * FSTI_HASHSIZE; ++i) {
         sprintf(filename, "%s%zu%s", "t_", i,".csv");
-        g_file_set_contents (filename, output, -1, NULL);
+        g_file_set_contents (fsti_make_full_data_filename(filename),
+                             output, -1, NULL);
     }
 
     fsti_dataset_hash_init(&hash);

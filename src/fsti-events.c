@@ -3,6 +3,7 @@
 #include "fsti-defs.h"
 #include "fsti-events.h"
 #include "fsti-report.h"
+#include "fsti-dataset.h"
 
 struct fsti_agent fsti_global_agent;
 
@@ -459,6 +460,24 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
         });
 }
 
+void fsti_event_death(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+    double d;
+    size_t *it;
+
+    it = simulation->living.indices;
+    while (it < (simulation->living.indices + simulation->living.len)) {
+        agent = fsti_agent_ind_arrp(&simulation->living, it);
+        d = fsti_dataset_lookup(simulation->dataset_mortality, agent);
+        if (gsl_rng_uniform(simulation->rng) < d) {
+            fsti_simulation_kill_agent(simulation, it);
+        } else {
+            ++it;
+        }
+    }
+}
+
 void fsti_event_knn_match(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent, *candidate, *partner;
@@ -522,6 +541,7 @@ void fsti_event_register_events()
         fsti_register_add("_READ_AGENTS", fsti_event_read_agents);
         fsti_register_add("_GENERATE_AGENTS", fsti_event_create_agents);
         fsti_register_add("_AGE", fsti_event_age);
+        fsti_register_add("_DEATH", fsti_event_death);
         fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
         fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);

@@ -7,8 +7,8 @@
 #include "fsti-error.h"
 
 #define ERROR_MSG_LEN 200
-_Thread_local int fsti_error;
 
+_Thread_local int fsti_error;
 _Thread_local char fsti_error_string[FSTI_ERROR_STRING_LEN + 1] = "";
 
 bool fsti_output_error_messages = true;
