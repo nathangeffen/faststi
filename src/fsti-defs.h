@@ -22,7 +22,7 @@
 #define FSTI_WSM 2
 #define FSTI_WSW 3
 
-#define NO_OP "_NO_OP"
+#define FSTI_NO_OP "_NO_OP"
 
 #define FSTI_CSV_ENTRY(member, function) \
     {&fsti_global_agent.member, function},

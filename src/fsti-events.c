@@ -466,6 +466,7 @@ void fsti_event_death(struct fsti_simulation *simulation)
     double d;
     size_t *it;
 
+    FSTI_ASSERT(simulation->dataset_mortality, FSTI_ERR_MISSING_DATASET, NULL);
     it = simulation->living.indices;
     while (it < (simulation->living.indices + simulation->living.len)) {
         agent = fsti_agent_ind_arrp(&simulation->living, it);
@@ -559,7 +560,7 @@ void fsti_event_register_events()
                           fsti_event_write_dead_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
         fsti_register_add("_STOP", fsti_event_stop);
-        fsti_register_add(NO_OP, fsti_event_no_op);
+        fsti_register_add(FSTI_NO_OP, fsti_event_no_op);
         FSTI_HOOK_EVENTS_REGISTER;
     }
 }

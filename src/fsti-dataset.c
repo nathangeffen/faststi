@@ -78,6 +78,7 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
     alloc_dataset(dataset, rows, cols);
 
     for (size_t i = 0; i < cols; i++) {
+        DBG("IN LOOP %s", cs->header.cells[i]);
         dataset->members[i] = fsti_agent_elem_by_strname(cs->header.cells[i]);
         dataset->divisors[i] = csv_val(cs, 0, i, LONG, filename).value.longint;
         dataset->min_vals[i] = csv_val(cs, 1, i, LONG, filename).value.longint;
@@ -95,7 +96,6 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
     FSTI_ASSERT(max_index + 1 == rows, FSTI_ERR_DATASET_FILE,
                 fsti_sprintf("%s: Number of lines expected is %zu",
                              filename, max_index));
-    dataset->members[cols] = fsti_agent_elem_by_strname(cs->header.cells[cols]);
     set_dependents(dataset, cs, rows, cols);
 }
 
@@ -260,6 +260,7 @@ static void dataset_test(struct test_group *tg)
                 TESTEQ(d, result, *tg);
             }
     fsti_dataset_free(&dataset);
+    fsti_remove_data_file(filename);
 }
 
 static void dataset_hash_test(struct test_group *tg)

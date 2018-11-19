@@ -40,6 +40,8 @@ const char *fsti_error_message(int code)
         return "Error in csv file";
     case FSTI_ERR_DATASET_FILE:
         return "Error in dataset file";
+    case FSTI_ERR_MISSING_DATASET:
+        return "Dataset expected but not found";
     case FSTI_ERR_OUT_OF_BOUNDS:
 	return "Index for value is out of bounds";
     case FSTI_ERR_STR_EXPECTED:
