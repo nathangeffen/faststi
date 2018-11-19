@@ -86,10 +86,10 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "AGENT_CSV_HEADER",
                     "Whether or not the agent csv input file has a header", 1);
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
-                    "CSV file of values to determine agent deaths", NO_OP);
+                    "CSV file of values to determine agent deaths", FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_MATING_POOL",
                     "CSV file of values to determine agents entering mating pool",
-                    NO_OP);
+                    FSTI_NO_OP);
     FSTI_ADDITIONAL_CONFIG_VARS(config);
 
     return 0;

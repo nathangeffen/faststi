@@ -100,9 +100,9 @@ fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
     struct fsti_dataset * dataset = NULL;
     char *filename = fsti_config_at0_str(&simulation->config, key);
 
-    if (strcmp(NO_OP, filename)) {
+    if (strcmp(FSTI_NO_OP, filename)) {
         dataset = fsti_dataset_hash_find(simulation->dataset_hash, filename);
-        FSTI_ASSERT(dataset, FSTI_ERR_KEY_NOT_FOUND, key);
+        FSTI_ASSERT(dataset, FSTI_ERR_MISSING_DATASET, filename);
     }
 
     return dataset;

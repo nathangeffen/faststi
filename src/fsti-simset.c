@@ -160,10 +160,14 @@ static struct fsti_dataset_hash *load_datasets(struct fsti_simset *simset)
     for (i = 0; i < FSTI_HASHSIZE; i++) {
         entry = simset->config.entry[i];
         while (entry) {
-            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")) == 0)
-                if (entry->variants[0].type == STR)
-                    fsti_dataset_hash_add(&simset->dataset_hash,
-                                          entry->variants[0].value.str, delim);
+            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")-1) == 0) {
+                if (strcmp(entry->variants[0].value.str, FSTI_NO_OP)) {
+                    if (entry->variants[0].type == STR)
+                        fsti_dataset_hash_add(&simset->dataset_hash,
+                                              entry->variants[0].value.str,
+                                              delim);
+                }
+            }
             entry = entry->next;
         }
     }
@@ -303,4 +307,8 @@ void fsti_simset_test(struct test_group *tg)
     TESTEQ(simset.sim_number, 22, *tg);
 
     fsti_simset_free(&simset);
+    remove(agents_in_filename);
+    remove(config_filename);
+    remove("fsti_test_agents_out_1234.csv");
+    remove("fsti_test_results_1234.csv");
 }
