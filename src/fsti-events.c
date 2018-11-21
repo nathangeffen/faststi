@@ -218,8 +218,6 @@ static void read_agents(struct fsti_simulation *simulation)
 
     cs = csv_read(f, simulation->agent_csv_header, simulation->csv_delimiter);
 
-    //fsti_agent_arr_fill_n(&simulation->agent_arr, cs.len);
-
     for (i = 0; i < cs.len; ++i) {
         memset(simulation->csv->agent, 0, sizeof(struct fsti_agent));
         FSTI_ASSERT(cs.rows[i].len == simulation->csv->num_entries,
@@ -463,19 +461,20 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
 void fsti_event_death(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
-    double d;
+    double d, r;
     size_t *it;
 
     FSTI_ASSERT(simulation->dataset_mortality, FSTI_ERR_MISSING_DATASET, NULL);
+
     it = simulation->living.indices;
     while (it < (simulation->living.indices + simulation->living.len)) {
         agent = fsti_agent_ind_arrp(&simulation->living, it);
         d = fsti_dataset_lookup(simulation->dataset_mortality, agent);
-        if (gsl_rng_uniform(simulation->rng) < d) {
+        r = gsl_rng_uniform(simulation->rng);
+        if (r < d)
             fsti_simulation_kill_agent(simulation, it);
-        } else {
+        else
             ++it;
-        }
     }
 }
 
