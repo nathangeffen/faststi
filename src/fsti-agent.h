@@ -58,6 +58,8 @@ struct fsti_agent_elem {
     char name[32];
     size_t offset;
     enum fsti_type type;
+    fsti_transform_func transformer;
+    fsti_generate_func generator;
 };
 
 struct fsti_ind_list {

@@ -164,10 +164,14 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         FSTI_AGENT_ELEM_ENTRY(orientation),                             \
-        {"partners_0", offsetof(struct fsti_agent, partners), UINT},    \
-        {"partners_1", offsetof(struct fsti_agent, partners[1]), UINT}, \
-        {"partners_2", offsetof(struct fsti_agent, partners[2]), UINT}, \
-        {"partners_3", offsetof(struct fsti_agent, partners[3]), UINT}, \
+        {"partners_0", offsetof(struct fsti_agent, partners),           \
+         UINT, fsti_to_partner, NULL},                                  \
+        {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
+         UINT, NULL, NULL},                                             \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
     }

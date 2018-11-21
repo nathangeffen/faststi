@@ -44,11 +44,23 @@
                                      double: DBL,                       \
                                      long double: LDBL)
 
-#define FSTI_AGENT_ELEM_ENTRY(member)                   \
-    {                                                   \
-        #member,                                        \
-        offsetof(struct fsti_agent, member),            \
-        FSTI_GET_TYPE(fsti_thread_local_agent.member)   \
+#define FSTI_GET_TRANSFORMER(var)  _Generic((var),                      \
+                                            _Bool: fsti_to_bool,        \
+                                            unsigned char: fsti_to_uchar, \
+                                            uint16_t: fsti_to_uint16_t, \
+                                            uint32_t: fsti_to_uint32_t, \
+                                            uint64_t: fsti_to_uint64_t, \
+                                            int: fsti_to_int,           \
+                                            float: fsti_to_float,       \
+                                            double: fsti_to_double)
+
+#define FSTI_AGENT_ELEM_ENTRY(member)                           \
+    {                                                           \
+        #member,                                                \
+        offsetof(struct fsti_agent, member),                    \
+        FSTI_GET_TYPE(fsti_thread_local_agent.member),          \
+        FSTI_GET_TRANSFORMER(fsti_thread_local_agent.member),   \
+        NULL                                                    \
     }
 
 enum fsti_struct_part {
@@ -83,6 +95,7 @@ enum fsti_type {
     COVARY
 };
 
+struct fsti_dataset;
 struct fsti_agent;
 struct fsti_simulation;
 
@@ -92,13 +105,10 @@ struct fsti_csv_agent {
     const struct fsti_csv_entry *entries;
 };
 
-struct fsti_dataset;
-
 union fsti_value {
     long longint;
     double dbl;
     char *str;
-    struct fsti_dataset *dataset;
 };
 
 struct fsti_variant {
@@ -114,6 +124,8 @@ struct fsti_variant_array {
 
 typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
                                     struct fsti_agent *agent);
+typedef void (*fsti_generate_func)(struct fsti_simulation *simulation,
+                                   struct fsti_agent *agent, void *to);
 
 struct fsti_csv_entry {
      void *dest;
@@ -126,5 +138,37 @@ struct fsti_variant fsti_identify_token_const(const char *token);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_data_file(const char *filename);
+
+
+/* These are declared in fsti-defs.h but defined in fsti-events.c
+ * because they need to be visible in fsti-defaults.c which cannot
+ * include fsti-agents.h or fsti-events.h.
+ */
+void fsti_to_float(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent);
+void fsti_to_double(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent);
+void fsti_to_int(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent);
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent);
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  struct fsti_agent *agent);
+void fsti_to_unsigned(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent);
+void fsti_to_uchar(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent);
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                     struct fsti_agent *agent);
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     struct fsti_agent *agent);
+
+
 
 #endif

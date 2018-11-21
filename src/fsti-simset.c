@@ -269,7 +269,7 @@ void fsti_simset_test(struct test_group *tg)
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");
     assert(agents_in_file);
-    fprintf(agents_in_file, "id;age;infected;sex;sex_preferred;partner\n");
+    fprintf(agents_in_file, "id;age;infected;sex;sex_preferred;partners_0\n");
     for (size_t i = 0; i < num_agents; i++) {
         double age = (double) rand() / RAND_MAX * 30.0 + 20.0;
         int infected = ( ( (double) rand()/RAND_MAX)  < 0.3) ? 1 : 0;

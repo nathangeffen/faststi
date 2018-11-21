@@ -217,8 +217,15 @@ static void read_agents(struct fsti_simulation *simulation)
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
     cs = csv_read(f, simulation->agent_csv_header, simulation->csv_delimiter);
+    FSTI_ASSERT(cs.header.len, FSTI_ERR_AGENT_FILE,
+                FSTI_MSG("No header in agent csv file", filename));
 
-    for (i = 0; i < cs.len; ++i) {
+    struct fsti_agent_elem *elems[cs.header.len];
+
+    for (i = 0; i < cs.header.len; i++)
+        elems[i] = fsti_agent_elem_by_strname(cs.header.cells[i]);
+
+    for (i = 0; i < cs.len; i++) {
         memset(simulation->csv->agent, 0, sizeof(struct fsti_agent));
         FSTI_ASSERT(cs.rows[i].len == simulation->csv->num_entries,
                     FSTI_ERR_INVALID_CSV_FILE,
@@ -229,8 +236,8 @@ static void read_agents(struct fsti_simulation *simulation)
                         fsti_sprintf("File: %s at line %zu", filename, i+2));
             process_cell(simulation->csv->agent,
                          cs.rows[i].cells[j],
-                         simulation->csv->entries[j].dest,
-                         simulation->csv->entries[j].transformer);
+                         (char *) simulation->csv->agent + elems[j]->offset,
+                         elems[j]->transformer);
             FSTI_ASSERT(fsti_error == 0,
                         FSTI_ERR_INVALID_CSV_FILE,
                         fsti_sprintf("File: %s at line %zu", filename, i+2));
