@@ -24,8 +24,6 @@ struct fsti_dataset_hash {
     struct fsti_dataset *datasets[FSTI_HASHSIZE];
 };
 
-extern const char const *fsti_dataset_names[];
-
 void fsti_dataset_read(const char *filename, struct fsti_dataset *dataset, char delim);
 double fsti_dataset_lookup(struct fsti_dataset *dataset, struct fsti_agent *agent);
 void fsti_dataset_free(struct fsti_dataset *dataset);

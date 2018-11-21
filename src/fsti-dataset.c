@@ -78,7 +78,6 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
     alloc_dataset(dataset, rows, cols);
 
     for (size_t i = 0; i < cols; i++) {
-        DBG("IN LOOP %s", cs->header.cells[i]);
         dataset->members[i] = fsti_agent_elem_by_strname(cs->header.cells[i]);
         dataset->divisors[i] = csv_val(cs, 0, i, LONG, filename).value.longint;
         dataset->min_vals[i] = csv_val(cs, 1, i, LONG, filename).value.longint;

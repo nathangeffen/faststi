@@ -44,11 +44,11 @@
                                      double: DBL,                       \
                                      long double: LDBL)
 
-#define FSTI_AGENT_ELEM_ENTRY(member)        \
-    {                                             \
-        #member,                                 \
-        offsetof(struct fsti_agent, member),      \
-        FSTI_GET_TYPE(fsti_thread_local_agent.member) \
+#define FSTI_AGENT_ELEM_ENTRY(member)                   \
+    {                                                   \
+        #member,                                        \
+        offsetof(struct fsti_agent, member),            \
+        FSTI_GET_TYPE(fsti_thread_local_agent.member)   \
     }
 
 enum fsti_struct_part {
