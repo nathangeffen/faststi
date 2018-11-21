@@ -67,7 +67,7 @@ char *fsti_make_full_data_filename(const char *filename)
 {
     const char *path;
 
-    path = g_environ_getenv (g_get_environ(), "FSTI_DATA");
+    path = getenv("FSTI_DATA");
 
     if (path)
         snprintf(full_filename, FILENAME_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S,
