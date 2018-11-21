@@ -76,7 +76,6 @@ int main(int argc, char *argv[])
     if (print_config)
 	fsti_config_print_all(&simset.config);
 
-    fsti_simset_set_csv(&simset, &fsti_global_csv);
     fsti_simset_exec(&simset);
 
     fsti_simset_free(&simset);

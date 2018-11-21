@@ -7,20 +7,6 @@
 
 struct fsti_agent fsti_global_agent;
 
-const struct fsti_csv_entry fsti_csv_entries[] = {
-    FSTI_CSV_ENTRIES
-};
-
-
-
-const struct fsti_csv_agent fsti_global_csv =
-{
-    .agent = &fsti_global_agent,
-    .num_entries = sizeof(fsti_csv_entries) / sizeof(struct fsti_csv_entry),
-    .entries = fsti_csv_entries
-};
-
-
 void fsti_to_float(void *to, const struct fsti_variant *from,
                    struct fsti_agent *agent)
 {
@@ -226,24 +212,18 @@ static void read_agents(struct fsti_simulation *simulation)
         elems[i] = fsti_agent_elem_by_strname(cs.header.cells[i]);
 
     for (i = 0; i < cs.len; i++) {
-        memset(simulation->csv->agent, 0, sizeof(struct fsti_agent));
-        FSTI_ASSERT(cs.rows[i].len == simulation->csv->num_entries,
-                    FSTI_ERR_INVALID_CSV_FILE,
-                    fsti_sprintf("File: %s at line %zu", filename, i+2));
+        memset(&simulation->csv_agent, 0, sizeof(struct fsti_agent));
         for (j = 0; j < cs.rows[i].len; ++j) {
-            FSTI_ASSERT(j < simulation->csv->num_entries,
-                        FSTI_ERR_INVALID_CSV_FILE,
-                        fsti_sprintf("File: %s at line %zu", filename, i+2));
-            process_cell(simulation->csv->agent,
+            process_cell(&simulation->csv_agent,
                          cs.rows[i].cells[j],
-                         (char *) simulation->csv->agent + elems[j]->offset,
+                         (char *) &simulation->csv_agent + elems[j]->offset,
                          elems[j]->transformer);
             FSTI_ASSERT(fsti_error == 0,
                         FSTI_ERR_INVALID_CSV_FILE,
                         fsti_sprintf("File: %s at line %zu", filename, i+2));
         }
         fsti_agent_arr_push(&simulation->agent_arr,
-                            simulation->csv->agent);
+                            &simulation->csv_agent);
     }
     fsti_agent_ind_fill_n(&simulation->living, cs.len);
     if (process_partners)

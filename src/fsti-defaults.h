@@ -128,20 +128,6 @@ unsigned total_partners;
     } while(0)
 #endif
 
-
-/*
-  Define the format of the CSV input file here.
- */
-#ifndef FSTI_CSV_ENTRIES
-#define FSTI_CSV_ENTRIES                                        \
-    FSTI_CSV_ENTRY(id, fsti_to_size_t)                          \
-    FSTI_CSV_ENTRY(age, fsti_to_float)                          \
-    FSTI_CSV_ENTRY(infected, fsti_to_float)                     \
-    FSTI_CSV_ENTRY(sex, fsti_to_uchar)                          \
-    FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
-    FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
-#endif
-
 /* If any members of the agent struct need to be associated with a string
    they are defined here in alphabetical order. (Alphabetical order is
    essential because a binary search used to locate the entry.)

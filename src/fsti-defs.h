@@ -24,9 +24,6 @@
 
 #define FSTI_NO_OP "_NO_OP"
 
-#define FSTI_CSV_ENTRY(member, function) \
-    {&fsti_global_agent.member, function},
-
 #define FSTI_GET_TYPE(var)  _Generic((var),                             \
                                      _Bool: BOOL,                       \
                                      char: CHAR,                        \
@@ -99,12 +96,6 @@ struct fsti_dataset;
 struct fsti_agent;
 struct fsti_simulation;
 
-struct fsti_csv_agent {
-    struct fsti_agent *agent;
-    size_t num_entries;
-    const struct fsti_csv_entry *entries;
-};
-
 union fsti_value {
     long longint;
     double dbl;
@@ -126,11 +117,6 @@ typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
                                     struct fsti_agent *agent);
 typedef void (*fsti_generate_func)(struct fsti_simulation *simulation,
                                    struct fsti_agent *agent, void *to);
-
-struct fsti_csv_entry {
-     void *dest;
-     fsti_transform_func transformer;
-};
 
 size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);

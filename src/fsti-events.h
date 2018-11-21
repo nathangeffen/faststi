@@ -29,7 +29,6 @@ void fsti_event_no_op(struct fsti_simulation *simulation);
 void fsti_event_register_events();
 
 extern struct fsti_agent fsti_global_agent;
-extern const struct fsti_csv_entry fsti_csv_entries[];
 
 extern const struct fsti_csv_agent fsti_global_csv;
 
