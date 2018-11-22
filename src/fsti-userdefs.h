@@ -50,17 +50,6 @@
             agent->relstat, delim,                                      \
             agent->num_partners ? (long) agent->partners[0] : -1)
 
-#define FSTI_CSV_ENTRIES                                        \
-    FSTI_CSV_ENTRY(id, fsti_to_size_t)                          \
-    FSTI_CSV_ENTRY(birthday, fsti_to_uint16_t)                   \
-    FSTI_CSV_ENTRY(age_group, fsti_to_uint16_t)                 \
-    FSTI_CSV_ENTRY(sex, fsti_to_uchar)                          \
-    FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
-    FSTI_CSV_ENTRY(re_sexact, fsti_to_double)                   \
-    FSTI_CSV_ENTRY(relstat, fsti_to_double)                     \
-    FSTI_CSV_ENTRY(hiv, fsti_to_bool)                           \
-    FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
-
 #define FSTI_FLEX_REPORT do {                                           \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age_group, "MEAN_AGE_ALIVE");   \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
@@ -88,4 +77,34 @@ void event_dionysus(struct fsti_simulation *simulation);
 void event_aphrodite(struct fsti_simulation *simulation);
 void hestia(struct fsti_simulation *simulation,
             struct fsti_agent *a, struct fsti_agent *b);
+
+
+#define FSTI_AGENT_ELEM {                                               \
+        FSTI_AGENT_ELEM_ENTRY(age),                                     \
+        FSTI_AGENT_ELEM_ENTRY(age_group),                               \
+        FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
+        FSTI_AGENT_ELEM_ENTRY(birthday),                                \
+        FSTI_AGENT_ELEM_ENTRY(cause_of_death),                          \
+        FSTI_AGENT_ELEM_ENTRY(cured),                                   \
+        FSTI_AGENT_ELEM_ENTRY(date_death),                              \
+        FSTI_AGENT_ELEM_ENTRY(hiv),                                     \
+        FSTI_AGENT_ELEM_ENTRY(id),                                      \
+        FSTI_AGENT_ELEM_ENTRY(infected),                                \
+        FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
+        FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
+        FSTI_AGENT_ELEM_ENTRY(orientation),                             \
+        {"partners_0", offsetof(struct fsti_agent, partners),           \
+         UINT, fsti_to_partner, NULL},                                  \
+        {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
+         UINT, NULL, NULL},                                             \
+        FSTI_AGENT_ELEM_ENTRY(re_sexact),                               \
+        FSTI_AGENT_ELEM_ENTRY(relstat),                                 \
+        FSTI_AGENT_ELEM_ENTRY(sex),                                     \
+        FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
+    }
+
 #endif

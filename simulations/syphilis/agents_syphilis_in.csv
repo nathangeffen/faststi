@@ -1,4 +1,4 @@
-id;birthday;age_group;sex;sex_preferred;re_sexact;relstat;hiv;partner
+id;birthday;age_group;sex;sex_preferred;re_sexact;relstat;hiv;partners_0
 0;7;2;0;0;1.7251733199;2515.5338659908;0;1
 1;355;1;0;0;0.8547885294;2515.5338659908;0;0
 2;647;7;0;0;-0.2245797235;234.9685704512;0;-1
