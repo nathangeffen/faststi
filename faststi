@@ -16,7 +16,11 @@ CURRENT_DIR=`pwd`
 
 if ! [ -d "$COMPDIR" ]; then
     cd "$FSTI_BASE"
-    meson debug
+    if [ "$1" == "release" ]; then
+        meson release
+    else
+        meson debug
+    fi
 fi
 
 cd "$COMPDIR"
