@@ -25,7 +25,7 @@ struct fsti_simulation {
     struct fsti_agent_ind dead;
     struct fsti_agent_ind mating_pool;
 
-    const struct fsti_csv_agent *csv;
+    struct fsti_agent csv_agent; // Used when reading in agent CSV file
 
     int sim_number;
     int config_sim_number;
@@ -74,8 +74,6 @@ void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
 void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation);
 void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
-void fsti_simulation_set_csv(struct fsti_simulation *simulation,
-                             const struct fsti_csv_agent *csv);
 void fsti_simulation_kill_agent(struct fsti_simulation *simulation, size_t *it);
 void fsti_simulation_free(struct fsti_simulation *simulation);
 void fsti_simulation_test(struct test_group *tg);

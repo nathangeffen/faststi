@@ -12,31 +12,6 @@
 #include "fsti-agent.h"
 #include "fsti-userdefs.h"
 
-void fsti_to_float(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_int(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_bool(void *to, const struct fsti_variant *from,
-                  struct fsti_agent *agent);
-void fsti_to_unsigned(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_uchar(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_size_t(void *to, const struct fsti_variant *from,
-                     struct fsti_agent *agent);
-void fsti_to_partner(void *to, const struct fsti_variant *from,
-                     struct fsti_agent *agent);
-
 void fsti_event_read_agents(struct fsti_simulation *simulation);
 void fsti_event_create_agents(struct fsti_simulation *simulation);
 void fsti_event_age(struct fsti_simulation *simulation);
@@ -54,7 +29,6 @@ void fsti_event_no_op(struct fsti_simulation *simulation);
 void fsti_event_register_events();
 
 extern struct fsti_agent fsti_global_agent;
-extern const struct fsti_csv_entry fsti_csv_entries[];
 
 extern const struct fsti_csv_agent fsti_global_csv;
 

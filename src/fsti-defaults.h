@@ -128,20 +128,6 @@ unsigned total_partners;
     } while(0)
 #endif
 
-
-/*
-  Define the format of the CSV input file here.
- */
-#ifndef FSTI_CSV_ENTRIES
-#define FSTI_CSV_ENTRIES                                        \
-    FSTI_CSV_ENTRY(id, fsti_to_size_t)                          \
-    FSTI_CSV_ENTRY(age, fsti_to_float)                          \
-    FSTI_CSV_ENTRY(infected, fsti_to_float)                     \
-    FSTI_CSV_ENTRY(sex, fsti_to_uchar)                          \
-    FSTI_CSV_ENTRY(sex_preferred, fsti_to_uchar)                \
-    FSTI_CSV_ENTRY(partners[0], fsti_to_partner)
-#endif
-
 /* If any members of the agent struct need to be associated with a string
    they are defined here in alphabetical order. (Alphabetical order is
    essential because a binary search used to locate the entry.)
@@ -164,10 +150,14 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         FSTI_AGENT_ELEM_ENTRY(orientation),                             \
-        {"partners_0", offsetof(struct fsti_agent, partners), UINT},    \
-        {"partners_1", offsetof(struct fsti_agent, partners[1]), UINT}, \
-        {"partners_2", offsetof(struct fsti_agent, partners[2]), UINT}, \
-        {"partners_3", offsetof(struct fsti_agent, partners[3]), UINT}, \
+        {"partners_0", offsetof(struct fsti_agent, partners),           \
+         UINT, fsti_to_partner, NULL},                                  \
+        {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
+         UINT, NULL, NULL},                                             \
+        {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
+         UINT, NULL, NULL},                                             \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
     }

@@ -88,12 +88,6 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
 }
 
-void fsti_simulation_set_csv(struct fsti_simulation *simulation,
-                             const struct fsti_csv_agent *csv)
-{
-    simulation->csv = csv;
-}
-
 struct fsti_dataset *
 fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
 {

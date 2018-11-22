@@ -24,7 +24,6 @@ static void init(struct fsti_simset *simset)
     simset->sim_number = 0;
     simset->groups = NULL;
     simset->group_ptr = NULL;
-    simset->csv = NULL;
     simset->close_results_file = simset->close_agents_output_file = false;
     fsti_dataset_hash_init(&simset->dataset_hash);
     fsti_event_register_events();
@@ -69,12 +68,6 @@ void fsti_simset_load_config_strings(struct fsti_simset *simset,
 				     char **config_strings)
 {
     simset->config_strings = config_strings;
-}
-
-void fsti_simset_set_csv(struct fsti_simset *simset,
-                         const struct fsti_csv_agent *csv)
-{
-    simset->csv = csv;
 }
 
 static void set_keys(struct fsti_simset *simset)
@@ -180,7 +173,6 @@ static void setup_simulation(struct fsti_simset *simset,
     fsti_simulation_init(simulation, &simset->config,
                          simset->sim_number,
                          simset->config_sim_number);
-    fsti_simulation_set_csv(simulation, simset->csv);
     set_output_files(simset, simulation);
     simulation->name = *simset->group_ptr;
     simulation->dataset_hash = load_datasets(simset);
@@ -269,7 +261,7 @@ void fsti_simset_test(struct test_group *tg)
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");
     assert(agents_in_file);
-    fprintf(agents_in_file, "id;age;infected;sex;sex_preferred;partner\n");
+    fprintf(agents_in_file, "id;age;infected;sex;sex_preferred;partners_0\n");
     for (size_t i = 0; i < num_agents; i++) {
         double age = (double) rand() / RAND_MAX * 30.0 + 20.0;
         int infected = ( ( (double) rand()/RAND_MAX)  < 0.3) ? 1 : 0;
@@ -302,7 +294,6 @@ void fsti_simset_test(struct test_group *tg)
 
     fsti_simset_init(&simset);
     fsti_simset_load_config_file(&simset, config_filename);
-    fsti_simset_set_csv(&simset, &fsti_global_csv);
     fsti_simset_exec(&simset);
     TESTEQ(simset.sim_number, 22, *tg);
 

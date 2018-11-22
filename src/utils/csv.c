@@ -134,6 +134,7 @@ struct csv csv_read(FILE *f, bool header, char delim)
 
     ARRAY_FREE(row, cells);
 
+    FSTI_ASSERT(csv_isvalid(&cs, false), FSTI_ERR_INVALID_CSV_FILE, NULL);
     return cs;
 }
 
