@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 FSTI_BASE=`dirname "$0"`
 
@@ -13,9 +13,15 @@ else
 fi
 
 CURRENT_DIR=`pwd`
-cd $COMPDIR
+
+if ! [ -d "$COMPDIR" ]; then
+    cd "$FSTI_BASE"
+    meson debug
+fi
+
+cd "$COMPDIR"
 ninja
-cd $CURRENT_DIR
+cd "$CURRENT_DIR"
 
 if [ -z ${FSTI_DATA+x} ]; then
     FSTI_DATA=$FSTI_BASE/data
