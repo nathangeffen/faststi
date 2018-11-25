@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <glib.h>
 
-#include "utils/utils.h"
 #include "fsti-error.h"
 #include "fsti-defs.h"
 
@@ -138,4 +137,56 @@ FILE *fsti_open_data_file(const char *filename, const char *mode)
 void fsti_remove_data_file(const char *filename)
 {
     remove(fsti_make_full_data_filename(filename));
+}
+
+
+void fsti_test_defs(struct test_group *tg)
+{
+    double d;
+    long l;
+
+    // Test conversions
+    l = 11;
+    fsti_cnv_vals(&d, &l, DBL, LONG);
+    TESTEQ(d, 11, *tg);
+
+    d = 27.3;
+    fsti_cnv_vals(&l, &d, LONG, DBL);
+    TESTEQ(l, 27, *tg);
+
+    // Test hash function
+    bool indices[FSTI_HASHSIZE];
+    unsigned total = 0;
+
+    memset(indices, false, sizeof(indices));
+    for (size_t i = 0; i < FSTI_HASHSIZE; i++)  total += indices[i];
+    TESTEQ(total, 0, *tg);
+
+    char str[10];
+    for (size_t i = 0; i < FSTI_HASHSIZE; i++) {
+        snprintf(str, 10, "HASH_%zu", i);
+        indices[fsti_hash(str)] = true;
+    }
+    total = 0;
+    for (size_t i = 0; i < FSTI_HASHSIZE; i++)  total += indices[i];
+    TESTEQ(total > FSTI_HASHSIZE / 2 && total < FSTI_HASHSIZE, true, *tg);
+
+    // Test token parsing
+    struct fsti_variant variant;
+    char token[20];
+
+    strcpy(token, " +10 ");
+    variant = fsti_identify_token(token);
+    TESTEQ(variant.type, LONG, *tg);
+    TESTEQ(variant.value.longint, 10, *tg);
+
+    strcpy(token, "   -11.23456 ");
+    variant = fsti_identify_token(token);
+    TESTEQ(variant.type, DBL, *tg);
+    TESTEQ(variant.value.dbl, -11.23456, *tg);
+
+    strcpy(token, "   -11.23456L ");
+    variant = fsti_identify_token(token);
+    TESTEQ(variant.type, STR, *tg);
+    TESTEQ(strcmp(variant.value.str, "-11.23456L"), 0, *tg);
 }

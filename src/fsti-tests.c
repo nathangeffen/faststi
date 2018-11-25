@@ -15,6 +15,7 @@ int fsti_tests()
 
     test_group_new(&tg);
 
+    fsti_test_defs(&tg);
     fsti_dataset_test(&tg);
     fsti_config_test(&tg);
     fsti_agent_test(&tg);

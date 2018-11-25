@@ -6,6 +6,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#include "utils/utils.h"
+
 #define FSTI_HASHSIZE 101
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
@@ -123,6 +125,7 @@ struct fsti_variant fsti_identify_token_const(const char *token);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_data_file(const char *filename);
+void fsti_test_defs(struct test_group *tg);
 
 /* These are declared in fsti-defs.h but defined in fsti-events.c
  * because they need to be visible in fsti-defaults.c which cannot
