@@ -8,9 +8,29 @@ struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
 _Thread_local struct fsti_agent fsti_thread_local_agent;
 
-static const struct fsti_agent_elem agent_elem[] =
+static struct fsti_agent_elem agent_elem[] =
     FSTI_AGENT_ELEM;
 
+const size_t fsti_agent_elem_n =
+    sizeof(agent_elem) / sizeof(struct fsti_agent_elem);
+
+// Compare two strings (for qsort and bsearch)
+static int cmps(const void *a, const void *b)
+{
+    struct fsti_agent_elem *x = (struct fsti_agent_elem *) a;
+    struct fsti_agent_elem *y = (struct fsti_agent_elem *) b;
+    return strcmp(x->name, y->name);
+}
+
+void fsti_agent_elem_init()
+{
+    qsort(agent_elem, fsti_agent_elem_n,  sizeof(struct fsti_agent_elem), cmps);
+}
+
+inline struct fsti_agent_elem *fsti_agent_elem_get()
+{
+    return agent_elem;
+}
 
 void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
                           struct fsti_agent *agent, char delimiter)
@@ -77,22 +97,12 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
     return result;
 }
 
-static int cmps(const void *a, const void *b)
-{
-    struct fsti_agent_elem *x = (struct fsti_agent_elem *) a;
-    struct fsti_agent_elem *y = (struct fsti_agent_elem *) b;
-    return strcmp(x->name, y->name);
-}
-
 struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
 {
     struct fsti_agent_elem *elem;
 
-    elem = bsearch(name, agent_elem,
-                   sizeof(agent_elem) /
-                   sizeof(struct fsti_agent_elem),
-                   sizeof(struct fsti_agent_elem),
-                   cmps);
+    elem = bsearch(name, agent_elem, fsti_agent_elem_n,
+                   sizeof(struct fsti_agent_elem), cmps);
     FSTI_ASSERT(elem, FSTI_ERR_KEY_NOT_FOUND, name);
 
     return elem;

@@ -59,7 +59,6 @@ struct fsti_agent_elem {
     size_t offset;
     enum fsti_type type;
     fsti_transform_func transformer;
-    fsti_generate_func generator;
 };
 
 struct fsti_ind_list {
@@ -82,7 +81,9 @@ struct fsti_agent_ind {
 };
 
 extern struct fsti_agent_arr fsti_saved_agent_arr;
+extern const size_t fsti_agent_elem_n;
 
+struct fsti_agent_elem *fsti_agent_elem_get();
 void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
                           struct fsti_agent *agent, char delimiter);
 void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);

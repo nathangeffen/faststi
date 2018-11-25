@@ -6,6 +6,58 @@
 #include "fsti-defs.h"
 
 
+#define SET_DEST(type) do {                      \
+        type d = s;                              \
+        if(FSTI_GET_TYPE(d) == dest_type) {      \
+            memcpy(dest, &d, sizeof(d));          \
+            return;                              \
+        }                                        \
+    } while(0)
+
+#define SET_SRC(type) do {                                      \
+        type s;                                                 \
+        if (FSTI_GET_TYPE(s) == src_type) {                     \
+            memcpy(&s, src, sizeof(s));                         \
+            SET_DEST(_Bool);                                    \
+            SET_DEST(char);                                     \
+            SET_DEST(signed char);                              \
+            SET_DEST(short);                                    \
+            SET_DEST(unsigned short);                           \
+            SET_DEST(int);                                      \
+            SET_DEST(unsigned int);                             \
+            SET_DEST(long);                                     \
+            SET_DEST(unsigned long int);                        \
+            SET_DEST(long long int);                            \
+            SET_DEST(unsigned long long int);                   \
+            SET_DEST(float);                                    \
+            SET_DEST(double);                                   \
+            SET_DEST(long double);                              \
+        }                                                       \
+    } while(0)
+
+void fsti_cnv_vals(void *dest, const void *src,
+                   enum fsti_type dest_type, enum fsti_type src_type)
+{
+    SET_SRC(_Bool);
+    SET_SRC(char);
+    SET_SRC(signed char);
+    SET_SRC(short);
+    SET_SRC(unsigned short);
+    SET_SRC(int);
+    SET_SRC(unsigned int);
+    SET_SRC(long);
+    SET_SRC(unsigned long int);
+    SET_SRC(long long int);
+    SET_SRC(unsigned long long int);
+    SET_SRC(float);
+    SET_SRC(double);
+    SET_SRC(long double);
+
+    FSTI_ASSERT(0, FSTI_ERR_WRONG_TYPE, NULL);
+
+    return;
+}
+
 size_t fsti_hash(const char *str)
 {
     unsigned long hash = 5381;

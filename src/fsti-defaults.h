@@ -151,13 +151,13 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         FSTI_AGENT_ELEM_ENTRY(orientation),                             \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
-         UINT, fsti_to_partner, NULL},                                  \
+         UINT, fsti_to_partner},                                  \
         {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
-         UINT, NULL, NULL},                                             \
+         UINT, NULL},                                             \
         {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
-         UINT, NULL, NULL},                                             \
+         UINT, NULL},                                             \
         {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
-         UINT, NULL, NULL},                                             \
+         UINT, NULL},                                             \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
     }
@@ -186,6 +186,28 @@ unsigned total_partners;
  * Advanced macros: Please only override these if you have a
  * good understanding of both C and the FastSTI code.
  *******************************************************************/
+
+/* Number of parameters that generator functions can take.
+   Six should be more than enough.
+*/
+
+#ifndef FSTI_GEN_PARMS
+#define FSTI_GEN_PARMS 6
+#endif
+
+/*
+   List of generator functions (in alphabetical order to support bsearch).
+*/
+
+#ifndef FSTI_GENERATOR_MAP
+#define FSTI_GENERATOR_MAP                      \
+    {"CONST", fsti_gen_const},                  \
+    {"NORMAL", fsti_gen_normal},                \
+    {"SETSEX", fsti_gen_sex},                   \
+    {"UNIF", fsti_gen_uniform}
+#endif
+
+
 
 /* Hooks */
 
@@ -257,6 +279,8 @@ unsigned total_partners;
 #ifndef FSTI_HOOK_EVENTS_REGISTER
 #define FSTI_HOOK_EVENTS_REGISTER
 #endif
+
+/* Prototypes */
 
 int fsti_config_set_default(struct fsti_config *config);
 

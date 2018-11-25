@@ -17,21 +17,21 @@ CURRENT_DIR=`pwd`
 if ! [ -d "$COMPDIR" ]; then
     cd "$FSTI_BASE"
     if [ "$1" == "release" ]; then
-        meson release
+        meson --buildtype release release
     else
         meson debug
     fi
 fi
 
 cd "$COMPDIR"
-ninja
+ninja -v
 cd "$CURRENT_DIR"
 
 if [ -z ${FSTI_DATA+x} ]; then
-    FSTI_DATA=$FSTI_BASE/data
-    echo Setting FSTI_DATA to $FSTI_DATA
-    FSTI_DATA=$FSTI_DATA $EXE $*
+    FSTI_DATA="$FSTI_BASE/data"
+    echo Setting FSTI_DATA to "$FSTI_DATA"
+    FSTI_DATA="$FSTI_DATA" "$EXE" $*
 else
-    echo FSTI_DATA is $FSTI_DATA
+    echo FSTI_DATA is "$FSTI_DATA"
     $EXE $*
 fi
