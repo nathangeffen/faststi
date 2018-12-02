@@ -6,6 +6,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#include "utils/utils.h"
+
 #define FSTI_HASHSIZE 101
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
@@ -56,8 +58,7 @@
         #member,                                                \
         offsetof(struct fsti_agent, member),                    \
         FSTI_GET_TYPE(fsti_thread_local_agent.member),          \
-        FSTI_GET_TRANSFORMER(fsti_thread_local_agent.member),   \
-        NULL                                                    \
+        FSTI_GET_TRANSFORMER(fsti_thread_local_agent.member)    \
     }
 
 enum fsti_struct_part {
@@ -115,16 +116,17 @@ struct fsti_variant_array {
 
 typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
                                     struct fsti_agent *agent);
-typedef void (*fsti_generate_func)(struct fsti_simulation *simulation,
-                                   struct fsti_agent *agent, void *to);
 
+void fsti_cnv_vals(void *dest, const void *src,
+                   enum fsti_type dest_type, enum fsti_type src_type);
 size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
+int fsti_variant_print(FILE *f, const struct fsti_variant *variant);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_data_file(const char *filename);
-
+void fsti_test_defs(struct test_group *tg);
 
 /* These are declared in fsti-defs.h but defined in fsti-events.c
  * because they need to be visible in fsti-defaults.c which cannot

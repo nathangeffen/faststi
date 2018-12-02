@@ -57,6 +57,8 @@ void fsti_config_add_long(struct fsti_config *config, const char *key,
 void fsti_config_add_arr(struct fsti_config *config, const char *key,
                          const char *description,
                          const struct fsti_variant *variants, size_t n);
+void fsti_config_add(struct fsti_config *config, const char *key,
+                     const char *description, const char *values);
 struct fsti_config_entry *
 fsti_config_replace_arr(struct fsti_config *config,
                         const char *key, const char *description,

@@ -34,8 +34,8 @@ struct fsti_agent {
     };
     union {
         union {
-            float age;
-            float birth_date;
+            double age;
+            double birth_date;
         };
         struct {
             uint16_t birthday;
@@ -46,8 +46,12 @@ struct fsti_agent {
         bool infected;
         float infected_date;
     };
-    float cured; // Date last cured of last infection
-    float date_death; // 0 if still alive
+    double cured; // Date last cured of last infection
+    union {
+        bool dead; // 0 if still alive
+        double date_death; // 0 if still alive
+    };
+    uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
     size_t partners[FSTI_MAX_PARTNERS];
     size_t num_partners;
@@ -59,7 +63,6 @@ struct fsti_agent_elem {
     size_t offset;
     enum fsti_type type;
     fsti_transform_func transformer;
-    fsti_generate_func generator;
 };
 
 struct fsti_ind_list {
@@ -82,7 +85,9 @@ struct fsti_agent_ind {
 };
 
 extern struct fsti_agent_arr fsti_saved_agent_arr;
+extern const size_t fsti_agent_elem_n;
 
+struct fsti_agent_elem *fsti_agent_elem_get();
 void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
                           struct fsti_agent *agent, char delimiter);
 void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);
