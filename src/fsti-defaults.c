@@ -51,17 +51,9 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "DURING_EVENTS",
 		    "Events executed on every time step of a simulation",
 		    "_AGE");
-    {
-        struct fsti_variant variant[] = {
-            {(union fsti_value) {.str="_REPORT"}, STR},
-            {(union fsti_value) {.str="_WRITE_AGENTS_CSV"}, STR}
-        };
-        fsti_config_add_arr(config, "AFTER_EVENTS",
-                            "Events executed before a simulation starts",
-                            variant,
-                            sizeof(variant) /
-                            sizeof(struct fsti_variant));
-    }
+    fsti_config_add(config, "AFTER_EVENTS",
+                    "Events executed before a simulation starts",
+                    "_REPORT;_WRITE_AGENTS_CSV");
     FSTI_CONFIG_ADD(config, "STOP_EVENT",
 		    "Event that decides if simulation should stop",
 		    "_STOP");
@@ -90,6 +82,11 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "DATASET_MATING_POOL",
                     "CSV file of values to determine agents entering mating pool",
                     FSTI_NO_OP);
+    fsti_config_add(config, "A.age", "Agent age field",
+                    "BETA;1;1.23;15.0;50.0");
+    fsti_config_add(config, "A.sex",
+                   "Agent sex, sex_preference, infection fields",
+                   "SEX_SEXOR_INFECTION;0.5;0.05;0.005;0.005;0.005;0.005");
     FSTI_ADDITIONAL_CONFIG_VARS(config);
 
     return 0;

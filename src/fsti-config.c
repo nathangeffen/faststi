@@ -165,9 +165,9 @@ static struct fsti_config_entry
     return entry;
 }
 
-static struct fsti_config_entry *fsti_config_add(struct fsti_config *config,
-                                                 const char *key,
-                                                 const char *description)
+static struct fsti_config_entry *config_add(struct fsti_config *config,
+                                            const char *key,
+                                            const char *description)
 {
     struct fsti_config_entry *entry;
     size_t hashval;
@@ -233,7 +233,7 @@ void fsti_config_add_str(struct fsti_config *config,
 			 const char *description, const char *val)
 {
     const enum fsti_type types = { STR };
-    struct fsti_config_entry *entry = fsti_config_add(config, key, description);
+    struct fsti_config_entry *entry = config_add(config, key, description);
 
     set_types(entry, &types, 1);
     entry->variants[0].value.str = strdup(val);
@@ -246,7 +246,7 @@ void fsti_config_add_double(struct fsti_config *config,
 			    const char *description, double val)
 {
     const enum fsti_type types = { DBL };
-    struct fsti_config_entry *entry = fsti_config_add(config, key, description);
+    struct fsti_config_entry *entry = config_add(config, key, description);
 
     set_types(entry, &types, 1);
     entry->variants[0].value.dbl = val;
@@ -257,19 +257,27 @@ void fsti_config_add_long(struct fsti_config *config,
 			  const char *description, long val)
 {
     const enum fsti_type types = { LONG };
-    struct fsti_config_entry *entry = fsti_config_add(config, key, description);
+    struct fsti_config_entry *entry = config_add(config, key, description);
 
     set_types(entry, &types, 1);
     entry->variants[0].value.longint = val;
 }
+
 
 void fsti_config_add_arr(struct fsti_config *config,
 			 const char *key,
 			 const char *description,
 			 const struct fsti_variant *variants, size_t n)
 {
-    struct fsti_config_entry *entry = fsti_config_add(config, key, description);
+    struct fsti_config_entry *entry = config_add(config, key, description);
     set_variants(entry, variants, n);
+}
+
+void fsti_config_add(struct fsti_config *config, const char *key,
+                     const char *description, const char *values)
+{
+    config_add(config, key, description);
+    fsti_config_replace_values(config, key, values);
 }
 
 struct fsti_config_entry *fsti_config_replace_arr(struct fsti_config *config,
@@ -518,5 +526,23 @@ void fsti_config_test(struct test_group *tg)
     TESTEQ(7, fsti_config_count(&config), *tg);
 
     ARRAY_FREE(variant_arr, variants);
+    fsti_config_free(&config);
+
+    // Test that most flexible add method works
+    fsti_config_init(&config);
+    fsti_config_add(&config, "KEY1", "Description", "CONST;5.0;10;12;ABC");
+    entry = fsti_config_find(&config, "KEY1");
+    TESTEQ(entry->len, 5, *tg);
+    TESTEQ(entry->variants[0].type, STR, *tg);
+    TESTEQ(strcmp(entry->variants[0].value.str, "CONST"), 0, *tg);
+    TESTEQ(entry->variants[1].type, DBL, *tg);
+    TESTEQ(entry->variants[1].value.dbl, 5.0, *tg);
+    TESTEQ(entry->variants[2].type, LONG, *tg);
+    TESTEQ(entry->variants[2].value.longint, 10, *tg);
+    TESTEQ(entry->variants[3].type, LONG, *tg);
+    TESTEQ(entry->variants[3].value.longint, 12, *tg);
+    TESTEQ(entry->variants[4].type, STR, *tg);
+    TESTEQ(strcmp(entry->variants[4].value.str, "ABC"), 0, *tg);
+
     fsti_config_free(&config);
 }

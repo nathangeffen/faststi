@@ -39,12 +39,16 @@ void fsti_gen_uniform(struct fsti_simulation *simulation,
                       struct fsti_agent *agent,
                       const struct fsti_generator_parms *parms);
 
-void fsti_gen_normal(struct fsti_simulation *simulation,
-                     struct fsti_agent *agent,
-                     const struct fsti_generator_parms *parms);
+void fsti_gen_beta(struct fsti_simulation *simulation,
+                   struct fsti_agent *agent,
+                   const struct fsti_generator_parms *parms);
 
-void fsti_gen_sex(struct fsti_simulation *simulation,
-                  struct fsti_agent *agent,
-                  const struct fsti_generator_parms *parms);
+void fsti_gen_sex_sexor(struct fsti_simulation *simulation,
+                        struct fsti_agent *agent,
+                        const struct fsti_generator_parms *parms);
+
+void fsti_gen_sex_sexor_infection(struct fsti_simulation *simulation,
+                                  struct fsti_agent *agent,
+                                  const struct fsti_generator_parms *parms);
 
 #endif

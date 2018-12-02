@@ -210,9 +210,11 @@ void fsti_simulation_test(struct test_group *tg)
     struct fsti_simulation simulation;
     struct fsti_config config;
     struct fsti_agent *agent, *a, *b;
-    unsigned partners = 0;
-    float actual_single_rate, single_rate;
+    double d, min_age, max_age;
+    //unsigned partners = 0;
+    //float actual_single_rate, single_rate;
     size_t *it;
+    unsigned males, same_sex, infected;
     bool correct;
 
     fsti_event_register_events();
@@ -224,18 +226,37 @@ void fsti_simulation_test(struct test_group *tg)
     fsti_simulation_init(&simulation, &config, 0, 0);
     fsti_simulation_run(&simulation);
 
+    TESTEQ(simulation.living.len > 0, true, *tg);
+    TESTEQ(simulation.living.len, simulation.agent_arr.len, *tg);
+    min_age = 200.0;
+    max_age = -min_age;
+    males = same_sex = infected = 0;
     FSTI_FOR_LIVING(simulation, agent, {
-            if (agent->num_partners) ++partners;
+            if (agent->age < min_age) min_age = agent->age;
+            if (agent->age > max_age) max_age = agent->age;
+            if (agent->sex == FSTI_MALE) ++males;
+            if (agent->sex == agent->sex_preferred) ++same_sex;
+            infected +=agent->infected;
         });
 
-    single_rate = fsti_config_at0_double(&config, "INITIAL_SINGLE_RATE");
+    TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
+    TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
+    d = (double) males / simulation.living.len;
+    TESTEQ(d > 0.47 && d < 0.53, true, *tg);
+    d = (double) same_sex / simulation.living.len;
+    TESTEQ(d > 0.03 && d < 0.07, true, *tg);
+    d = (double) infected / simulation.living.len;
+    TESTEQ(d > 0.001 && d < 0.009, true, *tg);
 
-    actual_single_rate = (float) partners / simulation.living.len;
-    TESTEQ(actual_single_rate > single_rate / 2.0, true, *tg);
-    TESTEQ(actual_single_rate < single_rate * 1.5, true, *tg);
-    FSTI_FOR_LIVING(simulation, agent, {
-            if (agent->num_partners) ++partners;
-        });
+
+    /* single_rate = fsti_config_at0_double(&config, "INITIAL_SINGLE_RATE"); */
+
+    /* actual_single_rate = (float) partners / simulation.living.len; */
+    /* TESTEQ(actual_single_rate > single_rate / 2.0, true, *tg); */
+    /* TESTEQ(actual_single_rate < single_rate * 1.5, true, *tg); */
+    /* FSTI_FOR_LIVING(simulation, agent, { */
+    /*         if (agent->num_partners) ++partners; */
+    /*     }); */
 
     size_t c = 0;
     it = fsti_agent_ind_begin(&simulation.living);

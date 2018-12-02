@@ -112,6 +112,15 @@ struct fsti_variant fsti_identify_token_const(const char *token)
     return fsti_identify_token(s);
 }
 
+int fsti_variant_print(FILE *f, const struct fsti_variant *variant)
+{
+    switch(variant->type) {
+    case DBL: return fprintf(f, "%f", variant->value.dbl);
+    case LONG: return fprintf(f, "%ld", variant->value.longint);
+    default: return fprintf(f, "%s", variant->value.str);
+    }
+}
+
 static _Thread_local char full_filename[FILENAME_MAX];
 
 char *fsti_make_full_data_filename(const char *filename)
@@ -189,4 +198,6 @@ void fsti_test_defs(struct test_group *tg)
     variant = fsti_identify_token(token);
     TESTEQ(variant.type, STR, *tg);
     TESTEQ(strcmp(variant.value.str, "-11.23456L"), 0, *tg);
+
+    free(variant.value.str);
 }

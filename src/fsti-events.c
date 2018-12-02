@@ -254,6 +254,7 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
     }
 }
 
+
 static void create_agent(struct fsti_simulation *simulation,
                          struct fsti_agent *agent,
                          const struct fsti_generator generators[])
@@ -261,9 +262,11 @@ static void create_agent(struct fsti_simulation *simulation,
     const struct fsti_generator *it;
 
     memset(agent, 0, sizeof(struct fsti_agent));
+    agent->id = simulation->agent_arr.len;
     for (it = generators; it < generators + fsti_agent_elem_n; it++)
-        if (it->gen_func)
+        if (it->gen_func) {
             it->gen_func(simulation, agent, &it->parms);
+        }
 }
 
 static int cmp(const void *a, const void *b)
@@ -281,18 +284,13 @@ static struct fsti_generator_pair *get_gen_func(const char *key)
     return pair;
 }
 
-void fsti_event_create_agents2(struct fsti_simulation *simulation)
+static void setup_generators(const struct fsti_simulation *simulation,
+                             struct fsti_generator generators[])
 {
     size_t i, j;
-    struct fsti_agent agent;
-    unsigned num_agents;
-    struct fsti_config_entry *entry;
     char key[FSTI_KEY_LEN];
-    struct fsti_generator generators[fsti_agent_elem_n];
-    const struct fsti_agent_elem *elems;
-
-    num_agents = fsti_config_at0_long(&simulation->config, "NUM_AGENTS");
-    elems = fsti_agent_elem_get();
+    struct fsti_config_entry *entry;
+    const struct fsti_agent_elem *elems = fsti_agent_elem_get();
 
     for (i = 0; i < fsti_agent_elem_n; i++) {
         strcpy(key, "A.");
@@ -304,24 +302,37 @@ void fsti_event_create_agents2(struct fsti_simulation *simulation)
                 get_gen_func(entry->variants[0].value.str)->func;
             generators[i].parms.offset = elems[i].offset;
             generators[i].parms.type = elems[i].type;
-            for (j = 1; j < (FSTI_GEN_PARMS + 1) && j < entry->len; j++) {
-                FSTI_ASSERT(entry->variants[j].type == DBL,
-                            FSTI_ERR_WRONG_TYPE, key);
-                generators[i].parms.parameters[j] = entry->variants[j].value.dbl;
+            for (j = 1; (j < FSTI_GEN_PARMS + 1) && (j < entry->len); j++) {
+                fsti_cnv_vals(generators[i].parms.parameters + j - 1,
+                              &entry->variants[j].value,
+                              DBL,
+                              entry->variants[j].type);
             }
         } else {
             generators[i].gen_func = NULL;
         }
     }
+}
 
+void fsti_event_create_agents(struct fsti_simulation *simulation)
+{
+    size_t i;
+    struct fsti_agent agent;
+    unsigned num_agents;
+    struct fsti_generator generators[fsti_agent_elem_n];
+
+    num_agents = fsti_config_at0_long(&simulation->config, "NUM_AGENTS");
+
+    setup_generators(simulation, generators);
     for (i = 0; i < num_agents; i++) {
         create_agent(simulation, &agent, generators);
         FSTI_HOOK_CREATE_AGENT(simulation, agent);
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
+    fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
 }
 
-void fsti_event_create_agents(struct fsti_simulation *simulation)
+void fsti_event_create_agents_old(struct fsti_simulation *simulation)
 {
     size_t i;
     struct fsti_agent agent;

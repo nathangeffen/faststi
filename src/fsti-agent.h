@@ -34,8 +34,8 @@ struct fsti_agent {
     };
     union {
         union {
-            float age;
-            float birth_date;
+            double age;
+            double birth_date;
         };
         struct {
             uint16_t birthday;
@@ -46,8 +46,12 @@ struct fsti_agent {
         bool infected;
         float infected_date;
     };
-    float cured; // Date last cured of last infection
-    float date_death; // 0 if still alive
+    double cured; // Date last cured of last infection
+    union {
+        bool dead; // 0 if still alive
+        double date_death; // 0 if still alive
+    };
+    uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
     size_t partners[FSTI_MAX_PARTNERS];
     size_t num_partners;

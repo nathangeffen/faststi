@@ -143,6 +143,7 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
         FSTI_AGENT_ELEM_ENTRY(cause_of_death),                          \
+        FSTI_AGENT_ELEM_ENTRY(coinfected),                              \
         FSTI_AGENT_ELEM_ENTRY(cured),                                   \
         FSTI_AGENT_ELEM_ENTRY(date_death),                              \
         FSTI_AGENT_ELEM_ENTRY(id),                                      \
@@ -200,10 +201,11 @@ unsigned total_partners;
 */
 
 #ifndef FSTI_GENERATOR_MAP
-#define FSTI_GENERATOR_MAP                      \
-    {"CONST", fsti_gen_const},                  \
-    {"NORMAL", fsti_gen_normal},                \
-    {"SETSEX", fsti_gen_sex},                   \
+#define FSTI_GENERATOR_MAP                                              \
+    {"BETA", fsti_gen_beta},                                            \
+    {"CONST", fsti_gen_const},                                          \
+    {"SEX_SEXOR", fsti_gen_sex_sexor},                                  \
+    {"SEX_SEXOR_INFECTION", fsti_gen_sex_sexor_infection},              \
     {"UNIF", fsti_gen_uniform}
 #endif
 

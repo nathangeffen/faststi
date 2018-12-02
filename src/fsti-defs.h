@@ -122,6 +122,7 @@ void fsti_cnv_vals(void *dest, const void *src,
 size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
+int fsti_variant_print(FILE *f, const struct fsti_variant *variant);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_data_file(const char *filename);
