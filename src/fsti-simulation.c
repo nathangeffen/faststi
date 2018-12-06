@@ -119,6 +119,8 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 	simulation->time_step;
     simulation->match_k = (unsigned) fsti_config_at0_long(&simulation->config,
                                                           "MATCH_K");
+    simulation->initial_mating_pool_prob = (float)
+        fsti_config_at0_double(&simulation->config, "INITIAL_MATING_PROB");
     simulation->mating_pool_prob = (float)
         fsti_config_at0_double(&simulation->config, "MATING_PROB");
     simulation->csv_delimiter =

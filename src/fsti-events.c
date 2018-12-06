@@ -332,62 +332,6 @@ void fsti_event_create_agents(struct fsti_simulation *simulation)
     fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
 }
 
-void fsti_event_create_agents_old(struct fsti_simulation *simulation)
-{
-    size_t i;
-    struct fsti_agent agent;
-
-    unsigned initial_num_agents = (unsigned)
-        fsti_config_at0_long(&simulation->config, "NUM_AGENTS");
-    float prob_male = (float) fsti_config_at0_double(&simulation->config,
-                                                 "PROB_MALE");
-    float prob_msm = (float) fsti_config_at0_double(&simulation->config,
-                                                "PROB_MSM");
-    float prob_wsw = (float) fsti_config_at0_double(&simulation->config,
-                                                  "PROB_WSW");
-    float age_min = (float) fsti_config_at0_double(&simulation->config,
-                                                 "AGE_MIN");
-    float age_range = (float) fsti_config_at0_double(&simulation->config,
-                                                   "AGE_RANGE");
-    float initial_infection_rate = (float)
-        fsti_config_at0_double(&simulation->config, "INITIAL_INFECTION_RATE");
-    float initial_single_rate = (float)
-        fsti_config_at0_double(&simulation->config, "INITIAL_SINGLE_RATE");
-
-    for (i = 0; i < initial_num_agents; i++) {
-        agent.id = i;
-        agent.sex = gsl_rng_uniform(simulation->rng) < prob_male ?
-            FSTI_MALE : FSTI_FEMALE;
-        if (agent.sex == FSTI_MALE) {
-            agent.sex_preferred =
-                gsl_rng_uniform(simulation->rng) < prob_msm ?
-                FSTI_MALE : FSTI_FEMALE;
-        } else {
-            agent.sex_preferred =
-                gsl_rng_uniform(simulation->rng) < prob_wsw ?
-                FSTI_FEMALE : FSTI_MALE;
-        }
-        agent.age = gsl_rng_uniform_int(simulation->rng, age_range)
-            + age_min;
-        agent.infected = gsl_rng_uniform(simulation->rng) <
-            initial_infection_rate ? 1.0 : 0.0;
-        agent.cured = agent.date_death = 0.0;
-        agent.cause_of_death = 0;
-        if (i % 2 == 0  ||
-            (gsl_rng_uniform(simulation->rng) < initial_single_rate)){
-            agent.num_partners = 0;
-        } else {
-            agent.num_partners = 1;
-            agent.partners[0] = i - 1;
-        }
-        FSTI_HOOK_CREATE_AGENT(simulation, agent);
-        fsti_agent_arr_push(&simulation->agent_arr, &agent);
-    }
-    fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
-    make_partnerships_mutual(&simulation->living);
-}
-
-
 void fsti_event_shuffle_living(struct fsti_simulation *simulation)
 {
     fsti_agent_ind_shuffle(&simulation->living, simulation->rng);
@@ -511,17 +455,74 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_mating_pool(struct fsti_simulation *simulation)
+void create_mating_pool(struct fsti_simulation *simulation, double prob_per_ts)
 {
     struct fsti_agent *agent;
     fsti_agent_ind_clear(&simulation->mating_pool);
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->num_partners == 0) {
                 double prob = gsl_rng_uniform(simulation->rng);
-                if (prob < simulation->mating_pool_prob)
+                if (prob < prob_per_ts)
                     fsti_agent_ind_push(&simulation->mating_pool, agent->id);
             }
         });
+}
+
+void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
+{
+    create_mating_pool(simulation, simulation->initial_mating_pool_prob);
+}
+
+void fsti_event_mating_pool(struct fsti_simulation *simulation)
+{
+    create_mating_pool(simulation, simulation->mating_pool_prob);
+}
+
+static void
+set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+{
+    a->relchange[0] = 365;
+}
+
+
+static void
+set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+{
+    a->relchange[0] = 365;
+}
+
+void fsti_event_initial_relchange(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *a, *b;
+
+    FSTI_FOR_LIVING(*simulation, a, {
+            b = fsti_agent_partner_get0(&simulation->agent_arr, a);
+            if (b) {
+                set_rel_period(simulation, a);
+                b->relchange[0] = a->relchange[0];
+            } else {
+                set_single_period(simulation, a);
+            }
+        });
+}
+
+void fsti_event_breakup(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *a, *b;
+
+    FSTI_FOR_LIVING(*simulation, a, {
+            // If agent is in partnership and duration of partnership has run out
+            b = fsti_agent_partner_get0(&simulation->agent_arr, a);
+            if (b && simulation->current_date > a->relchange[0]) {
+                fsti_agent_break_partners(a, b);
+                // Determine at what day in the future these agents will start
+                // looking for new partners
+
+                set_single_period(simulation, a);
+                set_single_period(simulation, b);
+            }
+        });
+
 }
 
 void fsti_event_death(struct fsti_simulation *simulation)
@@ -578,6 +579,8 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
         }
         if (partner) {
             fsti_agent_make_partners(agent, partner);
+            set_rel_period(simulation, agent);
+            partner->relchange[0] = agent->relchange[0];
             FSTI_HOOK_AFTER_MATCH(simulation, agent, partner);
         }
     }
@@ -608,7 +611,10 @@ void fsti_event_register_events()
         fsti_register_add("_GENERATE_AGENTS", fsti_event_create_agents);
         fsti_register_add("_AGE", fsti_event_age);
         fsti_register_add("_DEATH", fsti_event_death);
+        fsti_register_add("_INITIAL_REL", fsti_event_initial_relchange);
+        fsti_register_add("_INITIAL_MATING", fsti_event_initial_mating_pool);
         fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
+        fsti_register_add("_BREAKUP", fsti_event_breakup);
         fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);

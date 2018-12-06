@@ -2,6 +2,8 @@
 
 FSTI_BASE=`dirname "$0"`
 
+echo $*
+
 if [ "$1" == "release" ]; then
     COMPDIR=$FSTI_BASE/release/
     EXE=$FSTI_BASE/release/src/faststi

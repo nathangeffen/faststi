@@ -26,7 +26,7 @@
     } while(0)
 
 struct fsti_agent {
-    size_t id;
+    uint32_t id;
     uint8_t sex;
     union {
         uint8_t sex_preferred;
@@ -53,8 +53,9 @@ struct fsti_agent {
     };
     uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
-    size_t partners[FSTI_MAX_PARTNERS];
-    size_t num_partners;
+    uint8_t num_partners;
+    uint32_t partners[FSTI_MAX_PARTNERS];
+    int32_t relchange[FSTI_MAX_PARTNERS];
     FSTI_AGENT_FIELDS
 };
 

@@ -26,8 +26,11 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "MATCH_K",
                     "Value for k when using matching algorithms.",
                     100);
+    FSTI_CONFIG_ADD(config, "INITIAL_MATING_PROB",
+                    "Probability of entering initial mating pool.",
+                    0.65);
     FSTI_CONFIG_ADD(config, "MATING_PROB",
-                    "Value for k when using matching algorithms.",
+                    "Probability of entering mating pool on time step.",
                     0.05);
     FSTI_CONFIG_ADD(config, "PROB_MALE",
                     "Probability an agent is males.", 0.5);

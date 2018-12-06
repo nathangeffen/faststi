@@ -73,7 +73,7 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
-    fprintf(file_handle, "%u%c%f%c%zu%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",  \
+    fprintf(file_handle, "%u%c%f%c%u%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",  \
             sim_num, delim,                                             \
             date, delim,                                                \
             agent->id, delim,                                           \
@@ -90,7 +90,7 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_PRINT_PRETTY
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %zu: Age: %.0f, %s %s %s %ld\n", \
+    fprintf(file_handle, "Sim %u, Agent %u: Age: %.0f, %s %s %s %ld\n", \
             id,                                                         \
             agent->id,                                                  \
             agent->age,                                                 \

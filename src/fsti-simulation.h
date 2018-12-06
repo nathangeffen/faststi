@@ -44,7 +44,8 @@ struct fsti_simulation {
     double end_date;
     double current_date;
     double time_step;
-    float mating_pool_prob;
+    double initial_mating_pool_prob;
+    double mating_pool_prob;
     unsigned stabilization_steps;
     unsigned num_iterations;
     unsigned iteration;
