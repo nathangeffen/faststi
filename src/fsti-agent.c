@@ -32,17 +32,6 @@ inline struct fsti_agent_elem *fsti_agent_elem_get()
     return agent_elem;
 }
 
-void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
-                          struct fsti_agent *agent, char delimiter)
-{
-    FSTI_AGENT_PRINT_CSV(f, sim_no, date, agent, delimiter);
-}
-
-void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
-{
-    FSTI_AGENT_PRINT_PRETTY(f, id, agent);
-}
-
 bool fsti_agent_has_partner(const struct fsti_agent *agent)
 {
     if (agent->num_partners)
@@ -673,14 +662,14 @@ void fsti_agent_test(struct test_group *tg)
     fsti_agent_arr_free(&agent_arr);
 
     a.id = 10;
-    a.age = 23.7;
+    a.age = 23;
     a.cured = 2018.9;
     a.date_death = 2023.1;
 
     l = fsti_agent_elem_val_by_strname_l("id", &a);
     TESTEQ(l, 10, *tg);
     l = fsti_agent_elem_val_by_strname_l("age", &a);
-    TESTEQ(l, 24, *tg);
+    TESTEQ(l, 23, *tg);
     l = fsti_agent_elem_val_by_strname_l("cured", &a);
     TESTEQ(l, 2019, *tg);
     l = fsti_agent_elem_val_by_strname_l("date_death", &a);

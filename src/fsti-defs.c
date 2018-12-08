@@ -1,9 +1,12 @@
+#include <math.h>
 #include <stdio.h>
 #include <glib.h>
 
 #include "fsti-error.h"
 #include "fsti-defs.h"
+#include "fsti-agent.h"
 
+static _Thread_local char full_filename[FILENAME_MAX];
 
 #define SET_DEST(type) do {                      \
         type d = s;                              \
@@ -33,6 +36,167 @@
             SET_DEST(long double);                              \
         }                                                       \
     } while(0)
+
+void fsti_to_float(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent)
+{
+    float v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(float));
+}
+
+void fsti_to_double(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent)
+{
+    double v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(double));
+}
+
+void fsti_to_age_year(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    agent->age = from->value.dbl * FSTI_YEAR;
+}
+
+
+
+void fsti_to_int(void *to, const struct fsti_variant *from,
+                  struct fsti_agent *agent)
+{
+    int v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int));
+}
+
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint8_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint8_t));
+}
+
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint16_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint16_t));
+}
+
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint32_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint32_t));
+}
+
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    uint64_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint64_t));
+}
+
+
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  struct fsti_agent *agent)
+{
+    bool v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(bool));
+}
+
+
+void fsti_to_unsigned(void *to, const struct fsti_variant *from,
+                      struct fsti_agent *agent)
+{
+    unsigned v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(unsigned));
+}
+
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                    struct fsti_agent *agent)
+{
+    size_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(size_t));
+}
+
+void fsti_to_uchar(void *to, const struct fsti_variant *from,
+                   struct fsti_agent *agent)
+{
+    unsigned char v;
+    switch(from->type) {
+    case DBL: v = (unsigned char) from->value.dbl; break;
+    case LONG: v = (unsigned char) from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(unsigned char));
+}
+
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     struct fsti_agent *agent)
+{
+    long v;
+    size_t i;
+    switch(from->type) {
+    case DBL: v = (long) from->value.dbl; break;
+    case LONG: v = (long) from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    if (v >= 0) {
+        i = (unsigned) v;
+        agent->num_partners++;
+        memcpy(to, &i, sizeof(size_t));
+    } else {
+        memset(to, 0, sizeof(size_t));
+    }
+}
 
 void fsti_cnv_vals(void *dest, const void *src,
                    enum fsti_type dest_type, enum fsti_type src_type)
@@ -121,7 +285,53 @@ int fsti_variant_print(FILE *f, const struct fsti_variant *variant)
     }
 }
 
-static _Thread_local char full_filename[FILENAME_MAX];
+struct fsti_julian_date fsti_set_julian_date(uint16_t year, uint16_t day)
+{
+    struct fsti_julian_date result;
+    result.year = year;
+    result.day = day;
+    return result;
+}
+
+struct fsti_julian_date fsti_to_julian_date(fsti_time time)
+{
+    struct fsti_julian_date result;
+    result.year = time / FSTI_YEAR;
+    result.day = round( (double) (time % FSTI_YEAR) / FSTI_DAY);
+
+    return result;
+}
+
+fsti_time fsti_from_julian_date(const struct fsti_julian_date date)
+{
+    return date.year * FSTI_YEAR + date.day * FSTI_MINUTE;
+}
+
+fsti_time fsti_add_time_step(fsti_time base, int32_t step, int32_t time_step)
+{
+    return base + step * time_step;
+}
+
+
+uint16_t fsti_get_year(fsti_time t)
+{
+    return t / FSTI_YEAR;
+}
+
+char *fsti_julian_date_sprint(const struct fsti_julian_date date)
+{
+    _Thread_local static char result[9];
+
+    snprintf(result, 8, "%4u-%3u", date.year, date.day);
+    return result;
+}
+
+char *fsti_time_sprint(fsti_time time)
+{
+    struct fsti_julian_date date = fsti_to_julian_date(time);
+    return fsti_julian_date_sprint(date);
+}
+
 
 char *fsti_make_full_data_filename(const char *filename)
 {

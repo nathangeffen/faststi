@@ -8,160 +8,6 @@
 
 struct fsti_agent fsti_global_agent;
 
-void fsti_to_float(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent)
-{
-    float v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(float));
-}
-
-void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent)
-{
-    double v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(double));
-}
-
-void fsti_to_int(void *to, const struct fsti_variant *from,
-                  struct fsti_agent *agent)
-{
-    int v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(int));
-}
-
-void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
-{
-    uint8_t v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(uint8_t));
-}
-
-void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
-{
-    uint16_t v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(uint16_t));
-}
-
-void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
-{
-    uint32_t v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(uint32_t));
-}
-
-void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
-{
-    uint64_t v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(uint64_t));
-}
-
-
-void fsti_to_bool(void *to, const struct fsti_variant *from,
-                  struct fsti_agent *agent)
-{
-    bool v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(bool));
-}
-
-
-void fsti_to_unsigned(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
-{
-    unsigned v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(unsigned));
-}
-
-void fsti_to_size_t(void *to, const struct fsti_variant *from,
-                    struct fsti_agent *agent)
-{
-    size_t v;
-    switch(from->type) {
-    case DBL: v = from->value.dbl; break;
-    case LONG: v = from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(size_t));
-}
-
-void fsti_to_uchar(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent)
-{
-    unsigned char v;
-    switch(from->type) {
-    case DBL: v = (unsigned char) from->value.dbl; break;
-    case LONG: v = (unsigned char) from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    memcpy(to, &v, sizeof(unsigned char));
-}
-
-void fsti_to_partner(void *to, const struct fsti_variant *from,
-                     struct fsti_agent *agent)
-{
-    long v;
-    size_t i;
-    switch(from->type) {
-    case DBL: v = (long) from->value.dbl; break;
-    case LONG: v = (long) from->value.longint; break;
-    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
-    }
-    if (v >= 0) {
-        i = (unsigned) v;
-        agent->num_partners++;
-        memcpy(to, &i, sizeof(size_t));
-    } else {
-        memset(to, 0, sizeof(size_t));
-    }
-}
-
-
 static void
 process_cell(struct fsti_agent *agent, char *cell, void *to,
              fsti_transform_func transformer)
@@ -410,6 +256,52 @@ void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
         FSTI_REPORT_OUTPUT_HEADER(simulation->csv_delimiter);
 }
 
+static void agent_print_csv(FILE *f, unsigned sim_no, char *time,
+                            struct fsti_agent *agent, char delimiter)
+{
+    FSTI_AGENT_PRINT_CSV(f, sim_no, time, agent, delimiter);
+}
+
+static void agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
+{
+    FSTI_AGENT_PRINT_PRETTY(f, id, agent);
+}
+
+
+static void write_agents_ind_csv(struct fsti_simulation *simulation,
+                                 struct fsti_agent_ind *agent_ind)
+{
+    struct fsti_agent *agent;
+    char *date = fsti_time_sprint(fsti_add_time_step(
+                                      simulation->start_date,
+                                      simulation->iteration,
+                                      simulation->time_step));
+
+    FSTI_FOR(*agent_ind, agent, {
+            agent_print_csv(simulation->agents_output_file,
+                            simulation->sim_number, date,
+                            agent, simulation->csv_delimiter);
+        });
+}
+
+static void write_agents_arr_csv(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+    char *date = fsti_time_sprint(fsti_add_time_step(
+                                      simulation->start_date,
+                                      simulation->iteration,
+                                      simulation->time_step));
+
+
+    for (agent = simulation->agent_arr.agents;
+         agent < simulation->agent_arr.agents + simulation->agent_arr.len;
+         ++agent) {
+        agent_print_csv(simulation->agents_output_file,
+                        simulation->sim_number, date,
+                        agent, simulation->csv_delimiter);
+    }
+}
+
 void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
 {
     // BUG: In multithreaded run, no guarantee that this will be the top line
@@ -425,7 +317,7 @@ void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
         return;
-    fsti_simulation_write_agents_ind_csv(simulation, &simulation->living);
+    write_agents_ind_csv(simulation, &simulation->living);
 }
 
 void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
@@ -433,7 +325,7 @@ void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
         return;
-    fsti_simulation_write_agents_ind_csv(simulation, &simulation->dead);
+    write_agents_ind_csv(simulation, &simulation->dead);
 }
 
 
@@ -442,16 +334,16 @@ void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
             return;
-    fsti_simulation_write_agents_arr_csv(simulation);
+    write_agents_arr_csv(simulation);
 }
 
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     FSTI_FOR_LIVING(*simulation, agent, {
-            fsti_agent_print_pretty(simulation->agents_output_file,
-                                    simulation->sim_number,
-                                    agent);
+            agent_print_pretty(simulation->agents_output_file,
+                               simulation->sim_number,
+                               agent);
         });
 }
 
@@ -513,7 +405,7 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
     FSTI_FOR_LIVING(*simulation, a, {
             // If agent is in partnership and duration of partnership has run out
             b = fsti_agent_partner_get0(&simulation->agent_arr, a);
-            if (b && simulation->current_date > a->relchange[0]) {
+            if (b && simulation->iteration > a->relchange[0]) {
                 fsti_agent_break_partners(a, b);
                 // Determine at what day in the future these agents will start
                 // looking for new partners
@@ -586,16 +478,6 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
     }
 }
 
-
-void fsti_event_stop(struct fsti_simulation *simulation)
-{
-    if (simulation->iteration >= simulation->num_iterations) {
-	simulation->stop = true;
-    }  else {
-	++simulation->iteration;
-    }
-}
-
 void fsti_event_no_op(struct fsti_simulation *simulation)
 {
     return;
@@ -630,7 +512,6 @@ void fsti_event_register_events()
         fsti_register_add("_WRITE_DEAD_AGENTS_CSV",
                           fsti_event_write_dead_agents_csv);
         fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
-        fsti_register_add("_STOP", fsti_event_stop);
         fsti_register_add(FSTI_NO_OP, fsti_event_no_op);
         FSTI_HOOK_EVENTS_REGISTER;
     }

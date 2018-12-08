@@ -49,8 +49,6 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 			  const struct fsti_config *config,
 			  int sim_number, int config_sim_number)
 {
-    char *event_name;
-
     errno = 0;
     simulation->name = "Default";
     fsti_config_copy(&simulation->config, config);
@@ -64,13 +62,6 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
         fsti_config_at0_long(&simulation->config, "REPORT_FREQUENCY");
     FSTI_ASSERT(simulation->report_frequency, FSTI_ERR_INVALID_VALUE,
                 "Report frequency must be > 0");
-    simulation->stop = false;
-    event_name = fsti_config_at0_str(&simulation->config, "STOP_EVENT");
-    if (event_name)
-	simulation->stop_event = fsti_register_get(event_name);
-    else
-	simulation->stop_event = NULL;
-
     fsti_agent_arr_init(&simulation->agent_arr);
     fsti_agent_ind_init(&simulation->living, &simulation->agent_arr);
     fsti_agent_ind_init(&simulation->dead, &simulation->agent_arr);
@@ -104,24 +95,23 @@ fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
 
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
-    simulation->start_date = fsti_config_at0_double(&simulation->config,
-						    "START_DATE");
+
+    uint16_t year = fsti_config_at0_long(&simulation->config, "START_DATE");
+    uint16_t day = fsti_config_at_long(&simulation->config, "START_DATE", 1);
+    simulation->start_date = fsti_from_julian_date(
+        fsti_set_julian_date(year, day));
+
     simulation->stabilization_steps = (unsigned)
 	fsti_config_at0_long(&simulation->config, "STABILIZATION_STEPS");
-    simulation->end_date = fsti_config_at0_double(&simulation->config,
-						  "END_DATE");
-    simulation->time_step = fsti_config_at0_double(&simulation->config,
-						   "TIME_STEP");
-    simulation->current_date = simulation->start_date -
-	simulation->stabilization_steps * simulation->time_step;
-    simulation->num_iterations = (unsigned)
-	(simulation->end_date - simulation->start_date) /
-	simulation->time_step;
-    simulation->match_k = (unsigned) fsti_config_at0_long(&simulation->config,
+    simulation->time_step = fsti_config_at0_long(&simulation->config,
+                                                 "TIME_STEP");
+    simulation->num_iterations = fsti_config_at0_long(&simulation->config,
+                                                 "NUM_TIME_STEPS");
+    simulation->match_k = fsti_config_at0_long(&simulation->config,
                                                           "MATCH_K");
-    simulation->initial_mating_pool_prob = (float)
+    simulation->initial_mating_pool_prob =
         fsti_config_at0_double(&simulation->config, "INITIAL_MATING_PROB");
-    simulation->mating_pool_prob = (float)
+    simulation->mating_pool_prob =
         fsti_config_at0_double(&simulation->config, "MATING_PROB");
     simulation->csv_delimiter =
         fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
@@ -135,47 +125,17 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
 
-
-
-void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
-                                          struct fsti_agent_ind *agent_ind)
-{
-    struct fsti_agent *agent;
-    FSTI_FOR(*agent_ind, agent, {
-            fsti_agent_print_csv(simulation->agents_output_file,
-                                 simulation->sim_number, simulation->current_date,
-                                 agent, simulation->csv_delimiter);
-        });
-}
-
-void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation)
-{
-    struct fsti_agent *agent;
-
-    for (agent = simulation->agent_arr.agents;
-         agent < simulation->agent_arr.agents + simulation->agent_arr.len;
-         ++agent) {
-        fsti_agent_print_csv(simulation->agents_output_file,
-                             simulation->sim_number, simulation->current_date,
-                             agent, simulation->csv_delimiter);
-    }
-}
-
-
-
 void fsti_simulation_run(struct fsti_simulation *simulation)
 {
     fsti_simulation_config_to_vars(simulation);
     simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
-    FSTI_ASSERT(simulation->stop_event, FSTI_ERR_NO_STOP_EVENT, NULL);
     simulation->state = DURING;
-    for (simulation->stop_event(simulation);
-	 simulation->stop == false;
-         simulation->stop_event(simulation),
-             simulation->current_date += simulation->time_step) {
+    for (simulation->iteration = 0;
+         simulation->iteration < simulation->num_iterations;
+         simulation->iteration++)
 	exec_events(simulation, &simulation->during_events);
-    }
+
     simulation->state = AFTER;
     exec_events(simulation, &simulation->after_events);
 }
@@ -191,7 +151,8 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
         fsti_agent_break_partners(agent, partner);
     }
     fsti_agent_ind_push(&simulation->dead, agent->id);
-    agent->date_death = simulation->current_date;
+    agent->date_death = simulation->start_date +
+        simulation->iteration * simulation->time_step;
     fsti_agent_ind_remove(&simulation->living, it);
 
 }
@@ -230,7 +191,7 @@ void fsti_simulation_test(struct test_group *tg)
 
     TESTEQ(simulation.living.len > 0, true, *tg);
     TESTEQ(simulation.living.len, simulation.agent_arr.len, *tg);
-    min_age = 200.0;
+    min_age = 200.0 * FSTI_YEAR;
     max_age = -min_age;
     males = same_sex = infected = 0;
     FSTI_FOR_LIVING(simulation, agent, {
@@ -241,6 +202,8 @@ void fsti_simulation_test(struct test_group *tg)
             infected +=agent->infected;
         });
 
+    min_age = fsti_get_year(min_age);
+    max_age = fsti_get_year(max_age);
     TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
     TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
     d = (double) males / simulation.living.len;

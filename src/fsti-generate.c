@@ -20,6 +20,22 @@ void fsti_gen_const(struct fsti_simulation *simulation,
                   parms->type, DBL);
 }
 
+void fsti_gen_age(struct fsti_simulation *simulation,
+                  struct fsti_agent *agent,
+                  const struct fsti_generator_parms *parms)
+{
+    double val, a, b;
+    fsti_time min, max;
+
+    a = parms->parameters[0];
+    b = parms->parameters[1];
+    min = parms->parameters[2] * FSTI_YEAR;
+    max = parms->parameters[3] * FSTI_YEAR;
+    val = gsl_ran_beta(simulation->rng, a, b) * (max - min) + min;
+    fsti_cnv_vals((char *) agent+parms->offset, &val, parms->type, DBL);
+}
+
+
 void fsti_gen_beta(struct fsti_simulation *simulation,
                    struct fsti_agent *agent,
                    const struct fsti_generator_parms *parms)

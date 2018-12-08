@@ -34,8 +34,8 @@ struct fsti_agent {
     };
     union {
         union {
-            double age;
-            double birth_date;
+            int32_t age;
+            int32_t birth_date;
         };
         struct {
             uint16_t birthday;
@@ -89,9 +89,6 @@ extern struct fsti_agent_arr fsti_saved_agent_arr;
 extern const size_t fsti_agent_elem_n;
 
 struct fsti_agent_elem *fsti_agent_elem_get();
-void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
-                          struct fsti_agent *agent, char delimiter);
-void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);
 _Bool fsti_agent_has_partner(const struct fsti_agent *agent);
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b);
 void fsti_agent_make_partners(struct fsti_agent *a, struct fsti_agent *b);

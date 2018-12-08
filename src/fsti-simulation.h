@@ -27,11 +27,9 @@ struct fsti_simulation {
 
     struct fsti_agent csv_agent; // Used when reading in agent CSV file
 
-    int sim_number;
-    int config_sim_number;
-    bool stop;
+    uint32_t sim_number;
+    uint32_t config_sim_number;
     char *name;
-    fsti_event stop_event;
     struct fsti_event_array before_events;
     struct fsti_event_array during_events;
     struct fsti_event_array after_events;
@@ -40,17 +38,15 @@ struct fsti_simulation {
     gsl_rng *rng;
 
     // Useful event variables available to all simulations
-    double start_date;
-    double end_date;
-    double current_date;
-    double time_step;
+    fsti_time start_date;
+    fsti_time time_step;
     double initial_mating_pool_prob;
     double mating_pool_prob;
-    unsigned stabilization_steps;
-    unsigned num_iterations;
-    unsigned iteration;
-    unsigned report_frequency;
-    unsigned match_k;
+    uint32_t stabilization_steps;
+    uint32_t num_iterations;
+    uint32_t iteration;
+    uint32_t report_frequency;
+    uint32_t match_k;
     bool agent_csv_header;
     char csv_delimiter;
     FILE *results_file;
@@ -70,9 +66,6 @@ fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key);
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation);
 struct fsti_agent *
 fsti_simulation_new_agent(struct fsti_simulation *simulation);
-void fsti_simulation_write_agents_ind_csv(struct fsti_simulation *simulation,
-                                          struct fsti_agent_ind *agent_ind);
-void fsti_simulation_write_agents_arr_csv(struct fsti_simulation *simulation);
 void fsti_simulation_run(struct fsti_simulation *simulation);
 fsti_event fsti_get_event(const char *event_name);
 void fsti_simulation_kill_agent(struct fsti_simulation *simulation, size_t *it);

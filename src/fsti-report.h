@@ -160,10 +160,15 @@
         func(simulation->agent_ind, elem, __result__);                  \
         post(__result__);                                               \
         fprintf(simulation->results_file,                               \
-                "%s%c%d%c%d%c%.3f%c%s%c" spec "\n",                     \
+                "%s%c%d%c%d%c%s%c%s%c" spec "\n",                     \
                 simulation->name, _c, simulation->sim_number, _c,       \
                 simulation->config_sim_number, _c,                      \
-                simulation->current_date, _c,                           \
+                fsti_julian_date_sprint(                                \
+                    fsti_to_julian_date(                                \
+                        fsti_add_time_step(simulation->start_date,      \
+                                           simulation->iteration,       \
+                                           simulation->time_step))),    \
+                _c,                                                     \
                 desc, _c,  __result__);                                 \
     } while(0)
 

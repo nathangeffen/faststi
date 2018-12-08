@@ -39,6 +39,10 @@ void fsti_gen_uniform(struct fsti_simulation *simulation,
                       struct fsti_agent *agent,
                       const struct fsti_generator_parms *parms);
 
+void fsti_gen_age(struct fsti_simulation *simulation,
+                  struct fsti_agent *agent,
+                  const struct fsti_generator_parms *parms);
+
 void fsti_gen_beta(struct fsti_simulation *simulation,
                    struct fsti_agent *agent,
                    const struct fsti_generator_parms *parms);

@@ -73,11 +73,11 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
-    fprintf(file_handle, "%u%c%f%c%u%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",  \
+    fprintf(file_handle, "%u%c%s%c%u%c%s%c%u%c%u%c%u%c%.2f%c%ld\n",   \
             sim_num, delim,                                             \
             date, delim,                                                \
             agent->id, delim,                                           \
-            agent->age, delim,                                          \
+            fsti_time_sprint(agent->age), delim,                        \
             agent->infected, delim,                                     \
             (unsigned) agent->sex, delim,                               \
             (unsigned) agent->sex_preferred, delim,                     \
@@ -90,10 +90,10 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_PRINT_PRETTY
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %u: Age: %.0f, %s %s %s %ld\n", \
+    fprintf(file_handle, "Sim %u, Agent %u: Age: %s, %s %s %s %ld\n", \
             id,                                                         \
             agent->id,                                                  \
-            agent->age,                                                 \
+            fsti_time_sprint(agent->age),                               \
             (agent->sex == FSTI_MALE &&                                 \
              agent->sex_preferred == FSTI_FEMALE) ? "MSW" :             \
             ((agent->sex == FSTI_MALE &&                                \
@@ -138,7 +138,8 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_ELEM
 #define FSTI_AGENT_ELEM {                                               \
-        FSTI_AGENT_ELEM_ENTRY(age),                                     \
+        {"age", offsetof(struct fsti_agent, age),                       \
+         UINT, fsti_to_age_year},                                            \
         FSTI_AGENT_ELEM_ENTRY(age_group),                               \
         FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
@@ -150,7 +151,6 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(infected),                                \
         FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
-        FSTI_AGENT_ELEM_ENTRY(orientation),                             \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
          UINT, fsti_to_partner},                                  \
         {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
@@ -202,6 +202,7 @@ unsigned total_partners;
 
 #ifndef FSTI_GENERATOR_MAP
 #define FSTI_GENERATOR_MAP                                              \
+    {"AGE", fsti_gen_age},                                              \
     {"BETA", fsti_gen_beta},                                            \
     {"CONST", fsti_gen_const},                                          \
     {"SEX_SEXOR", fsti_gen_sex_sexor},                                  \
