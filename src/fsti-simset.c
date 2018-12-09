@@ -298,8 +298,8 @@ void fsti_simset_test(struct test_group *tg)
     TESTEQ(simset.sim_number, 22, *tg);
 
     fsti_simset_free(&simset);
-    remove(agents_in_filename);
-    remove(config_filename);
-    remove("fsti_test_agents_out_1234.csv");
-    remove("fsti_test_results_1234.csv");
+    fsti_remove_file(agents_in_filename);
+    fsti_remove_file(config_filename);
+    fsti_remove_file("fsti_test_agents_out_1234.csv");
+    fsti_remove_file("fsti_test_results_1234.csv");
 }

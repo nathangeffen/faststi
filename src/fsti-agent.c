@@ -8,8 +8,7 @@ struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
 _Thread_local struct fsti_agent fsti_thread_local_agent;
 
-static struct fsti_agent_elem agent_elem[] =
-    FSTI_AGENT_ELEM;
+static struct fsti_agent_elem agent_elem[] = FSTI_AGENT_ELEM;
 
 const size_t fsti_agent_elem_n =
     sizeof(agent_elem) / sizeof(struct fsti_agent_elem);
@@ -671,7 +670,7 @@ void fsti_agent_test(struct test_group *tg)
     l = fsti_agent_elem_val_by_strname_l("age", &a);
     TESTEQ(l, 23, *tg);
     l = fsti_agent_elem_val_by_strname_l("cured", &a);
-    TESTEQ(l, 2019, *tg);
+    TESTEQ(l, 2018, *tg);
     l = fsti_agent_elem_val_by_strname_l("date_death", &a);
     TESTEQ(l, 2023, *tg);
 }

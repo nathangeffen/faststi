@@ -24,6 +24,8 @@ static GOptionEntry command_line_entries[] = {
      &print_config, "Print the default configuration", NULL},
     {"test", 't', 0, G_OPTION_ARG_NONE, &test,
      "Run unit tests", NULL},
+    {"keep-test-files", 'k', 0, G_OPTION_ARG_NONE, &fsti_keep_test_files,
+     "don't delete test files", NULL},
     {NULL}
 };
 

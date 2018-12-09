@@ -30,7 +30,7 @@
 #define FSTI_DAY 1440
 #define FSTI_WEEK 10080
 #define FSTI_MONTH 43830
-#define FSTI_YEAR 525960
+#define FSTI_YEAR 525969
 
 #define FSTI_NO_OP "_NO_OP"
 
@@ -130,7 +130,50 @@ struct fsti_variant_array {
 };
 
 typedef void (*fsti_transform_func)(void *to, const struct fsti_variant *from,
+                                    const struct fsti_simulation *simulation,
                                     struct fsti_agent *agent);
+
+extern bool fsti_keep_test_files;
+
+void fsti_to_float(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                   struct fsti_agent *agent);
+void fsti_to_double(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                    struct fsti_agent *agent);
+void fsti_to_age(void *to, const struct fsti_variant *from,
+                 const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent);
+void fsti_to_int(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent);
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent);
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  const struct fsti_simulation *simulation,
+                  struct fsti_agent *agent);
+void fsti_to_unsigned(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
+void fsti_to_uchar(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                   struct fsti_agent *agent);
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                     const struct fsti_simulation *simulation,
+                    struct fsti_agent *agent);
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent);
 
 void fsti_cnv_vals(void *dest, const void *src,
                    enum fsti_type dest_type, enum fsti_type src_type);
@@ -138,45 +181,19 @@ size_t fsti_hash(const char *str);
 struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
 int fsti_variant_print(FILE *f, const struct fsti_variant *variant);
-struct fsti_julian_date fsti_set_julian_date(uint16_t year, uint16_t day);
-struct fsti_julian_date fsti_to_julian_date(fsti_time time);
-fsti_time fsti_from_julian_date(const struct fsti_julian_date date);
-fsti_time fsti_add_time_step(fsti_time base, int32_t step, int32_t time_step);
-uint16_t fsti_get_year(fsti_time t);
+struct fsti_julian_date fsti_time_set_julian(uint16_t year, uint16_t day);
+struct fsti_julian_date fsti_time_to_julian(fsti_time time);
+fsti_time fsti_time_from_julian(const struct fsti_julian_date date);
+fsti_time fsti_time_add_step(fsti_time base, int32_t step, int32_t time_step);
+uint16_t fsti_time_in_years(fsti_time t);
 char *fsti_julian_date_sprint(const struct fsti_julian_date date);
 char *fsti_time_sprint(fsti_time time);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
+void fsti_remove_file(const char *filename);
 void fsti_remove_data_file(const char *filename);
 void fsti_test_defs(struct test_group *tg);
 
-
-void fsti_to_float(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_age_year(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_int(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent);
-void fsti_to_bool(void *to, const struct fsti_variant *from,
-                  struct fsti_agent *agent);
-void fsti_to_unsigned(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_uchar(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent);
-void fsti_to_size_t(void *to, const struct fsti_variant *from,
-                     struct fsti_agent *agent);
-void fsti_to_partner(void *to, const struct fsti_variant *from,
-                     struct fsti_agent *agent);
 
 
 

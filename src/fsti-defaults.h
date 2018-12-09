@@ -73,15 +73,15 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
-    fprintf(file_handle, "%u%c%s%c%u%c%s%c%u%c%u%c%u%c%.2f%c%ld\n",   \
+    fprintf(file_handle, "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%ld\n",       \
             sim_num, delim,                                             \
             date, delim,                                                \
             agent->id, delim,                                           \
-            fsti_time_sprint(agent->age), delim,                        \
+            fsti_time_in_years(agent->age), delim,                      \
             agent->infected, delim,                                     \
             (unsigned) agent->sex, delim,                               \
             (unsigned) agent->sex_preferred, delim,                     \
-            agent->date_death, delim,                                   \
+            fsti_time_in_years(agent->date_death), delim,               \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
 
@@ -112,17 +112,24 @@ unsigned total_partners;
 
 #ifndef FSTI_FLEX_REPORT
 #define FSTI_FLEX_REPORT do {                                           \
-        FSTI_REPORT_OUTPUT(FSTI_MIN, living, age, "MIN_AGE_ALIVE");     \
-        FSTI_REPORT_OUTPUT(FSTI_MAX, living, age, "MAX_AGE_ALIVE");     \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE");   \
-        FSTI_REPORT_OUTPUT(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE"); \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MIN, living, age, "MIN_AGE_ALIVE", \
+                                FSTI_TIME_IN_YEARS);                    \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MAX, living, age, "MAX_AGE_ALIVE", \
+                                FSTI_TIME_IN_YEARS);                    \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE", \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE", \
+                           FSTI_TIME_IN_YEARS);                         \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, living, , "POP_ALIVE", "%.0f"); \
         FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,    \
                                      "NUM_PARTNERS", FSTI_HALF, "%.0f"); \
-        FSTI_REPORT_OUTPUT(FSTI_MIN, dead, age, "MIN_AGE_DEAD");        \
-        FSTI_REPORT_OUTPUT(FSTI_MAX, dead, age, "MAX_AGE_DEAD");        \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD");      \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MIN, dead, age, "MIN_AGE_DEAD",         \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MAX, dead, age, "MAX_AGE_DEAD",         \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD",       \
+                           FSTI_TIME_IN_YEARS);                         \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, "INFECT_RATE_DEAD"); \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , "POP_DEAD", "%.0f"); \
     } while(0)
@@ -138,8 +145,7 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_ELEM
 #define FSTI_AGENT_ELEM {                                               \
-        {"age", offsetof(struct fsti_agent, age),                       \
-         UINT, fsti_to_age_year},                                            \
+        {"age", offsetof(struct fsti_agent, age), UINT, fsti_to_age},   \
         FSTI_AGENT_ELEM_ENTRY(age_group),                               \
         FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \

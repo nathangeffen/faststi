@@ -98,13 +98,16 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 
     uint16_t year = fsti_config_at0_long(&simulation->config, "START_DATE");
     uint16_t day = fsti_config_at_long(&simulation->config, "START_DATE", 1);
-    simulation->start_date = fsti_from_julian_date(
-        fsti_set_julian_date(year, day));
+    simulation->start_date = fsti_time_from_julian(fsti_time_set_julian(year,
+                                                                        day));
 
     simulation->stabilization_steps = (unsigned)
 	fsti_config_at0_long(&simulation->config, "STABILIZATION_STEPS");
     simulation->time_step = fsti_config_at0_long(&simulation->config,
                                                  "TIME_STEP");
+    simulation->age_input_time_step = fsti_config_at0_long(&simulation->config,
+                                                           "AGE_INPUT_TIME_STEP");
+
     simulation->num_iterations = fsti_config_at0_long(&simulation->config,
                                                  "NUM_TIME_STEPS");
     simulation->match_k = fsti_config_at0_long(&simulation->config,
@@ -151,8 +154,9 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
         fsti_agent_break_partners(agent, partner);
     }
     fsti_agent_ind_push(&simulation->dead, agent->id);
-    agent->date_death = simulation->start_date +
-        simulation->iteration * simulation->time_step;
+    agent->date_death = fsti_time_add_step(simulation->start_date,
+                                           simulation->iteration,
+                                           simulation->time_step);
     fsti_agent_ind_remove(&simulation->living, it);
 
 }
@@ -202,8 +206,8 @@ void fsti_simulation_test(struct test_group *tg)
             infected +=agent->infected;
         });
 
-    min_age = fsti_get_year(min_age);
-    max_age = fsti_get_year(max_age);
+    min_age = fsti_time_in_years(min_age);
+    max_age = fsti_time_in_years(max_age);
     TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
     TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
     d = (double) males / simulation.living.len;

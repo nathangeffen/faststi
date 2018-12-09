@@ -40,6 +40,7 @@ struct fsti_simulation {
     // Useful event variables available to all simulations
     fsti_time start_date;
     fsti_time time_step;
+    fsti_time age_input_time_step;
     double initial_mating_pool_prob;
     double mating_pool_prob;
     uint32_t stabilization_steps;

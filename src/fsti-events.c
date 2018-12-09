@@ -9,13 +9,14 @@
 struct fsti_agent fsti_global_agent;
 
 static void
-process_cell(struct fsti_agent *agent, char *cell, void *to,
+process_cell(const struct fsti_simulation *simulation,
+             struct fsti_agent *agent, char *cell, void *to,
              fsti_transform_func transformer)
 {
     struct fsti_variant variant;
 
     variant = fsti_identify_token(cell);
-    transformer(to, &variant, agent);
+    transformer(to, &variant, simulation, agent);
 }
 
 static void make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
@@ -61,7 +62,7 @@ static void read_agents(struct fsti_simulation *simulation)
     for (i = 0; i < cs.len; i++) {
         memset(&simulation->csv_agent, 0, sizeof(struct fsti_agent));
         for (j = 0; j < cs.rows[i].len; ++j) {
-            process_cell(&simulation->csv_agent,
+            process_cell(simulation, &simulation->csv_agent,
                          cs.rows[i].cells[j],
                          (char *) &simulation->csv_agent + elems[j]->offset,
                          elems[j]->transformer);
@@ -256,7 +257,7 @@ void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
         FSTI_REPORT_OUTPUT_HEADER(simulation->csv_delimiter);
 }
 
-static void agent_print_csv(FILE *f, unsigned sim_no, char *time,
+static void agent_print_csv(FILE *f, unsigned sim_no, const char *time,
                             struct fsti_agent *agent, char delimiter)
 {
     FSTI_AGENT_PRINT_CSV(f, sim_no, time, agent, delimiter);
@@ -272,14 +273,14 @@ static void write_agents_ind_csv(struct fsti_simulation *simulation,
                                  struct fsti_agent_ind *agent_ind)
 {
     struct fsti_agent *agent;
-    char *date = fsti_time_sprint(fsti_add_time_step(
-                                      simulation->start_date,
-                                      simulation->iteration,
-                                      simulation->time_step));
-
+    char time[10];
+    strncpy(time, fsti_time_sprint(fsti_time_add_step(
+                                       simulation->start_date,
+                                       simulation->iteration,
+                                       simulation->time_step)), 9);
     FSTI_FOR(*agent_ind, agent, {
             agent_print_csv(simulation->agents_output_file,
-                            simulation->sim_number, date,
+                            simulation->sim_number, time,
                             agent, simulation->csv_delimiter);
         });
 }
@@ -287,17 +288,17 @@ static void write_agents_ind_csv(struct fsti_simulation *simulation,
 static void write_agents_arr_csv(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
-    char *date = fsti_time_sprint(fsti_add_time_step(
-                                      simulation->start_date,
-                                      simulation->iteration,
-                                      simulation->time_step));
-
+    char time[10];
+    strncpy(time, fsti_time_sprint(fsti_time_add_step(
+                                            simulation->start_date,
+                                            simulation->iteration,
+                                            simulation->time_step)), 9);
 
     for (agent = simulation->agent_arr.agents;
          agent < simulation->agent_arr.agents + simulation->agent_arr.len;
          ++agent) {
         agent_print_csv(simulation->agents_output_file,
-                        simulation->sim_number, date,
+                        simulation->sim_number, time,
                         agent, simulation->csv_delimiter);
     }
 }
@@ -376,6 +377,13 @@ set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
     a->relchange[0] = 365;
 }
 
+static void make_partners(struct fsti_simulation *simulation,
+                          struct fsti_agent *a, struct fsti_agent *b)
+{
+    fsti_agent_make_partners(a, b);
+    set_rel_period(simulation, a);
+    b->relchange[0] = a->relchange[0];
+}
 
 static void
 set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
@@ -470,9 +478,7 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
             }
         }
         if (partner) {
-            fsti_agent_make_partners(agent, partner);
-            set_rel_period(simulation, agent);
-            partner->relchange[0] = agent->relchange[0];
+            make_partners(simulation, agent, partner);
             FSTI_HOOK_AFTER_MATCH(simulation, agent, partner);
         }
     }

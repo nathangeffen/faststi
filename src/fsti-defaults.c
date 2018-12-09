@@ -19,6 +19,10 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "NUM_TIME_STEPS",
                     "Number of iterations simulation should run for "
                     "(10 years)", FSTI_YEAR * 10 / FSTI_DAY);
+    FSTI_CONFIG_ADD(config, "AGE_INPUT_TIME_STEP",
+                    "Denomination of age in input files "
+                    "(usually year or 5-year age groups - defaults to year)",
+                    FSTI_YEAR);
     FSTI_CONFIG_ADD(config, "STABILIZATION_STEPS",
 		    "Number of time steps to run before executing "
 		    "various events", 0);

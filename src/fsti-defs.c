@@ -5,8 +5,11 @@
 #include "fsti-error.h"
 #include "fsti-defs.h"
 #include "fsti-agent.h"
+#include "fsti-simulation.h"
 
 static _Thread_local char full_filename[FILENAME_MAX];
+bool fsti_keep_test_files = false;
+
 
 #define SET_DEST(type) do {                      \
         type d = s;                              \
@@ -38,6 +41,7 @@ static _Thread_local char full_filename[FILENAME_MAX];
     } while(0)
 
 void fsti_to_float(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
                    struct fsti_agent *agent)
 {
     float v;
@@ -50,7 +54,8 @@ void fsti_to_float(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_double(void *to, const struct fsti_variant *from,
-                   struct fsti_agent *agent)
+                   const struct fsti_simulation *simulation,
+                    struct fsti_agent *agent)
 {
     double v;
     switch(from->type) {
@@ -61,16 +66,18 @@ void fsti_to_double(void *to, const struct fsti_variant *from,
     memcpy(to, &v, sizeof(double));
 }
 
-void fsti_to_age_year(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
+void fsti_to_age(void *to, const struct fsti_variant *from,
+                 const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent)
 {
-    agent->age = from->value.dbl * FSTI_YEAR;
+    agent->age = from->value.dbl * simulation->age_input_time_step;
 }
 
 
 
 void fsti_to_int(void *to, const struct fsti_variant *from,
-                  struct fsti_agent *agent)
+                  const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent)
 {
     int v;
     switch(from->type) {
@@ -82,7 +89,8 @@ void fsti_to_int(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
-                      struct fsti_agent *agent)
+                      const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
 {
     uint8_t v;
     switch(from->type) {
@@ -94,6 +102,7 @@ void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
 {
     uint16_t v;
@@ -106,6 +115,7 @@ void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
 {
     uint32_t v;
@@ -118,6 +128,7 @@ void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
 {
     uint64_t v;
@@ -131,6 +142,7 @@ void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
 
 
 void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  const struct fsti_simulation *simulation,
                   struct fsti_agent *agent)
 {
     bool v;
@@ -144,6 +156,7 @@ void fsti_to_bool(void *to, const struct fsti_variant *from,
 
 
 void fsti_to_unsigned(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
 {
     unsigned v;
@@ -156,6 +169,7 @@ void fsti_to_unsigned(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                    const struct fsti_simulation *simulation,
                     struct fsti_agent *agent)
 {
     size_t v;
@@ -168,6 +182,7 @@ void fsti_to_size_t(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_uchar(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
                    struct fsti_agent *agent)
 {
     unsigned char v;
@@ -180,6 +195,7 @@ void fsti_to_uchar(void *to, const struct fsti_variant *from,
 }
 
 void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     const struct fsti_simulation *simulation,
                      struct fsti_agent *agent)
 {
     long v;
@@ -285,7 +301,9 @@ int fsti_variant_print(FILE *f, const struct fsti_variant *variant)
     }
 }
 
-struct fsti_julian_date fsti_set_julian_date(uint16_t year, uint16_t day)
+/* Date and time functions */
+
+struct fsti_julian_date fsti_time_set_julian(uint16_t year, uint16_t day)
 {
     struct fsti_julian_date result;
     result.year = year;
@@ -293,7 +311,7 @@ struct fsti_julian_date fsti_set_julian_date(uint16_t year, uint16_t day)
     return result;
 }
 
-struct fsti_julian_date fsti_to_julian_date(fsti_time time)
+struct fsti_julian_date fsti_time_to_julian(fsti_time time)
 {
     struct fsti_julian_date result;
     result.year = time / FSTI_YEAR;
@@ -302,33 +320,33 @@ struct fsti_julian_date fsti_to_julian_date(fsti_time time)
     return result;
 }
 
-fsti_time fsti_from_julian_date(const struct fsti_julian_date date)
+fsti_time fsti_time_from_julian(const struct fsti_julian_date date)
 {
     return date.year * FSTI_YEAR + date.day * FSTI_MINUTE;
 }
 
-fsti_time fsti_add_time_step(fsti_time base, int32_t step, int32_t time_step)
+fsti_time fsti_time_add_step(fsti_time base, int32_t step, int32_t time_step)
 {
     return base + step * time_step;
 }
 
 
-uint16_t fsti_get_year(fsti_time t)
+uint16_t fsti_time_in_years(fsti_time t)
 {
     return t / FSTI_YEAR;
 }
 
 char *fsti_julian_date_sprint(const struct fsti_julian_date date)
 {
-    _Thread_local static char result[9];
+    _Thread_local static char result[10];
 
-    snprintf(result, 8, "%4u-%3u", date.year, date.day);
+    snprintf(result, 9, "%04u-%03u", date.year, date.day);
     return result;
 }
 
 char *fsti_time_sprint(fsti_time time)
 {
-    struct fsti_julian_date date = fsti_to_julian_date(time);
+    struct fsti_julian_date date = fsti_time_to_julian(time);
     return fsti_julian_date_sprint(date);
 }
 
@@ -353,9 +371,14 @@ FILE *fsti_open_data_file(const char *filename, const char *mode)
     return fopen(fsti_make_full_data_filename(filename), mode);
 }
 
+void fsti_remove_file(const char *filename)
+{
+    if (fsti_keep_test_files == false) remove(filename);
+}
+
 void fsti_remove_data_file(const char *filename)
 {
-    remove(fsti_make_full_data_filename(filename));
+    fsti_remove_file(fsti_make_full_data_filename(filename));
 }
 
 

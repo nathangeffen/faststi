@@ -126,8 +126,9 @@
 
 #define FSTI_HALF(x) x /= 2
 
+#define FSTI_TIME_IN_YEARS(x) x = isnan(x) ? NAN : fsti_time_in_years(x)
 
-#define FSTI_FMT(x) _Generic((x),                                   \
+#define FSTI_FMT(x) _Generic((x),                                       \
                                  char: "%c",                            \
                                  _Bool: "%u",                           \
                                  signed char: "%hhd",                   \
@@ -164,8 +165,8 @@
                 simulation->name, _c, simulation->sim_number, _c,       \
                 simulation->config_sim_number, _c,                      \
                 fsti_julian_date_sprint(                                \
-                    fsti_to_julian_date(                                \
-                        fsti_add_time_step(simulation->start_date,      \
+                    fsti_time_to_julian(                                \
+                        fsti_time_add_step(simulation->start_date,      \
                                            simulation->iteration,       \
                                            simulation->time_step))),    \
                 _c,                                                     \
@@ -174,6 +175,9 @@
 
 #define FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, spec)      \
         FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, (void), spec)
+
+#define FSTI_REPORT_OUTPUT_POST(func, agent_ind, elem, desc, post)      \
+        FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, post, "%f")
 
 #define FSTI_REPORT_OUTPUT(func, agent_ind, elem, desc)                 \
     FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, "%f")

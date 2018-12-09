@@ -46,16 +46,16 @@ struct fsti_agent {
         bool infected;
         float infected_date;
     };
-    double cured; // Date last cured of last infection
+    fsti_time cured; // Date last cured of last infection
     union {
         bool dead; // 0 if still alive
-        double date_death; // 0 if still alive
+        fsti_time date_death; // 0 if still alive
     };
     uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
     uint8_t num_partners;
     uint32_t partners[FSTI_MAX_PARTNERS];
-    int32_t relchange[FSTI_MAX_PARTNERS];
+    fsti_time relchange[FSTI_MAX_PARTNERS];
     FSTI_AGENT_FIELDS
 };
 
