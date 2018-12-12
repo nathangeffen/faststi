@@ -63,6 +63,8 @@ int main(int argc, char *argv[])
 {
     struct fsti_simset simset;
 
+    DBG("SIZE AGT: %zu", sizeof(struct fsti_agent));
+
     setlocale(LC_NUMERIC, "C");
     get_command_line(argc, argv);
 

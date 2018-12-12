@@ -1,6 +1,7 @@
 #ifndef FSTI_SIMULATION_H
 #define FSTI_SIMULATION_H
 
+#include <glib.h>
 #include <gsl/gsl_rng.h>
 
 #include "fsti-agent.h"
@@ -39,6 +40,7 @@ struct fsti_simulation {
 
     // Useful event variables available to all simulations
     fsti_time start_date;
+
     fsti_time time_step;
     fsti_time age_input_time_step;
     double initial_mating_pool_prob;

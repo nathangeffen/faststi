@@ -209,6 +209,7 @@ void fsti_simulation_test(struct test_group *tg)
     min_age = fsti_time_in_years(min_age);
     max_age = fsti_time_in_years(max_age);
     TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
+    DBG("%f", min_age);
     TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
     d = (double) males / simulation.living.len;
     TESTEQ(d > 0.47 && d < 0.53, true, *tg);
