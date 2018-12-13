@@ -90,7 +90,8 @@ enum {
     FSTI_ERR_AGENT_FILE,
     FSTI_ERR_NO_STOP_EVENT,
     FSTI_ERR_FILE,
-    FSTI_ERR_INVALID_VALUE
+    FSTI_ERR_INVALID_VALUE,
+    FSTI_ERR_INVALID_DATE
 };
 
 extern bool fsti_output_error_messages;

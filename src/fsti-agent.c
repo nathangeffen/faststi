@@ -662,8 +662,8 @@ void fsti_agent_test(struct test_group *tg)
 
     a.id = 10;
     a.age = 23;
-    a.cured = 2018.9;
-    a.date_death = 2023.1;
+    a.cured.date = 2018.9;
+    a.date_death.date = 2023.1;
 
     l = fsti_agent_elem_val_by_strname_l("id", &a);
     TESTEQ(l, 10, *tg);

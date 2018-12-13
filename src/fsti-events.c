@@ -257,10 +257,10 @@ void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
         FSTI_REPORT_OUTPUT_HEADER(simulation->csv_delimiter);
 }
 
-static void agent_print_csv(FILE *f, unsigned sim_no, const char *time,
+static void agent_print_csv(FILE *f, unsigned sim_no, const char *date,
                             struct fsti_agent *agent, char delimiter)
 {
-    FSTI_AGENT_PRINT_CSV(f, sim_no, time, agent, delimiter);
+    FSTI_AGENT_PRINT_CSV(f, sim_no, date, agent, delimiter);
 }
 
 static void agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
@@ -273,14 +273,14 @@ static void write_agents_ind_csv(struct fsti_simulation *simulation,
                                  struct fsti_agent_ind *agent_ind)
 {
     struct fsti_agent *agent;
-    char time[10];
-    strncpy(time, fsti_time_sprint(fsti_time_add_step(
+    char date[FSTI_DATE_LEN];
+    strncpy(date, fsti_time_sprint(fsti_time_add_gdatetime(
                                        simulation->start_date,
                                        simulation->iteration,
-                                       simulation->time_step)), 9);
+                                       simulation->time_step)), FSTI_DATE_LEN);
     FSTI_FOR(*agent_ind, agent, {
             agent_print_csv(simulation->agents_output_file,
-                            simulation->sim_number, time,
+                            simulation->sim_number, date,
                             agent, simulation->csv_delimiter);
         });
 }
@@ -288,17 +288,17 @@ static void write_agents_ind_csv(struct fsti_simulation *simulation,
 static void write_agents_arr_csv(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
-    char time[10];
-    strncpy(time, fsti_time_sprint(fsti_time_add_step(
+    char date[FSTI_DATE_LEN];
+    strncpy(date, fsti_time_sprint(fsti_time_add_gdatetime(
                                             simulation->start_date,
                                             simulation->iteration,
-                                            simulation->time_step)), 9);
+                                            simulation->time_step)), FSTI_DATE_LEN);
 
     for (agent = simulation->agent_arr.agents;
          agent < simulation->agent_arr.agents + simulation->agent_arr.len;
          ++agent) {
         agent_print_csv(simulation->agents_output_file,
-                        simulation->sim_number, time,
+                        simulation->sim_number, date,
                         agent, simulation->csv_delimiter);
     }
 }
@@ -374,7 +374,7 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
 static void
 set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
-    a->relchange[0] = 365;
+    a->relchange[0].date = 0;
 }
 
 static void make_partners(struct fsti_simulation *simulation,
@@ -388,7 +388,7 @@ static void make_partners(struct fsti_simulation *simulation,
 static void
 set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
-    a->relchange[0] = 365;
+    a->relchange[0].date = 0;
 }
 
 void fsti_event_initial_relchange(struct fsti_simulation *simulation)
@@ -413,7 +413,7 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
     FSTI_FOR_LIVING(*simulation, a, {
             // If agent is in partnership and duration of partnership has run out
             b = fsti_agent_partner_get0(&simulation->agent_arr, a);
-            if (b && simulation->iteration > a->relchange[0]) {
+            if (b && simulation->iteration > a->relchange[0].date) {
                 fsti_agent_break_partners(a, b);
                 // Determine at what day in the future these agents will start
                 // looking for new partners

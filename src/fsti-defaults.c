@@ -14,11 +14,11 @@ int fsti_config_set_default(struct fsti_config *config)
                     "(default 1440 minutes == 1 day)",
 		    FSTI_DAY);
     fsti_config_add(config, "START_DATE", "Start date of simulation "
-                    "(julian format yyyy;d, where 2018;0 = 1 Jan 2018)",
-		    "2018;0");
+                    "(yyyy;mm;dd)",
+		    "2018;1;1");
     FSTI_CONFIG_ADD(config, "NUM_TIME_STEPS",
                     "Number of iterations simulation should run for "
-                    "(10 years)", FSTI_YEAR * 10 / FSTI_DAY + 1);
+                    "(10 years)", FSTI_YEAR * 10 / FSTI_DAY);
     FSTI_CONFIG_ADD(config, "AGE_INPUT_TIME_STEP",
                     "Denomination of age in input files "
                     "(usually year or 5-year age groups - defaults to year)",

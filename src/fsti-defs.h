@@ -6,13 +6,16 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <glib.h>
 
 #include "utils/utils.h"
 
+/* Technical limits */
 #define FSTI_HASHSIZE 101
 #define FSTI_KEY_LEN 30
 #define FSTI_DESC_LEN 200
 #define FSTI_TOKEN_LEN 200
+#define FSTI_DATE_LEN 11
 
 /* Useful constants */
 #define FSTI_MALE 0
@@ -30,7 +33,7 @@
 #define FSTI_DAY 1440
 #define FSTI_WEEK 10080
 #define FSTI_MONTH 43830
-#define FSTI_YEAR 525969
+#define FSTI_YEAR 525949
 
 #define FSTI_NO_OP "_NO_OP"
 
@@ -49,7 +52,8 @@
                                      unsigned long long int: ULLONG,    \
                                      float: FLT,                        \
                                      double: DBL,                       \
-                                     long double: LDBL)
+                                     long double: LDBL,                 \
+                                     struct fsti_date: INT)
 
 #define FSTI_GET_TRANSFORMER(var)  _Generic((var),                      \
                                             _Bool: fsti_to_bool,        \
@@ -59,7 +63,8 @@
                                             uint64_t: fsti_to_uint64_t, \
                                             int: fsti_to_int,           \
                                             float: fsti_to_float,       \
-                                            double: fsti_to_double)
+                                            double: fsti_to_double,     \
+                                            struct fsti_date: fsti_to_int)
 
 #define FSTI_AGENT_ELEM_ENTRY(member)                           \
     {                                                           \
@@ -69,11 +74,15 @@
         FSTI_GET_TRANSFORMER(fsti_thread_local_agent.member)    \
     }
 
-typedef int32_t fsti_time;
-
-struct fsti_julian_date {
-    uint16_t year;
-    uint16_t day;
+struct fsti_date {
+    union {
+        int32_t date;
+        struct {
+            int32_t year:14;
+            int32_t month:6;
+            int32_t day:6;
+        };
+    };
 };
 
 enum fsti_struct_part {
@@ -156,7 +165,13 @@ void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
 void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
                       const struct fsti_simulation *simulation,
                       struct fsti_agent *agent);
+void fsti_to_int32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
 void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent);
+void fsti_to_int64_t(void *to, const struct fsti_variant *from,
                       const struct fsti_simulation *simulation,
                       struct fsti_agent *agent);
 void fsti_to_bool(void *to, const struct fsti_variant *from,
@@ -182,12 +197,10 @@ struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
 int fsti_variant_print(FILE *f, const struct fsti_variant *variant);
 struct fsti_julian_date fsti_time_set_julian(uint16_t year, uint16_t day);
-struct fsti_julian_date fsti_time_to_julian(fsti_time time);
-fsti_time fsti_time_from_julian(const struct fsti_julian_date date);
-fsti_time fsti_time_add_step(fsti_time base, int32_t step, int32_t time_step);
-uint16_t fsti_time_in_years(fsti_time t);
-char *fsti_julian_date_sprint(const struct fsti_julian_date date);
-char *fsti_time_sprint(fsti_time time);
+char *fsti_time_sprint(struct fsti_date date);
+struct fsti_date
+fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size);
+uint16_t fsti_time_in_years(int32_t t);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_file(const char *filename);

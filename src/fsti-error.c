@@ -64,6 +64,8 @@ const char *fsti_error_message(int code)
         return "No event defined to check for end of simulation";
     case FSTI_ERR_INVALID_VALUE:
 	return "Invalid value";
+    case FSTI_ERR_INVALID_DATE:
+	return "Invalid date";
     default:
 	return "Unknown error message number - this shouldn't happen";
     }

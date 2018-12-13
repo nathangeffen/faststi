@@ -73,7 +73,7 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV
 #define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
-    fprintf(file_handle, "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%ld\n",       \
+    fprintf(file_handle, "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%s%c%ld\n",       \
             sim_num, delim,                                             \
             date, delim,                                                \
             agent->id, delim,                                           \
@@ -81,7 +81,7 @@ unsigned total_partners;
             agent->infected, delim,                                     \
             (unsigned) agent->sex, delim,                               \
             (unsigned) agent->sex_preferred, delim,                     \
-            fsti_time_in_years(agent->date_death), delim,               \
+            fsti_time_sprint(agent->date_death), delim,                 \
             agent->num_partners ? (long) agent->partners[0] : -1)
 #endif
 
@@ -90,10 +90,10 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_PRINT_PRETTY
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %u: Age: %s, %s %s %s %ld\n", \
+    fprintf(file_handle, "Sim %u, Agent %u: Age: %u, %s %s %s %ld\n", \
             id,                                                         \
             agent->id,                                                  \
-            fsti_time_sprint(agent->age),                               \
+            fsti_time_in_years(agent->age),                             \
             (agent->sex == FSTI_MALE &&                                 \
              agent->sex_preferred == FSTI_FEMALE) ? "MSW" :             \
             ((agent->sex == FSTI_MALE &&                                \

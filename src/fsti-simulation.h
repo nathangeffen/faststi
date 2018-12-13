@@ -39,10 +39,10 @@ struct fsti_simulation {
     gsl_rng *rng;
 
     // Useful event variables available to all simulations
-    fsti_time start_date;
-
-    fsti_time time_step;
-    fsti_time age_input_time_step;
+    GDateTime *start_date;
+    GTimeZone *time_zone;
+    int32_t time_step;
+    int32_t age_input_time_step;
     double initial_mating_pool_prob;
     double mating_pool_prob;
     uint32_t stabilization_steps;

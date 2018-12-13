@@ -77,6 +77,8 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     FSTI_ASSERT(errno == 0 && simulation->rng, FSTI_ERR_NOMEM, NULL);
     gsl_rng_set(simulation->rng, sim_number);
     FSTI_ASSERT(errno == 0, FSTI_ERR_NOMEM, NULL);
+    simulation->start_date = NULL;
+    simulation->time_zone = NULL;
 }
 
 struct fsti_dataset *
@@ -95,11 +97,13 @@ fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
 
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
-
     uint16_t year = fsti_config_at0_long(&simulation->config, "START_DATE");
-    uint16_t day = fsti_config_at_long(&simulation->config, "START_DATE", 1);
-    simulation->start_date = fsti_time_from_julian(fsti_time_set_julian(year,
-                                                                        day));
+    uint16_t month = fsti_config_at_long(&simulation->config, "START_DATE", 1);
+    uint16_t day = fsti_config_at_long(&simulation->config, "START_DATE", 2);
+    simulation->time_zone = g_time_zone_new(NULL);
+    simulation->start_date = g_date_time_new(simulation->time_zone,
+                                             year, month, day, 0, 0, 0);
+    FSTI_ASSERT(simulation->start_date, FSTI_ERR_INVALID_DATE, NULL);
 
     simulation->stabilization_steps = (unsigned)
 	fsti_config_at0_long(&simulation->config, "STABILIZATION_STEPS");
@@ -154,9 +158,9 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
         fsti_agent_break_partners(agent, partner);
     }
     fsti_agent_ind_push(&simulation->dead, agent->id);
-    agent->date_death = fsti_time_add_step(simulation->start_date,
-                                           simulation->iteration,
-                                           simulation->time_step);
+    agent->date_death = fsti_time_add_gdatetime(simulation->start_date,
+                                                simulation->iteration,
+                                                simulation->time_step);
     fsti_agent_ind_remove(&simulation->living, it);
 
 }
@@ -169,6 +173,8 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
+    g_date_time_unref(simulation->start_date);
+    g_time_zone_unref(simulation->time_zone);
     FSTI_HOOK_SIMULATION_FREE(simulation);
 }
 

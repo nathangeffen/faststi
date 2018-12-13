@@ -25,7 +25,7 @@ void fsti_gen_age(struct fsti_simulation *simulation,
                   const struct fsti_generator_parms *parms)
 {
     double val, a, b;
-    fsti_time min, max;
+    int32_t min, max;
 
     a = parms->parameters[0];
     b = parms->parameters[1];

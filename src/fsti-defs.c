@@ -1,6 +1,5 @@
 #include <math.h>
 #include <stdio.h>
-#include <glib.h>
 
 #include "fsti-error.h"
 #include "fsti-defs.h"
@@ -127,6 +126,20 @@ void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
     memcpy(to, &v, sizeof(uint32_t));
 }
 
+void fsti_to_int32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
+{
+    int32_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int32_t));
+}
+
+
 void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
                       const struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
@@ -138,6 +151,19 @@ void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
     default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
     }
     memcpy(to, &v, sizeof(uint64_t));
+}
+
+void fsti_to_int64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    int64_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int64_t));
 }
 
 
@@ -303,53 +329,37 @@ int fsti_variant_print(FILE *f, const struct fsti_variant *variant)
 
 /* Date and time functions */
 
-struct fsti_julian_date fsti_time_set_julian(uint16_t year, uint16_t day)
+struct fsti_date
+fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size)
 {
-    struct fsti_julian_date result;
-    result.year = year;
-    result.day = day;
+    struct fsti_date result;
+    GDateTime *date;
+
+    date = g_date_time_add_minutes(base, steps * step_size);
+
+    result.year = g_date_time_get_year(date);
+    result.month = g_date_time_get_month(date);
+    result.day = g_date_time_get_day_of_month(date);
+    g_date_time_unref(date);
+
     return result;
 }
 
-struct fsti_julian_date fsti_time_to_julian(fsti_time time)
-{
-    struct fsti_julian_date result;
-    result.year = time / FSTI_YEAR;
-    result.day = round( (double) (time % FSTI_YEAR) / FSTI_DAY);
-
-    return result;
-}
-
-fsti_time fsti_time_from_julian(const struct fsti_julian_date date)
-{
-    return date.year * FSTI_YEAR + date.day * FSTI_MINUTE;
-}
-
-fsti_time fsti_time_add_step(fsti_time base, int32_t step, int32_t time_step)
-{
-    return base + step * time_step;
-}
-
-
-uint16_t fsti_time_in_years(fsti_time t)
+uint16_t fsti_time_in_years(int32_t t)
 {
     return t / FSTI_YEAR;
 }
 
-char *fsti_julian_date_sprint(const struct fsti_julian_date date)
+char *fsti_time_sprint(struct fsti_date date)
 {
-    _Thread_local static char result[10];
+    _Thread_local static char result[FSTI_DATE_LEN];
 
-    snprintf(result, 9, "%04u-%03u", date.year, date.day);
+    snprintf(result, FSTI_DATE_LEN, "%04d-%02d-%02d",
+             date.year, date.month, date.day);
     return result;
 }
 
-char *fsti_time_sprint(fsti_time time)
-{
-    struct fsti_julian_date date = fsti_time_to_julian(time);
-    return fsti_julian_date_sprint(date);
-}
-
+/******/
 
 char *fsti_make_full_data_filename(const char *filename)
 {
@@ -433,4 +443,20 @@ void fsti_test_defs(struct test_group *tg)
     TESTEQ(strcmp(variant.value.str, "-11.23456L"), 0, *tg);
 
     free(variant.value.str);
+
+    /* Test DateTime functions */
+    GDateTime *d1;
+    GTimeZone *z;
+    char *date_str;
+
+    z = g_time_zone_new(NULL);
+    d1 = g_date_time_new(z, 2018, 1, 1, 0, 0, 0);
+
+    date_str = fsti_time_sprint(fsti_time_add_gdatetime(
+                                    d1, 10, FSTI_YEAR));
+    g_date_time_unref(d1);
+    g_time_zone_unref(z);
+
+    TESTEQ(strcmp(date_str, "2028-01-01"), 0, *tg);
+
 }
