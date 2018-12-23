@@ -128,6 +128,14 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
     simulation->dataset_mating_pool =
         fsti_simulation_get_dataset(simulation, "DATASET_MATING_POOL");
+    simulation->dataset_single_scale =
+        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD_SCALE");
+    simulation->dataset_single_shape =
+        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD_SHAPE");
+    simulation->dataset_rel_scale =
+        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SCALE");
+    simulation->dataset_rel_shape =
+        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SHAPE");
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
@@ -215,7 +223,6 @@ void fsti_simulation_test(struct test_group *tg)
     min_age = fsti_time_in_years(min_age);
     max_age = fsti_time_in_years(max_age);
     TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
-    DBG("%f", min_age);
     TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
     d = (double) males / simulation.living.len;
     TESTEQ(d > 0.47 && d < 0.53, true, *tg);

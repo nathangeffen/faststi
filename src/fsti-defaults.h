@@ -202,6 +202,15 @@ unsigned total_partners;
 #define FSTI_GEN_PARMS 6
 #endif
 
+/* Function for setting the iteration until which an agent remains single.
+   The default function uses a Weibull function with user defined shape
+   and scale.
+*/
+
+#ifndef FSTI_SET_SINGLE_PERIOD
+#define FSTI_SET_SINGLE_PERIOD set_single_period
+#endif
+
 /*
    List of generator functions (in alphabetical order to support bsearch).
 */

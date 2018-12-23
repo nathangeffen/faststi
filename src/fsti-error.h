@@ -13,9 +13,13 @@
 #define FSTI_NAME "FastSTI"
 #define FSTI_ERROR_STRING_LEN 200
 
-#define FSTI_MSG(msg1, msg2)                                            \
+/* #define FSTI_MSG(msg1, msg2)                                         \
     strncat(strncpy(fsti_error_string, msg1, FSTI_ERROR_STRING_LEN / 2), \
-           msg2, FSTI_ERROR_STRING_LEN / 2)
+          msg2, FSTI_ERROR_STRING_LEN / 2)
+*/
+
+#define FSTI_MSG(msg1, msg2)                                            \
+    fsti_sprintf("%s %s", msg1, msg2)
 
 #define FSTI_ERROR_SET(errnum, msg)					\
 	do {					 			\

@@ -57,6 +57,10 @@ struct fsti_simulation {
     struct fsti_dataset_hash *dataset_hash;
     struct fsti_dataset *dataset_mortality;
     struct fsti_dataset *dataset_mating_pool;
+    struct fsti_dataset *dataset_single_scale;
+    struct fsti_dataset *dataset_single_shape;
+    struct fsti_dataset *dataset_rel_scale;
+    struct fsti_dataset *dataset_rel_shape;
     FSTI_SIMULATION_FIELDS
 };
 

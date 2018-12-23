@@ -1,0 +1,15 @@
+Relationship period event
+Put initial vars into hashtable (allow ordered initialization)
+Put agent var names into hashtable
+Single period event
+Track partnerships
+Track infections
+Infection date
+Rename dataset
+Simplify default mortality dataset to people over 15.
+
+Version 2.0
+------------
+Calibration
+Datasets (probably called state tables) can multiple lookup vals (instead of a separate dataset for each parameter of a multiparameter function like weibull).
+Datasets can specify function.

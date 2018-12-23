@@ -55,7 +55,7 @@ struct fsti_agent {
     uint8_t cause_of_death;
     uint8_t num_partners;
     uint32_t partners[FSTI_MAX_PARTNERS];
-    struct fsti_date relchange[FSTI_MAX_PARTNERS];
+    uint32_t relchange[FSTI_MAX_PARTNERS];
     FSTI_AGENT_FIELDS
 };
 

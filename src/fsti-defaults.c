@@ -83,6 +83,19 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Whether or not the agent csv input file has a header", 1);
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
                     "CSV file of values to determine agent deaths", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SCALE",
+                    "CSV file of values to determine Weibull scale "
+                    "for period agent is single", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SHAPE",
+                    "CSV file of values to determine Weibull shape "
+                    "for period agent is single", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD_SCALE",
+                    "CSV file of values to determine Weibull scale "
+                    "for period agent is in relationship", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD_SHAPE",
+                    "CSV file of values to determine Weibull shape "
+                    "for period agent is in relationship", FSTI_NO_OP);
+
     FSTI_CONFIG_ADD(config, "DATASET_MATING_POOL",
                     "CSV file of values to determine agents entering mating pool",
                     FSTI_NO_OP);

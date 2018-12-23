@@ -34,6 +34,8 @@
 #define FSTI_WEEK 10080
 #define FSTI_MONTH 43830
 #define FSTI_YEAR 525949
+#define FSTI_5_YEAR FSTI_YEAR * 5
+
 
 #define FSTI_NO_OP "_NO_OP"
 

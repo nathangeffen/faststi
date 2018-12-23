@@ -1,5 +1,9 @@
-#include <glib.h>
 #include <stddef.h>
+
+#include <glib.h>
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_randist.h>
+
 #include "fsti-defs.h"
 #include "fsti-events.h"
 #include "fsti-report.h"
@@ -348,33 +352,44 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
         });
 }
 
-void create_mating_pool(struct fsti_simulation *simulation, double prob_per_ts)
+void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     fsti_agent_ind_clear(&simulation->mating_pool);
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->num_partners == 0) {
                 double prob = gsl_rng_uniform(simulation->rng);
-                if (prob < prob_per_ts)
+                if (prob < simulation->initial_mating_pool_prob)
                     fsti_agent_ind_push(&simulation->mating_pool, agent->id);
             }
         });
 }
 
-void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
-{
-    create_mating_pool(simulation, simulation->initial_mating_pool_prob);
-}
-
 void fsti_event_mating_pool(struct fsti_simulation *simulation)
 {
-    create_mating_pool(simulation, simulation->mating_pool_prob);
+    struct fsti_agent *agent;
+    fsti_agent_ind_clear(&simulation->mating_pool);
+    FSTI_FOR_LIVING(*simulation, agent, {
+            if (agent->num_partners == 0) {
+                if (agent->relchange[0] <= simulation->iteration)
+                    fsti_agent_ind_push(&simulation->mating_pool, agent->id);
+            }
+        });
 }
 
 static void
 set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
-    a->relchange[0].date = 0;
+    double scale, shape;
+    uint32_t iterations;
+
+    FSTI_ASSERT(simulation->dataset_rel_scale, FSTI_ERR_MISSING_DATASET, NULL);
+    FSTI_ASSERT(simulation->dataset_rel_shape, FSTI_ERR_MISSING_DATASET, NULL);
+    scale = fsti_dataset_lookup(simulation->dataset_rel_scale, a);
+    shape = fsti_dataset_lookup(simulation->dataset_rel_shape, a);
+    iterations = gsl_ran_weibull(simulation->rng, scale, shape);
+    a->relchange[0] = simulation->iteration + iterations;
+
 }
 
 static void make_partners(struct fsti_simulation *simulation,
@@ -388,7 +403,15 @@ static void make_partners(struct fsti_simulation *simulation,
 static void
 set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
-    a->relchange[0].date = 0;
+    double scale, shape;
+    uint32_t iterations;
+
+    FSTI_ASSERT(simulation->dataset_single_scale, FSTI_ERR_MISSING_DATASET, NULL);
+    FSTI_ASSERT(simulation->dataset_single_shape, FSTI_ERR_MISSING_DATASET, NULL);
+    scale = fsti_dataset_lookup(simulation->dataset_single_scale, a);
+    shape = fsti_dataset_lookup(simulation->dataset_single_shape, a);
+    iterations = gsl_ran_weibull(simulation->rng, scale, shape);
+    a->relchange[0] = simulation->iteration + iterations;
 }
 
 void fsti_event_initial_relchange(struct fsti_simulation *simulation)
@@ -398,10 +421,14 @@ void fsti_event_initial_relchange(struct fsti_simulation *simulation)
     FSTI_FOR_LIVING(*simulation, a, {
             b = fsti_agent_partner_get0(&simulation->agent_arr, a);
             if (b) {
-                set_rel_period(simulation, a);
+                a->relchange[0] =
+                    gsl_rng_uniform(simulation->rng) * (double) a->relchange[0];
                 b->relchange[0] = a->relchange[0];
             } else {
-                set_single_period(simulation, a);
+                FSTI_SET_SINGLE_PERIOD(simulation, a);
+                // Initial period avverages to half
+                a->relchange[0] =
+                    gsl_rng_uniform(simulation->rng) * (double) a->relchange[0];
             }
         });
 }
@@ -413,16 +440,15 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
     FSTI_FOR_LIVING(*simulation, a, {
             // If agent is in partnership and duration of partnership has run out
             b = fsti_agent_partner_get0(&simulation->agent_arr, a);
-            if (b && simulation->iteration > a->relchange[0].date) {
+            if (b && a->relchange[0] <= simulation->iteration) {
                 fsti_agent_break_partners(a, b);
                 // Determine at what day in the future these agents will start
                 // looking for new partners
 
-                set_single_period(simulation, a);
-                set_single_period(simulation, b);
+                FSTI_SET_SINGLE_PERIOD(simulation, a);
+                FSTI_SET_SINGLE_PERIOD(simulation, b);
             }
         });
-
 }
 
 void fsti_event_death(struct fsti_simulation *simulation)
@@ -499,8 +525,8 @@ void fsti_event_register_events()
         fsti_register_add("_GENERATE_AGENTS", fsti_event_create_agents);
         fsti_register_add("_AGE", fsti_event_age);
         fsti_register_add("_DEATH", fsti_event_death);
-        fsti_register_add("_INITIAL_REL", fsti_event_initial_relchange);
         fsti_register_add("_INITIAL_MATING", fsti_event_initial_mating_pool);
+        fsti_register_add("_INITIAL_REL", fsti_event_initial_relchange);
         fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
         fsti_register_add("_BREAKUP", fsti_event_breakup);
         fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
