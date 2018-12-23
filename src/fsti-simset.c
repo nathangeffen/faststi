@@ -47,6 +47,7 @@ void fsti_simset_init(struct fsti_simset *simset)
 
 void fsti_simset_free(struct fsti_simset *simset)
 {
+    fsti_dataset_hash_free(&simset->dataset_hash);
     fsti_config_free(&simset->config);
     g_strfreev(simset->groups);
     g_key_file_free(simset->key_file);
