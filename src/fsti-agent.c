@@ -81,7 +81,7 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
         result += 25.0;
     if (b->sex_preferred != a->sex)
         result += 25.0;
-    result += fabs(a->age - b->age);
+    result += abs(a->age - b->age);
     return result;
 }
 
@@ -662,8 +662,8 @@ void fsti_agent_test(struct test_group *tg)
 
     a.id = 10;
     a.age = 23;
-    a.cured.date = 2018.9;
-    a.date_death.date = 2023.1;
+    a.cured.date = 2018;
+    a.date_death.date = 2023;
 
     l = fsti_agent_elem_val_by_strname_l("id", &a);
     TESTEQ(l, 10, *tg);

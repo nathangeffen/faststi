@@ -24,7 +24,8 @@ static void init(struct fsti_simset *simset)
     simset->sim_number = 0;
     simset->groups = NULL;
     simset->group_ptr = NULL;
-    simset->close_results_file = simset->close_agents_output_file = false;
+    simset->close_results_file = simset->close_agents_output_file =
+        simset->close_partnerships_file = false;
     fsti_dataset_hash_init(&simset->dataset_hash);
     fsti_event_register_events();
     simset->key_file = g_key_file_new();
@@ -99,7 +100,7 @@ static void set_keys(struct fsti_simset *simset)
 static void set_output_files(struct fsti_simset *simset,
                              struct fsti_simulation *simulation)
 {
-    char *results_file_name,  *agents_file_name;
+    char *results_file_name,  *agents_file_name, *partnerships_file_name;
 
     if (simset->sim_number == 0) {
         results_file_name = fsti_config_at0_str(&simulation->config,
@@ -125,9 +126,22 @@ static void set_output_files(struct fsti_simset *simset,
         } else {
             simset->agents_output_file = simulation->agents_output_file = stdout;
         }
+
+        partnerships_file_name = fsti_config_at0_str(&simulation->config,
+                                                     "PARTNERSHIPS_FILE");
+        if(strcmp(partnerships_file_name, "")) {
+            simset->partnerships_file =
+                simulation->partnerships_file = fopen(partnerships_file_name, "w");
+            FSTI_ASSERT(simulation->partnerships_file, FSTI_ERR_FILE,
+                        strerror(errno));
+            simset->close_partnerships_file = true;
+        } else {
+            simset->agents_output_file = simulation->agents_output_file = stdout;
+        }
     } else {
         simulation->results_file = simset->results_file;
         simulation->agents_output_file = simset->agents_output_file;
+        simulation->partnerships_file = simset->partnerships_file;
     }
 }
 
@@ -227,6 +241,8 @@ void fsti_simset_exec(struct fsti_simset *simset)
 
     if (simset->close_results_file) fclose(simset->results_file);
     if (simset->close_agents_output_file) fclose(simset->agents_output_file);
+    if (simset->close_partnerships_file) fclose(simset->partnerships_file);
+
 }
 
 void fsti_simset_test(struct test_group *tg)
@@ -242,11 +258,12 @@ void fsti_simset_test(struct test_group *tg)
         "[Simulation_0]\n"
         "NUM_SIMULATIONS=1\n"
         "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
-        "_WRITE_RESULTS_CSV_HEADER\n"
+        "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
         "DURING_EVENTS=_AGE\n"
         "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
         "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
         "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
+        "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
         "DATASET_SINGLE_PERIOD_SCALE=dataset_single_scale.csv\n"
         "DATASET_SINGLE_PERIOD_SHAPE=dataset_single_shape.csv\n"
         "DATASET_REL_PERIOD_SCALE=dataset_rel_scale.csv\n"
@@ -256,12 +273,21 @@ void fsti_simset_test(struct test_group *tg)
         "[Simulation_1]\n"
         "THREADS=3\n"
         "NUM_SIMULATIONS=7\n"
-        "DURING_EVENTS=_AGE;_MATING_POOL;_SHUFFLE_MATING;_RKPM\n"
+        "NUM_AGENTS=1000\n"
+        "BEFORE_EVENTS=_GENERATE_AGENTS;_INITIAL_MATING;"
+        "_RKPM;_INITIAL_REL\n"
+        "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
+        "_INFECT\n"
         "MATCH_K=1\n"
         "[Simulation_2]\n"
+        "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
+        "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT\n"
         "MATCH_K=10\n"
         "[Simulation_3]\n"
-        "MATCH_K=200\n";
+        "OUTPUT_MATCHES=1\n"
+        "OUTPUT_BREAKUPS=1\n"
+        "OUTPUT_INFECTIONS=1\n"
+        "MATCH_K=2000\n";
 
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");
@@ -297,6 +323,8 @@ void fsti_simset_test(struct test_group *tg)
     fprintf(config_file, "%s", config_text);
     fclose(config_file);
 
+    fsti_events_tg = tg;
+
     fsti_simset_init(&simset);
     fsti_simset_load_config_file(&simset, config_filename);
     fsti_simset_exec(&simset);
@@ -307,4 +335,5 @@ void fsti_simset_test(struct test_group *tg)
     fsti_remove_file(config_filename);
     fsti_remove_file("fsti_test_agents_out_1234.csv");
     fsti_remove_file("fsti_test_results_1234.csv");
+    fsti_remove_file("fsti_test_partnerships_1234.csv");
 }

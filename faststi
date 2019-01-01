@@ -12,7 +12,7 @@ else
     COMPDIR=$FSTI_BASE/debug/
     if [ "$1" == "valgrind" ]; then
         VALGRIND=`which valgrind`
-        EXE="$VALGRIND $FSTI_BASE/debug/src/faststi"
+        EXE="$VALGRIND --leak-check=full $FSTI_BASE/debug/src/faststi"
     else
         EXE=$FSTI_BASE/debug/src/faststi
     fi

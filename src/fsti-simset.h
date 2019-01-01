@@ -24,6 +24,9 @@ struct fsti_simset {
     FILE *results_file;
     bool close_agents_output_file;
     FILE *agents_output_file;
+    bool close_partnerships_file;
+    FILE *partnerships_file;
+
     struct fsti_dataset_hash dataset_hash;
 };
 

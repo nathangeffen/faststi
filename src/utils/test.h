@@ -32,9 +32,9 @@
  */
 
 struct test_group {
-	unsigned successes;
-	unsigned failures;
-	bool verbose;
+	_Atomic unsigned successes;
+	_Atomic unsigned failures;
+        bool verbose;
 };
 
 #define EQ(X, Y) ( (X) == (Y) )

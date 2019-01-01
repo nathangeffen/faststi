@@ -41,6 +41,15 @@ unsigned total_partners;
 #define FSTI_MAX_PARTNERS 3
 #endif
 
+/*
+   Override the number of infection risks (by default: MSM, MSW, WSM, WSW).
+*/
+
+#ifndef FSTI_INFECTION_RISKS
+#define FSTI_INFECTION_RISKS 4
+#endif
+
+
 /* Add your own configuration variables here. */
 
 #ifndef FSTI_ADDITIONAL_CONFIG_VARS
@@ -64,7 +73,6 @@ unsigned total_partners;
             "partner")
 
 #endif
-
 
 /*
    This is the default code to print an agent in csv format. Change it to print another
@@ -132,6 +140,16 @@ unsigned total_partners;
                            FSTI_TIME_IN_YEARS);                         \
         FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, "INFECT_RATE_DEAD"); \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , "POP_DEAD", "%.0f"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , initial_infections,    \
+                                "INITIAL_INFECTIONS", "%.0f");          \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, ,infections,            \
+                                "SIMULATION_INFECTIONS", "%.0f");        \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , initial_matches,      \
+                                "INITIAL_MATCHES", "%.0f");              \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , matches,              \
+                                "SIMULATION_MATCHES", "%.0f");           \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , breakups,             \
+                                "BREAKUPS", "%.0f");                     \
     } while(0)
 #endif
 
@@ -155,7 +173,6 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(date_death),                              \
         FSTI_AGENT_ELEM_ENTRY(id),                                      \
         FSTI_AGENT_ELEM_ENTRY(infected),                                \
-        FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
          UINT, fsti_to_partner},                                  \
@@ -289,6 +306,23 @@ unsigned total_partners;
 #ifndef FSTI_HOOK_CREATE_AGENT
 #define FSTI_HOOK_CREATE_AGENT(simulation, agent)
 #endif
+
+/*
+  Hook just before an agent dies (partnerships still exist)
+*/
+
+#ifndef FSTI_HOOK_PRE_DEATH
+#define FSTI_HOOK_PRE_DEATH(simulation, agent)
+#endif
+
+/*
+  Hook after an agent dies (partnerships don't exist)
+*/
+
+#ifndef FSTI_HOOK_POST_DEATH
+#define FSTI_HOOK_POST_DEATH(simulation, agent)
+#endif
+
 
 /*
   Hook to register events.

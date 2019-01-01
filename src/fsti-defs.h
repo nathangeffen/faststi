@@ -36,6 +36,10 @@
 #define FSTI_YEAR 525949
 #define FSTI_5_YEAR FSTI_YEAR * 5
 
+#define FSTI_INITIAL_MATCH 0
+#define FSTI_MATCH 1
+#define FSTI_BREAKUP 2
+#define FSTI_INFECTION 3
 
 #define FSTI_NO_OP "_NO_OP"
 
@@ -208,8 +212,5 @@ FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_file(const char *filename);
 void fsti_remove_data_file(const char *filename);
 void fsti_test_defs(struct test_group *tg);
-
-
-
 
 #endif

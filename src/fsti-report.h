@@ -42,6 +42,10 @@
                                  double: DBL_MAX,                      \
                                  long double: LDBL_MAX)
 
+#define FSTI_SIM_CONST(unused, elem, result) do {        \
+        result = simulation->elem;                    \
+    } while(0)
+
 #define FSTI_MIN(agent_ind, elem, result) do {                          \
         struct fsti_agent *_agent;                                      \
         size_t *_it;                                                    \

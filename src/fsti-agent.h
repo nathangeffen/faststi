@@ -42,10 +42,7 @@ struct fsti_agent {
             uint16_t age_group;
         };
     };
-    union {
-        bool infected;
-        float infected_date;
-    };
+    uint8_t infected;
     struct fsti_date cured; // Date last cured of last infection
     union {
         bool dead; // 0 if still alive

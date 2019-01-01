@@ -18,7 +18,7 @@ int fsti_config_set_default(struct fsti_config *config)
 		    "2018;1;1");
     FSTI_CONFIG_ADD(config, "NUM_TIME_STEPS",
                     "Number of iterations simulation should run for "
-                    "(10 years)", FSTI_YEAR * 10 / FSTI_DAY);
+                    "(10 years)", (FSTI_YEAR * 10) / FSTI_DAY);
     FSTI_CONFIG_ADD(config, "AGE_INPUT_TIME_STEP",
                     "Denomination of age in input files "
                     "(usually year or 5-year age groups - defaults to year)",
@@ -26,7 +26,7 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "STABILIZATION_STEPS",
 		    "Number of time steps to run before executing "
 		    "various events", 0);
-    FSTI_CONFIG_ADD(config, "NUM_AGENTS", "Number of agents", 1000);
+    FSTI_CONFIG_ADD(config, "NUM_AGENTS", "Number of agents", 20000);
     FSTI_CONFIG_ADD(config, "MATCH_K",
                     "Value for k when using matching algorithms.",
                     100);
@@ -74,6 +74,16 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "AGENTS_OUTPUT_FILE",
                     "File name to output results to (empty string for stdout)",
                     "");
+    FSTI_CONFIG_ADD(config, "PARTNERSHIPS_FILE",
+                    "File name to output partnerships (empty string for stdout)",
+                    "");
+    FSTI_CONFIG_ADD(config, "OUTPUT_MATCHES",
+                    "Whether to output matches to the partnership file", 0);
+    FSTI_CONFIG_ADD(config, "OUTPUT_BREAKUPS",
+                    "Whether to output breakups to the partnership file", 0);
+    FSTI_CONFIG_ADD(config, "OUTPUT_INFECTIONS",
+                    "Whether to output infections to the partnership file", 0);
+
     FSTI_CONFIG_ADD(config, "THREADS",
                     "Number of threads (1=no threading, 0=system determined)",
                     0);
@@ -81,6 +91,10 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Character that separates CSV fields", ";");
     FSTI_CONFIG_ADD(config, "AGENT_CSV_HEADER",
                     "Whether or not the agent csv input file has a header", 1);
+
+    fsti_config_add(config, "INFECTION_RISK",
+                    "Risk of infection for msm, msw, wsm, wsw respectively. ",
+                    "0.01;0.005;0.0075;0.001");
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
                     "CSV file of values to determine agent deaths", FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SCALE",
@@ -104,6 +118,10 @@ int fsti_config_set_default(struct fsti_config *config)
     fsti_config_add(config, "A.sex",
                    "Agent sex, sex_preference, infection fields",
                    "SEX_SEXOR_INFECTION;0.5;0.05;0.005;0.005;0.005;0.005");
+
+    FSTI_CONFIG_ADD(config, "EVENT_TEST_FREQ",
+                    "Run test cases in test events every nth iteration", 100);
+
     FSTI_ADDITIONAL_CONFIG_VARS(config);
 
     return 0;

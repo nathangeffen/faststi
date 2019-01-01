@@ -55,8 +55,14 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     simulation->sim_number = sim_number;
     simulation->config_sim_number = config_sim_number;
     simulation->iteration = 0;
+    simulation->matches = 0;
+    simulation->initial_matches = 0;
+    simulation->breakups = 0;
+    simulation->initial_infections = 0;
+    simulation->infections = 0;
 
-    simulation->results_file = simulation->agents_output_file = stdout;
+    simulation->results_file = simulation->agents_output_file =
+        simulation->partnerships_file = stdout;
 
     simulation->report_frequency =
         fsti_config_at0_long(&simulation->config, "REPORT_FREQUENCY");
@@ -70,6 +76,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     ARRAY_NEW(simulation->before_events, events);
     ARRAY_NEW(simulation->during_events, events);
     ARRAY_NEW(simulation->after_events, events);
+
 
     set_all_events(simulation);
 
@@ -105,6 +112,18 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
                                              year, month, day, 0, 0, 0);
     FSTI_ASSERT(simulation->start_date, FSTI_ERR_INVALID_DATE, NULL);
 
+    simulation->csv_delimiter =
+        fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
+    simulation->agent_csv_header =
+        fsti_config_at0_long(&simulation->config, "AGENT_CSV_HEADER");
+
+    simulation->record_matches =
+        fsti_config_at0_long(&simulation->config, "OUTPUT_MATCHES");
+    simulation->record_breakups =
+        fsti_config_at0_long(&simulation->config, "OUTPUT_BREAKUPS");
+    simulation->record_infections =
+        fsti_config_at0_long(&simulation->config, "OUTPUT_INFECTIONS");
+
     simulation->stabilization_steps = (unsigned)
 	fsti_config_at0_long(&simulation->config, "STABILIZATION_STEPS");
     simulation->time_step = fsti_config_at0_long(&simulation->config,
@@ -120,10 +139,10 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_config_at0_double(&simulation->config, "INITIAL_MATING_PROB");
     simulation->mating_pool_prob =
         fsti_config_at0_double(&simulation->config, "MATING_PROB");
-    simulation->csv_delimiter =
-        fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
-    simulation->agent_csv_header =
-        fsti_config_at0_long(&simulation->config, "AGENT_CSV_HEADER");
+
+    for (size_t i = 0; i < FSTI_INFECTION_RISKS; i++)
+        simulation->infection_risk[i] = fsti_config_at_double(
+            &simulation->config, "INFECTION_RISK", i);
     simulation->dataset_mortality =
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
     simulation->dataset_mating_pool =
@@ -136,6 +155,7 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SCALE");
     simulation->dataset_rel_shape =
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SHAPE");
+
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
@@ -160,6 +180,7 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
 {
     struct fsti_agent *agent, *partner;
     agent = fsti_agent_ind_arrp(&simulation->living, it);
+    FSTI_HOOK_PRE_DEATH(simulation, agent);
     for (size_t i = 0; i < agent->num_partners; i++) {
         size_t id = agent->partners[i];
         partner =  fsti_agent_arr_at(&simulation->agent_arr, id);
@@ -170,7 +191,7 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
                                                 simulation->iteration,
                                                 simulation->time_step);
     fsti_agent_ind_remove(&simulation->living, it);
-
+    FSTI_HOOK_POST_DEATH(simulation, agent);
 }
 
 void fsti_simulation_free(struct fsti_simulation *simulation)
@@ -222,7 +243,7 @@ void fsti_simulation_test(struct test_group *tg)
 
     min_age = fsti_time_in_years(min_age);
     max_age = fsti_time_in_years(max_age);
-    TESTEQ(min_age >= 25.0 && min_age <= 26.0, true, *tg);
+    TESTEQ(min_age >= 24.0 && min_age <= 26.0, true, *tg);
     TESTEQ(max_age >= 59.0 && max_age <= 60.0, true, *tg);
     d = (double) males / simulation.living.len;
     TESTEQ(d > 0.47 && d < 0.53, true, *tg);

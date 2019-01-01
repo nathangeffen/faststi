@@ -12,7 +12,6 @@
 #define FSTI_FOR_LIVING(simulation, agent, code)       \
     FSTI_FOR((simulation).living, agent, code)
 
-
 enum fsti_simulation_state {
     BEFORE,
     DURING,
@@ -34,6 +33,14 @@ struct fsti_simulation {
     struct fsti_event_array before_events;
     struct fsti_event_array during_events;
     struct fsti_event_array after_events;
+    bool record_matches;
+    bool record_breakups;
+    bool record_infections;
+    uint32_t initial_matches;
+    uint32_t matches;
+    uint32_t breakups;
+    uint32_t initial_infections;
+    uint32_t infections;
     enum fsti_simulation_state state;
     const gsl_rng_type *T;
     gsl_rng *rng;
@@ -54,6 +61,8 @@ struct fsti_simulation {
     char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;
+    FILE *partnerships_file;
+    double infection_risk[FSTI_INFECTION_RISKS];
     struct fsti_dataset_hash *dataset_hash;
     struct fsti_dataset *dataset_mortality;
     struct fsti_dataset *dataset_mating_pool;
