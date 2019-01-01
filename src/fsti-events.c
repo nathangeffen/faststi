@@ -523,22 +523,22 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
         });
 }
 
-/* void fsti_event_birth(struct fsti_simulation *simulation) */
-/* { */
-/*     if (simulation->iteration % simulation->birth_event_freq == 0) { */
-/*         double alpha = simulation->birth_rate_alpha; */
-/*         double beta = simulation->birth_rate_beta; */
-/*         double rate = gsl_ran_beta(simulation->rng, alpha, beta); */
-/*         uint32_t births = rate * simulation->living.len; */
-/*         uint32_t i; */
-/*         for(i = 0; i < births; i++) { */
-/*             struct fsti_agent a; */
-/*             double r = gsl_rng_uniform(simulation->rng); */
-/*             a.sex = simulation->prob_male  */
+void fsti_event_birth(struct fsti_simulation *simulation)
+{
+    /* if (simulation->iteration % simulation->birth_event_freq == 0) { */
+    /*     double alpha = simulation->birth_rate_alpha; */
+    /*     double beta = simulation->birth_rate_beta; */
+    /*     double rate = gsl_ran_beta(simulation->rng, alpha, beta); */
+    /*     uint32_t births = rate * simulation->living.len; */
+    /*     uint32_t i; */
+    /*     for(i = 0; i < births; i++) { */
+    /*         struct fsti_agent a; */
+    /*         double r = gsl_rng_uniform(simulation->rng); */
+    /*         a.sex = simulation->prob_male */
 
-/*         } */
-/*     } */
-/* } */
+    /*     } */
+    /* } */
+}
 
 void fsti_event_death(struct fsti_simulation *simulation)
 {

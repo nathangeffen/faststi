@@ -12,7 +12,7 @@
 
 /* Technical limits */
 #define FSTI_HASHSIZE 101
-#define FSTI_KEY_LEN 30
+#define FSTI_KEY_LEN 40
 #define FSTI_DESC_LEN 200
 #define FSTI_TOKEN_LEN 200
 #define FSTI_DATE_LEN 11
