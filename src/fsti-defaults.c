@@ -44,7 +44,7 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Probability a female is WSW.", 0.05);
     FSTI_CONFIG_ADD(config, "AGE_MIN",
                     "Lower end of uniformly distributed age for new agents.",
-                    15.0);
+                    15.0 * FSTI_YEAR);
     FSTI_CONFIG_ADD(config, "AGE_RANGE",
                     "Uniformly distributed size of age range for new agents.",
                     25.0);
@@ -118,6 +118,26 @@ int fsti_config_set_default(struct fsti_config *config)
     fsti_config_add(config, "A.sex",
                    "Agent sex, sex_preference, infection fields",
                    "SEX_SEXOR_INFECTION;0.5;0.05;0.005;0.005;0.005;0.005");
+
+    FSTI_CONFIG_ADD(config, "BIRTH_EVENT_EVERY_N",
+                    "Every n iterations that birth event should execute", 73);
+    FSTI_CONFIG_ADD(config, "BIRTH_RATE",
+                    "Birth rate for the period of BIRTH_EVENT_EVERY_N",
+                    0.003968379);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_MALE",
+                    "Probability a new agent is male", 0.5);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_MSW",
+                    "Probability a new male agent is msw", 0.95);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_WSM",
+                    "Probability a new female agent is wsm", 0.95);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_MSM",
+                    "Probability a new msm agent is infected", 0.001);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_MSW",
+                    "Probability a new msw agent is infected", 0.0001);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_WSM",
+                    "Probability a new wsm agent is infected", 0.0005);
+    FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_WSW",
+                    "Probability a new wsw agent is infected", 0.0001);
 
     FSTI_CONFIG_ADD(config, "EVENT_TEST_FREQ",
                     "Run test cases in test events every nth iteration", 100);

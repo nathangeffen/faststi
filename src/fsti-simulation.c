@@ -156,6 +156,26 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->dataset_rel_shape =
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SHAPE");
 
+    // Birth event vars
+    simulation->birth_event_every_n =
+        fsti_config_at0_long(&simulation->config, "BIRTH_EVENT_EVERY_N");
+    simulation->birth_rate = fsti_config_at0_double(&simulation->config,
+                                                    "BIRTH_RATE");
+    simulation->min_age = fsti_config_at0_double(&simulation->config, "AGE_MIN");
+    simulation->prob_birth_male =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_MALE");
+    simulation->prob_birth_msw =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_MSW");
+    simulation->prob_birth_wsm =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_WSM");
+    simulation->prob_birth_infected_msm =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_MSM");
+    simulation->prob_birth_infected_msw =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_MSW");
+    simulation->prob_birth_infected_wsm =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_WSM");
+    simulation->prob_birth_infected_wsw =
+        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_WSW");
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }

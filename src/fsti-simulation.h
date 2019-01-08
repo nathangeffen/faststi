@@ -63,6 +63,19 @@ struct fsti_simulation {
     FILE *agents_output_file;
     FILE *partnerships_file;
     double infection_risk[FSTI_INFECTION_RISKS];
+
+    // Birth event vars
+    uint32_t birth_event_every_n;
+    uint32_t min_age;
+    double birth_rate;
+    double prob_birth_male;
+    double prob_birth_msw;
+    double prob_birth_wsm;
+    double prob_birth_infected_msm;
+    double prob_birth_infected_msw;
+    double prob_birth_infected_wsm;
+    double prob_birth_infected_wsw;
+
     struct fsti_dataset_hash *dataset_hash;
     struct fsti_dataset *dataset_mortality;
     struct fsti_dataset *dataset_mating_pool;

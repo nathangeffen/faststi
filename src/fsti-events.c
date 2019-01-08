@@ -523,21 +523,69 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
         });
 }
 
+void fsti_set_birth_age(struct fsti_simulation *simulation, struct fsti_agent *a)
+{
+    a->age = simulation->min_age * FSTI_YEAR;
+}
+
+void fsti_set_birth_sex(struct fsti_simulation *simulation, struct fsti_agent *a)
+{
+    if (gsl_rng_uniform(simulation->rng) < simulation->prob_birth_male)
+        a->sex = FSTI_MALE;
+    else
+        a->sex = FSTI_FEMALE;
+}
+
+void fsti_set_birth_sex_preferred(struct fsti_simulation *simulation,
+                                  struct fsti_agent *a)
+{
+    double r = gsl_rng_uniform(simulation->rng);
+    if (a->sex == FSTI_MALE) {
+        if (r < simulation->prob_birth_msw)
+            a->sex_preferred = FSTI_FEMALE;
+        else
+            a->sex_preferred = FSTI_MALE;
+    } else {
+        if (r < simulation->prob_birth_wsm)
+            a->sex_preferred = FSTI_MALE;
+        else
+            a->sex_preferred = FSTI_FEMALE;
+    }
+}
+
+void fsti_set_birth_infected(struct fsti_simulation *simulation,
+                             struct fsti_agent *a)
+{
+    double r = gsl_rng_uniform(simulation->rng), d;
+
+    a->infected = 0;
+    if (a->sex == FSTI_MALE && a->sex_preferred == FSTI_MALE)
+        d = simulation->prob_birth_infected_msm;
+    else if (a->sex == FSTI_MALE && a->sex_preferred == FSTI_FEMALE)
+        d = simulation->prob_birth_infected_msw;
+    else if (a->sex == FSTI_FEMALE && a->sex_preferred == FSTI_FEMALE)
+        d = simulation->prob_birth_infected_wsw;
+    else
+        d = simulation->prob_birth_infected_wsm;
+
+    a->infected = (r < d) ? 1 : 0;
+}
+
+
 void fsti_event_birth(struct fsti_simulation *simulation)
 {
-    /* if (simulation->iteration % simulation->birth_event_freq == 0) { */
-    /*     double alpha = simulation->birth_rate_alpha; */
-    /*     double beta = simulation->birth_rate_beta; */
-    /*     double rate = gsl_ran_beta(simulation->rng, alpha, beta); */
-    /*     uint32_t births = rate * simulation->living.len; */
-    /*     uint32_t i; */
-    /*     for(i = 0; i < births; i++) { */
-    /*         struct fsti_agent a; */
-    /*         double r = gsl_rng_uniform(simulation->rng); */
-    /*         a.sex = simulation->prob_male */
+    if (simulation->iteration % simulation->birth_event_every_n == 0) {
+        double mu = simulation->birth_rate * simulation->living.len;
+        uint32_t births = gsl_ran_poisson(simulation->rng, mu);
 
-    /*     } */
-    /* } */
+        for(size_t i = 0; i < births; i++) {
+            struct fsti_agent agent;
+            memset(&agent, 0, sizeof(agent));
+            FSTI_AGENT_BIRTH(simulation, &agent);
+            fsti_agent_arr_push(&simulation->agent_arr, &agent);
+            fsti_agent_ind_push(&simulation->living, agent.id);
+        }
+    }
 }
 
 void fsti_event_death(struct fsti_simulation *simulation)
@@ -815,6 +863,39 @@ void fsti_event_test_infect(struct fsti_simulation *simulation)
     }
 }
 
+void fsti_event_test_birth(struct fsti_simulation *simulation)
+{
+    static _Thread_local uint32_t births = 0;
+    uint32_t births_before, births_after;
+
+    births_before = simulation->living.len;
+    fsti_event_birth(simulation);
+    births_after = simulation->living.len;
+    births += births_after - births_before;
+
+
+    if (simulation->iteration == simulation->num_iterations - 1) {
+        TESTEQ(births > 0, true, *fsti_events_tg);
+        births = 0;
+    }
+}
+
+void fsti_event_test_death(struct fsti_simulation *simulation)
+{
+    static _Thread_local uint32_t deaths = 0;
+    uint32_t deaths_before, deaths_after;
+
+    deaths_before = simulation->dead.len;
+    fsti_event_death(simulation);
+    deaths_after = simulation->dead.len;
+    deaths += deaths_after - deaths_before;
+
+    if (simulation->iteration == simulation->num_iterations - 1) {
+        TESTEQ(deaths > 0, true, *fsti_events_tg);
+        deaths = 0;
+    }
+}
+
 /* End of test events */
 
 void fsti_event_register_events()
@@ -835,6 +916,7 @@ void fsti_event_register_events()
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_INFECT", fsti_event_infect);
+        fsti_register_add("_BIRTH", fsti_event_birth);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
         fsti_register_add("_WRITE_RESULTS_CSV_HEADER",
@@ -857,6 +939,8 @@ void fsti_event_register_events()
         fsti_register_add("_TEST_SHUFFLE_MATING", fsti_event_test_shuffle_mating);
         fsti_register_add("_TEST_RKPM", fsti_event_test_knn_match);
         fsti_register_add("_TEST_INFECT", fsti_event_test_infect);
+        fsti_register_add("_TEST_BIRTH", fsti_event_test_birth);
+        fsti_register_add("_TEST_DEATH", fsti_event_test_death);
 
         FSTI_HOOK_EVENTS_REGISTER;
     }

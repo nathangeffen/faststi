@@ -206,6 +206,17 @@ unsigned total_partners;
     fsti_agent_default_distance(agent_a, agent_b)
 #endif
 
+#ifndef FSTI_AGENT_BIRTH
+#define FSTI_AGENT_BIRTH(simulation, agent)                             \
+    do {                                                                \
+        fsti_set_birth_age(simulation, agent);                          \
+        fsti_set_birth_sex(simulation, agent);                          \
+        fsti_set_birth_sex_preferred(simulation, agent);                \
+        fsti_set_birth_infected(simulation, agent);                     \
+    } while(0)
+#endif
+
+
 /*******************************************************************
  * Advanced macros: Please only override these if you have a
  * good understanding of both C and the FastSTI code.
