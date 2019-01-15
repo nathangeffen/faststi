@@ -57,6 +57,8 @@ struct fsti_simulation {
     uint32_t iteration;
     uint32_t report_frequency;
     uint32_t match_k;
+    uint8_t max_stage;
+    uint8_t initial_infect_stage;
     bool agent_csv_header;
     char csv_delimiter;
     FILE *results_file;
@@ -78,11 +80,12 @@ struct fsti_simulation {
 
     struct fsti_dataset_hash *dataset_hash;
     struct fsti_dataset *dataset_mortality;
-    struct fsti_dataset *dataset_mating_pool;
     struct fsti_dataset *dataset_single_scale;
     struct fsti_dataset *dataset_single_shape;
     struct fsti_dataset *dataset_rel_scale;
     struct fsti_dataset *dataset_rel_shape;
+    struct fsti_dataset *dataset_infect_stage;
+    struct fsti_dataset *dataset_coinfect;
     FSTI_SIMULATION_FIELDS
 };
 

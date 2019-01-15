@@ -143,10 +143,13 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     for (size_t i = 0; i < FSTI_INFECTION_RISKS; i++)
         simulation->infection_risk[i] = fsti_config_at_double(
             &simulation->config, "INFECTION_RISK", i);
+    simulation->max_stage = fsti_config_at0_long(&simulation->config,
+                                                 "MAX_STAGE");
+    simulation->initial_infect_stage =
+        fsti_config_at0_long(&simulation->config, "INITIAL_INFECT_STAGE");
+
     simulation->dataset_mortality =
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
-    simulation->dataset_mating_pool =
-        fsti_simulation_get_dataset(simulation, "DATASET_MATING_POOL");
     simulation->dataset_single_scale =
         fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD_SCALE");
     simulation->dataset_single_shape =
@@ -155,6 +158,10 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SCALE");
     simulation->dataset_rel_shape =
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SHAPE");
+    simulation->dataset_infect_stage =
+        fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
+    simulation->dataset_coinfect =
+        fsti_simulation_get_dataset(simulation, "DATASET_COINFECT");
 
     // Birth event vars
     simulation->birth_event_every_n =

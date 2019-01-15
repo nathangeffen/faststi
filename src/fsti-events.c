@@ -672,7 +672,7 @@ void fsti_event_infect(struct fsti_simulation *simulation)
                             d = simulation->infection_risk[FSTI_WSW];
                         r = gsl_rng_uniform(simulation->rng);
                         if (r < d) {
-                            agent->infected = 1;
+                            agent->infected = simulation->initial_infect_stage;
                             simulation->infections++;
                             if (simulation->record_infections)
                                 output_partnership(simulation, agent, partner,
@@ -685,6 +685,38 @@ void fsti_event_infect(struct fsti_simulation *simulation)
         });
 }
 
+void fsti_event_infect_stage(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+    double d, r;
+
+    FSTI_ASSERT(simulation->dataset_infect_stage, FSTI_ERR_MISSING_DATASET, NULL);
+
+    FSTI_FOR_LIVING(*simulation, agent, {
+            if (agent->infected > 0 &&
+                agent->infected < simulation->max_stage) {
+                d = fsti_dataset_lookup(simulation->dataset_infect_stage, agent);
+                r = gsl_rng_uniform(simulation->rng);
+                if (r < d) ++agent->infected;
+            }
+        });
+}
+
+void fsti_event_coinfect(struct fsti_simulation *simulation)
+{
+    struct fsti_agent *agent;
+    double d, r;
+
+    FSTI_ASSERT(simulation->dataset_coinfect, FSTI_ERR_MISSING_DATASET, NULL);
+
+    FSTI_FOR_LIVING(*simulation, agent, {
+            if (agent->coinfected == 0) {
+                d = fsti_dataset_lookup(simulation->dataset_coinfect, agent);
+                r = gsl_rng_uniform(simulation->rng);
+                if (r < d) agent->coinfected = 1;
+            }
+        });
+}
 
 void fsti_event_no_op(struct fsti_simulation *simulation)
 {
@@ -916,6 +948,8 @@ void fsti_event_register_events()
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
         fsti_register_add("_INFECT", fsti_event_infect);
+        fsti_register_add("_STAGE", fsti_event_infect_stage);
+        fsti_register_add("_COINFECT", fsti_event_coinfect);
         fsti_register_add("_BIRTH", fsti_event_birth);
         fsti_register_add("_REPORT", fsti_event_report);
         fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);

@@ -37,7 +37,7 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Probability of entering mating pool on time step.",
                     0.05);
     FSTI_CONFIG_ADD(config, "PROB_MALE",
-                    "Probability an agent is males.", 0.5);
+                    "Probability an agent is male.", 0.5);
     FSTI_CONFIG_ADD(config, "PROB_MSM",
                     "Probability a male is MSM.", 0.05);
     FSTI_CONFIG_ADD(config, "PROB_WSW",
@@ -95,6 +95,17 @@ int fsti_config_set_default(struct fsti_config *config)
     fsti_config_add(config, "INFECTION_RISK",
                     "Risk of infection for msm, msw, wsm, wsw respectively. ",
                     "0.01;0.005;0.0075;0.001");
+
+    FSTI_CONFIG_ADD(config, "INITIAL_INFECT_STAGE",
+                    "When infected this is the integer to set infected to",  2);
+    FSTI_CONFIG_ADD(config, "TREATMENT_INFECT_STAGE",
+                    "When treated this is the integer to set infected to", 1);
+    FSTI_CONFIG_ADD(config, "MAX_STAGE",
+                    "Maximum infection stage (e.g. 6 for HIV "
+                    "1=virally suppressed, 2=primary 3-6=WHO 1-4)" , 6);
+    FSTI_CONFIG_ADD(config, "TREATMENT_SUCCESS_STAGE",
+                    "Infection stage to which agent goes if treatment "
+                    "is a success", 6);
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
                     "CSV file of values to determine agent deaths", FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SCALE",
@@ -109,10 +120,15 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD_SHAPE",
                     "CSV file of values to determine Weibull shape "
                     "for period agent is in relationship", FSTI_NO_OP);
-
-    FSTI_CONFIG_ADD(config, "DATASET_MATING_POOL",
-                    "CSV file of values to determine agents entering mating pool",
+    FSTI_CONFIG_ADD(config, "DATASET_INFECT_STAGE",
+                    "CSV file of values to determine when agent advances "
+                    "to next stage of infection",
                     FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_COINFECT",
+                    "CSV file of values to determine if agent has coinfection",
+                    FSTI_NO_OP);
+
+
     fsti_config_add(config, "A.age", "Agent age field",
                     "AGE;1;1.23;15;50");
     fsti_config_add(config, "A.sex",
