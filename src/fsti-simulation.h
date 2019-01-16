@@ -80,10 +80,8 @@ struct fsti_simulation {
 
     struct fsti_dataset_hash *dataset_hash;
     struct fsti_dataset *dataset_mortality;
-    struct fsti_dataset *dataset_single_scale;
-    struct fsti_dataset *dataset_single_shape;
-    struct fsti_dataset *dataset_rel_scale;
-    struct fsti_dataset *dataset_rel_shape;
+    struct fsti_dataset *dataset_single;
+    struct fsti_dataset *dataset_rel;
     struct fsti_dataset *dataset_infect_stage;
     struct fsti_dataset *dataset_coinfect;
     FSTI_SIMULATION_FIELDS

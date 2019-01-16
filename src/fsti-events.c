@@ -443,10 +443,9 @@ set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
     double scale, shape;
     uint32_t iterations;
 
-    FSTI_ASSERT(simulation->dataset_rel_scale, FSTI_ERR_MISSING_DATASET, NULL);
-    FSTI_ASSERT(simulation->dataset_rel_shape, FSTI_ERR_MISSING_DATASET, NULL);
-    scale = fsti_dataset_lookup0(simulation->dataset_rel_scale, a);
-    shape = fsti_dataset_lookup0(simulation->dataset_rel_shape, a);
+    FSTI_ASSERT(simulation->dataset_rel, FSTI_ERR_MISSING_DATASET, NULL);
+    scale = fsti_dataset_lookup(simulation->dataset_rel, a, 0);
+    shape = fsti_dataset_lookup(simulation->dataset_rel, a, 1);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
     a->relchange[0] = simulation->iteration + iterations;
 
@@ -475,10 +474,9 @@ set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
     double scale, shape;
     uint32_t iterations;
 
-    FSTI_ASSERT(simulation->dataset_single_scale, FSTI_ERR_MISSING_DATASET, NULL);
-    FSTI_ASSERT(simulation->dataset_single_shape, FSTI_ERR_MISSING_DATASET, NULL);
-    scale = fsti_dataset_lookup0(simulation->dataset_single_scale, a);
-    shape = fsti_dataset_lookup0(simulation->dataset_single_shape, a);
+    FSTI_ASSERT(simulation->dataset_single, FSTI_ERR_MISSING_DATASET, NULL);
+    scale = fsti_dataset_lookup(simulation->dataset_single, a, 0);
+    shape = fsti_dataset_lookup(simulation->dataset_single, a, 1);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
     a->relchange[0] = simulation->iteration + iterations;
 }

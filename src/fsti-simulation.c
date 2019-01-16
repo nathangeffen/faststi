@@ -150,14 +150,10 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 
     simulation->dataset_mortality =
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
-    simulation->dataset_single_scale =
-        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD_SCALE");
-    simulation->dataset_single_shape =
-        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD_SHAPE");
-    simulation->dataset_rel_scale =
-        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SCALE");
-    simulation->dataset_rel_shape =
-        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD_SHAPE");
+    simulation->dataset_single =
+        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD");
+    simulation->dataset_rel =
+        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD");
     simulation->dataset_infect_stage =
         fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
     simulation->dataset_coinfect =

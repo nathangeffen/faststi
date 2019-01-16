@@ -108,18 +108,12 @@ int fsti_config_set_default(struct fsti_config *config)
                     "is a success", 6);
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
                     "CSV file of values to determine agent deaths", FSTI_NO_OP);
-    FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SCALE",
-                    "CSV file of values to determine Weibull scale "
-                    "for period agent is single", FSTI_NO_OP);
-    FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD_SHAPE",
-                    "CSV file of values to determine Weibull shape "
-                    "for period agent is single", FSTI_NO_OP);
-    FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD_SCALE",
-                    "CSV file of values to determine Weibull scale "
-                    "for period agent is in relationship", FSTI_NO_OP);
-    FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD_SHAPE",
-                    "CSV file of values to determine Weibull shape "
-                    "for period agent is in relationship", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD",
+                    "CSV file of values to determine period agent is single",
+                    FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_REL_PERIOD",
+                    "CSV file of values to determine period agent is in "
+                    "relationship", FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_INFECT_STAGE",
                     "CSV file of values to determine when agent advances "
                     "to next stage of infection",
