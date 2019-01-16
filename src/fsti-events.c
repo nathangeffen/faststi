@@ -445,8 +445,8 @@ set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 
     FSTI_ASSERT(simulation->dataset_rel_scale, FSTI_ERR_MISSING_DATASET, NULL);
     FSTI_ASSERT(simulation->dataset_rel_shape, FSTI_ERR_MISSING_DATASET, NULL);
-    scale = fsti_dataset_lookup(simulation->dataset_rel_scale, a);
-    shape = fsti_dataset_lookup(simulation->dataset_rel_shape, a);
+    scale = fsti_dataset_lookup0(simulation->dataset_rel_scale, a);
+    shape = fsti_dataset_lookup0(simulation->dataset_rel_shape, a);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
     a->relchange[0] = simulation->iteration + iterations;
 
@@ -477,8 +477,8 @@ set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 
     FSTI_ASSERT(simulation->dataset_single_scale, FSTI_ERR_MISSING_DATASET, NULL);
     FSTI_ASSERT(simulation->dataset_single_shape, FSTI_ERR_MISSING_DATASET, NULL);
-    scale = fsti_dataset_lookup(simulation->dataset_single_scale, a);
-    shape = fsti_dataset_lookup(simulation->dataset_single_shape, a);
+    scale = fsti_dataset_lookup0(simulation->dataset_single_scale, a);
+    shape = fsti_dataset_lookup0(simulation->dataset_single_shape, a);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
     a->relchange[0] = simulation->iteration + iterations;
 }
@@ -599,7 +599,7 @@ void fsti_event_death(struct fsti_simulation *simulation)
     it = simulation->living.indices;
     while (it < (simulation->living.indices + simulation->living.len)) {
         agent = fsti_agent_ind_arrp(&simulation->living, it);
-        d = fsti_dataset_lookup(simulation->dataset_mortality, agent);
+        d = fsti_dataset_lookup0(simulation->dataset_mortality, agent);
         r = gsl_rng_uniform(simulation->rng);
         if (r < d)
             fsti_simulation_kill_agent(simulation, it);
@@ -695,7 +695,7 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->infected > 0 &&
                 agent->infected < simulation->max_stage) {
-                d = fsti_dataset_lookup(simulation->dataset_infect_stage, agent);
+                d = fsti_dataset_lookup0(simulation->dataset_infect_stage, agent);
                 r = gsl_rng_uniform(simulation->rng);
                 if (r < d) ++agent->infected;
             }
@@ -711,7 +711,7 @@ void fsti_event_coinfect(struct fsti_simulation *simulation)
 
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->coinfected == 0) {
-                d = fsti_dataset_lookup(simulation->dataset_coinfect, agent);
+                d = fsti_dataset_lookup0(simulation->dataset_coinfect, agent);
                 r = gsl_rng_uniform(simulation->rng);
                 if (r < d) agent->coinfected = 1;
             }

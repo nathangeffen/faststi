@@ -1,18 +1,18 @@
-coinfection event
-disease stage event
-sort out data directory
-composite events
-Put initial vars into hashtable (allow ordered initialization)
-Put agent var names into hashtable
-Rename dataset
-sort parameters in alphabetical order before displaying
-Datasets (probably called state tables) can have multiple lookup vals (instead of a separate dataset for each parameter of a multiparameter function like weibull).
-Syphilis model
-Get rid of redundant parameters
-Documentation: user guide
-Comments in csv files
+1. coinfection event
+2. disease stage event
+3. sort out data directory
+4. Flushing stdout
+5. composite events
+6. Put initial vars into hashtable (allow ordered initialization)
+7. Put agent var names into hashtable
+8. Rename dataset
+9. sort parameters in alphabetical order before displaying
+10. Datasets (probably called state tables) can have multiple lookup vals (instead of a separate dataset for each parameter of a multiparameter function like weibull).
+11. Syphilis model
+12. Get rid of redundant parameters
+13. Documentation: user guide
 
 Version 2.0
 ------------
-Calibration
-Datasets can specify function.
+1. Calibration
+2. Datasets can specify function. (Maybe)

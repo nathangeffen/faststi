@@ -74,6 +74,15 @@ static struct csv_row csv_read_row(FILE *f, const char delim)
     bool inrow = true, inquote = false;
     char c, *s;
 
+    // Read past comment lines beginning with #
+    while ( (c = fgetc(f)) == '#') {
+        while ( (c = fgetc(f)) != '\n' && c != EOF) ;
+        if (c == EOF) ungetc(c, f);
+    }
+    ungetc(c, f);
+
+    /*************/
+
     ARRAY_NEW(row, cells);
     ARRAY_NEW(cell, str);
     while(inrow) {
