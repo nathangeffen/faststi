@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <glib.h>
 
 #include "fsti-dataset.h"
@@ -25,11 +26,38 @@ static void alloc_dataset(struct fsti_dataset *dataset,
     dataset->next = NULL;
 }
 
+void fsti_print_dataset(struct fsti_dataset *ds)
+{
+    printf("Filename: %s\n", ds->filename);
+    printf("Num independents: %zu\n", ds->num_independents);
+    printf("Num dependents: %zu\n", ds->num_dependents);
+    printf("Number of entries (rows excluding header): %zu\n", ds->entries);
+    printf("Column at which 2nd agent starts (0 if only one agent: %zu\n",
+           ds->second_agent);
+    if (ds->num_independents) {
+        printf("Minimum values: %u", ds->min_vals[0]);
+        for (size_t i = 1; i < ds->num_independents; ++i)
+            printf(", %u", ds->min_vals[i]);
+        printf("\nMaximum values: %u", ds->max_vals[0]);
+        for (size_t i = 1; i < ds->num_independents; i++)
+            printf(", %u", ds->max_vals[i]);
+        printf("\nMultiplicands: %u", ds->multiplicands[0]);
+        for (size_t i = 1; i < ds->num_independents; ++i)
+            printf(", %u", ds->multiplicands[i]);
+        printf("\n");
+    }
+    printf("Dependent values: 0 %f", ds->dependents[0]);
+    for (size_t i = 1; i < ds->entries; i++)
+        printf(",%zu %f", i, ds->dependents[i]);
+    printf("\n");
+}
+
 static size_t get_index(unsigned multiplicands[], unsigned indices[], size_t n)
 {
     size_t index = 0;
-    for (size_t i = 0; i < n; ++i)
+    for (size_t i = 0; i < n; ++i) {
         index += multiplicands[i] * indices[i];
+    }
     return index;
 }
 
@@ -40,7 +68,7 @@ static void set_dependents(struct fsti_dataset *dataset,
         for (size_t j = 0; j < rows; j++) {
             size_t col_no = dataset->num_independents + i;
             struct fsti_variant variant =
-                fsti_identify_token_const(csv_at(cs, j + 1, col_no));
+                fsti_identify_token_const(csv_at(cs, j, col_no));
             FSTI_ASSERT(variant.type == DBL || variant.type == LONG,
                     FSTI_ERR_WRONG_TYPE,
                         fsti_sprintf("%s line: %zu col %zu",
@@ -67,36 +95,132 @@ static struct fsti_variant csv_val(const struct csv *cs,
     return variant;
 }
 
+static size_t calc_dependents(struct fsti_dataset *ds,
+                              const struct csv *cs)
+{
+    size_t result;
+    char **split_values, **it;
+
+    split_values = g_strsplit(cs->header.cells[cs->header.len - 1], "|", -1);
+
+    it = split_values;
+
+    FSTI_ASSERT(it && *it, FSTI_ERR_DATASET_FILE,
+                fsti_sprintf("Header field error in file: %s Field: %s",
+                             ds->filename, cs->header.cells[cs->header.len - 1]));
+
+    ++it;
+    if (it && *it) {
+        result = atoi(*it);
+        FSTI_ASSERT(result && result <= cs->rows[0].len, FSTI_ERR_DATASET_FILE,
+                FSTI_MSG("More dependents specified than columns", ds->filename));
+    } else {
+        result = 1;
+    }
+
+    g_strfreev(split_values);
+
+    return result;
+}
+
+
+static unsigned parse_divisor(char *s)
+{
+    char num_part[12];
+    size_t n;
+    size_t i = 0;
+    char *c;
+    unsigned val;
+
+    n = strlen(s);
+    for (c = s; c < s + n && i < 12; c++) {
+        if (*c >= '0' && *c <= '9')
+            num_part[i++] = *c;
+        else
+            break;
+    }
+    FSTI_ASSERT(i == 0 || *c == 0 || *c == '-', FSTI_ERR_DATASET_FILE,
+                fsti_sprintf("Unknown denominator: %s", s));
+
+    if (i > 0) {
+        num_part[i] = 0;
+        val = atoi(num_part);
+    } else {
+        val = 1;
+    }
+
+    if (i == 0 || *c++ == '-') {
+        if (strcmp(c, "MINUTE") == 0)
+            val *= FSTI_MINUTE;
+        else  if (strcmp(c, "HOUR") == 0)
+            val *= FSTI_HOUR;
+        else  if (strcmp(c, "DAY") == 0)
+            val *= FSTI_DAY;
+        else  if (strcmp(c, "WEEK") == 0)
+            val *= FSTI_WEEK;
+        else  if (strcmp(c, "MONTH") == 0)
+            val *= FSTI_MONTH;
+        else  if (strcmp(c, "YEAR") == 0)
+            val *= FSTI_YEAR;
+        else
+            FSTI_ASSERT(0, FSTI_ERR_DATASET_FILE,
+                        fsti_sprintf("Unknown denominator: %s", s));
+    }
+    return val;
+}
+
+static void parse_header_field(struct fsti_dataset *ds,
+                               const struct csv *cs,
+                               size_t col)
+{
+    char **split_values, **it;
+
+    split_values = g_strsplit(cs->header.cells[col], "|", -1);
+    it = split_values;
+    FSTI_ASSERT(it, FSTI_ERR_DATASET_FILE,
+                fsti_sprintf("Header field error in file: %s Field: %s",
+                             ds->filename, cs->header.cells[col]));
+
+    ds->members[col] = fsti_agent_elem_by_strname(*it);
+    it++;
+    if (it && *it) { // divisor
+        ds->divisors[col] = parse_divisor(*it);
+        it++; // check if dataset caters for two agents
+        if (*it && strcmp(*it, "~") == 0) ds->second_agent = col;
+    } else {
+        ds->divisors[col] = 1;
+    }
+    ds->min_vals[col] = csv_val(cs, 0, col, LONG, ds->filename).value.longint;
+    ds->max_vals[col] = csv_val(cs, cs->len - 1,
+                                col, LONG, ds->filename).value.longint;
+    g_strfreev(split_values);
+}
+
 static void convert_csv_to_dataset(struct fsti_dataset *dataset,
                                    const struct csv *cs,
                                    const char *filename)
 {
-    size_t rows, cols;
+    size_t rows, cols, max_index;
 
     strncpy(dataset->filename, filename, FSTI_FILENAME_LEN);
     dataset->filename[FSTI_FILENAME_LEN] = 0;
     FSTI_ASSERT(cs->header.len, FSTI_ERR_DATASET_FILE,
                 FSTI_MSG("No header in dataset", filename));
-    FSTI_ASSERT(cs->len > 1, FSTI_ERR_DATASET_FILE,
+    FSTI_ASSERT(cs->len > 0, FSTI_ERR_DATASET_FILE,
                 FSTI_MSG("Too few rows in dataset", filename));
     FSTI_ASSERT(cs->rows[0].len > 0, FSTI_ERR_DATASET_FILE,
                 FSTI_MSG("Too few columns in dataset", filename));
 
-    rows = cs->len - 1;
-    cols = cs->rows[0].len - 1;
-    dataset->entries = cs->len - 1;
-    dataset->num_dependents = max(1, csv_val(cs, 0, cols, LONG, filename).
-                                  value.longint);
-    assert(dataset->num_dependents <= cs->rows[0].len);
+
+    dataset->second_agent = 0; // By default only 1 agent processed
+    dataset->entries = rows = cs->len;
+    dataset->num_dependents = calc_dependents(dataset, cs);
     dataset->num_independents = cols = cs->rows[0].len - dataset->num_dependents;
     alloc_dataset(dataset, rows, cols);
 
-    for (size_t i = 0; i < cols; i++) {
-        dataset->members[i] = fsti_agent_elem_by_strname(cs->header.cells[i]);
-        dataset->divisors[i] = csv_val(cs, 0, i, LONG, filename).value.longint;
-        dataset->min_vals[i] = csv_val(cs, 1, i, LONG, filename).value.longint;
-        dataset->max_vals[i] = csv_val(cs, rows, i, LONG, filename).value.longint;
-    }
+    for (size_t i = 0; i < cols; i++)
+        parse_header_field(dataset, cs, i);
+
     if (cols > 0) {
         dataset->multiplicands[cols - 1] = 1;
         if (cols > 1) {
@@ -107,7 +231,7 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
             }
         }
     }
-    size_t max_index = get_index(dataset->multiplicands, dataset->max_vals,
+    max_index = get_index(dataset->multiplicands, dataset->max_vals,
                                  dataset->num_independents);
     FSTI_ASSERT(max_index + 1 == rows, FSTI_ERR_DATASET_FILE,
                 fsti_sprintf("%s: Number of lines expected is %zu",
@@ -150,6 +274,28 @@ double fsti_dataset_lookup0(struct fsti_dataset *dataset,
     return fsti_dataset_lookup(dataset, agent, 0);
 }
 
+
+double fsti_dataset_lookup_x2(struct fsti_dataset *dataset,
+                              struct fsti_agent *a,
+                              struct fsti_agent *b,
+                              size_t col)
+{
+    size_t i, index = 0, n = dataset->second_agent;
+    unsigned val, vals[n];
+
+    for (i = 0; i < n; i++) {
+        val = (unsigned) fsti_agent_elem_val_l(dataset->members[i], a);
+        val /= dataset->divisors[i];
+        vals[i] = (val > dataset->max_vals[i]) ? dataset->max_vals[i] : val;
+    }
+    for (; i < dataset->num_independents; i++) {
+        val = (unsigned) fsti_agent_elem_val_l(dataset->members[i], b);
+        val /= dataset->divisors[i];
+        vals[i] = (val > dataset->max_vals[i]) ? dataset->max_vals[i] : val;
+    }
+    index = get_index(dataset->multiplicands, vals, dataset->num_independents);
+    return dataset->dependents[col * dataset->entries + index];
+}
 
 void fsti_dataset_free(struct fsti_dataset *dataset)
 {
@@ -235,13 +381,28 @@ static void dataset_test(struct test_group *tg)
     const char *filename = "fsti_test_dataset_in_1234.csv";
     struct fsti_dataset dataset;
 
+    // Test  parsing of divisors
+    char *s = "525948";
+    unsigned x = parse_divisor(s);
+    TESTEQ(x, 525948, *tg);
+    s = "YEAR";
+    x = parse_divisor(s);
+    TESTEQ(x, FSTI_YEAR, *tg);
+    s = "5-YEAR";
+    x = parse_divisor(s);
+    TESTEQ(x, 5 * FSTI_YEAR, *tg);
+    s = "200-YEAR";
+    x = parse_divisor(s);
+    TESTEQ(x, 200 * FSTI_YEAR, *tg);
+
     // Test with only 1 column (the minimum needed)
     f = fsti_open_data_file(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
-    fprintf(f, "0\n0\n0.5\n");
+    fprintf(f, "0\n0.5\n");
     fclose(f);
 
     fsti_dataset_read(filename, &dataset, ';');
+
     double d = fsti_dataset_lookup0(&dataset, &agent);
     TESTEQ(d, 0.5, *tg);
     fsti_dataset_free(&dataset);
@@ -251,10 +412,8 @@ static void dataset_test(struct test_group *tg)
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
     fprintf(f, "# spurious comment 1\n");
     fprintf(f, "# spurious comment 2\n");
-    fprintf(f, "age;sex;sex_preferred;0\n");
+    fprintf(f, "age|20;sex;sex_preferred;0\n");
     fprintf(f, "# spurious comment 3\n");
-    fprintf(f, "20;1;1;0\n");
-    fprintf(f, "# spurious comment 4\n");
 
     for (i = 0; i < 5; i++)
         for (j = 0; j < 2; j++)
@@ -268,7 +427,9 @@ static void dataset_test(struct test_group *tg)
 
     fclose(f);
 
+
     fsti_dataset_read(filename, &dataset, ';');
+
     for (i = 0; i < 5; i++)
         for (j = 0; j < 2; j++)
             for (k = 0; k < 2; k++) {
@@ -286,9 +447,7 @@ static void dataset_test(struct test_group *tg)
     f = fsti_open_data_file(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
 
-    fprintf(f, "age;sex;sex_preferred;0;1\n");
-    fprintf(f, "20;1;1;0;2\n");
-
+    fprintf(f, "age|20;sex|1;sex_preferred;0;1|2\n");
 
     c = 0;
     for (i = 0; i < 3; i++)
@@ -320,9 +479,7 @@ static void dataset_test(struct test_group *tg)
     f = fsti_open_data_file(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
 
-    fprintf(f, "age;sex;sex_preferred;0;1;2\n");
-    fprintf(f, "20;1;1;0;0;3\n");
-
+    fprintf(f, "age|20;sex;sex_preferred;0;1;2|3\n");
 
     c = 0;
     for (i = 0; i < 3; i++)
@@ -363,8 +520,7 @@ static void dataset_hash_test(struct test_group *tg)
     struct fsti_dataset_hash hash;
     char filename[20];
     const char *output =
-        "age;sex;sex_preferred;infected\n"
-        "1;1;1;0\n"
+        "age|1;sex;sex_preferred|1;infected\n"
         "0;0;0;0.1\n"
         "0;0;1;0.2\n"
         "0;1;0;0.3\n"

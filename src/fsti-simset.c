@@ -271,7 +271,7 @@ void fsti_simset_test(struct test_group *tg)
         "THREADS=1\n"
         "[Simulation_1]\n"
         "THREADS=3\n"
-        "NUM_SIMULATIONS=7\n"
+        "NUM_SIMULATIONS=5\n"
         "NUM_AGENTS=1000\n"
         "BEFORE_EVENTS=_GENERATE_AGENTS;_INITIAL_MATING;"
         "_RKPM;_INITIAL_REL\n"
@@ -279,14 +279,17 @@ void fsti_simset_test(struct test_group *tg)
         "_INFECT;_BIRTH;_DEATH\n"
         "MATCH_K=1\n"
         "[Simulation_2]\n"
-        "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
-        "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT;_TEST_BIRTH;_TEST_DEATH\n"
-        "MATCH_K=10\n"
-        "[Simulation_3]\n"
         "OUTPUT_MATCHES=1\n"
         "OUTPUT_BREAKUPS=1\n"
         "OUTPUT_INFECTIONS=1\n"
-        "MATCH_K=2000\n";
+        "MATCH_K=1000\n"
+        "[Simulation_3]\n"
+        "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
+        "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT;_TEST_BIRTH;_TEST_DEATH\n"
+        "OUTPUT_MATCHES=0\n"
+        "OUTPUT_BREAKUPS=0\n"
+        "OUTPUT_INFECTIONS=0\n"
+        "MATCH_K=10\n";
 
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");
@@ -327,7 +330,7 @@ void fsti_simset_test(struct test_group *tg)
     fsti_simset_init(&simset);
     fsti_simset_load_config_file(&simset, config_filename);
     fsti_simset_exec(&simset);
-    TESTEQ(simset.sim_number, 22, *tg);
+    TESTEQ(simset.sim_number, 16, *tg);
 
     fsti_simset_free(&simset);
     fsti_remove_file(agents_in_filename);
