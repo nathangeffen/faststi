@@ -281,7 +281,7 @@ double fsti_dataset_lookup_x2(struct fsti_dataset *dataset,
                               size_t col)
 {
     size_t i, index = 0, n = dataset->second_agent;
-    unsigned val, vals[n];
+    unsigned val, vals[dataset->num_independents];
 
     for (i = 0; i < n; i++) {
         val = (unsigned) fsti_agent_elem_val_l(dataset->members[i], a);
@@ -375,8 +375,8 @@ void fsti_dataset_hash_free(struct fsti_dataset_hash *hash)
 
 static void dataset_test(struct test_group *tg)
 {
-    unsigned i, j, k, c;
-    struct fsti_agent agent;
+    unsigned i, j, k, l, m, n, c;
+    struct fsti_agent agent, a, b;
     FILE *f;
     const char *filename = "fsti_test_dataset_in_1234.csv";
     struct fsti_dataset dataset;
@@ -511,6 +511,52 @@ static void dataset_test(struct test_group *tg)
             }
     fsti_dataset_free(&dataset);
 
+    // Test with 9 columns, 3 of which are dependents, for 2 agents
+    f = fsti_open_data_file(filename, "w");
+    FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
+
+    fprintf(f, "age|20;sex;sex_preferred;age|20|~;sex;sex_preferred;0;1;2|3\n");
+
+    c = 0;
+    for (i = 0; i < 3; i++)
+        for (j = 0; j < 2; j++)
+            for (k = 0; k < 2; k++)
+                for (l = 0; l < 3; l++)
+                    for (m = 0; m < 2; m++)
+                        for (n = 0; n < 2; n++, c++)
+                            fprintf(f, "%u;%u;%u;%u;%u;%u;%f;%f;%f\n",
+                                    i, j, k, l, m, n,
+                                    1.0 * c, 100.0 * c, 1000.0 * c);
+
+    fclose(f);
+
+    fsti_dataset_read(filename, &dataset, ';');
+
+    c = 0;
+    for (i = 0; i < 3; i++)
+        for (j = 0; j < 2; j++)
+            for (k = 0; k < 2; k++)
+                for (l = 0; l < 3; l++)
+                    for (m = 0; m < 2; m++)
+                        for (n = 0; n < 2; n++, c++) {
+                            a.age = i * 20;
+                            a.sex = j;
+                            a.sex_preferred = k;
+                            b.age = l * 20;
+                            b.sex = m;
+                            b.sex_preferred = n;
+                            double d, result;
+                            d = fsti_dataset_lookup_x2(&dataset, &a, &b, 0);
+                            result = c;
+                            TESTEQ(d, result, *tg);
+                            d = fsti_dataset_lookup_x2(&dataset, &a, &b, 1);
+                            result = 100.0 * c;
+                            TESTEQ(d, result, *tg);
+                            d = fsti_dataset_lookup_x2(&dataset, &a, &b, 2);
+                            result = 1000.0 * c;
+                            TESTEQ(d, result, *tg);
+                        }
+    fsti_dataset_free(&dataset);
 
     fsti_remove_data_file(filename);
 }

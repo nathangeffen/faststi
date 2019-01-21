@@ -7,7 +7,6 @@
 7. Put agent var names into hashtable
 8. Rename dataset
 9. sort parameters in alphabetical order before displaying
-10. Datasets (probably called state tables) can have multiple lookup vals (instead of a separate dataset for each parameter of a multiparameter function like weibull).
 11. Syphilis model
 12. Get rid of redundant parameters
 13. Documentation: user guide
