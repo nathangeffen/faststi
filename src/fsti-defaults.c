@@ -14,8 +14,7 @@ int fsti_config_set_default(struct fsti_config *config)
                     "(default 1440 minutes == 1 day)",
 		    FSTI_DAY);
     fsti_config_add(config, "START_DATE", "Start date of simulation "
-                    "(yyyy;mm;dd)",
-		    "2018;1;1");
+                    "(yyyy;mm;dd)", "2018;1;1");
     FSTI_CONFIG_ADD(config, "NUM_TIME_STEPS",
                     "Number of iterations simulation should run for "
                     "(10 years)", (FSTI_YEAR * 10) / FSTI_DAY);
@@ -28,13 +27,13 @@ int fsti_config_set_default(struct fsti_config *config)
 		    "various events", 0);
     FSTI_CONFIG_ADD(config, "NUM_AGENTS", "Number of agents", 20000);
     FSTI_CONFIG_ADD(config, "MATCH_K",
-                    "Value for k when using matching algorithms.",
+                    "Value for k when using matching algorithms",
                     100);
     FSTI_CONFIG_ADD(config, "INITIAL_MATING_PROB",
-                    "Probability of entering initial mating pool.",
+                    "Probability of entering initial mating pool",
                     0.65);
     FSTI_CONFIG_ADD(config, "MATING_PROB",
-                    "Probability of entering mating pool on time step.",
+                    "Probability of entering mating pool on time step",
                     0.05);
     FSTI_CONFIG_ADD(config, "PROB_MALE",
                     "Probability an agent is male.", 0.5);
@@ -43,15 +42,24 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "PROB_WSW",
                     "Probability a female is WSW.", 0.05);
     FSTI_CONFIG_ADD(config, "AGE_MIN",
-                    "Lower end of uniformly distributed age for new agents.",
-                    15.0 * FSTI_YEAR);
+                    "Lower end of uniformly distributed age for new or "
+                    "generated agents", 15.0 * FSTI_YEAR);
+    FSTI_CONFIG_ADD(config, "AGE_MAX",
+                    "Upper end of uniformly distributed age for "
+                    "generated agents",  50.0 * FSTI_YEAR);
+    FSTI_CONFIG_ADD(config, "AGE_ALPHA",
+                    "Alpha parameter for age distribution of new agents", 0.3);
+    FSTI_CONFIG_ADD(config, "AGE_BETA",
+                    "Beta parameter for age distribution of new agents", 1.0);
+
+
     FSTI_CONFIG_ADD(config, "AGE_RANGE",
                     "Uniformly distributed size of age range for new agents.",
                     25.0);
     FSTI_CONFIG_ADD(config, "INITIAL_INFECTION_RATE",
-                    "Initial infection rate for the population.",  0.01);
+                    "Initial infection rate for the population",  0.01);
     FSTI_CONFIG_ADD(config, "INITIAL_SINGLE_RATE",
-                    "Initial proportion of population that is single.",  0.5);
+                    "Initial proportion of population that is single",  0.5);
     FSTI_CONFIG_ADD(config, "BEFORE_EVENTS",
 		    "Events executed before a simulation starts",
 		    "_GENERATE_AGENTS");
@@ -118,6 +126,15 @@ int fsti_config_set_default(struct fsti_config *config)
                     "CSV file of values to determine when agent advances "
                     "to next stage of infection",
                     FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_INFECT",
+                    "CSV file of values to determine if agent has been infected "
+                    "by a sexual partner", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_INFECT",
+                    "CSV file of values to set infection stage of "
+                    "generated agent", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_MATING",
+                    "CSV file of values to select agents for initial mating "
+                    "pool", FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_COINFECT",
                     "CSV file of values to determine if agent has coinfection",
                     FSTI_NO_OP);
@@ -140,6 +157,14 @@ int fsti_config_set_default(struct fsti_config *config)
                     "Probability a new male agent is msw", 0.95);
     FSTI_CONFIG_ADD(config, "PROB_BIRTH_WSM",
                     "Probability a new female agent is wsm", 0.95);
+
+    FSTI_CONFIG_ADD(config, "PROB_GEN_MALE",
+                    "Probability a generated agent is male", 0.5);
+    FSTI_CONFIG_ADD(config, "PROB_GEN_MSW",
+                    "Probability a generated male agent is msw", 0.95);
+    FSTI_CONFIG_ADD(config, "PROB_GEN_WSM",
+                    "Probability a generated female agent is wsm", 0.95);
+
     FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_MSM",
                     "Probability a new msm agent is infected", 0.001);
     FSTI_CONFIG_ADD(config, "PROB_BIRTH_INFECTED_MSW",

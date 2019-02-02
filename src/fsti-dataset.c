@@ -113,7 +113,8 @@ static size_t calc_dependents(struct fsti_dataset *ds,
     if (it && *it) {
         result = atoi(*it);
         FSTI_ASSERT(result && result <= cs->rows[0].len, FSTI_ERR_DATASET_FILE,
-                FSTI_MSG("More dependents specified than columns", ds->filename));
+                fsti_sprintf("More dependents specified (%u) than columns (%u) "
+                             "in %s.",  result, cs->rows[0].len, ds->filename));
     } else {
         result = 1;
     }
@@ -232,10 +233,11 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
         }
     }
     max_index = get_index(dataset->multiplicands, dataset->max_vals,
-                                 dataset->num_independents);
-    FSTI_ASSERT(max_index + 1 == rows, FSTI_ERR_DATASET_FILE,
-                fsti_sprintf("%s: Number of lines expected is %zu",
-                             filename, max_index));
+                          dataset->num_independents);
+
+    FSTI_ASSERT((max_index + 1) == rows, FSTI_ERR_DATASET_FILE,
+                fsti_sprintf("%s: Number of lines expected is %zu vs %zu",
+                             filename, max_index + 1, rows));
     set_dependents(dataset, cs, rows, cols);
 }
 
@@ -253,10 +255,10 @@ void fsti_dataset_read(const char *filename,
     csv_free(&cs);
 }
 
-double fsti_dataset_lookup(struct fsti_dataset *dataset,
-                           struct fsti_agent *agent, size_t col)
+size_t fsti_dataset_lookup_index(struct fsti_dataset *dataset,
+                                 struct fsti_agent *agent)
 {
-    size_t i, index = 0, n = dataset->num_independents;
+    size_t i, n = dataset->num_independents;
     unsigned val, vals[n];
 
     for (i = 0; i < n; i++) {
@@ -264,8 +266,21 @@ double fsti_dataset_lookup(struct fsti_dataset *dataset,
         val /= dataset->divisors[i];
         vals[i] = (val > dataset->max_vals[i]) ? dataset->max_vals[i] : val;
     }
-    index = get_index(dataset->multiplicands, vals, n);
+    return get_index(dataset->multiplicands, vals, n);
+}
+
+double fsti_dataset_get_by_index(struct fsti_dataset *dataset,
+                                        size_t index, size_t col)
+{
     return dataset->dependents[col * dataset->entries + index];
+}
+
+double fsti_dataset_lookup(struct fsti_dataset *dataset,
+                           struct fsti_agent *agent, size_t col)
+{
+    size_t index;
+    index = fsti_dataset_lookup_index(dataset, agent);
+    return fsti_dataset_get_by_index(dataset, index, col);
 }
 
 double fsti_dataset_lookup0(struct fsti_dataset *dataset,

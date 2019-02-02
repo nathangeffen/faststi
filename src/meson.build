@@ -24,7 +24,7 @@ if valgrind.found()
   test('Memory leak check', valgrind, args : ['--error-exitcode=1',
                                               '--leak-check=full',
                                               exe,
-                                             '-t'])
+                                             '-m'])
 else
   message('Valgrind not found, so not running memory leak tests')
 endif

@@ -245,7 +245,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
 
 }
 
-void fsti_simset_test(struct test_group *tg)
+void fsti_simset_test(struct test_group *tg, bool valgrind)
 {
     struct fsti_simset simset;
     FILE *agents_in_file;
@@ -254,43 +254,83 @@ void fsti_simset_test(struct test_group *tg)
     char *config_filename = "fsti_test_config_1234.csv";
     const size_t num_agents = 101;
 
-    const char *config_text =
-        "[Simulation_0]\n"
-        "NUM_SIMULATIONS=1\n"
-        "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
-        "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
-        "DURING_EVENTS=_AGE\n"
-        "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
-        "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
-        "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
-        "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
-        "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
-        "DATASET_REL_PERIOD=dataset_rel.csv\n"
-        "DATASET_MORTALITY=dataset_mortality.csv\n"
-        "RESULTS_FILE=fsti_test_results_1234.csv\n"
-        "THREADS=1\n"
-        "[Simulation_1]\n"
-        "THREADS=3\n"
-        "NUM_SIMULATIONS=5\n"
-        "NUM_AGENTS=1000\n"
-        "BEFORE_EVENTS=_GENERATE_AGENTS;_INITIAL_MATING;"
-        "_RKPM;_INITIAL_REL\n"
-        "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
-        "_INFECT;_BIRTH;_DEATH\n"
-        "MATCH_K=1\n"
-        "[Simulation_2]\n"
-        "OUTPUT_MATCHES=1\n"
-        "OUTPUT_BREAKUPS=1\n"
-        "OUTPUT_INFECTIONS=1\n"
-        "MATCH_K=1000\n"
-        "[Simulation_3]\n"
-        "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
-        "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT;_TEST_BIRTH;_TEST_DEATH\n"
-        "OUTPUT_MATCHES=0\n"
-        "OUTPUT_BREAKUPS=0\n"
-        "OUTPUT_INFECTIONS=0\n"
-        "MATCH_K=10\n";
+    const char *config_text;
 
+    if (valgrind) {
+        config_text =
+            "[Simulation_0]\n"
+            "NUM_SIMULATIONS=1\n"
+            "NUM_AGENTS=100\n"
+            "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
+            "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
+            "DURING_EVENTS=_AGE\n"
+            "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
+            "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
+            "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
+            "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
+            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
+            "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
+            "DATASET_REL_PERIOD=dataset_rel.csv\n"
+            "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
+            "DATASET_INFECT=dataset_infect.csv\n"
+            "DATASET_INFECT_STAGE=dataset_infect_stage.csv\n"
+            "DATASET_MORTALITY=dataset_mortality_simple.csv\n"
+            "RESULTS_FILE=fsti_test_results_1234.csv\n"
+            "THREADS=1\n"
+            "BEFORE_EVENTS=_WRITE_AGENTS_CSV_HEADER;_GENERATE_AGENTS;_"
+            "INITIAL_MATING;_RKPM;_INITIAL_REL;_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
+            "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
+            "_INFECT;_STAGE;_DEATH;_BIRTH\n"
+            "OUTPUT_MATCHES=1\n"
+            "OUTPUT_BREAKUPS=1\n"
+            "OUTPUT_INFECTIONS=1\n";
+    } else {
+        config_text =
+            "[Simulation_0]\n"
+            "NUM_SIMULATIONS=1\n"
+            "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
+            "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
+            "DURING_EVENTS=_AGE\n"
+            "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
+            "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
+            "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
+            "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
+            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
+            "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
+            "DATASET_REL_PERIOD=dataset_rel.csv\n"
+            "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
+            "DATASET_INFECT=dataset_infect.csv\n"
+            "DATASET_INFECT_STAGE=dataset_infect_stage.csv\n"
+            "DATASET_MORTALITY=dataset_mortality_simple.csv\n"
+            "RESULTS_FILE=fsti_test_results_1234.csv\n"
+            "THREADS=1\n"
+            "[Simulation_1]\n"
+            "THREADS=3\n"
+            "NUM_SIMULATIONS=5\n"
+            "NUM_AGENTS=500\n"
+            "BEFORE_EVENTS=_WRITE_AGENTS_CSV_HEADER;_GENERATE_AGENTS;_"
+            "INITIAL_MATING;_RKPM;_INITIAL_REL;_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
+            "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
+            "_INFECT;_STAGE;_DEATH;_BIRTH\n"
+            "# BEFORE_EVENTS=_GENERATE_AGENTS;_INITIAL_MATING;"
+            "_RKPM;_INITIAL_REL\n"
+            "# DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
+            "_INFECT;_BIRTH;_DEATH\n"
+            "MATCH_K=1\n"
+            "[Simulation_2]\n"
+            "NUM_SIMULATIONS=1\n"
+            "OUTPUT_MATCHES=1\n"
+            "OUTPUT_BREAKUPS=1\n"
+            "OUTPUT_INFECTIONS=1\n"
+            "MATCH_K=100\n"
+            "[Simulation_3]\n"
+            "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
+            "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT;_TEST_BIRTH;_TEST_DEATH\n"
+            "OUTPUT_MATCHES=0\n"
+            "OUTPUT_BREAKUPS=0\n"
+            "OUTPUT_INFECTIONS=0\n"
+            "MATCH_K=10\n";
+    }
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");
     assert(agents_in_file);
@@ -298,8 +338,10 @@ void fsti_simset_test(struct test_group *tg)
     for (size_t i = 0; i < num_agents; i++) {
         double age = (double) rand() / RAND_MAX * 30.0 + 20.0;
         int infected = ( ( (double) rand()/RAND_MAX)  < 0.3) ? 1 : 0;
-        int sex = ( ( (double) rand()/RAND_MAX) <0.5) ? FSTI_MALE : FSTI_FEMALE;
-        int sex_preferred = ( ( (double) rand()/RAND_MAX)  < 0.06) ? sex : !sex;
+        int sex = ( ( (double) rand()/RAND_MAX) <0.5)
+            ? FSTI_MALE : FSTI_FEMALE;
+        int sex_preferred = ( ( (double) rand()/RAND_MAX)  < 0.06)
+            ? sex : !sex;
         long partner;
         if (i % 2 == 0) {
             partner = -1;
@@ -330,7 +372,8 @@ void fsti_simset_test(struct test_group *tg)
     fsti_simset_init(&simset);
     fsti_simset_load_config_file(&simset, config_filename);
     fsti_simset_exec(&simset);
-    TESTEQ(simset.sim_number, 16, *tg);
+    if (valgrind == false)
+        TESTEQ(simset.sim_number, 8, *tg);
 
     fsti_simset_free(&simset);
     fsti_remove_file(agents_in_filename);

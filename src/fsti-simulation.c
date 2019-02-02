@@ -145,6 +145,9 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
             &simulation->config, "INFECTION_RISK", i);
     simulation->max_stage = fsti_config_at0_long(&simulation->config,
                                                  "MAX_STAGE");
+    simulation->initial_infection_rate =
+        fsti_config_at0_double(&simulation->config, "INITIAL_INFECTION_RATE");
+
     simulation->initial_infect_stage =
         fsti_config_at0_long(&simulation->config, "INITIAL_INFECT_STAGE");
 
@@ -156,6 +159,12 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD");
     simulation->dataset_infect_stage =
         fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
+    simulation->dataset_infect =
+        fsti_simulation_get_dataset(simulation, "DATASET_INFECT");
+    simulation->dataset_gen_mating =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_MATING");
+    simulation->dataset_gen_infect =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_INFECT");
     simulation->dataset_coinfect =
         fsti_simulation_get_dataset(simulation, "DATASET_COINFECT");
 
@@ -164,7 +173,18 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_config_at0_long(&simulation->config, "BIRTH_EVENT_EVERY_N");
     simulation->birth_rate = fsti_config_at0_double(&simulation->config,
                                                     "BIRTH_RATE");
-    simulation->min_age = fsti_config_at0_double(&simulation->config, "AGE_MIN");
+    simulation->age_min = fsti_config_at0_double(&simulation->config, "AGE_MIN");
+    simulation->age_max = fsti_config_at0_double(&simulation->config, "AGE_MAX");
+    simulation->age_alpha = fsti_config_at0_double(&simulation->config,
+                                                   "AGE_ALPHA");
+    simulation->age_beta = fsti_config_at0_double(&simulation->config,
+                                                  "AGE_BETA");
+    simulation->prob_gen_male = fsti_config_at0_double(&simulation->config,
+                                                       "PROB_GEN_MALE");
+    simulation->prob_gen_msw = fsti_config_at0_double(&simulation->config,
+                                                       "PROB_GEN_MSW");
+    simulation->prob_gen_wsm = fsti_config_at0_double(&simulation->config,
+                                                      "PROB_GEN_WSM");
     simulation->prob_birth_male =
         fsti_config_at0_double(&simulation->config, "PROB_BIRTH_MALE");
     simulation->prob_birth_msw =
@@ -273,8 +293,7 @@ void fsti_simulation_test(struct test_group *tg)
     d = (double) same_sex / simulation.living.len;
     TESTEQ(d > 0.03 && d < 0.07, true, *tg);
     d = (double) infected / simulation.living.len;
-    TESTEQ(d > 0.001 && d < 0.009, true, *tg);
-
+    TESTEQ(d > 0.001 && d < 0.1, true, *tg);
 
     /* single_rate = fsti_config_at0_double(&config, "INITIAL_SINGLE_RATE"); */
 

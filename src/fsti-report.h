@@ -113,6 +113,19 @@
         result = (double) result / agent_ind.len;                       \
     } while(0)
 
+#define FSTI_MEAN_COUNT(agent_ind, elem, result) do {                   \
+        struct fsti_agent *_agent_;                                     \
+        size_t *_it;                                                    \
+        result = 0;                                                     \
+        for (_it = fsti_agent_ind_begin(&(agent_ind));                  \
+             _it != fsti_agent_ind_end(&(agent_ind)); _it++) {          \
+            _agent_ = fsti_agent_ind_arrp(&(agent_ind), _it);           \
+            result += (bool) _agent_->elem;                             \
+        }                                                               \
+        result = (double) result / agent_ind.len;                       \
+    } while(0)
+
+
 #define FSTI_SUM(agent_ind, elem, result) do {                          \
         struct fsti_agent *_agent_;                                     \
         size_t *_it;                                                    \
@@ -162,17 +175,18 @@
     do {                                                                \
         double __result__;                                              \
         char _c = simulation->csv_delimiter;                            \
+        char _current_date[FSTI_DATE_LEN];                              \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             simulation->iteration,                     \
+                             simulation->time_step,                     \
+                             _current_date);                            \
         func(simulation->agent_ind, elem, __result__);                  \
         post(__result__);                                               \
         fprintf(simulation->results_file,                               \
                 "%s%c%d%c%d%c%s%c%s%c" spec "\n",                       \
                 simulation->name, _c, simulation->sim_number, _c,       \
                 simulation->config_sim_number, _c,                      \
-                fsti_time_sprint(                                       \
-                    fsti_time_add_gdatetime(simulation->start_date,     \
-                                            simulation->iteration,      \
-                                            simulation->time_step)),    \
-                _c,                                                     \
+                _current_date, _c,                                      \
                 desc, _c,  __result__);                                 \
     } while(0)
 

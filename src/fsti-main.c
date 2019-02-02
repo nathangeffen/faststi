@@ -10,7 +10,7 @@
 
 #include "fsti.h"
 
-static bool test = false, print_config = false;
+static bool test = false, valgrind = false, print_config = false;
 static char *config_filename = NULL;
 static char **config_strings = NULL;	// Configuration entries set on command line
 
@@ -24,8 +24,10 @@ static GOptionEntry command_line_entries[] = {
      &print_config, "Print the default configuration", NULL},
     {"test", 't', 0, G_OPTION_ARG_NONE, &test,
      "Run unit tests", NULL},
+    {"valgrind-test", 'm', 0, G_OPTION_ARG_NONE, &valgrind,
+     "Run tests for Valgrind", NULL},
     {"keep-test-files", 'k', 0, G_OPTION_ARG_NONE, &fsti_keep_test_files,
-     "don't delete test files", NULL},
+     "Don't delete test files", NULL},
     {NULL}
 };
 
@@ -67,7 +69,10 @@ int main(int argc, char *argv[])
     get_command_line(argc, argv);
 
     if (test)
-        return fsti_tests();
+        return fsti_tests(false);
+
+    if (valgrind)
+        return fsti_tests(true);
 
     fsti_simset_init(&simset);
 

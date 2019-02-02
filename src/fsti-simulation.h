@@ -64,11 +64,22 @@ struct fsti_simulation {
     FILE *results_file;
     FILE *agents_output_file;
     FILE *partnerships_file;
+    double initial_infection_rate;
     double infection_risk[FSTI_INFECTION_RISKS];
+
+    uint32_t age_min;
+    uint32_t age_max;
+
+    // Generate agent event vars
+    double age_alpha;
+    double age_beta;
+    double prob_gen_male;
+    double prob_gen_msw;
+    double prob_gen_wsm;
 
     // Birth event vars
     uint32_t birth_event_every_n;
-    uint32_t min_age;
+
     double birth_rate;
     double prob_birth_male;
     double prob_birth_msw;
@@ -83,7 +94,10 @@ struct fsti_simulation {
     struct fsti_dataset *dataset_single;
     struct fsti_dataset *dataset_rel;
     struct fsti_dataset *dataset_infect_stage;
+    struct fsti_dataset *dataset_infect;
     struct fsti_dataset *dataset_coinfect;
+    struct fsti_dataset *dataset_gen_infect;
+    struct fsti_dataset *dataset_gen_mating;
     FSTI_SIMULATION_FIELDS
 };
 

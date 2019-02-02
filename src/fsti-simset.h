@@ -39,6 +39,6 @@ void fsti_simset_load_config_strings(struct fsti_simset *simset,
 void fsti_simset_init(struct fsti_simset *simset);
 void fsti_simset_exec(struct fsti_simset *simset);
 void fsti_simset_free(struct fsti_simset *simset);
-void fsti_simset_test(struct test_group *tg);
+void fsti_simset_test(struct test_group *tg, bool valgrind);
 
 #endif

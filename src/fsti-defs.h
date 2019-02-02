@@ -203,7 +203,9 @@ struct fsti_variant fsti_identify_token(char *token);
 struct fsti_variant fsti_identify_token_const(const char *token);
 int fsti_variant_print(FILE *f, const struct fsti_variant *variant);
 struct fsti_julian_date fsti_time_set_julian(uint16_t year, uint16_t day);
-char *fsti_time_sprint(struct fsti_date date);
+void fsti_time_sprint(const struct fsti_date *date, char result[]);
+void fsti_time_add_sprint(GDateTime *base, int32_t steps, int32_t step_size,
+                          char result[]);
 struct fsti_date
 fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size);
 uint16_t fsti_time_in_years(int32_t t);

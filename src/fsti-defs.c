@@ -340,6 +340,7 @@ fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size)
     result.year = g_date_time_get_year(date);
     result.month = g_date_time_get_month(date);
     result.day = g_date_time_get_day_of_month(date);
+
     g_date_time_unref(date);
 
     return result;
@@ -350,16 +351,19 @@ uint16_t fsti_time_in_years(int32_t t)
     return t / FSTI_YEAR;
 }
 
-char *fsti_time_sprint(struct fsti_date date)
+void fsti_time_sprint(const struct fsti_date *date, char result[])
 {
-    _Thread_local static char result[FSTI_DATE_LEN];
-
     snprintf(result, FSTI_DATE_LEN, "%04d-%02d-%02d",
-             date.year, date.month, date.day);
-    return result;
+             date->year, date->month, date->day);
 }
 
-/******/
+void fsti_time_add_sprint(GDateTime *base, int32_t steps, int32_t step_size,
+                          char result[])
+{
+    struct fsti_date date;
+    date = fsti_time_add_gdatetime(base, steps, step_size);
+    fsti_time_sprint(&date, result);
+}
 
 char *fsti_make_full_data_filename(const char *filename)
 {
@@ -447,13 +451,12 @@ void fsti_test_defs(struct test_group *tg)
     /* Test DateTime functions */
     GDateTime *d1;
     GTimeZone *z;
-    char *date_str;
+    char date_str[FSTI_DATE_LEN];
 
     z = g_time_zone_new(NULL);
     d1 = g_date_time_new(z, 2018, 1, 1, 0, 0, 0);
 
-    date_str = fsti_time_sprint(fsti_time_add_gdatetime(
-                                    d1, 10, FSTI_YEAR));
+    fsti_time_add_sprint(d1, 10, FSTI_YEAR, date_str);
     g_date_time_unref(d1);
     g_time_zone_unref(z);
 

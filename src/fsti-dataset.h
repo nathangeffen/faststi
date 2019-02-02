@@ -27,10 +27,19 @@ struct fsti_dataset_hash {
 };
 
 void fsti_print_dataset(struct fsti_dataset *ds);
-void fsti_dataset_read(const char *filename, struct fsti_dataset *dataset, char delim);
-double fsti_dataset_lookup0(struct fsti_dataset *dataset, struct fsti_agent *agent);
-double fsti_dataset_lookup(struct fsti_dataset *dataset, struct fsti_agent *agent,
-                           size_t col);
+void fsti_dataset_read(const char *filename, struct fsti_dataset *dataset,
+                       char delim);
+size_t fsti_dataset_lookup_index(struct fsti_dataset *dataset,
+                                 struct fsti_agent *agent);
+double fsti_dataset_get_by_index(struct fsti_dataset *dataset,
+                                 size_t index, size_t col);
+double fsti_dataset_lookup0(struct fsti_dataset *dataset,
+                            struct fsti_agent *agent);
+double fsti_dataset_lookup(struct fsti_dataset *dataset,
+                           struct fsti_agent *agent, size_t col);
+double fsti_dataset_lookup_x2(struct fsti_dataset *dataset,
+                              struct fsti_agent *a, struct fsti_agent *b,
+                              size_t col);
 void fsti_dataset_free(struct fsti_dataset *dataset);
 void fsti_dataset_hash_init(struct fsti_dataset_hash *dataset_hash);
 struct fsti_dataset *fsti_dataset_hash_find(const struct fsti_dataset_hash *dataset_hash, const char *filename);
