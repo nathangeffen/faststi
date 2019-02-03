@@ -4,6 +4,22 @@ FSTI_BASE=`dirname "$0"`
 
 echo $*
 
+if [ "$#" -eq 0 ]; then
+    echo "Usage:"
+    echo " To create a faststi project:"
+    echo "   $0 create <directory>"
+    exit 0
+fi
+
+if [ "$1" == "create" ]; then
+    if [ "$#" -ne 2 ]; then
+        echo "Directory name missing"
+        echo "Usage: S0 create <directory>"
+        exit 1
+    fi
+    exit 0
+fi
+
 if [ "$1" == "release" ]; then
     COMPDIR=$FSTI_BASE/release/
     EXE=$FSTI_BASE/release/src/faststi

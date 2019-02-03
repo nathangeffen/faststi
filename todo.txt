@@ -1,5 +1,5 @@
-1. coinfection event
-2. disease stage event
+1. resistance event
+2. treatment event
 3. sort out data directory
 4. Flushing stdout
 5. composite events

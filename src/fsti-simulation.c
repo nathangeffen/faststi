@@ -60,6 +60,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     simulation->breakups = 0;
     simulation->initial_infections = 0;
     simulation->infections = 0;
+    simulation->time_rec = time(NULL);
 
     simulation->results_file = simulation->agents_output_file =
         simulation->partnerships_file = stdout;

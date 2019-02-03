@@ -167,6 +167,7 @@ unsigned total_partners;
                                 "SIMULATION_MATCHES", "%.0f");           \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , breakups,             \
                                 "BREAKUPS", "%.0f");                     \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_TIME_TAKEN, , , "TIME_TAKEN", "%.0f"); \
     } while(0)
 #endif
 

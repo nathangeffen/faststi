@@ -1,6 +1,8 @@
 #ifndef FSTI_SIMULATION_H
 #define FSTI_SIMULATION_H
 
+#include <time.h>
+
 #include <glib.h>
 #include <gsl/gsl_rng.h>
 
@@ -50,6 +52,7 @@ struct fsti_simulation {
     GTimeZone *time_zone;
     int32_t time_step;
     int32_t age_input_time_step;
+    time_t time_rec;
     double initial_mating_pool_prob;
     double mating_pool_prob;
     uint32_t stabilization_steps;

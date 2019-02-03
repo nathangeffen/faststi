@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <float.h>
 #include <math.h>
+#include <time.h>
 
 #include "fsti-simulation.h"
 #include "fsti-defs.h"
@@ -144,6 +145,11 @@
 #define FSTI_HALF(x) x /= 2
 
 #define FSTI_TIME_IN_YEARS(x) x = isnan(x) ? NAN : fsti_time_in_years(x)
+
+#define FSTI_TIME_TAKEN(unused1, unused2, result) do {    \
+        time_t _t = time(NULL);                               \
+        result = _t - simulation->time_rec;    \
+    } while(0)
 
 #define FSTI_FMT(x) _Generic((x),                                       \
                                  char: "%c",                            \
