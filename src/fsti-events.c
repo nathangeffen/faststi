@@ -675,17 +675,48 @@ void fsti_event_infect(struct fsti_simulation *simulation)
 void fsti_event_infect_stage(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
+    size_t index;
+    long change;
     double d, r;
 
     FSTI_ASSERT(simulation->dataset_infect_stage, FSTI_ERR_MISSING_DATASET,
                 "For parameter DATASET_INFECT_STAGE.");
 
     FSTI_FOR_LIVING(*simulation, agent, {
-            if (agent->infected > 0 &&
-                agent->infected < simulation->max_stage) {
-                d = fsti_dataset_lookup0(simulation->dataset_infect_stage, agent);
+            if (agent->infected > 0) {
+                index =
+                    fsti_dataset_lookup_index(simulation->dataset_infect_stage,
+                                              agent);
+
+                // Check for stage change
+                d = fsti_dataset_get_by_index(simulation->dataset_infect_stage,
+                                              index, 0);
                 r = gsl_rng_uniform(simulation->rng);
-                if (r < d) ++agent->infected;
+                if (r < d) {
+                    change = fsti_dataset_get_by_index(
+                        simulation->dataset_infect_stage, index, 1);
+                    agent->infected += change;
+                }
+
+                // Check for treatment change
+                d = fsti_dataset_get_by_index(simulation->dataset_infect_stage,
+                                              index, 2);
+                r = gsl_rng_uniform(simulation->rng);
+                if (r < d) {
+                    change = fsti_dataset_get_by_index(
+                        simulation->dataset_infect_stage, index, 3);
+                    agent->treated += change;
+                }
+
+                // Check for resistance change
+                d = fsti_dataset_get_by_index(simulation->dataset_infect_stage,
+                                              index, 4);
+                r = gsl_rng_uniform(simulation->rng);
+                if (r < d) {
+                    change = fsti_dataset_get_by_index(
+                        simulation->dataset_infect_stage, index, 5);
+                    agent->resistant += change;
+                }
             }
         });
 }

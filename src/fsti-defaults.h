@@ -193,15 +193,17 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(infected),                                \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
-         UINT, fsti_to_partner},                                  \
+         UINT, fsti_to_partner},                                        \
         {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
         {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
         {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
+        FSTI_AGENT_ELEM_ENTRY(resistant),                               \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
-        FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
+        FSTI_AGENT_ELEM_ENTRY(sex_preferred),                           \
+        FSTI_AGENT_ELEM_ENTRY(treated)                                  \
     }
 #endif
 

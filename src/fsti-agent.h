@@ -43,11 +43,10 @@ struct fsti_agent {
         };
     };
     uint8_t infected;
+    uint8_t treated;
+    uint8_t resistant;
     struct fsti_date cured; // Date last cured of last infection
-    union {
-        bool dead; // 0 if still alive
-        struct fsti_date date_death;
-    };
+    struct fsti_date date_death;
     uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
     uint8_t num_partners;
