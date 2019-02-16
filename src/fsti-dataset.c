@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <glib.h>
 
 #include "fsti-dataset.h"
@@ -244,19 +245,19 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
 void fsti_dataset_read(const char *filename,
                        struct fsti_dataset *dataset, char delim)
 {
-    struct csv cs;
     FILE *f;
+    struct csv cs;
 
     f = fsti_open_data_file(filename, "r");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, filename);
-
     cs = csv_read(f, true, delim);
     convert_csv_to_dataset(dataset, &cs, filename);
     csv_free(&cs);
+    fclose(f);
 }
 
-size_t fsti_dataset_lookup_index(struct fsti_dataset *dataset,
-                                 struct fsti_agent *agent)
+size_t fsti_dataset_lookup_index(const struct fsti_dataset *dataset,
+                                 const struct fsti_agent *agent)
 {
     size_t i, n = dataset->num_independents;
     unsigned val, vals[n];
@@ -269,30 +270,30 @@ size_t fsti_dataset_lookup_index(struct fsti_dataset *dataset,
     return get_index(dataset->multiplicands, vals, n);
 }
 
-double fsti_dataset_get_by_index(struct fsti_dataset *dataset,
+double fsti_dataset_get_by_index(const struct fsti_dataset *dataset,
                                  size_t index, size_t col)
 {
     return dataset->dependents[col * dataset->entries + index];
 }
 
-double fsti_dataset_lookup(struct fsti_dataset *dataset,
-                           struct fsti_agent *agent, size_t col)
+double fsti_dataset_lookup(const struct fsti_dataset *dataset,
+                           const struct fsti_agent *agent, size_t col)
 {
     size_t index;
     index = fsti_dataset_lookup_index(dataset, agent);
     return fsti_dataset_get_by_index(dataset, index, col);
 }
 
-double fsti_dataset_lookup0(struct fsti_dataset *dataset,
-                            struct fsti_agent *agent)
+double fsti_dataset_lookup0(const struct fsti_dataset *dataset,
+                            const struct fsti_agent *agent)
 {
     return fsti_dataset_lookup(dataset, agent, 0);
 }
 
 
-double fsti_dataset_lookup_x2(struct fsti_dataset *dataset,
-                              struct fsti_agent *a,
-                              struct fsti_agent *b,
+double fsti_dataset_lookup_x2(const struct fsti_dataset *dataset,
+                              const struct fsti_agent *a,
+                              const struct fsti_agent *b,
                               size_t col)
 {
     size_t i, index = 0, n = dataset->second_agent;
@@ -326,6 +327,7 @@ void fsti_dataset_hash_init(struct fsti_dataset_hash *dataset_hash)
 {
     memset(dataset_hash->datasets, 0,
            sizeof(struct fsti_dataset *) * FSTI_HASHSIZE);
+    dataset_hash->owner = true;
 }
 
 size_t fsti_dataset_hash_count(struct fsti_dataset_hash *hash)
@@ -374,16 +376,26 @@ fsti_dataset_hash_add(struct fsti_dataset_hash *dataset_hash,
     return dataset;
 }
 
+void fsti_dataset_hash_copy(struct fsti_dataset_hash *dest,
+                            const struct fsti_dataset_hash *src)
+{
+    *dest = *src;
+    dest->owner = false;
+}
+
 void fsti_dataset_hash_free(struct fsti_dataset_hash *hash)
 {
     struct fsti_dataset *current, *prev;
-    for (size_t i = 0; i < FSTI_HASHSIZE; ++i) {
-        current = hash->datasets[i];
-        while (current) {
-            prev = current;
-            current = current->next;
-            fsti_dataset_free(prev);
-            free(prev);
+
+    if (hash->owner) {
+        for (size_t i = 0; i < FSTI_HASHSIZE; ++i) {
+            current = hash->datasets[i];
+            while (current) {
+                prev = current;
+                current = current->next;
+                fsti_dataset_free(prev);
+                free(prev);
+            }
         }
     }
 }

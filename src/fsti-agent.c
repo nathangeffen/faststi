@@ -97,9 +97,9 @@ struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
 }
 
 long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
-                           struct fsti_agent *agent)
+                           const struct fsti_agent *agent)
 {
-    unsigned char *addr;
+    const unsigned char *addr;
 
     addr = (unsigned char *) agent;
     switch (elem->type) {
@@ -184,7 +184,8 @@ long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
     return 0;
 }
 
-long fsti_agent_elem_val_by_strname_l(const char *name, struct fsti_agent *agent)
+long fsti_agent_elem_val_by_strname_l(const char *name,
+                                      const struct fsti_agent *agent)
 {
     struct fsti_agent_elem *elem;
 

@@ -7,6 +7,7 @@
 #include <gsl/gsl_rng.h>
 
 #include "fsti-agent.h"
+#include "fsti-dataset.h"
 #include "fsti-eventdefs.h"
 #include "fsti-config.h"
 #include "fsti-defaults.h"
@@ -53,7 +54,13 @@ struct fsti_simulation {
     int32_t time_step;
     int32_t age_input_time_step;
     time_t time_rec;
+
+    uint8_t initial_infect_stage;
     double initial_mating_pool_prob;
+    double initial_infection_rate;
+    double initial_treated_rate;
+    double initial_resistant_rate;
+
     double mating_pool_prob;
     uint32_t stabilization_steps;
     uint32_t num_iterations;
@@ -61,13 +68,12 @@ struct fsti_simulation {
     uint32_t report_frequency;
     uint32_t match_k;
     uint8_t max_stage;
-    uint8_t initial_infect_stage;
     bool agent_csv_header;
     char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;
     FILE *partnerships_file;
-    double initial_infection_rate;
+
     double infection_risk[FSTI_INFECTION_RISKS];
 
     uint32_t age_min;
@@ -92,15 +98,24 @@ struct fsti_simulation {
     double prob_birth_infected_wsm;
     double prob_birth_infected_wsw;
 
-    struct fsti_dataset_hash *dataset_hash;
+    struct fsti_dataset_hash dataset_hash;
     struct fsti_dataset *dataset_mortality;
     struct fsti_dataset *dataset_single;
     struct fsti_dataset *dataset_rel;
     struct fsti_dataset *dataset_infect_stage;
     struct fsti_dataset *dataset_infect;
     struct fsti_dataset *dataset_coinfect;
+    struct fsti_dataset *dataset_gen_sex;
+    struct fsti_dataset *dataset_gen_sex_preferred;
     struct fsti_dataset *dataset_gen_infect;
+    struct fsti_dataset *dataset_gen_treated;
+    struct fsti_dataset *dataset_gen_resistant;
     struct fsti_dataset *dataset_gen_mating;
+
+    struct fsti_dataset *dataset_birth_infect;
+    struct fsti_dataset *dataset_birth_treated;
+    struct fsti_dataset *dataset_birth_resistant;
+
     FSTI_SIMULATION_FIELDS
 };
 

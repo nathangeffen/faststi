@@ -21,12 +21,14 @@
             ) (config, key, description, value);		\
     } while(0)
 
-
 struct fsti_config_entry {
     char key[FSTI_KEY_LEN];
     char description[FSTI_DESC_LEN];
     struct fsti_variant *variants;
     size_t len;
+    bool initialize;
+    size_t offset;
+    size_t bytes;
     struct fsti_config_entry *next;
 };
 

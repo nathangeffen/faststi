@@ -158,7 +158,7 @@ static void update_config(struct fsti_simset *simset)
     }
 }
 
-static struct fsti_dataset_hash *load_datasets(struct fsti_simset *simset)
+static void load_datasets(struct fsti_simset *simset)
 {
     struct fsti_config_entry *entry;
     size_t i;
@@ -179,7 +179,6 @@ static struct fsti_dataset_hash *load_datasets(struct fsti_simset *simset)
             entry = entry->next;
         }
     }
-    return &simset->dataset_hash;
 }
 
 static void setup_simulation(struct fsti_simset *simset,
@@ -190,7 +189,8 @@ static void setup_simulation(struct fsti_simset *simset,
                          simset->config_sim_number);
     set_output_files(simset, simulation);
     simulation->name = *simset->group_ptr;
-    simulation->dataset_hash = load_datasets(simset);
+    load_datasets(simset);
+    fsti_dataset_hash_copy(&simulation->dataset_hash, &simset->dataset_hash);
 }
 
 static void *threaded_sim(void *simulation)
@@ -270,6 +270,8 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
             "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
             "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
+            "DATASET_GEN_TREATED=dataset_gen_treated.csv\n"
+            "DATASET_GEN_RESISTANT=dataset_gen_resistant.csv\n"
             "DATASET_REL_PERIOD=dataset_rel.csv\n"
             "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
             "DATASET_INFECT=dataset_infect.csv\n"
@@ -297,6 +299,8 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
             "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
             "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
+            "DATASET_GEN_TREATED=dataset_gen_treated.csv\n"
+            "DATASET_GEN_RESISTANT=dataset_gen_resistant.csv\n"
             "DATASET_REL_PERIOD=dataset_rel.csv\n"
             "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
             "DATASET_INFECT=dataset_infect.csv\n"

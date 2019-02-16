@@ -147,7 +147,6 @@ fsti_config_at0_double(const struct fsti_config *config, const char *key)
     return fsti_config_at_double(config, key, 0);
 }
 
-
 static struct fsti_config_entry
 *fsti_config_replace(struct fsti_config *config,
                      const char *key,

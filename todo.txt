@@ -10,8 +10,18 @@
 11. Syphilis model
 12. Get rid of redundant parameters
 13. Documentation: user guide
+14. Package for Debian/Ubuntu
 
 Version 2.0
 ------------
 1. Calibration
 2. Datasets can specify function. (Maybe)
+
+Dependencies
+------------
+meson (ninja?)
+libgsl
+glib-2.0
+pkg-config
+valgrind (nice to have)
+

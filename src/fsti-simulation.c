@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #include "fsti-error.h"
 #include "fsti-simulation.h"
@@ -52,6 +53,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     errno = 0;
     simulation->name = "Default";
     fsti_config_copy(&simulation->config, config);
+    fsti_dataset_hash_init(&simulation->dataset_hash);
     simulation->sim_number = sim_number;
     simulation->config_sim_number = config_sim_number;
     simulation->iteration = 0;
@@ -92,11 +94,19 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 struct fsti_dataset *
 fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
 {
-    struct fsti_dataset * dataset = NULL;
-    char *filename = fsti_config_at0_str(&simulation->config, key);
+    struct fsti_dataset * dataset;
+    struct fsti_config_entry *entry;
+    char *filename;
+
+    dataset = NULL;
+    entry = fsti_config_find(&simulation->config, key);
+    FSTI_ASSERT(entry, FSTI_ERR_KEY_NOT_FOUND, key);
+    FSTI_ASSERT(entry->len && entry->variants[0].type == STR,
+                FSTI_ERR_STR_EXPECTED, key);
+    filename = entry->variants[0].value.str;
 
     if (strcmp(FSTI_NO_OP, filename)) {
-        dataset = fsti_dataset_hash_find(simulation->dataset_hash, filename);
+        dataset = fsti_dataset_hash_find(&simulation->dataset_hash, filename);
         FSTI_ASSERT(dataset, FSTI_ERR_MISSING_DATASET, filename);
     }
 
@@ -152,6 +162,11 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->initial_infect_stage =
         fsti_config_at0_long(&simulation->config, "INITIAL_INFECT_STAGE");
 
+    simulation->initial_treated_rate =
+        fsti_config_at0_double(&simulation->config, "INITIAL_TREATED_RATE");
+    simulation->initial_resistant_rate =
+        fsti_config_at0_double(&simulation->config, "INITIAL_RESISTANT_RATE");
+
     simulation->dataset_mortality =
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
     simulation->dataset_single =
@@ -166,8 +181,13 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_GEN_MATING");
     simulation->dataset_gen_infect =
         fsti_simulation_get_dataset(simulation, "DATASET_GEN_INFECT");
+    simulation->dataset_gen_treated =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_TREATED");
+    simulation->dataset_gen_resistant =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_RESISTANT");
     simulation->dataset_coinfect =
         fsti_simulation_get_dataset(simulation, "DATASET_COINFECT");
+
 
     // Birth event vars
     simulation->birth_event_every_n =
@@ -240,6 +260,7 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
 
 void fsti_simulation_free(struct fsti_simulation *simulation)
 {
+    fsti_dataset_hash_free(&simulation->dataset_hash);
     gsl_rng_free(simulation->rng);
     fsti_agent_arr_free(&simulation->agent_arr);
     ARRAY_FREE(simulation->before_events, events);
@@ -267,6 +288,8 @@ void fsti_simulation_test(struct test_group *tg)
     fsti_config_init(&config);
     fsti_config_set_default(&config);
 
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_TREATED", "Default vals",
+                    "dataset_gen_treated.csv");
     FSTI_CONFIG_ADD(&config, "AFTER_EVENTS", "Write nothing", "_NO_OP");
 
     fsti_simulation_init(&simulation, &config, 0, 0);
@@ -295,15 +318,6 @@ void fsti_simulation_test(struct test_group *tg)
     TESTEQ(d > 0.03 && d < 0.07, true, *tg);
     d = (double) infected / simulation.living.len;
     TESTEQ(d > 0.001 && d < 0.1, true, *tg);
-
-    /* single_rate = fsti_config_at0_double(&config, "INITIAL_SINGLE_RATE"); */
-
-    /* actual_single_rate = (float) partners / simulation.living.len; */
-    /* TESTEQ(actual_single_rate > single_rate / 2.0, true, *tg); */
-    /* TESTEQ(actual_single_rate < single_rate * 1.5, true, *tg); */
-    /* FSTI_FOR_LIVING(simulation, agent, { */
-    /*         if (agent->num_partners) ++partners; */
-    /*     }); */
 
     size_t c = 0;
     it = fsti_agent_ind_begin(&simulation.living);

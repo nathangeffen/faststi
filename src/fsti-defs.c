@@ -382,7 +382,12 @@ char *fsti_make_full_data_filename(const char *filename)
 
 FILE *fsti_open_data_file(const char *filename, const char *mode)
 {
-    return fopen(fsti_make_full_data_filename(filename), mode);
+    FILE *f;
+    f = fopen(filename, mode);
+    if (f == NULL)
+        f = fopen(fsti_make_full_data_filename(filename), mode);
+
+    return f;
 }
 
 void fsti_remove_file(const char *filename)

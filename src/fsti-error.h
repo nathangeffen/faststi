@@ -13,10 +13,6 @@
 #define FSTI_NAME "FastSTI"
 #define FSTI_ERROR_STRING_LEN 200
 
-/* #define FSTI_MSG(msg1, msg2)                                         \
-    strncat(strncpy(fsti_error_string, msg1, FSTI_ERROR_STRING_LEN / 2), \
-          msg2, FSTI_ERROR_STRING_LEN / 2)
-*/
 
 #define FSTI_MSG(msg1, msg2)                                            \
     fsti_sprintf("%s %s", msg1, msg2)
@@ -42,11 +38,11 @@
         void *buffer[100];                                              \
         char **strings;                                                 \
         nptrs = backtrace(buffer, 100);                                 \
-        printf("backtrace() returned %d addresses\n", nptrs);           \
+        fprintf(stderr, "backtrace() returned %d addresses\n", nptrs);  \
         strings = backtrace_symbols(buffer, nptrs);                     \
         if (strings)                                                    \
             for (j = 0; j < nptrs; j++)                                 \
-                printf("%s\n", strings[j]);                             \
+                fprintf(stderr, "%s\n", strings[j]);                    \
         free(strings);                                                  \
     } while(0)
 
@@ -56,8 +52,12 @@
 
 #endif
 
+#define FSTI_WARNING(errnum, msg)                       \
+    fsti_error_msg(errnum, __FILE__, __LINE__, msg)
+
 
 #ifndef FSTI_ASSERT
+#ifndef FSTI_NO_SAFETY_BELT
 #define FSTI_ASSERT(cond, errnum, msg)                                  \
     do {                                                                \
         if( ((cond) == 0)) {                                            \
@@ -66,7 +66,9 @@
             exit(1);                                                    \
         }                                                               \
     } while(0)
-
+#else
+#define FSTI_ASSERT(cond, errnum, msg)
+#endif
 #endif
 
 enum {
@@ -95,7 +97,9 @@ enum {
     FSTI_ERR_NO_STOP_EVENT,
     FSTI_ERR_FILE,
     FSTI_ERR_INVALID_VALUE,
-    FSTI_ERR_INVALID_DATE
+    FSTI_ERR_INVALID_DATE,
+
+    FSTI_WARN_DATASET_USING_VALS_NOT_FILE
 };
 
 extern bool fsti_output_error_messages;

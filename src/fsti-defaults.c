@@ -1,6 +1,14 @@
 #include "fsti-defs.h"
 #include "fsti-userdefs.h"
 #include "fsti-defaults.h"
+#include "fsti-simulation.h"
+
+
+
+#define FSTI_CONFIG_ADD2(config, elem, desc,  ...)              \
+    do {                                                        \
+        struct fsti_simulation *_s;                             \
+    } while(0)
 
 int fsti_config_set_default(struct fsti_config *config)
 {
@@ -58,6 +66,10 @@ int fsti_config_set_default(struct fsti_config *config)
                     25.0);
     FSTI_CONFIG_ADD(config, "INITIAL_INFECTION_RATE",
                     "Initial infection rate for the population",  0.01);
+    FSTI_CONFIG_ADD(config, "INITIAL_TREATED_RATE",
+                    "Initial treatment rate for infected population",  0.3);
+    FSTI_CONFIG_ADD(config, "INITIAL_RESISTANT_RATE",
+                    "Initial resistant rate for treated population",  0.05);
     FSTI_CONFIG_ADD(config, "INITIAL_SINGLE_RATE",
                     "Initial proportion of population that is single",  0.5);
     FSTI_CONFIG_ADD(config, "BEFORE_EVENTS",
@@ -114,8 +126,11 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "TREATMENT_SUCCESS_STAGE",
                     "Infection stage to which agent goes if treatment "
                     "is a success", 6);
+
+    // Datasets
     FSTI_CONFIG_ADD(config, "DATASET_MORTALITY",
-                    "CSV file of values to determine agent deaths", FSTI_NO_OP);
+                    "CSV file of values to determine agent deaths",
+                    FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_SINGLE_PERIOD",
                     "CSV file of values to determine period agent is single",
                     FSTI_NO_OP);
@@ -129,12 +144,30 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, "DATASET_INFECT",
                     "CSV file of values to determine if agent has been infected "
                     "by a sexual partner", FSTI_NO_OP);
+
     FSTI_CONFIG_ADD(config, "DATASET_GEN_INFECT",
                     "CSV file of values to set infection stage of "
                     "generated agent", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_TREATED",
+                    "CSV file of values to set infected agents treatment status",
+                    FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_RESISTANT",
+                    "CSV file of values to set treated agents resistant status",
+                    FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_GEN_MATING",
                     "CSV file of values to select agents for initial mating "
                     "pool", FSTI_NO_OP);
+
+    FSTI_CONFIG_ADD(config, "DATASET_BIRTH_INFECT",
+                    "CSV file of values to set infection stage of "
+                    "new agent", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_BIRTH_TREATED",
+                    "CSV file of values to set new infected agents "
+                    "treatment status", FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_BIRTH_RESISTANT",
+                    "CSV file of values to set treated agents resistant status",
+                    FSTI_NO_OP);
+
     FSTI_CONFIG_ADD(config, "DATASET_COINFECT",
                     "CSV file of values to determine if agent has coinfection",
                     FSTI_NO_OP);

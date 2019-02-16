@@ -163,8 +163,18 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_set_agent_age(struct fsti_simulation *simulation,
-                        struct fsti_agent *agent)
+static inline long dataset_val(const struct fsti_simulation *sim,
+                               const struct fsti_agent *ag,
+                               const struct fsti_dataset *ds,
+                               long a,
+                               long b)
+{
+    return (gsl_rng_uniform(sim->rng) < fsti_dataset_lookup0(ds, ag)) ? a : b;
+}
+
+
+void fsti_generate_age(struct fsti_simulation *simulation,
+                       struct fsti_agent *agent)
 {
     double a, b;
     int32_t min, max;
@@ -176,60 +186,106 @@ void fsti_set_agent_age(struct fsti_simulation *simulation,
     agent->age = gsl_ran_beta(simulation->rng, a, b) * (max - min) + min;
 }
 
-void fsti_set_agent_sex(struct fsti_simulation *simulation,
-                        struct fsti_agent *agent)
+
+
+void fsti_generate_sex(struct fsti_simulation *simulation,
+                       struct fsti_agent *agent)
 {
-    if (gsl_rng_uniform(simulation->rng) < simulation->prob_gen_male)
-        agent->sex = FSTI_MALE;
-    else
-        agent->sex = FSTI_FEMALE;
+    FSTI_ASSERT(simulation->dataset_gen_sex, FSTI_ERR_MISSING_DATASET,
+                "For parameter DATASET_GEN_SEX");
+    agent->sex = dataset_val(simulation, agent, simulation->dataset_gen_sex,
+                             FSTI_MALE, FSTI_FEMALE);
 }
 
-void fsti_set_agent_sex_preferred(struct fsti_simulation *simulation,
-                                  struct fsti_agent *agent)
+void fsti_generate_sex_preferred(struct fsti_simulation *simulation,
+                                 struct fsti_agent *agent)
 {
-    double r = gsl_rng_uniform(simulation->rng);
-    if (agent->sex == FSTI_MALE) {
-        if (r < simulation->prob_gen_msw)
-            agent->sex_preferred = FSTI_FEMALE;
-        else
-            agent->sex_preferred = FSTI_MALE;
-    } else {
-        if (r < simulation->prob_gen_wsm)
-            agent->sex_preferred = FSTI_MALE;
-        else
-            agent->sex_preferred = FSTI_FEMALE;
-    }
+
+    FSTI_ASSERT(simulation->dataset_gen_sex_preferred, FSTI_ERR_MISSING_DATASET,
+                "For parameter DATASET_GEN_SEX_PREFERRED");
+
+    agent->sex_preferred =
+        dataset_val(simulation, agent, simulation->dataset_gen_sex_preferred,
+                    FSTI_MALE, FSTI_FEMALE);
 }
 
-void fsti_set_agent_infected(struct fsti_simulation *simulation,
-                             struct fsti_agent *agent)
+static void set_infected(struct fsti_simulation *simulation,
+                         struct fsti_agent *agent,
+                         struct fsti_dataset *ds)
 {
     double r, d;
     size_t i, num_stages, index;
 
-    if(simulation->dataset_gen_infect) {
-        num_stages = simulation->dataset_gen_infect->num_dependents;
-        r = gsl_rng_uniform(simulation->rng);
+    num_stages = ds->num_dependents;
+    r = gsl_rng_uniform(simulation->rng);
 
-        agent->infected = 0;
-        index = fsti_dataset_lookup_index(simulation->dataset_gen_infect, agent);
-        for (i = 0; i < num_stages; i++) {
-            d = fsti_dataset_get_by_index(simulation->dataset_gen_infect, index, i);
-            if (r < d) {
-                agent->infected = i + 1;
-                break;
-            }
+    agent->infected = 0;
+    index = fsti_dataset_lookup_index(ds, agent);
+    for (i = 0; i < num_stages; i++) {
+        d = fsti_dataset_get_by_index(ds, index, i);
+        if (r < d) {
+            agent->infected = i + 1;
+            break;
         }
-        if (agent->infected) simulation->initial_infections++;
-    } else {
-        r = gsl_rng_uniform(simulation->rng);
-        if (r < simulation->initial_infection_rate) {
-            agent->infected = simulation->initial_infect_stage;
-            simulation->initial_infections++;
+    }
+    if (agent->infected) simulation->initial_infections++;
+}
+
+void fsti_generate_infected(struct fsti_simulation *simulation,
+                            struct fsti_agent *agent)
+{
+    struct fsti_dataset *ds = simulation->dataset_gen_infect;
+
+    FSTI_ASSERT(ds, FSTI_ERR_MISSING_DATASET,
+                "For parameter DATASET_GEN_INFECT");
+    set_infected(simulation, agent, ds);
+}
+
+static void set_treated(const struct fsti_simulation *simulation,
+                        struct fsti_agent *agent,
+                        struct fsti_dataset *ds)
+{
+    double r, d;
+    size_t i, num_stages, index;
+
+    num_stages = simulation->dataset_gen_treated->num_dependents;
+    r = gsl_rng_uniform(simulation->rng);
+
+    agent->treated = 0;
+    index = fsti_dataset_lookup_index(ds, agent);
+    for (i = 0; i < num_stages; i++) {
+        d = fsti_dataset_get_by_index(ds, index, i);
+        if (r < d) {
+            agent->treated = i + 1;
+            break;
         }
     }
 }
+
+void fsti_generate_treated(struct fsti_simulation *simulation,
+                           struct fsti_agent *agent)
+{
+    struct fsti_dataset *ds;
+
+    if (agent->infected) {
+        ds = simulation->dataset_gen_treated;
+        FSTI_ASSERT(ds, FSTI_ERR_MISSING_DATASET,
+                    "For parameter DATASET_GEN_TREATED.");
+        set_treated(simulation, agent, ds);
+    }
+}
+
+void fsti_generate_resistant(struct fsti_simulation *simulation,
+                             struct fsti_agent *agent)
+{
+    if (agent->treated) {
+        FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
+                    "For parameter DATASET_GEN_RESISTANT.");
+        agent->resistant = dataset_val(simulation, agent,
+                                       simulation->dataset_gen_resistant, 0, 1);
+    }
+}
+
 
 void fsti_event_generate_agents(struct fsti_simulation *simulation)
 {
@@ -245,6 +301,84 @@ void fsti_event_generate_agents(struct fsti_simulation *simulation)
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
     fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
+}
+
+void fsti_birth_age(struct fsti_simulation *simulation,
+                    struct fsti_agent *a)
+{
+    a->age = simulation->age_min;
+}
+
+void fsti_birth_sex(struct fsti_simulation *simulation,
+                    struct fsti_agent *agent)
+{
+    agent->sex =
+        (gsl_rng_uniform(simulation->rng) < simulation->prob_birth_male)
+        ? FSTI_MALE : FSTI_FEMALE;
+}
+
+void fsti_birth_sex_preferred(struct fsti_simulation *simulation,
+                                  struct fsti_agent *a)
+{
+    double r = gsl_rng_uniform(simulation->rng);
+    if (a->sex == FSTI_MALE) {
+        if (r < simulation->prob_birth_msw)
+            a->sex_preferred = FSTI_FEMALE;
+        else
+            a->sex_preferred = FSTI_MALE;
+    } else {
+        if (r < simulation->prob_birth_wsm)
+            a->sex_preferred = FSTI_MALE;
+        else
+            a->sex_preferred = FSTI_FEMALE;
+    }
+}
+
+void fsti_birth_infected(struct fsti_simulation *simulation,
+                             struct fsti_agent *agent)
+{
+    FSTI_ASSERT(simulation->dataset_birth_infect, FSTI_ERR_MISSING_DATASET,
+                "For parameter DATASET_BIRTH_SEX_INFECT");
+    set_infected(simulation, agent, simulation->dataset_birth_infect);
+}
+
+void fsti_birth_treated(struct fsti_simulation *simulation,
+                            struct fsti_agent *agent)
+{
+    if (agent->infected) {
+        FSTI_ASSERT(simulation->dataset_birth_treated, FSTI_ERR_MISSING_DATASET,
+                    "For parameter DATASET_BIRTH_TREATED.");
+        set_treated(simulation, agent, simulation->dataset_birth_treated);
+    }
+}
+
+void fsti_birth_resistant(struct fsti_simulation *simulation,
+                          struct fsti_agent *agent)
+{
+    if (agent->treated) {
+        FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
+                    "For parameter DATASET_BIRTH_RESISTANT.");
+        agent->resistant = dataset_val(simulation, agent,
+                                       simulation->dataset_gen_resistant, 0, 1);
+    }
+}
+
+
+void fsti_event_birth(struct fsti_simulation *simulation)
+{
+    if (simulation->iteration % simulation->birth_event_every_n == 0) {
+        double mu = simulation->birth_rate * simulation->living.len;
+        uint32_t births = gsl_ran_poisson(simulation->rng, mu);
+
+        for(size_t i = 0; i < births; i++) {
+            struct fsti_agent agent;
+            memset(&agent, 0, sizeof(agent));
+            FSTI_AGENT_BIRTH(simulation, &agent);
+            fsti_agent_arr_push(&simulation->agent_arr, &agent);
+            agent.id = simulation->agent_arr.len - 1;
+            fsti_agent_ind_push(&simulation->living, agent.id);
+        }
+    }
 }
 
 void fsti_event_shuffle_living(struct fsti_simulation *simulation)
@@ -512,73 +646,6 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
                     output_partnership(simulation, a, b, FSTI_BREAKUP);
             }
         });
-}
-
-void fsti_set_birth_age(struct fsti_simulation *simulation, struct fsti_agent *a)
-{
-    a->age = simulation->age_min;
-}
-
-void fsti_set_birth_sex(struct fsti_simulation *simulation, struct fsti_agent *a)
-{
-    if (gsl_rng_uniform(simulation->rng) < simulation->prob_birth_male)
-        a->sex = FSTI_MALE;
-    else
-        a->sex = FSTI_FEMALE;
-}
-
-void fsti_set_birth_sex_preferred(struct fsti_simulation *simulation,
-                                  struct fsti_agent *a)
-{
-    double r = gsl_rng_uniform(simulation->rng);
-    if (a->sex == FSTI_MALE) {
-        if (r < simulation->prob_birth_msw)
-            a->sex_preferred = FSTI_FEMALE;
-        else
-            a->sex_preferred = FSTI_MALE;
-    } else {
-        if (r < simulation->prob_birth_wsm)
-            a->sex_preferred = FSTI_MALE;
-        else
-            a->sex_preferred = FSTI_FEMALE;
-    }
-}
-
-void fsti_set_birth_infected(struct fsti_simulation *simulation,
-                             struct fsti_agent *a)
-{
-    double r = gsl_rng_uniform(simulation->rng), d;
-
-    a->infected = 0;
-    if (a->sex == FSTI_MALE && a->sex_preferred == FSTI_MALE)
-        d = simulation->prob_birth_infected_msm;
-    else if (a->sex == FSTI_MALE && a->sex_preferred == FSTI_FEMALE)
-        d = simulation->prob_birth_infected_msw;
-    else if (a->sex == FSTI_FEMALE && a->sex_preferred == FSTI_FEMALE)
-        d = simulation->prob_birth_infected_wsw;
-    else
-        d = simulation->prob_birth_infected_wsm;
-
-    a->infected = (r < d) ? 1 : 0;
-    if (a->infected) simulation->initial_infections++;
-}
-
-
-void fsti_event_birth(struct fsti_simulation *simulation)
-{
-    if (simulation->iteration % simulation->birth_event_every_n == 0) {
-        double mu = simulation->birth_rate * simulation->living.len;
-        uint32_t births = gsl_ran_poisson(simulation->rng, mu);
-
-        for(size_t i = 0; i < births; i++) {
-            struct fsti_agent agent;
-            memset(&agent, 0, sizeof(agent));
-            FSTI_AGENT_BIRTH(simulation, &agent);
-            fsti_agent_arr_push(&simulation->agent_arr, &agent);
-            agent.id = simulation->agent_arr.len - 1;
-            fsti_agent_ind_push(&simulation->living, agent.id);
-        }
-    }
 }
 
 void fsti_event_death(struct fsti_simulation *simulation)

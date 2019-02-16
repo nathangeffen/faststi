@@ -236,10 +236,12 @@ unsigned total_partners;
 #ifndef FSTI_AGENT_GENERATE
 #define FSTI_AGENT_GENERATE(simulation, agent)                          \
     do {                                                                \
-        fsti_set_agent_age(simulation, agent);                          \
-        fsti_set_agent_sex(simulation, agent);                          \
-        fsti_set_agent_sex_preferred(simulation, agent);                \
-        fsti_set_agent_infected(simulation, agent);                     \
+        fsti_generate_age(simulation, agent);                           \
+        fsti_generate_sex(simulation, agent);                           \
+        fsti_generate_sex_preferred(simulation, agent);                 \
+        fsti_generate_infected(simulation, agent);                      \
+        fsti_generate_treated(simulation, agent);                       \
+        fsti_generate_resistant(simulation, agent);                     \
         FSTI_HOOK_GENERATE_AGENT(simulation, agent)                     \
     } while(0)
 #endif
@@ -256,10 +258,12 @@ unsigned total_partners;
 #ifndef FSTI_AGENT_BIRTH
 #define FSTI_AGENT_BIRTH(simulation, agent)                             \
     do {                                                                \
-        fsti_set_birth_age(simulation, agent);                          \
-        fsti_set_birth_sex(simulation, agent);                          \
-        fsti_set_birth_sex_preferred(simulation, agent);                \
-        fsti_set_birth_infected(simulation, agent);                     \
+        fsti_birth_age(simulation, agent);                              \
+        fsti_birth_sex(simulation, agent);                              \
+        fsti_birth_sex_preferred(simulation, agent);                    \
+        fsti_birth_infected(simulation, agent);                         \
+        fsti_birth_treated(simulation, agent);                          \
+        fsti_birth_resistant(simulation, agent);                        \
         FSTI_HOOK_AGENT_BIRTH(simulation, agent)                        \
     } while(0)
 #endif

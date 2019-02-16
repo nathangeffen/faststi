@@ -29,14 +29,34 @@ void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation);
 void fsti_event_write_agents_pretty(struct fsti_simulation *simulation);
 void fsti_event_initial_mating_pool(struct fsti_simulation *simulation);
 void fsti_event_initial_relchange(struct fsti_simulation *simulation);
-void fsti_set_birth_age(struct fsti_simulation *simulation,
-                        struct fsti_agent *a);
-void fsti_set_birth_sex(struct fsti_simulation *simulation,
-                        struct fsti_agent *a);
-void fsti_set_birth_sex_preferred(struct fsti_simulation *simulation,
-                                  struct fsti_agent *a);
-void fsti_set_birth_infected(struct fsti_simulation *simulation,
+
+void fsti_generate_age(struct fsti_simulation *simulation,
+                    struct fsti_agent *a);
+void fsti_generate_sex(struct fsti_simulation *simulation,
+                    struct fsti_agent *a);
+void fsti_generate_sex_preferred(struct fsti_simulation *simulation,
+                              struct fsti_agent *a);
+void fsti_generate_infected(struct fsti_simulation *simulation,
+                            struct fsti_agent *a);
+void fsti_generate_treated(struct fsti_simulation *simulation,
+                           struct fsti_agent *a);
+void fsti_generate_resistant(struct fsti_simulation *simulation,
                              struct fsti_agent *a);
+
+
+void fsti_birth_age(struct fsti_simulation *simulation,
+                    struct fsti_agent *agent);
+void fsti_birth_sex(struct fsti_simulation *simulation,
+                    struct fsti_agent *agent);
+void fsti_birth_sex_preferred(struct fsti_simulation *simulation,
+                              struct fsti_agent *agent);
+void fsti_birth_infected(struct fsti_simulation *simulation,
+                         struct fsti_agent *agent);
+void fsti_birth_treated(struct fsti_simulation * simulation,
+                        struct fsti_agent *agent);
+void fsti_birth_resistant(struct fsti_simulation * simulation,
+                          struct fsti_agent *agent);
+
 void fsti_event_birth(struct fsti_simulation *simulation);
 void fsti_event_death(struct fsti_simulation *simulation);
 void fsti_event_breakup(struct fsti_simulation *simulation);

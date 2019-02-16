@@ -95,8 +95,9 @@ float fsti_agent_default_distance(const struct fsti_agent *a, const struct fsti_
 
 struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name);
 long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
-                           struct fsti_agent *agent);
-long fsti_agent_elem_val_by_strname_l(const char *name, struct fsti_agent *agent);
+                           const struct fsti_agent *agent);
+long fsti_agent_elem_val_by_strname_l(const char *name,
+                                      const struct fsti_agent *agent);
 
 void fsti_agent_arr_add_dependency(struct fsti_agent_arr *agent_arr, struct fsti_agent_ind *agent_ind);
 void fsti_agent_arr_fill_n(struct fsti_agent_arr *agent_arr,  size_t n);
