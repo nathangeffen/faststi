@@ -21,16 +21,16 @@ if [ "$1" == "create" ]; then
 fi
 
 if [ "$1" == "release" ]; then
-    COMPDIR=$FSTI_BASE/release/
-    EXE=$FSTI_BASE/release/src/faststi
+    COMPDIR="$FSTI_BASE/release/"
+    EXE=$COMPDIR/src/faststi
     echo Compiling and running release version
 else
-    COMPDIR=$FSTI_BASE/debug/
+    COMPDIR="$FSTI_BASE/debug/"
     if [ "$1" == "valgrind" ]; then
         VALGRIND=`which valgrind`
         EXE="$VALGRIND --leak-check=full $FSTI_BASE/debug/src/faststi"
     else
-        EXE=$FSTI_BASE/debug/src/faststi
+        EXE="$COMPDIR/src/faststi"
     fi
     echo Compiling and running debug version
 fi
@@ -38,11 +38,10 @@ fi
 CURRENT_DIR=`pwd`
 
 if ! [ -d "$COMPDIR" ]; then
-    cd "$FSTI_BASE"
     if [ "$1" == "release" ]; then
-        meson --buildtype release release
+        meson --buildtype release "$COMPDIR"
     else
-        meson debug
+        meson "$COMPDIR"
     fi
 fi
 
