@@ -19,7 +19,7 @@ int fsti_tests(bool valgrind)
     fsti_dataset_test(&tg);
     fsti_config_test(&tg);
     fsti_agent_test(&tg);
-    // fsti_simulation_test(&tg);
+    fsti_simulation_test(&tg);
     fsti_simset_test(&tg, valgrind);
 
     test_group_summary(&tg);

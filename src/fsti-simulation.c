@@ -113,6 +113,30 @@ fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key)
     return dataset;
 }
 
+void fsti_simulation_load_datasets(struct fsti_config *config,
+                                   struct fsti_dataset_hash *dataset_hash)
+{
+    struct fsti_config_entry *entry;
+    size_t i;
+    char delim;
+
+    delim = fsti_config_at0_str(config, "CSV_DELIMITER")[0];
+    for (i = 0; i < FSTI_HASHSIZE; i++) {
+        entry = config->entry[i];
+        while (entry) {
+            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")-1) == 0) {
+                if (strcmp(entry->variants[0].value.str, FSTI_NO_OP)) {
+                    if (entry->variants[0].type == STR)
+                        fsti_dataset_hash_add(dataset_hash,
+                                              entry->variants[0].value.str,
+                                              delim);
+                }
+            }
+            entry = entry->next;
+        }
+    }
+}
+
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
     uint16_t year = fsti_config_at0_long(&simulation->config, "START_DATE");
@@ -167,16 +191,26 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->initial_resistant_rate =
         fsti_config_at0_double(&simulation->config, "INITIAL_RESISTANT_RATE");
 
+    // Datasets
+    if (simulation->dataset_hash.owner)
+        fsti_simulation_load_datasets(&simulation->config,
+                                      &simulation->dataset_hash);
+
     simulation->dataset_mortality =
         fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
     simulation->dataset_single =
         fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD");
     simulation->dataset_rel =
         fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD");
-    simulation->dataset_infect_stage =
-        fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
     simulation->dataset_infect =
         fsti_simulation_get_dataset(simulation, "DATASET_INFECT");
+    simulation->dataset_infect_stage =
+        fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
+
+    simulation->dataset_gen_sex =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_SEX");
+    simulation->dataset_gen_sex_preferred =
+        fsti_simulation_get_dataset(simulation, "DATASET_GEN_SEX_PREFERRED");
     simulation->dataset_gen_mating =
         fsti_simulation_get_dataset(simulation, "DATASET_GEN_MATING");
     simulation->dataset_gen_infect =
@@ -185,9 +219,16 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_simulation_get_dataset(simulation, "DATASET_GEN_TREATED");
     simulation->dataset_gen_resistant =
         fsti_simulation_get_dataset(simulation, "DATASET_GEN_RESISTANT");
+
+    simulation->dataset_birth_infect =
+        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_INFECT");
+    simulation->dataset_birth_treated =
+        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_TREATED");
+    simulation->dataset_birth_resistant =
+        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_RESISTANT");
+
     simulation->dataset_coinfect =
         fsti_simulation_get_dataset(simulation, "DATASET_COINFECT");
-
 
     // Birth event vars
     simulation->birth_event_every_n =
@@ -288,8 +329,26 @@ void fsti_simulation_test(struct test_group *tg)
     fsti_config_init(&config);
     fsti_config_set_default(&config);
 
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_SEX", "Default vals",
+                    "dataset_gen_sex.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_SEX_PREFERRED", "Default vals",
+                    "dataset_gen_sex_preferred.csv");
+
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_INFECT", "Default vals",
+                    "dataset_gen_infect.csv");
     FSTI_CONFIG_ADD(&config, "DATASET_GEN_TREATED", "Default vals",
                     "dataset_gen_treated.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_RESISTANT", "Default vals",
+                    "dataset_gen_resistant.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_GEN_MATING", "Default vals",
+                    "dataset_gen_mating.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_INFECT", "Default vals",
+                    "dataset_birth_infect.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_TREATED", "Default vals",
+                    "dataset_birth_treated.csv");
+    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_RESISTANT", "Default vals",
+                    "dataset_birth_resistant.csv");
+
     FSTI_CONFIG_ADD(&config, "AFTER_EVENTS", "Write nothing", "_NO_OP");
 
     fsti_simulation_init(&simulation, &config, 0, 0);
@@ -317,7 +376,7 @@ void fsti_simulation_test(struct test_group *tg)
     d = (double) same_sex / simulation.living.len;
     TESTEQ(d > 0.03 && d < 0.07, true, *tg);
     d = (double) infected / simulation.living.len;
-    TESTEQ(d > 0.001 && d < 0.1, true, *tg);
+    TESTEQ(d > 0.001 && d < 0.3, true, *tg);
 
     size_t c = 0;
     it = fsti_agent_ind_begin(&simulation.living);

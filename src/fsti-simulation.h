@@ -125,6 +125,8 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 size_t fsti_simulation_agent_size(struct fsti_simulation *simulation);
 struct fsti_dataset *
 fsti_simulation_get_dataset(struct fsti_simulation *simulation, char *key);
+void fsti_simulation_load_datasets(struct fsti_config *config,
+                                   struct fsti_dataset_hash *dataset_hash);
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation);
 struct fsti_agent *
 fsti_simulation_new_agent(struct fsti_simulation *simulation);

@@ -158,29 +158,6 @@ static void update_config(struct fsti_simset *simset)
     }
 }
 
-static void load_datasets(struct fsti_simset *simset)
-{
-    struct fsti_config_entry *entry;
-    size_t i;
-    char delim;
-
-    delim = fsti_config_at0_str(&simset->config, "CSV_DELIMITER")[0];
-    for (i = 0; i < FSTI_HASHSIZE; i++) {
-        entry = simset->config.entry[i];
-        while (entry) {
-            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")-1) == 0) {
-                if (strcmp(entry->variants[0].value.str, FSTI_NO_OP)) {
-                    if (entry->variants[0].type == STR)
-                        fsti_dataset_hash_add(&simset->dataset_hash,
-                                              entry->variants[0].value.str,
-                                              delim);
-                }
-            }
-            entry = entry->next;
-        }
-    }
-}
-
 static void setup_simulation(struct fsti_simset *simset,
                              struct fsti_simulation *simulation)
 {
@@ -189,7 +166,7 @@ static void setup_simulation(struct fsti_simset *simset,
                          simset->config_sim_number);
     set_output_files(simset, simulation);
     simulation->name = *simset->group_ptr;
-    load_datasets(simset);
+    fsti_simulation_load_datasets(&simset->config, &simset->dataset_hash);
     fsti_dataset_hash_copy(&simulation->dataset_hash, &simset->dataset_hash);
 }
 
@@ -297,10 +274,18 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
             "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
             "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
-            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
+
+            "DATASET_GEN_SEX=dataset_gen_sex.csv\n"
+            "DATASET_GEN_SEX_PREFERRED=dataset_gen_sex_preferred.csv\n"
             "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
             "DATASET_GEN_TREATED=dataset_gen_treated.csv\n"
             "DATASET_GEN_RESISTANT=dataset_gen_resistant.csv\n"
+            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
+
+            "DATASET_BIRTH_INFECT=dataset_gen_infect.csv\n"
+            "DATASET_BIRTH_TREATED=dataset_birth_treated.csv\n"
+            "DATASET_BIRTH_RESISTANT=dataset_birth_resistant.csv\n"
+
             "DATASET_REL_PERIOD=dataset_rel.csv\n"
             "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
             "DATASET_INFECT=dataset_infect.csv\n"

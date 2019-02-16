@@ -145,6 +145,12 @@ int fsti_config_set_default(struct fsti_config *config)
                     "CSV file of values to determine if agent has been infected "
                     "by a sexual partner", FSTI_NO_OP);
 
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_SEX",
+                    "CSV file of values to set sex of generated agent",
+                    FSTI_NO_OP);
+    FSTI_CONFIG_ADD(config, "DATASET_GEN_SEX_PREFERRED",
+                    "CSV file of values to set sex preferred of generated agent",
+                    FSTI_NO_OP);
     FSTI_CONFIG_ADD(config, "DATASET_GEN_INFECT",
                     "CSV file of values to set infection stage of "
                     "generated agent", FSTI_NO_OP);
