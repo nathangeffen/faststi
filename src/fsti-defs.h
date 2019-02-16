@@ -15,7 +15,7 @@
 #define FSTI_KEY_LEN 40
 #define FSTI_DESC_LEN 200
 #define FSTI_TOKEN_LEN 200
-#define FSTI_DATE_LEN 11
+#define FSTI_DATE_LEN 15
 
 /* Useful constants */
 #define FSTI_MALE 0
