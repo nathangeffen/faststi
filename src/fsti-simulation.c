@@ -278,6 +278,7 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
 
     simulation->state = AFTER;
     exec_events(simulation, &simulation->after_events);
+    fflush(NULL);
 }
 
 void fsti_simulation_kill_agent(struct fsti_simulation *simulation,

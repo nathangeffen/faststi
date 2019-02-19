@@ -24,6 +24,10 @@ if [ "$1" == "release" ]; then
     COMPDIR="$FSTI_BASE/release/"
     EXE=$COMPDIR/src/faststi
     echo Compiling and running release version
+elif [ "$1" == "nosafety" ]; then
+    COMPDIR="$FSTI_BASE/nosafety/"
+    EXE=$COMPDIR/src/faststi
+    echo Compiling and running safety off version
 else
     COMPDIR="$FSTI_BASE/debug/"
     if [ "$1" == "valgrind" ]; then
@@ -40,6 +44,8 @@ CURRENT_DIR=`pwd`
 if ! [ -d "$COMPDIR" ]; then
     if [ "$1" == "release" ]; then
         meson --buildtype release "$COMPDIR"
+    elif [ "$1" == "nosafety" ]; then
+	CFLAGS=-DFSTI_NO_SAFETY_BELT meson --buildtype release "$COMPDIR"
     else
         meson "$COMPDIR"
     fi

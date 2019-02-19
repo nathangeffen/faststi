@@ -130,14 +130,19 @@ double
 fsti_config_at_double(const struct fsti_config *config,
 		      const char *key, size_t index)
 {
+    double result;
     struct fsti_variant *variant;
 
     variant = fsti_config_at(config, key, index);
-    if (variant->type == DBL)
-        return variant->value.dbl;
-    else if (variant->type == LONG)
-        return  variant->value.longint;
-    FSTI_ASSERT(false, FSTI_ERR_DBL_EXPECTED, key);
+    if (variant->type == DBL) {
+        result = variant->value.dbl;
+    } else if (variant->type == LONG) {
+        result =  variant->value.longint;
+    } else {
+        result = 0;
+        FSTI_ASSERT(false, FSTI_ERR_DBL_EXPECTED, key);
+    }
+    return result;
 }
 
 

@@ -202,7 +202,11 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
                                    const struct csv *cs,
                                    const char *filename)
 {
-    size_t rows, cols, max_index;
+    size_t rows, cols;
+
+#ifndef FSTI_NO_SAFETY_BELT
+    size_t max_index;
+#endif
 
     strncpy(dataset->filename, filename, FSTI_FILENAME_LEN);
     dataset->filename[FSTI_FILENAME_LEN] = 0;
@@ -233,12 +237,16 @@ static void convert_csv_to_dataset(struct fsti_dataset *dataset,
             }
         }
     }
+
+#ifndef FSTI_NO_SAFETY_BELT
     max_index = get_index(dataset->multiplicands, dataset->max_vals,
                           dataset->num_independents);
 
     FSTI_ASSERT((max_index + 1) == rows, FSTI_ERR_DATASET_FILE,
                 fsti_sprintf("%s: Number of lines expected is %zu vs %zu",
                              filename, max_index + 1, rows));
+#endif
+
     set_dependents(dataset, cs, rows, cols);
 }
 
