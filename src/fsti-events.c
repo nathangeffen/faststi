@@ -282,7 +282,7 @@ void fsti_generate_resistant(struct fsti_simulation *simulation,
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
                     "For parameter DATASET_GEN_RESISTANT.");
         agent->resistant = dataset_val(simulation, agent,
-                                       simulation->dataset_gen_resistant, 0, 1);
+                                       simulation->dataset_gen_resistant, 1, 0);
     }
 }
 
@@ -359,7 +359,7 @@ void fsti_birth_resistant(struct fsti_simulation *simulation,
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
                     "For parameter DATASET_BIRTH_RESISTANT.");
         agent->resistant = dataset_val(simulation, agent,
-                                       simulation->dataset_gen_resistant, 0, 1);
+                                       simulation->dataset_gen_resistant, 1, 0);
     }
 }
 
@@ -762,6 +762,7 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
                 if (r < d) {
                     change = fsti_dataset_get_by_index(
                         simulation->dataset_infect_stage, index, 1);
+                    DBG("INFECT %u %u %ld", agent->id, agent->infected, change);
                     agent->infected += change;
                 }
 
@@ -772,6 +773,7 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
                 if (r < d) {
                     change = fsti_dataset_get_by_index(
                         simulation->dataset_infect_stage, index, 3);
+                    DBG("TREATED %u %u %ld", agent->id, agent->treated, change);
                     agent->treated += change;
                 }
 
@@ -782,6 +784,7 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
                 if (r < d) {
                     change = fsti_dataset_get_by_index(
                         simulation->dataset_infect_stage, index, 5);
+                    DBG("RESIST %u %u %ld", agent->id, agent->resistant, change);
                     agent->resistant += change;
                 }
             }

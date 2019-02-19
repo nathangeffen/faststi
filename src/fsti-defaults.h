@@ -61,14 +61,16 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",    \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
             "sim", delim,                                               \
             "date", delim,                                              \
             "id", delim,                                                \
             "age", delim,                                               \
-            "infected", delim,                                          \
             "sex", delim,                                               \
             "sex_preferred", delim,                                     \
+            "infected", delim,                                          \
+            "treated", delim,                                           \
+            "resistant", delim,                                         \
             "date_death", delim,                                        \
             "partner", delim,                                           \
             "change_date")
@@ -94,15 +96,17 @@ unsigned total_partners;
                              simulation->time_step,                     \
                              _relchange_date);                          \
         fprintf(simulation->agents_output_file,                         \
-                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",            \
+                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",    \
                 simulation->sim_number, delim,                          \
                 _current_date, delim,                                   \
                 agent->id, delim,                                       \
                 fsti_time_in_years(agent->age), delim,                  \
-                agent->infected, delim,                                 \
                 (unsigned) agent->sex, delim,                           \
                 (unsigned) agent->sex_preferred, delim,                 \
-                _death_date , delim,             \
+                agent->infected, delim,                                 \
+                (unsigned) agent->treated, delim,                       \
+                (unsigned) agent->resistant, delim,                     \
+                _death_date , delim,                                    \
                 agent->num_partners ? (long) agent->partners[0] : -1,   \
                 delim, _relchange_date);                                \
     } while(0)
