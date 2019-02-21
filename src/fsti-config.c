@@ -367,11 +367,12 @@ void fsti_config_process_key_values(struct fsti_config *config,
 
     FSTI_ASSERT(key_values, FSTI_ERR_NOMEM, NULL);
     FSTI_ASSERT(key_values[0], FSTI_ERR_KEY_NOT_FOUND, key_value_str);
-
-    FSTI_ASSERT(strcmp(g_strstrip(key_values[0]), ""), FSTI_ERR_KEY_NOT_FOUND,
+    g_strstrip(key_values[0]);
+    FSTI_ASSERT(strcmp(key_values[0], ""), FSTI_ERR_KEY_NOT_FOUND,
                 key_value_str);
     FSTI_ASSERT(key_values[1], FSTI_ERR_NO_VALUE_FOR_KEY, key_value_str);
-    FSTI_ASSERT(strcmp(g_strstrip(key_values[1]), ""), FSTI_ERR_NO_VALUE_FOR_KEY,
+    g_strstrip(key_values[1]);
+    FSTI_ASSERT(strcmp(key_values[1], ""), FSTI_ERR_NO_VALUE_FOR_KEY,
                 key_value_str);
     fsti_config_replace_values(config, key_values[0], key_values[1]);
     g_strfreev(key_values);

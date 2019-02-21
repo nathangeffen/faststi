@@ -45,7 +45,7 @@ if ! [ -d "$COMPDIR" ]; then
     if [ "$1" == "release" ]; then
         meson --buildtype release "$COMPDIR"
     elif [ "$1" == "nosafety" ]; then
-	CFLAGS=-DFSTI_NO_SAFETY_BELT meson --buildtype release "$COMPDIR"
+	CFLAGS="-DFSTI_NO_SAFETY_BELT -DNDEBUG" meson --buildtype release "$COMPDIR"
     else
         meson "$COMPDIR"
     fi
