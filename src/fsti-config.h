@@ -37,7 +37,7 @@ struct fsti_config {
 };
 
 void fsti_config_init(struct fsti_config *config);
-void fsti_config_print_entry(const struct fsti_config_entry *entry);
+void fsti_config_print_entry(const struct fsti_config_entry *entry, char delim);
 void fsti_config_print_all(struct fsti_config *config);
 struct fsti_config_entry *fsti_config_find(const struct fsti_config *config, const char *key);
 struct fsti_variant *fsti_config_at(const struct fsti_config *config, const char *key, size_t index);

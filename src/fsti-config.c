@@ -27,12 +27,12 @@ void fsti_config_init(struct fsti_config *config)
     memset(config->entry, 0, sizeof(struct fsti_config_entry *) * FSTI_HASHSIZE);
 }
 
-void fsti_config_print_entry(const struct fsti_config_entry *entry)
+void fsti_config_print_entry(const struct fsti_config_entry *entry, char delim)
 {
-    printf("%s,%s,", entry->key, entry->description);
+    printf("%s%c %s%c ", entry->key, delim, entry->description, delim);
     for (size_t i = 0; i < entry->len; ++i) {
 	if (i > 0)
-	    putchar(',');
+	    printf("%c ", delim);
 	switch (entry->variants[i].type) {
 	case LONG:
 	    printf("%ld", entry->variants[i].value.longint);
@@ -51,15 +51,39 @@ void fsti_config_print_entry(const struct fsti_config_entry *entry)
     putchar('\n');
 }
 
+static int cmp_entry(const void *a, const void *b)
+{
+    struct fsti_config_entry *x, *y;
+    x =  *  (struct fsti_config_entry **) a;
+    y =  *  (struct fsti_config_entry **) b;
+    return strcmp(x->key, y->key);
+}
+
 void fsti_config_print_all(struct fsti_config *config)
 {
+    size_t num_entries = 0;
+    size_t capacity = FSTI_HASHSIZE;
+    struct fsti_config_entry **entries = malloc(sizeof(*entries) * capacity);
+    struct fsti_config_entry **t;
+    char delim = fsti_config_at0_str(config, "CSV_DELIMITER")[0];
+
     for (size_t i = 0; i < FSTI_HASHSIZE; ++i) {
         struct fsti_config_entry *entry = config->entry[i];
         while(entry) {
-            fsti_config_print_entry(entry);
+            if (num_entries == capacity) {
+                capacity = capacity * 3 / 2;
+                t = realloc(entries, sizeof(*entries) * capacity);
+                FSTI_ASSERT(t, FSTI_ERR_NOMEM, NULL);
+                entries = t;
+            }
+            entries[num_entries++] = entry;
             entry = entry->next;
         }
     }
+    qsort(entries, num_entries, sizeof(*entries), cmp_entry);
+    for (size_t i = 0; i < num_entries; ++i)
+        fsti_config_print_entry(entries[i], delim);
+    free(entries);
 }
 
 struct fsti_config_entry *fsti_config_find(const struct fsti_config *config,

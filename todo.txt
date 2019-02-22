@@ -1,7 +1,5 @@
 5. composite events
 7. Put agent var names into hashtable
-8. Rename dataset
-9. sort parameters in alphabetical order before displaying
 11. Syphilis model
 12. Get rid of redundant parameters
 13. Documentation: user guide
