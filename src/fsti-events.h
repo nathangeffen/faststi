@@ -62,6 +62,8 @@ void fsti_event_death(struct fsti_simulation *simulation);
 void fsti_event_breakup(struct fsti_simulation *simulation);
 void fsti_event_mating_pool(struct fsti_simulation *simulation);
 void fsti_event_knn_match(struct fsti_simulation *simulation);
+void fsti_event_pair(struct fsti_simulation *simulation);
+void fsti_event_generate_and_pair(struct fsti_simulation *simulation);
 void fsti_event_infect(struct fsti_simulation *simulation);
 void fsti_event_no_op(struct fsti_simulation *simulation);
 void fsti_event_register_events();

@@ -1,10 +1,7 @@
-5. composite events
-7. Put agent var names into hashtable
 11. Syphilis model
 12. Get rid of redundant parameters
 13. Documentation: user guide
 14. Package for Debian/Ubuntu
-15. Declare, initialize, and set config simulation vars in one place?
 16. Make all config vars to have identical names (and case) to corresponding
 sim vars
 17. Rename data files to test data files.
@@ -13,6 +10,7 @@ Version 2.0
 ------------
 1. Calibration
 2. Datasets can specify function. (Maybe)
+3. Declare, initialize, and set config simulation vars in one place?
 
 Dependencies
 ------------

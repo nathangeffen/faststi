@@ -8,10 +8,11 @@ struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
 _Thread_local struct fsti_agent fsti_thread_local_agent;
 
-static struct fsti_agent_elem agent_elem[] = FSTI_AGENT_ELEM;
+static struct fsti_agent_elem agent_elems[] = FSTI_AGENT_ELEM;
+static  bool agent_elems_initialized = false;
 
 const size_t fsti_agent_elem_n =
-    sizeof(agent_elem) / sizeof(struct fsti_agent_elem);
+    sizeof(agent_elems) / sizeof(struct fsti_agent_elem);
 
 // Compare two strings (for qsort and bsearch)
 static int cmps(const void *a, const void *b)
@@ -21,14 +22,16 @@ static int cmps(const void *a, const void *b)
     return strcmp(x->name, y->name);
 }
 
-void fsti_agent_elem_init()
+void fsti_agent_elems_init()
 {
-    qsort(agent_elem, fsti_agent_elem_n,  sizeof(struct fsti_agent_elem), cmps);
-}
-
-inline struct fsti_agent_elem *fsti_agent_elem_get()
-{
-    return agent_elem;
+    static GMutex mutex;
+    g_mutex_lock(&mutex);
+    if (agent_elems_initialized == false) {
+        qsort(agent_elems, fsti_agent_elem_n,  sizeof(struct fsti_agent_elem),
+              cmps);
+        agent_elems_initialized = true;
+    }
+    g_mutex_unlock(&mutex);
 }
 
 bool fsti_agent_has_partner(const struct fsti_agent *agent)
@@ -38,7 +41,6 @@ bool fsti_agent_has_partner(const struct fsti_agent *agent)
     else
         return false;
 }
-
 
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b)
 {
@@ -89,7 +91,7 @@ struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
 {
     struct fsti_agent_elem *elem;
 
-    elem = bsearch(name, agent_elem, fsti_agent_elem_n,
+    elem = bsearch(name, agent_elems, fsti_agent_elem_n,
                    sizeof(struct fsti_agent_elem), cmps);
     FSTI_ASSERT(elem, FSTI_ERR_KEY_NOT_FOUND, name);
 

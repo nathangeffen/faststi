@@ -708,6 +708,24 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
     }
 }
 
+void fsti_event_breakup_and_pair(struct fsti_simulation *simulation)
+{
+    fsti_event_breakup(simulation);
+    fsti_event_mating_pool(simulation);
+    fsti_event_shuffle_mating_pool(simulation);
+    fsti_event_knn_match(simulation);
+}
+
+
+void fsti_event_generate_and_pair(struct fsti_simulation *simulation)
+{
+    fsti_event_generate_agents(simulation);
+    fsti_event_initial_mating_pool(simulation);
+    fsti_event_shuffle_mating_pool(simulation);
+    fsti_event_knn_match(simulation);
+    fsti_event_initial_relchange(simulation);
+}
+
 void fsti_event_infect(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent, *partner;
@@ -1032,6 +1050,8 @@ void fsti_event_register_events()
         fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
         fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
         fsti_register_add("_RKPM", fsti_event_knn_match);
+        fsti_register_add("_BREAKUP_AND_PAIR", fsti_event_breakup_and_pair);
+        fsti_register_add("_GENERATE_AND_PAIR", fsti_event_generate_and_pair);
         fsti_register_add("_INFECT", fsti_event_infect);
         fsti_register_add("_STAGE", fsti_event_infect_stage);
         fsti_register_add("_COINFECT", fsti_event_coinfect);

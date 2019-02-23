@@ -175,16 +175,23 @@ unsigned total_partners;
     } while(0)
 #endif
 
-/* If any members of the agent struct need to be associated with a string
-   they are defined here in alphabetical order. (Alphabetical order is
-   essential because a binary search used to locate the entry.)
-   Unfortunately because it's in alphabetical order, if you want to append
-   to the definition below, you need to copy and paste the entire
-   definition into the fsti-userdefs.h file and insert your appended variable
-   names in the correct place alphabetically.
+/* Define additional struct fsti_agent elements here.
+   End the list with a comma (,) else there will be compile errors.
+   Note that adding additional elements will break the standard test run.
+*/
+
+#ifndef FSTI_AGENT_ADDITIONAL_ELEMS
+#define FSTI_AGENT_ADDITIONAL_ELEMS
+#endif
+
+/* The members of the fsti_agent structure are defined here so that
+   agent csv files and datasets can refer to them. In the default
+   version, the names are entered alphabetically, but this is not essential.
+   The system sorts them before using them the first time.
 */
 #ifndef FSTI_AGENT_ELEM
 #define FSTI_AGENT_ELEM {                                               \
+         FSTI_AGENT_ADDITIONAL_ELEMS                                    \
         {"age", offsetof(struct fsti_agent, age), UINT, fsti_to_age},   \
         FSTI_AGENT_ELEM_ENTRY(age_group),                               \
         FSTI_AGENT_ELEM_ENTRY(birth_date),                              \

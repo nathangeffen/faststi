@@ -84,6 +84,7 @@ struct fsti_agent_ind {
 extern struct fsti_agent_arr fsti_saved_agent_arr;
 extern const size_t fsti_agent_elem_n;
 
+void fsti_agent_elems_init();
 struct fsti_agent_elem *fsti_agent_elem_get();
 _Bool fsti_agent_has_partner(const struct fsti_agent *agent);
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b);

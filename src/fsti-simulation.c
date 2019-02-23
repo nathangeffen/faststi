@@ -51,6 +51,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
 			  int sim_number, int config_sim_number)
 {
     errno = 0;
+    fsti_agent_elems_init();
     simulation->name = "Default";
     fsti_config_copy(&simulation->config, config);
     fsti_dataset_hash_init(&simulation->dataset_hash);
