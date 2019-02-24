@@ -54,9 +54,9 @@ unsigned total_partners;
 
 #ifndef FSTI_ADDITIONAL_CONFIG_VARS
 #define FSTI_ADDITIONAL_CONFIG_VARS(config)                             \
-    FSTI_CONFIG_ADD(config, "EXAMPLE_1", "Example configuration field", 0); \
-    FSTI_CONFIG_ADD(config, "EXAMPLE_2",                                \
-                    "Example configuration field", "String field")
+    FSTI_CONFIG_ADD(config, EXAMPLE_1, "Example configuration field", 0); \
+    FSTI_CONFIG_ADD_STR(config, EXAMPLE_2,                              \
+                        "Example configuration field", "String field")
 #endif
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
@@ -301,22 +301,6 @@ unsigned total_partners;
 #ifndef FSTI_SET_SINGLE_PERIOD
 #define FSTI_SET_SINGLE_PERIOD set_single_period
 #endif
-
-/*
-   List of generator functions (in alphabetical order to support bsearch).
-*/
-
-#ifndef FSTI_GENERATOR_MAP
-#define FSTI_GENERATOR_MAP                                              \
-    {"AGE", fsti_gen_age},                                              \
-    {"BETA", fsti_gen_beta},                                            \
-    {"CONST", fsti_gen_const},                                          \
-    {"SEX_SEXOR", fsti_gen_sex_sexor},                                  \
-    {"SEX_SEXOR_INFECTION", fsti_gen_sex_sexor_infection},              \
-    {"UNIF", fsti_gen_uniform}
-#endif
-
-
 
 /* Hooks */
 

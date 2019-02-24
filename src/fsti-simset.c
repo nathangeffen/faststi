@@ -93,7 +93,7 @@ static void set_keys(struct fsti_simset *simset)
     }
     g_strfreev(keys);
     simset->config_num_sims = (size_t)
-        fsti_config_at0_long(&simset->config,"NUM_SIMULATIONS");
+        fsti_config_at0_long(&simset->config,"num_simulations");
     FSTI_ASSERT(simset->config_num_sims > 0, FSTI_ERR_INVALID_VALUE, NULL);
 }
 
@@ -104,7 +104,7 @@ static void set_output_files(struct fsti_simset *simset,
 
     if (simset->sim_number == 0) {
         results_file_name = fsti_config_at0_str(&simulation->config,
-                                                "RESULTS_FILE");
+                                                "results_file");
 
         if(strcmp(results_file_name, "")) {
             simset->results_file =
@@ -116,7 +116,7 @@ static void set_output_files(struct fsti_simset *simset,
         }
 
         agents_file_name = fsti_config_at0_str(&simulation->config,
-                                               "AGENTS_OUTPUT_FILE");
+                                               "agents_output_file");
         if(strcmp(agents_file_name, "")) {
             simset->agents_output_file =
                 simulation->agents_output_file = fopen(agents_file_name, "w");
@@ -128,7 +128,7 @@ static void set_output_files(struct fsti_simset *simset,
         }
 
         partnerships_file_name = fsti_config_at0_str(&simulation->config,
-                                                     "PARTNERSHIPS_FILE");
+                                                     "partnerships_file");
         if(strcmp(partnerships_file_name, "")) {
             simset->partnerships_file =
                 simulation->partnerships_file = fopen(partnerships_file_name, "w");
@@ -192,7 +192,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
     set_keys(simset);
 
     while (*simset->group_ptr) {
-        max_threads = (unsigned) fsti_config_at0_long(&simset->config,"THREADS");
+        max_threads = (unsigned) fsti_config_at0_long(&simset->config,"threads");
         if (max_threads == 0) max_threads = g_get_num_processors();
 
         simulation = malloc(sizeof(*simulation));
@@ -235,90 +235,90 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
 
     if (valgrind) {
         config_text =
-            "[Simulation_0]\n"
-            "NUM_SIMULATIONS=1\n"
-            "NUM_AGENTS=100\n"
-            "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
-            "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
-            "DURING_EVENTS=_AGE\n"
-            "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
-            "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
-            "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
-            "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
-            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
-            "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
-            "DATASET_GEN_TREATED=dataset_gen_treated.csv\n"
-            "DATASET_GEN_RESISTANT=dataset_gen_resistant.csv\n"
-            "DATASET_REL_PERIOD=dataset_rel.csv\n"
-            "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
-            "DATASET_INFECT=dataset_infect.csv\n"
-            "DATASET_INFECT_STAGE=dataset_infect_stage.csv\n"
-            "DATASET_MORTALITY=dataset_mortality_simple.csv\n"
-            "RESULTS_FILE=fsti_test_results_1234.csv\n"
-            "THREADS=1\n"
-            "BEFORE_EVENTS=_WRITE_AGENTS_CSV_HEADER;_GENERATE_AGENTS;_"
-            "INITIAL_MATING;_RKPM;_INITIAL_REL;_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
-            "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
-            "_INFECT;_STAGE;_DEATH;_BIRTH\n"
-            "OUTPUT_MATCHES=1\n"
-            "OUTPUT_BREAKUPS=1\n"
-            "OUTPUT_INFECTIONS=1\n";
+            "[simulation_0]\n"
+            "num_simulations=1\n"
+            "num_agents=100\n"
+            "before_events=_read_agents;_write_agents_csv_header;"
+            "_write_partnerships_csv_header;_write_results_csv_header\n"
+            "during_events=_age\n"
+            "after_events=_flex_report;_write_agents_csv\n"
+            "agents_input_file=fsti_test_agents_in_1234.csv\n"
+            "agents_output_file=fsti_test_agents_out_1234.csv\n"
+            "partnerships_file=fsti_test_partnerships_1234.csv\n"
+            "dataset_gen_mating=dataset_gen_mating.csv\n"
+            "dataset_gen_infect=dataset_gen_infect.csv\n"
+            "dataset_gen_treated=dataset_gen_treated.csv\n"
+            "dataset_gen_resistant=dataset_gen_resistant.csv\n"
+            "dataset_rel_period=dataset_rel.csv\n"
+            "dataset_single_period=dataset_single.csv\n"
+            "dataset_infect=dataset_infect.csv\n"
+            "dataset_infect_stage=dataset_infect_stage.csv\n"
+            "dataset_mortality=dataset_mortality_simple.csv\n"
+            "results_file=fsti_test_results_1234.csv\n"
+            "threads=1\n"
+            "before_events=_write_agents_csv_header;_generate_agents;_"
+            "initial_mating;_rkpm;_initial_rel;_flex_report;_write_agents_csv\n"
+            "during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
+            "_infect;_stage;_death;_birth\n"
+            "output_matches=1\n"
+            "output_breakups=1\n"
+            "output_infections=1\n";
     } else {
         config_text =
-            "[Simulation_0]\n"
-            "NUM_SIMULATIONS=1\n"
-            "BEFORE_EVENTS=_READ_AGENTS;_WRITE_AGENTS_CSV_HEADER;"
-            "_WRITE_PARTNERSHIPS_CSV_HEADER;_WRITE_RESULTS_CSV_HEADER\n"
-            "DURING_EVENTS=_AGE\n"
-            "AFTER_EVENTS=_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
-            "AGENTS_INPUT_FILE=fsti_test_agents_in_1234.csv\n"
-            "AGENTS_OUTPUT_FILE=fsti_test_agents_out_1234.csv\n"
-            "PARTNERSHIPS_FILE=fsti_test_partnerships_1234.csv\n"
+            "[simulation_0]\n"
+            "num_simulations=1\n"
+            "before_events=_read_agents;_write_agents_csv_header;"
+            "_write_partnerships_csv_header;_write_results_csv_header\n"
+            "during_events=_age\n"
+            "after_events=_flex_report;_write_agents_csv\n"
+            "agents_input_file=fsti_test_agents_in_1234.csv\n"
+            "agents_output_file=fsti_test_agents_out_1234.csv\n"
+            "partnerships_file=fsti_test_partnerships_1234.csv\n"
 
-            "DATASET_GEN_SEX=dataset_gen_sex.csv\n"
-            "DATASET_GEN_SEX_PREFERRED=dataset_gen_sex_preferred.csv\n"
-            "DATASET_GEN_INFECT=dataset_gen_infect.csv\n"
-            "DATASET_GEN_TREATED=dataset_gen_treated.csv\n"
-            "DATASET_GEN_RESISTANT=dataset_gen_resistant.csv\n"
-            "DATASET_GEN_MATING=dataset_gen_mating.csv\n"
+            "dataset_gen_sex=dataset_gen_sex.csv\n"
+            "dataset_gen_sex_preferred=dataset_gen_sex_preferred.csv\n"
+            "dataset_gen_infect=dataset_gen_infect.csv\n"
+            "dataset_gen_treated=dataset_gen_treated.csv\n"
+            "dataset_gen_resistant=dataset_gen_resistant.csv\n"
+            "dataset_gen_mating=dataset_gen_mating.csv\n"
 
-            "DATASET_BIRTH_INFECT=dataset_gen_infect.csv\n"
-            "DATASET_BIRTH_TREATED=dataset_birth_treated.csv\n"
-            "DATASET_BIRTH_RESISTANT=dataset_birth_resistant.csv\n"
+            "dataset_birth_infect=dataset_gen_infect.csv\n"
+            "dataset_birth_treated=dataset_birth_treated.csv\n"
+            "dataset_birth_resistant=dataset_birth_resistant.csv\n"
 
-            "DATASET_REL_PERIOD=dataset_rel.csv\n"
-            "DATASET_SINGLE_PERIOD=dataset_single.csv\n"
-            "DATASET_INFECT=dataset_infect.csv\n"
-            "DATASET_INFECT_STAGE=dataset_infect_stage.csv\n"
-            "DATASET_MORTALITY=dataset_mortality_simple.csv\n"
-            "RESULTS_FILE=fsti_test_results_1234.csv\n"
-            "THREADS=1\n"
-            "[Simulation_1]\n"
-            "THREADS=3\n"
-            "NUM_SIMULATIONS=5\n"
-            "NUM_AGENTS=500\n"
-            "BEFORE_EVENTS=_WRITE_AGENTS_CSV_HEADER;_GENERATE_AGENTS;_"
-            "INITIAL_MATING;_RKPM;_INITIAL_REL;_FLEX_REPORT;_WRITE_AGENTS_CSV\n"
-            "DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
-            "_INFECT;_STAGE;_DEATH;_BIRTH\n"
-            "# BEFORE_EVENTS=_GENERATE_AGENTS;_INITIAL_MATING;"
-            "_RKPM;_INITIAL_REL\n"
-            "# DURING_EVENTS=_AGE;_BREAKUP;_MATING_POOL;_SHUFFLE_MATING;_RKPM;"
-            "_INFECT;_BIRTH;_DEATH\n"
-            "MATCH_K=1\n"
-            "[Simulation_2]\n"
-            "NUM_SIMULATIONS=1\n"
-            "OUTPUT_MATCHES=1\n"
-            "OUTPUT_BREAKUPS=1\n"
-            "OUTPUT_INFECTIONS=1\n"
-            "MATCH_K=100\n"
-            "[Simulation_3]\n"
-            "DURING_EVENTS=_AGE;_TEST_BREAKUP;_TEST_MATING_POOL;"
-            "_TEST_SHUFFLE_MATING;_TEST_RKPM;_TEST_INFECT;_TEST_BIRTH;_TEST_DEATH\n"
-            "OUTPUT_MATCHES=0\n"
-            "OUTPUT_BREAKUPS=0\n"
-            "OUTPUT_INFECTIONS=0\n"
-            "MATCH_K=10\n";
+            "dataset_rel_period=dataset_rel.csv\n"
+            "dataset_single_period=dataset_single.csv\n"
+            "dataset_infect=dataset_infect.csv\n"
+            "dataset_infect_stage=dataset_infect_stage.csv\n"
+            "dataset_mortality=dataset_mortality_simple.csv\n"
+            "results_file=fsti_test_results_1234.csv\n"
+            "threads=1\n"
+            "[simulation_1]\n"
+            "threads=3\n"
+            "num_simulations=5\n"
+            "num_agents=500\n"
+            "before_events=_write_agents_csv_header;_generate_agents;_"
+            "initial_mating;_rkpm;_initial_rel;_flex_report;_write_agents_csv\n"
+            "during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
+            "_infect;_stage;_death;_birth\n"
+            "# before_events=_generate_agents;_initial_mating;"
+            "_rkpm;_initial_rel\n"
+            "# during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
+            "_infect;_birth;_death\n"
+            "match_k=1\n"
+            "[simulation_2]\n"
+            "num_simulations=1\n"
+            "output_matches=1\n"
+            "output_breakups=1\n"
+            "output_infections=1\n"
+            "match_k=100\n"
+            "[simulation_3]\n"
+            "during_events=_age;_test_breakup;_test_mating_pool;"
+            "_test_shuffle_mating;_test_rkpm;_test_infect;_test_birth;_test_death\n"
+            "output_matches=0\n"
+            "output_breakups=0\n"
+            "output_infections=0\n"
+            "match_k=10\n";
     }
     // Write an agents file
     agents_in_file = fopen(agents_in_filename, "w");

@@ -106,9 +106,9 @@ static void read_agents(struct fsti_simulation *simulation)
     struct csv cs;
     const char *filename;
 
-    filename = fsti_config_at0_str(&simulation->config, "AGENTS_INPUT_FILE");
+    filename = fsti_config_at0_str(&simulation->config, "agents_input_file");
     process_partners = fsti_config_at0_long(&simulation->config,
-                                            "MUTUAL_CSV_PARTNERS");
+                                            "mutual_csv_partners");
     f = fopen(filename, "r");
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
@@ -192,7 +192,7 @@ void fsti_generate_sex(struct fsti_simulation *simulation,
                        struct fsti_agent *agent)
 {
     FSTI_ASSERT(simulation->dataset_gen_sex, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_GEN_SEX");
+                "For parameter dataset_gen_sex");
     agent->sex = dataset_val(simulation, agent, simulation->dataset_gen_sex,
                              FSTI_MALE, FSTI_FEMALE);
 }
@@ -202,7 +202,7 @@ void fsti_generate_sex_preferred(struct fsti_simulation *simulation,
 {
 
     FSTI_ASSERT(simulation->dataset_gen_sex_preferred, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_GEN_SEX_PREFERRED");
+                "For parameter dataset_gen_sex_preferred");
 
     agent->sex_preferred =
         dataset_val(simulation, agent, simulation->dataset_gen_sex_preferred,
@@ -237,7 +237,7 @@ void fsti_generate_infected(struct fsti_simulation *simulation,
     struct fsti_dataset *ds = simulation->dataset_gen_infect;
 
     FSTI_ASSERT(ds, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_GEN_INFECT");
+                "For parameter dataset_gen_infect");
     set_infected(simulation, agent, ds);
 }
 
@@ -270,7 +270,7 @@ void fsti_generate_treated(struct fsti_simulation *simulation,
     if (agent->infected) {
         ds = simulation->dataset_gen_treated;
         FSTI_ASSERT(ds, FSTI_ERR_MISSING_DATASET,
-                    "For parameter DATASET_GEN_TREATED.");
+                    "For parameter dataset_gen_treated.");
         set_treated(simulation, agent, ds);
     }
 }
@@ -280,7 +280,7 @@ void fsti_generate_resistant(struct fsti_simulation *simulation,
 {
     if (agent->treated) {
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
-                    "For parameter DATASET_GEN_RESISTANT.");
+                    "For parameter dataset_gen_resistant.");
         agent->resistant = dataset_val(simulation, agent,
                                        simulation->dataset_gen_resistant, 1, 0);
     }
@@ -293,7 +293,7 @@ void fsti_event_generate_agents(struct fsti_simulation *simulation)
     struct fsti_agent agent;
     unsigned num_agents;
 
-    num_agents = fsti_config_at0_long(&simulation->config, "NUM_AGENTS");
+    num_agents = fsti_config_at0_long(&simulation->config, "num_agents");
 
     for (i = 0; i < num_agents; i++) {
         memset(&agent, 0, sizeof(agent));
@@ -338,7 +338,7 @@ void fsti_birth_infected(struct fsti_simulation *simulation,
                              struct fsti_agent *agent)
 {
     FSTI_ASSERT(simulation->dataset_birth_infect, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_BIRTH_SEX_INFECT");
+                "For parameter dataset_birth_sex_infect");
     set_infected(simulation, agent, simulation->dataset_birth_infect);
 }
 
@@ -347,7 +347,7 @@ void fsti_birth_treated(struct fsti_simulation *simulation,
 {
     if (agent->infected) {
         FSTI_ASSERT(simulation->dataset_birth_treated, FSTI_ERR_MISSING_DATASET,
-                    "For parameter DATASET_BIRTH_TREATED.");
+                    "For parameter dataset_birth_treated.");
         set_treated(simulation, agent, simulation->dataset_birth_treated);
     }
 }
@@ -357,7 +357,7 @@ void fsti_birth_resistant(struct fsti_simulation *simulation,
 {
     if (agent->treated) {
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
-                    "For parameter DATASET_BIRTH_RESISTANT.");
+                    "For parameter dataset_birth_resistant.");
         agent->resistant = dataset_val(simulation, agent,
                                        simulation->dataset_gen_resistant, 1, 0);
     }
@@ -537,7 +537,7 @@ void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
     double r, d;
 
     FSTI_ASSERT(simulation->dataset_gen_mating, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_GEN_MATING.");
+                "For parameter dataset_gen_mating.");
     fsti_agent_ind_clear(&simulation->mating_pool);
 
     FSTI_FOR_LIVING(*simulation, agent, {
@@ -569,7 +569,7 @@ set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
     uint32_t iterations;
 
     FSTI_ASSERT(simulation->dataset_rel, FSTI_ERR_MISSING_DATASET,
-                        "For parameter DATASET_REL_PERIOD.");
+                        "For parameter dataset_rel_period.");
     scale = fsti_dataset_lookup(simulation->dataset_rel, a, 0);
     shape = fsti_dataset_lookup(simulation->dataset_rel, a, 1);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
@@ -601,7 +601,7 @@ set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
     uint32_t iterations;
 
     FSTI_ASSERT(simulation->dataset_single, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_SINGLE_PERIOD.");
+                "For parameter dataset_single_period.");
     scale = fsti_dataset_lookup(simulation->dataset_single, a, 0);
     shape = fsti_dataset_lookup(simulation->dataset_single, a, 1);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
@@ -655,7 +655,7 @@ void fsti_event_death(struct fsti_simulation *simulation)
     size_t *it;
 
     FSTI_ASSERT(simulation->dataset_mortality, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_MORTALITY.");
+                "For parameter dataset_mortality.");
 
     it = simulation->living.indices;
     while (it < (simulation->living.indices + simulation->living.len)) {
@@ -733,7 +733,7 @@ void fsti_event_infect(struct fsti_simulation *simulation)
     double d, r;
 
     FSTI_ASSERT(simulation->dataset_infect, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_INFECT.");
+                "For parameter dataset_infect.");
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->infected == 0) {
                 for (i = 0; i < agent->num_partners; i++) {
@@ -765,7 +765,7 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
     double d, r;
 
     FSTI_ASSERT(simulation->dataset_infect_stage, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_INFECT_STAGE.");
+                "For parameter dataset_infect_stage.");
 
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->infected > 0) {
@@ -812,7 +812,7 @@ void fsti_event_coinfect(struct fsti_simulation *simulation)
     double d, r;
 
     FSTI_ASSERT(simulation->dataset_coinfect, FSTI_ERR_MISSING_DATASET,
-                "For parameter DATASET_COINFECT.");
+                "For parameter dataset_coinfect.");
 
     FSTI_FOR_LIVING(*simulation, agent, {
             if (agent->coinfected == 0) {
@@ -834,7 +834,7 @@ void fsti_event_no_op(struct fsti_simulation *simulation)
 
 bool run_test(struct fsti_simulation *simulation)
 {
-    unsigned freq = fsti_config_at0_long(&simulation->config, "EVENT_TEST_FREQ");
+    unsigned freq = fsti_config_at0_long(&simulation->config, "event_test_freq");
     freq  = !((simulation->iteration + 1) % freq);
     return freq;
 }
@@ -1039,47 +1039,47 @@ void fsti_event_register_events()
 
     if (initialized_events == false) {
         initialized_events = true;
-        fsti_register_add("_READ_AGENTS", fsti_event_read_agents);
-        fsti_register_add("_GENERATE_AGENTS", fsti_event_generate_agents);
-        fsti_register_add("_AGE", fsti_event_age);
-        fsti_register_add("_DEATH", fsti_event_death);
-        fsti_register_add("_INITIAL_MATING", fsti_event_initial_mating_pool);
-        fsti_register_add("_INITIAL_REL", fsti_event_initial_relchange);
-        fsti_register_add("_MATING_POOL", fsti_event_mating_pool);
-        fsti_register_add("_BREAKUP", fsti_event_breakup);
-        fsti_register_add("_SHUFFLE_LIVING", fsti_event_shuffle_living);
-        fsti_register_add("_SHUFFLE_MATING", fsti_event_shuffle_mating_pool);
-        fsti_register_add("_RKPM", fsti_event_knn_match);
-        fsti_register_add("_BREAKUP_AND_PAIR", fsti_event_breakup_and_pair);
-        fsti_register_add("_GENERATE_AND_PAIR", fsti_event_generate_and_pair);
-        fsti_register_add("_INFECT", fsti_event_infect);
-        fsti_register_add("_STAGE", fsti_event_infect_stage);
-        fsti_register_add("_COINFECT", fsti_event_coinfect);
-        fsti_register_add("_BIRTH", fsti_event_birth);
-        fsti_register_add("_REPORT", fsti_event_report);
-        fsti_register_add("_FLEX_REPORT", fsti_event_flex_report);
-        fsti_register_add("_WRITE_RESULTS_CSV_HEADER",
+        fsti_register_add("_read_agents", fsti_event_read_agents);
+        fsti_register_add("_generate_agents", fsti_event_generate_agents);
+        fsti_register_add("_age", fsti_event_age);
+        fsti_register_add("_death", fsti_event_death);
+        fsti_register_add("_initial_mating", fsti_event_initial_mating_pool);
+        fsti_register_add("_initial_rel", fsti_event_initial_relchange);
+        fsti_register_add("_mating_pool", fsti_event_mating_pool);
+        fsti_register_add("_breakup", fsti_event_breakup);
+        fsti_register_add("_shuffle_living", fsti_event_shuffle_living);
+        fsti_register_add("_shuffle_mating", fsti_event_shuffle_mating_pool);
+        fsti_register_add("_rkpm", fsti_event_knn_match);
+        fsti_register_add("_breakup_and_pair", fsti_event_breakup_and_pair);
+        fsti_register_add("_generate_and_pair", fsti_event_generate_and_pair);
+        fsti_register_add("_infect", fsti_event_infect);
+        fsti_register_add("_stage", fsti_event_infect_stage);
+        fsti_register_add("_coinfect", fsti_event_coinfect);
+        fsti_register_add("_birth", fsti_event_birth);
+        fsti_register_add("_report", fsti_event_report);
+        fsti_register_add("_flex_report", fsti_event_flex_report);
+        fsti_register_add("_write_results_csv_header",
                           fsti_event_write_results_csv_header);
-        fsti_register_add("_WRITE_AGENTS_CSV_HEADER",
+        fsti_register_add("_write_agents_csv_header",
                           fsti_event_write_agents_csv_header);
-        fsti_register_add("_WRITE_PARTNERSHIPS_CSV_HEADER",
+        fsti_register_add("_write_partnerships_csv_header",
                           fsti_event_write_partnerships_csv_header);
-        fsti_register_add("_WRITE_AGENTS_CSV", fsti_event_write_agents_csv);
-        fsti_register_add("_WRITE_LIVING_AGENTS_CSV",
+        fsti_register_add("_write_agents_csv", fsti_event_write_agents_csv);
+        fsti_register_add("_write_living_agents_csv",
                           fsti_event_write_living_agents_csv);
-        fsti_register_add("_WRITE_DEAD_AGENTS_CSV",
+        fsti_register_add("_write_dead_agents_csv",
                           fsti_event_write_dead_agents_csv);
-        fsti_register_add("_WRITE_AGENTS_PRETTY", fsti_event_write_agents_pretty);
+        fsti_register_add("_write_agents_pretty", fsti_event_write_agents_pretty);
         fsti_register_add(FSTI_NO_OP, fsti_event_no_op);
 
-        /* Test events */
-        fsti_register_add("_TEST_BREAKUP", fsti_event_test_breakup);
-        fsti_register_add("_TEST_MATING_POOL", fsti_event_test_mating_pool);
-        fsti_register_add("_TEST_SHUFFLE_MATING", fsti_event_test_shuffle_mating);
-        fsti_register_add("_TEST_RKPM", fsti_event_test_knn_match);
-        fsti_register_add("_TEST_INFECT", fsti_event_test_infect);
-        fsti_register_add("_TEST_BIRTH", fsti_event_test_birth);
-        fsti_register_add("_TEST_DEATH", fsti_event_test_death);
+        /* test events */
+        fsti_register_add("_test_breakup", fsti_event_test_breakup);
+        fsti_register_add("_test_mating_pool", fsti_event_test_mating_pool);
+        fsti_register_add("_test_shuffle_mating", fsti_event_test_shuffle_mating);
+        fsti_register_add("_test_rkpm", fsti_event_test_knn_match);
+        fsti_register_add("_test_infect", fsti_event_test_infect);
+        fsti_register_add("_test_birth", fsti_event_test_birth);
+        fsti_register_add("_test_death", fsti_event_test_death);
 
         FSTI_HOOK_EVENTS_REGISTER;
     }

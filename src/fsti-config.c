@@ -65,7 +65,7 @@ void fsti_config_print_all(struct fsti_config *config)
     size_t capacity = FSTI_HASHSIZE;
     struct fsti_config_entry **entries = malloc(sizeof(*entries) * capacity);
     struct fsti_config_entry **t;
-    char delim = fsti_config_at0_str(config, "CSV_DELIMITER")[0];
+    char delim = fsti_config_at0_str(config, "csv_delimiter")[0];
 
     for (size_t i = 0; i < FSTI_HASHSIZE; ++i) {
         struct fsti_config_entry *entry = config->entry[i];
@@ -258,7 +258,8 @@ static void set_variants(struct fsti_config_entry *entry,
 
 void fsti_config_add_str(struct fsti_config *config,
 			 const char *key,
-			 const char *description, const char *val)
+			 const char *description,
+                         const char *val)
 {
     const enum fsti_type types = { STR };
     struct fsti_config_entry *entry = config_add(config, key, description);
@@ -268,6 +269,22 @@ void fsti_config_add_str(struct fsti_config *config,
     FSTI_ASSERT(entry->variants[0].value.str, FSTI_ERR_NOMEM, NULL);
 }
 
+
+void fsti_config_add_strs(struct fsti_config *config,
+                          const char *key,
+                          const char *description,
+                          const char *vals[],
+                          size_t n)
+{
+    enum fsti_type types[n];
+    struct fsti_config_entry *entry = config_add(config, key, description);
+    for (size_t i = 0; i < n; i++) types[i] = STR;
+    set_types(entry, types, n);
+    for (size_t i = 0; i < n; i++) {
+        entry->variants[i].value.str = strdup(vals[i]);
+        FSTI_ASSERT(entry->variants[i].value.str, FSTI_ERR_NOMEM, NULL);
+    }
+}
 
 void fsti_config_add_double(struct fsti_config *config,
 			    const char *key,
@@ -280,6 +297,19 @@ void fsti_config_add_double(struct fsti_config *config,
     entry->variants[0].value.dbl = val;
 }
 
+void fsti_config_add_doubles(struct fsti_config *config,
+                             const char *key,
+                             const char *description,
+                             double vals[],
+                             size_t n)
+{
+    enum fsti_type types[n];
+    struct fsti_config_entry *entry = config_add(config, key, description);
+    for (size_t i = 0; i < n; i++) types[i] = DBL;
+    set_types(entry, types, n);
+    for (size_t i = 0; i < n; i++) entry->variants[i].value.dbl = vals[i];
+}
+
 void fsti_config_add_long(struct fsti_config *config,
 			  const char *key,
 			  const char *description, long val)
@@ -290,6 +320,20 @@ void fsti_config_add_long(struct fsti_config *config,
     set_types(entry, &types, 1);
     entry->variants[0].value.longint = val;
 }
+
+void fsti_config_add_longs(struct fsti_config *config,
+                           const char *key,
+                           const char *description,
+                           long vals[],
+                           size_t n)
+{
+    enum fsti_type types[n];
+    struct fsti_config_entry *entry = config_add(config, key, description);
+    for (size_t i = 0; i < n; i++) types[i] = LONG;
+    set_types(entry, types, n);
+    for (size_t i = 0; i < n; i++) entry->variants[i].value.longint = vals[i];
+}
+
 
 
 void fsti_config_add_arr(struct fsti_config *config,
@@ -476,17 +520,17 @@ void fsti_config_test(struct test_group *tg)
     TESTEQ(strcmp(entry->key, "KEY2"), 0, *tg);
     TESTEQ(entry->variants[0].type, DBL, *tg);
     TESTEQ(entry->variants[0].value.dbl, 13, *tg);
-    FSTI_CONFIG_ADD(&config, "KEY4", "Description", "VALUE4");
+    FSTI_CONFIG_ADD_STR(&config, KEY4, "Description", "VALUE4");
     entry = fsti_config_find(&config, "KEY4");
     TESTEQ(strcmp(entry->key, "KEY4"), 0, *tg);
     TESTEQ(entry->variants[0].type, STR, *tg);
     TESTEQ(strcmp(entry->variants[0].value.str, "VALUE4"), 0, *tg);
-    FSTI_CONFIG_ADD(&config, "KEY5", "Description", 18.6);
+    FSTI_CONFIG_ADD(&config, KEY5, "Description", 18.6);
     entry = fsti_config_find(&config, "KEY5");
     TESTEQ(strcmp(entry->key, "KEY5"), 0, *tg);
     TESTEQ(entry->variants[0].type, DBL, *tg);
     TESTEQ(entry->variants[0].value.dbl, 18.6, *tg);
-    FSTI_CONFIG_ADD(&config, "KEY6", "Description", 18);
+    FSTI_CONFIG_ADD(&config, KEY6, "Description", 18);
     entry = fsti_config_find(&config, "KEY6");
     TESTEQ(strcmp(entry->key, "KEY6"), 0, *tg);
     TESTEQ(entry->variants[0].type, LONG, *tg);

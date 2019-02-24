@@ -35,13 +35,13 @@ static void exec_events(struct fsti_simulation *simulation,
 static void set_all_events(struct fsti_simulation *simulation)
 {
     struct fsti_config_entry *entry;
-    entry = fsti_config_find(&simulation->config, "BEFORE_EVENTS");
+    entry = fsti_config_find(&simulation->config, "before_events");
     if (entry)
         set_events(&simulation->before_events, entry);
-    entry = fsti_config_find(&simulation->config, "DURING_EVENTS");
+    entry = fsti_config_find(&simulation->config, "during_events");
     if (entry)
         set_events(&simulation->during_events, entry);
-    entry = fsti_config_find(&simulation->config, "AFTER_EVENTS");
+    entry = fsti_config_find(&simulation->config, "after_events");
     if (entry)
         set_events(&simulation->after_events, entry);
 }
@@ -69,7 +69,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
         simulation->partnerships_file = stdout;
 
     simulation->report_frequency =
-        fsti_config_at0_long(&simulation->config, "REPORT_FREQUENCY");
+        fsti_config_at0_long(&simulation->config, "report_frequency");
     FSTI_ASSERT(simulation->report_frequency, FSTI_ERR_INVALID_VALUE,
                 "Report frequency must be > 0");
     fsti_agent_arr_init(&simulation->agent_arr);
@@ -121,11 +121,11 @@ void fsti_simulation_load_datasets(struct fsti_config *config,
     size_t i;
     char delim;
 
-    delim = fsti_config_at0_str(config, "CSV_DELIMITER")[0];
+    delim = fsti_config_at0_str(config, "csv_delimiter")[0];
     for (i = 0; i < FSTI_HASHSIZE; i++) {
         entry = config->entry[i];
         while (entry) {
-            if (strncmp(entry->key, "DATASET_", sizeof("DATASET_")-1) == 0) {
+            if (strncmp(entry->key, "dataset_", sizeof("dataset_")-1) == 0) {
                 if (strcmp(entry->variants[0].value.str, FSTI_NO_OP)) {
                     if (entry->variants[0].type == STR)
                         fsti_dataset_hash_add(dataset_hash,
@@ -140,57 +140,58 @@ void fsti_simulation_load_datasets(struct fsti_config *config,
 
 void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
-    uint16_t year = fsti_config_at0_long(&simulation->config, "START_DATE");
-    uint16_t month = fsti_config_at_long(&simulation->config, "START_DATE", 1);
-    uint16_t day = fsti_config_at_long(&simulation->config, "START_DATE", 2);
+    uint16_t year = fsti_config_at0_long(&simulation->config, "start_date");
+    uint16_t month = fsti_config_at_long(&simulation->config, "start_date", 1);
+    uint16_t day = fsti_config_at_long(&simulation->config, "start_date", 2);
     simulation->time_zone = g_time_zone_new(NULL);
     simulation->start_date = g_date_time_new(simulation->time_zone,
                                              year, month, day, 0, 0, 0);
     FSTI_ASSERT(simulation->start_date, FSTI_ERR_INVALID_DATE, NULL);
 
     simulation->csv_delimiter =
-        fsti_config_at0_str(&simulation->config, "CSV_DELIMITER")[0];
+        fsti_config_at0_str(&simulation->config, "csv_delimiter")[0];
     simulation->agent_csv_header =
-        fsti_config_at0_long(&simulation->config, "AGENT_CSV_HEADER");
+        fsti_config_at0_long(&simulation->config, "agent_csv_header");
 
     simulation->record_matches =
-        fsti_config_at0_long(&simulation->config, "OUTPUT_MATCHES");
+        fsti_config_at0_long(&simulation->config, "output_matches");
     simulation->record_breakups =
-        fsti_config_at0_long(&simulation->config, "OUTPUT_BREAKUPS");
+        fsti_config_at0_long(&simulation->config, "output_breakups");
     simulation->record_infections =
-        fsti_config_at0_long(&simulation->config, "OUTPUT_INFECTIONS");
+        fsti_config_at0_long(&simulation->config, "output_infections");
 
     simulation->stabilization_steps = (unsigned)
-	fsti_config_at0_long(&simulation->config, "STABILIZATION_STEPS");
+	fsti_config_at0_long(&simulation->config, "stabilization_steps");
     simulation->time_step = fsti_config_at0_long(&simulation->config,
-                                                 "TIME_STEP");
+                                                 "time_step");
     simulation->age_input_time_step = fsti_config_at0_long(&simulation->config,
-                                                           "AGE_INPUT_TIME_STEP");
+                                                           "age_input_time_step");
 
     simulation->num_iterations = fsti_config_at0_long(&simulation->config,
-                                                 "NUM_TIME_STEPS");
+                                                 "num_time_steps");
     simulation->match_k = fsti_config_at0_long(&simulation->config,
-                                                          "MATCH_K");
+                                                          "match_k");
     simulation->initial_mating_pool_prob =
-        fsti_config_at0_double(&simulation->config, "INITIAL_MATING_PROB");
+        fsti_config_at0_double(&simulation->config, "initial_mating_prob");
     simulation->mating_pool_prob =
-        fsti_config_at0_double(&simulation->config, "MATING_PROB");
+        fsti_config_at0_double(&simulation->config, "mating_prob");
 
     for (size_t i = 0; i < FSTI_INFECTION_RISKS; i++)
         simulation->infection_risk[i] = fsti_config_at_double(
-            &simulation->config, "INFECTION_RISK", i);
+            &simulation->config, "infection_risk", i);
+
     simulation->max_stage = fsti_config_at0_long(&simulation->config,
-                                                 "MAX_STAGE");
+                                                 "max_stage");
     simulation->initial_infection_rate =
-        fsti_config_at0_double(&simulation->config, "INITIAL_INFECTION_RATE");
+        fsti_config_at0_double(&simulation->config, "initial_infection_rate");
 
     simulation->initial_infect_stage =
-        fsti_config_at0_long(&simulation->config, "INITIAL_INFECT_STAGE");
+        fsti_config_at0_long(&simulation->config, "initial_infect_stage");
 
     simulation->initial_treated_rate =
-        fsti_config_at0_double(&simulation->config, "INITIAL_TREATED_RATE");
+        fsti_config_at0_double(&simulation->config, "initial_treated_rate");
     simulation->initial_resistant_rate =
-        fsti_config_at0_double(&simulation->config, "INITIAL_RESISTANT_RATE");
+        fsti_config_at0_double(&simulation->config, "initial_resistant_rate");
 
     // Datasets
     if (simulation->dataset_hash.owner)
@@ -198,70 +199,70 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
                                       &simulation->dataset_hash);
 
     simulation->dataset_mortality =
-        fsti_simulation_get_dataset(simulation, "DATASET_MORTALITY");
+        fsti_simulation_get_dataset(simulation, "dataset_mortality");
     simulation->dataset_single =
-        fsti_simulation_get_dataset(simulation, "DATASET_SINGLE_PERIOD");
+        fsti_simulation_get_dataset(simulation, "dataset_single_period");
     simulation->dataset_rel =
-        fsti_simulation_get_dataset(simulation, "DATASET_REL_PERIOD");
+        fsti_simulation_get_dataset(simulation, "dataset_rel_period");
     simulation->dataset_infect =
-        fsti_simulation_get_dataset(simulation, "DATASET_INFECT");
+        fsti_simulation_get_dataset(simulation, "dataset_infect");
     simulation->dataset_infect_stage =
-        fsti_simulation_get_dataset(simulation, "DATASET_INFECT_STAGE");
+        fsti_simulation_get_dataset(simulation, "dataset_infect_stage");
 
     simulation->dataset_gen_sex =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_SEX");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_sex");
     simulation->dataset_gen_sex_preferred =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_SEX_PREFERRED");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_sex_preferred");
     simulation->dataset_gen_mating =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_MATING");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_mating");
     simulation->dataset_gen_infect =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_INFECT");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_infect");
     simulation->dataset_gen_treated =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_TREATED");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_treated");
     simulation->dataset_gen_resistant =
-        fsti_simulation_get_dataset(simulation, "DATASET_GEN_RESISTANT");
+        fsti_simulation_get_dataset(simulation, "dataset_gen_resistant");
 
     simulation->dataset_birth_infect =
-        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_INFECT");
+        fsti_simulation_get_dataset(simulation, "dataset_birth_infect");
     simulation->dataset_birth_treated =
-        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_TREATED");
+        fsti_simulation_get_dataset(simulation, "dataset_birth_treated");
     simulation->dataset_birth_resistant =
-        fsti_simulation_get_dataset(simulation, "DATASET_BIRTH_RESISTANT");
+        fsti_simulation_get_dataset(simulation, "dataset_birth_resistant");
 
     simulation->dataset_coinfect =
-        fsti_simulation_get_dataset(simulation, "DATASET_COINFECT");
+        fsti_simulation_get_dataset(simulation, "dataset_coinfect");
 
-    // Birth event vars
+    // birth event vars
     simulation->birth_event_every_n =
-        fsti_config_at0_long(&simulation->config, "BIRTH_EVENT_EVERY_N");
+        fsti_config_at0_long(&simulation->config, "birth_event_every_n");
     simulation->birth_rate = fsti_config_at0_double(&simulation->config,
-                                                    "BIRTH_RATE");
-    simulation->age_min = fsti_config_at0_double(&simulation->config, "AGE_MIN");
-    simulation->age_max = fsti_config_at0_double(&simulation->config, "AGE_MAX");
+                                                    "birth_rate");
+    simulation->age_min = fsti_config_at0_double(&simulation->config, "age_min");
+    simulation->age_max = fsti_config_at0_double(&simulation->config, "age_max");
     simulation->age_alpha = fsti_config_at0_double(&simulation->config,
-                                                   "AGE_ALPHA");
+                                                   "age_alpha");
     simulation->age_beta = fsti_config_at0_double(&simulation->config,
-                                                  "AGE_BETA");
+                                                  "age_beta");
     simulation->prob_gen_male = fsti_config_at0_double(&simulation->config,
-                                                       "PROB_GEN_MALE");
+                                                       "prob_gen_male");
     simulation->prob_gen_msw = fsti_config_at0_double(&simulation->config,
-                                                       "PROB_GEN_MSW");
+                                                       "prob_gen_msw");
     simulation->prob_gen_wsm = fsti_config_at0_double(&simulation->config,
-                                                      "PROB_GEN_WSM");
+                                                      "prob_gen_wsm");
     simulation->prob_birth_male =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_MALE");
+        fsti_config_at0_double(&simulation->config, "prob_birth_male");
     simulation->prob_birth_msw =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_MSW");
+        fsti_config_at0_double(&simulation->config, "prob_birth_msw");
     simulation->prob_birth_wsm =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_WSM");
+        fsti_config_at0_double(&simulation->config, "prob_birth_wsm");
     simulation->prob_birth_infected_msm =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_MSM");
+        fsti_config_at0_double(&simulation->config, "prob_birth_infected_msm");
     simulation->prob_birth_infected_msw =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_MSW");
+        fsti_config_at0_double(&simulation->config, "prob_birth_infected_msw");
     simulation->prob_birth_infected_wsm =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_WSM");
+        fsti_config_at0_double(&simulation->config, "prob_birth_infected_wsm");
     simulation->prob_birth_infected_wsw =
-        fsti_config_at0_double(&simulation->config, "PROB_BIRTH_INFECTED_WSW");
+        fsti_config_at0_double(&simulation->config, "prob_birth_infected_wsw");
 
     FSTI_HOOK_CONFIG_TO_VARS(simulation);
 }
@@ -321,8 +322,6 @@ void fsti_simulation_test(struct test_group *tg)
     struct fsti_config config;
     struct fsti_agent *agent, *a, *b;
     double d, min_age, max_age;
-    //unsigned partners = 0;
-    //float actual_single_rate, single_rate;
     size_t *it;
     unsigned males, same_sex, infected;
     bool correct;
@@ -331,27 +330,27 @@ void fsti_simulation_test(struct test_group *tg)
     fsti_config_init(&config);
     fsti_config_set_default(&config);
 
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_SEX", "Default vals",
+    fsti_config_add(&config, "dataset_gen_sex", "default vals",
                     "dataset_gen_sex.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_SEX_PREFERRED", "Default vals",
+    fsti_config_add(&config, "dataset_gen_sex_preferred", "default vals",
                     "dataset_gen_sex_preferred.csv");
 
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_INFECT", "Default vals",
+    fsti_config_add(&config, "dataset_gen_infect", "default vals",
                     "dataset_gen_infect.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_TREATED", "Default vals",
+    fsti_config_add(&config, "dataset_gen_treated", "default vals",
                     "dataset_gen_treated.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_RESISTANT", "Default vals",
+    fsti_config_add(&config, "dataset_gen_resistant", "default vals",
                     "dataset_gen_resistant.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_GEN_MATING", "Default vals",
+    fsti_config_add(&config, "dataset_gen_mating", "default vals",
                     "dataset_gen_mating.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_INFECT", "Default vals",
+    fsti_config_add(&config, "dataset_birth_infect", "default vals",
                     "dataset_birth_infect.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_TREATED", "Default vals",
+    fsti_config_add(&config, "dataset_birth_treated", "default vals",
                     "dataset_birth_treated.csv");
-    FSTI_CONFIG_ADD(&config, "DATASET_BIRTH_RESISTANT", "Default vals",
+    fsti_config_add(&config, "dataset_birth_resistant", "default vals",
                     "dataset_birth_resistant.csv");
 
-    FSTI_CONFIG_ADD(&config, "AFTER_EVENTS", "Write nothing", "_NO_OP");
+    fsti_config_add(&config, "after_events", "write nothing", "_no_op");
 
     fsti_simulation_init(&simulation, &config, 0, 0);
     fsti_simulation_run(&simulation);

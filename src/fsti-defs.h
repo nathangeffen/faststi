@@ -41,7 +41,7 @@
 #define FSTI_BREAKUP 2
 #define FSTI_INFECTION 3
 
-#define FSTI_NO_OP "_NO_OP"
+#define FSTI_NO_OP "_no_op"
 
 #define FSTI_GET_TYPE(var)  _Generic((var),                             \
                                      _Bool: BOOL,                       \
