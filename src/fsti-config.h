@@ -77,6 +77,7 @@ struct fsti_config_entry {
     char description[FSTI_DESC_LEN];
     struct fsti_variant *variants;
     size_t len;
+    size_t order;
     bool initialize;
     size_t offset;
     size_t bytes;
@@ -101,22 +102,17 @@ long fsti_config_at0_long(const struct fsti_config *config, const char *key);
 double fsti_config_at_double(const struct fsti_config *config, const char *key,
                              size_t index);
 double fsti_config_at0_double(const struct fsti_config *config, const char *key);
-void fsti_config_add_str(struct fsti_config *config, const char *key,
-                         const char *description, const char *val);
+
 void fsti_config_add_strs(struct fsti_config *config,
                           const char *key,
                           const char *description,
                           const char *vals[],
                           size_t n);
-void fsti_config_add_double(struct fsti_config *config, const char *key,
-                            const char *description, double val);
 void fsti_config_add_doubles(struct fsti_config *config,
                              const char *key,
                              const char *description,
                              double vals[],
                              size_t n);
-void fsti_config_add_long(struct fsti_config *config, const char *key,
-                          const char *description, long val);
 void fsti_config_add_longs(struct fsti_config *config,
                            const char *key,
                            const char *description,

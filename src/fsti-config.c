@@ -255,21 +255,6 @@ static void set_variants(struct fsti_config_entry *entry,
     entry->len = n;
 }
 
-
-void fsti_config_add_str(struct fsti_config *config,
-			 const char *key,
-			 const char *description,
-                         const char *val)
-{
-    const enum fsti_type types = { STR };
-    struct fsti_config_entry *entry = config_add(config, key, description);
-
-    set_types(entry, &types, 1);
-    entry->variants[0].value.str = strdup(val);
-    FSTI_ASSERT(entry->variants[0].value.str, FSTI_ERR_NOMEM, NULL);
-}
-
-
 void fsti_config_add_strs(struct fsti_config *config,
                           const char *key,
                           const char *description,
@@ -286,17 +271,6 @@ void fsti_config_add_strs(struct fsti_config *config,
     }
 }
 
-void fsti_config_add_double(struct fsti_config *config,
-			    const char *key,
-			    const char *description, double val)
-{
-    const enum fsti_type types = { DBL };
-    struct fsti_config_entry *entry = config_add(config, key, description);
-
-    set_types(entry, &types, 1);
-    entry->variants[0].value.dbl = val;
-}
-
 void fsti_config_add_doubles(struct fsti_config *config,
                              const char *key,
                              const char *description,
@@ -308,17 +282,6 @@ void fsti_config_add_doubles(struct fsti_config *config,
     for (size_t i = 0; i < n; i++) types[i] = DBL;
     set_types(entry, types, n);
     for (size_t i = 0; i < n; i++) entry->variants[i].value.dbl = vals[i];
-}
-
-void fsti_config_add_long(struct fsti_config *config,
-			  const char *key,
-			  const char *description, long val)
-{
-    const enum fsti_type types = { LONG };
-    struct fsti_config_entry *entry = config_add(config, key, description);
-
-    set_types(entry, &types, 1);
-    entry->variants[0].value.longint = val;
 }
 
 void fsti_config_add_longs(struct fsti_config *config,
@@ -488,34 +451,37 @@ void fsti_config_test(struct test_group *tg)
     struct fsti_config config;
 
     fsti_config_init(&config);
-    fsti_config_add_str(&config, "KEY1", "Description", "VALUE1");
+    fsti_config_add_strs(&config, "KEY1", "Description",
+                         (const char *[]) {"VALUE1"}, 1);
     struct fsti_config_entry *entry = fsti_config_find(&config, "KEY1");
     TESTEQ(strcmp(entry->key, "KEY1"), 0, *tg);
     TESTEQ(strcmp(entry->description, "Description"), 0, *tg);
     TESTEQ(entry->variants[0].type, STR, *tg);
     TESTEQ(strcmp(entry->variants[0].value.str, "VALUE1"), 0, *tg);
     TESTEQ(entry->len, 1, *tg);
-    fsti_config_add_str(&config, "KEY2", "Description", "VALUE2");
+    fsti_config_add_strs(&config, "KEY2", "Description",
+                         (const char *[]) {"VALUE2"}, 1);
     entry = fsti_config_find(&config, "KEY2");
     TESTEQ(strcmp(entry->key, "KEY2"), 0, *tg);
     TESTEQ(entry->variants[0].type, STR, *tg);
     TESTEQ(strcmp(entry->variants[0].value.str, "VALUE2"), 0, *tg);
-    fsti_config_add_double(&config, "KEY3", "Description", 23.1);
+    fsti_config_add_doubles(&config, "KEY3", "Description", (double[]) {23.1}, 1);
     entry = fsti_config_find(&config, "KEY3");
     TESTEQ(strcmp(entry->key, "KEY3"), 0, *tg);
     TESTEQ(entry->variants[0].type, DBL, *tg);
     TESTEQ(entry->variants[0].value.dbl, 23.1, *tg);
-    fsti_config_add_long(&config, "KEY4", "Description", 9);
+    fsti_config_add_longs(&config, "KEY4", "Description", (long []) {9}, 1);
     entry = fsti_config_find(&config, "KEY4");
     TESTEQ(strcmp(entry->key, "KEY4"), 0, *tg);
     TESTEQ(entry->variants[0].type, LONG, *tg);
     TESTEQ(entry->variants[0].value.longint, 9, *tg);
-    fsti_config_add_str(&config, "KEY1", "Description", "VALUE3");
+    fsti_config_add_strs(&config, "KEY1", "Description",
+                         (const char *[]) {"VALUE3"}, 1);
     entry = fsti_config_find(&config, "KEY1");
     TESTEQ(strcmp(entry->key, "KEY1"), 0, *tg);
     TESTEQ(entry->variants[0].type, STR, *tg);
     TESTEQ(strcmp(entry->variants[0].value.str, "VALUE3"), 0, *tg);
-    fsti_config_add_double(&config, "KEY2", "Description", 13);
+    fsti_config_add_doubles(&config, "KEY2", "Description", (double[]) {13}, 1);
     entry = fsti_config_find(&config, "KEY2");
     TESTEQ(strcmp(entry->key, "KEY2"), 0, *tg);
     TESTEQ(entry->variants[0].type, DBL, *tg);

@@ -17,6 +17,7 @@
 
 enum fsti_simulation_state {
     BEFORE,
+    STABILIZATION,
     DURING,
     AFTER
 };
@@ -34,6 +35,7 @@ struct fsti_simulation {
     uint32_t config_sim_number;
     char *name;
     struct fsti_event_array before_events;
+    struct fsti_event_array stabilization_events;
     struct fsti_event_array during_events;
     struct fsti_event_array after_events;
     bool record_matches;
@@ -56,14 +58,9 @@ struct fsti_simulation {
     time_t time_rec;
 
     uint8_t initial_infect_stage;
-    double initial_mating_pool_prob;
-    double initial_infection_rate;
-    double initial_treated_rate;
-    double initial_resistant_rate;
 
-    double mating_pool_prob;
     uint32_t stabilization_steps;
-    uint32_t num_iterations;
+    uint32_t num_time_steps;
     uint32_t iteration;
     uint32_t report_frequency;
     uint32_t match_k;
@@ -73,8 +70,6 @@ struct fsti_simulation {
     FILE *results_file;
     FILE *agents_output_file;
     FILE *partnerships_file;
-
-    double infection_risk[FSTI_INFECTION_RISKS];
 
     uint32_t age_min;
     uint32_t age_max;

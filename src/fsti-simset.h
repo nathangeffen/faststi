@@ -14,7 +14,7 @@ struct fsti_simset {
     char **config_strings;
     bool more_configs;
     int sim_number;
-    int config_num_sims;
+    int config_num_simulations;
     int config_sim_number;
     // A key file consists of groups of simulations
     char **groups;

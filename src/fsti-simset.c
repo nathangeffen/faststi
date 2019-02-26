@@ -19,7 +19,7 @@ static void init(struct fsti_simset *simset)
     fsti_agent_arr_init(&fsti_saved_agent_arr);
     simset->config_strings = NULL;
     simset->more_configs = true;
-    simset->config_num_sims = 0;
+    simset->config_num_simulations = 0;
     simset->config_sim_number = 0;
     simset->sim_number = 0;
     simset->groups = NULL;
@@ -92,9 +92,9 @@ static void set_keys(struct fsti_simset *simset)
         free(values);
     }
     g_strfreev(keys);
-    simset->config_num_sims = (size_t)
+    simset->config_num_simulations = (size_t)
         fsti_config_at0_long(&simset->config,"num_simulations");
-    FSTI_ASSERT(simset->config_num_sims > 0, FSTI_ERR_INVALID_VALUE, NULL);
+    FSTI_ASSERT(simset->config_num_simulations > 0,FSTI_ERR_INVALID_VALUE,NULL);
 }
 
 static void set_output_files(struct fsti_simset *simset,
@@ -149,7 +149,7 @@ static void update_config(struct fsti_simset *simset)
 {
     if (simset->config_sim_number == 0) {
         set_keys(simset);
-    } else if (simset->config_sim_number >= simset->config_num_sims) {
+    } else if (simset->config_sim_number >= simset->config_num_simulations) {
         ++simset->group_ptr;
         simset->config_sim_number = 0;
         if (*simset->group_ptr) {
@@ -260,9 +260,9 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "initial_mating;_rkpm;_initial_rel;_flex_report;_write_agents_csv\n"
             "during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
             "_infect;_stage;_death;_birth\n"
-            "output_matches=1\n"
-            "output_breakups=1\n"
-            "output_infections=1\n";
+            "record_matches=1\n"
+            "record_breakups=1\n"
+            "record_infections=1\n";
     } else {
         config_text =
             "[simulation_0]\n"
@@ -304,20 +304,20 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "# before_events=_generate_agents;_initial_mating;"
             "_rkpm;_initial_rel\n"
             "# during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
-            "_infect;_birth;_death\n"
+            "_infect;_stage;_birth;_death\n"
             "match_k=1\n"
             "[simulation_2]\n"
             "num_simulations=1\n"
-            "output_matches=1\n"
-            "output_breakups=1\n"
-            "output_infections=1\n"
+            "record_matches=1\n"
+            "record_breakups=1\n"
+            "record_infections=1\n"
             "match_k=100\n"
             "[simulation_3]\n"
             "during_events=_age;_test_breakup;_test_mating_pool;"
-            "_test_shuffle_mating;_test_rkpm;_test_infect;_test_birth;_test_death\n"
-            "output_matches=0\n"
-            "output_breakups=0\n"
-            "output_infections=0\n"
+            "_test_shuffle_mating;_test_rkpm;_test_infect;_stage;_test_birth;_test_death\n"
+            "record_matches=0\n"
+            "record_breakups=0\n"
+            "record_infections=0\n"
             "match_k=10\n";
     }
     // Write an agents file

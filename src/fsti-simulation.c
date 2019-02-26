@@ -38,6 +38,9 @@ static void set_all_events(struct fsti_simulation *simulation)
     entry = fsti_config_find(&simulation->config, "before_events");
     if (entry)
         set_events(&simulation->before_events, entry);
+    entry = fsti_config_find(&simulation->config, "stabilization_events");
+    if (entry)
+        set_events(&simulation->stabilization_events, entry);
     entry = fsti_config_find(&simulation->config, "during_events");
     if (entry)
         set_events(&simulation->during_events, entry);
@@ -78,6 +81,7 @@ void fsti_simulation_init(struct fsti_simulation *simulation,
     fsti_agent_ind_init(&simulation->mating_pool, &simulation->agent_arr);
 
     ARRAY_NEW(simulation->before_events, events);
+    ARRAY_NEW(simulation->stabilization_events, events);
     ARRAY_NEW(simulation->during_events, events);
     ARRAY_NEW(simulation->after_events, events);
 
@@ -154,11 +158,11 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
         fsti_config_at0_long(&simulation->config, "agent_csv_header");
 
     simulation->record_matches =
-        fsti_config_at0_long(&simulation->config, "output_matches");
+        fsti_config_at0_long(&simulation->config, "record_matches");
     simulation->record_breakups =
-        fsti_config_at0_long(&simulation->config, "output_breakups");
+        fsti_config_at0_long(&simulation->config, "record_breakups");
     simulation->record_infections =
-        fsti_config_at0_long(&simulation->config, "output_infections");
+        fsti_config_at0_long(&simulation->config, "record_infections");
 
     simulation->stabilization_steps = (unsigned)
 	fsti_config_at0_long(&simulation->config, "stabilization_steps");
@@ -167,31 +171,15 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->age_input_time_step = fsti_config_at0_long(&simulation->config,
                                                            "age_input_time_step");
 
-    simulation->num_iterations = fsti_config_at0_long(&simulation->config,
+    simulation->num_time_steps = fsti_config_at0_long(&simulation->config,
                                                  "num_time_steps");
     simulation->match_k = fsti_config_at0_long(&simulation->config,
                                                           "match_k");
-    simulation->initial_mating_pool_prob =
-        fsti_config_at0_double(&simulation->config, "initial_mating_prob");
-    simulation->mating_pool_prob =
-        fsti_config_at0_double(&simulation->config, "mating_prob");
-
-    for (size_t i = 0; i < FSTI_INFECTION_RISKS; i++)
-        simulation->infection_risk[i] = fsti_config_at_double(
-            &simulation->config, "infection_risk", i);
-
-    simulation->max_stage = fsti_config_at0_long(&simulation->config,
-                                                 "max_stage");
-    simulation->initial_infection_rate =
-        fsti_config_at0_double(&simulation->config, "initial_infection_rate");
-
     simulation->initial_infect_stage =
         fsti_config_at0_long(&simulation->config, "initial_infect_stage");
 
-    simulation->initial_treated_rate =
-        fsti_config_at0_double(&simulation->config, "initial_treated_rate");
-    simulation->initial_resistant_rate =
-        fsti_config_at0_double(&simulation->config, "initial_resistant_rate");
+    simulation->max_stage = fsti_config_at0_long(&simulation->config,
+                                                 "max_stage");
 
     // Datasets
     if (simulation->dataset_hash.owner)
@@ -272,9 +260,15 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
     fsti_simulation_config_to_vars(simulation);
     simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
+    if (simulation->stabilization_steps) {
+        simulation->state = STABILIZATION;
+        simulation->iteration = 0;
+        for (uint32_t i = 0; i < simulation->stabilization_steps; i++)
+            exec_events(simulation, &simulation->stabilization_events);
+    }
     simulation->state = DURING;
     for (simulation->iteration = 0;
-         simulation->iteration < simulation->num_iterations;
+         simulation->iteration < simulation->num_time_steps;
          simulation->iteration++)
 	exec_events(simulation, &simulation->during_events);
 
@@ -308,6 +302,7 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
     gsl_rng_free(simulation->rng);
     fsti_agent_arr_free(&simulation->agent_arr);
     ARRAY_FREE(simulation->before_events, events);
+    ARRAY_FREE(simulation->stabilization_events, events);
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
