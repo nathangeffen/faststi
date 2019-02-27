@@ -25,6 +25,7 @@ static void free_entry(struct fsti_config_entry *entry)
 void fsti_config_init(struct fsti_config *config)
 {
     memset(config->entry, 0, sizeof(struct fsti_config_entry *) * FSTI_HASHSIZE);
+    config->len = 0;
 }
 
 void fsti_config_print_entry(const struct fsti_config_entry *entry, char delim)
@@ -56,7 +57,11 @@ static int cmp_entry(const void *a, const void *b)
     struct fsti_config_entry *x, *y;
     x =  *  (struct fsti_config_entry **) a;
     y =  *  (struct fsti_config_entry **) b;
-    return strcmp(x->key, y->key);
+    if( x->order < y->order)
+        return -1;
+    if (y->order < x->order)
+        return 1;
+    return 0;
 }
 
 void fsti_config_print_all(struct fsti_config *config)
@@ -210,6 +215,8 @@ static struct fsti_config_entry *config_add(struct fsti_config *config,
         entry->key[FSTI_KEY_LEN - 1] = '\0';
         hashval = fsti_hash(key);
         entry->next = config->entry[hashval];
+        entry->order = config->len;
+        config->len++;
         config->entry[hashval] = entry;
     }
     strncpy(entry->description, description, FSTI_DESC_LEN);

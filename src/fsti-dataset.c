@@ -431,7 +431,7 @@ static void dataset_test(struct test_group *tg)
     TESTEQ(x, 200 * FSTI_YEAR, *tg);
 
     // Test with only 1 column (the minimum needed)
-    f = fsti_open_data_file(filename, "w");
+    f = fopen(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
     fprintf(f, "0\n0.5\n");
     fclose(f);
@@ -443,7 +443,7 @@ static void dataset_test(struct test_group *tg)
     fsti_dataset_free(&dataset);
 
     // Test with 4 columns and comments
-    f = fsti_open_data_file(filename, "w");
+    f = fopen(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
     fprintf(f, "# spurious comment 1\n");
     fprintf(f, "# spurious comment 2\n");
@@ -479,7 +479,7 @@ static void dataset_test(struct test_group *tg)
 
 
     // Test with 5 columns, 2 of which are dependents
-    f = fsti_open_data_file(filename, "w");
+    f = fopen(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
 
     fprintf(f, "age|20;sex|1;sex_preferred;0;1|2\n");
@@ -511,7 +511,7 @@ static void dataset_test(struct test_group *tg)
     fsti_dataset_free(&dataset);
 
     // Test with 6 columns, 3 of which are dependents
-    f = fsti_open_data_file(filename, "w");
+    f = fopen(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
 
     fprintf(f, "age|20;sex;sex_preferred;0;1;2|3\n");
@@ -547,7 +547,7 @@ static void dataset_test(struct test_group *tg)
     fsti_dataset_free(&dataset);
 
     // Test with 9 columns, 3 of which are dependents, for 2 agents
-    f = fsti_open_data_file(filename, "w");
+    f = fopen(filename, "w");
     FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, FSTI_MSG("Could not open ", filename));
 
     fprintf(f, "age|20;sex;sex_preferred;age|20|~;sex;sex_preferred;0;1;2|3\n");
@@ -593,7 +593,7 @@ static void dataset_test(struct test_group *tg)
                         }
     fsti_dataset_free(&dataset);
 
-    fsti_remove_data_file(filename);
+    fsti_remove_file(filename);
 }
 
 static void dataset_hash_test(struct test_group *tg)

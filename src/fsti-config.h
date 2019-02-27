@@ -86,6 +86,7 @@ struct fsti_config_entry {
 
 struct fsti_config {
     struct fsti_config_entry *entry[FSTI_HASHSIZE];
+    size_t len;
 };
 
 void fsti_config_init(struct fsti_config *config);
