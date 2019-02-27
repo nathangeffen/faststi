@@ -8,11 +8,11 @@ struct fsti_agent_arr fsti_saved_agent_arr = {NULL, 0, 0, NULL};
 
 _Thread_local struct fsti_agent fsti_thread_local_agent;
 
-static struct fsti_agent_elem agent_elem[] =
-    FSTI_AGENT_ELEM;
+static struct fsti_agent_elem agent_elems[] = FSTI_AGENT_ELEM;
+static  bool agent_elems_initialized = false;
 
 const size_t fsti_agent_elem_n =
-    sizeof(agent_elem) / sizeof(struct fsti_agent_elem);
+    sizeof(agent_elems) / sizeof(struct fsti_agent_elem);
 
 // Compare two strings (for qsort and bsearch)
 static int cmps(const void *a, const void *b)
@@ -22,25 +22,16 @@ static int cmps(const void *a, const void *b)
     return strcmp(x->name, y->name);
 }
 
-void fsti_agent_elem_init()
+void fsti_agent_elems_init()
 {
-    qsort(agent_elem, fsti_agent_elem_n,  sizeof(struct fsti_agent_elem), cmps);
-}
-
-inline struct fsti_agent_elem *fsti_agent_elem_get()
-{
-    return agent_elem;
-}
-
-void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
-                          struct fsti_agent *agent, char delimiter)
-{
-    FSTI_AGENT_PRINT_CSV(f, sim_no, date, agent, delimiter);
-}
-
-void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
-{
-    FSTI_AGENT_PRINT_PRETTY(f, id, agent);
+    static GMutex mutex;
+    g_mutex_lock(&mutex);
+    if (agent_elems_initialized == false) {
+        qsort(agent_elems, fsti_agent_elem_n,  sizeof(struct fsti_agent_elem),
+              cmps);
+        agent_elems_initialized = true;
+    }
+    g_mutex_unlock(&mutex);
 }
 
 bool fsti_agent_has_partner(const struct fsti_agent *agent)
@@ -50,7 +41,6 @@ bool fsti_agent_has_partner(const struct fsti_agent *agent)
     else
         return false;
 }
-
 
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b)
 {
@@ -93,7 +83,7 @@ float fsti_agent_default_distance(const struct fsti_agent *a,
         result += 25.0;
     if (b->sex_preferred != a->sex)
         result += 25.0;
-    result += fabs(a->age - b->age);
+    result += abs(a->age - b->age);
     return result;
 }
 
@@ -101,7 +91,7 @@ struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
 {
     struct fsti_agent_elem *elem;
 
-    elem = bsearch(name, agent_elem, fsti_agent_elem_n,
+    elem = bsearch(name, agent_elems, fsti_agent_elem_n,
                    sizeof(struct fsti_agent_elem), cmps);
     FSTI_ASSERT(elem, FSTI_ERR_KEY_NOT_FOUND, name);
 
@@ -109,9 +99,9 @@ struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name)
 }
 
 long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
-                           struct fsti_agent *agent)
+                           const struct fsti_agent *agent)
 {
-    unsigned char *addr;
+    const unsigned char *addr;
 
     addr = (unsigned char *) agent;
     switch (elem->type) {
@@ -196,7 +186,8 @@ long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
     return 0;
 }
 
-long fsti_agent_elem_val_by_strname_l(const char *name, struct fsti_agent *agent)
+long fsti_agent_elem_val_by_strname_l(const char *name,
+                                      const struct fsti_agent *agent)
 {
     struct fsti_agent_elem *elem;
 
@@ -673,16 +664,16 @@ void fsti_agent_test(struct test_group *tg)
     fsti_agent_arr_free(&agent_arr);
 
     a.id = 10;
-    a.age = 23.7;
-    a.cured = 2018.9;
-    a.date_death = 2023.1;
+    a.age = 23;
+    a.cured.date = 2018;
+    a.date_death.date = 2023;
 
     l = fsti_agent_elem_val_by_strname_l("id", &a);
     TESTEQ(l, 10, *tg);
     l = fsti_agent_elem_val_by_strname_l("age", &a);
-    TESTEQ(l, 24, *tg);
+    TESTEQ(l, 23, *tg);
     l = fsti_agent_elem_val_by_strname_l("cured", &a);
-    TESTEQ(l, 2019, *tg);
+    TESTEQ(l, 2018, *tg);
     l = fsti_agent_elem_val_by_strname_l("date_death", &a);
     TESTEQ(l, 2023, *tg);
 }

@@ -1,12 +1,15 @@
-infected;sex;age;date_death
-1;1;1;0
+# Mortality data file
+infected;sex;age|YEAR;date_death
 0;0;0;0.00009409
 0;0;1;0.00000914
 0;0;2;0.00000914
+# Arbitrary comment
 0;0;3;0.00000914
 0;0;4;0.00000914
 0;0;5;0.00000296
 0;0;6;0.00000296
+# Arbitrary comment lines
+# Arbitrary comment
 0;0;7;0.00000296
 0;0;8;0.00000296
 0;0;9;0.00000296
@@ -484,3 +487,4 @@ infected;sex;age;date_death
 1;1;118;0.00038029
 1;1;119;0.00038029
 1;1;120;0.00038029
+# Arbitrary comment

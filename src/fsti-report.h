@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <float.h>
 #include <math.h>
+#include <time.h>
 
 #include "fsti-simulation.h"
 #include "fsti-defs.h"
@@ -41,6 +42,10 @@
                                  float: FLT_MAX,                       \
                                  double: DBL_MAX,                      \
                                  long double: LDBL_MAX)
+
+#define FSTI_SIM_CONST(unused, elem, result) do {        \
+        result = simulation->elem;                    \
+    } while(0)
 
 #define FSTI_MIN(agent_ind, elem, result) do {                          \
         struct fsti_agent *_agent;                                      \
@@ -109,6 +114,19 @@
         result = (double) result / agent_ind.len;                       \
     } while(0)
 
+#define FSTI_MEAN_COUNT(agent_ind, elem, result) do {                   \
+        struct fsti_agent *_agent_;                                     \
+        size_t *_it;                                                    \
+        result = 0;                                                     \
+        for (_it = fsti_agent_ind_begin(&(agent_ind));                  \
+             _it != fsti_agent_ind_end(&(agent_ind)); _it++) {          \
+            _agent_ = fsti_agent_ind_arrp(&(agent_ind), _it);           \
+            result += (bool) _agent_->elem;                             \
+        }                                                               \
+        result = (double) result / agent_ind.len;                       \
+    } while(0)
+
+
 #define FSTI_SUM(agent_ind, elem, result) do {                          \
         struct fsti_agent *_agent_;                                     \
         size_t *_it;                                                    \
@@ -126,8 +144,14 @@
 
 #define FSTI_HALF(x) x /= 2
 
+#define FSTI_TIME_IN_YEARS(x) x = isnan(x) ? NAN : fsti_time_in_years(x)
 
-#define FSTI_FMT(x) _Generic((x),                                   \
+#define FSTI_TIME_TAKEN(unused1, unused2, result) do {    \
+        time_t _t = time(NULL);                               \
+        result = _t - simulation->time_rec;    \
+    } while(0)
+
+#define FSTI_FMT(x) _Generic((x),                                       \
                                  char: "%c",                            \
                                  _Bool: "%u",                           \
                                  signed char: "%hhd",                   \
@@ -157,18 +181,26 @@
     do {                                                                \
         double __result__;                                              \
         char _c = simulation->csv_delimiter;                            \
+        char _current_date[FSTI_DATE_LEN];                              \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             simulation->iteration,                     \
+                             simulation->time_step,                     \
+                             _current_date);                            \
         func(simulation->agent_ind, elem, __result__);                  \
         post(__result__);                                               \
         fprintf(simulation->results_file,                               \
-                "%s%c%d%c%d%c%.3f%c%s%c" spec "\n",                     \
+                "%s%c%d%c%d%c%s%c%s%c" spec "\n",                       \
                 simulation->name, _c, simulation->sim_number, _c,       \
                 simulation->config_sim_number, _c,                      \
-                simulation->current_date, _c,                           \
+                _current_date, _c,                                      \
                 desc, _c,  __result__);                                 \
     } while(0)
 
 #define FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, spec)      \
         FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, (void), spec)
+
+#define FSTI_REPORT_OUTPUT_POST(func, agent_ind, elem, desc, post)      \
+        FSTI_REPORT_OUTPUT_POST_PREC(func, agent_ind, elem, desc, post, "%f")
 
 #define FSTI_REPORT_OUTPUT(func, agent_ind, elem, desc)                 \
     FSTI_REPORT_OUTPUT_PREC(func, agent_ind, elem, desc, "%f")

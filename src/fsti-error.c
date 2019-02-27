@@ -64,6 +64,12 @@ const char *fsti_error_message(int code)
         return "No event defined to check for end of simulation";
     case FSTI_ERR_INVALID_VALUE:
 	return "Invalid value";
+    case FSTI_ERR_INVALID_DATE:
+	return "Invalid date";
+
+    case FSTI_WARN_DATASET_USING_VALS_NOT_FILE:
+        return "Warning: dataset using configuration values instead of file";
+
     default:
 	return "Unknown error message number - this shouldn't happen";
     }

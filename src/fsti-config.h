@@ -10,32 +10,87 @@
 
 #include "fsti-defs.h"
 
-#define FSTI_CONFIG_ADD(config, key, description, value)        \
-    do {                                                        \
-        _Generic((value),					\
-                 char *: fsti_config_add_str,			\
-                 int: fsti_config_add_long,			\
-                 long: fsti_config_add_long,			\
-                 double: fsti_config_add_double,                \
-                 struct fsti_variant *: fsti_config_add_arr     \
-            ) (config, key, description, value);		\
+#define FSTI_CONFIG_ADD_STR(config, elem, desc,  ...)                 \
+    do {                                                               \
+        const char * _vals[] = {__VA_ARGS__};                          \
+        size_t _n = sizeof(_vals) / sizeof(char *);                    \
+        fsti_config_add_strs(config, #elem, desc, _vals, _n);          \
     } while(0)
 
+#define FSTI_CONFIG_ADD_DBL(config, elem, desc,  ...)                 \
+    do {                                                               \
+        double _vals[] = {__VA_ARGS__};                                \
+        size_t _n = sizeof(_vals) / sizeof(double);                    \
+        fsti_config_add_doubles(config, #elem, desc, _vals, _n);       \
+    } while(0)
+
+#define FSTI_CONFIG_ADD_LONG(config, elem, desc,  ...)                 \
+    do {                                                                \
+        long _vals[] = {__VA_ARGS__};                                   \
+        size_t _n = sizeof(_vals) / sizeof(long);                       \
+        fsti_config_add_longs(config, #elem, desc, _vals, _n);          \
+    } while(0)
+
+
+#define FSTI_FIRST_OF(N, ...) N
+
+#define FSTI_STRS(...)                                                  \
+    (const char *[]) {__VA_ARGS__},                                     \
+        sizeof((const char *[]) {__VA_ARGS__})  / sizeof(const char *)
+
+#define FSTI_LONGS(...)                                                 \
+    (long[]) {__VA_ARGS__},                                             \
+        sizeof((long[]) {__VA_ARGS__}) / sizeof(long)
+
+#define FSTI_DBLS(...)                                                  \
+    (double[]) {__VA_ARGS__},                                           \
+        sizeof((double[]) {__VA_ARGS__}) /   sizeof(double)
+
+#define FSTI_TYPE_ARR(v, ...)                                           \
+    _Generic( (v),                                                      \
+              int: (long []) {__VA_ARGS__},                             \
+              long: (long []) {__VA_ARGS__},                            \
+              double: (double[]) {__VA_ARGS__}                          \
+        )
+
+#define FSTI_SIZE_ARR(v, ...)                                           \
+    _Generic( (v),                                                      \
+              int: sizeof( (long[]) {__VA_ARGS__}) /                    \
+              sizeof(long),                                             \
+              long: sizeof( (long[]) {__VA_ARGS__}) /                   \
+              sizeof(long),                                             \
+              double:sizeof( (double[]) {__VA_ARGS__}) /                \
+              sizeof(double)                                            \
+        )
+
+#define FSTI_CONFIG_ADD(config, key, description, ...)                  \
+    _Generic((FSTI_FIRST_OF(__VA_ARGS__)),                              \
+             int: fsti_config_add_longs,                                \
+             long: fsti_config_add_longs,                               \
+             double: fsti_config_add_doubles                            \
+        ) (config, #key, description,                                   \
+           FSTI_TYPE_ARR(FSTI_FIRST_OF(__VA_ARGS__), __VA_ARGS__),      \
+           FSTI_SIZE_ARR(FSTI_FIRST_OF(__VA_ARGS__), __VA_ARGS__))
 
 struct fsti_config_entry {
     char key[FSTI_KEY_LEN];
     char description[FSTI_DESC_LEN];
     struct fsti_variant *variants;
     size_t len;
+    size_t order;
+    bool initialize;
+    size_t offset;
+    size_t bytes;
     struct fsti_config_entry *next;
 };
 
 struct fsti_config {
     struct fsti_config_entry *entry[FSTI_HASHSIZE];
+    size_t len;
 };
 
 void fsti_config_init(struct fsti_config *config);
-void fsti_config_print_entry(const struct fsti_config_entry *entry);
+void fsti_config_print_entry(const struct fsti_config_entry *entry, char delim);
 void fsti_config_print_all(struct fsti_config *config);
 struct fsti_config_entry *fsti_config_find(const struct fsti_config *config, const char *key);
 struct fsti_variant *fsti_config_at(const struct fsti_config *config, const char *key, size_t index);
@@ -48,12 +103,22 @@ long fsti_config_at0_long(const struct fsti_config *config, const char *key);
 double fsti_config_at_double(const struct fsti_config *config, const char *key,
                              size_t index);
 double fsti_config_at0_double(const struct fsti_config *config, const char *key);
-void fsti_config_add_str(struct fsti_config *config, const char *key,
-                         const char *description, const char *val);
-void fsti_config_add_double(struct fsti_config *config, const char *key,
-                            const char *description, double val);
-void fsti_config_add_long(struct fsti_config *config, const char *key,
-                          const char *description, long val);
+
+void fsti_config_add_strs(struct fsti_config *config,
+                          const char *key,
+                          const char *description,
+                          const char *vals[],
+                          size_t n);
+void fsti_config_add_doubles(struct fsti_config *config,
+                             const char *key,
+                             const char *description,
+                             double vals[],
+                             size_t n);
+void fsti_config_add_longs(struct fsti_config *config,
+                           const char *key,
+                           const char *description,
+                           long vals[],
+                           size_t n);
 void fsti_config_add_arr(struct fsti_config *config, const char *key,
                          const char *description,
                          const struct fsti_variant *variants, size_t n);

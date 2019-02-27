@@ -9,7 +9,7 @@
 #include "fsti-agent.h"
 #include "fsti-simset.h"
 
-int fsti_tests()
+int fsti_tests(bool valgrind)
 {
     struct test_group tg;
 
@@ -20,7 +20,7 @@ int fsti_tests()
     fsti_config_test(&tg);
     fsti_agent_test(&tg);
     fsti_simulation_test(&tg);
-    fsti_simset_test(&tg);
+    fsti_simset_test(&tg, valgrind);
 
     test_group_summary(&tg);
 

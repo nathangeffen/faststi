@@ -14,7 +14,7 @@ struct fsti_simset {
     char **config_strings;
     bool more_configs;
     int sim_number;
-    int config_num_sims;
+    int config_num_simulations;
     int config_sim_number;
     // A key file consists of groups of simulations
     char **groups;
@@ -24,6 +24,9 @@ struct fsti_simset {
     FILE *results_file;
     bool close_agents_output_file;
     FILE *agents_output_file;
+    bool close_partnerships_file;
+    FILE *partnerships_file;
+
     struct fsti_dataset_hash dataset_hash;
 };
 
@@ -36,6 +39,6 @@ void fsti_simset_load_config_strings(struct fsti_simset *simset,
 void fsti_simset_init(struct fsti_simset *simset);
 void fsti_simset_exec(struct fsti_simset *simset);
 void fsti_simset_free(struct fsti_simset *simset);
-void fsti_simset_test(struct test_group *tg);
+void fsti_simset_test(struct test_group *tg, bool valgrind);
 
 #endif

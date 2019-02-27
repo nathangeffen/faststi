@@ -26,7 +26,7 @@
     } while(0)
 
 struct fsti_agent {
-    size_t id;
+    uint32_t id;
     uint8_t sex;
     union {
         uint8_t sex_preferred;
@@ -34,27 +34,24 @@ struct fsti_agent {
     };
     union {
         union {
-            double age;
-            double birth_date;
+            int32_t age;
+            int32_t birth_date;
         };
         struct {
             uint16_t birthday;
             uint16_t age_group;
         };
     };
-    union {
-        bool infected;
-        float infected_date;
-    };
-    double cured; // Date last cured of last infection
-    union {
-        bool dead; // 0 if still alive
-        double date_death; // 0 if still alive
-    };
+    uint8_t infected;
+    uint8_t treated;
+    uint8_t resistant;
+    struct fsti_date cured; // Date last cured of last infection
+    struct fsti_date date_death;
     uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
-    size_t partners[FSTI_MAX_PARTNERS];
-    size_t num_partners;
+    uint8_t num_partners;
+    uint32_t partners[FSTI_MAX_PARTNERS];
+    uint32_t relchange[FSTI_MAX_PARTNERS];
     FSTI_AGENT_FIELDS
 };
 
@@ -87,10 +84,8 @@ struct fsti_agent_ind {
 extern struct fsti_agent_arr fsti_saved_agent_arr;
 extern const size_t fsti_agent_elem_n;
 
+void fsti_agent_elems_init();
 struct fsti_agent_elem *fsti_agent_elem_get();
-void fsti_agent_print_csv(FILE *f, unsigned sim_no, double date,
-                          struct fsti_agent *agent, char delimiter);
-void fsti_agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent);
 _Bool fsti_agent_has_partner(const struct fsti_agent *agent);
 void fsti_agent_make_half_partner(struct fsti_agent *a, struct fsti_agent *b);
 void fsti_agent_make_partners(struct fsti_agent *a, struct fsti_agent *b);
@@ -101,8 +96,9 @@ float fsti_agent_default_distance(const struct fsti_agent *a, const struct fsti_
 
 struct fsti_agent_elem *fsti_agent_elem_by_strname(const char *name);
 long fsti_agent_elem_val_l(struct fsti_agent_elem *elem,
-                           struct fsti_agent *agent);
-long fsti_agent_elem_val_by_strname_l(const char *name, struct fsti_agent *agent);
+                           const struct fsti_agent *agent);
+long fsti_agent_elem_val_by_strname_l(const char *name,
+                                      const struct fsti_agent *agent);
 
 void fsti_agent_arr_add_dependency(struct fsti_agent_arr *agent_arr, struct fsti_agent_ind *agent_ind);
 void fsti_agent_arr_fill_n(struct fsti_agent_arr *agent_arr,  size_t n);

@@ -1,8 +1,13 @@
+#include <math.h>
 #include <stdio.h>
-#include <glib.h>
 
 #include "fsti-error.h"
 #include "fsti-defs.h"
+#include "fsti-agent.h"
+#include "fsti-simulation.h"
+
+static _Thread_local char full_filename[FILENAME_MAX];
+bool fsti_keep_test_files = false;
 
 
 #define SET_DEST(type) do {                      \
@@ -33,6 +38,207 @@
             SET_DEST(long double);                              \
         }                                                       \
     } while(0)
+
+void fsti_to_float(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                   struct fsti_agent *agent)
+{
+    float v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(float));
+}
+
+void fsti_to_double(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                    struct fsti_agent *agent)
+{
+    double v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(double));
+}
+
+void fsti_to_age(void *to, const struct fsti_variant *from,
+                 const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent)
+{
+    agent->age = from->value.dbl * simulation->age_input_time_step;
+}
+
+
+
+void fsti_to_int(void *to, const struct fsti_variant *from,
+                  const struct fsti_simulation *simulation,
+                 struct fsti_agent *agent)
+{
+    int v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int));
+}
+
+void fsti_to_uint8_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
+{
+    uint8_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint8_t));
+}
+
+void fsti_to_uint16_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    uint16_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint16_t));
+}
+
+void fsti_to_uint32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    uint32_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint32_t));
+}
+
+void fsti_to_int32_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
+{
+    int32_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int32_t));
+}
+
+
+void fsti_to_uint64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    uint64_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(uint64_t));
+}
+
+void fsti_to_int64_t(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    int64_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(int64_t));
+}
+
+
+void fsti_to_bool(void *to, const struct fsti_variant *from,
+                  const struct fsti_simulation *simulation,
+                  struct fsti_agent *agent)
+{
+    bool v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(bool));
+}
+
+
+void fsti_to_unsigned(void *to, const struct fsti_variant *from,
+                      const struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
+{
+    unsigned v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(unsigned));
+}
+
+void fsti_to_size_t(void *to, const struct fsti_variant *from,
+                    const struct fsti_simulation *simulation,
+                    struct fsti_agent *agent)
+{
+    size_t v;
+    switch(from->type) {
+    case DBL: v = from->value.dbl; break;
+    case LONG: v = from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(size_t));
+}
+
+void fsti_to_uchar(void *to, const struct fsti_variant *from,
+                   const struct fsti_simulation *simulation,
+                   struct fsti_agent *agent)
+{
+    unsigned char v;
+    switch(from->type) {
+    case DBL: v = (unsigned char) from->value.dbl; break;
+    case LONG: v = (unsigned char) from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    memcpy(to, &v, sizeof(unsigned char));
+}
+
+void fsti_to_partner(void *to, const struct fsti_variant *from,
+                     const struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
+{
+    long v;
+    size_t i;
+    switch(from->type) {
+    case DBL: v = (long) from->value.dbl; break;
+    case LONG: v = (long) from->value.longint; break;
+    default: fsti_error = FSTI_ERR_INVALID_VALUE; return;
+    }
+    if (v >= 0) {
+        i = (unsigned) v;
+        agent->num_partners++;
+        memcpy(to, &i, sizeof(size_t));
+    } else {
+        memset(to, 0, sizeof(size_t));
+    }
+}
 
 void fsti_cnv_vals(void *dest, const void *src,
                    enum fsti_type dest_type, enum fsti_type src_type)
@@ -121,7 +327,43 @@ int fsti_variant_print(FILE *f, const struct fsti_variant *variant)
     }
 }
 
-static _Thread_local char full_filename[FILENAME_MAX];
+/* Date and time functions */
+
+struct fsti_date
+fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size)
+{
+    struct fsti_date result;
+    GDateTime *date;
+
+    date = g_date_time_add_minutes(base, steps * step_size);
+
+    result.year = g_date_time_get_year(date);
+    result.month = g_date_time_get_month(date);
+    result.day = g_date_time_get_day_of_month(date);
+
+    g_date_time_unref(date);
+
+    return result;
+}
+
+uint16_t fsti_time_in_years(int32_t t)
+{
+    return t / FSTI_YEAR;
+}
+
+void fsti_time_sprint(const struct fsti_date *date, char result[])
+{
+    snprintf(result, FSTI_DATE_LEN, "%04d-%02d-%02d",
+             date->year, date->month, date->day);
+}
+
+void fsti_time_add_sprint(GDateTime *base, int32_t steps, int32_t step_size,
+                          char result[])
+{
+    struct fsti_date date;
+    date = fsti_time_add_gdatetime(base, steps, step_size);
+    fsti_time_sprint(&date, result);
+}
 
 char *fsti_make_full_data_filename(const char *filename)
 {
@@ -140,12 +382,22 @@ char *fsti_make_full_data_filename(const char *filename)
 
 FILE *fsti_open_data_file(const char *filename, const char *mode)
 {
-    return fopen(fsti_make_full_data_filename(filename), mode);
+    FILE *f;
+    f = fopen(filename, mode);
+    if (f == NULL)
+        f = fopen(fsti_make_full_data_filename(filename), mode);
+
+    return f;
+}
+
+void fsti_remove_file(const char *filename)
+{
+    if (fsti_keep_test_files == false) remove(filename);
 }
 
 void fsti_remove_data_file(const char *filename)
 {
-    remove(fsti_make_full_data_filename(filename));
+    fsti_remove_file(fsti_make_full_data_filename(filename));
 }
 
 
@@ -200,4 +452,19 @@ void fsti_test_defs(struct test_group *tg)
     TESTEQ(strcmp(variant.value.str, "-11.23456L"), 0, *tg);
 
     free(variant.value.str);
+
+    /* Test DateTime functions */
+    GDateTime *d1;
+    GTimeZone *z;
+    char date_str[FSTI_DATE_LEN];
+
+    z = g_time_zone_new(NULL);
+    d1 = g_date_time_new(z, 2018, 1, 1, 0, 0, 0);
+
+    fsti_time_add_sprint(d1, 10, FSTI_YEAR, date_str);
+    g_date_time_unref(d1);
+    g_time_zone_unref(z);
+
+    TESTEQ(strcmp(date_str, "2028-01-01"), 0, *tg);
+
 }

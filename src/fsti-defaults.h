@@ -41,30 +41,40 @@ unsigned total_partners;
 #define FSTI_MAX_PARTNERS 3
 #endif
 
+/*
+   Override the number of infection risks (by default: MSM, MSW, WSM, WSW).
+*/
+
+#ifndef FSTI_INFECTION_RISKS
+#define FSTI_INFECTION_RISKS 4
+#endif
+
+
 /* Add your own configuration variables here. */
 
 #ifndef FSTI_ADDITIONAL_CONFIG_VARS
 #define FSTI_ADDITIONAL_CONFIG_VARS(config)                             \
-    FSTI_CONFIG_ADD(config, "EXAMPLE_1", "Example configuration field", 0); \
-    FSTI_CONFIG_ADD(config, "EXAMPLE_2",                                \
-                    "Example configuration field", "String field")
+    FSTI_CONFIG_ADD(config, EXAMPLE_1, "Example configuration field", 0); \
+    FSTI_CONFIG_ADD_STR(config, EXAMPLE_2,                              \
+                        "Example configuration field", "String field")
 #endif
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n",        \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
             "sim", delim,                                               \
             "date", delim,                                              \
             "id", delim,                                                \
             "age", delim,                                               \
-            "infected", delim,                                          \
             "sex", delim,                                               \
             "sex_preferred", delim,                                     \
+            "infected", delim,                                          \
+            "treated", delim,                                           \
+            "resistant", delim,                                         \
             "date_death", delim,                                        \
-            "partner")
-
+            "partner", delim,                                           \
+            "change_date")
 #endif
-
 
 /*
    This is the default code to print an agent in csv format. Change it to print another
@@ -72,17 +82,34 @@ unsigned total_partners;
 */
 
 #ifndef FSTI_AGENT_PRINT_CSV
-#define FSTI_AGENT_PRINT_CSV(file_handle, sim_num, date, agent, delim)  \
-    fprintf(file_handle, "%u%c%f%c%zu%c%.2f%c%u%c%u%c%u%c%.2f%c%ld\n",  \
-            sim_num, delim,                                             \
-            date, delim,                                                \
-            agent->id, delim,                                           \
-            agent->age, delim,                                          \
-            agent->infected, delim,                                     \
-            (unsigned) agent->sex, delim,                               \
-            (unsigned) agent->sex_preferred, delim,                     \
-            agent->date_death, delim,                                   \
-            agent->num_partners ? (long) agent->partners[0] : -1)
+#define FSTI_AGENT_PRINT_CSV(simulation, agent, delim) do {             \
+        char _current_date[FSTI_DATE_LEN];                              \
+        char _death_date[FSTI_DATE_LEN];                                \
+        char _relchange_date[FSTI_DATE_LEN];                            \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             simulation->iteration,                     \
+                             simulation->time_step,                     \
+                             _current_date);                            \
+        fsti_time_sprint(&agent->date_death, _death_date);              \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             agent->relchange[0],                       \
+                             simulation->time_step,                     \
+                             _relchange_date);                          \
+        fprintf(simulation->agents_output_file,                         \
+                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",    \
+                simulation->sim_number, delim,                          \
+                _current_date, delim,                                   \
+                agent->id, delim,                                       \
+                fsti_time_in_years(agent->age), delim,                  \
+                (unsigned) agent->sex, delim,                           \
+                (unsigned) agent->sex_preferred, delim,                 \
+                agent->infected, delim,                                 \
+                (unsigned) agent->treated, delim,                       \
+                (unsigned) agent->resistant, delim,                     \
+                _death_date , delim,                                    \
+                agent->num_partners ? (long) agent->partners[0] : -1,   \
+                delim, _relchange_date);                                \
+    } while(0)
 #endif
 
 /*
@@ -90,10 +117,10 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_PRINT_PRETTY
 #define FSTI_AGENT_PRINT_PRETTY(file_handle, id, agent)              \
-    fprintf(file_handle, "Sim %u, Agent %zu: Age: %.0f, %s %s %s %ld\n", \
+    fprintf(file_handle, "Sim %u, Agent %u: Age: %u, %s %s %s %ld\n", \
             id,                                                         \
             agent->id,                                                  \
-            agent->age,                                                 \
+            fsti_time_in_years(agent->age),                             \
             (agent->sex == FSTI_MALE &&                                 \
              agent->sex_preferred == FSTI_FEMALE) ? "MSW" :             \
             ((agent->sex == FSTI_MALE &&                                \
@@ -112,33 +139,60 @@ unsigned total_partners;
 
 #ifndef FSTI_FLEX_REPORT
 #define FSTI_FLEX_REPORT do {                                           \
-        FSTI_REPORT_OUTPUT(FSTI_MIN, living, age, "MIN_AGE_ALIVE");     \
-        FSTI_REPORT_OUTPUT(FSTI_MAX, living, age, "MAX_AGE_ALIVE");     \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE");   \
-        FSTI_REPORT_OUTPUT(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE"); \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, living, infected, "INFECT_RATE_ALIVE"); \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MIN, living, age, "MIN_AGE_ALIVE", \
+                                FSTI_TIME_IN_YEARS);                    \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MAX, living, age, "MAX_AGE_ALIVE", \
+                                FSTI_TIME_IN_YEARS);                    \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEAN, living, age, "MEAN_AGE_ALIVE", \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEDIAN, living, age, "MEDIAN_AGE_ALIVE", \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN_COUNT, living, infected,           \
+                           "INFECT_RATE_ALIVE");                        \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, living, , "POP_ALIVE", "%.0f"); \
         FSTI_REPORT_OUTPUT_POST_PREC(FSTI_SUM, living, num_partners,    \
                                      "NUM_PARTNERS", FSTI_HALF, "%.0f"); \
-        FSTI_REPORT_OUTPUT(FSTI_MIN, dead, age, "MIN_AGE_DEAD");        \
-        FSTI_REPORT_OUTPUT(FSTI_MAX, dead, age, "MAX_AGE_DEAD");        \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD");      \
-        FSTI_REPORT_OUTPUT(FSTI_MEAN, dead, infected, "INFECT_RATE_DEAD"); \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MIN, dead, age, "MIN_AGE_DEAD",    \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MAX, dead, age, "MAX_AGE_DEAD",    \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT_POST(FSTI_MEAN, dead, age, "MEAN_AGE_DEAD",  \
+                           FSTI_TIME_IN_YEARS);                         \
+        FSTI_REPORT_OUTPUT(FSTI_MEAN_COUNT, dead, infected,             \
+                           "INFECT_RATE_DEAD");                         \
         FSTI_REPORT_OUTPUT_PREC(FSTI_SIZE, dead, , "POP_DEAD", "%.0f"); \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , initial_infections,    \
+                                "INITIAL_INFECTIONS", "%.0f");          \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, ,infections,            \
+                                "SIMULATION_INFECTIONS", "%.0f");        \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , initial_matches,      \
+                                "INITIAL_MATCHES", "%.0f");              \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , matches,              \
+                                "SIMULATION_MATCHES", "%.0f");           \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , breakups,             \
+                                "BREAKUPS", "%.0f");                     \
+        FSTI_REPORT_OUTPUT_PREC(FSTI_TIME_TAKEN, , , "TIME_TAKEN", "%.0f"); \
     } while(0)
 #endif
 
-/* If any members of the agent struct need to be associated with a string
-   they are defined here in alphabetical order. (Alphabetical order is
-   essential because a binary search used to locate the entry.)
-   Unfortunately because it's in alphabetical order, if you want to append
-   to the definition below, you need to copy and paste the entire
-   definition into the fsti-userdefs.h file and insert your appended variable
-   names in the correct place alphabetically.
+/* Define additional struct fsti_agent elements here.
+   End the list with a comma (,) else there will be compile errors.
+   Note that adding additional elements will break the standard test run.
+*/
+
+#ifndef FSTI_AGENT_ADDITIONAL_ELEMS
+#define FSTI_AGENT_ADDITIONAL_ELEMS
+#endif
+
+/* The members of the fsti_agent structure are defined here so that
+   agent csv files and datasets can refer to them. In the default
+   version, the names are entered alphabetically, but this is not essential.
+   The system sorts them before using them the first time.
 */
 #ifndef FSTI_AGENT_ELEM
 #define FSTI_AGENT_ELEM {                                               \
-        FSTI_AGENT_ELEM_ENTRY(age),                                     \
+         FSTI_AGENT_ADDITIONAL_ELEMS                                    \
+        {"age", offsetof(struct fsti_agent, age), UINT, fsti_to_age},   \
         FSTI_AGENT_ELEM_ENTRY(age_group),                               \
         FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
@@ -148,19 +202,19 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(date_death),                              \
         FSTI_AGENT_ELEM_ENTRY(id),                                      \
         FSTI_AGENT_ELEM_ENTRY(infected),                                \
-        FSTI_AGENT_ELEM_ENTRY(infected_date),                           \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
-        FSTI_AGENT_ELEM_ENTRY(orientation),                             \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
-         UINT, fsti_to_partner},                                  \
+         UINT, fsti_to_partner},                                        \
         {"partners_1", offsetof(struct fsti_agent, partners[1]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
         {"partners_2", offsetof(struct fsti_agent, partners[2]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
         {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
-         UINT, NULL},                                             \
+         UINT, NULL},                                                   \
+        FSTI_AGENT_ELEM_ENTRY(resistant),                               \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
-        FSTI_AGENT_ELEM_ENTRY(sex_preferred)                            \
+        FSTI_AGENT_ELEM_ENTRY(sex_preferred),                           \
+        FSTI_AGENT_ELEM_ENTRY(treated)                                  \
     }
 #endif
 
@@ -183,6 +237,49 @@ unsigned total_partners;
     fsti_agent_default_distance(agent_a, agent_b)
 #endif
 
+/*
+   Modify this to change the generation of new agents into the simulation.
+   ("Birth" is not strictly speaking an accurate description, because
+   in a simulation with a minimum age, of say 15, this would be the routine
+   that generates new 15-year olds.)
+ */
+
+#ifndef FSTI_AGENT_GENERATE
+#define FSTI_AGENT_GENERATE(simulation, agent)                          \
+    do {                                                                \
+        fsti_generate_age(simulation, agent);                           \
+        fsti_generate_sex(simulation, agent);                           \
+        fsti_generate_sex_preferred(simulation, agent);                 \
+        fsti_generate_infected(simulation, agent);                      \
+        fsti_generate_treated(simulation, agent);                       \
+        fsti_generate_resistant(simulation, agent);                     \
+        FSTI_HOOK_GENERATE_AGENT(simulation, agent)                     \
+    } while(0)
+#endif
+
+
+
+/*
+   Modify this to change the generation of new agents into the simulation.
+   ("Birth" is not strictly speaking an accurate description, because
+   in a simulation with a minimum age, of say 15, this would be the routine
+   that generates new 15-year olds.)
+ */
+
+#ifndef FSTI_AGENT_BIRTH
+#define FSTI_AGENT_BIRTH(simulation, agent)                             \
+    do {                                                                \
+        fsti_birth_age(simulation, agent);                              \
+        fsti_birth_sex(simulation, agent);                              \
+        fsti_birth_sex_preferred(simulation, agent);                    \
+        fsti_birth_infected(simulation, agent);                         \
+        fsti_birth_treated(simulation, agent);                          \
+        fsti_birth_resistant(simulation, agent);                        \
+        FSTI_HOOK_AGENT_BIRTH(simulation, agent)                        \
+    } while(0)
+#endif
+
+
 /*******************************************************************
  * Advanced macros: Please only override these if you have a
  * good understanding of both C and the FastSTI code.
@@ -196,20 +293,14 @@ unsigned total_partners;
 #define FSTI_GEN_PARMS 6
 #endif
 
-/*
-   List of generator functions (in alphabetical order to support bsearch).
+/* Function for setting the iteration until which an agent remains single.
+   The default function uses a Weibull function with user defined shape
+   and scale.
 */
 
-#ifndef FSTI_GENERATOR_MAP
-#define FSTI_GENERATOR_MAP                                              \
-    {"BETA", fsti_gen_beta},                                            \
-    {"CONST", fsti_gen_const},                                          \
-    {"SEX_SEXOR", fsti_gen_sex_sexor},                                  \
-    {"SEX_SEXOR_INFECTION", fsti_gen_sex_sexor_infection},              \
-    {"UNIF", fsti_gen_uniform}
+#ifndef FSTI_SET_SINGLE_PERIOD
+#define FSTI_SET_SINGLE_PERIOD set_single_period
 #endif
-
-
 
 /* Hooks */
 
@@ -273,6 +364,41 @@ unsigned total_partners;
 #ifndef FSTI_HOOK_CREATE_AGENT
 #define FSTI_HOOK_CREATE_AGENT(simulation, agent)
 #endif
+
+/*
+  Hook after when an agent is generated at beginning of simulation.
+*/
+#ifndef FSTI_HOOK_GENERATE_AGENT
+#define FSTI_HOOK_GENERATE_AGENT(simulation, agent)
+#endif
+
+
+/*
+  Hook after when a birth takes place.
+   ("Birth" is not strictly speaking an accurate description, because
+   in a simulation with a minimum age, of say 15, this would be the routine
+   that generates new 15-year olds.)
+*/
+#ifndef FSTI_HOOK_AGENT_BIRTH
+#define FSTI_HOOK_AGENT_BIRTH(simulation, agent)
+#endif
+
+/*
+  Hook just before an agent dies (partnerships still exist)
+*/
+
+#ifndef FSTI_HOOK_PRE_DEATH
+#define FSTI_HOOK_PRE_DEATH(simulation, agent)
+#endif
+
+/*
+  Hook after an agent dies (partnerships don't exist)
+*/
+
+#ifndef FSTI_HOOK_POST_DEATH
+#define FSTI_HOOK_POST_DEATH(simulation, agent)
+#endif
+
 
 /*
   Hook to register events.
