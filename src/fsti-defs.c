@@ -69,7 +69,9 @@ void fsti_to_age(void *to, const struct fsti_variant *from,
                  const struct fsti_simulation *simulation,
                  struct fsti_agent *agent)
 {
-    agent->age = from->value.dbl * simulation->age_input_time_step;
+    agent->age =
+        ((from->type == DBL) ? from->value.dbl : from->value.longint)
+        * simulation->age_input_time_step;
 }
 
 
