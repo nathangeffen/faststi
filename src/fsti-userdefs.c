@@ -291,12 +291,12 @@ void event_age(struct fsti_simulation *simulation)
     struct fsti_agent *a;
     FSTI_FOR_LIVING(*simulation, a, {
             if ( (simulation->iteration - a->birthday) % 1825 == 0) {
-                a->age_group++;
+                a->age++;
                 // HIV AS COMORBIDITY
-                if (a->hiv == 0)
-                    if (hivarray[a->age_group - 1] <
+                if (a->coinfected == 0)
+                    if (hivarray[a->age - 1] <
                         gsl_rng_uniform(simulation->rng))
-                        a->hiv = 1;
+                        a->coinfected = 1;
             }
         });
 }
@@ -311,13 +311,13 @@ void event_hades(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     size_t *it;
-    unsigned age_group;
+    unsigned age;
 
     it = simulation->living.indices;
     while (it < (simulation->living.indices + simulation->living.len)) {
         a = fsti_agent_ind_arrp(&simulation->living, it);
-        age_group = a->age_group;
-        if (gsl_rng_uniform(simulation->rng) < grimreaper[age_group - MIN_AGE]) {
+        age = a->age;
+        if (gsl_rng_uniform(simulation->rng) < grimreaper[age - MIN_AGE]) {
             fsti_simulation_kill_agent(simulation, it);
         } else {
             ++it;
@@ -330,15 +330,15 @@ void event_eros(struct fsti_simulation *simulation)
 {
   struct fsti_agent *a;
   double sexint;
-  unsigned age_group;
+  unsigned age;
 
   fsti_agent_ind_clear(&simulation->mating_pool);
   FSTI_FOR_LIVING(*simulation, a, {
           if (a->num_partners == 0) {
-              age_group = a->age_group;
+              age = a->age;
               sexint = (gsl_ran_gaussian(simulation->rng, 1) * a->re_sexact *
-                        no_contacts_eros[1][age_group - MIN_AGE] +
-                        no_contacts_eros[0][age_group - MIN_AGE]) / 365;
+                        no_contacts_eros[1][age - MIN_AGE] +
+                        no_contacts_eros[0][age - MIN_AGE]) / 365;
               if (gsl_rng_uniform(simulation->rng) < sexint)
                   fsti_agent_ind_push(&simulation->mating_pool, a->id);
           }
@@ -348,13 +348,13 @@ void event_eros(struct fsti_simulation *simulation)
 static void set_relstat(struct fsti_agent *agent, size_t iteration,
                         gsl_rng *rng)
 {
-    unsigned age_group;
+    unsigned age;
     double a, b;
 
-    age_group = agent->age_group;
+    age = agent->age;
 
-    a = sin_duration[0][age_group - MIN_AGE];
-    b = sin_duration[1][age_group - MIN_AGE];
+    a = sin_duration[0][age - MIN_AGE];
+    b = sin_duration[1][age - MIN_AGE];
     agent->relstat = iteration + gsl_ran_weibull(rng, a, b) * 365;
 }
 
@@ -382,16 +382,16 @@ void event_aphrodite(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a, *b;
     double sexint, r;
-    unsigned age_group;
+    unsigned age;
 
   FSTI_FOR_LIVING(*simulation, a, {
           b = fsti_agent_partner_get0(&simulation->agent_arr, a);
           if (b && b->infected == true && a->infected == false) {
-              age_group = a->age_group;
+              age = a->age;
               r = gsl_ran_gaussian(simulation->rng, 1);
               sexint = (r * a->re_sexact *
-                        no_contacts_aphrodite[1][age_group - MIN_AGE] +
-                        no_contacts_aphrodite[0][age_group - MIN_AGE]) / 365.0;
+                        no_contacts_aphrodite[1][age - MIN_AGE] +
+                        no_contacts_aphrodite[0][age - MIN_AGE]) / 365.0;
               if (gsl_rng_uniform(simulation->rng) < sexint)
                   a->infected = true;
           }
@@ -405,10 +405,10 @@ void hestia(struct fsti_simulation *simulation,
 {
     a->reldur = gsl_ran_weibull(simulation->rng,
                                 rel_duration[0]
-                                [a->age_group-MIN_AGE]
-                                [b->age_group-MIN_AGE],
+                                [a->age-MIN_AGE]
+                                [b->age-MIN_AGE],
                                 rel_duration[1]
-                                [a->age_group-MIN_AGE]
-                                [b->age_group-MIN_AGE]) * 365;
+                                [a->age-MIN_AGE]
+                                [b->age-MIN_AGE]) * 365;
     b->reldur = a->reldur;
 }
