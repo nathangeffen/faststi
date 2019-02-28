@@ -399,55 +399,14 @@ void fsti_event_age(struct fsti_simulation *simulation)
         });
 }
 
-static void outputf(struct fsti_simulation *simulation, char *desc, double val)
-{
-    char c = simulation->csv_delimiter;
-    fprintf(simulation->results_file, "%s%c%u%c%u%c%s%c%f\n",
-            simulation->name, c, simulation->sim_number,c,
-            simulation->config_sim_number, c, desc, c, val);
-}
-
-static void outputl(struct fsti_simulation *simulation, char *desc, long val)
-{
-    char c = simulation->csv_delimiter;
-    fprintf(simulation->results_file, "%s%c%u%c%u%c%s%c%ld\n",
-            simulation->name, c, simulation->sim_number, c,
-            simulation->config_sim_number, c, desc, c, val);
-}
-
 void fsti_event_report(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *agent;
-    double age_avg = 0.0;
-    unsigned infections = 0;
-    long num_partners = 0;
-
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
         return;
 
-    outputl(simulation, "POPULATION_ALIVE", simulation->living.len);
-
-    FSTI_FOR_LIVING(*simulation, agent, {
-            age_avg += agent->age;
-            infections += (bool) agent->infected;
-            num_partners += agent->num_partners;
-        });
-
-    outputf(simulation, "AVERAGE_AGE", age_avg / simulation->agent_arr.len);
-    outputf(simulation, "INFECTION_RATE",
-           (double) infections / simulation->agent_arr.len);
-    outputl(simulation, "NUM_PARTNERS", num_partners);
-}
-
-void fsti_event_flex_report(struct fsti_simulation *simulation)
-{
-    if (simulation->state == DURING && simulation->iteration &&
-        simulation->iteration % simulation->report_frequency != 0)
-        return;
-
-    FSTI_FLEX_REPORT;
-    FSTI_HOOK_FLEX_REPORT;
+    FSTI_REPORT;
+    FSTI_HOOK_REPORT;
 }
 
 void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
@@ -1057,7 +1016,6 @@ void fsti_event_register_events()
         fsti_register_add("_coinfect", fsti_event_coinfect);
         fsti_register_add("_birth", fsti_event_birth);
         fsti_register_add("_report", fsti_event_report);
-        fsti_register_add("_flex_report", fsti_event_flex_report);
         fsti_register_add("_write_results_csv_header",
                           fsti_event_write_results_csv_header);
         fsti_register_add("_write_agents_csv_header",

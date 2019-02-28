@@ -69,7 +69,7 @@ int fsti_config_set_default(struct fsti_config *config)
                     "File name to output results to (empty string for stdout)",
                     "");
     FSTI_CONFIG_ADD_STR(config, agents_output_file,
-                    "File name to output results to (empty string for stdout)",
+                    "File name to output agents to (empty string for stdout)",
                     "");
     FSTI_CONFIG_ADD_STR(config, partnerships_file,
                         "File name to output partnerships (empty string for stdout)",

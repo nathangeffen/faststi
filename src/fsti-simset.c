@@ -136,13 +136,14 @@ static void set_output_files(struct fsti_simset *simset,
                         strerror(errno));
             simset->close_partnerships_file = true;
         } else {
-            simset->agents_output_file = simulation->agents_output_file = stdout;
+            simset->partnerships_file = simulation->partnerships_file = stdout;
         }
     } else {
         simulation->results_file = simset->results_file;
         simulation->agents_output_file = simset->agents_output_file;
         simulation->partnerships_file = simset->partnerships_file;
     }
+
 }
 
 static void update_config(struct fsti_simset *simset)
@@ -165,6 +166,7 @@ static void setup_simulation(struct fsti_simset *simset,
                          simset->sim_number,
                          simset->config_sim_number);
     set_output_files(simset, simulation);
+
     simulation->name = *simset->group_ptr;
     fsti_simulation_load_datasets(&simset->config, &simset->dataset_hash);
     fsti_dataset_hash_copy(&simulation->dataset_hash, &simset->dataset_hash);
@@ -241,7 +243,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "before_events=_read_agents;_write_agents_csv_header;"
             "_write_partnerships_csv_header;_write_results_csv_header\n"
             "during_events=_age\n"
-            "after_events=_flex_report;_write_agents_csv\n"
+            "after_events=_report;_write_agents_csv\n"
             "agents_input_file=fsti_test_agents_in_1234.csv\n"
             "agents_output_file=fsti_test_agents_out_1234.csv\n"
             "partnerships_file=fsti_test_partnerships_1234.csv\n"
@@ -257,7 +259,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "results_file=fsti_test_results_1234.csv\n"
             "threads=1\n"
             "before_events=_write_agents_csv_header;_generate_agents;_"
-            "initial_mating;_rkpm;_initial_rel;_flex_report;_write_agents_csv\n"
+            "initial_mating;_rkpm;_initial_rel;_report;_write_agents_csv\n"
             "during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
             "_infect;_stage;_death;_birth\n"
             "record_matches=1\n"
@@ -270,7 +272,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "before_events=_read_agents;_write_agents_csv_header;"
             "_write_partnerships_csv_header;_write_results_csv_header\n"
             "during_events=_age\n"
-            "after_events=_flex_report;_write_agents_csv\n"
+            "after_events=_report;_write_agents_csv\n"
             "agents_input_file=fsti_test_agents_in_1234.csv\n"
             "agents_output_file=fsti_test_agents_out_1234.csv\n"
             "partnerships_file=fsti_test_partnerships_1234.csv\n"
@@ -298,7 +300,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "num_simulations=5\n"
             "num_agents=500\n"
             "before_events=_write_agents_csv_header;_generate_agents;_"
-            "initial_mating;_rkpm;_initial_rel;_flex_report;_write_agents_csv\n"
+            "initial_mating;_rkpm;_initial_rel;_report;_write_agents_csv\n"
             "during_events=_age;_breakup;_mating_pool;_shuffle_mating;_rkpm;"
             "_infect;_stage;_death;_birth\n"
             "# before_events=_generate_agents;_initial_mating;"
