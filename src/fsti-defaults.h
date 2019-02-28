@@ -133,12 +133,12 @@ unsigned total_partners;
 #endif
 
 /*
-   Default flex report event output. Can be appended to with the
-   FST_HOOK_FLEX_REPORT hook below as well.
+   Default report event output. Can be appended to with the
+   FST_HOOK_REPORT hook below as well.
 */
 
-#ifndef FSTI_FLEX_REPORT
-#define FSTI_FLEX_REPORT do {                                           \
+#ifndef FSTI_REPORT
+#define FSTI_REPORT do {                                           \
         FSTI_REPORT_OUTPUT_POST(FSTI_MIN, living, age, "MIN_AGE_ALIVE", \
                                 FSTI_TIME_IN_YEARS);                    \
         FSTI_REPORT_OUTPUT_POST(FSTI_MAX, living, age, "MAX_AGE_ALIVE", \
@@ -193,8 +193,6 @@ unsigned total_partners;
 #define FSTI_AGENT_ELEM {                                               \
          FSTI_AGENT_ADDITIONAL_ELEMS                                    \
         {"age", offsetof(struct fsti_agent, age), UINT, fsti_to_age},   \
-        FSTI_AGENT_ELEM_ENTRY(age_group),                               \
-        FSTI_AGENT_ELEM_ENTRY(birth_date),                              \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
         FSTI_AGENT_ELEM_ENTRY(cause_of_death),                          \
         FSTI_AGENT_ELEM_ENTRY(coinfected),                              \
@@ -308,8 +306,8 @@ unsigned total_partners;
    Hook for flex report event. Use this to add additional report lines.
 */
 
-#ifndef FSTI_HOOK_FLEX_REPORT
-#define FSTI_HOOK_FLEX_REPORT
+#ifndef FSTI_HOOK_REPORT
+#define FSTI_HOOK_REPORT
 #endif
 
 /*

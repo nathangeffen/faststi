@@ -32,16 +32,8 @@ struct fsti_agent {
         uint8_t sex_preferred;
         uint8_t orientation;
     };
-    union {
-        union {
-            int32_t age;
-            int32_t birth_date;
-        };
-        struct {
-            uint16_t birthday;
-            uint16_t age_group;
-        };
-    };
+    int32_t age;
+    int32_t birthday;
     uint8_t infected;
     uint8_t treated;
     uint8_t resistant;

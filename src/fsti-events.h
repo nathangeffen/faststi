@@ -18,7 +18,6 @@ void fsti_event_age(struct fsti_simulation *simulation);
 void fsti_event_initial_mating_pool(struct fsti_simulation *simulation);
 void fsti_event_mating_pool(struct fsti_simulation *simulation);
 void fsti_event_report(struct fsti_simulation *simulation);
-void fsti_event_flex_report(struct fsti_simulation *simulation);
 void fsti_event_shuffle_living(struct fsti_simulation *simulation);
 void fsti_event_shuffle_mating(struct fsti_simulation *simulation);
 void fsti_event_write_results_csv_header(struct fsti_simulation *simulation);
