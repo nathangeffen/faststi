@@ -521,8 +521,7 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
         });
 }
 
-static void
-set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+void fsti_set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
     double scale, shape;
     uint32_t iterations;
@@ -552,8 +551,7 @@ static void make_partners(struct fsti_simulation *simulation,
     }
 }
 
-static void
-set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+void fsti_set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
 {
     double scale, shape;
     uint32_t iterations;

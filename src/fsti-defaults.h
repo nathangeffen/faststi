@@ -290,7 +290,7 @@ unsigned total_partners;
 
 #ifndef FSTI_SET_SINGLE_PERIOD
 #define FSTI_SET_SINGLE_PERIOD(simulation, agent) \
-    set_single_period(simulation, agent)
+    fsti_set_single_period(simulation, agent)
 #endif
 
 /* Code for setting the iteration until which two paired agents stay together.
@@ -300,7 +300,7 @@ unsigned total_partners;
 
 #ifndef FSTI_SET_REL_PERIOD
 #define FSTI_SET_REL_PERIOD(simulation, agent_a, agent_b) do {  \
-        set_rel_period(simulation, agent_a);                    \
+        fsti_set_rel_period(simulation, agent_a);                    \
         agent_b->relchange[0] = agent_a->relchange[0];          \
     } while(0)
 #endif
