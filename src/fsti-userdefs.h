@@ -66,6 +66,37 @@
 /*     } while(0) */
 
 
+#define FSTI_AGENT_PRINT_CSV(simulation, agent, delim) do {             \
+        char _current_date[FSTI_DATE_LEN];                              \
+        char _death_date[FSTI_DATE_LEN];                                \
+        char _relchange_date[FSTI_DATE_LEN];                            \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             simulation->iteration,                     \
+                             simulation->time_step,                     \
+                             _current_date);                            \
+        fsti_time_sprint(&agent->date_death, _death_date);              \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             agent->relchange[0],                       \
+                             simulation->time_step,                     \
+                             _relchange_date);                          \
+        fprintf(simulation->agents_output_file,                         \
+                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",    \
+                simulation->sim_number, delim,                          \
+                _current_date, delim,                                   \
+                agent->id, delim,                                       \
+                agent->age, delim,                  \
+                (unsigned) agent->sex, delim,                           \
+                (unsigned) agent->sex_preferred, delim,                 \
+                agent->infected, delim,                                 \
+                (unsigned) agent->treated, delim,                       \
+                (unsigned) agent->resistant, delim,                     \
+                _death_date , delim,                                    \
+                agent->num_partners ? (long) agent->partners[0] : -1,   \
+                delim, _relchange_date);                                \
+    } while(0)
+
+
+
 #define FSTI_HOOK_EVENTS_REGISTER                       \
     fsti_register_add("age", event_age);                \
     fsti_register_add("hades", event_hades);            \
