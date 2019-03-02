@@ -540,8 +540,7 @@ static void make_partners(struct fsti_simulation *simulation,
                           struct fsti_agent *a, struct fsti_agent *b)
 {
     fsti_agent_make_partners(a, b);
-    set_rel_period(simulation, a);
-    b->relchange[0] = a->relchange[0];
+    FSTI_SET_REL_PERIOD(simulation, a, b);
     if (simulation->state == DURING) {
         ++simulation->matches;
         if (simulation->record_matches)
@@ -580,8 +579,8 @@ void fsti_event_initial_relchange(struct fsti_simulation *simulation)
             } else {
                 FSTI_SET_SINGLE_PERIOD(simulation, a);
                 // Initial period averages to half
-                a->relchange[0] =
-                    gsl_rng_uniform(simulation->rng) * (double) a->relchange[0];
+                a->relchange[0] = gsl_rng_uniform(simulation->rng) *
+                    a->relchange[0];
             }
         });
 }
