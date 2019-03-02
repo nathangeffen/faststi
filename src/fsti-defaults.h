@@ -283,22 +283,28 @@ unsigned total_partners;
  * good understanding of both C and the FastSTI code.
  *******************************************************************/
 
-/* Number of parameters that generator functions can take.
-   Six should be more than enough.
-*/
-
-#ifndef FSTI_GEN_PARMS
-#define FSTI_GEN_PARMS 6
-#endif
-
-/* Function for setting the iteration until which an agent remains single.
+/* Code for setting the iteration until which an agent remains single.
    The default function uses a Weibull function with user defined shape
    and scale.
 */
 
 #ifndef FSTI_SET_SINGLE_PERIOD
-#define FSTI_SET_SINGLE_PERIOD set_single_period
+#define FSTI_SET_SINGLE_PERIOD(simulation, agent) \
+    set_single_period(simulation, agent)
 #endif
+
+/* Code for setting the iteration until which two paired agents stay together.
+   The default function uses a Weibull function with user defined shape
+   and scale.
+*/
+
+#ifndef FSTI_SET_REL_PERIOD
+#define FSTI_SET_REL_PERIOD(simulation, agent_a, agent_b) do {  \
+        set_rel_period(simulation, agent_a);                    \
+        agent_b->relchange[0] = agent_a->relchange[0];          \
+    } while(0)
+#endif
+
 
 /* Hooks */
 
