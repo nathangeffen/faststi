@@ -18,6 +18,8 @@
         FSTI_AGENT_ELEM_ENTRY(relstat),                                 \
         FSTI_AGENT_ELEM_ENTRY(reldur),
 
+#define FSTI_SET_REL_PERIOD
+
 #define FSTI_HOOK_AFTER_MATCH(simulation, a, b) hestia(simulation, a, b)
 
 /* #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \ */

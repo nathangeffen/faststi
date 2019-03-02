@@ -370,7 +370,7 @@ void event_dionysus(struct fsti_simulation *simulation)
                 fsti_agent_break_partners(a, b);
                 // Determine at what day in the future these agents will start
                 // looking for new partners
-
+                simulation->breakups++;
                 set_relstat(a, simulation->iteration, simulation->rng);
                 set_relstat(b, simulation->iteration, simulation->rng);
             }
