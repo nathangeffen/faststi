@@ -1,4 +1,4 @@
-FastSTI: Large and fast simulations of sexually transmitted infections
+FastSTI: Simulations of sexually transmitted infections
 ======================================================================
 
 Introduction
