@@ -38,25 +38,108 @@
 <h1>FastSTI: Simulations of sexually transmitted infections<a class="headerlink" href="#faststi-simulations-of-sexually-transmitted-infections" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>FastSTI is a framework for running large simulations of sexually transmitted
-infections. It is designed to handle up to tens of millions of agents on
-standard consumer hardware, like your laptop or, or a high performance
+<p>FastSTI is a simulation framework for modelling large simulations of sexually
+transmitted infections. It is designed to handle up to tens of millions of
+agents on standard consumer hardware, like your laptop or, or a high performance
 computer.</p>
-<p>It runs simulations in parallel. The output of the simulations is typically
-written to CSV files, where they can be further processed in scripting languages
-like Python or R.</p>
-</div>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>It runs simulations in parallel. The output of the simulations is written to CSV
+files, which can be further processed in scripting languages like Python
+or R.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>If you’re using an Ubuntu or Debian Linux or one of their derivatives, you can
+install a recent stable version using Synaptic or the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">faststi</span>
+</pre></div>
 </div>
-<div class="section" id="design">
-<h2>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="installing-from-git">
+<h3>Installing from Git<a class="headerlink" href="#installing-from-git" title="Permalink to this headline">¶</a></h3>
+<p>Windows, Mac and Linux users who do not use <em>apt</em> can install by cloning
+FastSTI’s Github repository:</p>
+<ul class="simple">
+<li>Create a folder for the installation and cd into it. E.g.<ul>
+<li><em>mkdir mysim; cd mysim</em></li>
+</ul>
+</li>
+<li>git clone <a class="reference external" href="https://github.com/nathangeffen/faststi">https://github.com/nathangeffen/faststi</a> .</li>
+</ul>
+<p>To compile and execute FastSTI, you’ll need to install</p>
+<ul class="simple">
+<li>either the Clang or GCC C compiler (MinGW on Windows),</li>
+<li>the GNU scientific library (libgsl-dev on Linux systems supporting apt),</li>
+<li>the Glib 2 library (libglib2.0-dev on Linux systems supporting apt), and</li>
+<li>the Meson build system, though you can easily compile the source without
+Meson.</li>
+</ul>
+<p>If you intend to modify the FastSTI source code, consider installing Valgrind.</p>
+</div>
+<div class="section" id="testing-that-it-works">
+<h3>Testing that it works<a class="headerlink" href="#testing-that-it-works" title="Permalink to this headline">¶</a></h3>
+<p>On a command line run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fsti</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>This should run in at most a few seconds. It should print out the results of the
+test cases. If it’s working it should report hundreds or even thousands of
+successes and zero failures.</p>
+</div>
+</div>
+<div class="section" id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>FastSTI</p>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>A simulation continuously iterates over sets of agents, executing events on the
+agents on each iteration (which we call a time step). The structure of a FastSTI
+simulation is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execute</span> <span class="n">pre</span><span class="o">-</span><span class="n">simulation</span> <span class="n">events</span>
+<span class="k">for</span> <span class="n">each</span> <span class="n">time</span><span class="o">-</span><span class="n">step</span>
+  <span class="k">for</span> <span class="n">each</span> <span class="n">event</span> <span class="n">E</span>
+      <span class="k">for</span> <span class="n">each</span> <span class="n">agent</span> <span class="n">A</span>
+          <span class="k">if</span> <span class="n">E</span> <span class="n">should</span> <span class="n">be</span> <span class="n">applied</span> <span class="n">to</span> <span class="n">A</span>
+              <span class="n">apply</span> <span class="n">E</span> <span class="n">to</span> <span class="n">A</span>
+<span class="n">Execute</span> <span class="n">post</span><span class="o">-</span><span class="n">simulation</span> <span class="n">events</span>
+</pre></div>
+</div>
+<p>The number of agents and the specific events to execute are specified in a
+configuration file. FastSTI’s configuration file uses the <em>.ini</em> format, which
+are the standard simple configuration format used on MS Windows and the GTK
+framework popular on Linux systems.</p>
+<p>You can configure the number of agents, the events and the order of events that
+execute upon them, the size of the time step (default 1 day), the number of time
+steps (default 10 years) and much else (see <a class="reference internal" href="#parameter-ref"><span class="std std-ref">Parameters</span></a>).</p>
+<p>FastSTI has a number of useful built-in events useful for modelling STI
+epidemics (see <a class="reference internal" href="#event-ref"><span class="std std-ref">Events</span></a>). These include agent ageing, death, matching
+agents in sexual relationships, infection with the STI, disease advance,
+co-infection, and breakups.</p>
+<p>There are also useful supporting events that read in agent files or generate the
+agents, write the agents to a CSV file, and write basic statistics to a CSV file.</p>
+<p>If you need more events, the framework has been designed with extensibility in
+mind. You can define new events in C, identify them to FastSTI, quickly
+recompile the code and use them.</p>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="parameters">
+<span id="parameter-ref"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="events">
+<span id="event-ref"></span><h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="extending-faststi">
+<h2>Extending FastSTI<a class="headerlink" href="#extending-faststi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="help-improve-faststi">
+<h2>Help improve FastSTI<a class="headerlink" href="#help-improve-faststi" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -79,10 +162,22 @@ like Python or R.</p>
   <ul>
 <li><a class="reference internal" href="#">FastSTI: Simulations of sexually transmitted infections</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#design">Design</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#installing-from-git">Installing from Git</a></li>
+<li><a class="reference internal" href="#testing-that-it-works">Testing that it works</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a><ul>
 <li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#datasets">Datasets</a></li>
+<li><a class="reference internal" href="#events">Events</a></li>
+<li><a class="reference internal" href="#extending-faststi">Extending FastSTI</a></li>
+<li><a class="reference internal" href="#help-improve-faststi">Help improve FastSTI</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>

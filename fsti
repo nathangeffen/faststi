@@ -16,11 +16,14 @@ if [ "$1" == "create" ]; then
         echo "Directory name missing"
         echo "Usage: S0 create <directory>"
         exit 1
+    else
+        if [ ! -d "$2" ]; then
+            mkdir "$2"
+        fi
+        cp -rf "$FSTI_BASE/"* "$2"
     fi
     exit 0
-fi
-
-if [ "$1" == "release" ]; then
+elif [ "$1" == "release" ]; then
     COMPDIR="$FSTI_BASE/release/"
     EXE=$COMPDIR/src/faststi
     echo Compiling and running release version
