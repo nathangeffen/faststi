@@ -1,20 +1,37 @@
-.. FastSTI documentation master file, created by
-   sphinx-quickstart on Thu Oct 18 16:52:30 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+FastSTI: Large and fast simulations of sexually transmitted infections
+======================================================================
 
-Welcome to FastSTI's documentation!
-===================================
+Introduction
+------------
+
+FastSTI is a framework for running large simulations of sexually transmitted
+infections. It is designed to handle up to tens of millions of agents on
+standard consumer hardware, like your laptop or, or a high performance
+computer.
+
+It runs simulations in parallel. The output of the simulations is typically
+written to CSV files, where they can be further processed in scripting languages
+like Python or R.
+
+Features
+--------
+
+Installation
+------------
+
+Design
+------
+
+Example
+-------
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
 
-
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

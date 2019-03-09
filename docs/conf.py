@@ -12,22 +12,21 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.append( "/usr/local/lib/python3.7/site-packages/breathe/" )
+# import os
+# import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'FastSTI'
-copyright = '2018, Nathan Geffen'
-author = 'Nathan Geffen'
+copyright = '2019, Nathan Geffen and Stefan Scholz'
+author = 'Nathan Geffen and Stefan Scholz'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = ''
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -40,18 +39,8 @@ release = ''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'breathe',
 ]
-
-breathe_projects = { "FastSTI": "./doxygen/output/xml/" }
-breathe_default_project = "FastSTI"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -141,7 +130,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'FastSTI.tex', 'FastSTI Documentation',
-     'Nathan Geffen', 'manual'),
+     'Nathan Geffen and Stefan Scholz', 'manual'),
 ]
 
 
@@ -186,16 +175,3 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
-
-# -- Options for todo extension ----------------------------------------------
-
-# If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
-
-
-# Include doxygen documentation
-# breathe_projects_source = {
-#      "FastSTI" : ( "../src" )
-#      }
-# ..autodoxygenindex::
-#    :project: FastSTI

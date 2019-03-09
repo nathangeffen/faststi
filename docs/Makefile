@@ -3,9 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-#SPHINXBUILD   = sphinx-build
-# Workaround for Ed's system
-SPHINXBUILD   = /usr/local/bin/sphinx-build
+SPHINXBUILD   = sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
 
