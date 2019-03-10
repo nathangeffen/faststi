@@ -38,62 +38,108 @@
 <h1>FastSTI: Simulations of sexually transmitted infections<a class="headerlink" href="#faststi-simulations-of-sexually-transmitted-infections" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>FastSTI is a simulation framework for modelling large simulations of sexually
-transmitted infections. It is designed to handle up to tens of millions of
+<p>FastSTI is a framework for agent-based models of large simulations of sexually
+transmitted infection epidemics. It is designed to handle up to tens of millions of
 agents on standard consumer hardware, like your laptop or, or a high performance
 computer.</p>
 <p>It runs simulations in parallel. The output of the simulations is written to CSV
 files, which can be further processed in scripting languages like Python
 or R.</p>
+<p>You can do sophisticated simulations without making any modifications to the
+code. But if you do wish to extend the framework, it is written in C. The
+framework has been designed with extensibility in mind. The code adheres
+strictly to the C11 standard and should compile on any good modern C compiler.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>If you’re using an Ubuntu or Debian Linux or one of their derivatives, you can
-install a recent stable version using Synaptic or the command line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">faststi</span>
+<div class="section" id="gnu-linux">
+<h3>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h3>
+<p>Carry out these steps to install FastSTI on a GNU/Linux PC that uses apt
+(e.g. Ubuntu).</p>
+<p>Install the dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">git</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">meson</span> <span class="n">valgrind</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
+<p>Installing the framework is quick and easy.</p>
+<p>Create a folder for the installation and cd into it. E.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">mysim</span><span class="p">;</span> <span class="n">cd</span> <span class="n">mysim</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nathangeffen</span><span class="o">/</span><span class="n">faststi</span> <span class="o">.</span>
+</pre></div>
 </div>
-<div class="section" id="installing-from-git">
-<h3>Installing from Git<a class="headerlink" href="#installing-from-git" title="Permalink to this headline">¶</a></h3>
-<p>Windows, Mac and Linux users who do not use <em>apt</em> can install by cloning
-FastSTI’s Github repository:</p>
-<ul class="simple">
-<li>Create a folder for the installation and cd into it. E.g.<ul>
-<li><em>mkdir mysim; cd mysim</em></li>
-</ul>
+<p>Installations are cheap and easy. Install as often as you like and, if an
+installation is no longer needed, simply remove its folder with “rm -f”.</p>
+</div>
+<div class="section" id="apple-macos">
+<h3>Apple macOS<a class="headerlink" href="#apple-macos" title="Permalink to this headline">¶</a></h3>
+<p>Compiling on macOS is easy. You can use either Apples clang/LLVM compiler or the
+GNU C compiler.</p>
+<p>Install and configure the dependencies with <cite>Homebrew &lt;https://brew.sh/&gt;</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">If</span> <span class="n">you</span> <span class="n">don</span><span class="s1">&#39;t have Homebrew installed): ::</span>
+</pre></div>
+</div>
+<blockquote>
+<div>/usr/bin/ruby -e “$(curl -fsSL  <a class="reference external" href="https://raw.githubusercontent.com/Homebrew/install/master/install">https://raw.githubusercontent.com/Homebrew/install/master/install</a>)”
+brew install gcc pkg-config glib gsl meson ninja</div></blockquote>
+<ul>
+<li><p class="first">Create a folder for the installation and cd into it. E.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">mysim</span><span class="p">;</span> <span class="n">cd</span> <span class="n">mysim</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nathangeffen</span><span class="o">/</span><span class="n">faststi</span> <span class="o">.</span>
+</pre></div>
+</div>
 </li>
-<li>git clone <a class="reference external" href="https://github.com/nathangeffen/faststi">https://github.com/nathangeffen/faststi</a> .</li>
 </ul>
-<p>To compile and execute FastSTI, you’ll need to install</p>
-<ul class="simple">
-<li>either the Clang or GCC C compiler (MinGW on Windows),</li>
-<li>the GNU scientific library (libgsl-dev on Linux systems supporting apt),</li>
-<li>the Glib 2 library (libglib2.0-dev on Linux systems supporting apt), and</li>
-<li>the Meson build system, though you can easily compile the source without
-Meson.</li>
-</ul>
-<p>If you intend to modify the FastSTI source code, consider installing Valgrind.</p>
+<p>Installations are cheap and easy. Install as often as you like and, if an
+installation is no longer needed, simply remove its folder with “rm -f”.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>We haven’t developed or tested FastSTI on Windows, but it should work,
+especially if you use the MinGW suite. Feedback (via the <cite>Github repository &lt;https://github.com/faststi&gt;</cite>) on
+running it under Windows is welcome.</p>
+</div>
 </div>
 <div class="section" id="testing-that-it-works">
-<h3>Testing that it works<a class="headerlink" href="#testing-that-it-works" title="Permalink to this headline">¶</a></h3>
-<p>On a command line run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fsti</span> <span class="o">-</span><span class="n">t</span>
+<h2>Testing that it works<a class="headerlink" href="#testing-that-it-works" title="Permalink to this headline">¶</a></h2>
+<p>If you use gcc as your C compiler, then simply do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">debug</span>
+<span class="n">cd</span> <span class="n">debug</span><span class="p">;</span> <span class="n">ninja</span>
+<span class="n">FSTI_DATA</span><span class="o">=../</span><span class="n">data</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
 </pre></div>
 </div>
-<p>This should run in at most a few seconds. It should print out the results of the
-test cases. If it’s working it should report hundreds or even thousands of
-successes and zero failures.</p>
+<p>This will run the test suite. If everything is properly installed no failures
+should be reported.</p>
+<p>You’ve created an unoptimised version of the faststi executable, useful for
+debugging and development. To create an optimised version for running big,
+CPU-intensive simulations, do this from the root directory of your simulation
+(<em>mysim</em> in the above example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="o">--</span><span class="n">buildtype</span> <span class="n">release</span> <span class="n">release</span>
+</pre></div>
+</div>
+<p>To test that it’s working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">release</span>
+<span class="n">FSTI_DATA</span><span class="o">=../</span><span class="n">data</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>Alternately you can use the <em>fsti</em> script in your installation directory. Assuming
+you called it <em>mysim</em>, change into the <em>mysim</em> directory, and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">fsti</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>The above will create the debug directory, compile FastSTI, and run the test
+suite. To instead run the release version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">fsti</span> <span class="n">release</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>Again, no errors should be reported.</p>
+<p>If you have <cite>valgrind &lt;https://valgrind.org</cite> on your system (an excellent tool
+for finding memory and other problems in C programs), you can do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">debug</span>
+<span class="n">ninja</span> <span class="n">test</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="quick-start">
-<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>FastSTI</p>
-</div>
-<div class="section" id="how-it-works">
-<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-use-faststi">
+<h2>How to use FastSTI<a class="headerlink" href="#how-to-use-faststi" title="Permalink to this headline">¶</a></h2>
 <p>A simulation continuously iterates over sets of agents, executing events on the
 agents on each iteration (which we call a time step). The structure of a FastSTI
 simulation is:</p>
@@ -122,34 +168,46 @@ agents, write the agents to a CSV file, and write basic statistics to a CSV file
 <p>If you need more events, the framework has been designed with extensibility in
 mind. You can define new events in C, identify them to FastSTI, quickly
 recompile the code and use them.</p>
+<p>To do.</p>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>There are more examples in the simulation directory.</p>
 </div>
 </div>
 <div class="section" id="parameters">
 <span id="parameter-ref"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>To do</p>
 </div>
 <div class="section" id="datasets">
 <h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<p>To do</p>
 </div>
 <div class="section" id="events">
 <span id="event-ref"></span><h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p>To do</p>
 </div>
 <div class="section" id="extending-faststi">
 <h2>Extending FastSTI<a class="headerlink" href="#extending-faststi" title="Permalink to this headline">¶</a></h2>
+<p>To do</p>
 </div>
 <div class="section" id="help-improve-faststi">
 <h2>Help improve FastSTI<a class="headerlink" href="#help-improve-faststi" title="Permalink to this headline">¶</a></h2>
+<p>To do</p>
+</div>
+<div class="section" id="bugs-and-other-issues">
+<h2>Bugs and other issues<a class="headerlink" href="#bugs-and-other-issues" title="Permalink to this headline">¶</a></h2>
+<p>Please lodge bugs, requests for enhancements, etc on FastSTI <cite>Github repository &lt;https://github.com/nathangeffen/faststi</cite>.</p>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Nathan Geffen designed and implemented FastSTI.</li>
+<li>Stefan Scholz coded the syphilis model with Nathan.</li>
+<li>Eduard Grebe wrote the macOS installation instructions.</li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
 </div>
 
 
@@ -163,13 +221,13 @@ recompile the code and use them.</p>
 <li><a class="reference internal" href="#">FastSTI: Simulations of sexually transmitted infections</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#installation">Installation</a><ul>
-<li><a class="reference internal" href="#linux">Linux</a></li>
-<li><a class="reference internal" href="#installing-from-git">Installing from Git</a></li>
-<li><a class="reference internal" href="#testing-that-it-works">Testing that it works</a></li>
+<li><a class="reference internal" href="#gnu-linux">GNU/Linux</a></li>
+<li><a class="reference internal" href="#apple-macos">Apple macOS</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#quick-start">Quick start</a></li>
-<li><a class="reference internal" href="#how-it-works">How it works</a><ul>
+<li><a class="reference internal" href="#testing-that-it-works">Testing that it works</a></li>
+<li><a class="reference internal" href="#how-to-use-faststi">How to use FastSTI</a><ul>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -178,9 +236,10 @@ recompile the code and use them.</p>
 <li><a class="reference internal" href="#events">Events</a></li>
 <li><a class="reference internal" href="#extending-faststi">Extending FastSTI</a></li>
 <li><a class="reference internal" href="#help-improve-faststi">Help improve FastSTI</a></li>
+<li><a class="reference internal" href="#bugs-and-other-issues">Bugs and other issues</a></li>
+<li><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <div role="note" aria-label="source link">

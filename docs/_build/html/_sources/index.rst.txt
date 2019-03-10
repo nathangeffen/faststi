@@ -1,11 +1,13 @@
+=======================================================
 FastSTI: Simulations of sexually transmitted infections
-======================================================================
+=======================================================
 
+############
 Introduction
-------------
+############
 
-FastSTI is a simulation framework for modelling large simulations of sexually
-transmitted infections. It is designed to handle up to tens of millions of
+FastSTI is a framework for agent-based models of large simulations of sexually
+transmitted infection epidemics. It is designed to handle up to tens of millions of
 agents on standard consumer hardware, like your laptop or, or a high performance
 computer.
 
@@ -13,58 +15,115 @@ It runs simulations in parallel. The output of the simulations is written to CSV
 files, which can be further processed in scripting languages like Python
 or R.
 
+You can do sophisticated simulations without making any modifications to the
+code. But if you do wish to extend the framework, it is written in C. The
+framework has been designed with extensibility in mind. The code adheres
+strictly to the C11 standard and should compile on any good modern C compiler.
+
+############
 Installation
-------------
+############
 
-Linux
-~~~~~
+*********
+GNU/Linux
+*********
 
-If you're using an Ubuntu or Debian Linux or one of their derivatives, you can
-install a recent stable version using Synaptic or the command line::
+Carry out these steps to install FastSTI on a GNU/Linux PC that uses apt
+(e.g. Ubuntu).
 
-  sudo apt install faststi
+Install the dependencies: ::
 
-Installing from Git
-~~~~~~~~~~~~~~~~~~~
+  sudo apt install git build-essential meson valgrind libgsl-dev libglib2.0-dev
 
-Windows, Mac and Linux users who do not use *apt* can install by cloning
-FastSTI's Github repository:
+Installing the framework is quick and easy.
 
-- Create a folder for the installation and cd into it. E.g.
+Create a folder for the installation and cd into it. E.g. ::
 
-  - *mkdir mysim; cd mysim*
+  mkdir mysim; cd mysim
+  git clone https://github.com/nathangeffen/faststi .
 
-- git clone https://github.com/nathangeffen/faststi .
+Installations are cheap and easy. Install as often as you like and, if an
+installation is no longer needed, simply remove its folder with "rm -f".
 
-To compile and execute FastSTI, you'll need to install
+***********
+Apple macOS
+***********
 
-- either the Clang or GCC C compiler (MinGW on Windows),
-- the GNU scientific library (libgsl-dev on Linux systems supporting apt),
-- the Glib 2 library (libglib2.0-dev on Linux systems supporting apt), and
-- the Meson build system, though you can easily compile the source without
-  Meson.
+Compiling on macOS is easy. You can use either Apples clang/LLVM compiler or the
+GNU C compiler.
 
-If you intend to modify the FastSTI source code, consider installing Valgrind.
+Install and configure the dependencies with `Homebrew <https://brew.sh/>`: ::
 
+* (If you don't have Homebrew installed): ::
+
+    /usr/bin/ruby -e "$(curl -fsSL  https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install gcc pkg-config glib gsl meson ninja
+
+- Create a folder for the installation and cd into it. E.g. ::
+
+    mkdir mysim; cd mysim
+    git clone https://github.com/nathangeffen/faststi .
+
+Installations are cheap and easy. Install as often as you like and, if an
+installation is no longer needed, simply remove its folder with "rm -f".
+
+
+
+*******
+Windows
+*******
+
+We haven't developed or tested FastSTI on Windows, but it should work,
+especially if you use the MinGW suite. Feedback (via the `Github repository <https://github.com/faststi>`) on
+running it under Windows is welcome.
+
+
+#####################
 Testing that it works
-~~~~~~~~~~~~~~~~~~~~~
+#####################
 
-On a command line run::
+If you use gcc as your C compiler, then simply do this: ::
 
-  fsti -t
+  meson debug
+  cd debug; ninja
+  FSTI_DATA=../data ./src/faststi -t
 
-This should run in at most a few seconds. It should print out the results of the
-test cases. If it's working it should report hundreds or even thousands of
-successes and zero failures.
+This will run the test suite. If everything is properly installed no failures
+should be reported.
 
+You've created an unoptimised version of the faststi executable, useful for
+debugging and development. To create an optimised version for running big,
+CPU-intensive simulations, do this from the root directory of your simulation
+(*mysim* in the above example): ::
 
-Quick start
------------
+  meson --buildtype release release
 
-FastSTI
+To test that it's working: ::
 
-How it works
-------------
+  cd release
+  FSTI_DATA=../data ./src/faststi -t
+
+Alternately you can use the *fsti* script in your installation directory. Assuming
+you called it *mysim*, change into the *mysim* directory, and run: ::
+
+  ./fsti -t
+
+The above will create the debug directory, compile FastSTI, and run the test
+suite. To instead run the release version: ::
+
+  ./fsti release -t
+
+Again, no errors should be reported.
+
+If you have `valgrind <https://valgrind.org` on your system (an excellent tool
+for finding memory and other problems in C programs), you can do this: ::
+
+  cd debug
+  ninja test
+
+##################
+How to use FastSTI
+##################
 
 A simulation continuously iterates over sets of agents, executing events on the
 agents on each iteration (which we call a time step). The structure of a FastSTI
@@ -99,35 +158,69 @@ If you need more events, the framework has been designed with extensibility in
 mind. You can define new events in C, identify them to FastSTI, quickly
 recompile the code and use them.
 
+To do.
+
+*******
 Example
-~~~~~~~
+*******
+
+There are more examples in the simulation directory.
 
 .. _parameter-ref:
 
+##########
 Parameters
-----------
+##########
 
+To do
+
+########
 Datasets
---------
+########
+
+To do
 
 .. _event-ref:
 
+######
 Events
-------
+######
 
+To do
+
+#################
 Extending FastSTI
------------------
+#################
 
+To do
+
+####################
 Help improve FastSTI
---------------------
+####################
+
+To do
+
+#####################
+Bugs and other issues
+#####################
+
+Please lodge bugs, requests for enhancements, etc on FastSTI `Github repository <https://github.com/nathangeffen/faststi`.
+
+#######
+Credits
+#######
+
+- Nathan Geffen designed and implemented FastSTI.
+- Stefan Scholz coded the syphilis model with Nathan.
+- Eduard Grebe wrote the macOS installation instructions.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`search`
