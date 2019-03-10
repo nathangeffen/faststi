@@ -8,4 +8,5 @@ running simulations of tens of millions of agents on modern consumer hardware.
 
 The code is available under the GPL-3 license.
 
-To get started, [read the documentation](https://faststi.readthedocs.io/en/latest/).
+The [documentation](https://faststi.readthedocs.io/en/latest/) explains how to
+install and use FastSTI.

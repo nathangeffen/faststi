@@ -52,7 +52,7 @@ Apple macOS
 Compiling on macOS is easy. You can use either Apples clang/LLVM compiler or the
 GNU C compiler.
 
-Install and configure the dependencies with `Homebrew <https://brew.sh/>`: ::
+Install and configure the dependencies with `Homebrew <https://brew.sh/>`_: ::
 
 * (If you don't have Homebrew installed): ::
 
@@ -74,7 +74,7 @@ Windows
 *******
 
 We haven't developed or tested FastSTI on Windows, but it should work,
-especially if you use the MinGW suite. Feedback (via the `Github repository <https://github.com/faststi>`) on
+especially if you use the MinGW suite. Feedback (via the `Github repository <https://github.com/faststi>`_) on
 running it under Windows is welcome.
 
 
@@ -115,7 +115,7 @@ suite. To instead run the release version: ::
 
 Again, no errors should be reported.
 
-If you have `valgrind <https://valgrind.org` on your system (an excellent tool
+If you have `valgrind <https://valgrind.org>`_ on your system (an excellent tool
 for finding memory and other problems in C programs), you can do this: ::
 
   cd debug
@@ -204,7 +204,8 @@ To do
 Bugs and other issues
 #####################
 
-Please lodge bugs, requests for enhancements, etc on FastSTI `Github repository <https://github.com/nathangeffen/faststi`.
+Please lodge bugs, requests for enhancements, etc at the FastSTI `Github
+repository  issues page <https://github.com/nathangeffen/faststi/issues>`_.
 
 #######
 Credits
