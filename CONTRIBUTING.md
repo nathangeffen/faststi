@@ -16,4 +16,5 @@ Please note we have a code of conduct, please follow it in all your interactions
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
-See the CODE_OF_CONDUCT.md in the root directory of the project for the code of conduct.
+See the CODE_OF_CONDUCT.md file in the root directory of the project for the
+code of conduct.
