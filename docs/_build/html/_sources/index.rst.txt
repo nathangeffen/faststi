@@ -138,9 +138,8 @@ The outputs are a report of simulation results, and the agents.
     :align: center
     :alt: Structure of FastSTI execution
 
-    Inputs to FastSTI is a configuration file, zero or more datasets and an
-    agent file (multiple agent files are possible too). The outputs are an agent
-    file and simulation results.
+    FastSTI inputs include a configuration file, datasets and agent files. The
+    outputs are an agent file and simulation results.
 
 
 ***********
@@ -180,15 +179,42 @@ If you need more events, the framework has been designed with extensibility in
 mind. You can define new events in C, identify them to FastSTI, quickly
 recompile the code and use them.
 
-*******************
-Sets of simulations
-
-
 *******
 Example
 *******
 
+
+
 There are more examples in the simulation directory.
+
+##################
+Input file formats
+##################
+
+*************
+Configuration
+*************
+
+********
+Datasets
+********
+
+******
+Agents
+******
+
+###################
+Output file formats
+###################
+
+***************
+Results reports
+***************
+
+******
+Agents
+******
+
 
 .. _parameter-ref:
 
@@ -198,11 +224,6 @@ Parameters
 
 To do
 
-########
-Datasets
-########
-
-To do
 
 .. _event-ref:
 
@@ -216,7 +237,7 @@ To do
 Extending FastSTI
 #################
 
-To do
+To do (Example: Syphilis simulation)
 
 ####################
 Help improve FastSTI
