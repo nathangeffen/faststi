@@ -155,13 +155,13 @@ outputs are an agent file and simulation results.</span></p>
 <p>A simulation continuously iterates over sets of agents, executing events on the
 agents on each iteration (which we call a time step). The structure of a FastSTI
 simulation is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execute</span> <span class="n">pre</span><span class="o">-</span><span class="n">simulation</span> <span class="n">events</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execute</span> <span class="n">events</span> <span class="n">before</span> <span class="n">simulation</span> <span class="n">runs</span>
 <span class="k">for</span> <span class="n">each</span> <span class="n">time</span><span class="o">-</span><span class="n">step</span>
   <span class="k">for</span> <span class="n">each</span> <span class="n">event</span> <span class="n">E</span>
       <span class="k">for</span> <span class="n">each</span> <span class="n">agent</span> <span class="n">A</span>
           <span class="k">if</span> <span class="n">E</span> <span class="n">should</span> <span class="n">be</span> <span class="n">applied</span> <span class="n">to</span> <span class="n">A</span>
               <span class="n">apply</span> <span class="n">E</span> <span class="n">to</span> <span class="n">A</span>
-<span class="n">Execute</span> <span class="n">post</span><span class="o">-</span><span class="n">simulation</span> <span class="n">events</span>
+<span class="n">Execute</span> <span class="n">events</span> <span class="n">after</span> <span class="n">simulation</span> <span class="n">runs</span>
 </pre></div>
 </div>
 <p>The number of agents and the specific events to execute are specified in a
@@ -183,6 +183,61 @@ recompile the code and use them.</p>
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s start off with the simplest simulation. Change into the
+simulations/examples directory. Take a look at eg1.ini.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Faststi &quot;Hello world&quot; equivalent simulation</span>
+<span class="p">[</span><span class="n">Simulation_0</span><span class="p">]</span>
+<span class="n">after_events</span><span class="o">=</span><span class="n">_report</span>
+</pre></div>
+</div>
+<p>The first line is a comment.</p>
+<p>The second line is the name of the simulation group: <em>First simulation</em>. A
+simulation group can have one or more simulations. This particular group has
+only one simulation.</p>
+<p>The third line is one of the dozens of parameters used to configure
+simulations. The <em>after_events</em> parameter tells FastSTI what events to execute
+when the simulation is finished. <em>_report</em> is a built-in event that prints out
+basic information about the state of a simulation. All built-in events are
+prefixed with an underscore, to differentiate them from ones you might code
+yourself.</p>
+<p>To run the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The output may look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MIN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MAX_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEAN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEDIAN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INFECT_RATE_ALIVE</span><span class="p">;</span><span class="o">-</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">POP_ALIVE</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">NUM_PARTNERS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MIN_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MAX_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEAN_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INFECT_RATE_DEAD</span><span class="p">;</span><span class="o">-</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">POP_DEAD</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INITIAL_INFECTIONS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">SIMULATION_INFECTIONS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INITIAL_MATCHES</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">SIMULATION_MATCHES</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">BREAKUPS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">TIME_TAKEN</span><span class="p">;</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Note that it’s in csv format, so you easily import it into Python or R and
+process it. You can also redirect the output to a file instead of standard
+output with the <em>results_file</em> parameter.</p>
+<p>The fields of the csv file are: the name of the simulation, the number of the
+current simulation, the number of the simulation within the current simulation
+group, the date within the simulation for which the output applies, a
+description field, and the value of the description field. E.g. the last two
+columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
+seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
+tell us that the population alive and dead in this simulation on 1 January 2028
+is 0.</p>
+<p>The output is rather uninteresting. To get more interesting output we need a
+more interesting simulation. Take a look at eg2.ini</p>
 <p>There are more examples in the simulation directory.</p>
 </div>
 </div>

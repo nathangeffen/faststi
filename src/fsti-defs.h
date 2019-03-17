@@ -232,6 +232,7 @@ char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
 void fsti_remove_file(const char *filename);
 void fsti_remove_data_file(const char *filename);
+unsigned fsti_parse_time_period(const char *time_period, int error);
 void fsti_test_defs(struct test_group *tg);
 
 #endif

@@ -144,52 +144,6 @@ static size_t calc_dependents(struct fsti_dataset *ds,
     return result;
 }
 
-
-static unsigned parse_divisor(char *s)
-{
-    char num_part[12];
-    size_t n;
-    size_t i = 0;
-    char *c;
-    unsigned val;
-
-    n = strlen(s);
-    for (c = s; c < s + n && i < 12; c++) {
-        if (*c >= '0' && *c <= '9')
-            num_part[i++] = *c;
-        else
-            break;
-    }
-    FSTI_ASSERT(i == 0 || *c == 0 || *c == '-', FSTI_ERR_DATASET_FILE,
-                fsti_sprintf("Unknown denominator: %s", s));
-
-    if (i > 0) {
-        num_part[i] = 0;
-        val = atoi(num_part);
-    } else {
-        val = 1;
-    }
-
-    if (i == 0 || *c++ == '-') {
-        if (strcmp(c, "MINUTE") == 0)
-            val *= FSTI_MINUTE;
-        else  if (strcmp(c, "HOUR") == 0)
-            val *= FSTI_HOUR;
-        else  if (strcmp(c, "DAY") == 0)
-            val *= FSTI_DAY;
-        else  if (strcmp(c, "WEEK") == 0)
-            val *= FSTI_WEEK;
-        else  if (strcmp(c, "MONTH") == 0)
-            val *= FSTI_MONTH;
-        else  if (strcmp(c, "YEAR") == 0)
-            val *= FSTI_YEAR;
-        else
-            FSTI_ASSERT(0, FSTI_ERR_DATASET_FILE,
-                        fsti_sprintf("Unknown denominator: %s", s));
-    }
-    return val;
-}
-
 static void parse_header_field(struct fsti_dataset *ds,
                                const struct csv *cs,
                                size_t col)
@@ -205,7 +159,7 @@ static void parse_header_field(struct fsti_dataset *ds,
     ds->members[col] = fsti_agent_elem_by_strname(*it);
     it++;
     if (it && *it) { // divisor
-        ds->divisors[col] = parse_divisor(*it);
+        ds->divisors[col] = fsti_parse_time_period(*it, FSTI_ERR_DATASET_FILE);
         it++; // check if dataset caters for two agents
         if (*it && strcmp(*it, "~") == 0) ds->second_agent = col;
     } else {
@@ -434,20 +388,6 @@ static void dataset_test(struct test_group *tg)
     FILE *f;
     const char *filename = "fsti_test_dataset_in_1234.csv";
     struct fsti_dataset dataset;
-
-    // Test  parsing of divisors
-    char *s = "525948";
-    unsigned x = parse_divisor(s);
-    TESTEQ(x, 525948, *tg);
-    s = "YEAR";
-    x = parse_divisor(s);
-    TESTEQ(x, FSTI_YEAR, *tg);
-    s = "5-YEAR";
-    x = parse_divisor(s);
-    TESTEQ(x, 5 * FSTI_YEAR, *tg);
-    s = "200-YEAR";
-    x = parse_divisor(s);
-    TESTEQ(x, 200 * FSTI_YEAR, *tg);
 
     // Test with only 1 column (the minimum needed)
     f = fopen(filename, "w");

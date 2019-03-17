@@ -287,6 +287,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
     } else {
         config_text =
             "[simulation_0]\n"
+            "num_time_steps=3652\n"
             "num_simulations=1\n"
             "before_events=_read_agents;_write_agents_csv_header;"
             "_write_partnerships_csv_header;_write_results_csv_header\n"
@@ -334,6 +335,8 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "record_infections=1\n"
             "match_k=100\n"
             "[simulation_3]\n"
+            "time_step=DAY\n"
+            "num_time_steps=10-YEAR\n"
             "during_events=_age;_test_breakup;_test_mating_pool;"
             "_test_shuffle_mating;_test_rkpm;_test_infect;_stage;_test_birth;_test_death\n"
             "record_matches=0\n"

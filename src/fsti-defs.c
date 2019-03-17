@@ -421,6 +421,65 @@ void fsti_remove_data_file(const char *filename)
     fsti_remove_file(fsti_make_full_data_filename(filename));
 }
 
+static char *trim(char *s)
+{
+    for (char *c = s + strlen(s); c != s && *c == ' '; c--)  *c = 0;
+    return s;
+}
+
+static char * to_upper(char *s)
+{
+    char diff = 'A' - 'a';
+    for (char *c = s; *c != 0; c++)
+        if (*c >= 'a' && *c <= 'z')
+            *c += diff;
+    return s;
+}
+
+unsigned fsti_parse_time_period(const char *time_period, int error)
+{
+    size_t n = strlen(time_period) + 1, i = 0;
+    char num_part[12], *c;
+    unsigned val;
+    char str[n];
+
+    strcpy(str, time_period);
+    c = trim(to_upper(str));
+    for (; c < str + n && i < 12; c++) {
+        if (*c >= '0' && *c <= '9')
+            num_part[i++] = *c;
+        else
+            break;
+    }
+
+    FSTI_ASSERT(i == 0 || *c == 0 || *c == '-' || *c == ' ', error,
+                fsti_sprintf("Unknown time period: %s", str));
+
+    if (i > 0) {
+        num_part[i] = 0;
+        val = atoi(num_part);
+    } else {
+        val = 1;
+    }
+
+    if (i == 0 || ( (*c == '-' || *c == ' ') && c++)) {
+        if (strcmp(c, "MINUTE") == 0 || strcmp(c, "MINUTES") == 0)
+            val *= FSTI_MINUTE;
+        else  if (strcmp(c, "HOUR") == 0 || strcmp(c, "HOURS") == 0)
+            val *= FSTI_HOUR;
+        else  if (strcmp(c, "DAY") == 0 || strcmp(c, "DAYS") == 0)
+            val *= FSTI_DAY;
+        else  if (strcmp(c, "WEEK") == 0 || strcmp(c, "WEEKS") == 0)
+            val *= FSTI_WEEK;
+        else  if (strcmp(c, "MONTH") == 0 || strcmp(c, "MONTHS") == 0)
+            val *= FSTI_MONTH;
+        else  if (strcmp(c, "YEAR") == 0 || strcmp(c, "YEARS") == 0)
+            val *= FSTI_YEAR;
+        else
+            FSTI_ASSERT(0, error, fsti_sprintf("Unknown time period: %s", str));
+    }
+    return val;
+}
 
 void fsti_test_defs(struct test_group *tg)
 {
@@ -488,4 +547,36 @@ void fsti_test_defs(struct test_group *tg)
 
     TESTEQ(strcmp(date_str, "2028-01-01"), 0, *tg);
 
+    // Test  parsing of time periods
+    char *s = "525948";
+    unsigned x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 525948, *tg);
+
+    s = "YEAR";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, FSTI_YEAR, *tg);
+
+    s = "5-YEAR";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 5 * FSTI_YEAR, *tg);
+
+    s = "5 YEAR";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 5 * FSTI_YEAR, *tg);
+
+    s = "6 year";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 6 * FSTI_YEAR, *tg);
+
+    s = "7 years";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 7 * FSTI_YEAR, *tg);
+
+    s = "8 YEARS";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 8 * FSTI_YEAR, *tg);
+
+    s = "200-YEAR";
+    x = fsti_parse_time_period(s, FSTI_ERR_DATASET_FILE);
+    TESTEQ(x, 200 * FSTI_YEAR, *tg);
 }

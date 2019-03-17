@@ -150,13 +150,13 @@ A simulation continuously iterates over sets of agents, executing events on the
 agents on each iteration (which we call a time step). The structure of a FastSTI
 simulation is: ::
 
-  Execute pre-simulation events
+  Execute events before simulation runs
   for each time-step
     for each event E
         for each agent A
             if E should be applied to A
                 apply E to A
-  Execute post-simulation events
+  Execute events after simulation runs
 
 The number of agents and the specific events to execute are specified in a
 configuration file. FastSTI's configuration file uses the *.ini* format, which
@@ -183,7 +183,66 @@ recompile the code and use them.
 Example
 *******
 
+Let's start off with the simplest simulation. Change into the
+simulations/examples directory. Take a look at eg1.ini. ::
 
+  # Faststi "Hello world" equivalent simulation
+  [Simulation_0]
+  after_events=_report
+
+The first line is a comment.
+
+The second line is the name of the simulation group: *First simulation*. A
+simulation group can have one or more simulations. This particular group has
+only one simulation.
+
+The third line is one of the dozens of parameters used to configure
+simulations. The *after_events* parameter tells FastSTI what events to execute
+when the simulation is finished. *_report* is a built-in event that prints out
+basic information about the state of a simulation. All built-in events are
+prefixed with an underscore, to differentiate them from ones you might code
+yourself.
+
+To run the simulation: ::
+
+  ../../fsti -f eg1.ini
+
+The output may look something like this: ::
+
+  First simulation;0;0;2028-01-01;MIN_AGE_ALIVE;nan
+  First simulation;0;0;2028-01-01;MAX_AGE_ALIVE;nan
+  First simulation;0;0;2028-01-01;MEAN_AGE_ALIVE;nan
+  First simulation;0;0;2028-01-01;MEDIAN_AGE_ALIVE;nan
+  First simulation;0;0;2028-01-01;INFECT_RATE_ALIVE;-nan
+  First simulation;0;0;2028-01-01;POP_ALIVE;0
+  First simulation;0;0;2028-01-01;NUM_PARTNERS;0
+  First simulation;0;0;2028-01-01;MIN_AGE_DEAD;nan
+  First simulation;0;0;2028-01-01;MAX_AGE_DEAD;nan
+  First simulation;0;0;2028-01-01;MEAN_AGE_DEAD;nan
+  First simulation;0;0;2028-01-01;INFECT_RATE_DEAD;-nan
+  First simulation;0;0;2028-01-01;POP_DEAD;0
+  First simulation;0;0;2028-01-01;INITIAL_INFECTIONS;0
+  First simulation;0;0;2028-01-01;SIMULATION_INFECTIONS;0
+  First simulation;0;0;2028-01-01;INITIAL_MATCHES;0
+  First simulation;0;0;2028-01-01;SIMULATION_MATCHES;0
+  First simulation;0;0;2028-01-01;BREAKUPS;0
+  First simulation;0;0;2028-01-01;TIME_TAKEN;0
+
+Note that it's in csv format, so you easily import it into Python or R and
+process it. You can also redirect the output to a file instead of standard
+output with the *results_file* parameter.
+
+The fields of the csv file are: the name of the simulation, the number of the
+current simulation, the number of the simulation within the current simulation
+group, the date within the simulation for which the output applies, a
+description field, and the value of the description field. E.g. the last two
+columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
+seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
+tell us that the population alive and dead in this simulation on 1 January 2028
+is 0.
+
+The output is rather uninteresting. To get more interesting output we need a
+more interesting simulation. Take a look at eg2.ini
 
 There are more examples in the simulation directory.
 

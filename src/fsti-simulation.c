@@ -341,8 +341,24 @@ void fsti_simulation_test(struct test_group *tg)
     bool correct;
 
     fsti_event_register_events();
+
+    // Test that a NULL simulation runs without crashing
     fsti_config_init(&config);
     fsti_config_set_default(&config);
+    fsti_simulation_init(&simulation, &config, 0, 0);
+    fsti_simulation_run(&simulation);
+    TESTEQ(simulation.living.len == 0, true, *tg);
+    fsti_config_free(&config);
+    fsti_simulation_free(&simulation);
+
+    // Now let's do a real simulation
+    fsti_config_init(&config);
+    fsti_config_set_default(&config);
+    fsti_simulation_init(&simulation, &config, 0, 0);
+
+    fsti_config_add(&config, "before_events","default vals",  "_generate_agents");
+    fsti_config_add(&config, "during_events","default vals",  "_age");
+    fsti_config_add(&config, "after_events", "write nothing", "_no_op");
 
     fsti_config_add(&config, "dataset_gen_sex", "default vals",
                     "dataset_gen_sex.csv");
@@ -364,7 +380,6 @@ void fsti_simulation_test(struct test_group *tg)
     fsti_config_add(&config, "dataset_birth_resistant", "default vals",
                     "dataset_birth_resistant.csv");
 
-    fsti_config_add(&config, "after_events", "write nothing", "_no_op");
 
     fsti_simulation_init(&simulation, &config, 0, 0);
     fsti_simulation_run(&simulation);

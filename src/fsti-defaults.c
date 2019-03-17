@@ -33,9 +33,9 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, time_step,
 		    "Time step for each iteration of simulation in minutes"
                     "(default 1440 minutes == 1 day)", FSTI_DAY);
-    FSTI_CONFIG_ADD(config, num_time_steps,
-                    "Number of iterations simulation should run for "
-                    "(10 years)", (FSTI_YEAR * 10) / FSTI_DAY);
+    FSTI_CONFIG_ADD_STR(config, num_time_steps,
+                        "Number of iterations simulation should run for "
+                        "(10 years)", "10-YEAR");
     FSTI_CONFIG_ADD(config, stabilization_steps,
 		    "Number of time steps to run before executing "
 		    "various events", 0);
@@ -66,17 +66,16 @@ int fsti_config_set_default(struct fsti_config *config)
                     FSTI_YEAR);
 
     FSTI_CONFIG_ADD_STR(config, before_events,
-		    "Events executed before a simulation starts",
-		    "_generate_agents");
+                        "Events executed before a simulation starts", FSTI_NO_OP);
     FSTI_CONFIG_ADD_STR(config, stabilization_events,
                         "Events used to stabilize the agent characteristics "
                         "before the actual simulation", FSTI_NO_OP);
     FSTI_CONFIG_ADD_STR(config, during_events,
 		    "Events executed on every time step of a simulation",
-		    "_age");
+		    FSTI_NO_OP);
     FSTI_CONFIG_ADD_STR(config, after_events,
                          "Events executed before a simulation starts",
-                        "_report", "_write_agents_csv");
+                        FSTI_NO_OP);
     FSTI_CONFIG_ADD_STR(config, agents_input_file,
                     "Name of csv file containing agents", "agents_in.csv");
     FSTI_CONFIG_ADD(config, mutual_csv_partners,
