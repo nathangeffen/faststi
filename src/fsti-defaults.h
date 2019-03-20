@@ -210,7 +210,7 @@ unsigned total_partners;
 */
 #ifndef FSTI_AGENT_ELEM
 #define FSTI_AGENT_ELEM {                                               \
-         FSTI_AGENT_ADDITIONAL_ELEMS                                    \
+        FSTI_AGENT_ADDITIONAL_ELEMS                                     \
         {"age", offsetof(struct fsti_agent, age), UINT, fsti_to_age},   \
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
         FSTI_AGENT_ELEM_ENTRY(cause_of_death),                          \
@@ -228,6 +228,14 @@ unsigned total_partners;
          UINT, NULL},                                                   \
         {"partners_3", offsetof(struct fsti_agent, partners[3]),        \
          UINT, NULL},                                                   \
+        {"relchange_0", offsetof(struct fsti_agent, relchange),         \
+         UINT, fsti_to_uint32_t},                                       \
+        {"relchange_1", offsetof(struct fsti_agent, relchange[1]),      \
+         UINT, fsti_to_uint32_t},                                       \
+        {"relchange_2", offsetof(struct fsti_agent, relchange[2]),      \
+         UINT, fsti_to_uint32_t},                                       \
+        {"relchange_3", offsetof(struct fsti_agent, relchange[3]),      \
+         UINT, fsti_to_uint32_t},                                       \
         FSTI_AGENT_ELEM_ENTRY(resistant),                               \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred),                           \

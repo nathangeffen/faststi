@@ -241,8 +241,13 @@ seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
 tell us that the population alive and dead in this simulation on 1 January 2028
 is 0.
 
-The output is rather uninteresting. To get more interesting output we need a
-more interesting simulation. Take a look at eg2.ini
+A full simulation
+~~~~~~~~~~~~~~~~~
+
+The output of the eg1.ini simulation is rather uninteresting. To get more
+interesting output we need a more interesting simulation. Take a look at eg2.ini
+
+
 
 There are more examples in the simulation directory.
 

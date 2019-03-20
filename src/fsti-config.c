@@ -434,14 +434,21 @@ static void parse_values(struct fsti_variant_array *variant_arr,
     struct fsti_variant variant;
     char **split_values = g_strsplit_set(values, ";", 0);
     char **value = split_values;
+    char *it;
 
     FSTI_ASSERT(split_values && split_values[0], FSTI_ERR_KEY_NOT_FOUND, NULL);
 
     while (*value) {
+        for (it = *value; *it; it++)
+            if (*it == '#') {
+                *it = 0;
+                break;
+            }
 	g_strstrip(*value);
-        FSTI_ASSERT(strcmp(*value, ""), FSTI_ERR_NO_VALUE_FOR_KEY, NULL);
-	variant = fsti_identify_token(*value);
-	ARRAY_PUSH(*variant_arr, variants, variant);
+        if(strcmp(*value, "")) {
+            variant = fsti_identify_token(*value);
+            ARRAY_PUSH(*variant_arr, variants, variant);
+        }
 	++value;
     }
     g_strfreev(split_values);
