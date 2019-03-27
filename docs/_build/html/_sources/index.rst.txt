@@ -241,8 +241,137 @@ seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
 tell us that the population alive and dead in this simulation on 1 January 2028
 is 0.
 
-The output is rather uninteresting. To get more interesting output we need a
-more interesting simulation. Take a look at eg2.ini
+A full simulation
+~~~~~~~~~~~~~~~~~
+
+The output of the eg1.ini simulation is rather uninteresting. To get more
+interesting output we need a more interesting simulation. Take a look at
+eg2.ini. ::
+
+     1	  # First interesting simulation
+     2
+     3	  [Full simulation]
+     4
+     5	  num_simulations=4
+     6	  num_agents=10000
+     7	  time_step=1 DAY
+     8	  simulation_period_steps=10 YEARS
+     9
+     10	  before_events=_write_agents_csv_header;_generate_and_pair;_report;_write_agents_csv
+     11	  during_events=_age;_breakup_and_pair;_infect;_stage;_birth;_death
+     12	  after_events=_write_agents_csv;_report
+     13
+     14	  dataset_gen_sex=dataset_gen_sex.csv
+     15	  dataset_gen_sex_preferred=dataset_gen_sex_preferred.csv
+     16	  dataset_gen_infect=dataset_gen_infect.csv
+     17	  dataset_gen_treated=dataset_gen_treated.csv
+     18	  dataset_gen_resistant=dataset_gen_resistant.csv
+     19	  dataset_gen_mating=dataset_gen_mating.csv
+     20
+     21	  dataset_birth_infect=dataset_gen_infect.csv
+     22	  dataset_birth_treated=dataset_birth_treated.csv
+     23	  dataset_birth_resistant=dataset_birth_resistant.csv
+     24
+     25	  dataset_rel_period=dataset_rel.csv
+     26	  dataset_single_period=dataset_single.csv
+     27	  dataset_infect=dataset_infect.csv
+     28	  dataset_infect_stage=dataset_infect_stage.csv
+     29	  dataset_mortality=dataset_mortality_simple.csv
+     30
+     31
+     32	  agents_output_file=agents_out.csv
+     33	  results_file=results.csv
+     34
+     35	  threads=1
+     36
+     37	  [Change time period]
+     38
+     39	  threads=0 # As many threads as there are cores will execute
+     40	  simulation_period=5 YEARS
+
+Assuming you are in the simulations/examples directory you can run this
+simulation as follows: ::
+
+  ../../fsti release -f eg2.ini
+
+The *release* command line parameter ensures the much faster *release* version
+of FastSTI (without debugging code) executes. It will likely take about 10
+seconds to run.
+
+This is what the configuration does:
+
+- Line 1 is a comment. Comments start with a #.
+- Line 3 specifies the name of the first group of simulations: *Full simulation*
+- Line 5 specifies the number of simulations to run in this group. Note that
+  parameter names, like *num_simulations*, are case-sensitive.
+- Line 6 specifies the number of agents in the simulation.
+- Line 7 specifies the time period represented by each simulation iteration, 1
+  day in this case. The format for this parameter and others like it that
+  specify a time period is a positive integer followed by either MINUTE, HOUR,
+  DAY, WEEK, MONTH or YEAR. You can also use the plural of any of these time
+  periods or any combination of lower and upper case (i.e. minute, minutes,
+  hour, hours, day, days, week, weeks, month, months or year, years). You can
+  also put a hyphen instead of a space between the integer and the time
+  period. If you leave out the time period, it's assumed to be minutes. In
+  FastSTI, the predefined time period have the following number of minutes:
+
+  - hour: 60
+  - day: 1440
+  - week: 10,080
+  - month: 43,830
+  - year: 525949
+
+- Line 8 specifies the simulation period: 10 years in this case. The number of
+  time steps (or iterations) of the simulation is calculated by dividing the
+  simulation_period by the time_step. In this simulation there are therefore
+  3,652 iterations: :math:`10 \times 525949 / 1440`.
+- Line 10 lists the events that are to be run before each simulation
+  starts.
+
+  - The _write_agents_csv_header event simply writes the first line of the csv
+    file to which agents will be written.
+  - The _generate_and_pair event generates agents (equal to the *num_agents*
+    parameter) and pairs a subset of them in sexual relationships.
+  - The _report event prints out some simple statistics about the agent
+    population.
+  - The _write_agents_csv event prints out the agents in csv format.
+
+- Line 11 lists the events that are run on every iteration of the simulation.
+
+  - The _age event increases the age of each agent by the *time_step* of the
+    simulation (one day in this example).
+  - The _breakup_and_pair event pairs a subset of agents into sexual
+    partnerships and breaks up another subset of agents who are already in
+    sexual partnerships.
+  - The _infect event infects a subset of agents in sexual partnerships with
+    other infected agents with the pathogen being studied, e.g. HIV.
+  - The _stage event manages the infection progression of infected agents. For
+    example, agents with HIV will first be in an acute sero-conversion phase,
+    than a chronic infection stage, and then one or more stages that are
+    analogous to progression to AIDS.
+  - The _birth and _death events create new agents and kill agents respectively.
+
+  Many of these events depend on pre-specified parameters to calculate
+  probabilities of the events occurring and, perhaps, other outcomes. These data
+  are described in dataset files which are described in the
+  :ref:`dataset-format` section.
+
+- Lines 14 to 29 list the names of the datasets associated with the various
+  events. For example the *dataset_mortality* parameter tells the simulation the
+  probability of an agent with a given set of characteristics dying.
+- Line 32 tells the simulation to write agents out to a csv file called
+  *agents_out.csv*.
+- Line 33 tells the simulation to write simple population level statistical
+  information produced by the *_report* event to a file called *results.csv*.
+- Line 35 tells the simulation to run as a single thread. In other words each of
+  the four simulations (specified on line 5) will run consecutively.
+- Line 37 specifies a new simulation group called *Change time period*.
+- Line 39 tells FastSTI to run the simulations in parallel, using up to as many
+  threads as there are CPU cores in the machine. On a quad-core CPU, all four
+  simulations could run at the same time.
+- Line 40 specifies a different simulation period (5 years) to the *Full simulation* set
+  of simulations. All other parameters set in the *Full simulation* set carry
+  through to this simulation set.
 
 There are more examples in the simulation directory.
 
@@ -253,6 +382,8 @@ Input file formats
 *************
 Configuration
 *************
+
+.. _dataset-format:
 
 ********
 Datasets

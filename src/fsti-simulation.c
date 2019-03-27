@@ -190,8 +190,8 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
     simulation->age_input_time_step = fsti_config_at0_long(&simulation->config,
                                                            "age_input_time_step");
 
-    simulation->num_time_steps = fsti_config_at0_long(&simulation->config,
-                                                 "num_time_steps");
+    simulation->simulation_period = fsti_config_at0_long(&simulation->config,
+                                                         "simulation_period");
     simulation->match_k = fsti_config_at0_long(&simulation->config,
                                                           "match_k");
     simulation->initial_infect_stage =
@@ -276,6 +276,7 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 
 void fsti_simulation_run(struct fsti_simulation *simulation)
 {
+    uint32_t num_iterations;
     fsti_simulation_config_to_vars(simulation);
     simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
@@ -286,8 +287,9 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
             exec_events(simulation, &simulation->stabilization_events);
     }
     simulation->state = DURING;
+    num_iterations = simulation->simulation_period / simulation->time_step;
     for (simulation->iteration = 0;
-         simulation->iteration < simulation->num_time_steps;
+         simulation->iteration < num_iterations;
          simulation->iteration++)
 	exec_events(simulation, &simulation->during_events);
 

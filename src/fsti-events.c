@@ -836,7 +836,7 @@ void fsti_event_test_breakup(struct fsti_simulation *simulation)
             });
         TESTEQ(breakup_after == 0, true, *fsti_events_tg);
     }
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(breakup_before > 5000, true, *fsti_events_tg);
         breakup_before = 0;
     }
@@ -865,7 +865,7 @@ void fsti_event_test_mating_pool(struct fsti_simulation *simulation)
             TESTEQ(bad_logic, false, *fsti_events_tg);
         }
     }
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(num_in_pool > 5000, true, *fsti_events_tg);
         num_in_pool = 0;
     }
@@ -941,7 +941,7 @@ void fsti_event_test_knn_match(struct fsti_simulation *simulation)
     }
 
     // Check that there were at least some iterations where matches occurred
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(matches_made > 0, true, *fsti_events_tg);
         matches_made = 0;
     }
@@ -967,7 +967,7 @@ void fsti_event_test_infect(struct fsti_simulation *simulation)
     if (run_test(simulation))
         TESTEQ(infected_before <= infected_after, true, *fsti_events_tg);
 
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(infections > 0, true, *fsti_events_tg);
         infections = 0;
     }
@@ -984,7 +984,7 @@ void fsti_event_test_birth(struct fsti_simulation *simulation)
     births += births_after - births_before;
 
 
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(births > 0, true, *fsti_events_tg);
         births = 0;
     }
@@ -1000,7 +1000,7 @@ void fsti_event_test_death(struct fsti_simulation *simulation)
     deaths_after = simulation->dead.len;
     deaths += deaths_after - deaths_before;
 
-    if (simulation->iteration == simulation->num_time_steps - 1) {
+    if (simulation->iteration == simulation->simulation_period - 1) {
         TESTEQ(deaths > 0, true, *fsti_events_tg);
         deaths = 0;
     }

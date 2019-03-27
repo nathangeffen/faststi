@@ -299,18 +299,16 @@ static void special_case_time_step(const struct fsti_config *config,
 }
 
 
-static void special_case_num_time_steps(const struct fsti_config *config,
+static void special_case_simulation_period(const struct fsti_config *config,
                                         struct fsti_config_entry *entry)
 {
-    unsigned divisor, val;
+    unsigned val;
 
-    if (strcmp(entry->key, "num_time_steps") == 0) {
+    if (strcmp(entry->key, "simulation_period") == 0) {
         if (entry->len > 0) {
             if (entry->variants[0].type == STR) {
                 val = fsti_parse_time_period(entry->variants[0].value.str,
                                              FSTI_ERR_STR_EXPECTED);
-                divisor = fsti_config_at0_long(config, "time_step");
-                val /= divisor;
                 free(entry->variants[0].value.str);
                 entry->variants[0].type = LONG;
                 entry->variants[0].value.longint = val;
@@ -323,7 +321,7 @@ static void special_cases(const struct fsti_config *config,
                           struct fsti_config_entry *entry)
 {
     special_case_time_step(config, entry);
-    special_case_num_time_steps(config, entry);
+    special_case_simulation_period(config, entry);
 }
 
 
@@ -669,10 +667,10 @@ void fsti_config_test(struct test_group *tg)
     TESTEQ(entry->len, 1, *tg);
     TESTEQ(entry->variants[0].type, LONG, *tg);
     TESTEQ(entry->variants[0].value.longint, 1440, *tg);
-    fsti_config_add(&config, "num_time_steps", "", "20-year");
-    entry = fsti_config_find(&config, "num_time_steps");
+    fsti_config_add(&config, "simulation_period", "", "20-year");
+    entry = fsti_config_find(&config, "simulation_period");
     TESTEQ(entry->variants[0].type, LONG, *tg);
-    TESTEQ(entry->variants[0].value.longint, FSTI_YEAR * 20 / FSTI_DAY, *tg);
+    TESTEQ(entry->variants[0].value.longint, FSTI_YEAR * 20, *tg);
 
     fsti_config_free(&config);
 }

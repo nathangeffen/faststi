@@ -30,12 +30,11 @@ int fsti_config_set_default(struct fsti_config *config)
 
     FSTI_CONFIG_ADD(config, num_simulations,
                      "Number of simulations to execute (default is 1)", 1);
-    FSTI_CONFIG_ADD(config, time_step,
-		    "Time step for each iteration of simulation in minutes"
-                    "(default 1440 minutes == 1 day)", FSTI_DAY);
-    FSTI_CONFIG_ADD_STR(config, num_time_steps,
-                        "Number of iterations simulation should run for "
-                        "(10 years)", "10-YEAR");
+    FSTI_CONFIG_ADD_STR(config, time_step,
+                        "Time step for each iteration of simulation in minutes"
+                        "(default 1440 minutes == 1 day)", "1-DAY");
+    FSTI_CONFIG_ADD_STR(config, simulation_period,
+                        "Time period of the simulation (10 years)", "10-YEAR");
     FSTI_CONFIG_ADD(config, stabilization_steps,
 		    "Number of time steps to run before executing "
 		    "various events", 0);

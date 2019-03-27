@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -236,9 +237,152 @@ columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
 seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
 tell us that the population alive and dead in this simulation on 1 January 2028
 is 0.</p>
-<p>The output is rather uninteresting. To get more interesting output we need a
-more interesting simulation. Take a look at eg2.ini</p>
+<div class="section" id="a-full-simulation">
+<h4>A full simulation<a class="headerlink" href="#a-full-simulation" title="Permalink to this headline">¶</a></h4>
+<p>The output of the eg1.ini simulation is rather uninteresting. To get more
+interesting output we need a more interesting simulation. Take a look at
+eg2.ini.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>    <span class="c1"># First interesting simulation</span>
+<span class="mi">2</span>
+<span class="mi">3</span>    <span class="p">[</span><span class="n">Full</span> <span class="n">simulation</span><span class="p">]</span>
+<span class="mi">4</span>
+<span class="mi">5</span>    <span class="n">num_simulations</span><span class="o">=</span><span class="mi">4</span>
+<span class="mi">6</span>    <span class="n">num_agents</span><span class="o">=</span><span class="mi">10000</span>
+<span class="mi">7</span>    <span class="n">time_step</span><span class="o">=</span><span class="mi">1</span> <span class="n">DAY</span>
+<span class="mi">8</span>    <span class="n">simulation_period_steps</span><span class="o">=</span><span class="mi">10</span> <span class="n">YEARS</span>
+<span class="mi">9</span>
+<span class="mi">10</span>   <span class="n">before_events</span><span class="o">=</span><span class="n">_write_agents_csv_header</span><span class="p">;</span><span class="n">_generate_and_pair</span><span class="p">;</span><span class="n">_report</span><span class="p">;</span><span class="n">_write_agents_csv</span>
+<span class="mi">11</span>   <span class="n">during_events</span><span class="o">=</span><span class="n">_age</span><span class="p">;</span><span class="n">_breakup_and_pair</span><span class="p">;</span><span class="n">_infect</span><span class="p">;</span><span class="n">_stage</span><span class="p">;</span><span class="n">_birth</span><span class="p">;</span><span class="n">_death</span>
+<span class="mi">12</span>   <span class="n">after_events</span><span class="o">=</span><span class="n">_write_agents_csv</span><span class="p">;</span><span class="n">_report</span>
+<span class="mi">13</span>
+<span class="mi">14</span>   <span class="n">dataset_gen_sex</span><span class="o">=</span><span class="n">dataset_gen_sex</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">15</span>   <span class="n">dataset_gen_sex_preferred</span><span class="o">=</span><span class="n">dataset_gen_sex_preferred</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">16</span>   <span class="n">dataset_gen_infect</span><span class="o">=</span><span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">17</span>   <span class="n">dataset_gen_treated</span><span class="o">=</span><span class="n">dataset_gen_treated</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">18</span>   <span class="n">dataset_gen_resistant</span><span class="o">=</span><span class="n">dataset_gen_resistant</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">19</span>   <span class="n">dataset_gen_mating</span><span class="o">=</span><span class="n">dataset_gen_mating</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">20</span>
+<span class="mi">21</span>   <span class="n">dataset_birth_infect</span><span class="o">=</span><span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">22</span>   <span class="n">dataset_birth_treated</span><span class="o">=</span><span class="n">dataset_birth_treated</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">23</span>   <span class="n">dataset_birth_resistant</span><span class="o">=</span><span class="n">dataset_birth_resistant</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">24</span>
+<span class="mi">25</span>   <span class="n">dataset_rel_period</span><span class="o">=</span><span class="n">dataset_rel</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">26</span>   <span class="n">dataset_single_period</span><span class="o">=</span><span class="n">dataset_single</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">27</span>   <span class="n">dataset_infect</span><span class="o">=</span><span class="n">dataset_infect</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">28</span>   <span class="n">dataset_infect_stage</span><span class="o">=</span><span class="n">dataset_infect_stage</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">29</span>   <span class="n">dataset_mortality</span><span class="o">=</span><span class="n">dataset_mortality_simple</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">30</span>
+<span class="mi">31</span>
+<span class="mi">32</span>   <span class="n">agents_output_file</span><span class="o">=</span><span class="n">agents_out</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">33</span>   <span class="n">results_file</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">csv</span>
+<span class="mi">34</span>
+<span class="mi">35</span>   <span class="n">threads</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">36</span>
+<span class="mi">37</span>   <span class="p">[</span><span class="n">Change</span> <span class="n">time</span> <span class="n">period</span><span class="p">]</span>
+<span class="mi">38</span>
+<span class="mi">39</span>   <span class="n">threads</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># As many threads as there are cores will execute</span>
+<span class="mi">40</span>   <span class="n">simulation_period</span><span class="o">=</span><span class="mi">5</span> <span class="n">YEARS</span>
+</pre></div>
+</div>
+<p>Assuming you are in the simulations/examples directory you can run this
+simulation as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="n">release</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The <em>release</em> command line parameter ensures the much faster <em>release</em> version
+of FastSTI (without debugging code) executes. It will likely take about 10
+seconds to run.</p>
+<p>This is what the configuration does:</p>
+<ul>
+<li><p class="first">Line 1 is a comment. Comments start with a #.</p>
+</li>
+<li><p class="first">Line 3 specifies the name of the first group of simulations: <em>Full simulation</em></p>
+</li>
+<li><p class="first">Line 5 specifies the number of simulations to run in this group. Note that
+parameter names, like <em>num_simulations</em>, are case-sensitive.</p>
+</li>
+<li><p class="first">Line 6 specifies the number of agents in the simulation.</p>
+</li>
+<li><p class="first">Line 7 specifies the time period represented by each simulation iteration, 1
+day in this case. The format for this parameter and others like it that
+specify a time period is a positive integer followed by either MINUTE, HOUR,
+DAY, WEEK, MONTH or YEAR. You can also use the plural of any of these time
+periods or any combination of lower and upper case (i.e. minute, minutes,
+hour, hours, day, days, week, weeks, month, months or year, years). You can
+also put a hyphen instead of a space between the integer and the time
+period. If you leave out the time period, it’s assumed to be minutes. In
+FastSTI, the predefined time period have the following number of minutes:</p>
+<ul class="simple">
+<li>hour: 60</li>
+<li>day: 1440</li>
+<li>week: 10,080</li>
+<li>month: 43,830</li>
+<li>year: 525949</li>
+</ul>
+</li>
+<li><p class="first">Line 8 specifies the simulation period: 10 years in this case. The number of
+time steps (or iterations) of the simulation is calculated by dividing the
+simulation_period by the time_step. In this simulation there are therefore
+3,652 iterations: <span class="math notranslate nohighlight">\(10 \times 525949 / 1440\)</span>.</p>
+</li>
+<li><p class="first">Line 10 lists the events that are to be run before each simulation
+starts.</p>
+<ul class="simple">
+<li>The _write_agents_csv_header event simply writes the first line of the csv
+file to which agents will be written.</li>
+<li>The _generate_and_pair event generates agents (equal to the <em>num_agents</em>
+parameter) and pairs a subset of them in sexual relationships.</li>
+<li>The _report event prints out some simple statistics about the agent
+population.</li>
+<li>The _write_agents_csv event prints out the agents in csv format.</li>
+</ul>
+</li>
+<li><p class="first">Line 11 lists the events that are run on every iteration of the simulation.</p>
+<ul class="simple">
+<li>The _age event increases the age of each agent by the <em>time_step</em> of the
+simulation (one day in this example).</li>
+<li>The _breakup_and_pair event pairs a subset of agents into sexual
+partnerships and breaks up another subset of agents who are already in
+sexual partnerships.</li>
+<li>The _infect event infects a subset of agents in sexual partnerships with
+other infected agents with the pathogen being studied, e.g. HIV.</li>
+<li>The _stage event manages the infection progression of infected agents. For
+example, agents with HIV will first be in an acute sero-conversion phase,
+than a chronic infection stage, and then one or more stages that are
+analogous to progression to AIDS.</li>
+<li>The _birth and _death events create new agents and kill agents respectively.</li>
+</ul>
+<p>Many of these events depend on pre-specified parameters to calculate
+probabilities of the events occurring and, perhaps, other outcomes. These data
+are described in dataset files which are described in the
+<a class="reference internal" href="#dataset-format"><span class="std std-ref">Datasets</span></a> section.</p>
+</li>
+<li><p class="first">Lines 14 to 29 list the names of the datasets associated with the various
+events. For example the <em>dataset_mortality</em> parameter tells the simulation the
+probability of an agent with a given set of characteristics dying.</p>
+</li>
+<li><p class="first">Line 32 tells the simulation to write agents out to a csv file called
+<em>agents_out.csv</em>.</p>
+</li>
+<li><p class="first">Line 33 tells the simulation to write simple population level statistical
+information produced by the <em>_report</em> event to a file called <em>results.csv</em>.</p>
+</li>
+<li><p class="first">Line 35 tells the simulation to run as a single thread. In other words each of
+the four simulations (specified on line 5) will run consecutively.</p>
+</li>
+<li><p class="first">Line 37 specifies a new simulation group called <em>Change time period</em>.</p>
+</li>
+<li><p class="first">Line 39 tells FastSTI to run the simulations in parallel, using up to as many
+threads as there are CPU cores in the machine. On a quad-core CPU, all four
+simulations could run at the same time.</p>
+</li>
+<li><p class="first">Line 40 specifies a different simulation period (5 years) to the <em>Full simulation</em> set
+of simulations. All other parameters set in the <em>Full simulation</em> set carry
+through to this simulation set.</p>
+</li>
+</ul>
 <p>There are more examples in the simulation directory.</p>
+</div>
 </div>
 </div>
 <div class="section" id="input-file-formats">
@@ -247,7 +391,7 @@ more interesting simulation. Take a look at eg2.ini</p>
 <h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="datasets">
-<h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h3>
+<span id="dataset-format"></span><h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="agents">
 <h3>Agents<a class="headerlink" href="#agents" title="Permalink to this headline">¶</a></h3>
@@ -331,7 +475,10 @@ repository  issues page</a>.</p>
 <li><a class="reference internal" href="#testing-that-it-works">Testing that it works</a></li>
 <li><a class="reference internal" href="#how-to-use-faststi">How to use FastSTI</a><ul>
 <li><a class="reference internal" href="#simulations">Simulations</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#example">Example</a><ul>
+<li><a class="reference internal" href="#a-full-simulation">A full simulation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#input-file-formats">Input file formats</a><ul>
