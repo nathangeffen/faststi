@@ -664,7 +664,7 @@ currently quite limited, you'll probably prefer to supply an agent file.
 
 The agents must be specified in a CSV file. The column names in the header row
 must correspond to one or more field names in FastSTI's agent structure, which is declared
-as *struct fsti_agent* in the source file *src/fsti_agent.h*. The fields are:
+as *struct fsti_agent* in the source file *src/fsti-agent.h*. The fields are:
 
 - id: unsigned 32 bit integer, unique for each agent (If you do not include this
   field, FastSTI automatically provides this value for each agent, starting from
@@ -728,7 +728,190 @@ Output file formats
 Results reports
 ***************
 
-To do
+Whenever the *_report* is executed, it writes output in CSV format either to the
+standard output device (default) or an output file as specified by the
+*results_file* key in the configuration. This output is meant to be
+post-processed by you either in a spreadsheet, or using a scripting language
+like R or Python.
+
+.. note:: **(advanced use)** The *_report* event prints out quite basic
+   information. You can enhance it in the fsti_userdefs.h file by defining the
+   *FSTI_HOOK_REPORT* macro. See the *FSTI_REPORT* macro in fsti-defaults.h.
+
+Here is an example output from a set of simulations:
+
+.. code-block:: none
+   :linenos:
+
+      name;sim;num;date;description;value
+      Simulation_0;0;0;2018-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_0;0;0;2018-01-01;MAX_AGE_ALIVE;49.000000
+      Simulation_0;0;0;2018-01-01;MEAN_AGE_ALIVE;23.000000
+      Simulation_0;0;0;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+      Simulation_0;0;0;2018-01-01;INFECT_RATE_ALIVE;0.077900
+      Simulation_0;0;0;2018-01-01;POP_ALIVE;20000
+      Simulation_0;0;0;2018-01-01;NUM_PARTNERS;3573
+      Simulation_0;0;0;2018-01-01;MIN_AGE_DEAD;nan
+      Simulation_0;0;0;2018-01-01;MAX_AGE_DEAD;nan
+      Simulation_0;0;0;2018-01-01;MEAN_AGE_DEAD;nan
+      Simulation_0;0;0;2018-01-01;INFECT_RATE_DEAD;-nan
+      Simulation_0;0;0;2018-01-01;POP_DEAD;0
+      Simulation_0;0;0;2018-01-01;INITIAL_INFECTIONS;1558
+      Simulation_0;0;0;2018-01-01;SIMULATION_INFECTIONS;0
+      Simulation_0;0;0;2018-01-01;INITIAL_MATCHES;3573
+      Simulation_0;0;0;2018-01-01;SIMULATION_MATCHES;0
+      Simulation_0;0;0;2018-01-01;BREAKUPS;0
+      Simulation_0;0;0;2018-01-01;TIME_TAKEN;1
+      Simulation_0;0;0;2028-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_0;0;0;2028-01-01;MAX_AGE_ALIVE;59.000000
+      Simulation_0;0;0;2028-01-01;MEAN_AGE_ALIVE;30.000000
+      Simulation_0;0;0;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+      Simulation_0;0;0;2028-01-01;INFECT_RATE_ALIVE;0.142421
+      Simulation_0;0;0;2028-01-01;POP_ALIVE;23592
+      Simulation_0;0;0;2028-01-01;NUM_PARTNERS;8442
+      Simulation_0;0;0;2028-01-01;MIN_AGE_DEAD;15.000000
+      Simulation_0;0;0;2028-01-01;MAX_AGE_DEAD;58.000000
+      Simulation_0;0;0;2028-01-01;MEAN_AGE_DEAD;31.000000
+      Simulation_0;0;0;2028-01-01;INFECT_RATE_DEAD;0.738192
+      Simulation_0;0;0;2028-01-01;POP_DEAD;741
+      Simulation_0;0;0;2028-01-01;INITIAL_INFECTIONS;1558
+      Simulation_0;0;0;2028-01-01;SIMULATION_INFECTIONS;2349
+      Simulation_0;0;0;2028-01-01;INITIAL_MATCHES;3573
+      Simulation_0;0;0;2028-01-01;SIMULATION_MATCHES;145574
+      Simulation_0;0;0;2028-01-01;BREAKUPS;140193
+      Simulation_0;0;0;2028-01-01;TIME_TAKEN;6
+      Simulation_0;1;1;2018-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_0;1;1;2018-01-01;MAX_AGE_ALIVE;49.000000
+      Simulation_0;1;1;2018-01-01;MEAN_AGE_ALIVE;23.000000
+      Simulation_0;1;1;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+      Simulation_0;1;1;2018-01-01;INFECT_RATE_ALIVE;0.080300
+      Simulation_0;1;1;2018-01-01;POP_ALIVE;20000
+      Simulation_0;1;1;2018-01-01;NUM_PARTNERS;3601
+      Simulation_0;1;1;2018-01-01;MIN_AGE_DEAD;nan
+      Simulation_0;1;1;2018-01-01;MAX_AGE_DEAD;nan
+      Simulation_0;1;1;2018-01-01;MEAN_AGE_DEAD;nan
+      Simulation_0;1;1;2018-01-01;INFECT_RATE_DEAD;-nan
+      Simulation_0;1;1;2018-01-01;POP_DEAD;0
+      Simulation_0;1;1;2018-01-01;INITIAL_INFECTIONS;1606
+      Simulation_0;1;1;2018-01-01;SIMULATION_INFECTIONS;0
+      Simulation_0;1;1;2018-01-01;INITIAL_MATCHES;3601
+      Simulation_0;1;1;2018-01-01;SIMULATION_MATCHES;0
+      Simulation_0;1;1;2018-01-01;BREAKUPS;0
+      Simulation_0;1;1;2018-01-01;TIME_TAKEN;6
+      Simulation_0;1;1;2028-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_0;1;1;2028-01-01;MAX_AGE_ALIVE;59.000000
+      Simulation_0;1;1;2028-01-01;MEAN_AGE_ALIVE;30.000000
+      Simulation_0;1;1;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+      Simulation_0;1;1;2028-01-01;INFECT_RATE_ALIVE;0.142754
+      Simulation_0;1;1;2028-01-01;POP_ALIVE;23516
+      Simulation_0;1;1;2028-01-01;NUM_PARTNERS;8432
+      Simulation_0;1;1;2028-01-01;MIN_AGE_DEAD;15.000000
+      Simulation_0;1;1;2028-01-01;MAX_AGE_DEAD;55.000000
+      Simulation_0;1;1;2028-01-01;MEAN_AGE_DEAD;31.000000
+      Simulation_0;1;1;2028-01-01;INFECT_RATE_DEAD;0.768553
+      Simulation_0;1;1;2028-01-01;POP_DEAD;795
+      Simulation_0;1;1;2028-01-01;INITIAL_INFECTIONS;1606
+      Simulation_0;1;1;2028-01-01;SIMULATION_INFECTIONS;2362
+      Simulation_0;1;1;2028-01-01;INITIAL_MATCHES;3601
+      Simulation_0;1;1;2028-01-01;SIMULATION_MATCHES;146416
+      Simulation_0;1;1;2028-01-01;BREAKUPS;141010
+      Simulation_0;1;1;2028-01-01;TIME_TAKEN;11
+      Simulation_1;2;0;2018-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_1;2;0;2018-01-01;MAX_AGE_ALIVE;49.000000
+      Simulation_1;2;0;2018-01-01;MEAN_AGE_ALIVE;23.000000
+      Simulation_1;2;0;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+      Simulation_1;2;0;2018-01-01;INFECT_RATE_ALIVE;0.080600
+      Simulation_1;2;0;2018-01-01;POP_ALIVE;20000
+      Simulation_1;2;0;2018-01-01;NUM_PARTNERS;3569
+      Simulation_1;2;0;2018-01-01;MIN_AGE_DEAD;nan
+      Simulation_1;2;0;2018-01-01;MAX_AGE_DEAD;nan
+      Simulation_1;2;0;2018-01-01;MEAN_AGE_DEAD;nan
+      Simulation_1;2;0;2018-01-01;INFECT_RATE_DEAD;-nan
+      Simulation_1;2;0;2018-01-01;POP_DEAD;0
+      Simulation_1;2;0;2018-01-01;INITIAL_INFECTIONS;1612
+      Simulation_1;2;0;2018-01-01;SIMULATION_INFECTIONS;0
+      Simulation_1;2;0;2018-01-01;INITIAL_MATCHES;3569
+      Simulation_1;2;0;2018-01-01;SIMULATION_MATCHES;0
+      Simulation_1;2;0;2018-01-01;BREAKUPS;0
+      Simulation_1;2;0;2018-01-01;TIME_TAKEN;5
+      Simulation_1;2;0;2028-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_1;2;0;2028-01-01;MAX_AGE_ALIVE;59.000000
+      Simulation_1;2;0;2028-01-01;MEAN_AGE_ALIVE;30.000000
+      Simulation_1;2;0;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+      Simulation_1;2;0;2028-01-01;INFECT_RATE_ALIVE;0.136983
+      Simulation_1;2;0;2028-01-01;POP_ALIVE;23638
+      Simulation_1;2;0;2028-01-01;NUM_PARTNERS;8423
+      Simulation_1;2;0;2028-01-01;MIN_AGE_DEAD;15.000000
+      Simulation_1;2;0;2028-01-01;MAX_AGE_DEAD;59.000000
+      Simulation_1;2;0;2028-01-01;MEAN_AGE_DEAD;32.000000
+      Simulation_1;2;0;2028-01-01;INFECT_RATE_DEAD;0.717507
+      Simulation_1;2;0;2028-01-01;POP_DEAD;754
+      Simulation_1;2;0;2028-01-01;INITIAL_INFECTIONS;1612
+      Simulation_1;2;0;2028-01-01;SIMULATION_INFECTIONS;2167
+      Simulation_1;2;0;2028-01-01;INITIAL_MATCHES;3569
+      Simulation_1;2;0;2028-01-01;SIMULATION_MATCHES;145976
+      Simulation_1;2;0;2028-01-01;BREAKUPS;140568
+      Simulation_1;2;0;2028-01-01;TIME_TAKEN;10
+      Simulation_1;3;1;2018-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_1;3;1;2018-01-01;MAX_AGE_ALIVE;49.000000
+      Simulation_1;3;1;2018-01-01;MEAN_AGE_ALIVE;23.000000
+      Simulation_1;3;1;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+      Simulation_1;3;1;2018-01-01;INFECT_RATE_ALIVE;0.083850
+      Simulation_1;3;1;2018-01-01;POP_ALIVE;20000
+      Simulation_1;3;1;2018-01-01;NUM_PARTNERS;3550
+      Simulation_1;3;1;2018-01-01;MIN_AGE_DEAD;nan
+      Simulation_1;3;1;2018-01-01;MAX_AGE_DEAD;nan
+      Simulation_1;3;1;2018-01-01;MEAN_AGE_DEAD;nan
+      Simulation_1;3;1;2018-01-01;INFECT_RATE_DEAD;-nan
+      Simulation_1;3;1;2018-01-01;POP_DEAD;0
+      Simulation_1;3;1;2018-01-01;INITIAL_INFECTIONS;1677
+      Simulation_1;3;1;2018-01-01;SIMULATION_INFECTIONS;0
+      Simulation_1;3;1;2018-01-01;INITIAL_MATCHES;3550
+      Simulation_1;3;1;2018-01-01;SIMULATION_MATCHES;0
+      Simulation_1;3;1;2018-01-01;BREAKUPS;0
+      Simulation_1;3;1;2018-01-01;TIME_TAKEN;5
+      Simulation_1;3;1;2028-01-01;MIN_AGE_ALIVE;15.000000
+      Simulation_1;3;1;2028-01-01;MAX_AGE_ALIVE;59.000000
+      Simulation_1;3;1;2028-01-01;MEAN_AGE_ALIVE;30.000000
+      Simulation_1;3;1;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+      Simulation_1;3;1;2028-01-01;INFECT_RATE_ALIVE;0.139352
+      Simulation_1;3;1;2028-01-01;POP_ALIVE;23595
+      Simulation_1;3;1;2028-01-01;NUM_PARTNERS;8456
+      Simulation_1;3;1;2028-01-01;MIN_AGE_DEAD;15.000000
+      Simulation_1;3;1;2028-01-01;MAX_AGE_DEAD;58.000000
+      Simulation_1;3;1;2028-01-01;MEAN_AGE_DEAD;31.000000
+      Simulation_1;3;1;2028-01-01;INFECT_RATE_DEAD;0.728205
+      Simulation_1;3;1;2028-01-01;POP_DEAD;780
+      Simulation_1;3;1;2028-01-01;INITIAL_INFECTIONS;1677
+      Simulation_1;3;1;2028-01-01;SIMULATION_INFECTIONS;2179
+      Simulation_1;3;1;2028-01-01;INITIAL_MATCHES;3550
+      Simulation_1;3;1;2028-01-01;SIMULATION_MATCHES;146061
+      Simulation_1;3;1;2028-01-01;BREAKUPS;140609
+      Simulation_1;3;1;2028-01-01;TIME_TAKEN;10
+
+- The first column (name) is the simulation group name as specified in the configuration
+  file.
+- The second column (sim) is the unique simulation number. In every execution of
+  FastSTI, each simulation will have its own unique id, starting from 0.
+- The third column (num) is the number of the simulation within the simulation
+  group. Here each of the two simulation groups (Simulation_0 and Simulation_1)
+  executed two simulations each, numbered 0 and 1.
+- The fourth column is the date within the simulation that this snapshot report
+  is for. In these simulations, the start date was 1 January 2018, and the end
+  date was 1 January 2028. The *_report* event ran before and after the
+  simulation (it can run as often as you like during the simulation as well).
+- The fifth column is the description of what's being reported. These should be
+  self-explanatory.
+- The sixth column is the value of what's being reported. E.g. 10 for TIME_TAKEN
+  means the simulation ran in 10 seconds up to that point.
+
+.. warning::
+   The output in the example above is all in chronological order. This is
+   because it was a single-threaded sequential execution. Normally you will do a
+   multithreaded execution and the report lines will likely **not** come out in
+   order. When analysing them in a spreadsheet, R or Python, remember to sort
+   the output by the first four columns.
+
 
 ******
 Agents
