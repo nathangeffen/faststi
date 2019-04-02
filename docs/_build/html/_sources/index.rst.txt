@@ -662,7 +662,63 @@ Instead of generating agents, you can provide an agent file as input to the
 simulation. In fact, since the agent generation features of FastSTI are
 currently quite limited, you'll probably prefer to supply an agent file.
 
-To do
+The agents must be specified in a CSV file. The column names in the header row
+must correspond to one or more field names in FastSTI's agent structure, which is declared
+as *struct fsti_agent* in the source file *src/fsti_agent.h*. The fields are:
+
+- id: unsigned 32 bit integer, unique for each agent (If you do not include this
+  field, FastSTI automatically provides this value for each agent, starting from
+  0.)
+- sex: unsigned 8 bit integer (0 is male, 1 is female. Higher values are user-defined.)
+- Either sex_preferred or orientation, an unsigned 8 bit integer (Do not use
+  both fields. We recommend using sex_preferred rather than orientation. For
+  sex_preferred 0 is male, 1 is female. For orientation either use 0 and 1 for
+  heterosexual and homosexual respectively, or 0, 1, 2 and 3 for MSM, MSW, WSM
+  and WSW respectively. Higher values are user-defined.)
+- age: a positive year age of an agent between 0 and 120.
+- birthday: a signed 32 bit integer (Unless you understand the internal workings
+  of FastSTI very well, we recommend you rather use age)
+- infected: unsigned 8 bit integer (0 is uninfected. 1 and up can correspond to
+  stages of infection.)
+- treated: unsigned 8 bit integer (0 is untreated. 1 and up can correspond to
+  treatment regimens.)
+- resistant: unsigned 8 bit integer (0 is no resistance. You can either use a
+  simple approach to resistance, whereby 1 means resistant to treatment regimen
+  1, 2 to treatment regimen 2 etc, or you can use a more complex binary bitmask
+  approach where 1 denotes resistance to regimen 1 only, 10, denotes resistance
+  to regimen 2, 11 denotes resistance to regimen 1 and 2 etc.)
+- coinfected (0 means not coinfected. 1 and up denotes different types of
+  coinfection as chosen by the user. Once again, as with the resistant field,
+  either a simple or bitmask approach can be used.)
+- partners_0, partners_1, and partners_2: unsigned 32 bit integers denoting the
+  id of a sexual partner of this agent (-1 implies agent is single. The agents
+  are typically numbered from 0. Note: None of the default FastSTI events
+  currently caters for concurrency. Only use partners_1 and partners_2 if you
+  are implementing events that rely on partner concurrency. If you need more
+  partners, change the value of FSTI_MAX_PARTNERS in fsti_userdefs.h.)
+- relchange_0, relchange_1, and relchange_2: unsigned 32 bit integers
+  corresponding to the iteration (i.e. time step) in the simulation when the
+  agent's relationship status for partner_0, partner_1 and partner_2
+  respectively should change, either to single for agents with partners or to be
+  placed in the mating pool if the agent is single
+
+Here is an example CSV file. The default delimiter is a semi-colon, not a comma. You
+can change this by setting the csv_delimiter.
+
+.. code-block:: none
+   :linenos:
+
+      id;age;infected;sex;sex_preferred;partners_0
+      0;45.21;0;1;0;-1
+      1;47.35;1;0;1;0
+      2;36.62;0;1;0;-1
+      3;35.40;0;1;0;-1
+      4;24.25;0;0;1;-1
+      5;24.12;0;0;1;4
+      6;23.26;0;0;1;-1
+      7;45.17;0;0;1;-1
+      8;34.81;0;0;1;-1
+      9;35.80;0;0;1;8
 
 ###################
 Output file formats
