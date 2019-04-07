@@ -285,26 +285,16 @@ static void special_case_time_step(const struct fsti_config *config,
                                    struct fsti_config_entry *entry)
 {
     unsigned val;
-    if (strcmp(entry->key, "time_step") == 0) {
-        if (entry->len > 0) {
-            if (entry->variants[0].type == STR) {
-                val = fsti_parse_time_period(entry->variants[0].value.str,
-                                             FSTI_ERR_STR_EXPECTED);
-                free(entry->variants[0].value.str);
-                entry->variants[0].type = LONG;
-                entry->variants[0].value.longint = val;
-            }
-        }
-    }
-}
 
+    if (
 
-static void special_case_simulation_period(const struct fsti_config *config,
-                                        struct fsti_config_entry *entry)
-{
-    unsigned val;
+        (strcmp(entry->key, "time_step") == 0 ) ||
+        (strcmp(entry->key, "simulation_period") == 0 ) ||
+        (strcmp(entry->key, "age_input_time_step") == 0) ||
+        (strcmp(entry->key, "age_min") == 0) ||
+        (strcmp(entry->key, "age_max") == 0)
 
-    if (strcmp(entry->key, "simulation_period") == 0) {
+        ) {
         if (entry->len > 0) {
             if (entry->variants[0].type == STR) {
                 val = fsti_parse_time_period(entry->variants[0].value.str,
@@ -321,7 +311,6 @@ static void special_cases(const struct fsti_config *config,
                           struct fsti_config_entry *entry)
 {
     special_case_time_step(config, entry);
-    special_case_simulation_period(config, entry);
 }
 
 

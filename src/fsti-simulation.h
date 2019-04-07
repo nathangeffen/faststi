@@ -84,7 +84,6 @@ struct fsti_simulation {
     uint32_t report_frequency;
     uint32_t match_k;
     uint8_t max_stage;
-    bool agent_csv_header;
     char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;

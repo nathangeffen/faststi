@@ -173,8 +173,6 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 
     simulation->csv_delimiter =
         fsti_config_at0_str(&simulation->config, "csv_delimiter")[0];
-    simulation->agent_csv_header =
-        fsti_config_at0_long(&simulation->config, "agent_csv_header");
 
     simulation->record_matches =
         fsti_config_at0_long(&simulation->config, "record_matches");

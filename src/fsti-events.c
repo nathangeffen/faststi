@@ -131,7 +131,7 @@ static void read_agents(struct fsti_simulation *simulation)
     f = fopen(filename, "r");
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
-    cs = csv_read(f, simulation->agent_csv_header, simulation->csv_delimiter);
+    cs = csv_read(f, true, simulation->csv_delimiter);
     FSTI_ASSERT(cs.header.len, FSTI_ERR_AGENT_FILE,
                 FSTI_MSG("No header in agent csv file", filename));
 

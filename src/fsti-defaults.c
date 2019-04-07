@@ -35,6 +35,12 @@ int fsti_config_set_default(struct fsti_config *config)
                         "(default 1440 minutes == 1 day)", "1-DAY");
     FSTI_CONFIG_ADD_STR(config, simulation_period,
                         "Time period of the simulation (10 years)", "10-YEAR");
+    FSTI_CONFIG_ADD_STR(config, age_input_time_step,
+                        "Denomination of age in input files "
+                        "(usually year or 5-year age groups - "
+                        "defaults to year)", "YEAR");
+
+
     FSTI_CONFIG_ADD(config, stabilization_steps,
 		    "Number of time steps to run before executing "
 		    "various events", 0);
@@ -49,20 +55,16 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, match_k,
                     "Value for k when using matching algorithms", 100);
 
-    FSTI_CONFIG_ADD(config, age_min,
-                    "Lower end of uniformly distributed age for new or "
-                    "generated agents", 15.0 * FSTI_YEAR);
-    FSTI_CONFIG_ADD(config, age_max,
-                    "Upper end of uniformly distributed age for "
-                    "generated agents",  50.0 * FSTI_YEAR);
+    FSTI_CONFIG_ADD_STR(config, age_min,
+                        "Lower end of uniformly distributed age for new or "
+                        "generated agents", "15 YEARS");
+    FSTI_CONFIG_ADD_STR(config, age_max,
+                        "Upper end of uniformly distributed age for "
+                        "generated agents",  "50 YEARS");
     FSTI_CONFIG_ADD(config, age_alpha,
                     "Alpha parameter for age distribution of new agents", 0.3);
     FSTI_CONFIG_ADD(config, age_beta,
                     "Beta parameter for age distribution of new agents", 1.0);
-    FSTI_CONFIG_ADD(config, age_input_time_step,
-                    "Denomination of age in input files "
-                    "(usually year or 5-year age groups - defaults to year)",
-                    FSTI_YEAR);
 
     FSTI_CONFIG_ADD_STR(config, before_events,
                         "Events executed before a simulation starts", FSTI_NO_OP);
@@ -100,9 +102,6 @@ int fsti_config_set_default(struct fsti_config *config)
 
     FSTI_CONFIG_ADD_STR(config, csv_delimiter,
                     "Character that separates CSV fields", ";");
-    FSTI_CONFIG_ADD(config, agent_csv_header,
-                    "Whether or not the agent csv input file has a header", 1);
-
 
     FSTI_CONFIG_ADD(config, initial_infect_stage,
                     "When infected this is the integer to set infected to",  2);
