@@ -128,7 +128,10 @@ static void read_agents(struct fsti_simulation *simulation)
     filename = fsti_config_at0_str(&simulation->config, "agents_input_file");
     process_partners = fsti_config_at0_long(&simulation->config,
                                             "mutual_csv_partners");
-    f = fopen(filename, "r");
+    if (strcmp(filename, "stdin"))
+        f = fopen(filename, "r");
+    else
+        f = stdin;
     FSTI_ASSERT(f, FSTI_ERR_AGENT_FILE, filename);
 
     cs = csv_read(f, true, simulation->csv_delimiter);
@@ -159,7 +162,9 @@ static void read_agents(struct fsti_simulation *simulation)
     count_initial_partnerships_infections(simulation);
 
     csv_free(&cs);
-    fclose(f);
+
+    if (strcmp(filename, "stdin"))
+        fclose(f);
 }
 
 void fsti_event_read_agents(struct fsti_simulation *simulation)

@@ -354,7 +354,6 @@ void fsti_simulation_test(struct test_group *tg)
     // Now let's do a real simulation
     fsti_config_init(&config);
     fsti_config_set_default(&config);
-    fsti_simulation_init(&simulation, &config, 0, 0);
 
     fsti_config_add(&config, "before_events","default vals",  "_generate_agents");
     fsti_config_add(&config, "during_events","default vals",  "_age");

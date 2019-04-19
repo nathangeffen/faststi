@@ -415,7 +415,7 @@ void fsti_config_free(struct fsti_config *config)
 }
 
 static void parse_values(struct fsti_variant_array *variant_arr,
-			 const char *values)
+			 const char *key, const char *values)
 {
     assert(values);
     struct fsti_variant variant;
@@ -423,7 +423,8 @@ static void parse_values(struct fsti_variant_array *variant_arr,
     char **value = split_values;
     char *it;
 
-    FSTI_ASSERT(split_values && split_values[0], FSTI_ERR_KEY_NOT_FOUND, NULL);
+    FSTI_ASSERT(split_values && split_values[0], FSTI_ERR_NO_VALUE_FOR_KEY, key);
+
 
     while (*value) {
         for (it = *value; *it; it++)
@@ -431,13 +432,14 @@ static void parse_values(struct fsti_variant_array *variant_arr,
                 *it = 0;
                 break;
             }
-	g_strstrip(*value);
+        g_strstrip(*value);
         if(strcmp(*value, "")) {
             variant = fsti_identify_token(*value);
             ARRAY_PUSH(*variant_arr, variants, variant);
         }
-	++value;
+        ++value;
     }
+
     g_strfreev(split_values);
 }
 
@@ -448,7 +450,7 @@ void fsti_config_replace_values(struct fsti_config *config,
     struct fsti_variant_array variant_arr;
 
     ARRAY_NEW(variant_arr, variants);
-    parse_values(&variant_arr, values);
+    parse_values(&variant_arr, key, values);
     fsti_config_replace_arr(config, key, NULL,
                            variant_arr.variants, variant_arr.len);
 

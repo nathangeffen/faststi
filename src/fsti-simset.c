@@ -125,7 +125,7 @@ static void set_output_files(struct fsti_simset *simset,
         results_file_name = fsti_config_at0_str(&simulation->config,
                                                 "results_file");
 
-        if(strcmp(results_file_name, "")) {
+        if(strcmp(results_file_name, "") && strcmp(results_file_name, "stdout")) {
             simset->results_file =
                 simulation->results_file = fopen(results_file_name, "w");
             FSTI_ASSERT(simulation->results_file, FSTI_ERR_FILE, strerror(errno));
@@ -136,7 +136,7 @@ static void set_output_files(struct fsti_simset *simset,
 
         agents_file_name = fsti_config_at0_str(&simulation->config,
                                                "agents_output_file");
-        if(strcmp(agents_file_name, "")) {
+        if(strcmp(agents_file_name, "") && strcmp(agents_file_name, "stdout")) {
             simset->agents_output_file =
                 simulation->agents_output_file = fopen(agents_file_name, "w");
             FSTI_ASSERT(simulation->agents_output_file, FSTI_ERR_FILE,

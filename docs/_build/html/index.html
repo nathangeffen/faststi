@@ -1293,7 +1293,7 @@ arranged reference guide to the parameters:</p>
 <ul>
 <li><p class="first">after_events</p>
 <p>These are the events executed after a simulation starts.</p>
-<p>Default value: NO_OP</p>
+<p>Default value: _no_op</p>
 <p>Events used in: None</p>
 <p>Examples::</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">after_events</span> <span class="o">=</span> <span class="n">_write_agents_csv</span><span class="p">;</span><span class="n">_report</span>
@@ -1358,11 +1358,42 @@ initialized to.</p>
 </pre></div>
 </div>
 </li>
+<li><p class="first">agents_input_file</p>
+<p>Name of the csv file to read agents from. Use empty string for standard input.</p>
+<p>Default: agents_in.csv</p>
+<p>Events used in: _read_agents</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agents_input_file</span> <span class="o">=</span> <span class="n">agents_in</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">agents_input_file</span> <span class="o">=</span> <span class="n">stdin</span> <span class="c1"># Reads agents from standard input</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">agents_output_file</p>
+<p>Name of the csv file to write agents to. Use empty string for standard output.</p>
+<p>Events used in: _write_agents_csv_header, _write_agents_csv,
+_write_living_agents_csv, _write_dead_agents_csv</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">agents_out</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">stdout</span> <span class="c1"># Writes agents to standard output</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">before_events</p>
+<p>These are the events executed before a simulation starts.</p>
+<p>Default value: _no_op</p>
+<p>Events used in: None</p>
+<p>Examples::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">before_events</span> <span class="o">=</span> <span class="n">_write_agents_csv_header</span><span class="p">;</span><span class="n">_write_results_csv_header</span><span class="p">;</span><span class="n">_generate_and_pair</span>
+
+<span class="n">before_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed after the simulation (default)</span>
+</pre></div>
+</div>
+</li>
 </ul>
 <p>To do:</p>
-<p>agents_input_file; Name of csv file containing agents; agents_in.csv
-agents_output_file; File name to output agents to (empty string for stdout);
-before_events; Events executed before a simulation starts; _no_op
+<p>before_events; Events executed before a simulation starts; _no_op
 birth_event_every_n; Every n iterations that birth event should execute; 73
 birth_rate; Birth rate for the period of BIRTH_EVENT_EVERY_N; 0.003968
 csv_delimiter; Character that separates CSV fields; ;

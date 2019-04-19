@@ -1051,7 +1051,7 @@ arranged reference guide to the parameters:
 
   These are the events executed after a simulation starts.
 
-  Default value: NO_OP
+  Default value: _no_op
 
   Events used in: None
 
@@ -1133,10 +1133,52 @@ arranged reference guide to the parameters:
     age_max = 50 YEARS
 
 
+- agents_input_file
+
+  Name of the csv file to read agents from. Use empty string for standard input.
+
+  Default: agents_in.csv
+
+  Events used in: _read_agents
+
+  Examples: ::
+
+    agents_input_file = agents_in.csv
+
+    agents_input_file = stdin # Reads agents from standard input
+
+- agents_output_file
+
+  Name of the csv file to write agents to. Use empty string for standard output.
+
+  Events used in: _write_agents_csv_header, _write_agents_csv,
+  _write_living_agents_csv, _write_dead_agents_csv
+
+
+  Examples: ::
+
+    agents_output_file = agents_out.csv
+
+    agents_output_file = stdout # Writes agents to standard output
+
+
+- before_events
+
+  These are the events executed before a simulation starts.
+
+  Default value: _no_op
+
+  Events used in: None
+
+  Examples:::
+
+    before_events = _write_agents_csv_header;_write_results_csv_header;_generate_and_pair
+
+    before_events = _no_op # No events are executed after the simulation (default)
+
 To do:
 
-agents_input_file; Name of csv file containing agents; agents_in.csv
-agents_output_file; File name to output agents to (empty string for stdout);
+
 before_events; Events executed before a simulation starts; _no_op
 birth_event_every_n; Every n iterations that birth event should execute; 73
 birth_rate; Birth rate for the period of BIRTH_EVENT_EVERY_N; 0.003968
