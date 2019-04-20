@@ -1496,13 +1496,6 @@ Feel free to clone the Github repository and submit patches. But before doing
 so, it may be best to email nathangeffen@gmail.com to inform us what you
 would like to do, so we can discuss the best way to proceed.
 
-#####################
-Bugs and other issues
-#####################
-
-Please lodge bugs, requests for enhancements, etc at the FastSTI `Github
-repository  issues page <https://github.com/nathangeffen/faststi/issues>`_.
-
 #######
 Credits
 #######
