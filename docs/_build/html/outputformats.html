@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Output file formats &mdash; FastSTI 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration file parameters" href="parameters.html" />
+    <link rel="prev" title="Input file formats" href="inputformats.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FastSTI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output file formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#results-reports">Results reports</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-the-descriptions-mean">What the descriptions mean</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agent-output">Agent output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FastSTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Output file formats</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/outputformats.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="output-file-formats">
+<h1>Output file formats<a class="headerlink" href="#output-file-formats" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="results-reports">
+<h2>Results reports<a class="headerlink" href="#results-reports" title="Permalink to this headline">¶</a></h2>
+<p>Whenever the <em>_report</em> is executed, it writes output in CSV format either to the
+standard output device (default) or an output file as specified by the
+<em>results_file</em> key in the configuration. This output is meant to be
+post-processed by you either in a spreadsheet, or using a scripting language
+like R or Python.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <em>_report</em> event prints out quite basic information. If you feel
+comfortable writing C code, you can enhance it in the fsti_userdefs.h
+file by defining the <em>FSTI_HOOK_REPORT</em> macro. See the <em>FSTI_REPORT</em>
+macro in fsti-defaults.h.</p>
+</div>
+<p>Here is an example output from a set of simulations:</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   name;sim;num;date;description;value
+   Simulation_0;0;0;2018-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_0;0;0;2018-01-01;MAX_AGE_ALIVE;49.000000
+   Simulation_0;0;0;2018-01-01;MEAN_AGE_ALIVE;23.000000
+   Simulation_0;0;0;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+   Simulation_0;0;0;2018-01-01;INFECT_RATE_ALIVE;0.077900
+   Simulation_0;0;0;2018-01-01;POP_ALIVE;20000
+   Simulation_0;0;0;2018-01-01;NUM_PARTNERS;3573
+   Simulation_0;0;0;2018-01-01;MIN_AGE_DEAD;nan
+   Simulation_0;0;0;2018-01-01;MAX_AGE_DEAD;nan
+   Simulation_0;0;0;2018-01-01;MEAN_AGE_DEAD;nan
+   Simulation_0;0;0;2018-01-01;INFECT_RATE_DEAD;-nan
+   Simulation_0;0;0;2018-01-01;POP_DEAD;0
+   Simulation_0;0;0;2018-01-01;INITIAL_INFECTIONS;1558
+   Simulation_0;0;0;2018-01-01;SIMULATION_INFECTIONS;0
+   Simulation_0;0;0;2018-01-01;INITIAL_MATCHES;3573
+   Simulation_0;0;0;2018-01-01;SIMULATION_MATCHES;0
+   Simulation_0;0;0;2018-01-01;BREAKUPS;0
+   Simulation_0;0;0;2018-01-01;TIME_TAKEN;1
+   Simulation_0;0;0;2028-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_0;0;0;2028-01-01;MAX_AGE_ALIVE;59.000000
+   Simulation_0;0;0;2028-01-01;MEAN_AGE_ALIVE;30.000000
+   Simulation_0;0;0;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+   Simulation_0;0;0;2028-01-01;INFECT_RATE_ALIVE;0.142421
+   Simulation_0;0;0;2028-01-01;POP_ALIVE;23592
+   Simulation_0;0;0;2028-01-01;NUM_PARTNERS;8442
+   Simulation_0;0;0;2028-01-01;MIN_AGE_DEAD;15.000000
+   Simulation_0;0;0;2028-01-01;MAX_AGE_DEAD;58.000000
+   Simulation_0;0;0;2028-01-01;MEAN_AGE_DEAD;31.000000
+   Simulation_0;0;0;2028-01-01;INFECT_RATE_DEAD;0.738192
+   Simulation_0;0;0;2028-01-01;POP_DEAD;741
+   Simulation_0;0;0;2028-01-01;INITIAL_INFECTIONS;1558
+   Simulation_0;0;0;2028-01-01;SIMULATION_INFECTIONS;2349
+   Simulation_0;0;0;2028-01-01;INITIAL_MATCHES;3573
+   Simulation_0;0;0;2028-01-01;SIMULATION_MATCHES;145574
+   Simulation_0;0;0;2028-01-01;BREAKUPS;140193
+   Simulation_0;0;0;2028-01-01;TIME_TAKEN;6
+   Simulation_0;1;1;2018-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_0;1;1;2018-01-01;MAX_AGE_ALIVE;49.000000
+   Simulation_0;1;1;2018-01-01;MEAN_AGE_ALIVE;23.000000
+   Simulation_0;1;1;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+   Simulation_0;1;1;2018-01-01;INFECT_RATE_ALIVE;0.080300
+   Simulation_0;1;1;2018-01-01;POP_ALIVE;20000
+   Simulation_0;1;1;2018-01-01;NUM_PARTNERS;3601
+   Simulation_0;1;1;2018-01-01;MIN_AGE_DEAD;nan
+   Simulation_0;1;1;2018-01-01;MAX_AGE_DEAD;nan
+   Simulation_0;1;1;2018-01-01;MEAN_AGE_DEAD;nan
+   Simulation_0;1;1;2018-01-01;INFECT_RATE_DEAD;-nan
+   Simulation_0;1;1;2018-01-01;POP_DEAD;0
+   Simulation_0;1;1;2018-01-01;INITIAL_INFECTIONS;1606
+   Simulation_0;1;1;2018-01-01;SIMULATION_INFECTIONS;0
+   Simulation_0;1;1;2018-01-01;INITIAL_MATCHES;3601
+   Simulation_0;1;1;2018-01-01;SIMULATION_MATCHES;0
+   Simulation_0;1;1;2018-01-01;BREAKUPS;0
+   Simulation_0;1;1;2018-01-01;TIME_TAKEN;6
+   Simulation_0;1;1;2028-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_0;1;1;2028-01-01;MAX_AGE_ALIVE;59.000000
+   Simulation_0;1;1;2028-01-01;MEAN_AGE_ALIVE;30.000000
+   Simulation_0;1;1;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+   Simulation_0;1;1;2028-01-01;INFECT_RATE_ALIVE;0.142754
+   Simulation_0;1;1;2028-01-01;POP_ALIVE;23516
+   Simulation_0;1;1;2028-01-01;NUM_PARTNERS;8432
+   Simulation_0;1;1;2028-01-01;MIN_AGE_DEAD;15.000000
+   Simulation_0;1;1;2028-01-01;MAX_AGE_DEAD;55.000000
+   Simulation_0;1;1;2028-01-01;MEAN_AGE_DEAD;31.000000
+   Simulation_0;1;1;2028-01-01;INFECT_RATE_DEAD;0.768553
+   Simulation_0;1;1;2028-01-01;POP_DEAD;795
+   Simulation_0;1;1;2028-01-01;INITIAL_INFECTIONS;1606
+   Simulation_0;1;1;2028-01-01;SIMULATION_INFECTIONS;2362
+   Simulation_0;1;1;2028-01-01;INITIAL_MATCHES;3601
+   Simulation_0;1;1;2028-01-01;SIMULATION_MATCHES;146416
+   Simulation_0;1;1;2028-01-01;BREAKUPS;141010
+   Simulation_0;1;1;2028-01-01;TIME_TAKEN;11
+   Simulation_1;2;0;2018-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_1;2;0;2018-01-01;MAX_AGE_ALIVE;49.000000
+   Simulation_1;2;0;2018-01-01;MEAN_AGE_ALIVE;23.000000
+   Simulation_1;2;0;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+   Simulation_1;2;0;2018-01-01;INFECT_RATE_ALIVE;0.080600
+   Simulation_1;2;0;2018-01-01;POP_ALIVE;20000
+   Simulation_1;2;0;2018-01-01;NUM_PARTNERS;3569
+   Simulation_1;2;0;2018-01-01;MIN_AGE_DEAD;nan
+   Simulation_1;2;0;2018-01-01;MAX_AGE_DEAD;nan
+   Simulation_1;2;0;2018-01-01;MEAN_AGE_DEAD;nan
+   Simulation_1;2;0;2018-01-01;INFECT_RATE_DEAD;-nan
+   Simulation_1;2;0;2018-01-01;POP_DEAD;0
+   Simulation_1;2;0;2018-01-01;INITIAL_INFECTIONS;1612
+   Simulation_1;2;0;2018-01-01;SIMULATION_INFECTIONS;0
+   Simulation_1;2;0;2018-01-01;INITIAL_MATCHES;3569
+   Simulation_1;2;0;2018-01-01;SIMULATION_MATCHES;0
+   Simulation_1;2;0;2018-01-01;BREAKUPS;0
+   Simulation_1;2;0;2018-01-01;TIME_TAKEN;5
+   Simulation_1;2;0;2028-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_1;2;0;2028-01-01;MAX_AGE_ALIVE;59.000000
+   Simulation_1;2;0;2028-01-01;MEAN_AGE_ALIVE;30.000000
+   Simulation_1;2;0;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+   Simulation_1;2;0;2028-01-01;INFECT_RATE_ALIVE;0.136983
+   Simulation_1;2;0;2028-01-01;POP_ALIVE;23638
+   Simulation_1;2;0;2028-01-01;NUM_PARTNERS;8423
+   Simulation_1;2;0;2028-01-01;MIN_AGE_DEAD;15.000000
+   Simulation_1;2;0;2028-01-01;MAX_AGE_DEAD;59.000000
+   Simulation_1;2;0;2028-01-01;MEAN_AGE_DEAD;32.000000
+   Simulation_1;2;0;2028-01-01;INFECT_RATE_DEAD;0.717507
+   Simulation_1;2;0;2028-01-01;POP_DEAD;754
+   Simulation_1;2;0;2028-01-01;INITIAL_INFECTIONS;1612
+   Simulation_1;2;0;2028-01-01;SIMULATION_INFECTIONS;2167
+   Simulation_1;2;0;2028-01-01;INITIAL_MATCHES;3569
+   Simulation_1;2;0;2028-01-01;SIMULATION_MATCHES;145976
+   Simulation_1;2;0;2028-01-01;BREAKUPS;140568
+   Simulation_1;2;0;2028-01-01;TIME_TAKEN;10
+   Simulation_1;3;1;2018-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_1;3;1;2018-01-01;MAX_AGE_ALIVE;49.000000
+   Simulation_1;3;1;2018-01-01;MEAN_AGE_ALIVE;23.000000
+   Simulation_1;3;1;2018-01-01;MEDIAN_AGE_ALIVE;18.000000
+   Simulation_1;3;1;2018-01-01;INFECT_RATE_ALIVE;0.083850
+   Simulation_1;3;1;2018-01-01;POP_ALIVE;20000
+   Simulation_1;3;1;2018-01-01;NUM_PARTNERS;3550
+   Simulation_1;3;1;2018-01-01;MIN_AGE_DEAD;nan
+   Simulation_1;3;1;2018-01-01;MAX_AGE_DEAD;nan
+   Simulation_1;3;1;2018-01-01;MEAN_AGE_DEAD;nan
+   Simulation_1;3;1;2018-01-01;INFECT_RATE_DEAD;-nan
+   Simulation_1;3;1;2018-01-01;POP_DEAD;0
+   Simulation_1;3;1;2018-01-01;INITIAL_INFECTIONS;1677
+   Simulation_1;3;1;2018-01-01;SIMULATION_INFECTIONS;0
+   Simulation_1;3;1;2018-01-01;INITIAL_MATCHES;3550
+   Simulation_1;3;1;2018-01-01;SIMULATION_MATCHES;0
+   Simulation_1;3;1;2018-01-01;BREAKUPS;0
+   Simulation_1;3;1;2018-01-01;TIME_TAKEN;5
+   Simulation_1;3;1;2028-01-01;MIN_AGE_ALIVE;15.000000
+   Simulation_1;3;1;2028-01-01;MAX_AGE_ALIVE;59.000000
+   Simulation_1;3;1;2028-01-01;MEAN_AGE_ALIVE;30.000000
+   Simulation_1;3;1;2028-01-01;MEDIAN_AGE_ALIVE;26.000000
+   Simulation_1;3;1;2028-01-01;INFECT_RATE_ALIVE;0.139352
+   Simulation_1;3;1;2028-01-01;POP_ALIVE;23595
+   Simulation_1;3;1;2028-01-01;NUM_PARTNERS;8456
+   Simulation_1;3;1;2028-01-01;MIN_AGE_DEAD;15.000000
+   Simulation_1;3;1;2028-01-01;MAX_AGE_DEAD;58.000000
+   Simulation_1;3;1;2028-01-01;MEAN_AGE_DEAD;31.000000
+   Simulation_1;3;1;2028-01-01;INFECT_RATE_DEAD;0.728205
+   Simulation_1;3;1;2028-01-01;POP_DEAD;780
+   Simulation_1;3;1;2028-01-01;INITIAL_INFECTIONS;1677
+   Simulation_1;3;1;2028-01-01;SIMULATION_INFECTIONS;2179
+   Simulation_1;3;1;2028-01-01;INITIAL_MATCHES;3550
+   Simulation_1;3;1;2028-01-01;SIMULATION_MATCHES;146061
+   Simulation_1;3;1;2028-01-01;BREAKUPS;140609
+   Simulation_1;3;1;2028-01-01;TIME_TAKEN;10
+</pre></div>
+</td></tr></table></div>
+<ul class="simple">
+<li>The first column (name) is the simulation group name as specified in the configuration
+file.</li>
+<li>The second column (sim) is the unique simulation number. In every execution of
+FastSTI, each simulation will have its own unique id, starting from 0.</li>
+<li>The third column (num) is the number of the simulation within the simulation
+group. Here each of the two simulation groups (Simulation_0 and Simulation_1)
+executed two simulations each, numbered 0 and 1.</li>
+<li>The fourth column is the date within the simulation that this snapshot report
+is for. In these simulations, the start date was 1 January 2018, and the end
+date was 1 January 2028. The <em>_report</em> event ran before and after the
+simulation (it can run as often as you like during the simulation as well).</li>
+<li>The fifth column is the description of what’s being reported. These are
+described below.</li>
+<li>The sixth column is the value of what’s being reported. E.g. 10 for TIME_TAKEN
+means the simulation ran in 10 seconds up to that point.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The output in the example above is all in chronological order. This is
+because it was a single-threaded sequential execution. Normally you will do a
+multithreaded execution and the report lines will likely <strong>not</strong> come out in
+order. When analysing them in a spreadsheet, R or Python, remember to sort
+the output by the first four columns.</p>
+</div>
+<div class="section" id="what-the-descriptions-mean">
+<h3>What the descriptions mean<a class="headerlink" href="#what-the-descriptions-mean" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>MIN_AGE_ALIVE</dt>
+<dd>is the youngest age, in years, of a currently living agent</dd>
+<dt>MAX_AGE_ALIVE</dt>
+<dd>is the oldest age, in years of a currently living agent</dd>
+<dt>MEAN_AGE_ALIVE</dt>
+<dd>is the mean age, in years, of the living population</dd>
+<dt>MEDIAN_AGE_ALIVE</dt>
+<dd>is the median age, in years, of the living population</dd>
+<dt>INFECT_RATE_ALIVE</dt>
+<dd>is the infection rate of the living population</dd>
+<dt>POP_ALIVE</dt>
+<dd>is the number of living agents</dd>
+<dt>NUM_PARTNERS</dt>
+<dd>is the number of agents in relationships</dd>
+<dt>MIN_AGE_DEAD</dt>
+<dd>is the age of the youngest agent who has died</dd>
+<dt>MAX_AGE_DEAD</dt>
+<dd>is the age of the oldest agent who has died</dd>
+<dt>INFECT_RATE_DEAD</dt>
+<dd>is the infection rate in the dead population</dd>
+<dt>POP_DEAD</dt>
+<dd>is the number of dead agents</dd>
+<dt>INITIAL_INFECTIONS</dt>
+<dd>is the number of infected agents at the start of the simulation</dd>
+<dt>SIMULATION_INFECTIONS</dt>
+<dd>is the number of agents who became infected during the simulation</dd>
+<dt>INITIAL_MATCHES</dt>
+<dd>is the number of pairs of agents in relationships at the start of the
+simulation</dd>
+<dt>SIMULATION_MATCHES</dt>
+<dd>is the number of pairs of agents made during the simulation</dd>
+<dt>BREAKUPS</dt>
+<dd>is the number of pairs that broke up during the simulation</dd>
+<dt>TIME_TAKEN</dt>
+<dd>is the time taken by the simulation in seconds</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="agent-output">
+<h2>Agent output<a class="headerlink" href="#agent-output" title="Permalink to this headline">¶</a></h2>
+<p>The <em>_write_agents_csv_header</em> prints out the header line in an output agent csv
+file. The <em>_write_agents_csv</em> event actually writes out all the agents (living
+and dead), and the <em>_write_living_agents_csv</em> and <em>_write_dead_agents_csv</em> write
+the living and dead agents respectively.</p>
+<p>Here is an extract from sample output of the <em>_write_agents_csv_header</em> and
+<em>_write_agents_csv</em> events.</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   sim;date;id;age;sex;sex_preferred;infected;treated;resistant;date_death;partner;change_date
+   1;2028-01-01;1547;25;0;1;0;0;0;0000-00-00;515;2035-10-24
+   1;2028-01-01;1548;41;0;1;4;0;0;2023-10-11;-1;2025-10-30
+   1;2028-01-01;1549;28;0;1;0;0;0;0000-00-00;6620;2028-04-22
+   1;2028-01-01;1550;25;1;0;0;0;0;0000-00-00;3910;2029-09-04
+   1;2028-01-01;1551;31;1;0;1;1;0;0000-00-00;22910;2028-01-13
+   1;2028-01-01;1552;30;1;0;0;0;0;0000-00-00;18055;2028-01-03
+   1;2028-01-01;1553;36;1;0;0;0;0;0000-00-00;7448;2028-10-14
+   1;2028-01-01;1554;33;1;0;0;0;0;0000-00-00;694;2028-04-25
+   1;2028-01-01;1555;28;0;0;0;0;0;0000-00-00;984;2028-03-23
+   1;2028-01-01;1556;28;0;1;0;0;0;0000-00-00;4467;2030-03-27
+   1;2028-01-01;1557;45;0;1;0;0;0;0000-00-00;15614;2035-01-22
+   1;2028-01-01;1558;27;1;0;0;0;0;0000-00-00;3367;2030-02-17
+   1;2028-01-01;1559;29;0;1;0;0;0;0000-00-00;10884;2030-01-10
+   1;2028-01-01;1560;52;1;0;0;0;0;0000-00-00;19043;2028-05-24
+   1;2028-01-01;1561;58;1;0;0;0;0;0000-00-00;13638;2028-07-01
+   1;2028-01-01;1562;30;1;0;0;0;0;0000-00-00;14842;2030-02-19
+   1;2028-01-01;1563;57;0;1;0;0;0;0000-00-00;17535;2029-03-13
+   1;2028-01-01;1564;37;1;0;1;1;1;0000-00-00;15586;2031-10-26
+   1;2028-01-01;1565;29;1;0;0;4;0;2026-11-30;-1;2027-08-30
+   1;2028-01-01;1566;46;1;0;0;0;0;0000-00-00;-1;2030-03-21
+   1;2028-01-01;1567;26;1;0;0;0;0;0000-00-00;16097;2029-03-04
+</pre></div>
+</td></tr></table></div>
+<p>The first column is the simulation number. The second column is the current
+simulation date. The third column is the unique agent id. The fourth to ninth
+columns are the agent’s sex, preferred sex, infection stage, treatment regimen,
+and resistance status respectively. The tenth column is 0000-00-00 if the agent
+is alive, else the date the agent died. The eleventh column is the unique id of
+the agent’s partner (-1 if the agent is single). The last column is the date the
+agent’s relationship status will change, either to single if it’s in a
+relationship, or to a relationship if it’s single.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">FastSTI’s agent output event assumes an agent has at most one
+partner. You can extend it if you’re implementing concurrency.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you feel comfortable writing C code, you can modify or extend the
+output of the <em>_write_agents_csv</em>, <em>_write_living_agents_csv</em> and
+<em>_write_dead_agents_csv</em> events by redefining the
+FSTI_AGENT_PRINT_CSV_HEADER and FSTI_AGENT_PRINT_CSV macros. Put your
+redefinition in <em>src/fsti-userdefs.h</em>. The default implementation is in
+<em>src/fsti-defaults.h</em>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="parameters.html" class="btn btn-neutral float-right" title="Configuration file parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="inputformats.html" class="btn btn-neutral float-left" title="Input file formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Nathan Geffen and Stefan Scholz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

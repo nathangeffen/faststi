@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration file parameters &mdash; FastSTI 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Events" href="events.html" />
+    <link rel="prev" title="Output file formats" href="outputformats.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FastSTI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration file parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FastSTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration file parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/parameters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration-file-parameters">
+<h1>Configuration file parameters<a class="headerlink" href="#configuration-file-parameters" title="Permalink to this headline">¶</a></h1>
+<p id="parameter-ref">To see the list of configuration file parameters, along with a description and
+the value for each, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">fsti</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>This prints out the parameters in a logical order. Here is an alphabetically
+arranged reference guide to the parameters:</p>
+<ul>
+<li><p class="first">after_events</p>
+<p>These are the events executed after a simulation starts.</p>
+<p>Default value: _no_op</p>
+<p>Events used in: None</p>
+<p>Examples::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">after_events</span> <span class="o">=</span> <span class="n">_write_agents_csv</span><span class="p">;</span><span class="n">_report</span>
+
+<span class="n">after_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed after the simulation (default)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">age_alpha</p>
+<p>If instead of reading in an agent file, the agents are generated with the
+<em>_generate_agents</em> event, then the initial age of each agent is drawn a random
+alpha-beta distribution. This is the alpha parameter.</p>
+<p>Default value: 0.3</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">age_beta</p>
+<p>If instead of reading in an agent file, the agents are generated with the
+<em>_generate_agents</em> event, then the initial age of each agent is drawn a random
+alpha-beta distribution. This is the beta parameter.</p>
+<p>Default: 1.0</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+</li>
+<li><p class="first">age_input_time_step</p>
+<p>Denomination of agent ages used in input files. This is typically either a
+year or 5-year age groups.</p>
+<p>Default: 1 year (525949 minutes)</p>
+<p>Events used in: _read_agents</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_input_time_step</span> <span class="o">=</span> <span class="mi">525949</span>
+
+<span class="n">age_input_time_step</span> <span class="o">=</span> <span class="n">YEAR</span>
+
+<span class="n">age_input_time_step</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">YEARS</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">age_max</p>
+<p>Oldest age that a generated agent at the beginning of a simulation can be
+initialized to.</p>
+<p>Default: 50 years (26297450 minutes)</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_max</span> <span class="o">=</span> <span class="mi">26297450</span>
+
+<span class="n">age_max</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">YEARS</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">age_min</p>
+<p>Youngest age that a generated agent at the beginning of a simulation can be
+initialized to.</p>
+<p>Default: 15 years (7889235 minutes)</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_max</span> <span class="o">=</span> <span class="mi">26297450</span>
+
+<span class="n">age_max</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">YEARS</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">agents_input_file</p>
+<p>Name of the csv file to read agents from. Use empty string for standard input.</p>
+<p>Default: agents_in.csv</p>
+<p>Events used in: _read_agents</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agents_input_file</span> <span class="o">=</span> <span class="n">agents_in</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">agents_input_file</span> <span class="o">=</span> <span class="n">stdin</span> <span class="c1"># Reads agents from standard input</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">agents_output_file</p>
+<p>Name of the csv file to write agents to. Use empty string for standard output.</p>
+<p>Events used in: _write_agents_csv_header, _write_agents_csv,
+_write_living_agents_csv, _write_dead_agents_csv</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">agents_out</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">stdout</span> <span class="c1"># Writes agents to standard output</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">before_events</p>
+<p>These are the events executed before a simulation starts.</p>
+<p>Default: _no_op</p>
+<p>Events used in: None</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">before_events</span> <span class="o">=</span> <span class="n">_write_agents_csv_header</span><span class="p">;</span><span class="n">_write_results_csv_header</span><span class="p">;</span><span class="n">_generate_and_pair</span>
+
+<span class="n">before_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed after the simulation (default)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">birth_event_every_n</p>
+<p>Indicates how frequently (i.e. every nth iteration) the birth (_birth) event is executed.</p>
+<p>The birth event creates new agents during the simulation. Each new agent is
+set to the minimum age. Because the number of agents might be too small for
+their to be births on every iteration, this parameter allows you to execute
+the births at specified iterations.</p>
+<p>Also, births are discrete. There can only be a whole number of births executed
+by the _birth event. Even if births can take place daily, rounding the
+expected number of births to a whole number may create a severely inaccurate
+birth rate. Therefore it may be better to execute the _birth event
+infrequently but with more births taking place each time it executes, in order
+to reduce the difference between the births generated by the model and the
+births in the real-world population being studied.</p>
+<p>Default: 73 (i.e. every 73rd iteration - by default this would be every
+73rd day of the simulation)</p>
+<p>Of course if your simulation doesn’t use the _birth event, this parameter is irrelevant.</p>
+<p>Events used in: _birth</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">birth_event_every_n</span> <span class="o">=</span> <span class="mi">73</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">birth_rate</p>
+<p>Birth rate for the period of birth_event_every_n</p>
+<p>Events used in: _birth</p>
+<p>Default: 0.003968</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">birth_rate</span> <span class="o">=</span> <span class="mf">0.002</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">csv_delimiter</p>
+<p>Character that separates CSV fields</p>
+<p>Events used in: any event that reads or writes a CSV file.</p>
+<p>Default value: ;</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csv_delimiter</span> <span class="o">=</span> <span class="p">,</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s not currently possible to set the csv_delimiter in the
+configuration file to a semi-colon (;) because this is the delimiter
+for the configuration file itself. But the default value for
+csv_delimiter is the semi-colon, so it should be unnecessary to have
+to set it to anything other than a comma.</p>
+</div>
+<ul>
+<li><p class="first">dataset_birth_infect</p>
+<p>Specifies the location of a dataset used to set the infection stage of agents,
+if any, when they enter the simulation (when agents are born, so to speak,
+although since they are born at the minimum age of the simulation, e.g. 15
+years old, they may already be sexually active).</p>
+<p>See the data/dataset_birth_infect.csv file for an example of this dataset.</p>
+<p>In this example file, the the agent characteristics of sex, sex_preferred and
+age (in 10-year groupings) are used to determine probability of an agent being
+uninfected (i.e. agent-&gt;infected is set to 0), or stage 1, 2, 3 or 4. Note the
+probabilities are ascending from stage 1 through 4. The _birth event first
+checks if a uniform random number, r, is &lt; than the stage 1 probability. If it
+is, agent-&gt;infected is set to 1. Then it checks if r is &lt; than the stage 2
+probability and &gt;= the stage 1 probability. If it is, agent-&gt;infected is set
+to 2. Etc. If r is &gt;= the stage 4 probability, the agent is uninfected and
+agent-&gt;infected is set to 0. Your simulation can have many stages (up to 254,
+but this would almost certainly be unmanageable), so long as they are
+consistently treated across datasets.</p>
+<p>Events used in: _birth</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_infect</span> <span class="o">=</span> <span class="n">dataset_birth_infect</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_birth_resistant</p>
+<p>Specifies the location of a dataset used to set the resistance of infected
+agents, if any, when they enter the simulation (when agents are born, so to
+speak, although since they are born at the minimum age of the simulation,
+e.g. 15 years old, they may already be sexually active). The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the risk of
+resistance for agents with a given set of characteristics.</p>
+<p>See the data/dataset_birth_resistant.csv file for an example of this dataset.</p>
+<p>Events used in: _birth</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_resistant</span> <span class="o">=</span> <span class="n">dataset_birth_resistant</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This mechanism for modelling resistance at birth is a bit too simple
+and needs to be improved.</p>
+</div>
+<ul>
+<li><p class="first">dataset_birth_treated</p>
+<p>Specifies the location of a dataset used to set the probability of an infected
+agent being on treatment when they enter the simulation (when agents are born,
+so to speak, although since they are born at the minimum age of the
+simulation, e.g. 15 years old, they may already be sexually active). The file
+can have any number of columns specifying agent characteristics (independent
+variables). It must have exactly one dependent variable column specifying the
+probability of treatment for agents with a given set of characteristics</p>
+<p>See the data/dataset_birth_treated.csv file for an example of this dataset.</p>
+<p>Events used in: _birth</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_treated</span> <span class="o">=</span> <span class="n">dataset_birth_treated</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_coinfect</p>
+<p>Specifies the location of a dataset used to set the coinfection status of an
+agent. You can have as many columns specifying agent characteristics (i.e. the
+independent variables) as you wish but the _coinfect event expects exactly one
+dependent variable, the probability of the agent being coinfected per
+time step.</p>
+<p>See the data/dataset_coinfect.csv file for an example of this dataset.</p>
+<p>Events used in: _coinfect</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_coinfect</span> <span class="o">=</span> <span class="n">dataset_coinfect</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_gen_infect</p>
+<p>Specifies the location of a dataset used to set the infection stage of agents,
+if any, at the beginning of a simulation.</p>
+<p>See the data/dataset_gen_infect.csv file for an example of this dataset.</p>
+<p>In this example file, the agent characteristics of sex, sex_preferred and
+age (in 10-year groupings) are used to determine probability of an agent being
+uninfected (i.e. agent-&gt;infected is set to 0), or stage 1, 2, 3 or 4. Note the
+probabilities are ascending from stage 1 through 4. The _birth event first
+checks if a uniform random number, r, is &lt; than the stage 1 probability. If it
+is, agent-&gt;infected is set to 1. Then it checks if r is &lt; than the stage 2
+probability and &gt;= the stage 1 probability. If it is, agent-&gt;infected is set
+to 2. Etc. If r is &gt;= the stage 4 probability, the agent is uninfected and
+agent-&gt;infected is set to 0. Your simulation can have many stages (up to 254,
+but this would almost certainly be unmanageable), so long as they are
+consistently treated across datasets.</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_infect</span> <span class="o">=</span> <span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_gen_mating</p>
+<p>Specifies the location of a dataset used to set the probability of an agent
+being in the mating pool at the beginning of a simulation. You can have as
+many columns specifying agent characteristics (i.e. the independent variables)
+as you wish but the events that use this dataset expect exactly one dependent
+variable, the probability of the agent being in the initial mating pool.</p>
+<p>See the data/dataset_gen_mating.csv file for an example of this dataset.</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_mating</span> <span class="o">=</span> <span class="n">dataset_gen_mating</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_gen_resistant</p>
+<p>Specifies the location of a dataset used to set the resistance of infected
+agents, if any, at the beginning of a simulation. The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the risk of
+resistance for agents with a given set of characteristics.</p>
+<p>See the data/dataset_gen_resistant.csv file for an example of this dataset.</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_resistant</span> <span class="o">=</span> <span class="n">dataset_gen_resistant</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This mechanism for modelling resistance is a bit too simple
+and needs to be improved.</p>
+</div>
+<p>TO DO</p>
+<p>dataset_gen_sex; CSV file of values to set sex of generated agent; _no_op</p>
+<p>dataset_gen_sex_preferred; CSV file of values to set sex preferred of generated agent; _no_op</p>
+<p>dataset_gen_treated; CSV file of values to set infected agents treatment status; _no_op</p>
+<p>dataset_infect; CSV file of values to determine if agent has been infected by a sexual partner; _no_op</p>
+<p>dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op</p>
+<p>dataset_mortality; CSV file of values to determine agent deaths; _no_op</p>
+<p>dataset_rel_period; CSV file of values to determine period agent is in relationship; _no_op</p>
+<p>dataset_single_period; CSV file of values to determine period agent is single; _no_op</p>
+<p>during_events; Events executed on every time step of a simulation; _no_op</p>
+<p>event_test_freq; Run test cases in test events every nth iteration; 100</p>
+<p>initial_infect_stage; When infected this is the integer to set infected to; 2</p>
+<p>match_k; Value for k when using matching algorithms; 100</p>
+<p>max_stage; Maximum infection stage (e.g. 6 for HIV 1=virally suppressed, 2=primary 3-6=WHO 1-4); 6</p>
+<p>mutual_csv_partners; After initializing agents, make all partnerships mutual; 1</p>
+<p>num_agents; Number of agents; 20000</p>
+<p>num_simulations; Number of simulations to execute (default is 1); 1</p>
+<p>partnerships_file; File name to output partnerships (empty string for stdout);</p>
+<p>prob_birth_infected_msm; Probability a new msm agent is infected; 0.001000</p>
+<p>prob_birth_infected_msw; Probability a new msw agent is infected; 0.000100</p>
+<p>prob_birth_infected_wsm; Probability a new wsm agent is infected; 0.000500</p>
+<p>prob_birth_infected_wsw; Probability a new wsw agent is infected; 0.000100</p>
+<p>prob_birth_male; Probability a new agent is male; 0.500000</p>
+<p>prob_birth_msw; Probability a new male agent is msw; 0.950000</p>
+<p>prob_birth_wsm; Probability a new female agent is wsm; 0.950000</p>
+<p>prob_gen_male; Probability a generated agent is male; 0.500000</p>
+<p>prob_gen_msw; Probability a generated male agent is msw; 0.950000</p>
+<p>prob_gen_wsm; Probability a generated female agent is wsm; 0.950000</p>
+<p>record_breakups; Whether to output breakups to the partnership file; 0</p>
+<p>record_infections; Whether to output infections to the partnership file; 0</p>
+<p>record_matches; Whether to output matches to the partnership file; 0</p>
+<p>report_frequency; Frequency that report event is generated; 1</p>
+<p>results_file; File name to output results to (empty string for stdout);</p>
+<p>simulation_period; Time period of the simulation (10 years); 5259490</p>
+<p>stabilization_events; Events used to stabilize the agent characteristics before
+the actual simulation; _no_op</p>
+<p>stabilization_steps; Number of time steps to run before executing various events; 0</p>
+<p>start_date; Start date of simulation (yyyy;mm;dd); 2018; 1; 1</p>
+<p>threads; Number of threads (0=system determined); 0</p>
+<p>time_step; Time step for each iteration of simulation in minutes(default 1440 minutes == 1 day); 1440</p>
+<p>treatment_infect_stage; When treated this is the integer to set infected to; 1</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="events.html" class="btn btn-neutral float-right" title="Events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="outputformats.html" class="btn btn-neutral float-left" title="Output file formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Nathan Geffen and Stefan Scholz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

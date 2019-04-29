@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting started &mdash; FastSTI 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input file formats" href="inputformats.html" />
+    <link rel="prev" title="Testing that it works" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FastSTI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulations">Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-full-simulation">A full simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FastSTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/getstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>FastSTI takes as input a configuration file which tells it how many simulations
+to run, and how to run each simulation. It also takes data as input in files
+that we call datasets. And optionally, it takes a file of agents, though the
+agents can be generated by FastSTI itself, via instructions in the configuration file.</p>
+<p>The outputs are a report of simulation results, and the agents.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/FastSTI-Overview.png"><img alt="Structure of FastSTI execution" src="_images/FastSTI-Overview.png" style="width: 280px;" /></a>
+<p class="caption"><span class="caption-text">FastSTI inputs include a configuration file, datasets and agent files. The
+outputs are an agent file and simulation results.</span></p>
+</div>
+<div class="section" id="simulations">
+<h2>Simulations<a class="headerlink" href="#simulations" title="Permalink to this headline">¶</a></h2>
+<p>A simulation continuously iterates over sets of agents, executing events on the
+agents on each iteration (which we call a time step). The structure of a FastSTI
+simulation is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Execute</span> <span class="n">events</span> <span class="n">before</span> <span class="n">simulation</span> <span class="n">runs</span>
+<span class="k">for</span> <span class="n">each</span> <span class="n">time</span><span class="o">-</span><span class="n">step</span>
+  <span class="k">for</span> <span class="n">each</span> <span class="n">event</span> <span class="n">E</span>
+      <span class="k">for</span> <span class="n">each</span> <span class="n">agent</span> <span class="n">A</span>
+          <span class="k">if</span> <span class="n">E</span> <span class="n">should</span> <span class="n">be</span> <span class="n">applied</span> <span class="n">to</span> <span class="n">A</span>
+              <span class="n">apply</span> <span class="n">E</span> <span class="n">to</span> <span class="n">A</span>
+<span class="n">Execute</span> <span class="n">events</span> <span class="n">after</span> <span class="n">simulation</span> <span class="n">runs</span>
+</pre></div>
+</div>
+<p>The number of agents and the specific events to execute are specified in a
+configuration file. FastSTI’s configuration file uses the <em>.ini</em> format, which
+are the standard simple configuration format used on MS Windows and the GTK
+framework popular on Linux systems.</p>
+<p>You can configure the number of agents, the events and the order of events that
+execute upon them, the size of the time step (default 1 day), the number of time
+steps (default 10 years) and much else (see <a class="reference internal" href="parameters.html#parameter-ref"><span class="std std-ref">Configuration file parameters</span></a>).</p>
+<p>FastSTI has a number of useful built-in events useful for modelling STI
+epidemics (see <a class="reference internal" href="events.html#event-ref"><span class="std std-ref">Events</span></a>). These include agent ageing, death, matching
+agents in sexual relationships, infection with the STI, disease advance,
+co-infection, and breakups.</p>
+<p>There are also useful supporting events that read in agent files or generate the
+agents, write the agents to a CSV file, and write basic statistics to a CSV file.</p>
+<p>If you need more events, the framework has been designed with extensibility in
+mind. You can define new events in C, identify them to FastSTI, quickly
+recompile the code and use them.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start off with the simplest simulation. Change into the
+simulations/examples directory. Take a look at eg1.ini.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Faststi &quot;Hello world&quot; equivalent simulation</span>
+<span class="p">[</span><span class="n">Simulation_0</span><span class="p">]</span>
+<span class="n">after_events</span><span class="o">=</span><span class="n">_report</span>
+</pre></div>
+</div>
+<p>The first line is a comment.</p>
+<p>The second line is the name of the simulation group: <em>First simulation</em>. A
+simulation group can have one or more simulations. This particular group has
+only one simulation.</p>
+<p>The third line is one of the dozens of parameters used to configure
+simulations. The <em>after_events</em> parameter tells FastSTI what events to execute
+when the simulation is finished. <em>_report</em> is a built-in event that prints out
+basic information about the state of a simulation. All built-in events are
+prefixed with an underscore, to differentiate them from ones you might code
+yourself.</p>
+<p>To run the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The output may look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MIN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MAX_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEAN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEDIAN_AGE_ALIVE</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INFECT_RATE_ALIVE</span><span class="p">;</span><span class="o">-</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">POP_ALIVE</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">NUM_PARTNERS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MIN_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MAX_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">MEAN_AGE_DEAD</span><span class="p">;</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INFECT_RATE_DEAD</span><span class="p">;</span><span class="o">-</span><span class="n">nan</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">POP_DEAD</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INITIAL_INFECTIONS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">SIMULATION_INFECTIONS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">INITIAL_MATCHES</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">SIMULATION_MATCHES</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">BREAKUPS</span><span class="p">;</span><span class="mi">0</span>
+<span class="n">First</span> <span class="n">simulation</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">2028</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span><span class="p">;</span><span class="n">TIME_TAKEN</span><span class="p">;</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Note that it’s in csv format, so you easily import it into Python or R and
+process it. You can also redirect the output to a file instead of standard
+output with the <em>results_file</em> parameter.</p>
+<p>The fields of the csv file are: the name of the simulation, the number of the
+current simulation, the number of the simulation within the current simulation
+group, the date within the simulation for which the output applies, a
+description field, and the value of the description field. E.g. the last two
+columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
+seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
+tell us that the population alive and dead in this simulation on 1 January 2028
+is 0.</p>
+<div class="section" id="a-full-simulation">
+<h3>A full simulation<a class="headerlink" href="#a-full-simulation" title="Permalink to this headline">¶</a></h3>
+<p>The output of the eg1.ini simulation is rather uninteresting. To get more
+interesting output we need a more interesting simulation. Take a look at
+eg2.ini.</p>
+<div class="highlight-ini notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="c1"># First interesting simulation</span>
+
+   <span class="k">[Full simulation]</span>
+
+   <span class="na">num_simulations</span><span class="o">=</span><span class="s">4</span>
+<span class="s">   num_agents=10000</span>
+<span class="s">   time_step=1 DAY</span>
+<span class="s">   simulation_period=10 YEARS</span>
+
+   <span class="na">before_events</span><span class="o">=</span><span class="s">_write_agents_csv_header;_generate_and_pair;_report;_write_agents_csv</span>
+<span class="s">   during_events=_age;_breakup_and_pair;_infect;_stage;_birth;_death</span>
+<span class="s">   after_events=_write_agents_csv;_report</span>
+
+   <span class="na">dataset_gen_sex</span><span class="o">=</span><span class="s">dataset_gen_sex.csv</span>
+<span class="s">   dataset_gen_sex_preferred=dataset_gen_sex_preferred.csv</span>
+<span class="s">   dataset_gen_infect=dataset_gen_infect.csv</span>
+<span class="s">   dataset_gen_treated=dataset_gen_treated.csv</span>
+<span class="s">   dataset_gen_resistant=dataset_gen_resistant.csv</span>
+<span class="s">   dataset_gen_mating=dataset_gen_mating.csv</span>
+
+   <span class="na">dataset_birth_infect</span><span class="o">=</span><span class="s">dataset_gen_infect.csv</span>
+<span class="s">   dataset_birth_treated=dataset_birth_treated.csv</span>
+<span class="s">   dataset_birth_resistant=dataset_birth_resistant.csv</span>
+
+   <span class="na">dataset_rel_period</span><span class="o">=</span><span class="s">dataset_rel.csv</span>
+<span class="s">   dataset_single_period=dataset_single.csv</span>
+<span class="s">   dataset_infect=dataset_infect.csv</span>
+<span class="s">   dataset_infect_stage=dataset_infect_stage.csv</span>
+<span class="s">   dataset_mortality=dataset_mortality_simple.csv</span>
+
+
+   <span class="na">agents_output_file</span><span class="o">=</span><span class="s">agents_out.csv</span>
+<span class="s">   results_file=results.csv</span>
+
+   <span class="na">threads</span><span class="o">=</span><span class="s">1</span>
+
+   <span class="k">[Change time period]</span>
+
+   <span class="na">threads</span><span class="o">=</span><span class="s">0 # As many threads as there are cores will execute</span>
+<span class="s">   simulation_period=5 YEARS</span>
+</pre></div>
+</td></tr></table></div>
+<p>Assuming you are in the simulations/examples directory you can run this
+simulation as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="n">release</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>The <em>release</em> command line parameter ensures the much faster <em>release</em> version
+of FastSTI (without debugging code) executes. It will likely take about 10
+seconds to run.</p>
+<p>This is what the configuration does:</p>
+<ul>
+<li><p class="first">Line 1 is a comment. Comments start with a #.</p>
+</li>
+<li><p class="first">Line 3 specifies the name of the first group of simulations: <em>Full simulation</em></p>
+</li>
+<li><p class="first">Line 5 specifies the number of simulations to run in this group. Note that
+parameter names, like <em>num_simulations</em>, are case-sensitive.</p>
+</li>
+<li><p class="first">Line 6 specifies the number of agents in the simulation.</p>
+</li>
+<li><p class="first">Line 7 specifies the time period represented by each simulation iteration, 1
+day in this case. The format for this parameter and others like it that
+specify a time period is a positive integer followed by either MINUTE, HOUR,
+DAY, WEEK, MONTH or YEAR. You can also use the plural of any of these time
+periods or any combination of lower and upper case (i.e. minute, minutes,
+hour, hours, day, days, week, weeks, month, months or year, years). You can
+also put a hyphen instead of a space between the integer and the time
+period. If you leave out the time period, it’s assumed to be minutes. In
+FastSTI, the predefined time period have the following number of minutes:</p>
+<ul class="simple">
+<li>hour: 60</li>
+<li>day: 1,440</li>
+<li>week: 10,080</li>
+<li>month: 43,830</li>
+<li>year: 525,949</li>
+</ul>
+</li>
+<li><p class="first">Line 8 specifies the simulation period: 10 years in this case. The number of
+time steps (or iterations) of the simulation is calculated by dividing the
+simulation_period by the time_step. In this simulation there are therefore
+3,652 iterations: <span class="math notranslate nohighlight">\(10 \times 525949 / 1440\)</span>.</p>
+</li>
+<li><p class="first">Line 10 lists the events that are to be run before each simulation
+starts.</p>
+<ul class="simple">
+<li>The _write_agents_csv_header event simply writes the first line of the csv
+file to which agents will be written.</li>
+<li>The _generate_and_pair event generates agents (equal to the <em>num_agents</em>
+parameter) and pairs a subset of them in sexual relationships.</li>
+<li>The _report event prints out some simple statistics about the agent
+population.</li>
+<li>The _write_agents_csv event prints out the agents in csv format.</li>
+</ul>
+</li>
+<li><p class="first">Line 11 lists the events that are run on every iteration of the simulation.</p>
+<ul class="simple">
+<li>The _age event increases the age of each agent by the <em>time_step</em> of the
+simulation (one day in this example).</li>
+<li>The _breakup_and_pair event pairs a subset of agents into sexual
+partnerships and breaks up another subset of agents who are already in
+sexual partnerships.</li>
+<li>The _infect event infects a subset of agents in sexual partnerships with
+other infected agents with the pathogen being studied, e.g. HIV.</li>
+<li>The _stage event manages the infection progression of infected agents. For
+example, agents with HIV will first be in an acute sero-conversion phase,
+than a chronic infection stage, and then one or more stages that are
+analogous to progression to AIDS.</li>
+<li>The _birth and _death events create new agents and kill agents respectively.</li>
+</ul>
+<p>Many of these events depend on pre-specified parameters to calculate
+probabilities of the events occurring and, perhaps, other outcomes. These data
+are described in dataset files which are described in the
+<a class="reference internal" href="inputformats.html#dataset-format"><span class="std std-ref">Datasets</span></a> section.</p>
+</li>
+<li><p class="first">Lines 14 to 29 list the names of the datasets associated with the various
+events. For example the <em>dataset_mortality</em> parameter tells the simulation the
+probability of an agent with a given set of characteristics dying.</p>
+</li>
+<li><p class="first">Line 32 tells the simulation to write agents out to a csv file called
+<em>agents_out.csv</em>.</p>
+</li>
+<li><p class="first">Line 33 tells the simulation to write simple population level statistical
+information produced by the <em>_report</em> event to a file called <em>results.csv</em>.</p>
+</li>
+<li><p class="first">Line 35 tells the simulation to run as a single thread. In other words each of
+the four simulations (specified on line 5) will run consecutively.</p>
+</li>
+<li><p class="first">Line 37 specifies a new simulation group called <em>Change time period</em>.</p>
+</li>
+<li><p class="first">Line 39 tells FastSTI to run the simulations in parallel, using up to as many
+threads as there are CPU cores in the machine. On a quad-core CPU, all four
+simulations could run at the same time.</p>
+</li>
+<li><p class="first">Line 40 specifies a different simulation period (5 years) to the <em>Full simulation</em> set
+of simulations. All other parameters set in the <em>Full simulation</em> set carry
+through to this simulation set.</p>
+</li>
+</ul>
+<p>There are more configuration examples in the simulation directory.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="inputformats.html" class="btn btn-neutral float-right" title="Input file formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="testing.html" class="btn btn-neutral float-left" title="Testing that it works" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Nathan Geffen and Stefan Scholz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

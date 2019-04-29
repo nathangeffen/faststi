@@ -1,25 +1,40 @@
-sex;sex_preferred;age|10-YEAR;1;2;3;4;5;6|6
-0;0;0;0;0;0;0;0;0
-0;0;1;0;0;0;0;0;0
-0;0;2;0.1;0.2;0.3;0.4;0.05;0.06
-0;0;3;0.1;0.2;0.3;0.4;0.05;0.06
-0;0;4;0.05;0.1;0.15;0.2;0.025;0.03
-0;0;5;0.025;0.05;0.075;0.1;0.0125;0.015
-0;1;0;0;0;0;0;0;0
-0;1;1;0;0;0;0;0;0
-0;1;2;0.05;0.1;0.15;0.2;0.025;0.03
-0;1;3;0.05;0.1;0.15;0.2;0.025;0.03
-0;1;4;0.025;0.05;0.075;0.1;0.0125;0.015
-0;1;5;0.0125;0.025;0.0375;0.05;0.00625;0.0075
-1;0;0;0;0;0;0;0;0
-1;0;1;0;0;0;0;0;0
-1;0;2;0.05;0.1;0.15;0.2;0.025;0.03
-1;0;3;0.05;0.1;0.15;0.2;0.025;0.03
-1;0;4;0.025;0.05;0.075;0.1;0.0125;0.015
-1;0;5;0.0125;0.025;0.0375;0.05;0.00625;0.0075
-1;1;0;0;0;0;0;0;0
-1;1;1;0;0;0;0;0;0
-1;1;2;0.05;0.1;0.15;0.2;0.025;0.03
-1;1;3;0.05;0.1;0.15;0.2;0.025;0.03
-1;1;4;0.025;0.05;0.075;0.1;0.0125;0.015
-1;1;5;0.0125;0.025;0.0375;0.05;0.00625;0.0075
+# This dataset is used to set the infection stage of agents, if any, when they
+# enter the simulation (when agents are born, so to speak, although since they
+# are born at the minimum age of the simulation, e.g. 15 years old, they may
+# already be sexually active).
+# In this example file, the the agent characteristics of sex, sex_preferred and
+# age (in 10-year groupings) are used to determine probability of an agent being
+# uninfected (i.e. agent->infected is set to 0), or stage 1, 2, 3 or 4.
+# Note the probabilities are ascending from stage 1 through 4. The _birth event
+# first checks if a uniform random number, r, is < than the stage 1
+# probability. If it is, agent->infected is set to 1. Then it checks if r is <
+# than the stage 2 probability and >= the  stage 1 probability. If it is,
+# agent->infected is set to 2. Etc. If r is >= the stage 4 probability, the
+# agent is uninfected and agent->infected is set to 0. Your simulation can have
+# many stages (up to 254, but this would almost certainly be unmanageable), so
+# long as they are consistently treated across datasets.
+sex;sex_preferred;age|10-YEAR;1;2;3;4|4
+0;0;0;0;0;0;0
+0;0;1;0;0;0;0
+0;0;2;0.1;0.2;0.3;0.4
+0;0;3;0.1;0.2;0.3;0.4
+0;0;4;0.05;0.1;0.15;0.2
+0;0;5;0.025;0.05;0.075;0.1
+0;1;0;0;0;0;0
+0;1;1;0;0;0;0
+0;1;2;0.05;0.1;0.15;0.2
+0;1;3;0.05;0.1;0.15;0.2
+0;1;4;0.025;0.05;0.075;0.1
+0;1;5;0.0125;0.025;0.0375;0.05
+1;0;0;0;0;0;0
+1;0;1;0;0;0;0
+1;0;2;0.05;0.1;0.15;0.2
+1;0;3;0.05;0.1;0.15;0.2
+1;0;4;0.025;0.05;0.075;0.1
+1;0;5;0.0125;0.025;0.0375;0.05
+1;1;0;0;0;0;0
+1;1;1;0;0;0;0
+1;1;2;0.05;0.1;0.15;0.2
+1;1;3;0.05;0.1;0.15;0.2
+1;1;4;0.025;0.05;0.075;0.1
+1;1;5;0.0125;0.025;0.0375;0.05
