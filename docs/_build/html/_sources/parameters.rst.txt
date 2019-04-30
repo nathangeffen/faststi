@@ -356,12 +356,43 @@ arranged reference guide to the parameters:
 .. note:: This mechanism for modelling resistance is a bit too simple
           and needs to be improved.
 
+- dataset_gen_sex
+
+  Specifies the location of a dataset used to set the sex of an agent at the
+  beginning of a simulation. The file can have zero or more columns specifying
+  agent characteristics (independent variables). It must have exactly one
+  dependent variable column specifying the probability of the agent being
+  male. Typically this is a one-column dataset with a header and one data row
+  set to 0.5. But if you want need more sophisticated initiation of agent sex
+  (e.g. by age), then this is the dataset in which you specify it.
+
+  See the data/dataset_gen_sex.csv file for an example of this dataset.
+
+  Default: _no_op # i.e. there is no dataset file specified.
+
+  Examples: ::
+
+    dataset_gen_sex = dataset_gen_sex.csv
+
+- dataset_gen_sex_preferred
+
+  Specifies the location of a dataset used to set the sexual preference of an
+  agent at the beginning of a simulation. The file can have zero or more columns
+  specifying agent characteristics (independent variables). It must have exactly
+  one dependent variable column specifying the probability of the agent
+  preferring a male sexual partner.
+
+  See the data/dataset_gen_sex_preferred.csv file for an example of this
+  dataset.
+
+  Default: _no_op # i.e. there is no dataset file specified.
+
+  Examples: ::
+
+    dataset_gen_sex_preferred = dataset_gen_sex_preferred.csv
+
 TO DO
 
-
-dataset_gen_sex; CSV file of values to set sex of generated agent; _no_op
-
-dataset_gen_sex_preferred; CSV file of values to set sex preferred of generated agent; _no_op
 
 dataset_gen_treated; CSV file of values to set infected agents treatment status; _no_op
 
