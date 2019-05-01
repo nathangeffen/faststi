@@ -219,6 +219,7 @@ event-specific. As it happens the code that sets the infection stage expects one
 or more user-defined stages, so you can specify fewer or more than the four
 stages in the above example.
 
+.. _two-agent-dataset-ref:
 
 Two-agent datasets
 ~~~~~~~~~~~~~~~~~~

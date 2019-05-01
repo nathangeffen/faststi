@@ -93,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
 
@@ -461,6 +461,7 @@ male. Typically this is a one-column dataset with a header and one data row
 set to 0.5. But if you want need more sophisticated initiation of agent sex
 (e.g. by age), then this is the dataset in which you specify it.</p>
 <p>See the data/dataset_gen_sex.csv file for an example of this dataset.</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_sex</span> <span class="o">=</span> <span class="n">dataset_gen_sex</span><span class="o">.</span><span class="n">csv</span>
@@ -481,10 +482,60 @@ dataset.</p>
 </pre></div>
 </div>
 </li>
+<li><p class="first">dataset_gen_treated</p>
+<p>Specifies the location of a dataset used to set the treatment status of an
+infected agent at the beginning of a simulation. The file can have zero or
+more columns specifying agent characteristics (independent variables). The
+number of dependent variable columns must correspond to the number of possible
+treatment statuses, incrementing from 1. Events that use this dataset generate
+a uniform random number, r, and then compare r from the first dependent column
+onwards. If r is less than the probability in a dependent column, the
+agent’s treatment status is set to the dependent column number.</p>
+<p>Here’s a mixture of C and pseudocode showing how FastSTI does this:</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">num_stages</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">-&gt;</span><span class="n">dataset_gen_treated</span><span class="o">-&gt;</span><span class="n">num_dependents</span><span class="p">;</span>
+ <span class="n">rnd</span> <span class="o">=</span> <span class="n">uniform</span> <span class="n">random</span> <span class="n">number</span><span class="p">;</span>
+ <span class="n">agent</span><span class="o">-&gt;</span><span class="n">treated</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">row</span> <span class="o">=</span> <span class="n">fsti_dataset_lookup_row</span><span class="p">(</span><span class="n">dataset_gen_treated</span><span class="p">,</span> <span class="n">agent</span><span class="p">);</span>
+ <span class="k">for</span> <span class="p">(</span><span class="n">col</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">num_stages</span><span class="p">;</span> <span class="n">col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">prob</span> <span class="o">=</span> <span class="n">dataset_get</span><span class="p">(</span><span class="n">dataset_gen_treated</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">rnd</span> <span class="o">&lt;</span> <span class="n">prob</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">agent</span><span class="o">-&gt;</span><span class="n">treated</span> <span class="o">=</span> <span class="n">col</span><span class="p">;</span>
+         <span class="k">break</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>See the data/dataset_gen_treated.csv file for an example of this
+dataset.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_treated</span> <span class="o">=</span> <span class="n">dataset_gen_sex_treated</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">dataset_infect</p>
+<p>Specifies the location of a dataset used to determine whether an agent becomes
+infected by its sexual partner. This is a two-agent dataset, since the
+probability of infection is a function of the characteristics of both agents. See
+<a class="reference internal" href="inputformats.html#two-agent-dataset-ref"><span class="std std-ref">Two-agent datasets</span></a> for details on how this works.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_infect</span> <span class="o">=</span> <span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</li>
 </ul>
 <p>TO DO</p>
-<p>dataset_gen_treated; CSV file of values to set infected agents treatment status; _no_op</p>
-<p>dataset_infect; CSV file of values to determine if agent has been infected by a sexual partner; _no_op</p>
 <p>dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op</p>
 <p>dataset_mortality; CSV file of values to determine agent deaths; _no_op</p>
 <p>dataset_rel_period; CSV file of values to determine period agent is in relationship; _no_op</p>

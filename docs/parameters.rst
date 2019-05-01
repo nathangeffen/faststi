@@ -368,6 +368,8 @@ arranged reference guide to the parameters:
 
   See the data/dataset_gen_sex.csv file for an example of this dataset.
 
+  Events used in: _generate_agents, _generate_and_pair
+
   Default: _no_op # i.e. there is no dataset file specified.
 
   Examples: ::
@@ -391,12 +393,60 @@ arranged reference guide to the parameters:
 
     dataset_gen_sex_preferred = dataset_gen_sex_preferred.csv
 
+- dataset_gen_treated
+
+  Specifies the location of a dataset used to set the treatment status of an
+  infected agent at the beginning of a simulation. The file can have zero or
+  more columns specifying agent characteristics (independent variables). The
+  number of dependent variable columns must correspond to the number of possible
+  treatment statuses, incrementing from 1. Events that use this dataset generate
+  a uniform random number, r, and then compare r from the first dependent column
+  onwards. If r is less than the probability in a dependent column, the
+  agent's treatment status is set to the dependent column number.
+
+  Here's a mixture of C and pseudocode showing how FastSTI does this:
+
+  .. code-block:: C
+     :linenos:
+
+      num_stages = simulation->dataset_gen_treated->num_dependents;
+      rnd = uniform random number;
+      agent->treated = 0;
+      row = fsti_dataset_lookup_row(dataset_gen_treated, agent);
+      for (col = 1; col <= num_stages; col++) {
+          prob = dataset_get(dataset_gen_treated, row, col);
+          if (rnd < prob) {
+              agent->treated = col;
+              break;
+          }
+      }
+
+  See the data/dataset_gen_treated.csv file for an example of this
+  dataset.
+
+  Default: _no_op # i.e. there is no dataset file specified.
+
+  Examples: ::
+
+    dataset_gen_treated = dataset_gen_sex_treated.csv
+
+
+- dataset_infect
+
+  Specifies the location of a dataset used to determine whether an agent becomes
+  infected by its sexual partner. This is a two-agent dataset, since the
+  probability of infection is a function of the characteristics of both agents. See
+  :ref:`two-agent-dataset-ref` for details on how this works.
+
+  Default: _no_op # i.e. there is no dataset file specified.
+
+  Examples: ::
+
+    dataset_gen_infect = dataset_gen_infect.csv
+
+
 TO DO
 
-
-dataset_gen_treated; CSV file of values to set infected agents treatment status; _no_op
-
-dataset_infect; CSV file of values to determine if agent has been infected by a sexual partner; _no_op
 
 dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op
 
