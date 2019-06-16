@@ -230,7 +230,7 @@ void fsti_dataset_read(const char *filename,
     struct csv cs;
 
     f = fsti_open_data_file(filename, "r");
-    FSTI_ASSERT(f, FSTI_ERR_DATASET_FILE, filename);
+    FSTI_ASSERT(f, FSTI_ERR_CANT_OPEN_DATASET, filename);
     cs = csv_read(f, true, delim);
     convert_csv_to_dataset(dataset, &cs, filename);
     csv_free(&cs);

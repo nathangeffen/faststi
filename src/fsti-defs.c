@@ -397,7 +397,6 @@ char *fsti_make_full_data_filename(const char *filename)
                  filename);
     else
         strncpy(full_filename, filename, FILENAME_MAX);
-
     return full_filename;
 }
 
