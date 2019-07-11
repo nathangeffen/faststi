@@ -24,7 +24,7 @@
 #include "fsti-defaults.h"
 #include "utils/csv.h"
 
-#define FSTI_FILENAME_LEN 32
+#define FSTI_FILENAME_LEN 200
 
 struct fsti_dataset {
     char filename[FSTI_FILENAME_LEN + 1];

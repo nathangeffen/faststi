@@ -98,7 +98,7 @@ struct dataframe {
 };
 
 
-struct csv csv_read(FILE *f, bool header, char delim);
+struct csv csv_read(FILE *f, bool header, char delim, const char *filename);
 const char *csv_at(const struct csv *cs, size_t row, size_t col);
 void csv_write(FILE *f, const struct csv * cs);
 bool csv_isvalid(const struct csv *cs, bool verbose);

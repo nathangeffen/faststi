@@ -127,7 +127,7 @@ static struct csv_row csv_read_row(FILE *f, const char delim)
    @return Populated csv structure
 */
 
-struct csv csv_read(FILE *f, bool header, char delim)
+struct csv csv_read(FILE *f, bool header, char delim, const char *filename)
 {
     struct csv cs;
     struct csv_row row;
@@ -143,7 +143,7 @@ struct csv csv_read(FILE *f, bool header, char delim)
 
     ARRAY_FREE(row, cells);
 
-    FSTI_ASSERT(csv_isvalid(&cs, false), FSTI_ERR_INVALID_CSV_FILE, NULL);
+    FSTI_ASSERT(csv_isvalid(&cs, true), FSTI_ERR_INVALID_CSV_FILE, filename);
     return cs;
 }
 
@@ -217,9 +217,9 @@ bool csv_isvalid(const struct csv *cs, bool verbose)
         if (cs->rows[i].len != cols)  {
             valid = false;
             if (verbose)
-                printf("Row %zu has %zu colums, "
+                fprintf(stderr, "Row %zu has %zu colums, "
                        "but expected %zu.\n",
-                       i, cs->rows[i].len, cols);
+                       i+1, cs->rows[i].len, cols);
             else
                 break;
         }
