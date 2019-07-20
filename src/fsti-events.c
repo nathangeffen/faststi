@@ -425,8 +425,10 @@ void fsti_event_age(struct fsti_simulation *simulation)
 
 void fsti_event_report(struct fsti_simulation *simulation)
 {
-    if (simulation->state == DURING && simulation->iteration &&
-        simulation->iteration % simulation->report_frequency != 0)
+    if ( simulation->state == DURING &&
+         ((simulation->iteration &&
+          simulation->iteration % simulation->report_frequency != 0) ||
+          (simulation->iteration == 0 && simulation->report_frequency > 1)))
         return;
 
     FSTI_REPORT;

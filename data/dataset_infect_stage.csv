@@ -1,63 +1,65 @@
-# The first three columns are used for matching and correspond to agent fields.
-# The next six are instructions on how and when to change.
-# Columns:
-#  1. infected– regimen (1st line, 2nd line etc) (0 for not on treatment)
-#  2. treated– whether the agent is resistant to current treatment regimen
-#  3. resistant- whether the agent is infected, and stage thereof
-#  4. prob_stage_change - probability infection stage changes
-#  5. stage_incr - if uniform rand number < prob_stage_change then
-#                  change the stage by this increment
-#  6. prob_treatment_change - probability treatment changes
-#  7. treatment_incr - if uniform rand number < prob_treatment_change then
-#                      change the treatment value by this amount
-# 8. prob_resistent -
-#
-# Infection stages:
-#  0 = uninfected
-#  1 = virally suppressed (usually on treatment)
-#  2 = primary infection (highly infectious)
-#  3 = chronic infection
-#  4 = Final stage
-#
-# HEADER ROW FOLLOWS
+# The first three columns are used for matching and correspond to agent fields.;;;;;;;;
+# The next six are instructions on how and when to change.;;;;;;;;
+# Columns:;;;;;;;;
+#  1. infected– regimen (1st line; 2nd line etc) (0 for not on treatment);;;;;;;
+#  2. treated– whether the agent is resistant to current treatment regimen;;;;;;;;
+#  3. resistant- whether the agent is infected; and stage thereof;;;;;;;
+#  4. prob_stage_change - probability infection stage changes;;;;;;;;
+#  5. stage_incr - if uniform rand number < prob_stage_change then;;;;;;;;
+#                  change the stage by this increment;;;;;;;;
+#  6. prob_treatment_change - probability treatment changes;;;;;;;;
+#  7. treatment_incr - if uniform rand number < prob_treatment_change then;;;;;;;;
+#                      change the treatment value by this amount;;;;;;;;
+#  8. prob_resistant - probability resistance status changes;;;;;;;;
+#  9. resistant_incr - if uniform rand number < prob_resistant_change then;;;;;;;;
+#                      change the resistant value by this amount;;;;;;;;
+#;;;;;;;;
+# Infection stages:;;;;;;;;
+#  0 = uninfected;;;;;;;;
+#  1 = virally suppressed (usually on treatment);;;;;;;;
+#  2 = primary infection (highly infectious);;;;;;;;
+#  3 = chronic infection;;;;;;;;
+#  4 = Final stage;;;;;;;;
+#;;;;;;;;
+# HEADER ROW FOLLOWS;;;;;;;;
 infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
-0;0;0;0.0;0;0.0;0;0.0;0
-0;0;1;0.0;0;0.0;0;0.0;0
-0;1;0;0.0;0;0.0;0;0.0;0
-0;1;1;0.0;0;0.0;0;0.0;0
-0;2;0;0.0;0;0.0;0;0.0;0
-0;2;1;0.0;0;0.0;0;0.0;0
-0;3;0;0.0;0;0.0;0;0.0;0
-0;3;1;0.0;0;0.0;0;0.0;0
-1;0;0;0.1000000;1;0.0001000;1;0.0;0
-1;0;1;0.1000000;1;0.0001000;1;0.0;0
-1;1;0;0.0000100;1;0.0000100;1;0.0000100;1
-1;1;1;0.1000000;1;0.0001000;1;0.0;0
-1;2;0;0.0000100;1;0.0000100;1;0.0000100;1
-1;2;1;0.1000000;1;0.0001000;1;0.0;0
-1;3;0;0.0000100;1;0.0;0;0.0001000;1
-1;3;1;0.1000000;1;0.0;0;0.0;0
-2;0;0;0.1000000;1;0.0010000;1;0.0;0
-2;0;1;0.1000000;1;0.0010000;1;0.0;0
-2;1;0;0.1000000;-1;0.0;0;0.0001000;1
-2;1;1;0.1000000;1;0.0010000;1;0.0;0
-2;2;0;0.1000000;-1;0.0;0;0.0001000;1
-2;2;1;0.1000000;1;0.0010000;1;0.0;0
-2;3;0;0.1000000;-1;0.0;0;0.0001000;1
-2;3;1;0.1000000;1;0.0;0;0.0;0
-3;0;0;0.0008000;1;0.0001000;1;0.0;0
-3;0;1;0.0050000;1;0.0001000;1;0.0;0
-3;1;0;0.1000000;-1;0.0;0;0.0001000;1
-3;1;1;0.0050000;1;0.0050000;1;0.0;0
-3;2;0;0.1000000;-1;0.0;0;0.0001000;1
-3;2;1;0.0050000;1;0.0010000;1;0.0;0
-3;3;0;0.1000000;-1;0.0;0;0.0001000;1
-3;3;1;0.0050000;1;0.0;0;0.0;0
-4;0;0;0.0;0;0.0050000;1;0.0;0
-4;0;1;0.0;0;0.0050000;1;0.0;0
-4;1;0;0.1000000;-1;0.0;0;0.0001000;1
-4;1;1;0.0;0;0.0100000;1;0.0;0
-4;2;0;0.1000000;-1;0.0;0;0.0001000;1
-4;2;1;0.0;0;0.0100000;1;0.0;0
-4;3;0;0.1000000;-1;0.0;0;0.0001000;1
-4;3;1;0.0;0;0.0;0;0.0;0
+0;0;0;0;0;0;0;0;0
+0;0;1;0;0;0;0;0;0
+0;1;0;0;0;0;0;0;0
+0;1;1;0;0;0;0;0;0
+0;2;0;0;0;0;0;0;0
+0;2;1;0;0;0;0;0;0
+0;3;0;0;0;0;0;0;0
+0;3;1;0;0;0;0;0;0
+1;0;0;0.1;1;0.0001;1;0;0
+1;0;1;0.1;1;0.0001;1;0;0
+1;1;0;0.00001;1;0.00001;1;0.00001;1
+1;1;1;0.1;1;0.0001;1;0;0
+1;2;0;0.00001;1;0.00001;1;0.00001;1
+1;2;1;0.1;1;0.0001;1;0;0
+1;3;0;0.00001;1;0;0;0.0001;1
+1;3;1;0.1;1;0;0;0;0
+2;0;0;0.1;1;0.001;1;0;0
+2;0;1;0.1;1;0.001;1;0;0
+2;1;0;0.1;-1;0;0;0.0001;1
+2;1;1;0.1;1;0.001;1;0;0
+2;2;0;0.1;-1;0;0;0.0001;1
+2;2;1;0.1;1;0.001;1;0;0
+2;3;0;0.1;-1;0;0;0.0001;1
+2;3;1;0.1;1;0;0;0;0
+3;0;0;0.004;1;0.0001;1;0;0
+3;0;1;0.001;1;0.0001;1;0;0
+3;1;0;0.1;-1;0;0;0.0001;1
+3;1;1;0.002;1;0.005;1;0;0
+3;2;0;0.1;-1;0;0;0.0001;1
+3;2;1;0.002;1;0.001;1;0;0
+3;3;0;0.1;-1;0;0;0.0001;1
+3;3;1;0.002;1;0;0;0;0
+4;0;0;0;0;0.005;1;0;0
+4;0;1;0;0;0.005;1;0;0
+4;1;0;0.1;-1;0;0;0.0001;1
+4;1;1;0;0;0.01;1;0;0
+4;2;0;0.1;-1;0;0;0.0001;1
+4;2;1;0;0;0.01;1;0;0
+4;3;0;0.1;-1;0;0;0.0001;1
+4;3;1;0;0;0;0;0;0
