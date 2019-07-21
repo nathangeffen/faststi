@@ -29,7 +29,9 @@
 /// Calculate offset for void pointer array
 #define VOS(base, i, elem_size) (char *) (base) + ( (i) * (elem_size))
 
+#ifndef strdup
 char * strdup(const char * src);
+#endif
 
 uint32_t rand_to(uint32_t to);
 

@@ -7,3 +7,4 @@ nosafety
 .#*
 tests/*
 *.csv
+src/faststi

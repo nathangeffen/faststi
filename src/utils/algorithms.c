@@ -12,7 +12,7 @@
    \return Copy of the parameter string
  */
 
-
+#ifndef strdup
 char * strdup(const char * src)
 {
 	char *dest = malloc(strlen(src) + 1), *p = dest;
@@ -23,6 +23,7 @@ char * strdup(const char * src)
 	*p = 0;
 	return dest;
 }
+#endif
 
 /**
    Generates a random number in the semi-open range 0 .. to - 1.
