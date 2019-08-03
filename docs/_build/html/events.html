@@ -82,15 +82,18 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
 
@@ -169,11 +172,90 @@ _generate_agents event.</p>
 </li>
 <li><p class="first">_generate_agents</p>
 <p>Generates agents for a simulation instead of reading them from a file.</p>
+<p>It uses the num_agents parameter to determine the number of agents to
+generate.</p>
+<p>The default implementation sets the following agent properties: age, sex,
+sex_preferred, infected, treated and resistant.</p>
+<ul class="simple">
+<li>age is set via a random beta distribution determined by the parameters
+age_alpha and age_beta.</li>
+<li>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
+for an example.)</li>
+<li>sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
+data/dataset_gen_sex_preferred.csv for an example, which sets the agents to
+prefer the opposite sex with a probability of 95%, but you can change this
+according to the needs of your model.)</li>
+<li>infected (i.e. the infection stage of the agent with 0 by convention meaning
+the agent isn’t infected) is set via the dataset dataset_gen_infect. (See
+data/dataset_gen_infect.csv for an example.)</li>
+<li>treated (i.e. which treatment line, if any, the agent is on) is set via the
+dataset dataset_gen_treated. (See data/dataset_gen_treated.csv for an
+example.)</li>
+<li>resistant (i.e. which treatment regimens the agent is resistant to, if
+any. (See data/dataset_gen_resistant.csv for an example.)</li>
+</ul>
+<p>If you wish to set additional agent properties, you must provide hook in
+by defining a macro called FSTI_HOOK_GENERATE_AGENT in fsti-userdefs.h. The
+macro takes two parameters: simulation (a pointer to the current simulation)
+and agent (a pointer to the current agent whose property you wish to set).</p>
+</li>
+<li><p class="first">_age</p>
+<p>Iterates through all the living agents, and adds the time increment of the
+simulation to their age.</p>
+<p>This is one of the simplest events provided by FastSTI, and so it makes a nice
+example of how events are implemented. Here is the source code:</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span>
+<span class="nf">fsti_event_age</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">agent</span><span class="p">;</span>
+   <span class="n">FSTI_FOR_LIVING</span><span class="p">(</span><span class="o">*</span><span class="n">simulation</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="p">{</span>
+      <span class="n">agent</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">+=</span> <span class="n">simulation</span><span class="o">-&gt;</span><span class="n">time_step</span><span class="p">;</span>
+   <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>All events are declared like this, i.e. a void function that takes one
+parameter: a pointer to the simulation itself.</p>
+<p>On line 4 we declare a pointer to an agent on line three. When we iterate
+through the living agents, this will be a pointer to the current agent the
+code acts upon.</p>
+<p>The FSTI_FOR_LIVING macro implements a for loop over the living agents.
+The code inside the macro’s curly brackets simply adds the time step to each
+agent’s age.</p>
+<p>Datasets: None</p>
+</li>
+<li><p class="first">_death</p>
+<p>Iterates through the living agents and kills some of them.</p>
+<p>Datasets: dataset_mortality</p>
+<p>Here is a simple example of this dataset:</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   infected;0
+   0;0.00000296
+   1;0.00000315
+   2;0.00000315
+   3;0.00000630
+   4;0.001
+</pre></div>
+</td></tr></table></div>
+<p>The first column tells the event to determine the infection stage of the
+agent. The second column is the probability of the agent dying on this time
+step. Here the probabilities are specified per day. If you change the time
+step to, say, a week you have to update the probabilities in this file
+accordingly.</p>
 </li>
 </ul>
-<p>To do</p>
-<p>_age</p>
-<p>_death</p>
+<p>TO DO FROM HERE</p>
 <p>_initial_mating</p>
 <p>_initial_rel</p>
 <p>_mating_pool</p>

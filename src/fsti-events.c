@@ -42,7 +42,8 @@ process_cell(const struct fsti_simulation *simulation,
     transformer(to, &variant, simulation, agent);
 }
 
-void fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation)
+void
+fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation)
 {
     // BUG: In multithreaded run, no guarantee that this will be the top line
     // in the agent csv output, although unlikely not to be.
@@ -55,10 +56,11 @@ void fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation
     }
 }
 
-static void output_partnership(struct fsti_simulation *simulation,
-                               struct fsti_agent *a,
-                               struct fsti_agent *b,
-                               uint8_t type)
+static void
+output_partnership(struct fsti_simulation *simulation,
+                   struct fsti_agent *a,
+                   struct fsti_agent *b,
+                   uint8_t type)
 {
     char desc[20];
     char date[FSTI_DATE_LEN];
@@ -81,7 +83,8 @@ static void output_partnership(struct fsti_simulation *simulation,
             a->id, delim, b->id, delim, desc);
 }
 
-static void make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
+static void
+make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
 {
     struct fsti_agent *a, *b;
     size_t i;
@@ -98,8 +101,8 @@ static void make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
         });
 }
 
-static
-void count_initial_partnerships_infections(struct fsti_simulation *simulation)
+static void
+count_initial_partnerships_infections(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a, *b;
     size_t i;
@@ -117,7 +120,8 @@ void count_initial_partnerships_infections(struct fsti_simulation *simulation)
         });
 }
 
-static void read_agents(struct fsti_simulation *simulation)
+static void
+read_agents(struct fsti_simulation *simulation)
 {
     size_t i, j;
     bool process_partners;
@@ -167,7 +171,8 @@ static void read_agents(struct fsti_simulation *simulation)
         fclose(f);
 }
 
-void fsti_event_read_agents(struct fsti_simulation *simulation)
+void
+fsti_event_read_agents(struct fsti_simulation *simulation)
 {
     static GMutex mutex;
     static bool initialized_agents = false;
@@ -187,18 +192,20 @@ void fsti_event_read_agents(struct fsti_simulation *simulation)
     }
 }
 
-static inline long dataset_val(const struct fsti_simulation *sim,
-                               const struct fsti_agent *ag,
-                               const struct fsti_dataset *ds,
-                               long a,
-                               long b)
+static inline long
+dataset_val(const struct fsti_simulation *sim,
+            const struct fsti_agent *ag,
+            const struct fsti_dataset *ds,
+            long a,
+            long b)
 {
     return (gsl_rng_uniform(sim->rng) < fsti_dataset_lookup0(ds, ag)) ? a : b;
 }
 
 
-void fsti_generate_age(struct fsti_simulation *simulation,
-                       struct fsti_agent *agent)
+void
+fsti_generate_age(struct fsti_simulation *simulation,
+                  struct fsti_agent *agent)
 {
     double a, b;
     int32_t min, max;
@@ -212,8 +219,9 @@ void fsti_generate_age(struct fsti_simulation *simulation,
 
 
 
-void fsti_generate_sex(struct fsti_simulation *simulation,
-                       struct fsti_agent *agent)
+void
+fsti_generate_sex(struct fsti_simulation *simulation,
+                  struct fsti_agent *agent)
 {
     FSTI_ASSERT(simulation->dataset_gen_sex, FSTI_ERR_MISSING_DATASET,
                 "For parameter dataset_gen_sex");
@@ -221,8 +229,9 @@ void fsti_generate_sex(struct fsti_simulation *simulation,
                              FSTI_MALE, FSTI_FEMALE);
 }
 
-void fsti_generate_sex_preferred(struct fsti_simulation *simulation,
-                                 struct fsti_agent *agent)
+void
+fsti_generate_sex_preferred(struct fsti_simulation *simulation,
+                            struct fsti_agent *agent)
 {
 
     FSTI_ASSERT(simulation->dataset_gen_sex_preferred, FSTI_ERR_MISSING_DATASET,
@@ -233,9 +242,10 @@ void fsti_generate_sex_preferred(struct fsti_simulation *simulation,
                     FSTI_MALE, FSTI_FEMALE);
 }
 
-static void set_infected(struct fsti_simulation *simulation,
-                         struct fsti_agent *agent,
-                         struct fsti_dataset *ds)
+static void
+set_infected(struct fsti_simulation *simulation,
+             struct fsti_agent *agent,
+             struct fsti_dataset *ds)
 {
     double r, d;
     size_t i, num_stages, index;
@@ -255,8 +265,9 @@ static void set_infected(struct fsti_simulation *simulation,
     if (agent->infected) simulation->initial_infections++;
 }
 
-void fsti_generate_infected(struct fsti_simulation *simulation,
-                            struct fsti_agent *agent)
+void
+fsti_generate_infected(struct fsti_simulation *simulation,
+                       struct fsti_agent *agent)
 {
     struct fsti_dataset *ds = simulation->dataset_gen_infect;
 
@@ -265,9 +276,10 @@ void fsti_generate_infected(struct fsti_simulation *simulation,
     set_infected(simulation, agent, ds);
 }
 
-static void set_treated(const struct fsti_simulation *simulation,
-                        struct fsti_agent *agent,
-                        struct fsti_dataset *ds)
+static void
+set_treated(const struct fsti_simulation *simulation,
+            struct fsti_agent *agent,
+            struct fsti_dataset *ds)
 {
     double r, d;
     size_t i, num_stages, index;
@@ -286,8 +298,9 @@ static void set_treated(const struct fsti_simulation *simulation,
     }
 }
 
-void fsti_generate_treated(struct fsti_simulation *simulation,
-                           struct fsti_agent *agent)
+void
+fsti_generate_treated(struct fsti_simulation *simulation,
+                      struct fsti_agent *agent)
 {
     struct fsti_dataset *ds;
 
@@ -299,8 +312,9 @@ void fsti_generate_treated(struct fsti_simulation *simulation,
     }
 }
 
-void fsti_generate_resistant(struct fsti_simulation *simulation,
-                             struct fsti_agent *agent)
+void
+fsti_generate_resistant(struct fsti_simulation *simulation,
+                        struct fsti_agent *agent)
 {
     if (agent->treated) {
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
@@ -311,7 +325,8 @@ void fsti_generate_resistant(struct fsti_simulation *simulation,
 }
 
 
-void fsti_event_generate_agents(struct fsti_simulation *simulation)
+void
+fsti_event_generate_agents(struct fsti_simulation *simulation)
 {
     size_t i;
     struct fsti_agent agent;
@@ -327,8 +342,9 @@ void fsti_event_generate_agents(struct fsti_simulation *simulation)
     fsti_agent_ind_fill_n(&simulation->living, simulation->agent_arr.len);
 }
 
-void fsti_birth_age(struct fsti_simulation *simulation,
-                    struct fsti_agent *a)
+void
+fsti_birth_age(struct fsti_simulation *simulation,
+               struct fsti_agent *a)
 {
     a->age = simulation->age_min;
 }
@@ -341,8 +357,9 @@ void fsti_birth_sex(struct fsti_simulation *simulation,
         ? FSTI_MALE : FSTI_FEMALE;
 }
 
-void fsti_birth_sex_preferred(struct fsti_simulation *simulation,
-                                  struct fsti_agent *a)
+void
+fsti_birth_sex_preferred(struct fsti_simulation *simulation,
+                         struct fsti_agent *a)
 {
     double r = gsl_rng_uniform(simulation->rng);
     if (a->sex == FSTI_MALE) {
@@ -358,16 +375,18 @@ void fsti_birth_sex_preferred(struct fsti_simulation *simulation,
     }
 }
 
-void fsti_birth_infected(struct fsti_simulation *simulation,
-                             struct fsti_agent *agent)
+void
+fsti_birth_infected(struct fsti_simulation *simulation,
+                    struct fsti_agent *agent)
 {
     FSTI_ASSERT(simulation->dataset_birth_infect, FSTI_ERR_MISSING_DATASET,
                 "For parameter dataset_birth_sex_infect");
     set_infected(simulation, agent, simulation->dataset_birth_infect);
 }
 
-void fsti_birth_treated(struct fsti_simulation *simulation,
-                            struct fsti_agent *agent)
+void
+fsti_birth_treated(struct fsti_simulation *simulation,
+                   struct fsti_agent *agent)
 {
     if (agent->infected) {
         FSTI_ASSERT(simulation->dataset_birth_treated, FSTI_ERR_MISSING_DATASET,
@@ -376,8 +395,9 @@ void fsti_birth_treated(struct fsti_simulation *simulation,
     }
 }
 
-void fsti_birth_resistant(struct fsti_simulation *simulation,
-                          struct fsti_agent *agent)
+void
+fsti_birth_resistant(struct fsti_simulation *simulation,
+                     struct fsti_agent *agent)
 {
     if (agent->treated) {
         FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
@@ -388,7 +408,8 @@ void fsti_birth_resistant(struct fsti_simulation *simulation,
 }
 
 
-void fsti_event_birth(struct fsti_simulation *simulation)
+void
+fsti_event_birth(struct fsti_simulation *simulation)
 {
     if (simulation->iteration % simulation->birth_event_every_n == 0) {
         double mu = simulation->birth_rate * simulation->living.len;
@@ -405,25 +426,29 @@ void fsti_event_birth(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_shuffle_living(struct fsti_simulation *simulation)
+void
+fsti_event_shuffle_living(struct fsti_simulation *simulation)
 {
     fsti_agent_ind_shuffle(&simulation->living, simulation->rng);
 }
 
-void fsti_event_shuffle_mating_pool(struct fsti_simulation *simulation)
+void
+fsti_event_shuffle_mating_pool(struct fsti_simulation *simulation)
 {
     fsti_agent_ind_shuffle(&simulation->mating_pool, simulation->rng);
 }
 
-void fsti_event_age(struct fsti_simulation *simulation)
+void
+fsti_event_age(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *a;
-    FSTI_FOR_LIVING(*simulation, a, {
-            a->age += simulation->time_step;
+    struct fsti_agent *agent;
+    FSTI_FOR_LIVING(*simulation, agent, {
+            agent->age += simulation->time_step;
         });
 }
 
-void fsti_event_report(struct fsti_simulation *simulation)
+void
+fsti_event_report(struct fsti_simulation *simulation)
 {
     if ( simulation->state == DURING &&
          ((simulation->iteration &&
@@ -435,7 +460,8 @@ void fsti_event_report(struct fsti_simulation *simulation)
     FSTI_HOOK_REPORT;
 }
 
-void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
+void
+fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
 {
     // BUG: In multithreaded run, no guarantee that this will be the top line
     // in the agent csv output, although unlikely not to be.
@@ -443,13 +469,15 @@ void fsti_event_write_results_csv_header(struct fsti_simulation *simulation)
         FSTI_REPORT_OUTPUT_HEADER(simulation->csv_delimiter);
 }
 
-static void agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
+static void
+agent_print_pretty(FILE *f, unsigned id, struct fsti_agent *agent)
 {
     FSTI_AGENT_PRINT_PRETTY(f, id, agent);
 }
 
-static void write_agents_ind_csv(struct fsti_simulation *simulation,
-                                 struct fsti_agent_ind *agent_ind)
+static void
+write_agents_ind_csv(struct fsti_simulation *simulation,
+                     struct fsti_agent_ind *agent_ind)
 {
     struct fsti_agent *agent;
 
@@ -460,7 +488,8 @@ static void write_agents_ind_csv(struct fsti_simulation *simulation,
     }
 }
 
-static void write_agents_arr_csv(struct fsti_simulation *simulation)
+static void
+write_agents_arr_csv(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
 
@@ -471,7 +500,8 @@ static void write_agents_arr_csv(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
+void
+fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
 {
     // BUG: In multithreaded run, no guarantee that this will be the top line
     // in the agent csv output, although unlikely not to be.
@@ -481,7 +511,8 @@ void fsti_event_write_agents_csv_header(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
+void
+fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
 {
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
@@ -489,7 +520,8 @@ void fsti_event_write_living_agents_csv(struct fsti_simulation *simulation)
     write_agents_ind_csv(simulation, &simulation->living);
 }
 
-void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
+void
+fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
 {
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
@@ -498,7 +530,8 @@ void fsti_event_write_dead_agents_csv(struct fsti_simulation *simulation)
 }
 
 
-void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
+void
+fsti_event_write_agents_csv(struct fsti_simulation *simulation)
 {
     if (simulation->state == DURING && simulation->iteration &&
         simulation->iteration % simulation->report_frequency != 0)
@@ -506,7 +539,8 @@ void fsti_event_write_agents_csv(struct fsti_simulation *simulation)
     write_agents_arr_csv(simulation);
 }
 
-void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
+void
+fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     FSTI_FOR_LIVING(*simulation, agent, {
@@ -516,7 +550,8 @@ void fsti_event_write_agents_pretty(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
+void
+fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     double r, d;
@@ -535,7 +570,8 @@ void fsti_event_initial_mating_pool(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_mating_pool(struct fsti_simulation *simulation)
+void
+fsti_event_mating_pool(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     fsti_agent_ind_clear(&simulation->mating_pool);
@@ -547,7 +583,9 @@ void fsti_event_mating_pool(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+void
+fsti_set_rel_period(struct fsti_simulation *simulation,
+                    struct fsti_agent *a)
 {
     double scale, shape;
     uint32_t iterations;
@@ -561,8 +599,10 @@ void fsti_set_rel_period(struct fsti_simulation *simulation, struct fsti_agent *
 
 }
 
-static void make_partners(struct fsti_simulation *simulation,
-                          struct fsti_agent *a, struct fsti_agent *b)
+static
+void make_partners(struct fsti_simulation *simulation,
+                   struct fsti_agent *a,
+                   struct fsti_agent *b)
 {
     fsti_agent_make_partners(a, b);
     FSTI_SET_REL_PERIOD(simulation, a, b);
@@ -577,7 +617,9 @@ static void make_partners(struct fsti_simulation *simulation,
     }
 }
 
-void fsti_set_single_period(struct fsti_simulation *simulation, struct fsti_agent *a)
+void
+fsti_set_single_period(struct fsti_simulation *simulation,
+                       struct fsti_agent *a)
 {
     double scale, shape;
     uint32_t iterations;
@@ -590,7 +632,8 @@ void fsti_set_single_period(struct fsti_simulation *simulation, struct fsti_agen
     a->relchange[0] = simulation->iteration + iterations;
 }
 
-void fsti_event_initial_relchange(struct fsti_simulation *simulation)
+void
+fsti_event_initial_relchange(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a, *b;
 
@@ -609,7 +652,8 @@ void fsti_event_initial_relchange(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_breakup(struct fsti_simulation *simulation)
+void
+fsti_event_breakup(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a, *b;
 
@@ -630,7 +674,8 @@ void fsti_event_breakup(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_death(struct fsti_simulation *simulation)
+void
+fsti_event_death(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     double d, r;
@@ -651,7 +696,8 @@ void fsti_event_death(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_knn_match(struct fsti_simulation *simulation)
+void
+fsti_event_knn_match(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent, *candidate, *partner;
     size_t *it, *jt, *start, *n, *begin, *end;
@@ -690,7 +736,8 @@ void fsti_event_knn_match(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_breakup_and_pair(struct fsti_simulation *simulation)
+void
+fsti_event_breakup_and_pair(struct fsti_simulation *simulation)
 {
     fsti_event_breakup(simulation);
     fsti_event_mating_pool(simulation);
@@ -699,7 +746,8 @@ void fsti_event_breakup_and_pair(struct fsti_simulation *simulation)
 }
 
 
-void fsti_event_generate_and_pair(struct fsti_simulation *simulation)
+void
+fsti_event_generate_and_pair(struct fsti_simulation *simulation)
 {
     fsti_event_generate_agents(simulation);
     fsti_event_initial_mating_pool(simulation);
@@ -708,7 +756,8 @@ void fsti_event_generate_and_pair(struct fsti_simulation *simulation)
     fsti_event_initial_relchange(simulation);
 }
 
-void fsti_event_infect(struct fsti_simulation *simulation)
+void
+fsti_event_infect(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent, *partner;
     size_t i;
@@ -739,7 +788,8 @@ void fsti_event_infect(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_infect_stage(struct fsti_simulation *simulation)
+void
+fsti_event_infect_stage(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     size_t index;
@@ -788,7 +838,8 @@ void fsti_event_infect_stage(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_coinfect(struct fsti_simulation *simulation)
+void
+fsti_event_coinfect(struct fsti_simulation *simulation)
 {
     struct fsti_agent *agent;
     double d, r;
@@ -805,7 +856,8 @@ void fsti_event_coinfect(struct fsti_simulation *simulation)
         });
 }
 
-void fsti_event_no_op(struct fsti_simulation *simulation)
+void
+fsti_event_no_op(struct fsti_simulation *simulation)
 {
     return;
 }
@@ -814,7 +866,8 @@ void fsti_event_no_op(struct fsti_simulation *simulation)
 
 /* These are for testing only and not designed for speed. */
 
-bool run_test(struct fsti_simulation *simulation)
+bool
+run_test(struct fsti_simulation *simulation)
 {
     unsigned freq = fsti_config_at0_long(&simulation->config, "event_test_freq");
     freq  = !((simulation->iteration + 1) % freq);
@@ -822,7 +875,8 @@ bool run_test(struct fsti_simulation *simulation)
 }
 
 
-void fsti_event_test_breakup(struct fsti_simulation *simulation)
+void
+fsti_event_test_breakup(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     static _Thread_local uint32_t breakup_before = 0;
@@ -850,7 +904,8 @@ void fsti_event_test_breakup(struct fsti_simulation *simulation)
 }
 
 
-void fsti_event_test_mating_pool(struct fsti_simulation *simulation)
+void
+fsti_event_test_mating_pool(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     bool bad_logic;
@@ -879,7 +934,8 @@ void fsti_event_test_mating_pool(struct fsti_simulation *simulation)
 }
 
 
-void fsti_event_test_shuffle_mating(struct fsti_simulation *simulation)
+void
+fsti_event_test_shuffle_mating(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     uint32_t *it, agents[simulation->mating_pool.len], differences = 0;
@@ -910,7 +966,8 @@ void fsti_event_test_shuffle_mating(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_test_knn_match(struct fsti_simulation *simulation)
+void
+fsti_event_test_knn_match(struct fsti_simulation *simulation)
 {
     size_t n = simulation->mating_pool.len;
     bool bad_logic;
@@ -954,7 +1011,8 @@ void fsti_event_test_knn_match(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_test_infect(struct fsti_simulation *simulation)
+void
+fsti_event_test_infect(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     uint32_t infected_before = 0, infected_after = 0;
@@ -980,7 +1038,8 @@ void fsti_event_test_infect(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_test_birth(struct fsti_simulation *simulation)
+void
+fsti_event_test_birth(struct fsti_simulation *simulation)
 {
     static _Thread_local uint32_t births = 0;
     uint32_t births_before, births_after;
@@ -997,7 +1056,8 @@ void fsti_event_test_birth(struct fsti_simulation *simulation)
     }
 }
 
-void fsti_event_test_death(struct fsti_simulation *simulation)
+void
+fsti_event_test_death(struct fsti_simulation *simulation)
 {
     static _Thread_local uint32_t deaths = 0;
     uint32_t deaths_before, deaths_after;
@@ -1015,7 +1075,8 @@ void fsti_event_test_death(struct fsti_simulation *simulation)
 
 /* End of test events */
 
-void fsti_event_register_events()
+void
+fsti_event_register_events()
 {
     static bool initialized_events = false;
 
