@@ -11,14 +11,20 @@ Carry out these steps to install FastSTI on a GNU/Linux PC that uses apt
 
 Install the dependencies: ::
 
-  sudo apt install git build-essential meson valgrind libgsl-dev libglib2.0-dev
+  sudo apt install git build-essential libgsl-dev libglib2.0-dev
+
+These are the standard Linux development tools, the popular git source code
+control system, the `GNU Scientific Library <https://www.gnu.org/software/gsl/>`_
+and `Gnome's Glib utility library <https://developer.gnome.org/glib/>`_.
 
 Installing the framework is quick and easy.
 
-Create a folder for the installation and cd into it. E.g. ::
+Let's say you want to use the framework in a directory that doesn't yet exist
+called *mysim*. In the parent directory where you wish to create mysim type
+this. ::
 
-  mkdir mysim; cd mysim
-  git clone https://github.com/nathangeffen/faststi .
+  git clone https://github.com/nathangeffen/faststi mysim
+  cd mysim
 
 Installations are cheap and easy. Install as often as you like and, if an
 installation is no longer needed, simply remove its folder with "rm -f".
@@ -32,7 +38,7 @@ GNU C compiler.
 
 Install and configure the dependencies with `Homebrew <https://brew.sh/>`_: ::
 
-  brew install gcc pkg-config glib gsl meson ninja
+  brew install gcc pkg-config glib gsl
 
 
 If you don't have Homebrew installed: ::
@@ -46,7 +52,6 @@ If you don't have Homebrew installed: ::
 
 Installations are cheap and easy. Install as often as you like and, if an
 installation is no longer needed, simply remove its folder with "rm -f".
-
 
 
 *******

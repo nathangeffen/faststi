@@ -4,39 +4,44 @@ Testing that it works
 
 If you use gcc as your C compiler, then simply do this: ::
 
-  meson debug
-  cd debug; ninja
-  FSTI_DATA=../data ./src/faststi -t
+  ./configure
+  make
+  FSTI_DATA=./data ./src/faststi -t
 
 This will run the test suite. If everything is properly installed no failures
 should be reported.
 
-You've created an unoptimised version of the faststi executable, useful for
-debugging and development. To create an optimised version for running big,
-CPU-intensive simulations, do this from the root directory of your simulation
-(*mysim* in the above example): ::
+.. note:: You may be wondering why we prefix the executable with
+          *FSTI_DATA=./data*. The *FSTI_DATA* environment variable simply tells
+          FastSTI where the data files are stored. As you work on FastSTI you
+          may use a different directory for your data files. It's simply that
+          the default data files are in the *data* directory.
 
-  meson --buildtype release release
 
-To test that it's working: ::
+FastSTI uses `GNU autotools
+<https://www.gnu.org/software/automake/manual/html_node/index.html>`_ to compile
+which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
+commands work with FastSTI, but we don't recommend running *make install*
+because it's better to have each model that you build with FastSTI running in
+its own standalone directory.
 
-  cd release
-  FSTI_DATA=../data ./src/faststi -t
 
-Alternately you can use the *fsti* script in your installation directory. Assuming
-you called it *mysim*, change into the *mysim* directory, and run: ::
+Incidentally, running make like this might make FastSTI a bit faster: ::
 
-  ./fsti -t
+  make clean
+  make CFLAGS=-O3
 
-The above will create the debug directory, compile FastSTI, and run the test
-suite. To instead run the release version: ::
+But results may vary.
 
-  ./fsti release -t
+.. tip:: You may have noticed that there are files for the the `Meson Build
+          system <https://mesonbuild.com/>`_ in the FastSTI folder. (If you
+          haven't heard of the Meson Build system, don't worry; skip this tip.)
+          FastSTI can be built with meson and ninja. We intend to keep FastSTI
+          compatible with both build systems, but because autotools is the more
+          widely used standard, it's the one we document here.
 
-Again, no errors should be reported.
-
-If you have `valgrind <https://valgrind.org>`_ on your system (an excellent tool
-for finding memory and other problems in C programs), you can do this: ::
-
-  cd debug
-  ninja test
+          But feel free and encouraged to use meson and ninja to compile
+          FastSTI. For one thing it's faster because it does parallel
+          compilations. Note though, that the builds are placed in different
+          directories, and so to keep things simple this documentation is
+          written for people using autotools.

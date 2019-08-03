@@ -21,3 +21,9 @@ depcomp
 install-sh
 missing
 stamp-h1
+*.log
+*.trs
+test-driver
+src/Makefile.in
+src/Makefile
+

@@ -89,7 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Events</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#read-agents">_read_agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-agents">_generate_agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age">_age</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#death">_death</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-mating">_initial_mating</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
@@ -161,26 +168,43 @@
             
   <div class="section" id="events">
 <span id="event-ref"></span><h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p class="first">_read_agents</p>
+<p>The events to run for a simulation are specified in the parameters:
+before_events, during_events and after_events, which respectively are the events
+run once at the start each simulation (before_events), on every iteration of the
+simulation (during_events), and once at the end the simulation (after_events).</p>
+<p>The events provided by FastSTI are prefixed with an underscore (_), to
+differentiate them from other 3rd-party events or ones that you choose to
+implement. Please don’t name your events with a leading underscore.</p>
+<p>If the events provided by FastSTI are not all you need, then you are encouraged
+to code your own events in C in the source code files fsti-userdefs.h and
+fsti-userdefs.c.</p>
+<div class="section" id="read-agents">
+<h2>_read_agents<a class="headerlink" href="#read-agents" title="Permalink to this headline">¶</a></h2>
 <p>Reads in a csv file of agents at the beginning of a simulation. The first
 time it is executed, it saves the agents in memory so that on subsequent
 simulations, it doesn’t have to process the file again.</p>
 <p>If you don’t have a file of agents to read in, consider using the
 _generate_agents event.</p>
 <p>Datasets: None</p>
-</li>
-<li><p class="first">_generate_agents</p>
+</div>
+<div class="section" id="generate-agents">
+<h2>_generate_agents<a class="headerlink" href="#generate-agents" title="Permalink to this headline">¶</a></h2>
 <p>Generates agents for a simulation instead of reading them from a file.</p>
 <p>It uses the num_agents parameter to determine the number of agents to
 generate.</p>
 <p>The default implementation sets the following agent properties: age, sex,
 sex_preferred, infected, treated and resistant.</p>
 <ul class="simple">
-<li>age is set via a random beta distribution determined by the parameters
-age_alpha and age_beta.</li>
-<li>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
-for an example.)</li>
+<li><dl class="first docutils">
+<dt>age is set via a random beta distribution determined by the parameters</dt>
+<dd>age_alpha and age_beta.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv</dt>
+<dd>for an example.)</dd>
+</dl>
+</li>
 <li>sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
 data/dataset_gen_sex_preferred.csv for an example, which sets the agents to
 prefer the opposite sex with a probability of 95%, but you can change this
@@ -194,12 +218,14 @@ example.)</li>
 <li>resistant (i.e. which treatment regimens the agent is resistant to, if
 any. (See data/dataset_gen_resistant.csv for an example.)</li>
 </ul>
-<p>If you wish to set additional agent properties, you must provide hook in
-by defining a macro called FSTI_HOOK_GENERATE_AGENT in fsti-userdefs.h. The
-macro takes two parameters: simulation (a pointer to the current simulation)
-and agent (a pointer to the current agent whose property you wish to set).</p>
-</li>
-<li><p class="first">_age</p>
+<p>If you wish to set additional agent properties, you must provide hook in by
+defining a macro called FSTI_HOOK_GENERATE_AGENT in fsti-userdefs.h. The macro
+takes two parameters: simulation (a pointer to the current simulation) and
+agent (a pointer to the current agent whose property you wish to set).</p>
+<p>See also: <em>_generate_and_pair</em></p>
+</div>
+<div class="section" id="age">
+<h2>_age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h2>
 <p>Iterates through all the living agents, and adds the time increment of the
 simulation to their age.</p>
 <p>This is one of the simplest events provided by FastSTI, and so it makes a nice
@@ -211,14 +237,14 @@ example of how events are implemented. Here is the source code:</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="nf">fsti_event_age</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">agent</span><span class="p">;</span>
-   <span class="n">FSTI_FOR_LIVING</span><span class="p">(</span><span class="o">*</span><span class="n">simulation</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="p">{</span>
-      <span class="n">agent</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">+=</span> <span class="n">simulation</span><span class="o">-&gt;</span><span class="n">time_step</span><span class="p">;</span>
-   <span class="p">});</span>
-<span class="p">}</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">void</span>
+   <span class="nf">fsti_event_age</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">agent</span><span class="p">;</span>
+      <span class="n">FSTI_FOR_LIVING</span><span class="p">(</span><span class="o">*</span><span class="n">simulation</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="p">{</span>
+         <span class="n">agent</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">+=</span> <span class="n">simulation</span><span class="o">-&gt;</span><span class="n">time_step</span><span class="p">;</span>
+      <span class="p">});</span>
+   <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 <p>All events are declared like this, i.e. a void function that takes one
@@ -230,8 +256,9 @@ code acts upon.</p>
 The code inside the macro’s curly brackets simply adds the time step to each
 agent’s age.</p>
 <p>Datasets: None</p>
-</li>
-<li><p class="first">_death</p>
+</div>
+<div class="section" id="death">
+<h2>_death<a class="headerlink" href="#death" title="Permalink to this headline">¶</a></h2>
 <p>Iterates through the living agents and kills some of them.</p>
 <p>Datasets: dataset_mortality</p>
 <p>Here is a simple example of this dataset:</p>
@@ -240,12 +267,12 @@ agent’s age.</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   infected;0
-   0;0.00000296
-   1;0.00000315
-   2;0.00000315
-   3;0.00000630
-   4;0.001
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     infected;0
+     0;0.00000296
+     1;0.00000315
+     2;0.00000315
+     3;0.00000630
+     4;0.001
 </pre></div>
 </td></tr></table></div>
 <p>The first column tells the event to determine the infection stage of the
@@ -253,10 +280,73 @@ agent. The second column is the probability of the agent dying on this time
 step. Here the probabilities are specified per day. If you change the time
 step to, say, a week you have to update the probabilities in this file
 accordingly.</p>
-</li>
-</ul>
+</div>
+<div class="section" id="initial-mating">
+<h2>_initial_mating<a class="headerlink" href="#initial-mating" title="Permalink to this headline">¶</a></h2>
+<p>Before a simulation starts but after agents have been generated or read in
+from a file, it is possible that none of the agents are in sexual
+relationships.</p>
+<p>This event is responsible for creating the initial mating pool of agent sexual
+relationships. It is typically only run once per simulation, and only if the
+agent input file doesn’t specify relationships. It is set as an event to run
+in the before_events parameter.</p>
+<p>Note that it doesn’t actually put the agents into relationships, only into a
+mating pool. The _initial_rel event must then be executed in order to actually
+place agents in relationships with each other.</p>
+<p>Datasets: dataset_gen_mating</p>
+<p>Here is an example of this dataset. The first column is age in five-year
+periods. So for example line 5 corresponds to the probability of a person aged
+15 to just shy of 20 being in a relationship (which in this example is 0.3 or
+30%).</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  age|5-YEAR;0
+  0;0.0
+  1;0.0
+  2;0.0
+  3;0.3
+  4;0.35
+  5;0.4
+  6;0.45
+  7;0.5
+  8;0.5
+  9;0.5
+  10;0.5
+  11;0.5
+  12;0.4
+  13;0.4
+  14;0.35
+  15;0.3
+  16;0.25
+  17;0.2
+  18;0.15
+  19;0.1
+  20;0.5
+  21;0
+</pre></div>
+</td></tr></table></div>
+<p>See also: <em>_generate_and_pair</em></p>
 <p>TO DO FROM HERE</p>
-<p>_initial_mating</p>
 <p>_initial_rel</p>
 <p>_mating_pool</p>
 <p>_breakup</p>
@@ -277,6 +367,7 @@ accordingly.</p>
 <p>_write_living_agents_csv</p>
 <p>_write_dead_agents_csv</p>
 <p>_write_agents_pretty</p>
+</div>
 </div>
 
 
