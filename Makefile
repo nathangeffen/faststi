@@ -292,6 +292,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 SUBDIRS = src
+EXTRA_DIST = data
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
