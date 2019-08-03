@@ -26,4 +26,4 @@ stamp-h1
 test-driver
 src/Makefile.in
 src/Makefile
-
+*.gz
