@@ -1,4 +1,4 @@
-project('faststi', 'c', license : 'GPL3', version : '1.0',
+project('faststi', 'c', license : 'GPL3', version : '0.2',
         default_options : ['c_std=c11'])
 
 # Update these for new releases if necessary
