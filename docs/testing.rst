@@ -2,7 +2,8 @@
 Testing that it works
 #####################
 
-If you use gcc as your C compiler, then simply do this: ::
+Make sure you're in the directory that you created in the installation step. If
+you use gcc as your C compiler, then simply do this: ::
 
   ./configure
   make

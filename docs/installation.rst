@@ -19,12 +19,13 @@ and `Gnome's Glib utility library <https://developer.gnome.org/glib/>`_.
 
 Installing the framework is quick and easy.
 
-Let's say you want to use the framework in a directory that doesn't yet exist
-called *mysim*. In the parent directory where you wish to create mysim type
-this. ::
+Download the latest `distribution
+<https://www.simhub.online/media/latest.tar.gz>`_ and decompress it. For
+example: ::
 
-  git clone https://github.com/nathangeffen/faststi mysim
-  cd mysim
+  wget https://www.simhub.online/media/latest.tar.gz
+  tar xzvf latest.tar.gz
+  cd faststi-0.2.0
 
 Installations are cheap and easy. Install as often as you like and, if an
 installation is no longer needed, simply remove its folder with "rm -f".
@@ -45,10 +46,7 @@ If you don't have Homebrew installed: ::
 
   /usr/bin/ruby -e "$(curl -fsSL  https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-- Create a folder for the installation and cd into it. E.g. ::
-
-    mkdir mysim; cd mysim
-    git clone https://github.com/nathangeffen/faststi .
+Download  https://www.simhub.online/media/latest.tar.gz and decompress it.
 
 Installations are cheap and easy. Install as often as you like and, if an
 installation is no longer needed, simply remove its folder with "rm -f".
