@@ -4,14 +4,60 @@
 Events
 ######
 
-The events to run for a simulation are specified in the parameters:
-before_events, during_events and after_events, which respectively are the events
-run once at the start each simulation (before_events), on every iteration of the
-simulation (during_events), and once at the end the simulation (after_events).
+The events to run for a simulation are specified in these parameters:
+- before_events,
+- during_events, and
+-  after_events.
 
-The events provided by FastSTI are prefixed with an underscore (_), to
-differentiate them from other 3rd-party events or ones that you choose to
-implement. Please don't name your events with a leading underscore.
+These, respectively, are the events run once at the start of each simulation
+(before_events), on every iteration of the simulation (during_events), and once
+at the end of the simulation (after_events).
+
+Here is a way to specify a comprehensive simulation:
+
+.. code-block:: ini
+   :linenos:
+
+    before_events = _write_agents_csv_header; _write_results_csv_header;
+    _generate_and_pair; _write_agents_csv; _report
+    during_events = _age; _breakup_and_pair; _infect; _stage; _birth; _death; _report
+    after_events = _write_agents_csv
+
+
+This tells FastSTI that before each simulation is run, it must:
+
+- Write the header line for the output agents csv file
+  (_write_agents_csv_header)
+- Write the header line for the output results file (_write_results_csv_header)
+- Generate and initialize properly a new set of agents and put some of them into
+  relationships (_generate_and_pair)
+- Write the set of initialised agents to a CSV file.
+- Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
+  results file (_report).
+
+On every time step of a simulation, it tells FastSTI to:
+
+- Increment each living agent's by the time step (_age).
+- Iterate through the living agents and put some of the single ones into
+  relationships and break up some of those that are in relationships
+  (_breakup_and_pair).
+- Iterate through the agents with partners and infect some of those in
+  sero-discordant relationships (_infect).
+- Iterate through the infected agents and move some of them to a new disease
+  stage (e.g. treated, resistant, ill - whatever you specify actually).
+- Add some new agents to the simulation at the minimum age (_birth).
+- Kill some of the agents (_death).
+- Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
+  results file (_report).
+
+At the end of each simulation it tells FastSTI to:
+
+- Write the final state of the agents to a CSV file (_write_agents_csv).
+
+The events provided by FastSTI (which include those in the example above) are
+prefixed with an underscore (_), to differentiate them from other 3rd-party
+events or ones that you choose to implement. Please don't name your events with
+a leading underscore.
 
 If the events provided by FastSTI are not all you need, then you are encouraged
 to code your own events in C in the source code files fsti-userdefs.h and
