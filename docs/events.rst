@@ -18,8 +18,7 @@ Here is a way to specify a comprehensive simulation:
 .. code-block:: ini
    :linenos:
 
-    before_events = _write_agents_csv_header; _write_results_csv_header;
-    _generate_and_pair; _write_agents_csv; _report
+    before_events = _write_agents_csv_header; _write_results_csv_header;    _generate_and_pair; _write_agents_csv; _report
     during_events = _age; _breakup_and_pair; _infect; _stage; _birth; _death; _report
     after_events = _write_agents_csv
 
