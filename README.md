@@ -16,8 +16,8 @@ There's a web interface to a toy version of FastSTI on
 get a feel for how it works.
 
 
-<img src="docs/_static/GraphScreenCaptureFromSimhub.png"
-    "alt=Screen capture of FastSTI running on"
-    style="width:95%;" />
-
-# ![Screen capture of FastSTI running on Simhub.](docs/_static/GraphScreenCaptureFromSimhub.png)
+<p align="centre">
+    <img src="docs/_static/GraphScreenCaptureFromSimhub.png"
+      "alt=Screen capture of FastSTI running on"
+      style="max-width:95%;" />
+</p>
