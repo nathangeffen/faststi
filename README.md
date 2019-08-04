@@ -17,6 +17,11 @@ the Clang compiler too). It uses two portable 3rd-party libraries: the GNU
 Scientific Library and GLib. The code adheres to the C11 standard and should
 compile on any standards-compliant modern C compiler.
 
+The
+[documentation is on Readthedocs](https://faststi.readthedocs.io/en/latest/). It
+explains how to download, install, test, and run FastSTI, as well as how define
+simulations, and modify the code.
+
 FastSTI is free software (GPL licensed). If you are a C programmer, you can
 clone the [source code on Github](https://github.com/nathangeffen/faststi) and
 modify it.
