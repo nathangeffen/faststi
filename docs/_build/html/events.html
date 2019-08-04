@@ -179,9 +179,7 @@ at the end of the simulation (after_events).</p>
 <p>Here is a way to specify a comprehensive simulation:</p>
 <div class="highlight-ini notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="na">before_events</span> <span class="o">=</span> <span class="s">_write_agents_csv_header; _write_results_csv_header;</span>
-<span class="s"> _generate_and_pair; _write_agents_csv; _report</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="na">before_events</span> <span class="o">=</span> <span class="s">_write_agents_csv_header; _write_results_csv_header; _generate_and_pair; _write_agents_csv; _report</span>
 <span class="s"> during_events = _age; _breakup_and_pair; _infect; _stage; _birth; _death; _report</span>
 <span class="s"> after_events = _write_agents_csv</span>
 </pre></div>
