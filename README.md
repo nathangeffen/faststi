@@ -18,7 +18,7 @@ Scientific Library and GLib. The code adheres to the C11 standard and should
 compile on any standards-compliant modern C compiler.
 
 FastSTI is free software (GPL licensed). If you are a C programmer, you can
-clone the [source code on Github](https://github.com/nathangeffen/faststi)_ and
+clone the [source code on Github](https://github.com/nathangeffen/faststi) and
 modify it.
 
 There's a web interface to a toy version of FastSTI on
