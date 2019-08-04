@@ -14,10 +14,3 @@ explains how to install and use FastSTI.
 There's a web interface to a toy version of FastSTI on
 [Simhub](https://www.simhub.online/faststi/) that you can play around with to
 get a feel for how it works.
-
-
-<p align="centre">
-    <img src="docs/_static/GraphScreenCaptureFromSimhub.png"
-      "alt=Screen capture of FastSTI running on"
-      style="max-width:95%;" />
-</p>
