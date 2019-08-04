@@ -30,4 +30,5 @@ feel for how it works. Here's a screenshot from Simhub:
 
 .. image:: _static/GraphScreenCaptureFromSimhub.png
     :align: center
+    :width: 95%
     :alt: Screen capture of FastSTI running on Simhub
