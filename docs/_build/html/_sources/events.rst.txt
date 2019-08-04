@@ -69,6 +69,13 @@ defining a macro called FSTI_HOOK_GENERATE_AGENT in fsti-userdefs.h. The macro
 takes two parameters: simulation (a pointer to the current simulation) and
 agent (a pointer to the current agent whose property you wish to set).
 
+.. tip:: Instead of using this event, it will usually make more sense to use the
+         _generate_and_pair event which generates the initial set of agents,
+         places them in a mating pool, shuffles the mating pool, mates the
+         agents in the mating pool and then sets the number of time steps each
+         agent will stay in its current relationship or stay single. This event
+         is in fact called by _generate_and_pair.
+
 See also: *_generate_and_pair*
 
 ****
@@ -146,8 +153,15 @@ agent input file doesn't specify relationships. It is set as an event to run
 in the before_events parameter.
 
 Note that it doesn't actually put the agents into relationships, only into a
-mating pool. The _initial_rel event must then be executed in order to actually
-place agents in relationships with each other.
+mating pool. An agent pairing event, such as _rkpm must then be executed in
+order to actually place agents in relationships with each other.
+
+.. tip:: Instead of using this event, it will usually make more sense to use the
+         _generate_and_pair event which generates the initial set of agents,
+         places them in a mating pool, shuffles the mating pool, mates the
+         agents in the mating pool and then sets the number of time steps each
+         agent will stay in its current relationship or stay single. This event
+         is in fact called by _generate_and_pair.
 
 Datasets: dataset_gen_mating
 
@@ -185,11 +199,39 @@ periods. So for example line 5 corresponds to the probability of a person aged
 
 See also: *_generate_and_pair*
 
+************
+_initial_rel
+************
+
+For each living agent make a correction to the duration (number of time steps)
+its current relationship, or if the agent is single, set the period it will stay
+single.
+
+This event assumes the relchange (the date/time in the future at which it's
+current relationship or single status changes) property of agents in
+relationships has been set. It multiplies it by a uniform random number between
+0 and 1. If the agent is single it sets the single period and also multiples it
+by a uniform random number between 0 and 1.
+
+Why use this event? Because the simulation starts at an arbitrary time point in
+which people are already in the middle of relationships or a period of being
+being single. This event will on average halve the value of relchange. Whether
+that's a valid assumption at the beginning of a simulation is unclear to us.
+
+.. tip:: Instead of using this event, it will usually make more sense to use the
+         _generate_and_pair event which generates the initial set of agents,
+         places them in a mating pool, shuffles the mating pool, mates the
+         agents in the mating pool and then sets the number of time steps each
+         agent will stay in its current relationship or stay single. This event
+         is in fact called by _generate_and_pair.
+
+Datasets: None
+
+See also: *_generate_and_pair*, *_breakup* and *_rkpm*. The latter two also set
+the relchange property.
 
 TO DO FROM HERE
 
-
-_initial_rel
 
 _mating_pool
 
