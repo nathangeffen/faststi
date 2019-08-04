@@ -2,14 +2,13 @@
 Introduction
 ############
 
-FastSTI is a framework for agent-based models of large simulations of sexually
+FastSTI is a framework for implementing agent-based models of sexually
 transmitted infection epidemics. It is designed to handle up to tens of millions
-of agents on standard consumer hardware, like your laptop or, or a high
-performance computer.
+of agents on a mid-range laptop. On a high performance computer it can run
+dozens of large simulations or thousands of small ones in parallel.
 
-It runs simulations in parallel. The output of the simulations is written to CSV
-files, which can be further processed in scripting languages like Python
-or R.
+The output of the simulations is written to CSV files, which can be further
+processed in scripting languages like Python or R.
 
 You can do sophisticated simulations without making any modifications to the
 code. But if you do wish to extend the framework, it is written in C. The
