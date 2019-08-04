@@ -18,12 +18,12 @@ Scientific Library and GLib. The code adheres to the C11 standard and should
 compile on any standards-compliant modern C compiler.
 
 FastSTI is free software (GPL licensed). If you are a C programmer, you can
-clone the `source code on Github <https://github.com/nathangeffen/faststi>`_ and
+clone the [source code on Github](https://github.com/nathangeffen/faststi)_ and
 modify it.
 
-There's a web interface to a toy version of FastSTI on `Simhub
-<https://www.simhub.online/faststi/>`_ that you can play around with to get a
-feel for how it works. Here's a screenshot from Simhub:
+There's a web interface to a toy version of FastSTI on
+[Simhub](https://www.simhub.online/faststi/) that you can play around with to
+get a feel for how it works. Here's a screenshot from Simhub:
 
 <p align="centre">
     <img src="docs/_static/GraphScreenCaptureFromSimhub.png"
