@@ -19,12 +19,8 @@ compile on any standards-compliant modern C compiler.
 
 The
 [documentation is on Readthedocs](https://faststi.readthedocs.io/en/latest/). It
-explains how to download, install, test, and run FastSTI, as well as how to define
-simulations, and modify the code.
-
-FastSTI is free software (GPL licensed). If you are a C programmer, you can
-clone the [source code on Github](https://github.com/nathangeffen/faststi) and
-modify it.
+explains how to download, install, test, and run FastSTI, as well as how to
+define simulations, and modify the code.
 
 There's a web interface to a toy version of FastSTI on
 [Simhub](https://www.simhub.online/faststi/) that you can play around with to
