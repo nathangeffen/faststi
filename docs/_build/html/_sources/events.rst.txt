@@ -43,10 +43,10 @@ The default implementation sets the following agent properties: age, sex,
 sex_preferred, infected, treated and resistant.
 
 - age is set via a random beta distribution determined by the parameters
-    age_alpha and age_beta.
+  age_alpha and age_beta.
 
 - sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
-    for an example.)
+  for an example.)
 
 - sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
   data/dataset_gen_sex_preferred.csv for an example, which sets the agents to
