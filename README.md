@@ -19,7 +19,7 @@ compile on any standards-compliant modern C compiler.
 
 The
 [documentation is on Readthedocs](https://faststi.readthedocs.io/en/latest/). It
-explains how to download, install, test, and run FastSTI, as well as how define
+explains how to download, install, test, and run FastSTI, as well as how to define
 simulations, and modify the code.
 
 FastSTI is free software (GPL licensed). If you are a C programmer, you can
