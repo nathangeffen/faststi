@@ -20,10 +20,14 @@ the Clang compiler too). It uses two portable 3rd-party libraries: the GNU
 Scientific Library and GLib. The code adheres to the C11 standard and should
 compile on any standards-compliant modern C compiler.
 
-There's a web interface to a toy version of FastSTI on `Simhub
-<https://www.simhub.online/faststi/>`_ that you can play around with to get a
-feel for how it works.
-
 FastSTI is free software (GPL licensed). If you are a C programmer, you can
 clone the `source code on Github <https://github.com/nathangeffen/faststi>`_ and
 modify it.
+
+There's a web interface to a toy version of FastSTI on `Simhub
+<https://www.simhub.online/faststi/>`_ that you can play around with to get a
+feel for how it works. Here's a screenshot from Simhub:
+
+.. image:: _static/GraphScreenCaptureFromSimhub.png
+    :align: center
+    :alt: Screen capture of FastSTI running on Simhub

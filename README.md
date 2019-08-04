@@ -15,4 +15,4 @@ There's a web interface to a toy version of FastSTI on
 [Simhub](https://www.simhub.online/faststi/) that you can play around with to
 get a feel for how it works.
 
-![Screen capture of FastSTI running on Simhub.](data/GraphScreenCaptureFromSimhub.png)
+![Screen capture of FastSTI running on Simhub.](docs/_static/GraphScreenCaptureFromSimhub.png)
