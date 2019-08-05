@@ -82,7 +82,7 @@ yourself.
 
 To run the simulation: ::
 
-  ../../fsti -f eg1.ini
+  ../../src/faststi -f eg1.ini
 
 The output may look something like this: ::
 
@@ -172,11 +172,9 @@ eg2.ini.
 Assuming you are in the simulations/examples directory you can run this
 simulation as follows: ::
 
-  ../../fsti release -f eg2.ini
+  ../../src/faststi -f eg2.ini
 
-The *release* command line parameter ensures the much faster *release* version
-of FastSTI (without debugging code) executes. It will likely take about 10
-seconds to run.
+This will take about 10 seconds to run, depending on your PC.
 
 This is what the configuration does:
 

@@ -1,16 +1,19 @@
+.. _parameter-ref:
+
 #############################
 Configuration file parameters
 #############################
 
-.. _parameter-ref:
-
 To see the list of configuration file parameters, along with a description and
 the value for each, run: ::
 
-  faststi -p
+  ./src/faststi -p
 
-This prints out the parameters in a logical order. Here is an alphabetically
-arranged reference guide to the parameters:
+This prints out the parameters in a
+logical order. Here is an alphabetically arranged reference guide to the
+parameters:
+
+
 
 - after_events
 

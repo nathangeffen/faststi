@@ -82,6 +82,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
@@ -93,11 +94,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
 
@@ -226,7 +229,7 @@ basic information about the state of a simulation. All built-in events are
 prefixed with an underscore, to differentiate them from ones you might code
 yourself.</p>
 <p>To run the simulation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
 <p>The output may look something like this:</p>
@@ -349,12 +352,10 @@ eg2.ini.</p>
 </td></tr></table></div>
 <p>Assuming you are in the simulations/examples directory you can run this
 simulation as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">fsti</span> <span class="n">release</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
-<p>The <em>release</em> command line parameter ensures the much faster <em>release</em> version
-of FastSTI (without debugging code) executes. It will likely take about 10
-seconds to run.</p>
+<p>This will take about 10 seconds to run, depending on your PC.</p>
 <p>This is what the configuration does:</p>
 <ul>
 <li><p class="first">Line 1 is a comment. Comments start with a #.</p>

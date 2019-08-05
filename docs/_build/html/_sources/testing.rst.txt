@@ -24,7 +24,8 @@ FastSTI uses `GNU autotools
 which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
 commands work with FastSTI, but we don't recommend running *make install*
 because it's better to have each model that you build with FastSTI running in
-its own standalone directory.
+its own standalone directory. This gives you the flexibility to easily customise
+the source code for each model.
 
 
 Incidentally, running make like this might make FastSTI a bit faster: ::

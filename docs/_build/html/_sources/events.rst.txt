@@ -19,7 +19,9 @@ Here is a way to specify a comprehensive simulation:
    :linenos:
 
     before_events = _write_agents_csv_header; _write_results_csv_header; _generate_and_pair; _write_agents_csv; _report
+
     during_events = _age; _breakup_and_pair; _infect; _stage; _birth; _death; _report
+
     after_events = _write_agents_csv
 
 
@@ -275,10 +277,76 @@ Datasets: None
 See also: *_generate_and_pair*, *_breakup* and *_rkpm*. The latter two also set
 the relchange property.
 
+************
+_mating_pool
+************
+
+Iterates through the living agents and places the single ones into the mating
+pool if they are due for a relationship status change. The relchange property of
+each single agent determines whether it is to be placed in the mating pool.
+
+Note that placing agents in the mating pool is necessary but not sufficient to
+pair them into relationships. This event is typically followed by shuffling the
+mating pool (_shuffle_mating) and then placing them in sexual relationships with
+other agents in the mating pool using the pairing algorithm (_rkpm).
+
+All of these events are included in the composite event _breakup_and_pair.
+
+The C code for this event is simple and instructive:
+
+.. code-block:: C
+   :linenos:
+
+      void
+      fsti_event_mating_pool(struct fsti_simulation *simulation)
+      {
+          struct fsti_agent *agent;
+          fsti_agent_ind_clear(&simulation->mating_pool);
+          FSTI_FOR_LIVING(*simulation, agent, {
+              if (agent->num_partners == 0) {
+                  if (agent->relchange[0] < simulation->iteration)
+                      fsti_agent_ind_push(&simulation->mating_pool, agent->id);
+             }
+          });
+      }
+
+All events are declared like this, i.e. a void function that takes one parameter: a pointer to the simulation itself.
+
+On line 4 we declare a pointer to an agent on line three. When we iterate through the living agents, this will be a pointer to the current agent the code acts upon.
+
+The FSTI_FOR_LIVING macro implements a for loop over the living agents.
+
+The code inside the macro’s curly brackets first checks that the agent is single
+(i.e. it has zero partners). If it is it checks if the relchange property is
+less than the current iteration. If it is, it places the agent in the mating
+pool.
+
+You may have noticed that agent->relchange on line 8 is subscripted with a 0
+index. This is because FastSTI's data structures support agents having multiple
+concurrent partners. relchange[0] refers to the status of the first partner. By
+default, up to three partners are supported and this is determined by
+FSTI_MAX_PARTNERS set in fsti-defaults.h. To override this value, either with a
+bigger or smaller maximum number of partners, simply define an alternative value
+for FSTI_MAX_PARTNERS in fsti-userdefs.h. For example:
+
+.. code-block:: C
+
+    #define FSTI_MAX_PARTNERS 1
+
+But although the FastSTI data structures support concurrent partnerships, all of
+the default events, including this one, do not support agents having more than
+one partner. This may and probably should change in the future. Of course you
+are also welcome to implement your own events that do account for concurrent
+partnerships.
+
+Datasets: None
+
+See also: *_breakup_and_pair*.
+
+
 TO DO FROM HERE
 
 
-_mating_pool
 
 _breakup
 

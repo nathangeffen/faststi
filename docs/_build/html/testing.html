@@ -182,7 +182,8 @@ the default data files are in the <em>data</em> directory.</p>
 which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
 commands work with FastSTI, but we don’t recommend running <em>make install</em>
 because it’s better to have each model that you build with FastSTI running in
-its own standalone directory.</p>
+its own standalone directory. This gives you the flexibility to easily customise
+the source code for each model.</p>
 <p>Incidentally, running make like this might make FastSTI a bit faster:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
 <span class="n">make</span> <span class="n">CFLAGS</span><span class="o">=-</span><span class="n">O3</span>

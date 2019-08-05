@@ -66,7 +66,8 @@ format. Here is an example:
   predefined parameter, the FastSTI will give an error message and terminate. To
   see all the parameters, run: ::
 
-    ./fsti -p
+    .src/faststi -p
+
 
 - Key-values set in a simulation group are carried through to subsequent groups,
   unless they are specified again in the new group. E,g, in the example above,
@@ -77,7 +78,7 @@ format. Here is an example:
 Besides setting parameters in the input configuration file, you can modify them
 on the command line using this format: ::
 
-  ./fsti -c=<value>[;<value>]* -f <filename>
+  ./src/faststi -c=<value>[;<value>]* -f <filename>
 
 .. _dataset-format:
 

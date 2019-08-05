@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#death">_death</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-mating">_initial_mating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-rel">_initial_rel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mating-pool">_mating_pool</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
@@ -179,9 +180,13 @@ at the end of the simulation (after_events).</p>
 <p>Here is a way to specify a comprehensive simulation:</p>
 <div class="highlight-ini notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="na">before_events</span> <span class="o">=</span> <span class="s">_write_agents_csv_header; _write_results_csv_header; _generate_and_pair; _write_agents_csv; _report</span>
-<span class="s"> during_events = _age; _breakup_and_pair; _infect; _stage; _birth; _death; _report</span>
-<span class="s"> after_events = _write_agents_csv</span>
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="na">before_events</span> <span class="o">=</span> <span class="s">_write_agents_csv_header; _write_results_csv_header; _generate_and_pair; _write_agents_csv; _report</span>
+
+ <span class="na">during_events</span> <span class="o">=</span> <span class="s">_age; _breakup_and_pair; _infect; _stage; _birth; _death; _report</span>
+
+ <span class="na">after_events</span> <span class="o">=</span> <span class="s">_write_agents_csv</span>
 </pre></div>
 </td></tr></table></div>
 <p>This tells FastSTI that before each simulation is run, it must:</p>
@@ -428,8 +433,68 @@ is in fact called by _generate_and_pair.</p>
 <p>Datasets: None</p>
 <p>See also: <em>_generate_and_pair</em>, <em>_breakup</em> and <em>_rkpm</em>. The latter two also set
 the relchange property.</p>
+</div>
+<div class="section" id="mating-pool">
+<h2>_mating_pool<a class="headerlink" href="#mating-pool" title="Permalink to this headline">¶</a></h2>
+<p>Iterates through the living agents and places the single ones into the mating
+pool if they are due for a relationship status change. The relchange property of
+each single agent determines whether it is to be placed in the mating pool.</p>
+<p>Note that placing agents in the mating pool is necessary but not sufficient to
+pair them into relationships. This event is typically followed by shuffling the
+mating pool (_shuffle_mating) and then placing them in sexual relationships with
+other agents in the mating pool using the pairing algorithm (_rkpm).</p>
+<p>All of these events are included in the composite event _breakup_and_pair.</p>
+<p>The C code for this event is simple and instructive:</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">void</span>
+   <span class="nf">fsti_event_mating_pool</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">agent</span><span class="p">;</span>
+       <span class="n">fsti_agent_ind_clear</span><span class="p">(</span><span class="o">&amp;</span><span class="n">simulation</span><span class="o">-&gt;</span><span class="n">mating_pool</span><span class="p">);</span>
+       <span class="n">FSTI_FOR_LIVING</span><span class="p">(</span><span class="o">*</span><span class="n">simulation</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">agent</span><span class="o">-&gt;</span><span class="n">num_partners</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span><span class="n">agent</span><span class="o">-&gt;</span><span class="n">relchange</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">simulation</span><span class="o">-&gt;</span><span class="n">iteration</span><span class="p">)</span>
+                   <span class="n">fsti_agent_ind_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">simulation</span><span class="o">-&gt;</span><span class="n">mating_pool</span><span class="p">,</span> <span class="n">agent</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+          <span class="p">}</span>
+       <span class="p">});</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>All events are declared like this, i.e. a void function that takes one parameter: a pointer to the simulation itself.</p>
+<p>On line 4 we declare a pointer to an agent on line three. When we iterate through the living agents, this will be a pointer to the current agent the code acts upon.</p>
+<p>The FSTI_FOR_LIVING macro implements a for loop over the living agents.</p>
+<p>The code inside the macro’s curly brackets first checks that the agent is single
+(i.e. it has zero partners). If it is it checks if the relchange property is
+less than the current iteration. If it is, it places the agent in the mating
+pool.</p>
+<p>You may have noticed that agent-&gt;relchange on line 8 is subscripted with a 0
+index. This is because FastSTI’s data structures support agents having multiple
+concurrent partners. relchange[0] refers to the status of the first partner. By
+default, up to three partners are supported and this is determined by
+FSTI_MAX_PARTNERS set in fsti-defaults.h. To override this value, either with a
+bigger or smaller maximum number of partners, simply define an alternative value
+for FSTI_MAX_PARTNERS in fsti-userdefs.h. For example:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define FSTI_MAX_PARTNERS 1</span>
+</pre></div>
+</div>
+<p>But although the FastSTI data structures support concurrent partnerships, all of
+the default events, including this one, do not support agents having more than
+one partner. This may and probably should change in the future. Of course you
+are also welcome to implement your own events that do account for concurrent
+partnerships.</p>
+<p>Datasets: None</p>
+<p>See also: <em>_breakup_and_pair</em>.</p>
 <p>TO DO FROM HERE</p>
-<p>_mating_pool</p>
 <p>_breakup</p>
 <p>_shuffle_living</p>
 <p>_shuffle_mating</p>
