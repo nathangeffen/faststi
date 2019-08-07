@@ -83,7 +83,15 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linux-etc">Linux etc.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mac">Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cygwin">Cygwin</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
@@ -161,7 +169,12 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>First download the FastSTI <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">archived distribution</a> and decompress
+<p>FastSTI is easiest to run in a Posix environment (GNU Linux, FreeBSD, Unix etc),
+because we develop it on under Linux. Nevertheless, it isn’t difficult to get it
+running on a Mac or Windows machine.</p>
+<div class="section" id="linux-etc">
+<h2>Linux etc.<a class="headerlink" href="#linux-etc" title="Permalink to this headline">¶</a></h2>
+<p>Download the FastSTI <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">archived distribution</a> and decompress
 it.</p>
 <p>E.g.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">simhub</span><span class="o">.</span><span class="n">online</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">faststi</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
@@ -170,17 +183,45 @@ it.</p>
 </div>
 <p>You also need to install some dependencies. These are the standard C development
 tools, the popular git source code control system, the <a class="reference external" href="https://www.gnu.org/software/gsl/">GNU Scientific Library</a> and <a class="reference external" href="https://developer.gnome.org/glib/">Gnome’s Glib utility library</a>.</p>
-<p>On an <strong>Ubuntu GNU/Linux</strong> distribution you can do this:</p>
+<p>On Ubuntu, Debian, Mint etc. this works:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">git</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
-<p>On a <strong>Mac</strong> you can do this using <a class="reference external" href="https://brew.sh/">Homebrew</a>:</p>
+<p>Now you’re ready to test FastSTI.</p>
+</div>
+<div class="section" id="mac">
+<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<p>Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p>
+<p>Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">glib</span> <span class="n">gsl</span>
 </pre></div>
 </div>
-<p>We haven’t developed or tested FastSTI on Windows, but it should work,
-especially if you use the MinGW suite. Feedback (via the <a class="reference external" href="https://github.com/faststi">Github repository</a>) on running it under Windows is welcome.</p>
 <p>Now you’re ready to test FastSTI.</p>
+</div>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>Under Windows you either need to install the Cygwin or MinGW environment, or if
+you are using Windows 10, you can install the Windows Subsystem for Linux. But
+to date we have only tested installation with Cygwin.</p>
+<div class="section" id="cygwin">
+<h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
+<p>Use the Cygwin setup tool to install these packages:</p>
+<ul class="simple">
+<li>gcc-core</li>
+<li>gcc-tools-epoch2-autoconf</li>
+<li>gcc-tools-epoch2-automake</li>
+<li>libgsl-dev</li>
+<li>libglib2.0-devel</li>
+<li>wget</li>
+</ul>
+<p>After installation open the Cygwin terminal and run these steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">simhub</span><span class="o">.</span><span class="n">online</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">faststi</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">xzvf</span> <span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Now you’re ready to test FastSTI.</p>
+</div>
+</div>
 </div>
 
 
