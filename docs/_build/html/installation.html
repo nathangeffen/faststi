@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; FastSTI 0.1.0 documentation</title>
+  <title>Installation &mdash; FastSTI 0.2.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Testing that it works" href="testing.html" />
+    <link rel="next" title="Getting started" href="getstart.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
 </head>
 
@@ -59,6 +59,10 @@
 
           
             
+            
+              <div class="version">
+                0.2
+              </div>
             
           
 
@@ -90,9 +94,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#cygwin">Cygwin</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#on-all-machines">On all machines</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing that it works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
@@ -170,33 +174,39 @@
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>FastSTI is easiest to run in a Posix environment (GNU Linux, FreeBSD, Unix etc),
-because we develop it on under Linux. Nevertheless, it isn’t difficult to get it
-running on a Mac or Windows machine.</p>
+because we develop on Linux. Nevertheless, it isn’t difficult to get it running
+on a Mac or Windows machine.</p>
 <div class="section" id="linux-etc">
 <h2>Linux etc.<a class="headerlink" href="#linux-etc" title="Permalink to this headline">¶</a></h2>
-<p>Download the FastSTI <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">archived distribution</a> and decompress
+<p>1. FastSTI requires a standard C development environment, the <a class="reference external" href="https://www.gnu.org/software/gsl/">GNU Scientific
+Library</a> and <a class="reference external" href="https://developer.gnome.org/glib/">Gnome’s Glib utility library</a>.</p>
+<p>On Ubuntu, Debian, Mint etc. this should do the trick:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>2. Download the FastSTI <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">archived distribution</a> and decompress
 it.</p>
 <p>E.g.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">simhub</span><span class="o">.</span><span class="n">online</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">faststi</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>You also need to install some dependencies. These are the standard C development
-tools, the popular git source code control system, the <a class="reference external" href="https://www.gnu.org/software/gsl/">GNU Scientific Library</a> and <a class="reference external" href="https://developer.gnome.org/glib/">Gnome’s Glib utility library</a>.</p>
-<p>On Ubuntu, Debian, Mint etc. this works:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">git</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span>
-</pre></div>
-</div>
-<p>Now you’re ready to test FastSTI.</p>
+<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>Now go to step 3.</p>
 </div>
 <div class="section" id="mac">
 <h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
-<p>Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p>
-<p>Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
+<ol class="arabic">
+<li><p class="first">Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p>
+</li>
+<li><p class="first">Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">glib</span> <span class="n">gsl</span>
 </pre></div>
 </div>
-<p>Now you’re ready to test FastSTI.</p>
+</li>
+</ol>
+<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>Now go to step 3.</p>
 </div>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
@@ -205,7 +215,9 @@ you are using Windows 10, you can install the Windows Subsystem for Linux. But
 to date we have only tested installation with Cygwin.</p>
 <div class="section" id="cygwin">
 <h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
-<p>Use the Cygwin setup tool to install these packages:</p>
+<ol class="arabic simple">
+<li>Use the Cygwin setup tool to install these packages:</li>
+</ol>
 <ul class="simple">
 <li>gcc-core</li>
 <li>gcc-tools-epoch2-autoconf</li>
@@ -214,12 +226,83 @@ to date we have only tested installation with Cygwin.</p>
 <li>libglib2.0-devel</li>
 <li>wget</li>
 </ul>
-<p>After installation open the Cygwin terminal and run these steps:</p>
+<ol class="arabic" start="2">
+<li><p class="first">After installation open the Cygwin terminal and run these steps:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">simhub</span><span class="o">.</span><span class="n">online</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">faststi</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>Now you’re ready to test FastSTI.</p>
+</li>
+</ol>
+<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>Now go to step 3.</p>
+</div>
+</div>
+<div class="section" id="on-all-machines">
+<h2>On all machines<a class="headerlink" href="#on-all-machines" title="Permalink to this headline">¶</a></h2>
+<p>3. Change into the directory that you’ve decompressed the distribution
+into: faststi-0.2.0</p>
+<ol class="arabic" start="4">
+<li><p class="first">Now run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Then depending on your system either one of these should install the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p class="first">Now test that it works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FSTI_DATA</span><span class="o">=./</span><span class="n">data</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This will run the test suite. If everything is properly installed then no
+failures should be reported.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may be wondering why we prefix the executable with
+<em>FSTI_DATA=./data</em>. The <em>FSTI_DATA</em> environment variable simply tells
+FastSTI where the data files are stored. As you work on FastSTI you
+may use a different directory for your data files. It’s simply that
+the default data files are in the <em>data</em> directory.</p>
+</div>
+<p>FastSTI uses <a class="reference external" href="https://www.gnu.org/software/automake/manual/html_node/index.html">GNU autotools</a> to compile
+which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
+commands work with FastSTI.</p>
+<p>Incidentally, compiling like this might make FastSTI a bit faster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">make</span> <span class="s2">&quot;CFLAGS=-DNDEBUG -O3&quot;</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>But results may vary.</p>
+<p>To uninstall FastSTI simply run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">uninstall</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>You may have noticed that there are files for the the <a class="reference external" href="https://mesonbuild.com/">Meson Build
+system</a> in the FastSTI folder. (If you
+haven’t heard of the Meson Build system, don’t worry; skip this tip.)
+FastSTI can be built with meson and ninja. We intend to keep FastSTI
+compatible with both build systems, but because autotools is the more
+widely used standard, it’s the one we document here.</p>
+<p class="last">But feel free and encouraged to use meson and ninja to compile
+FastSTI. For one thing it’s faster because it does parallel
+compilations. Note though, that the builds are placed in different
+directories, and so to keep things simple this documentation is
+written for people using autotools.</p>
 </div>
 </div>
 </div>
@@ -232,7 +315,7 @@ to date we have only tested installation with Cygwin.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="testing.html" class="btn btn-neutral float-right" title="Testing that it works" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getstart.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

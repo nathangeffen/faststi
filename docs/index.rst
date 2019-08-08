@@ -7,7 +7,6 @@ FastSTI: Simulations of sexually transmitted infections
 
    intro
    installation
-   testing
    getstart
    inputformats
    outputformats
