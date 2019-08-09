@@ -1,15 +1,15 @@
 
-####################
-Help improve FastSTI
-####################
+######################
+Help improve |PROJECT|
+######################
 
-We appreciate help with FastSTI, both with coding and documentation. Here are
+We appreciate help with |PROJECT|, both with coding and documentation. Here are
 some things that need to be done:
 
-- Built-in calibration: At present if you want to calibrate a FastSTI model,
-  you'd best use R or Python to process agent output files from FastSTI, and generate .ini
-  configuration files as input back into FastSTI with new parameters. We think
-  it would probably be better if FastSTI's configuration could be enhanced to
+- Built-in calibration: At present if you want to calibrate a |PROJECT| model,
+  you'd best use R or Python to process agent output files from |PROJECT|, and generate .ini
+  configuration files as input back into |PROJECT| with new parameters. We think
+  it would probably be better if |PROJECT|'s configuration could be enhanced to
   calibrate the model.
 
 - Concurrent relationships: Although the fsti_agent data structure supports
@@ -18,7 +18,7 @@ some things that need to be done:
 
 - More events: Code variations on the current events and new events.
 
-- Build Python and R interfaces to FastSTI.
+- Build Python and R interfaces to |PROJECT|.
 
 - Improve this documentation.
 
@@ -30,5 +30,5 @@ would like to do, so we can discuss the best way to proceed.
 Bugs and other issues
 #####################
 
-Please lodge bugs, requests for enhancements, etc at the FastSTI `Github
+Please lodge bugs, requests for enhancements, etc at the |PROJECT| `Github
 repository  issues page <https://github.com/nathangeffen/faststi/issues>`_.

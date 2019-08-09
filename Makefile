@@ -236,10 +236,10 @@ OBJEXT = o
 PACKAGE = faststi
 PACKAGE_BUGREPORT = nathangeffen@quackdown.info
 PACKAGE_NAME = faststi
-PACKAGE_STRING = faststi 0.2.0
+PACKAGE_STRING = faststi 0.2.1
 PACKAGE_TARNAME = faststi
 PACKAGE_URL = 
-PACKAGE_VERSION = 0.2.0
+PACKAGE_VERSION = 0.2.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -247,7 +247,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 0.2.0
+VERSION = 0.2.1
 abs_builddir = /home/nathan/workspace/C/faststi
 abs_srcdir = /home/nathan/workspace/C/faststi
 abs_top_builddir = /home/nathan/workspace/C/faststi
@@ -292,7 +292,26 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 SUBDIRS = src
-EXTRA_DIST = data
+EXTRA_DIST = simulations/examples/eg1.ini		\
+		simulations/examples/eg2.ini		\
+		simulations/examples/agents_in.csv	\
+		data/dataset_birth_infect.csv 		\
+		data/dataset_birth_resistant.csv 	\
+		data/dataset_birth_treated.csv		\
+		data/dataset_coinfect.csv		\
+		data/dataset_gen_infect.csv		\
+		data/dataset_gen_mating.csv		\
+		data/dataset_gen_resistant.csv		\
+		data/dataset_gen_sex.csv		\
+		data/dataset_gen_sex_preferred.csv	\
+		data/dataset_gen_treated.csv		\
+		data/dataset_infect.csv			\
+		data/dataset_infect_stage.csv		\
+		data/dataset_mortality.csv		\
+		data/dataset_mortality_simple.csv	\
+		data/dataset_rel.csv			\
+		data/dataset_single.csv
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 

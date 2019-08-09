@@ -171,7 +171,7 @@ Here is an example output from a set of simulations:
 - The first column (name) is the simulation group name as specified in the configuration
   file.
 - The second column (sim) is the unique simulation number. In every execution of
-  FastSTI, each simulation will have its own unique id, starting from 0.
+  |PROJECT|, each simulation will have its own unique id, starting from 0.
 - The third column (num) is the number of the simulation within the simulation
   group. Here each of the two simulation groups (Simulation_0 and Simulation_1)
   executed two simulations each, numbered 0 and 1.
@@ -294,7 +294,7 @@ the agent's partner (-1 if the agent is single). The last column is the date the
 agent's relationship status will change, either to single if it's in a
 relationship, or to a relationship if it's single.
 
-.. note:: FastSTI's agent output event assumes an agent has at most one
+.. note:: |PROJECT|'s agent output event assumes an agent has at most one
           partner. You can extend it if you're implementing concurrency.
 
 .. note:: If you feel comfortable writing C code, you can modify or extend the

@@ -63,7 +63,7 @@ format. Here is an example:
   ignored.
 - Blank lines are ignored.
 - Each key must be a predefined parameter. If you use a key that isn't a
-  predefined parameter, the FastSTI will give an error message and terminate. To
+  predefined parameter, the |PROJECT| will give an error message and terminate. To
   see all the parameters, run: ::
 
     .src/faststi -p
@@ -165,12 +165,12 @@ In the example HIV model provided, there are five possible values for
 
 Let's start with the header (line 1). The last column is *4|4*. The first "4" is
 simply the name of the column (representing stage 4 infection), and could have
-been called anything. But the "4" after the pipe (|) tells FastSTI that the last
+been called anything. But the "4" after the pipe (|) tells |PROJECT| that the last
 four columns all represent probabilities. If a dataset contains more than one
-probability column then this must be specified. FastSTI then knows that the
+probability column then this must be specified. |PROJECT| then knows that the
 first three fields, *sex*, *sex_preferred* and *age* are not probability
 columns, and correspond precisely to the names of fields in the fsti_agent data
-structure. If they didn't, FastSTI would terminate with an error.
+structure. If they didn't, |PROJECT| would terminate with an error.
 
 The dataset needs an entry (or row) for each combination of sex, sex_preferred
 and age. Also the first row of every dataset after the header must start with
@@ -180,7 +180,7 @@ that probabilities can be looked up using a random access search, rather than
 having to sequentially search the table.
 
 There is one important short-cut. Notice the column headed "age|10-YEAR". The
-pipe followed by either an integer or a time period, tells FastSTI to divide the
+pipe followed by either an integer or a time period, tells |PROJECT| to divide the
 agent's age by this number, in this case 10 years, in order to get the value to
 search for in the dataset. So an agent with age 45 will have its age divided by
 10 which gives it a lookup value for its age of 4 (the .5 is dropped - this is
@@ -212,7 +212,7 @@ samples a uniform random number, *r*.
 With most events, the agent characteristics you use are up to you. You could
 create a dataset for generating the initial infection status of agents that
 doesn't take into account *sex_preferred* or *age*. Alternately, you could add a
-*coinfection* column (because there is a field called coinfection in the FastSTI
+*coinfection* column (because there is a field called coinfection in the |PROJECT|
 agent structure), and make the infection probabilities dependent on that.
 
 There is somewhat less flexibility with the probability fields. These are
@@ -227,7 +227,7 @@ Two-agent datasets
 
 Some events need to make a decision based on two agents. In modelling sexually
 transmitted infections, the most obvious example is an event that determines if
-an agent becomes infected. FastSTI's supplied *_infect* event does just this. It
+an agent becomes infected. |PROJECT|'s supplied *_infect* event does just this. It
 iterates over all pairs of agents in sero-discordant sexual relationships, and
 determines whether the negative partners becomes infected.
 
@@ -238,7 +238,7 @@ some way of specifying this in a dataset. Also, we are interested in what
 infection stage *b* is in. If *b* is on treatment, for example, the risk of
 infecting *a* may be very low.
 
-The dataset_infect.csv dataset shows how this is handled in FastSTI.
+The dataset_infect.csv dataset shows how this is handled in |PROJECT|.
 
 .. code-block:: none
    :linenos:
@@ -267,11 +267,11 @@ The dataset_infect.csv dataset shows how this is handled in FastSTI.
 
 The header (line 1) contains two columns named *sex*. The first one corresponds
 to the uninfected agent, *a*. The second and third columns are the sex and
-infection stage of *b*. How does FastSTI know this? Look at the second column
+infection stage of *b*. How does |PROJECT| know this? Look at the second column
 heading: *sex|1|~*.  The first pipe (|) is used to separate sex from the amount the
 property must be divided by. Well, unlike age, we don't want the sex to be more
 granular, so we specify it as 1. The second pipe is followed by a tilde
-(~). The tilde in the column header tells FastSTI that this is a two-agent
+(~). The tilde in the column header tells |PROJECT| that this is a two-agent
 lookup table and the second agent's properties start in this column. So the
 second and third columns belong to agent *b*. The final column, with name
 *probability*, is simply the probability of becoming infected. (By default events
@@ -286,15 +286,15 @@ Agents
 ******
 
 Instead of generating agents, you can provide an agent file as input to the
-simulation. In fact, since the agent generation features of FastSTI are
+simulation. In fact, since the agent generation features of |PROJECT| are
 currently quite limited, you'll probably prefer to supply an agent file.
 
 The agents must be specified in a CSV file. The column names in the header row
-must correspond to one or more field names in FastSTI's agent structure, which is declared
+must correspond to one or more field names in |PROJECT|'s agent structure, which is declared
 as *struct fsti_agent* in the source file *src/fsti-agent.h*. The fields are:
 
 - id: unsigned 32 bit integer, unique for each agent (If you do not include this
-  field, FastSTI automatically provides this value for each agent, starting from
+  field, |PROJECT| automatically provides this value for each agent, starting from
   0.)
 - sex: unsigned 8 bit integer (0 is male, 1 is female. Higher values are user-defined.)
 - Either sex_preferred or orientation, an unsigned 8 bit integer (Do not use
@@ -304,7 +304,7 @@ as *struct fsti_agent* in the source file *src/fsti-agent.h*. The fields are:
   and WSW respectively. Higher values are user-defined.)
 - age: a positive year age of an agent between 0 and 120.
 - birthday: a signed 32 bit integer (Unless you understand the internal workings
-  of FastSTI very well, we recommend you rather use age)
+  of |PROJECT| very well, we recommend you rather use age)
 - infected: unsigned 8 bit integer (0 is uninfected. 1 and up can correspond to
   stages of infection.)
 - treated: unsigned 8 bit integer (0 is untreated. 1 and up can correspond to
@@ -319,7 +319,7 @@ as *struct fsti_agent* in the source file *src/fsti-agent.h*. The fields are:
   either a simple or bitmask approach can be used.)
 - partners_0, partners_1, and partners_2: unsigned 32 bit integers denoting the
   id of a sexual partner of this agent (-1 implies agent is single. The agents
-  are typically numbered from 0. Note: None of the default FastSTI events
+  are typically numbered from 0. Note: None of the default |PROJECT| events
   currently caters for concurrency. Only use partners_1 and partners_2 if you
   are implementing events that rely on partner concurrency. If you need more
   partners, change the value of FSTI_MAX_PARTNERS in fsti_userdefs.h.)

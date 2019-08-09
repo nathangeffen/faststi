@@ -61,8 +61,8 @@ Cygwin
 1. Use the Cygwin setup tool to install these packages:
 
 - gcc-core
-- gcc-tools-epoch2-autoconf
-- gcc-tools-epoch2-automake
+- make
+- automake
 - libgsl-dev
 - libglib2.0-devel
 - wget
@@ -129,9 +129,9 @@ To uninstall |PROJECT| simply run: ::
 .. tip:: You may have noticed that there are files for the the `Meson Build
           system <https://mesonbuild.com/>`_ in the |PROJECT| folder. (If you
           haven't heard of the Meson Build system, don't worry; skip this tip.)
-          |PROJECT| can be built with meson and ninja. We intend to keep |PROJECT|
-          compatible with both build systems, but because autotools is the more
-          widely used standard, it's the one we document here.
+          |PROJECT| can be built with meson and ninja. We intend to keep
+          |PROJECT| compatible with both build systems, but because autotools is
+          the more widely used standard, it's the one we document here.
 
           But feel free and encouraged to use meson and ninja to compile
           |PROJECT|. For one thing it's faster because it does parallel

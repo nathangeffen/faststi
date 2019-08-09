@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; FastSTI 0.2.0 documentation</title>
+  <title>Installation &mdash; FastSTI 0.2.1 documentation</title>
   
 
   
@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -191,7 +192,7 @@ it.</p>
 <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>This should create a directory called faststi-0.2.1 which contains the FastSTI files.</p>
 <p>Now go to step 3.</p>
 </div>
 <div class="section" id="mac">
@@ -205,7 +206,7 @@ it.</p>
 </div>
 </li>
 </ol>
-<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>This should create a directory called faststi-0.2.1 which contains the FastSTI files.</p>
 <p>Now go to step 3.</p>
 </div>
 <div class="section" id="windows">
@@ -220,8 +221,8 @@ to date we have only tested installation with Cygwin.</p>
 </ol>
 <ul class="simple">
 <li>gcc-core</li>
-<li>gcc-tools-epoch2-autoconf</li>
-<li>gcc-tools-epoch2-automake</li>
+<li>make</li>
+<li>automake</li>
 <li>libgsl-dev</li>
 <li>libglib2.0-devel</li>
 <li>wget</li>
@@ -234,14 +235,14 @@ to date we have only tested installation with Cygwin.</p>
 </div>
 </li>
 </ol>
-<p>This should create a directory called faststi-0.2.0 which contains the FastSTI files.</p>
+<p>This should create a directory called faststi-0.2.1 which contains the FastSTI files.</p>
 <p>Now go to step 3.</p>
 </div>
 </div>
 <div class="section" id="on-all-machines">
 <h2>On all machines<a class="headerlink" href="#on-all-machines" title="Permalink to this headline">¶</a></h2>
 <p>3. Change into the directory that you’ve decompressed the distribution
-into: faststi-0.2.0</p>
+into: faststi-0.2.1</p>
 <ol class="arabic" start="4">
 <li><p class="first">Now run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span>
@@ -295,9 +296,9 @@ commands work with FastSTI.</p>
 <p>You may have noticed that there are files for the the <a class="reference external" href="https://mesonbuild.com/">Meson Build
 system</a> in the FastSTI folder. (If you
 haven’t heard of the Meson Build system, don’t worry; skip this tip.)
-FastSTI can be built with meson and ninja. We intend to keep FastSTI
-compatible with both build systems, but because autotools is the more
-widely used standard, it’s the one we document here.</p>
+FastSTI can be built with meson and ninja. We intend to keep
+FastSTI compatible with both build systems, but because autotools is
+the more widely used standard, it’s the one we document here.</p>
 <p class="last">But feel free and encouraged to use meson and ninja to compile
 FastSTI. For one thing it’s faster because it does parallel
 compilations. Note though, that the builds are placed in different

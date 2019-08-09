@@ -407,7 +407,7 @@ parameters:
   onwards. If r is less than the probability in a dependent column, the
   agent's treatment status is set to the dependent column number.
 
-  Here's a mixture of C and pseudocode showing how FastSTI does this:
+  Here's a mixture of C and pseudocode showing how |PROJECT| does this:
 
   .. code-block:: C
      :linenos:

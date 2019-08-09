@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Events &mdash; FastSTI 0.2.0 documentation</title>
+  <title>Events &mdash; FastSTI 0.2.1 documentation</title>
   
 
   
@@ -100,11 +100,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#initial-mating">_initial_mating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-rel">_initial_rel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mating-pool">_mating_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breakup">_breakup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shuffle-living">_shuffle_living</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shuffle-mating">_shuffle_mating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rkpm">_rkpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breakup-and-pair">_breakup_and_pair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-and-pair">_generate_and_pair</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -497,13 +504,120 @@ are also welcome to implement your own events that do account for concurrent
 partnerships.</p>
 <p>Datasets: None</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
-<p>TO DO FROM HERE</p>
-<p>_breakup</p>
-<p>_shuffle_living</p>
-<p>_shuffle_mating</p>
-<p>_rkpm</p>
-<p>_breakup_and_pair</p>
-<p>_generate_and_pair</p>
+</div>
+<div class="section" id="breakup">
+<h2>_breakup<a class="headerlink" href="#breakup" title="Permalink to this headline">¶</a></h2>
+<p>Iterates through the living agents, and breaks up some of those who are in
+relationships.</p>
+<p>The event looks at the relchange properties of each agent in a relationship. If
+relchange is less than the current iteration, it’s time for the relationship to
+end.</p>
+<p>Datasets: None</p>
+<p>See also: <em>_breakup_and_pair</em>.</p>
+</div>
+<div class="section" id="shuffle-living">
+<h2>_shuffle_living<a class="headerlink" href="#shuffle-living" title="Permalink to this headline">¶</a></h2>
+<p>Shuffles the living agents array. This is useful if an event is biased by the
+order in which it processes the agents. If the agents are shuffled before the
+event is run, over the long run this may remove the bias.</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="shuffle-mating">
+<h2>_shuffle_mating<a class="headerlink" href="#shuffle-mating" title="Permalink to this headline">¶</a></h2>
+<p>Shuffles the mating pool. This is important to run before many pair-matching
+algorithms including the _rkpm event provided by FastSTI. Stochastic
+pair-matching events tend to assign better matches to agents at the beginning of
+an array. By shuffling the mating pool, this bias may be mitigated against over
+the long run.</p>
+<p>Datasets: None</p>
+<p>See also: <em>_breakup_and_pair</em>.</p>
+</div>
+<div class="section" id="rkpm">
+<h2>_rkpm<a class="headerlink" href="#rkpm" title="Permalink to this headline">¶</a></h2>
+<p>This event runs the pair matching algorithm provided by FastSTI. For most
+purposes it’s good and flexible.</p>
+<p>RKPM stands for Random-k Pair-Matching. It may also have been called a k-Nearest
+Neighbour algorithm. It looks at the k agents adjacent (to the right if you
+think of an array as a set of objects arranged left to right) of the current
+agent in the mating pool, and selects the best match based on a distance
+measure.</p>
+<p>The value of k is determined by the <em>match_k</em> parameter. Its default value
+is 100.</p>
+<p>If k is set to 1 in the configuration input file, then in effect agents in the
+mating pool are randomly matched with each other. This is a very fast way to
+match agents but will not generate realistic matches.</p>
+<p>If k is set to a large number greater than or equal to the possible number of
+agents that will enter the mating pool (e.g. set it to 1,000,000,000 to ensure
+it’s bigger than any practically conceivable mating pool) , then in effect
+agents in the mating pool are matched using a brute force algorithm, i.e. the
+entire remainder of the mating pool is searched for a mate for the current
+agent. This usually obtains a set of matches that resemble the population being
+studied (assuming the distance measure is well implemented) but it can be very
+slow.</p>
+<p>The distance measure is written in C. It can be easily modified be redefining
+the FSTI_AGENT_DISTANCE macro in fsti-userdefs.h and recompiling FastSTI.</p>
+<p>This is how the default FSTI_AGENT_DISTANCE macro is defined:</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="cp">#ifndef FSTI_AGENT_DISTANCE</span>
+ <span class="cp">#define FSTI_AGENT_DISTANCE(agent_a, agent_b)   \</span>
+<span class="cp">      fsti_agent_default_distance(agent_a, agent_b)</span>
+ <span class="cp">#endif</span>
+</pre></div>
+</td></tr></table></div>
+<p>The fsti_agent_default_distance function is defined in fsti-agent.c file and is
+very simple.</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">float</span> <span class="nf">fsti_agent_default_distance</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">float</span> <span class="n">result</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">sex_preferred</span> <span class="o">!=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">sex</span><span class="p">)</span>
+       <span class="n">result</span> <span class="o">+=</span> <span class="mf">25.0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">sex_preferred</span> <span class="o">!=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">sex</span><span class="p">)</span>
+       <span class="n">result</span> <span class="o">+=</span> <span class="mf">25.0</span><span class="p">;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">-</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>It minimises the distance between ages of compatible sexual orientation and
+similar age.</p>
+<p>To define your own distance function, write a function to replace this in
+fsti-userdefs.c and redefine FSTI_AGENT_DISTANCE to call it.</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="breakup-and-pair">
+<h2>_breakup_and_pair<a class="headerlink" href="#breakup-and-pair" title="Permalink to this headline">¶</a></h2>
+<p>This is a composite event that executes the following events in this order:</p>
+<ul class="simple">
+<li>_breakup</li>
+<li>_mating</li>
+<li>_shuffle_mating</li>
+<li>_rkpm</li>
+</ul>
+</div>
+<div class="section" id="generate-and-pair">
+<h2>_generate_and_pair<a class="headerlink" href="#generate-and-pair" title="Permalink to this headline">¶</a></h2>
+<p>This is a composite event that executes the following events in this order:</p>
+<ul class="simple">
+<li>_generate_agents</li>
+<li>_initial_mating</li>
+<li>_shuffle_mating</li>
+<li>_rkpm</li>
+<li>_initial_rel</li>
+</ul>
+<p>TO DO</p>
 <p>_infect</p>
 <p>_stage</p>
 <p>_coinfect</p>

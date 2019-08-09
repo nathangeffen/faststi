@@ -1,6 +1,6 @@
-=======================================================
-FastSTI: Simulations of sexually transmitted infections
-=======================================================
+=========================================================
+|PROJECT|: Simulations of sexually transmitted infections
+=========================================================
 
 .. toctree::
    :maxdepth: 2
@@ -14,5 +14,6 @@ FastSTI: Simulations of sexually transmitted infections
    events
    extending
    improve
+   refs
    license
    credits
