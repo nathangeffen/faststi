@@ -82,7 +82,7 @@ yourself.
 
 To run the simulation: ::
 
-  ../../src/faststi -f eg1.ini
+   FSTI_DATA=../../data faststi -f eg1.ini
 
 The output may look something like this: ::
 
@@ -117,6 +117,23 @@ columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
 seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
 tell us that the population alive and dead in this simulation on 1 January 2028
 is 0.
+
+Prefixing every run with setting the FSTI_DATA directory is tedious. Let's fix
+that. In a POSIX environment (Linux, FreeBSD etc) that's easy. Change into the
+|DIRNAME| directory. Now set and export the FSTI_DATA environment variable like
+this: ::
+
+  export FSTI_DATA=`pwd`/data
+
+Test that it's working: ::
+
+  faststi -t
+
+If no errors are reported, then it's working. But at present you'll have to
+execute the export command every time you open a terminal. To make it
+permanently part of your environment, place it in your .profile or .bashrc
+scripts, depending on the flavour of POSIX you're using.
+
 
 A full simulation
 ~~~~~~~~~~~~~~~~~
@@ -172,7 +189,7 @@ eg2.ini.
 Assuming you are in the simulations/examples directory you can run this
 simulation as follows: ::
 
-  ../../src/faststi -f eg2.ini
+  faststi -f eg2.ini
 
 This will take about 10 seconds to run, depending on your PC.
 

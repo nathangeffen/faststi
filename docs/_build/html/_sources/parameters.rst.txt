@@ -7,7 +7,7 @@ Configuration file parameters
 To see the list of configuration file parameters, along with a description and
 the value for each, run: ::
 
-  ./src/faststi -p
+  faststi -p
 
 This prints out the parameters in a
 logical order. Here is an alphabetically arranged reference guide to the

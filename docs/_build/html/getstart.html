@@ -233,7 +233,7 @@ basic information about the state of a simulation. All built-in events are
 prefixed with an underscore, to differentiate them from ones you might code
 yourself.</p>
 <p>To run the simulation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FSTI_DATA</span><span class="o">=../../</span><span class="n">data</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg1</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
 <p>The output may look something like this:</p>
@@ -268,6 +268,21 @@ columns of the last line are TIME_TAKEN and 0. This tells you that it took zero
 seconds for the simulation to run. Likewise the POP_ALIVE and POP_DEAD entries
 tell us that the population alive and dead in this simulation on 1 January 2028
 is 0.</p>
+<p>Prefixing every run with setting the FSTI_DATA directory is tedious. Let’s fix
+that. In a POSIX environment (Linux, FreeBSD etc) that’s easy. Change into the
+faststi-0.2.1 directory. Now set and export the FSTI_DATA environment variable like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export FSTI_DATA=`pwd`/data
+</pre></div>
+</div>
+<p>Test that it’s working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>If no errors are reported, then it’s working. But at present you’ll have to
+execute the export command every time you open a terminal. To make it
+permanently part of your environment, place it in your .profile or .bashrc
+scripts, depending on the flavour of POSIX you’re using.</p>
 <div class="section" id="a-full-simulation">
 <h3>A full simulation<a class="headerlink" href="#a-full-simulation" title="Permalink to this headline">¶</a></h3>
 <p>The output of the eg1.ini simulation is rather uninteresting. To get more
@@ -356,7 +371,7 @@ eg2.ini.</p>
 </td></tr></table></div>
 <p>Assuming you are in the simulations/examples directory you can run this
 simulation as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../../</span><span class="n">src</span><span class="o">/</span><span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">faststi</span> <span class="o">-</span><span class="n">f</span> <span class="n">eg2</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
 <p>This will take about 10 seconds to run, depending on your PC.</p>
