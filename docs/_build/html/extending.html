@@ -165,10 +165,104 @@
             
   <div class="section" id="extending-project">
 <h1>Extending FastSTI<a class="headerlink" href="#extending-project" title="Permalink to this headline">¶</a></h1>
-<p>FastSTI provides for a wide variety of models without any code being modified by
-the user. But some modellers are likely to encounter limitations. For example,
-they may want to model TB coinfection with HIV, or implement a cure event, or
-more sophisticated agent generation.</p>
+<p>FastSTI provides for a wide variety of models without any code being modified
+by the user. But some modellers are likely to encounter limitations. For
+example, they may want to model TB coinfection with HIV, or implement a cure
+event, or more sophisticated agent generation, or provide additional statistics.</p>
+<p>To do this, you need to program in C. This guide assumes knowledge of C
+programming as well as the source code control system Git.</p>
+<p>We recommend the following approach to developing FastSTI.</p>
+<ul class="simple">
+<li>Clone the latest version of FastSTI from the <a class="reference external" href="https://github.com/nathangeffen/faststi">Github repository</a>.</li>
+<li>Use either the gcc or Clang C compiler.</li>
+<li>Spend time looking at the source code in the src directory to understand it
+better. In particular we recommend examining the following files:<ul>
+<li>fsti-events.c which contains the events provided by FastSTI.</li>
+<li>fsti-defaults.c where all the parameters are defined.</li>
+<li>fsti-defaults.h where many of the macros that can be extended or redefined
+are defined. Note the Hooks section. These are macros that you can define in
+fsti-userdefs.h (or a file included by fsti-userdefs.h) to extend existing
+events and other functionality.</li>
+<li>fsti-defs.h where some system wide constants and structs are defined.</li>
+<li>fsti-agent.h where the fsti_agent struct is defined.</li>
+<li>fsti-simulation.h where the fsti_simulation struct is defined.</li>
+</ul>
+</li>
+</ul>
+<p>Let’s say you want to write an event to coinfect agents with TB. This is what
+you would need to do:</p>
+<ul>
+<li><p class="first">In fsti-userdefs.c write a function to do the coinfection. For example:</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="kt">void</span> <span class="nf">tb_coinfect</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">struct</span> <span class="n">fsti_agent</span> <span class="o">*</span><span class="n">agent</span><span class="p">;</span>
+       <span class="c1">// Iterate through the living agents</span>
+       <span class="n">FSTI_FOR_LIVING</span><span class="p">(</span><span class="o">*</span><span class="n">simulation</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="p">{</span>
+           <span class="c1">// Put the event logic here</span>
+       <span class="p">});</span>
+   <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">Put the prototype declaration for your event in fsti-userdefs.h. E.g.</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kt">void</span> <span class="n">tb_coinfect</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">In the fsti-userdefs.h file you need to define the FSTI_HOOK_EVENTS_REGISTER
+macro. This is so that your event can be invoked via the before_events,
+during_events or after_events parameters in the input configuration file.</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define FSTI_HOOK_EVENTS_REGISTER fsti_register_add(&quot;tb_coinfect&quot;, tb_coinfect);</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">Your event may need new parameters and datasets. It may also need new fields
+in the fsti_simulation struct and new fields in the fsti_agent struct.</p>
+<ul>
+<li><p class="first">To add new agent fields define them in the FSTI_AGENT_FIELDS macro in
+fsti-userdefs.h (or a file included by fsti-userdefs.h).</p>
+</li>
+<li><p class="first">To add new simulation fields define them in the FSTI_SIMULATION_FIELDS macro
+in fsti-userdefs.h.</p>
+</li>
+<li><p class="first">To provide additional parameters (or datasets) for input configuration files
+redefine the FSTI_ADDITIONAL_CONFIG_VARS parameter in fsti-userdefs.h. An
+example of how to do this is already in the fsti-defaults.h file.</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define FSTI_ADDITIONAL_CONFIG_VARS(config)             \</span>
+<span class="cp">      FSTI_CONFIG_ADD(config, example_1,                \</span>
+<span class="cp">      &quot;Example configuration field&quot;, 0);                \</span>
+<span class="cp">      FSTI_CONFIG_ADD_STR(config, dataset_example_2,    \</span>
+<span class="cp">                 &quot;Example dataset&quot;, FSTI_NO_OP)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that the name of a dataset parameter must start <em>dataset_</em>.</p>
+</li>
+<li><p class="first">If you want to save parameters or datasets into the current simulation
+redefine the FSTI_HOOK_CONFIG_TO_VARS macro in fsti-userdefs.h. E.g.</p>
+<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="cp">#define FSTI_HOOK_CONFIG_TO_VARS(simulation)               \</span>
+<span class="cp">           simulation-&gt;example_1 = fsti_connfig_at0_long(     \</span>
+<span class="cp">                                       &amp;simulation-&gt;config,   \</span>
+<span class="cp">                                       &quot;example_1&quot;)</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 
 
