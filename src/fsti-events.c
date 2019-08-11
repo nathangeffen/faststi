@@ -400,10 +400,10 @@ fsti_birth_resistant(struct fsti_simulation *simulation,
                      struct fsti_agent *agent)
 {
     if (agent->treated) {
-        FSTI_ASSERT(simulation->dataset_gen_resistant, FSTI_ERR_MISSING_DATASET,
+        FSTI_ASSERT(simulation->dataset_birth_resistant, FSTI_ERR_MISSING_DATASET,
                     "For parameter dataset_birth_resistant.");
         agent->resistant = dataset_val(simulation, agent,
-                                       simulation->dataset_gen_resistant, 1, 0);
+                                       simulation->dataset_birth_resistant, 1, 0);
     }
 }
 

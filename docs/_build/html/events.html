@@ -106,6 +106,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#rkpm">_rkpm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#breakup-and-pair">_breakup_and_pair</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generate-and-pair">_generate_and_pair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infect">_infect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stage">_stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coinfect">_coinfect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#birth">_birth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#report">_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-results-csv-header">_write_results_csv_header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-agents-csv">_write_agents_csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-agents-csv-header">_write_agents_csv_header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-living-agents-csv">_write_living_agents_csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-dead-agents-csv">_write_dead_agents_csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#write-partnerships-csv-header">_write_partnerships_csv_header</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
@@ -512,6 +523,10 @@ relationships.</p>
 <p>The event looks at the relchange properties of each agent in a relationship. If
 relchange is less than the current iteration, it’s time for the relationship to
 end.</p>
+<p>If you wish to record all the breakups, set the record_breakups parameter to 1
+and the partnerships_file parameter to the name of the file to output to. But
+note that the number of breakups in a large simulation can be huge.</p>
+<p>Parameters: record_breakups, partnerships_file</p>
 <p>Datasets: None</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
 </div>
@@ -595,6 +610,11 @@ very simple.</p>
 similar age.</p>
 <p>To define your own distance function, write a function to replace this in
 fsti-userdefs.c and redefine FSTI_AGENT_DISTANCE to call it.</p>
+<p>If you wish to record all the matches in a file, set the record_matches
+parameter to 1 and the partnerships_file parameter to the name of the file to
+output to. But note that the number of partnerships in a large simulation can be
+huge.</p>
+<p>Parameters: record_matches, partnerships_file</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="breakup-and-pair">
@@ -617,19 +637,347 @@ fsti-userdefs.c and redefine FSTI_AGENT_DISTANCE to call it.</p>
 <li>_rkpm</li>
 <li>_initial_rel</li>
 </ul>
-<p>TO DO</p>
-<p>_infect</p>
-<p>_stage</p>
-<p>_coinfect</p>
-<p>_birth</p>
-<p>_report</p>
-<p>_write_results_csv_header,</p>
-<p>_write_agents_csv_header</p>
-<p>_write_partnerships_csv_header</p>
-<p>_write_agents_csv</p>
-<p>_write_living_agents_csv</p>
-<p>_write_dead_agents_csv</p>
-<p>_write_agents_pretty</p>
+</div>
+<div class="section" id="infect">
+<h2>_infect<a class="headerlink" href="#infect" title="Permalink to this headline">¶</a></h2>
+<p>Iterates the living agent and infects some of those in sero-discordant
+relationships.</p>
+<p>Whether an agent becomes infected depends on both its own characteristics and
+those of its partner. See <a class="reference internal" href="inputformats.html#two-agent-dataset-ref"><span class="std std-ref">Two-agent datasets</span></a> for details.</p>
+<p>If an agent becomes infected, the initial value of its infect property is set to
+the initial_infect_stage parameter. The default is 2. Although the infection
+stages are entirely user-defined, in the default settings of FastSTI, the
+following default setup is assumed for the infect property:</p>
+<ul class="simple">
+<li>0: The agent is uninfected (this should be the case for any simulation)</li>
+<li>1: The agent is infected but on treatment</li>
+<li>2: The agent is in a primary infection stage</li>
+<li>3: The agent is in a chronic infection stage</li>
+<li>4: The agent is sick or in an end-stage of infection</li>
+</ul>
+<p>This can be specified differently. But you must make sure that your stages are
+consistent across the simulation, else nonsensical things will happen. If you
+want a different infection stage setup, make sure your datasets and
+initial_infect_stage parameter are consistent with each other.</p>
+<p>If you wish to record all the infections, set the record_infections parameter to
+1 and the partnerships_file parameter to the name of the file to output to.</p>
+<p>Parameters: record_infections, partnerships_file</p>
+<p>Dataset: dataset_infect</p>
+</div>
+<div class="section" id="stage">
+<h2>_stage<a class="headerlink" href="#stage" title="Permalink to this headline">¶</a></h2>
+<p>Iterates over the living agents and changes the infection stage of some of the
+infected agents. It can also change the agent’s treatment and resistant properties.</p>
+<p>How many stages there are for the infection is entirely user-defined, but you
+have to make sure that the stages are consistent across events. Also, the
+possible values for the treatment and and resistant agent properties are also
+user-defined, but we think the default values FastSTI has been set up with are
+sensible for many models.</p>
+<p>Although the infection stages are entirely user-defined, in the default settings
+of FastSTI, the following default setup is assumed for the infect property:</p>
+<ul class="simple">
+<li>0: The agent is uninfected (this should be the case for any simulation)</li>
+<li>1: The agent is infected but on treatment</li>
+<li>2: The agent is in a primary infection stage</li>
+<li>3: The agent is in a chronic infection stage</li>
+<li>4: The agent is sick or in an end-stage of infection</li>
+</ul>
+<p>This can be specified differently. But you must make sure that your stages are
+consistent across the simulation, else nonsensical things will happen. If you
+want a different infection stage setup, make sure your datasets and
+initial_infect_stage parameter are consistent with each other.</p>
+<p>Dataset: dataset_infect_stage</p>
+<p>This is quite a complicated dataset and is best understood by looking at the
+commented example in the data directory called dataset_infect_stage.csv. For
+convenience here it is:</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     # Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
+     #
+     # The first three columns are used for matching and correspond to agent fields
+     # or properties.
+     #
+     # The next six columns are instructions on how and when to change the stage.
+     #
+     # Columns:
+     #
+     #  1. infected - the infection stage of the agent (0 is uninfected)
+     #  2. treated - the treatment regimen of the agent. This particular file
+     #               allows for 3 treatment regimens.
+     #  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
+     #                 1 if the agent is drug-resistant to this treatment regimen
+     #  4. prob_stage_change - probability that the infection stage changes for
+     #                         this time step (1 day)
+     #  5. stage_incr - if a uniformly generated random number &lt; prob_stage_change
+     #                  then change the infect property by this increment
+     #  6. prob_treatment_change - probability treatment changes
+     #  7. treatment_incr - if a uniformly rand number &lt; prob_treatment_change
+     #                      then change the treatment property by this increment
+     #  8. prob_resistant - probability resistance status changes
+     #  9. resistant_incr - if a uniformly random number &lt; prob_resistant_change
+     #                      change the resistant value by this amount
+     #
+     # Note the |6 after resistant_incr means that there are six columns at the end
+     # of each line that are not agent properties.
+     #
+     # Infection stages:;;;;;;;;
+     #  0 = uninfected;;;;;;;;
+     #  1 = virally suppressed (usually on treatment);;;;;;;;
+     #  2 = primary infection (highly infectious);;;;;;;;
+     #  3 = chronic infection;;;;;;;;
+     #  4 = Final stage;;;;;;;;
+     #
+     # HEADER ROW FOLLOWS
+     infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
+     0;0;0;0;0;0;0;0;0
+     0;0;1;0;0;0;0;0;0
+     0;1;0;0;0;0;0;0;0
+     0;1;1;0;0;0;0;0;0
+     0;2;0;0;0;0;0;0;0
+     0;2;1;0;0;0;0;0;0
+     0;3;0;0;0;0;0;0;0
+     0;3;1;0;0;0;0;0;0
+     1;0;0;0.1;1;0.0001;1;0;0
+     1;0;1;0.1;1;0.0001;1;0;0
+     1;1;0;0.00001;1;0.00001;1;0.00001;1
+     1;1;1;0.1;1;0.0001;1;0;0
+     1;2;0;0.00001;1;0.00001;1;0.00001;1
+     1;2;1;0.1;1;0.0001;1;0;0
+     1;3;0;0.00001;1;0;0;0.0001;1
+     1;3;1;0.1;1;0;0;0;0
+     2;0;0;0.1;1;0.001;1;0;0
+     2;0;1;0.1;1;0.001;1;0;0
+     2;1;0;0.1;-1;0;0;0.0001;1
+     2;1;1;0.1;1;0.001;1;0;0
+     2;2;0;0.1;-1;0;0;0.0001;1
+     2;2;1;0.1;1;0.001;1;0;0
+     2;3;0;0.1;-1;0;0;0.0001;1
+     2;3;1;0.1;1;0;0;0;0
+     3;0;0;0.004;1;0.0001;1;0;0
+     3;0;1;0.001;1;0.0001;1;0;0
+     3;1;0;0.1;-1;0;0;0.0001;1
+     3;1;1;0.002;1;0.005;1;0;0
+     3;2;0;0.1;-1;0;0;0.0001;1
+     3;2;1;0.002;1;0.001;1;0;0
+     3;3;0;0.1;-1;0;0;0.0001;1
+     3;3;1;0.002;1;0;0;0;0
+     4;0;0;0;0;0.005;1;0;0
+     4;0;1;0;0;0.005;1;0;0
+     4;1;0;0.1;-1;0;0;0.0001;1
+     4;1;1;0;0;0.01;1;0;0
+     4;2;0;0.1;-1;0;0;0.0001;1
+     4;2;1;0;0;0.01;1;0;0
+     4;3;0;0.1;-1;0;0;0.0001;1
+     4;3;1;0;0;0;0;0;0
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="coinfect">
+<h2>_coinfect<a class="headerlink" href="#coinfect" title="Permalink to this headline">¶</a></h2>
+<p>This is a very simple event that iterates over the living agents and sets the
+agent coinfected property to 1 for some agents. Users who want to model more
+sophisticated coinfection (e.g. TB for HIV) will likely have to write their own
+coinfection event.</p>
+<p>Dataset: dataset_coinfect</p>
+</div>
+<div class="section" id="birth">
+<h2>_birth<a class="headerlink" href="#birth" title="Permalink to this headline">¶</a></h2>
+<p>Creates new agents with their ages set to the age_min property. (So if the
+minimum age of the simulation is, say, 15, then agents are not born as infants
+but as instant adolescents.)</p>
+<p>Unless the simulation population is huge, creating agents daily (assuming the
+time_step is set to a day) makes no sense. For example consider a population of
+10,000 agents with a daily time step over 20 years. On any given day, a sensible
+continuous random distribution of births will generate a fraction of births. But
+FastSTI is a discrete simulation framework and there is no such thing as a
+fractional agent. So instead the <em>birth_event_every_n</em> parameter must be set to
+how frequently the _birth event should be executed.</p>
+<p>The event only creates agents every n<sub>th</sub> time step.  The <em>birth_rate</em>
+parameter is set to the birth rate and the GNU Scientific Library’s
+gsl_ran_poisson function is used to determine the number of births.</p>
+<p>Besides age, the default implementation sets the following agent properties:
+sex, sex_preferred, infected, treated and resistant.</p>
+<ul class="simple">
+<li>sex is set, with the proportion of males determined by the prob_birth_male
+parameter.</li>
+<li>sex_preferred is set using the prob_birth_msw (where msw stands for men who
+sex with women), prob_birth_wsm (where wsm stands for women who have sex with
+men) parameters. If the agent’s sex is male, the prob_birth_msw value is used
+to determine the probability that the agent’s preferred sexual partner is a
+female. Likewise if the agent’s sex is female the prob_birth_wsm value is used
+to determine the probability that the agent’s preferred sexual partner is a
+male.</li>
+<li>infected (i.e. the infection stage of the agent with 0 by convention meaning
+the agent isn’t infected) is set via the dataset dataset_birth_infect. (See
+data/dataset_birth_infect.csv for an example.)</li>
+<li>treated (i.e. which treatment line, if any, the agent is on) is set via the
+dataset dataset_birth_treated. (See data/dataset_birth_treated.csv for an
+example.)</li>
+<li>resistant (i.e. which treatment regimens the agent is resistant to, if any) is
+set via the dataset dataset_birth_resistant (See
+data/dataset_birth_resistant.csv for an example.)</li>
+</ul>
+<p>If you wish to set additional agent properties, you must provide hook in by
+defining a macro called FSTI_HOOK_BIRTH_AGENT in fsti-userdefs.h. The macro
+takes two parameters: simulation (a pointer to the current simulation) and
+agent (a pointer to the current agent whose property you wish to set).</p>
+<p>Parameters: birth_event_every_n, prob_birth_male, prob_birth_msw, prob_birth_wsm,</p>
+<p>Datasets: dataset_birth_infect, dataset_birth_treated and dataset_birth_resistant</p>
+</div>
+<div class="section" id="report">
+<h2>_report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<p>Reports statistics on the current state of the simulation.</p>
+<p>This event can, and typically is, executed before, during and after a simulation.
+If it is executed during the simulation, the report_frequency parameter is used
+to determine how often. E.g. if set to 365, it will execute approximately once a
+year.</p>
+<p>In addition to the statistics the event executes (defined in FSTI_REPORT in
+fsti-defaults.h which can be redefined in fsti-userdefs.h) you can define
+additional statistics using the FSTI_HOOK_REPORT macro.</p>
+<p>The results_file parameter determines the name of the output file. By default
+this is left blank which means results are written to standard output.</p>
+<p>Note that if multiple simulations are run in parallel, the output will be
+interleaved. At the end of the simulation you can simply sort these into the
+right order using the first three fields which are the simulation name, id and
+date of the report. You can use nearly any data manipulation tool to do this
+including R, Python, a spreadsheet program, or standard Posix utilities such as
+sort and awk.</p>
+<p>Parameters: report_frequency</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-results-csv-header">
+<h2>_write_results_csv_header<a class="headerlink" href="#write-results-csv-header" title="Permalink to this headline">¶</a></h2>
+<p>Simply writes a header for the results csv file. You would only place this in
+the before_events parameter. It’s clever enough to figure out that it should
+only write itself once to a results file.</p>
+<p>Parameters: None</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-agents-csv">
+<h2>_write_agents_csv<a class="headerlink" href="#write-agents-csv" title="Permalink to this headline">¶</a></h2>
+<p>Writes the current state of every agent to an agent output csv file.</p>
+<p>This event can be executed before, during and after a simulation.  If it is
+executed during the simulation, the report_frequency parameter is used to
+determine how often. E.g. if set to 365, it will execute approximately once a
+year.</p>
+<p>How an agent is written is determined by the FSTI_AGENT_PRINT_CSV macro. To
+write out agents differently redefine this macro in fsti-userdefs.h.</p>
+<p>The agents_output_file parameter determines the name of the output file. By
+default this is left blank which means agents are written to standard output.</p>
+<p>Note that if multiple simulations are run in parallel, the output will be
+interleaved. At the end of the simulation you can simply sort these into the
+right order using the first four fields which are the simulation name, id of the
+simulation, current date of the simulation and agent id. You can use nearly any
+data manipulation tool to do this including R, Python, a spreadsheet program, or
+standard Posix utilities such as sort and awk.</p>
+<p>Also note that this file can get very large. If you have a million agents and
+you are running 100 simulations, it will write 100 million lines every time it
+is executed before, during and after each simulation. You could quickly run out
+of disk space. All this output also slows down simulations, so use this event sparingly.</p>
+<p>Parameters: report_frequency</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-agents-csv-header">
+<h2>_write_agents_csv_header<a class="headerlink" href="#write-agents-csv-header" title="Permalink to this headline">¶</a></h2>
+<p>Simply writes a header for the agents csv file. You would only place this in
+the before_events parameter. It’s clever enough to figure out that it should
+only write itself once to an agent output file.</p>
+<p>Parameters: None</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-living-agents-csv">
+<h2>_write_living_agents_csv<a class="headerlink" href="#write-living-agents-csv" title="Permalink to this headline">¶</a></h2>
+<p>Exactly like _write_agents but only writes the living agents.</p>
+<p>Parameters: report_frequency</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-dead-agents-csv">
+<h2>_write_dead_agents_csv<a class="headerlink" href="#write-dead-agents-csv" title="Permalink to this headline">¶</a></h2>
+<p>Exactly like _write_agents but only writes the dead agents.</p>
+<p>Parameters: report_frequency</p>
+<p>Datasets: None</p>
+</div>
+<div class="section" id="write-partnerships-csv-header">
+<h2>_write_partnerships_csv_header<a class="headerlink" href="#write-partnerships-csv-header" title="Permalink to this headline">¶</a></h2>
+<p>If the record_matches, record_breakups or record_infections parameters are set
+to 1, then it may be useful to write a header for the output csv file.</p>
+<p>Parameters: record_matches, record_breakups, record_infections,
+partnerships_file</p>
+<p>Datasets: None</p>
 </div>
 </div>
 

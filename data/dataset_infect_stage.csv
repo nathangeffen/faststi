@@ -1,27 +1,39 @@
-# The first three columns are used for matching and correspond to agent fields.;;;;;;;;
-# The next six are instructions on how and when to change.;;;;;;;;
-# Columns:;;;;;;;;
-#  1. infected– regimen (1st line; 2nd line etc) (0 for not on treatment);;;;;;;
-#  2. treated– whether the agent is resistant to current treatment regimen;;;;;;;;
-#  3. resistant- whether the agent is infected; and stage thereof;;;;;;;
-#  4. prob_stage_change - probability infection stage changes;;;;;;;;
-#  5. stage_incr - if uniform rand number < prob_stage_change then;;;;;;;;
-#                  change the stage by this increment;;;;;;;;
-#  6. prob_treatment_change - probability treatment changes;;;;;;;;
-#  7. treatment_incr - if uniform rand number < prob_treatment_change then;;;;;;;;
-#                      change the treatment value by this amount;;;;;;;;
-#  8. prob_resistant - probability resistance status changes;;;;;;;;
-#  9. resistant_incr - if uniform rand number < prob_resistant_change then;;;;;;;;
-#                      change the resistant value by this amount;;;;;;;;
-#;;;;;;;;
+# Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
+#
+# The first three columns are used for matching and correspond to agent fields
+# or properties.
+#
+# The next six columns are instructions on how and when to change the stage.
+#
+# Columns:
+#
+#  1. infected - the infection stage of the agent (0 is uninfected)
+#  2. treated - the treatment regimen of the agent. This particular file
+#               allows for 3 treatment regimens.
+#  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
+#                 1 if the agent is drug-resistant to this treatment regimen
+#  4. prob_stage_change - probability that the infection stage changes for
+#                         this time step (1 day)
+#  5. stage_incr - if a uniformly generated random number < prob_stage_change
+#                  then change the infect property by this increment
+#  6. prob_treatment_change - probability treatment changes
+#  7. treatment_incr - if a uniformly rand number < prob_treatment_change
+#                      then change the treatment property by this increment
+#  8. prob_resistant - probability resistance status changes
+#  9. resistant_incr - if a uniformly random number < prob_resistant_change
+#                      change the resistant value by this amount
+#
+# Note the |6 after resistant_incr means that there are six columns at the end
+# of each line that are not agent properties.
+#
 # Infection stages:;;;;;;;;
 #  0 = uninfected;;;;;;;;
 #  1 = virally suppressed (usually on treatment);;;;;;;;
 #  2 = primary infection (highly infectious);;;;;;;;
 #  3 = chronic infection;;;;;;;;
 #  4 = Final stage;;;;;;;;
-#;;;;;;;;
-# HEADER ROW FOLLOWS;;;;;;;;
+#
+# HEADER ROW FOLLOWS
 infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
 0;0;0;0;0;0;0;0;0
 0;0;1;0;0;0;0;0;0

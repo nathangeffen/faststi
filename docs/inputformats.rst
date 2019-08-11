@@ -227,9 +227,9 @@ Two-agent datasets
 
 Some events need to make a decision based on two agents. In modelling sexually
 transmitted infections, the most obvious example is an event that determines if
-an agent becomes infected. |PROJECT|'s supplied *_infect* event does just this. It
-iterates over all pairs of agents in sero-discordant sexual relationships, and
-determines whether the negative partners becomes infected.
+an agent becomes infected. |PROJECT|'s supplied *_infect* event does just
+this. It iterates over all pairs of agents in sero-discordant sexual
+relationships, and determines whether the negative partners becomes infected.
 
 Consider two agents, *a* and *b*. One, *a*, is uninfected, and the other *b* is
 infected. If we want the risk of infection to be determined by *a*'s sex and
