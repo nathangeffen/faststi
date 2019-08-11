@@ -68,12 +68,17 @@ fsti-userdefs.c.
 _read_agents
 ************
 
-Reads in a csv file of agents at the beginning of a simulation. The first
-time it is executed, it saves the agents in memory so that on subsequent
-simulations, it doesn't have to process the file again.
+Reads in a csv file of agents at the beginning of a simulation. The file name is
+given by the *agents_input_file* parameter. The csv file delimiter is given by
+the csv_delimiter parameter, which defaults to a semi-colon (;).
+
+The first time this event is executed, it saves the agents in memory so that on
+subsequent simulations, it doesn't have to process the file again.
 
 If you don't have a file of agents to read in, consider using the
 _generate_agents event.
+
+Parameters: agents_input_file, csv_delimiter, mutual_csv_partners
 
 Datasets: None
 
@@ -83,14 +88,14 @@ _generate_agents
 
 Generates agents for a simulation instead of reading them from a file.
 
-It uses the num_agents parameter to determine the number of agents to
+It uses the *num_agents* parameter to determine the number of agents to
 generate.
 
 The default implementation sets the following agent properties: age, sex,
 sex_preferred, infected, treated and resistant.
 
 - age is set via a random beta distribution determined by the parameters
-  age_alpha and age_beta.
+  *age_alpha* and *age_beta*.
 
 - sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
   for an example.)
@@ -125,6 +130,10 @@ agent (a pointer to the current agent whose property you wish to set).
 
 See also: *_generate_and_pair*
 
+Parameters: num_agents, age_alpha, age_beta,
+
+Datasets: dataset_gen_sex, dataset_gen_sex_preferred, dataset_gen_treated, dataset_gen_resistant
+
 ****
 _age
 ****
@@ -157,6 +166,8 @@ code acts upon.
 The FSTI_FOR_LIVING macro implements a for loop over the living agents.
 The code inside the macro's curly brackets simply adds the time step to each
 agent's age.
+
+parameters: time_step
 
 Datasets: None
 
@@ -339,6 +350,8 @@ one partner. This may and probably should change in the future. Of course you
 are also welcome to implement your own events that do account for concurrent
 partnerships.
 
+Parameters: None
+
 Datasets: None
 
 See also: *_breakup_and_pair*.
@@ -354,13 +367,16 @@ The event looks at the relchange properties of each agent in a relationship. If
 relchange is less than the current iteration, it's time for the relationship to
 end.
 
+The period that each agent remains single is determined by the *dataset_single*
+dataset.
+
 If you wish to record all the breakups, set the record_breakups parameter to 1
 and the partnerships_file parameter to the name of the file to output to. But
 note that the number of breakups in a large simulation can be huge.
 
 Parameters: record_breakups, partnerships_file
 
-Datasets: None
+Datasets: dataset_single
 
 See also: *_breakup_and_pair*.
 
@@ -371,6 +387,8 @@ _shuffle_living
 Shuffles the living agents array. This is useful if an event is biased by the
 order in which it processes the agents. If the agents are shuffled before the
 event is run, over the long run this may remove the bias.
+
+Parameters: None
 
 Datasets: None
 
@@ -383,6 +401,8 @@ algorithms including the _rkpm event provided by |PROJECT|. Stochastic
 pair-matching events tend to assign better matches to agents at the beginning of
 an array. By shuffling the mating pool, this bias may be mitigated against over
 the long run.
+
+Parameters: None
 
 Datasets: None
 
@@ -459,9 +479,11 @@ parameter to 1 and the partnerships_file parameter to the name of the file to
 output to. But note that the number of partnerships in a large simulation can be
 huge.
 
+The duration of the relationship is determined by the *dataset_rel* dataset.
+
 Parameters: record_matches, partnerships_file
 
-Datasets: None
+Datasets: dataset_rel
 
 *****************
 _breakup_and_pair

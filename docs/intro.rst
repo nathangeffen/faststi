@@ -31,3 +31,10 @@ feel for how it works. Here's a screenshot from Simhub:
     :align: center
     :width: 95%
     :alt: Screen capture of |PROJECT| running on Simhub
+
+.. warning:: |PROJECT| is in active development. It is usable (we think) but
+             this documentation is changing almost daily. At this point no
+             backwards compatibility is being implemented, and no warnings of
+             incompatible changes are being documented. |PROJECT| is not yet at
+             an alpha release stage. When it is more stable, we will remove this
+             warning.

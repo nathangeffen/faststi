@@ -249,23 +249,26 @@ to code your own events in C in the source code files fsti-userdefs.h and
 fsti-userdefs.c.</p>
 <div class="section" id="read-agents">
 <h2>_read_agents<a class="headerlink" href="#read-agents" title="Permalink to this headline">¶</a></h2>
-<p>Reads in a csv file of agents at the beginning of a simulation. The first
-time it is executed, it saves the agents in memory so that on subsequent
-simulations, it doesn’t have to process the file again.</p>
+<p>Reads in a csv file of agents at the beginning of a simulation. The file name is
+given by the <em>agents_input_file</em> parameter. The csv file delimiter is given by
+the csv_delimiter parameter, which defaults to a semi-colon (;).</p>
+<p>The first time this event is executed, it saves the agents in memory so that on
+subsequent simulations, it doesn’t have to process the file again.</p>
 <p>If you don’t have a file of agents to read in, consider using the
 _generate_agents event.</p>
+<p>Parameters: agents_input_file, csv_delimiter, mutual_csv_partners</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="generate-agents">
 <h2>_generate_agents<a class="headerlink" href="#generate-agents" title="Permalink to this headline">¶</a></h2>
 <p>Generates agents for a simulation instead of reading them from a file.</p>
-<p>It uses the num_agents parameter to determine the number of agents to
+<p>It uses the <em>num_agents</em> parameter to determine the number of agents to
 generate.</p>
 <p>The default implementation sets the following agent properties: age, sex,
 sex_preferred, infected, treated and resistant.</p>
 <ul class="simple">
 <li>age is set via a random beta distribution determined by the parameters
-age_alpha and age_beta.</li>
+<em>age_alpha</em> and <em>age_beta</em>.</li>
 <li>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
 for an example.)</li>
 <li>sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
@@ -295,6 +298,8 @@ agent will stay in its current relationship or stay single. This event
 is in fact called by _generate_and_pair.</p>
 </div>
 <p>See also: <em>_generate_and_pair</em></p>
+<p>Parameters: num_agents, age_alpha, age_beta,</p>
+<p>Datasets: dataset_gen_sex, dataset_gen_sex_preferred, dataset_gen_treated, dataset_gen_resistant</p>
 </div>
 <div class="section" id="age">
 <h2>_age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h2>
@@ -327,6 +332,7 @@ code acts upon.</p>
 <p>The FSTI_FOR_LIVING macro implements a for loop over the living agents.
 The code inside the macro’s curly brackets simply adds the time step to each
 agent’s age.</p>
+<p>parameters: time_step</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="death">
@@ -513,6 +519,7 @@ the default events, including this one, do not support agents having more than
 one partner. This may and probably should change in the future. Of course you
 are also welcome to implement your own events that do account for concurrent
 partnerships.</p>
+<p>Parameters: None</p>
 <p>Datasets: None</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
 </div>
@@ -523,11 +530,13 @@ relationships.</p>
 <p>The event looks at the relchange properties of each agent in a relationship. If
 relchange is less than the current iteration, it’s time for the relationship to
 end.</p>
+<p>The period that each agent remains single is determined by the <em>dataset_single</em>
+dataset.</p>
 <p>If you wish to record all the breakups, set the record_breakups parameter to 1
 and the partnerships_file parameter to the name of the file to output to. But
 note that the number of breakups in a large simulation can be huge.</p>
 <p>Parameters: record_breakups, partnerships_file</p>
-<p>Datasets: None</p>
+<p>Datasets: dataset_single</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
 </div>
 <div class="section" id="shuffle-living">
@@ -535,6 +544,7 @@ note that the number of breakups in a large simulation can be huge.</p>
 <p>Shuffles the living agents array. This is useful if an event is biased by the
 order in which it processes the agents. If the agents are shuffled before the
 event is run, over the long run this may remove the bias.</p>
+<p>Parameters: None</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="shuffle-mating">
@@ -544,6 +554,7 @@ algorithms including the _rkpm event provided by FastSTI. Stochastic
 pair-matching events tend to assign better matches to agents at the beginning of
 an array. By shuffling the mating pool, this bias may be mitigated against over
 the long run.</p>
+<p>Parameters: None</p>
 <p>Datasets: None</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
 </div>
@@ -614,8 +625,9 @@ fsti-userdefs.c and redefine FSTI_AGENT_DISTANCE to call it.</p>
 parameter to 1 and the partnerships_file parameter to the name of the file to
 output to. But note that the number of partnerships in a large simulation can be
 huge.</p>
+<p>The duration of the relationship is determined by the <em>dataset_rel</em> dataset.</p>
 <p>Parameters: record_matches, partnerships_file</p>
-<p>Datasets: None</p>
+<p>Datasets: dataset_rel</p>
 </div>
 <div class="section" id="breakup-and-pair">
 <h2>_breakup_and_pair<a class="headerlink" href="#breakup-and-pair" title="Permalink to this headline">¶</a></h2>

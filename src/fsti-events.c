@@ -31,6 +31,10 @@
 struct fsti_agent fsti_global_agent;
 struct test_group *fsti_events_tg;
 
+/*
+ * Transforms a cell in a CSV file from one type to another.
+ */
+
 static void
 process_cell(const struct fsti_simulation *simulation,
              struct fsti_agent *agent, char *cell, void *to,
@@ -41,6 +45,11 @@ process_cell(const struct fsti_simulation *simulation,
     variant = fsti_identify_token(cell);
     transformer(to, &variant, simulation, agent);
 }
+
+
+/*
+ * Writes the header record for the partnerships CSV file
+ */
 
 void
 fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation)
@@ -55,6 +64,10 @@ fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation)
                 delim, delim, delim, delim, delim, delim);
     }
 }
+
+/*
+ * Records a new partnership in the partnerships CSV file
+ */
 
 static void
 output_partnership(struct fsti_simulation *simulation,
@@ -83,6 +96,13 @@ output_partnership(struct fsti_simulation *simulation,
             a->id, delim, b->id, delim, desc);
 }
 
+/*
+ * Iterates through the agents and ensures that if an agent has been assigned
+ * to a partnership, its partner is assigned to the same partnership.
+ * Useful if reading in an agent file where only one side of the partnership
+ * is specified.
+ */
+
 static void
 make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
 {
@@ -100,6 +120,10 @@ make_partnerships_mutual(struct fsti_agent_ind *agent_ind)
             }
         });
 }
+
+/*
+ * Counts the number of partnerships at the beginning of a simulation.
+ */
 
 static void
 count_initial_partnerships_infections(struct fsti_simulation *simulation)
@@ -119,6 +143,13 @@ count_initial_partnerships_infections(struct fsti_simulation *simulation)
             }
         });
 }
+
+/*
+ * Reads an input file of agents to intialize a simulation.
+ *
+ * TO DO: This function is too long and complicated. Break up into chunks.
+ *
+ */
 
 static void
 read_agents(struct fsti_simulation *simulation)
@@ -171,6 +202,10 @@ read_agents(struct fsti_simulation *simulation)
         fclose(f);
 }
 
+/*
+ * Processes agent file to initialize a simulation
+ */
+
 void
 fsti_event_read_agents(struct fsti_simulation *simulation)
 {
@@ -192,16 +227,27 @@ fsti_event_read_agents(struct fsti_simulation *simulation)
     }
 }
 
+/*
+ * Looks up a probability in a row in a dataset, and returns a or b
+ * depending on whether a uniform random number is less than than probability.
+ */
+
 static inline long
-dataset_val(const struct fsti_simulation *sim,
-            const struct fsti_agent *ag,
-            const struct fsti_dataset *ds,
+dataset_val(const struct fsti_simulation *simulation,
+            const struct fsti_agent *agent,
+            const struct fsti_dataset *dataset,
             long a,
             long b)
 {
-    return (gsl_rng_uniform(sim->rng) < fsti_dataset_lookup0(ds, ag)) ? a : b;
+    return (gsl_rng_uniform(simulation->rng) < fsti_dataset_lookup0(dataset,
+                                                                    agent))
+        ? a : b;
 }
 
+
+/*
+ * Generates the age for a newly created agent.
+ */
 
 void
 fsti_generate_age(struct fsti_simulation *simulation,
@@ -217,7 +263,9 @@ fsti_generate_age(struct fsti_simulation *simulation,
     agent->age = gsl_ran_beta(simulation->rng, a, b) * (max - min) + min;
 }
 
-
+/*
+ * Generates the sex for a newly created agent.
+ */
 
 void
 fsti_generate_sex(struct fsti_simulation *simulation,
@@ -228,6 +276,10 @@ fsti_generate_sex(struct fsti_simulation *simulation,
     agent->sex = dataset_val(simulation, agent, simulation->dataset_gen_sex,
                              FSTI_MALE, FSTI_FEMALE);
 }
+
+/*
+ * Generates the sex preferred for a newly created agent.
+ */
 
 void
 fsti_generate_sex_preferred(struct fsti_simulation *simulation,
@@ -241,6 +293,10 @@ fsti_generate_sex_preferred(struct fsti_simulation *simulation,
         dataset_val(simulation, agent, simulation->dataset_gen_sex_preferred,
                     FSTI_MALE, FSTI_FEMALE);
 }
+
+/*
+ * Sets the infection status for a newly created agent.
+ */
 
 static void
 set_infected(struct fsti_simulation *simulation,
@@ -265,6 +321,10 @@ set_infected(struct fsti_simulation *simulation,
     if (agent->infected) simulation->initial_infections++;
 }
 
+/*
+ * Generates the infection status for a newly created agent.
+ */
+
 void
 fsti_generate_infected(struct fsti_simulation *simulation,
                        struct fsti_agent *agent)
@@ -275,6 +335,10 @@ fsti_generate_infected(struct fsti_simulation *simulation,
                 "For parameter dataset_gen_infect");
     set_infected(simulation, agent, ds);
 }
+
+/*
+ * Sets the treatment status for a newly created agent.
+ */
 
 static void
 set_treated(const struct fsti_simulation *simulation,
@@ -298,6 +362,10 @@ set_treated(const struct fsti_simulation *simulation,
     }
 }
 
+/*
+ * Generates the treatment status for a newly created agent.
+ */
+
 void
 fsti_generate_treated(struct fsti_simulation *simulation,
                       struct fsti_agent *agent)
@@ -312,6 +380,10 @@ fsti_generate_treated(struct fsti_simulation *simulation,
     }
 }
 
+/*
+ * Generates the resistance profile for a newly created agent.
+ */
+
 void
 fsti_generate_resistant(struct fsti_simulation *simulation,
                         struct fsti_agent *agent)
@@ -324,6 +396,10 @@ fsti_generate_resistant(struct fsti_simulation *simulation,
     }
 }
 
+/*
+ * Event to generate new agents to initialize a simulation.
+ * Either use this or fsti_event_read_agents, but generally not both.
+ */
 
 void
 fsti_event_generate_agents(struct fsti_simulation *simulation)
