@@ -294,6 +294,7 @@ top_srcdir = .
 SUBDIRS = src
 EXTRA_DIST = simulations/examples/eg1.ini		\
 		simulations/examples/eg2.ini		\
+		simulations/examples/experiment.ini	\
 		simulations/examples/agents_in.csv	\
 		data/dataset_birth_infect.csv 		\
 		data/dataset_birth_resistant.csv 	\
@@ -310,7 +311,9 @@ EXTRA_DIST = simulations/examples/eg1.ini		\
 		data/dataset_mortality.csv		\
 		data/dataset_mortality_simple.csv	\
 		data/dataset_rel.csv			\
-		data/dataset_single.csv
+		data/dataset_single.csv			\
+		scripts/processResultsFile.R		\
+		scripts/README
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

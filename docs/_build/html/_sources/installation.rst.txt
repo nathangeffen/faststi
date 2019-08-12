@@ -125,16 +125,3 @@ But results may vary.
 To uninstall |PROJECT| simply run: ::
 
   sudo make uninstall
-
-.. tip:: You may have noticed that there are files for the the `Meson Build
-          system <https://mesonbuild.com/>`_ in the |PROJECT| folder. (If you
-          haven't heard of the Meson Build system, don't worry; skip this tip.)
-          |PROJECT| can be built with meson and ninja. We intend to keep
-          |PROJECT| compatible with both build systems, but because autotools is
-          the more widely used standard, it's the one we document here.
-
-          But feel free and encouraged to use meson and ninja to compile
-          |PROJECT|. For one thing it's faster because it does parallel
-          compilations. Note though, that the builds are placed in different
-          directories, and so to keep things simple this documentation is
-          written for people using autotools.

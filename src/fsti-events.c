@@ -145,6 +145,37 @@ count_initial_partnerships_infections(struct fsti_simulation *simulation)
 }
 
 /*
+ * Used by read_agents to create a new agent.
+ */
+
+static void
+make_agent(struct fsti_simulation *simulation,
+           const struct csv *cs,
+           const char *filename)
+{
+    size_t i, j;
+    struct fsti_agent_elem *elems[cs->header.len];
+
+    for (i = 0; i < cs->header.len; i++)
+        elems[i] = fsti_agent_elem_by_strname(cs->header.cells[i]);
+
+    for (i = 0; i < cs->len; i++) {
+        memset(&simulation->csv_agent, 0, sizeof(struct fsti_agent));
+        for (j = 0; j < cs->rows[i].len; ++j) {
+            process_cell(simulation, &simulation->csv_agent,
+                         cs->rows[i].cells[j],
+                         (char *) &simulation->csv_agent + elems[j]->offset,
+                         elems[j]->transformer);
+            FSTI_ASSERT(fsti_error == 0,
+                        FSTI_ERR_INVALID_CSV_FILE,
+                        fsti_sprintf("File: %s at line %zu", filename, i+2));
+        }
+        fsti_agent_arr_push(&simulation->agent_arr,
+                            &simulation->csv_agent);
+    }
+}
+
+/*
  * Reads an input file of agents to intialize a simulation.
  *
  * TO DO: This function is too long and complicated. Break up into chunks.
@@ -175,23 +206,7 @@ read_agents(struct fsti_simulation *simulation)
 
     struct fsti_agent_elem *elems[cs.header.len];
 
-    for (i = 0; i < cs.header.len; i++)
-        elems[i] = fsti_agent_elem_by_strname(cs.header.cells[i]);
-
-    for (i = 0; i < cs.len; i++) {
-        memset(&simulation->csv_agent, 0, sizeof(struct fsti_agent));
-        for (j = 0; j < cs.rows[i].len; ++j) {
-            process_cell(simulation, &simulation->csv_agent,
-                         cs.rows[i].cells[j],
-                         (char *) &simulation->csv_agent + elems[j]->offset,
-                         elems[j]->transformer);
-            FSTI_ASSERT(fsti_error == 0,
-                        FSTI_ERR_INVALID_CSV_FILE,
-                        fsti_sprintf("File: %s at line %zu", filename, i+2));
-        }
-        fsti_agent_arr_push(&simulation->agent_arr,
-                            &simulation->csv_agent);
-    }
+    make_agent(simulation, &cs, filename);
     fsti_agent_ind_fill_n(&simulation->living, cs.len);
     if (process_partners) make_partnerships_mutual(&simulation->living);
     count_initial_partnerships_infections(simulation);
