@@ -8,6 +8,7 @@
    intro
    installation
    getstart
+   guide
    example
    inputformats
    outputformats

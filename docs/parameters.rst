@@ -14,6 +14,7 @@ logical order. Here is an alphabetically arranged reference guide to the
 parameters:
 
 
+.. _after_events_ref:
 
 - after_events
 
@@ -129,6 +130,8 @@ parameters:
 
     agents_output_file = stdout # Writes agents to standard output
 
+
+.. _before_events_ref:
 
 - before_events
 
@@ -447,6 +450,41 @@ parameters:
 
     dataset_gen_infect = dataset_gen_infect.csv
 
+.. _during_events_ref:
+
+- during_events
+
+  These are the events executed on every time step of a simulation.
+
+  Default: _no_op
+
+  Events used in: None
+
+  Examples: ::
+
+      during_events=_age;_breakup_and_pair;_infect;_stage;_birth;_death
+
+      during_events = _no_op # No events are executed during the simulation (default)
+
+.. _report_frequency_ref:
+
+- report_frequency
+
+  Indicates the frequency that the reporting events specified by the
+  during_events parameter should be specified.
+
+  Default: 1, i.e. on every iteration or time step of the simulation. Make sure
+  this is what you really want. If you're executing :ref:`_write_agents_csv_ref`
+  during the simulation, having a report_frequency of 1 will slow your
+  simulation down and use huge amounts of hard drive space.
+
+  Events used in: _write_agents_csv, _write_live_agents_csv,
+  _write_dead_agents_csv, _report
+
+  Examples: ::
+
+    report_frequency = 365 # Report every 365 time steps.
+
 
 TO DO
 
@@ -505,7 +543,6 @@ record_infections; Whether to output infections to the partnership file; 0
 
 record_matches; Whether to output matches to the partnership file; 0
 
-report_frequency; Frequency that report event is generated; 1
 
 results_file; File name to output results to (empty string for stdout);
 

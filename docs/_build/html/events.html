@@ -89,6 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -248,7 +250,7 @@ a leading underscore.</p>
 to code your own events in C in the source code files fsti-userdefs.h and
 fsti-userdefs.c.</p>
 <div class="section" id="read-agents">
-<h2>_read_agents<a class="headerlink" href="#read-agents" title="Permalink to this headline">¶</a></h2>
+<span id="read-agents-ref"></span><h2>_read_agents<a class="headerlink" href="#read-agents" title="Permalink to this headline">¶</a></h2>
 <p>Reads in a csv file of agents at the beginning of a simulation. The file name is
 given by the <em>agents_input_file</em> parameter. The csv file delimiter is given by
 the csv_delimiter parameter, which defaults to a semi-colon (;).</p>
@@ -260,7 +262,7 @@ _generate_agents event.</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="generate-agents">
-<h2>_generate_agents<a class="headerlink" href="#generate-agents" title="Permalink to this headline">¶</a></h2>
+<span id="generate-agents-ref"></span><h2>_generate_agents<a class="headerlink" href="#generate-agents" title="Permalink to this headline">¶</a></h2>
 <p>Generates agents for a simulation instead of reading them from a file.</p>
 <p>It uses the <em>num_agents</em> parameter to determine the number of agents to
 generate.</p>
@@ -302,7 +304,7 @@ is in fact called by _generate_and_pair.</p>
 <p>Datasets: dataset_gen_sex, dataset_gen_sex_preferred, dataset_gen_treated, dataset_gen_resistant</p>
 </div>
 <div class="section" id="age">
-<h2>_age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h2>
+<span id="age-ref"></span><h2>_age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h2>
 <p>Iterates through all the living agents, and adds the time increment of the
 simulation to their age.</p>
 <p>This is one of the simplest events provided by FastSTI, and so it makes a nice
@@ -336,7 +338,7 @@ agent’s age.</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="death">
-<h2>_death<a class="headerlink" href="#death" title="Permalink to this headline">¶</a></h2>
+<span id="death-ref"></span><h2>_death<a class="headerlink" href="#death" title="Permalink to this headline">¶</a></h2>
 <p>Iterates through the living agents and kills some of them.</p>
 <p>Datasets: dataset_mortality</p>
 <p>Here is a simple example of this dataset:</p>
@@ -360,7 +362,7 @@ step to, say, a week you have to update the probabilities in this file
 accordingly.</p>
 </div>
 <div class="section" id="initial-mating">
-<h2>_initial_mating<a class="headerlink" href="#initial-mating" title="Permalink to this headline">¶</a></h2>
+<span id="initial-mating-ref"></span><h2>_initial_mating<a class="headerlink" href="#initial-mating" title="Permalink to this headline">¶</a></h2>
 <p>Before a simulation starts but after agents have been generated or read in
 from a file, it is possible that none of the agents are in sexual
 relationships.</p>
@@ -435,7 +437,7 @@ periods. So for example line 5 corresponds to the probability of a person aged
 <p>See also: <em>_generate_and_pair</em></p>
 </div>
 <div class="section" id="initial-rel">
-<h2>_initial_rel<a class="headerlink" href="#initial-rel" title="Permalink to this headline">¶</a></h2>
+<span id="initial-rel-ref"></span><h2>_initial_rel<a class="headerlink" href="#initial-rel" title="Permalink to this headline">¶</a></h2>
 <p>For each living agent make a correction to the duration (number of time steps)
 its current relationship, or if the agent is single, set the period it will stay
 single.</p>
@@ -548,7 +550,7 @@ event is run, over the long run this may remove the bias.</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="shuffle-mating">
-<h2>_shuffle_mating<a class="headerlink" href="#shuffle-mating" title="Permalink to this headline">¶</a></h2>
+<span id="shuffle-mating-ref"></span><h2>_shuffle_mating<a class="headerlink" href="#shuffle-mating" title="Permalink to this headline">¶</a></h2>
 <p>Shuffles the mating pool. This is important to run before many pair-matching
 algorithms including the _rkpm event provided by FastSTI. Stochastic
 pair-matching events tend to assign better matches to agents at the beginning of
@@ -559,7 +561,7 @@ the long run.</p>
 <p>See also: <em>_breakup_and_pair</em>.</p>
 </div>
 <div class="section" id="rkpm">
-<h2>_rkpm<a class="headerlink" href="#rkpm" title="Permalink to this headline">¶</a></h2>
+<span id="rkpm-ref"></span><h2>_rkpm<a class="headerlink" href="#rkpm" title="Permalink to this headline">¶</a></h2>
 <p>This event runs the pair matching algorithm provided by FastSTI. For most
 purposes it’s good and flexible.</p>
 <p>RKPM stands for Random-k Pair-Matching. It may also have been called a k-Nearest
@@ -630,7 +632,7 @@ huge.</p>
 <p>Datasets: dataset_rel</p>
 </div>
 <div class="section" id="breakup-and-pair">
-<h2>_breakup_and_pair<a class="headerlink" href="#breakup-and-pair" title="Permalink to this headline">¶</a></h2>
+<span id="breakup-and-pair-ref"></span><h2>_breakup_and_pair<a class="headerlink" href="#breakup-and-pair" title="Permalink to this headline">¶</a></h2>
 <p>This is a composite event that executes the following events in this order:</p>
 <ul class="simple">
 <li>_breakup</li>
@@ -640,7 +642,7 @@ huge.</p>
 </ul>
 </div>
 <div class="section" id="generate-and-pair">
-<h2>_generate_and_pair<a class="headerlink" href="#generate-and-pair" title="Permalink to this headline">¶</a></h2>
+<span id="generate-and-pair-ref"></span><h2>_generate_and_pair<a class="headerlink" href="#generate-and-pair" title="Permalink to this headline">¶</a></h2>
 <p>This is a composite event that executes the following events in this order:</p>
 <ul class="simple">
 <li>_generate_agents</li>
@@ -651,7 +653,7 @@ huge.</p>
 </ul>
 </div>
 <div class="section" id="infect">
-<h2>_infect<a class="headerlink" href="#infect" title="Permalink to this headline">¶</a></h2>
+<span id="infect-ref"></span><h2>_infect<a class="headerlink" href="#infect" title="Permalink to this headline">¶</a></h2>
 <p>Iterates the living agent and infects some of those in sero-discordant
 relationships.</p>
 <p>Whether an agent becomes infected depends on both its own characteristics and
@@ -677,7 +679,7 @@ initial_infect_stage parameter are consistent with each other.</p>
 <p>Dataset: dataset_infect</p>
 </div>
 <div class="section" id="stage">
-<h2>_stage<a class="headerlink" href="#stage" title="Permalink to this headline">¶</a></h2>
+<span id="stage-ref"></span><h2>_stage<a class="headerlink" href="#stage" title="Permalink to this headline">¶</a></h2>
 <p>Iterates over the living agents and changes the infection stage of some of the
 infected agents. It can also change the agent’s treatment and resistant properties.</p>
 <p>How many stages there are for the infection is entirely user-defined, but you
@@ -867,7 +869,7 @@ coinfection event.</p>
 <p>Dataset: dataset_coinfect</p>
 </div>
 <div class="section" id="birth">
-<h2>_birth<a class="headerlink" href="#birth" title="Permalink to this headline">¶</a></h2>
+<span id="birth-ref"></span><h2>_birth<a class="headerlink" href="#birth" title="Permalink to this headline">¶</a></h2>
 <p>Creates new agents with their ages set to the age_min property. (So if the
 minimum age of the simulation is, say, 15, then agents are not born as infants
 but as instant adolescents.)</p>
@@ -911,7 +913,7 @@ agent (a pointer to the current agent whose property you wish to set).</p>
 <p>Datasets: dataset_birth_infect, dataset_birth_treated and dataset_birth_resistant</p>
 </div>
 <div class="section" id="report">
-<h2>_report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<span id="report-ref"></span><h2>_report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
 <p>Reports statistics on the current state of the simulation.</p>
 <p>This event can, and typically is, executed before, during and after a simulation.
 If it is executed during the simulation, the report_frequency parameter is used
@@ -940,7 +942,7 @@ only write itself once to a results file.</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="write-agents-csv">
-<h2>_write_agents_csv<a class="headerlink" href="#write-agents-csv" title="Permalink to this headline">¶</a></h2>
+<span id="write-agents-csv-ref"></span><h2>_write_agents_csv<a class="headerlink" href="#write-agents-csv" title="Permalink to this headline">¶</a></h2>
 <p>Writes the current state of every agent to an agent output csv file.</p>
 <p>This event can be executed before, during and after a simulation.  If it is
 executed during the simulation, the report_frequency parameter is used to
@@ -972,13 +974,13 @@ only write itself once to an agent output file.</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="write-living-agents-csv">
-<h2>_write_living_agents_csv<a class="headerlink" href="#write-living-agents-csv" title="Permalink to this headline">¶</a></h2>
+<span id="write-living-agents-ref"></span><h2>_write_living_agents_csv<a class="headerlink" href="#write-living-agents-csv" title="Permalink to this headline">¶</a></h2>
 <p>Exactly like _write_agents but only writes the living agents.</p>
 <p>Parameters: report_frequency</p>
 <p>Datasets: None</p>
 </div>
 <div class="section" id="write-dead-agents-csv">
-<h2>_write_dead_agents_csv<a class="headerlink" href="#write-dead-agents-csv" title="Permalink to this headline">¶</a></h2>
+<span id="write-dead-agents-ref"></span><h2>_write_dead_agents_csv<a class="headerlink" href="#write-dead-agents-csv" title="Permalink to this headline">¶</a></h2>
 <p>Exactly like _write_agents but only writes the dead agents.</p>
 <p>Parameters: report_frequency</p>
 <p>Datasets: None</p>

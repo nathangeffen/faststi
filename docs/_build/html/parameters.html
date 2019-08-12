@@ -89,6 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration file parameters</a></li>
@@ -173,7 +175,7 @@ the value for each, run:</p>
 <p>This prints out the parameters in a
 logical order. Here is an alphabetically arranged reference guide to the
 parameters:</p>
-<ul>
+<ul id="after-events-ref">
 <li><p class="first">after_events</p>
 <p>These are the events executed after a simulation starts.</p>
 <p>Default value: _no_op</p>
@@ -263,6 +265,8 @@ _write_living_agents_csv, _write_dead_agents_csv</p>
 </pre></div>
 </div>
 </li>
+</ul>
+<ul id="before-events-ref">
 <li><p class="first">before_events</p>
 <p>These are the events executed before a simulation starts.</p>
 <p>Default: _no_op</p>
@@ -540,6 +544,35 @@ probability of infection is a function of the characteristics of both agents. Se
 </div>
 </li>
 </ul>
+<ul id="during-events-ref">
+<li><p class="first">during_events</p>
+<p>These are the events executed on every time step of a simulation.</p>
+<p>Default: _no_op</p>
+<p>Events used in: None</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">during_events</span><span class="o">=</span><span class="n">_age</span><span class="p">;</span><span class="n">_breakup_and_pair</span><span class="p">;</span><span class="n">_infect</span><span class="p">;</span><span class="n">_stage</span><span class="p">;</span><span class="n">_birth</span><span class="p">;</span><span class="n">_death</span>
+
+<span class="n">during_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed during the simulation (default)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="report-frequency-ref">
+<li><p class="first">report_frequency</p>
+<p>Indicates the frequency that the reporting events specified by the
+during_events parameter should be specified.</p>
+<p>Default: 1, i.e. on every iteration or time step of the simulation. Make sure
+this is what you really want. If you’re executing <span class="xref std std-ref">_write_agents_csv_ref</span>
+during the simulation, having a report_frequency of 1 will slow your
+simulation down and use huge amounts of hard drive space.</p>
+<p>Events used in: _write_agents_csv, _write_live_agents_csv,
+_write_dead_agents_csv, _report</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report_frequency</span> <span class="o">=</span> <span class="mi">365</span> <span class="c1"># Report every 365 time steps.</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <p>TO DO</p>
 <p>dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op</p>
 <p>dataset_mortality; CSV file of values to determine agent deaths; _no_op</p>
@@ -567,7 +600,6 @@ probability of infection is a function of the characteristics of both agents. Se
 <p>record_breakups; Whether to output breakups to the partnership file; 0</p>
 <p>record_infections; Whether to output infections to the partnership file; 0</p>
 <p>record_matches; Whether to output matches to the partnership file; 0</p>
-<p>report_frequency; Frequency that report event is generated; 1</p>
 <p>results_file; File name to output results to (empty string for stdout);</p>
 <p>simulation_period; Time period of the simulation (10 years); 5259490</p>
 <p>stabilization_events; Events used to stabilize the agent characteristics before

@@ -55,7 +55,7 @@ format. Here is an example:
 - Comment lines begin with a #.
 - A # in the middle of a line also denotes a comment until the end of the line.
 - A simulation group name is enclosed in square brackets *[]*.
-- Within a simulation group, parameters are specified as key-vale pairs. A key is
+- Within a simulation group, parameters are specified as key-value pairs. A key is
   separated from its value by an equals sign. White space before and after the =
   sign is ignored.
 - Some parameters (e.g. *during_events* take multiple values. Each value must be
@@ -280,6 +280,8 @@ are executed daily, so the probability must correspond to this time-step.)
 So if agent *a* is a female, and agent *b* is male in stage 2 (primary
 infection), what is the risk of *a* becoming infected on this iteration of the
 *_infect* event? The answer is given by line 14: 0.012.
+
+.. _agent_input_ref:
 
 ******
 Agents

@@ -1,4 +1,6 @@
 
+.. _extending_ref:
+
 ###################
 Extending |PROJECT|
 ###################

@@ -64,6 +64,8 @@ If the events provided by |PROJECT| are not all you need, then you are encourage
 to code your own events in C in the source code files fsti-userdefs.h and
 fsti-userdefs.c.
 
+.. _read_agents_ref:
+
 ************
 _read_agents
 ************
@@ -81,6 +83,8 @@ _generate_agents event.
 Parameters: agents_input_file, csv_delimiter, mutual_csv_partners
 
 Datasets: None
+
+.. _generate_agents_ref:
 
 ****************
 _generate_agents
@@ -134,6 +138,8 @@ Parameters: num_agents, age_alpha, age_beta,
 
 Datasets: dataset_gen_sex, dataset_gen_sex_preferred, dataset_gen_treated, dataset_gen_resistant
 
+.. _age_ref:
+
 ****
 _age
 ****
@@ -171,6 +177,8 @@ parameters: time_step
 
 Datasets: None
 
+.. _death_ref:
+
 ******
 _death
 ******
@@ -196,6 +204,8 @@ agent. The second column is the probability of the agent dying on this time
 step. Here the probabilities are specified per day. If you change the time
 step to, say, a week you have to update the probabilities in this file
 accordingly.
+
+.. _initial_mating_ref:
 
 ***************
 _initial_mating
@@ -256,6 +266,8 @@ periods. So for example line 5 corresponds to the probability of a person aged
      21;0
 
 See also: *_generate_and_pair*
+
+.. _initial_rel_ref:
 
 ************
 _initial_rel
@@ -392,6 +404,8 @@ Parameters: None
 
 Datasets: None
 
+.. _shuffle_mating_ref:
+
 ***************
 _shuffle_mating
 ***************
@@ -407,6 +421,8 @@ Parameters: None
 Datasets: None
 
 See also: *_breakup_and_pair*.
+
+.. _rkpm_ref:
 
 *****
 _rkpm
@@ -485,6 +501,8 @@ Parameters: record_matches, partnerships_file
 
 Datasets: dataset_rel
 
+.. _breakup_and_pair_ref:
+
 *****************
 _breakup_and_pair
 *****************
@@ -495,6 +513,8 @@ This is a composite event that executes the following events in this order:
 - _mating
 - _shuffle_mating
 - _rkpm
+
+.. _generate_and_pair_ref:
 
 ******************
 _generate_and_pair
@@ -507,6 +527,8 @@ This is a composite event that executes the following events in this order:
 - _shuffle_mating
 - _rkpm
 - _initial_rel
+
+.. _infect_ref:
 
 *******
 _infect
@@ -540,6 +562,8 @@ If you wish to record all the infections, set the record_infections parameter to
 Parameters: record_infections, partnerships_file
 
 Dataset: dataset_infect
+
+.. _stage_ref:
 
 ******
 _stage
@@ -667,6 +691,8 @@ coinfection event.
 
 Dataset: dataset_coinfect
 
+.. _birth_ref:
+
 ******
 _birth
 ******
@@ -722,6 +748,8 @@ Parameters: birth_event_every_n, prob_birth_male, prob_birth_msw, prob_birth_wsm
 
 Datasets: dataset_birth_infect, dataset_birth_treated and dataset_birth_resistant
 
+.. _report_ref:
+
 *******
 _report
 *******
@@ -762,6 +790,8 @@ only write itself once to a results file.
 Parameters: None
 
 Datasets: None
+
+.. _write_agents_csv_ref:
 
 *****************
 _write_agents_csv
@@ -808,6 +838,8 @@ Parameters: None
 
 Datasets: None
 
+.. _write_living_agents_ref:
+
 ************************
 _write_living_agents_csv
 ************************
@@ -817,6 +849,8 @@ Exactly like _write_agents but only writes the living agents.
 Parameters: report_frequency
 
 Datasets: None
+
+.. _write_dead_agents_ref:
 
 **********************
 _write_dead_agents_csv

@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial: Creating simulations &mdash; FastSTI 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interesting example" href="example.html" />
+    <link rel="prev" title="Getting started" href="getstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FastSTI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial: Creating simulations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initial-population">Initial population</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-the-population">Generating the population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-an-agent-file">Reading an agent file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agent-behaviour">Agent behaviour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting">Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FastSTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial: Creating simulations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-creating-simulations">
+<h1>Tutorial: Creating simulations<a class="headerlink" href="#tutorial-creating-simulations" title="Permalink to this headline">¶</a></h1>
+<p>When you create an agent-based model, there are generally three things to
+consider: creating an initial population, agent behaviour during the simulation
+and reporting.</p>
+<div class="section" id="initial-population">
+<h2>Initial population<a class="headerlink" href="#initial-population" title="Permalink to this headline">¶</a></h2>
+<p>FastSTI allows you to generate the initial population or to read agents in
+from a file.</p>
+<p>The <a class="reference internal" href="parameters.html#before-events-ref"><span class="std std-ref">before_events</span></a> parameter tells FastSTI how to
+initialize the agents.</p>
+<div class="section" id="generating-the-population">
+<h3>Generating the population<a class="headerlink" href="#generating-the-population" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to generate a population is to use the
+<a class="reference internal" href="events.html#generate-and-pair-ref"><span class="std std-ref">_generate_and_pair</span></a> event. E.g. in the simulation configuration file
+there would be a line like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">before_events</span> <span class="o">=</span> <span class="n">_generate_and_pair</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span> <span class="n">to</span> <span class="n">run</span> <span class="n">before</span> <span class="n">the</span> <span class="n">simulation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The _generate_and_pair event is a composite event which calls five other events:
+<a class="reference internal" href="events.html#generate-agents-ref"><span class="std std-ref">_generate_agents</span></a>, <a class="reference internal" href="events.html#initial-mating-ref"><span class="std std-ref">_initial_mating</span></a>,
+<a class="reference internal" href="events.html#shuffle-mating-ref"><span class="std std-ref">_shuffle_mating</span></a>, <a class="reference internal" href="events.html#rkpm-ref"><span class="std std-ref">_rkpm</span></a> and <a class="reference internal" href="events.html#initial-rel-ref"><span class="std std-ref">_initial_rel</span></a> events.</p>
+<p>Together these events create the initial agents in the simulation, and place
+some of them into relationships. Click on each of these events to see how they
+work and how you can specify the number of agents, the ages of the agents, their
+sexes, sexual preferences and the distribution of the relationships in the set
+of initial agents.</p>
+</div>
+<div class="section" id="reading-an-agent-file">
+<h3>Reading an agent file<a class="headerlink" href="#reading-an-agent-file" title="Permalink to this headline">¶</a></h3>
+<p>Reading in an agent file perhaps gives greater flexibility than the built-in
+agent generating functionality of FastSTI.</p>
+<p>The file would typically be created in a scripting language like R or Python or
+even be hand-crafted.</p>
+<p>The <a class="reference internal" href="events.html#read-agents-ref"><span class="std std-ref">_read_agents</span></a> event is used to read in the agents. In the
+simulation configuration file there would be a line like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">before_events</span> <span class="o">=</span> <span class="n">_read_agents</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span> <span class="n">to</span> <span class="n">run</span> <span class="n">before</span> <span class="n">the</span> <span class="n">simulation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Read the <a class="reference internal" href="inputformats.html#agent-input-ref"><span class="std std-ref">section on agent input formats</span></a> to find out how
+to set up the agent input CSV file.</p>
+</div>
+</div>
+<div class="section" id="agent-behaviour">
+<h2>Agent behaviour<a class="headerlink" href="#agent-behaviour" title="Permalink to this headline">¶</a></h2>
+<p>In FastSTI agent behaviour takes place in events. There are predefined events
+that provide for agents to <a class="reference internal" href="events.html#age-ref"><span class="std std-ref">age</span></a>, <a class="reference internal" href="events.html#breakup-and-pair-ref"><span class="std std-ref">form sexual relationships
+with other agents and break-up with them</span></a>, <a class="reference internal" href="events.html#infect-ref"><span class="std std-ref">become
+infected</span></a>, <cite>start treatment &lt;stage_ref&gt;</cite>, <cite>change their infection
+status &lt;stage_ref&gt;</cite> (e.g. become sicker or become better), be <a class="reference internal" href="events.html#birth-ref"><span class="std std-ref">born</span></a>, and <a class="reference internal" href="events.html#death-ref"><span class="std std-ref">die</span></a>.</p>
+<p>Most of these events are usually executed using the <a class="reference internal" href="parameters.html#during-events-ref"><span class="std std-ref">during_events</span></a> parameter. Although it’s conceivable you may also need to
+execute agent behaviour before and after a simulation using the
+<a class="reference internal" href="parameters.html#before-events-ref"><span class="std std-ref">before_events</span></a> and <a class="reference internal" href="parameters.html#after-events-ref"><span class="std std-ref">after_events</span></a> parameters respectively.</p>
+<p>If these events don’t meet your needs the FastSTI framework allows you to
+<a class="reference internal" href="extending.html#extending-ref"><span class="std std-ref">code your own events</span></a> in C.</p>
+</div>
+<div class="section" id="reporting">
+<h2>Reporting<a class="headerlink" href="#reporting" title="Permalink to this headline">¶</a></h2>
+<p>Usually, you need statistics about the simulation before, during and after the
+simulation has run. FastSTI has a reporting facility to do write out
+demographic and statistical information at any stage of a simulation.</p>
+<p>Reports are written to a single output file in CSV format. If you’re running
+multiple simulations, the report lines from each simulation will be interleaved
+with each other throughout the file. But each report line has enough information
+for you to know which simulation produced it.</p>
+<p>You’ll usually need to use a spreadsheet program or a scripting language like R
+or Python to process the output CSV file. See the scripts directory for examples
+of report processing code that you make using FastSTI much easier for you.</p>
+<p>Reporting is just another event in FastSTI. There are a few provided:
+<a class="reference internal" href="events.html#report-ref"><span class="std std-ref">_report</span></a> - which outputs statistics, <a class="reference internal" href="events.html#write-agents-csv-ref"><span class="std std-ref">_write_agents_csv</span></a> -
+which outputs every agent in the simulation, <a class="reference internal" href="events.html#write-living-agents-ref"><span class="std std-ref">_write_living_agents_csv</span></a> -
+which outputs every living agent in the simulation, and
+<a class="reference internal" href="events.html#write-dead-agents-ref"><span class="std std-ref">_write_dead_agents_csv</span></a> - which outputs every dead agent in the
+simulation. There are also events to write the headers for the output CSV files.</p>
+<p>The <a class="reference internal" href="parameters.html#report-frequency-ref"><span class="std std-ref">report_frequency</span></a> parameter specifies how
+frequently to run these events during a simulation.</p>
+<p>Use the events that output agents carefully. If you’re executing
+<a class="reference internal" href="events.html#write-agents-csv-ref"><span class="std std-ref">_write_agents_csv</span></a> during the simulation, having a report_frequency of
+1 will slow your simulation down and use huge amounts of hard drive space.</p>
+<p>A typical report setup for a simulation looks something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results_file</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">agents_out</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">report_frequency</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">before_events</span> <span class="o">=</span>  <span class="n">_write_agents_csv_header</span><span class="p">;</span> <span class="n">_write_results_csv_header</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">other</span>
+<span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span>
+<span class="n">during_events</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span><span class="p">;</span>  <span class="n">_write_living_agents_csv</span>
+<span class="n">after_events</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span><span class="p">;</span> <span class="n">write_agents_csv</span>
+</pre></div>
+</div>
+<p>If you don’t need to know details about individual agents, then it’s best not to
+execute the events that output agents. Your simulation will be faster and use
+much less disk space. Then you can also have much more frequent report
+writing. E.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results_file</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">report_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">before_events</span> <span class="o">=</span>   <span class="n">_write_results_csv_header</span><span class="p">;</span> <span class="o">&lt;</span><span class="n">other</span>
+<span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span>
+<span class="n">during_events</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span>
+<span class="n">after_events</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">events</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">_report</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example.html" class="btn btn-neutral float-right" title="Interesting example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getstart.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Nathan Geffen and Stefan Scholz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
