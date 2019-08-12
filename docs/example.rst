@@ -69,9 +69,10 @@ simulation statistics are printed every 100 days, and then at the end, 1 January
 - The fourth group is 100,000 agents with k-nearest neighbour matching with
   k=100.
 
-The results are written to a file called `results.csv <_static/results.csv>`_. On
-a mid-range laptop with an i5 with four cores and 12GB of RAM it took just over
-16 minutes to run the 120 simulations.
+The results are written to a file called results.csv. The file is large so we've
+`compressed <_static/results.tgz>`_ it.  On a mid-range laptop with an i5 with
+four cores and 12GB of RAM it took just over 16 minutes to run the 120
+simulations.
 
 We then ran results.csv through this R script, which you can find in
 scripts/processResultsFile.R.
