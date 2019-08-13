@@ -75,7 +75,7 @@ four cores and 12GB of RAM it took just over 16 minutes to run the 120
 simulations.
 
 We then ran results.csv through this R script, which you can find in
-scripts/processResultsFile.R.
+scripts/processResultsFile.R. (The equivalent Python script is in scripts/processResultsFile.py.)
 
 .. code-block:: R
    :linenos:
