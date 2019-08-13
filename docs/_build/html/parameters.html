@@ -93,7 +93,34 @@
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration file parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration file parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#after-events">after_events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age-alpha">age_alpha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age-beta">age_beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age-input-time-step">age_input_time_step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age-max">age_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age-min">age_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agents-input-file">agents_input_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agents-output-file">agents_output_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#before-events">before_events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#birth-event-every-n">birth_event_every_n</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#birth-rate">birth_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#csv-delimiter">csv_delimiter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-birth-infect">dataset_birth_infect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-birth-resistant">dataset_birth_resistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-birth-treated">dataset_birth_treated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-coinfect">dataset_coinfect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-infect">dataset_gen_infect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-mating">dataset_gen_mating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-resistant">dataset_gen_resistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-sex">dataset_gen_sex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-sex-preferred">dataset_gen_sex_preferred</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-gen-treated">dataset_gen_treated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-infect">dataset_infect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#during-events">during_events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#report-frequency">report_frequency</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extending.html">Extending FastSTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improve.html">Help improve FastSTI</a></li>
@@ -175,8 +202,8 @@ the value for each, run:</p>
 <p>This prints out the parameters in a
 logical order. Here is an alphabetically arranged reference guide to the
 parameters:</p>
-<ul id="after-events-ref">
-<li><p class="first">after_events</p>
+<div class="section" id="after-events">
+<span id="after-events-ref"></span><h2>after_events<a class="headerlink" href="#after-events" title="Permalink to this headline">¶</a></h2>
 <p>These are the events executed after a simulation starts.</p>
 <p>Default value: _no_op</p>
 <p>Events used in: None</p>
@@ -186,28 +213,31 @@ parameters:</p>
 <span class="n">after_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed after the simulation (default)</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">age_alpha</p>
+</div>
+<div class="section" id="age-alpha">
+<h2>age_alpha<a class="headerlink" href="#age-alpha" title="Permalink to this headline">¶</a></h2>
 <p>If instead of reading in an agent file, the agents are generated with the
-<em>_generate_agents</em> event, then the initial age of each agent is drawn a random
-alpha-beta distribution. This is the alpha parameter.</p>
+<a class="reference internal" href="events.html#generate-agents-ref"><span class="std std-ref">_generate_agents</span></a> event, then the initial age of each agent is drawn a
+random alpha-beta distribution. This is the alpha parameter.</p>
 <p>Default value: 0.3</p>
 <p>Events used in: _generate_agents, _generate_and_pair</p>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">age_beta</p>
+</div>
+<div class="section" id="age-beta">
+<h2>age_beta<a class="headerlink" href="#age-beta" title="Permalink to this headline">¶</a></h2>
 <p>If instead of reading in an agent file, the agents are generated with the
-<em>_generate_agents</em> event, then the initial age of each agent is drawn a random
-alpha-beta distribution. This is the beta parameter.</p>
+<a class="reference internal" href="events.html#generate-agents-ref"><span class="std std-ref">_generate_agents</span></a> event, then the initial age of each agent is drawn a
+random alpha-beta distribution. This is the beta parameter.</p>
 <p>Default: 1.0</p>
 <p>Events used in: _generate_agents, _generate_and_pair</p>
-</li>
-<li><p class="first">age_input_time_step</p>
-<p>Denomination of agent ages used in input files. This is typically either a
-year or 5-year age groups.</p>
+</div>
+<div class="section" id="age-input-time-step">
+<h2>age_input_time_step<a class="headerlink" href="#age-input-time-step" title="Permalink to this headline">¶</a></h2>
+<p>Denomination of agent ages used in input files. This is typically either a year
+or 5-year age groups.</p>
 <p>Default: 1 year (525949 minutes)</p>
 <p>Events used in: _read_agents</p>
 <p>Examples:</p>
@@ -218,8 +248,9 @@ year or 5-year age groups.</p>
 <span class="n">age_input_time_step</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">YEARS</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">age_max</p>
+</div>
+<div class="section" id="age-max">
+<h2>age_max<a class="headerlink" href="#age-max" title="Permalink to this headline">¶</a></h2>
 <p>Oldest age that a generated agent at the beginning of a simulation can be
 initialized to.</p>
 <p>Default: 50 years (26297450 minutes)</p>
@@ -230,8 +261,9 @@ initialized to.</p>
 <span class="n">age_max</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">YEARS</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">age_min</p>
+</div>
+<div class="section" id="age-min">
+<h2>age_min<a class="headerlink" href="#age-min" title="Permalink to this headline">¶</a></h2>
 <p>Youngest age that a generated agent at the beginning of a simulation can be
 initialized to.</p>
 <p>Default: 15 years (7889235 minutes)</p>
@@ -242,8 +274,9 @@ initialized to.</p>
 <span class="n">age_max</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">YEARS</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">agents_input_file</p>
+</div>
+<div class="section" id="agents-input-file">
+<h2>agents_input_file<a class="headerlink" href="#agents-input-file" title="Permalink to this headline">¶</a></h2>
 <p>Name of the csv file to read agents from. Use empty string for standard input.</p>
 <p>Default: agents_in.csv</p>
 <p>Events used in: _read_agents</p>
@@ -253,8 +286,9 @@ initialized to.</p>
 <span class="n">agents_input_file</span> <span class="o">=</span> <span class="n">stdin</span> <span class="c1"># Reads agents from standard input</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">agents_output_file</p>
+</div>
+<div class="section" id="agents-output-file">
+<h2>agents_output_file<a class="headerlink" href="#agents-output-file" title="Permalink to this headline">¶</a></h2>
 <p>Name of the csv file to write agents to. Use empty string for standard output.</p>
 <p>Events used in: _write_agents_csv_header, _write_agents_csv,
 _write_living_agents_csv, _write_dead_agents_csv</p>
@@ -264,10 +298,9 @@ _write_living_agents_csv, _write_dead_agents_csv</p>
 <span class="n">agents_output_file</span> <span class="o">=</span> <span class="n">stdout</span> <span class="c1"># Writes agents to standard output</span>
 </pre></div>
 </div>
-</li>
-</ul>
-<ul id="before-events-ref">
-<li><p class="first">before_events</p>
+</div>
+<div class="section" id="before-events">
+<span id="before-events-ref"></span><h2>before_events<a class="headerlink" href="#before-events" title="Permalink to this headline">¶</a></h2>
 <p>These are the events executed before a simulation starts.</p>
 <p>Default: _no_op</p>
 <p>Events used in: None</p>
@@ -277,20 +310,21 @@ _write_living_agents_csv, _write_dead_agents_csv</p>
 <span class="n">before_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed after the simulation (default)</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">birth_event_every_n</p>
+</div>
+<div class="section" id="birth-event-every-n">
+<h2>birth_event_every_n<a class="headerlink" href="#birth-event-every-n" title="Permalink to this headline">¶</a></h2>
 <p>Indicates how frequently (i.e. every nth iteration) the birth (_birth) event is executed.</p>
-<p>The birth event creates new agents during the simulation. Each new agent is
-set to the minimum age. Because the number of agents might be too small for
-their to be births on every iteration, this parameter allows you to execute
-the births at specified iterations.</p>
+<p>The birth event creates new agents during the simulation. Each new agent is set
+to the minimum age. Because the number of agents might be too small for their to
+be births on every iteration, this parameter allows you to execute the births at
+specified iterations.</p>
 <p>Also, births are discrete. There can only be a whole number of births executed
-by the _birth event. Even if births can take place daily, rounding the
-expected number of births to a whole number may create a severely inaccurate
-birth rate. Therefore it may be better to execute the _birth event
-infrequently but with more births taking place each time it executes, in order
-to reduce the difference between the births generated by the model and the
-births in the real-world population being studied.</p>
+by the _birth event. Even if births can take place daily, rounding the expected
+number of births to a whole number may create a severely inaccurate birth
+rate. Therefore it may be better to execute the _birth event infrequently but
+with more births taking place each time it executes, in order to reduce the
+difference between the births generated by the model and the births in the
+real-world population being studied.</p>
 <p>Default: 73 (i.e. every 73rd iteration - by default this would be every
 73rd day of the simulation)</p>
 <p>Of course if your simulation doesn’t use the _birth event, this parameter is irrelevant.</p>
@@ -299,8 +333,9 @@ births in the real-world population being studied.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">birth_event_every_n</span> <span class="o">=</span> <span class="mi">73</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">birth_rate</p>
+</div>
+<div class="section" id="birth-rate">
+<h2>birth_rate<a class="headerlink" href="#birth-rate" title="Permalink to this headline">¶</a></h2>
 <p>Birth rate for the period of birth_event_every_n</p>
 <p>Events used in: _birth</p>
 <p>Default: 0.003968</p>
@@ -308,8 +343,9 @@ births in the real-world population being studied.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">birth_rate</span> <span class="o">=</span> <span class="mf">0.002</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">csv_delimiter</p>
+</div>
+<div class="section" id="csv-delimiter">
+<h2>csv_delimiter<a class="headerlink" href="#csv-delimiter" title="Permalink to this headline">¶</a></h2>
 <p>Character that separates CSV fields</p>
 <p>Events used in: any event that reads or writes a CSV file.</p>
 <p>Default value: ;</p>
@@ -317,8 +353,6 @@ births in the real-world population being studied.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csv_delimiter</span> <span class="o">=</span> <span class="p">,</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">It’s not currently possible to set the csv_delimiter in the
@@ -327,12 +361,13 @@ for the configuration file itself. But the default value for
 csv_delimiter is the semi-colon, so it should be unnecessary to have
 to set it to anything other than a comma.</p>
 </div>
-<ul>
-<li><p class="first">dataset_birth_infect</p>
+</div>
+<div class="section" id="dataset-birth-infect">
+<h2>dataset_birth_infect<a class="headerlink" href="#dataset-birth-infect" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the infection stage of agents,
 if any, when they enter the simulation (when agents are born, so to speak,
-although since they are born at the minimum age of the simulation, e.g. 15
-years old, they may already be sexually active).</p>
+although since they are born at the minimum age of the simulation, e.g. 15 years
+old, they may already be sexually active).</p>
 <p>See the data/dataset_birth_infect.csv file for an example of this dataset.</p>
 <p>In this example file, the the agent characteristics of sex, sex_preferred and
 age (in 10-year groupings) are used to determine probability of an agent being
@@ -351,8 +386,9 @@ consistently treated across datasets.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_infect</span> <span class="o">=</span> <span class="n">dataset_birth_infect</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_birth_resistant</p>
+</div>
+<div class="section" id="dataset-birth-resistant">
+<h2>dataset_birth_resistant<a class="headerlink" href="#dataset-birth-resistant" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the resistance of infected
 agents, if any, when they enter the simulation (when agents are born, so to
 speak, although since they are born at the minimum age of the simulation,
@@ -367,22 +403,21 @@ resistance for agents with a given set of characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_resistant</span> <span class="o">=</span> <span class="n">dataset_birth_resistant</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This mechanism for modelling resistance at birth is a bit too simple
 and needs to be improved.</p>
 </div>
-<ul>
-<li><p class="first">dataset_birth_treated</p>
+</div>
+<div class="section" id="dataset-birth-treated">
+<h2>dataset_birth_treated<a class="headerlink" href="#dataset-birth-treated" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the probability of an infected
 agent being on treatment when they enter the simulation (when agents are born,
-so to speak, although since they are born at the minimum age of the
-simulation, e.g. 15 years old, they may already be sexually active). The file
-can have any number of columns specifying agent characteristics (independent
-variables). It must have exactly one dependent variable column specifying the
-probability of treatment for agents with a given set of characteristics</p>
+so to speak, although since they are born at the minimum age of the simulation,
+e.g. 15 years old, they may already be sexually active). The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the probability of
+treatment for agents with a given set of characteristics</p>
 <p>See the data/dataset_birth_treated.csv file for an example of this dataset.</p>
 <p>Events used in: _birth</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
@@ -390,26 +425,27 @@ probability of treatment for agents with a given set of characteristics</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_birth_treated</span> <span class="o">=</span> <span class="n">dataset_birth_treated</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_coinfect</p>
+</div>
+<div class="section" id="dataset-coinfect">
+<h2>dataset_coinfect<a class="headerlink" href="#dataset-coinfect" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the coinfection status of an
 agent. You can have as many columns specifying agent characteristics (i.e. the
 independent variables) as you wish but the _coinfect event expects exactly one
-dependent variable, the probability of the agent being coinfected per
-time step.</p>
+dependent variable, the probability of the agent being coinfected per time step.</p>
 <p>See the data/dataset_coinfect.csv file for an example of this dataset.</p>
 <p>Events used in: _coinfect</p>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_coinfect</span> <span class="o">=</span> <span class="n">dataset_coinfect</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_gen_infect</p>
+</div>
+<div class="section" id="dataset-gen-infect">
+<h2>dataset_gen_infect<a class="headerlink" href="#dataset-gen-infect" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the infection stage of agents,
 if any, at the beginning of a simulation.</p>
 <p>See the data/dataset_gen_infect.csv file for an example of this dataset.</p>
-<p>In this example file, the agent characteristics of sex, sex_preferred and
-age (in 10-year groupings) are used to determine probability of an agent being
+<p>In this example file, the agent characteristics of sex, sex_preferred and age
+(in 10-year groupings) are used to determine probability of an agent being
 uninfected (i.e. agent-&gt;infected is set to 0), or stage 1, 2, 3 or 4. Note the
 probabilities are ascending from stage 1 through 4. The _birth event first
 checks if a uniform random number, r, is &lt; than the stage 1 probability. If it
@@ -425,13 +461,14 @@ consistently treated across datasets.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_infect</span> <span class="o">=</span> <span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_gen_mating</p>
+</div>
+<div class="section" id="dataset-gen-mating">
+<h2>dataset_gen_mating<a class="headerlink" href="#dataset-gen-mating" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the probability of an agent
-being in the mating pool at the beginning of a simulation. You can have as
-many columns specifying agent characteristics (i.e. the independent variables)
-as you wish but the events that use this dataset expect exactly one dependent
-variable, the probability of the agent being in the initial mating pool.</p>
+being in the mating pool at the beginning of a simulation. You can have as many
+columns specifying agent characteristics (i.e. the independent variables) as you
+wish but the events that use this dataset expect exactly one dependent variable,
+the probability of the agent being in the initial mating pool.</p>
 <p>See the data/dataset_gen_mating.csv file for an example of this dataset.</p>
 <p>Events used in: _generate_agents, _generate_and_pair</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
@@ -439,8 +476,9 @@ variable, the probability of the agent being in the initial mating pool.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_mating</span> <span class="o">=</span> <span class="n">dataset_gen_mating</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_gen_resistant</p>
+</div>
+<div class="section" id="dataset-gen-resistant">
+<h2>dataset_gen_resistant<a class="headerlink" href="#dataset-gen-resistant" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the resistance of infected
 agents, if any, at the beginning of a simulation. The file can have any
 number of columns specifying agent characteristics (independent variables). It
@@ -453,22 +491,21 @@ resistance for agents with a given set of characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_resistant</span> <span class="o">=</span> <span class="n">dataset_gen_resistant</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This mechanism for modelling resistance is a bit too simple
 and needs to be improved.</p>
 </div>
-<ul>
-<li><p class="first">dataset_gen_sex</p>
+</div>
+<div class="section" id="dataset-gen-sex">
+<h2>dataset_gen_sex<a class="headerlink" href="#dataset-gen-sex" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the sex of an agent at the
 beginning of a simulation. The file can have zero or more columns specifying
 agent characteristics (independent variables). It must have exactly one
 dependent variable column specifying the probability of the agent being
-male. Typically this is a one-column dataset with a header and one data row
-set to 0.5. But if you want need more sophisticated initiation of agent sex
-(e.g. by age), then this is the dataset in which you specify it.</p>
+male. Typically this is a one-column dataset with a header and one data row set
+to 0.5. But if you want need more sophisticated initiation of agent sex (e.g. by
+age), then this is the dataset in which you specify it.</p>
 <p>See the data/dataset_gen_sex.csv file for an example of this dataset.</p>
 <p>Events used in: _generate_agents, _generate_and_pair</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
@@ -476,13 +513,14 @@ set to 0.5. But if you want need more sophisticated initiation of agent sex
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_sex</span> <span class="o">=</span> <span class="n">dataset_gen_sex</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_gen_sex_preferred</p>
+</div>
+<div class="section" id="dataset-gen-sex-preferred">
+<h2>dataset_gen_sex_preferred<a class="headerlink" href="#dataset-gen-sex-preferred" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the sexual preference of an
 agent at the beginning of a simulation. The file can have zero or more columns
 specifying agent characteristics (independent variables). It must have exactly
-one dependent variable column specifying the probability of the agent
-preferring a male sexual partner.</p>
+one dependent variable column specifying the probability of the agent preferring
+a male sexual partner.</p>
 <p>See the data/dataset_gen_sex_preferred.csv file for an example of this
 dataset.</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
@@ -490,18 +528,20 @@ dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_sex_preferred</span> <span class="o">=</span> <span class="n">dataset_gen_sex_preferred</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_gen_treated</p>
+</div>
+<div class="section" id="dataset-gen-treated">
+<h2>dataset_gen_treated<a class="headerlink" href="#dataset-gen-treated" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to set the treatment status of an
-infected agent at the beginning of a simulation. The file can have zero or
-more columns specifying agent characteristics (independent variables). The
-number of dependent variable columns must correspond to the number of possible
-treatment statuses, incrementing from 1. Events that use this dataset generate
-a uniform random number, r, and then compare r from the first dependent column
-onwards. If r is less than the probability in a dependent column, the
-agent’s treatment status is set to the dependent column number.</p>
+infected agent at the beginning of a simulation. The file can have zero or more
+columns specifying agent characteristics (independent variables). The number of
+dependent variable columns must correspond to the number of possible treatment
+statuses, incrementing from 1. Events that use this dataset generate a uniform
+random number, r, and then compare r from the first dependent column onwards. If
+r is less than the probability in a dependent column, the agent’s treatment
+status is set to the dependent column number.</p>
 <p>Here’s a mixture of C and pseudocode showing how FastSTI does this:</p>
-<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<blockquote>
+<div><div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -524,6 +564,7 @@ agent’s treatment status is set to the dependent column number.</p>
  <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
+</div></blockquote>
 <p>See the data/dataset_gen_treated.csv file for an example of this
 dataset.</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
@@ -531,21 +572,21 @@ dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_treated</span> <span class="o">=</span> <span class="n">dataset_gen_sex_treated</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">dataset_infect</p>
+</div>
+<div class="section" id="dataset-infect">
+<h2>dataset_infect<a class="headerlink" href="#dataset-infect" title="Permalink to this headline">¶</a></h2>
 <p>Specifies the location of a dataset used to determine whether an agent becomes
 infected by its sexual partner. This is a two-agent dataset, since the
-probability of infection is a function of the characteristics of both agents. See
-<a class="reference internal" href="inputformats.html#two-agent-dataset-ref"><span class="std std-ref">Two-agent datasets</span></a> for details on how this works.</p>
+probability of infection is a function of the characteristics of both
+agents. See <a class="reference internal" href="inputformats.html#two-agent-dataset-ref"><span class="std std-ref">Two-agent datasets</span></a> for details on how this works.</p>
 <p>Default: _no_op # i.e. there is no dataset file specified.</p>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_infect</span> <span class="o">=</span> <span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
 </div>
-</li>
-</ul>
-<ul id="during-events-ref">
-<li><p class="first">during_events</p>
+</div>
+<div class="section" id="during-events">
+<span id="during-events-ref"></span><h2>during_events<a class="headerlink" href="#during-events" title="Permalink to this headline">¶</a></h2>
 <p>These are the events executed on every time step of a simulation.</p>
 <p>Default: _no_op</p>
 <p>Events used in: None</p>
@@ -555,30 +596,26 @@ probability of infection is a function of the characteristics of both agents. Se
 <span class="n">during_events</span> <span class="o">=</span> <span class="n">_no_op</span> <span class="c1"># No events are executed during the simulation (default)</span>
 </pre></div>
 </div>
-</li>
-</ul>
-<ul id="report-frequency-ref">
-<li><p class="first">report_frequency</p>
-<p>Indicates the frequency that the reporting events specified by the
-during_events parameter should be specified.</p>
+</div>
+<div class="section" id="report-frequency">
+<span id="report-frequency-ref"></span><h2>report_frequency<a class="headerlink" href="#report-frequency" title="Permalink to this headline">¶</a></h2>
+<p>Indicates the frequency that the reporting events specified by the during_events
+parameter should be specified.</p>
 <p>Default: 1, i.e. on every iteration or time step of the simulation. Make sure
-this is what you really want. If you’re executing <span class="xref std std-ref">_write_agents_csv_ref</span>
-during the simulation, having a report_frequency of 1 will slow your
-simulation down and use huge amounts of hard drive space.</p>
+this is what you really want. If you’re executing <a class="reference internal" href="events.html#write-agents-csv-ref"><span class="std std-ref">_write_agents_csv</span></a>
+during the simulation, having a report_frequency of 1 will slow your simulation
+down and use huge amounts of hard drive space.</p>
 <p>Events used in: _write_agents_csv, _write_live_agents_csv,
 _write_dead_agents_csv, _report</p>
 <p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report_frequency</span> <span class="o">=</span> <span class="mi">365</span> <span class="c1"># Report every 365 time steps.</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <p>TO DO</p>
 <p>dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op</p>
 <p>dataset_mortality; CSV file of values to determine agent deaths; _no_op</p>
 <p>dataset_rel_period; CSV file of values to determine period agent is in relationship; _no_op</p>
 <p>dataset_single_period; CSV file of values to determine period agent is single; _no_op</p>
-<p>during_events; Events executed on every time step of a simulation; _no_op</p>
 <p>event_test_freq; Run test cases in test events every nth iteration; 100</p>
 <p>initial_infect_stage; When infected this is the integer to set infected to; 2</p>
 <p>match_k; Value for k when using matching algorithms; 100</p>
@@ -609,6 +646,7 @@ the actual simulation; _no_op</p>
 <p>threads; Number of threads (0=system determined); 0</p>
 <p>time_step; Time step for each iteration of simulation in minutes(default 1440 minutes == 1 day); 1440</p>
 <p>treatment_infect_stage; When treated this is the integer to set infected to; 1</p>
+</div>
 </div>
 
 

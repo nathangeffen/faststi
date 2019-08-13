@@ -16,54 +16,62 @@ parameters:
 
 .. _after_events_ref:
 
-- after_events
+************
+after_events
+************
 
-  These are the events executed after a simulation starts.
+These are the events executed after a simulation starts.
 
-  Default value: _no_op
+Default value: _no_op
 
-  Events used in: None
+Events used in: None
 
-  Examples:::
+Examples:::
 
     after_events = _write_agents_csv;_report
 
     after_events = _no_op # No events are executed after the simulation (default)
 
-- age_alpha
+*********
+age_alpha
+*********
 
-  If instead of reading in an agent file, the agents are generated with the
-  *_generate_agents* event, then the initial age of each agent is drawn a random
-  alpha-beta distribution. This is the alpha parameter.
+If instead of reading in an agent file, the agents are generated with the
+:ref:`generate_agents_ref` event, then the initial age of each agent is drawn a
+random alpha-beta distribution. This is the alpha parameter.
 
-  Default value: 0.3
+Default value: 0.3
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Example: ::
+Example: ::
 
     age_alpha = 0.5
 
-- age_beta
+********
+age_beta
+********
 
-  If instead of reading in an agent file, the agents are generated with the
-  *_generate_agents* event, then the initial age of each agent is drawn a random
-  alpha-beta distribution. This is the beta parameter.
+If instead of reading in an agent file, the agents are generated with the
+:ref:`generate_agents_ref` event, then the initial age of each agent is drawn a
+random alpha-beta distribution. This is the beta parameter.
 
-  Default: 1.0
+Default: 1.0
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-- age_input_time_step
+*******************
+age_input_time_step
+*******************
 
-  Denomination of agent ages used in input files. This is typically either a
-  year or 5-year age groups.
+Denomination of agent ages used in input files. This is typically either a year
+or 5-year age groups.
 
-  Default: 1 year (525949 minutes)
+Default: 1 year (525949 minutes)
 
-  Events used in: _read_agents
+Events used in: _read_agents
 
-  Examples: ::
+Examples: ::
 
     age_input_time_step = 525949
 
@@ -71,60 +79,67 @@ parameters:
 
     age_input_time_step = 5 YEARS
 
-- age_max
+*******
+age_max
+*******
 
-  Oldest age that a generated agent at the beginning of a simulation can be
-  initialized to.
+Oldest age that a generated agent at the beginning of a simulation can be
+initialized to.
 
-  Default: 50 years (26297450 minutes)
+Default: 50 years (26297450 minutes)
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Examples: ::
-
-    age_max = 26297450
-
-    age_max = 50 YEARS
-
-- age_min
-
-  Youngest age that a generated agent at the beginning of a simulation can be
-  initialized to.
-
-  Default: 15 years (7889235 minutes)
-
-  Events used in: _generate_agents, _generate_and_pair
-
-  Examples: ::
+Examples: ::
 
     age_max = 26297450
 
     age_max = 50 YEARS
 
+*******
+age_min
+*******
 
-- agents_input_file
+Youngest age that a generated agent at the beginning of a simulation can be
+initialized to.
 
-  Name of the csv file to read agents from. Use empty string for standard input.
+Default: 15 years (7889235 minutes)
 
-  Default: agents_in.csv
+Events used in: _generate_agents, _generate_and_pair
 
-  Events used in: _read_agents
+Examples: ::
 
-  Examples: ::
+    age_max = 26297450
+
+    age_max = 50 YEARS
+
+*****************
+agents_input_file
+*****************
+
+Name of the csv file to read agents from. Use empty string for standard input.
+
+Default: agents_in.csv
+
+Events used in: _read_agents
+
+Examples: ::
 
     agents_input_file = agents_in.csv
 
     agents_input_file = stdin # Reads agents from standard input
 
-- agents_output_file
+******************
+agents_output_file
+******************
 
-  Name of the csv file to write agents to. Use empty string for standard output.
+Name of the csv file to write agents to. Use empty string for standard output.
 
-  Events used in: _write_agents_csv_header, _write_agents_csv,
-  _write_living_agents_csv, _write_dead_agents_csv
+Events used in: _write_agents_csv_header, _write_agents_csv,
+_write_living_agents_csv, _write_dead_agents_csv
 
 
-  Examples: ::
+Examples: ::
 
     agents_output_file = agents_out.csv
 
@@ -133,71 +148,79 @@ parameters:
 
 .. _before_events_ref:
 
-- before_events
+*************
+before_events
+*************
 
-  These are the events executed before a simulation starts.
+These are the events executed before a simulation starts.
 
-  Default: _no_op
+Default: _no_op
 
-  Events used in: None
+Events used in: None
 
-  Examples: ::
+Examples: ::
 
     before_events = _write_agents_csv_header;_write_results_csv_header;_generate_and_pair
 
     before_events = _no_op # No events are executed after the simulation (default)
 
-- birth_event_every_n
+*******************
+birth_event_every_n
+*******************
 
-  Indicates how frequently (i.e. every nth iteration) the birth (_birth) event is executed.
+Indicates how frequently (i.e. every nth iteration) the birth (_birth) event is executed.
 
-  The birth event creates new agents during the simulation. Each new agent is
-  set to the minimum age. Because the number of agents might be too small for
-  their to be births on every iteration, this parameter allows you to execute
-  the births at specified iterations.
+The birth event creates new agents during the simulation. Each new agent is set
+to the minimum age. Because the number of agents might be too small for their to
+be births on every iteration, this parameter allows you to execute the births at
+specified iterations.
 
-  Also, births are discrete. There can only be a whole number of births executed
-  by the _birth event. Even if births can take place daily, rounding the
-  expected number of births to a whole number may create a severely inaccurate
-  birth rate. Therefore it may be better to execute the _birth event
-  infrequently but with more births taking place each time it executes, in order
-  to reduce the difference between the births generated by the model and the
-  births in the real-world population being studied.
+Also, births are discrete. There can only be a whole number of births executed
+by the _birth event. Even if births can take place daily, rounding the expected
+number of births to a whole number may create a severely inaccurate birth
+rate. Therefore it may be better to execute the _birth event infrequently but
+with more births taking place each time it executes, in order to reduce the
+difference between the births generated by the model and the births in the
+real-world population being studied.
 
-  Default: 73 (i.e. every 73rd iteration - by default this would be every
-  73rd day of the simulation)
+Default: 73 (i.e. every 73rd iteration - by default this would be every
+73rd day of the simulation)
 
-  Of course if your simulation doesn't use the _birth event, this parameter is irrelevant.
+Of course if your simulation doesn't use the _birth event, this parameter is irrelevant.
 
-  Events used in: _birth
+Events used in: _birth
 
-  Examples: ::
+Examples: ::
 
     birth_event_every_n = 73
 
-- birth_rate
+**********
+birth_rate
+**********
 
-  Birth rate for the period of birth_event_every_n
+Birth rate for the period of birth_event_every_n
 
-  Events used in: _birth
+Events used in: _birth
 
-  Default: 0.003968
+Default: 0.003968
 
-  Example: ::
+Example: ::
 
     birth_rate = 0.002
 
-- csv_delimiter
+*************
+csv_delimiter
+*************
 
-  Character that separates CSV fields
+Character that separates CSV fields
 
-  Events used in: any event that reads or writes a CSV file.
+Events used in: any event that reads or writes a CSV file.
 
-  Default value: ;
+Default value: ;
 
-  Examples: ::
+Examples: ::
 
-    csv_delimiter = ,
+  csv_delimiter = ,
 
 .. note:: It's not currently possible to set the csv_delimiter in the
           configuration file to a semi-colon (;) because this is the delimiter
@@ -205,212 +228,230 @@ parameters:
           csv_delimiter is the semi-colon, so it should be unnecessary to have
           to set it to anything other than a comma.
 
-- dataset_birth_infect
+********************
+dataset_birth_infect
+********************
 
-  Specifies the location of a dataset used to set the infection stage of agents,
-  if any, when they enter the simulation (when agents are born, so to speak,
-  although since they are born at the minimum age of the simulation, e.g. 15
-  years old, they may already be sexually active).
+Specifies the location of a dataset used to set the infection stage of agents,
+if any, when they enter the simulation (when agents are born, so to speak,
+although since they are born at the minimum age of the simulation, e.g. 15 years
+old, they may already be sexually active).
 
-  See the data/dataset_birth_infect.csv file for an example of this dataset.
+See the data/dataset_birth_infect.csv file for an example of this dataset.
 
-  In this example file, the the agent characteristics of sex, sex_preferred and
-  age (in 10-year groupings) are used to determine probability of an agent being
-  uninfected (i.e. agent->infected is set to 0), or stage 1, 2, 3 or 4. Note the
-  probabilities are ascending from stage 1 through 4. The _birth event first
-  checks if a uniform random number, r, is < than the stage 1 probability. If it
-  is, agent->infected is set to 1. Then it checks if r is < than the stage 2
-  probability and >= the stage 1 probability. If it is, agent->infected is set
-  to 2. Etc. If r is >= the stage 4 probability, the agent is uninfected and
-  agent->infected is set to 0. Your simulation can have many stages (up to 254,
-  but this would almost certainly be unmanageable), so long as they are
-  consistently treated across datasets.
+In this example file, the the agent characteristics of sex, sex_preferred and
+age (in 10-year groupings) are used to determine probability of an agent being
+uninfected (i.e. agent->infected is set to 0), or stage 1, 2, 3 or 4. Note the
+probabilities are ascending from stage 1 through 4. The _birth event first
+checks if a uniform random number, r, is < than the stage 1 probability. If it
+is, agent->infected is set to 1. Then it checks if r is < than the stage 2
+probability and >= the stage 1 probability. If it is, agent->infected is set
+to 2. Etc. If r is >= the stage 4 probability, the agent is uninfected and
+agent->infected is set to 0. Your simulation can have many stages (up to 254,
+but this would almost certainly be unmanageable), so long as they are
+consistently treated across datasets.
 
-  Events used in: _birth
+Events used in: _birth
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_birth_infect = dataset_birth_infect.csv
 
+***********************
+dataset_birth_resistant
+***********************
 
-- dataset_birth_resistant
+Specifies the location of a dataset used to set the resistance of infected
+agents, if any, when they enter the simulation (when agents are born, so to
+speak, although since they are born at the minimum age of the simulation,
+e.g. 15 years old, they may already be sexually active). The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the risk of
+resistance for agents with a given set of characteristics.
 
-  Specifies the location of a dataset used to set the resistance of infected
-  agents, if any, when they enter the simulation (when agents are born, so to
-  speak, although since they are born at the minimum age of the simulation,
-  e.g. 15 years old, they may already be sexually active). The file can have any
-  number of columns specifying agent characteristics (independent variables). It
-  must have exactly one dependent variable column specifying the risk of
-  resistance for agents with a given set of characteristics.
+See the data/dataset_birth_resistant.csv file for an example of this dataset.
 
-  See the data/dataset_birth_resistant.csv file for an example of this dataset.
+Events used in: _birth
 
-  Events used in: _birth
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Default: _no_op # i.e. there is no dataset file specified.
-
-  Examples: ::
+Examples: ::
 
     dataset_birth_resistant = dataset_birth_resistant.csv
 
 .. note:: This mechanism for modelling resistance at birth is a bit too simple
           and needs to be improved.
 
-- dataset_birth_treated
+*********************
+dataset_birth_treated
+*********************
 
-  Specifies the location of a dataset used to set the probability of an infected
-  agent being on treatment when they enter the simulation (when agents are born,
-  so to speak, although since they are born at the minimum age of the
-  simulation, e.g. 15 years old, they may already be sexually active). The file
-  can have any number of columns specifying agent characteristics (independent
-  variables). It must have exactly one dependent variable column specifying the
-  probability of treatment for agents with a given set of characteristics
+Specifies the location of a dataset used to set the probability of an infected
+agent being on treatment when they enter the simulation (when agents are born,
+so to speak, although since they are born at the minimum age of the simulation,
+e.g. 15 years old, they may already be sexually active). The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the probability of
+treatment for agents with a given set of characteristics
 
-  See the data/dataset_birth_treated.csv file for an example of this dataset.
+See the data/dataset_birth_treated.csv file for an example of this dataset.
 
-  Events used in: _birth
+Events used in: _birth
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_birth_treated = dataset_birth_treated.csv
 
 
-- dataset_coinfect
+****************
+dataset_coinfect
+****************
 
-  Specifies the location of a dataset used to set the coinfection status of an
-  agent. You can have as many columns specifying agent characteristics (i.e. the
-  independent variables) as you wish but the _coinfect event expects exactly one
-  dependent variable, the probability of the agent being coinfected per
-  time step.
+Specifies the location of a dataset used to set the coinfection status of an
+agent. You can have as many columns specifying agent characteristics (i.e. the
+independent variables) as you wish but the _coinfect event expects exactly one
+dependent variable, the probability of the agent being coinfected per time step.
 
-  See the data/dataset_coinfect.csv file for an example of this dataset.
+See the data/dataset_coinfect.csv file for an example of this dataset.
 
-  Events used in: _coinfect
+Events used in: _coinfect
 
-  Examples: ::
+Examples: ::
 
     dataset_coinfect = dataset_coinfect.csv
 
 
-- dataset_gen_infect
+******************
+dataset_gen_infect
+******************
 
-  Specifies the location of a dataset used to set the infection stage of agents,
-  if any, at the beginning of a simulation.
+Specifies the location of a dataset used to set the infection stage of agents,
+if any, at the beginning of a simulation.
 
-  See the data/dataset_gen_infect.csv file for an example of this dataset.
+See the data/dataset_gen_infect.csv file for an example of this dataset.
 
-  In this example file, the agent characteristics of sex, sex_preferred and
-  age (in 10-year groupings) are used to determine probability of an agent being
-  uninfected (i.e. agent->infected is set to 0), or stage 1, 2, 3 or 4. Note the
-  probabilities are ascending from stage 1 through 4. The _birth event first
-  checks if a uniform random number, r, is < than the stage 1 probability. If it
-  is, agent->infected is set to 1. Then it checks if r is < than the stage 2
-  probability and >= the stage 1 probability. If it is, agent->infected is set
-  to 2. Etc. If r is >= the stage 4 probability, the agent is uninfected and
-  agent->infected is set to 0. Your simulation can have many stages (up to 254,
-  but this would almost certainly be unmanageable), so long as they are
-  consistently treated across datasets.
+In this example file, the agent characteristics of sex, sex_preferred and age
+(in 10-year groupings) are used to determine probability of an agent being
+uninfected (i.e. agent->infected is set to 0), or stage 1, 2, 3 or 4. Note the
+probabilities are ascending from stage 1 through 4. The _birth event first
+checks if a uniform random number, r, is < than the stage 1 probability. If it
+is, agent->infected is set to 1. Then it checks if r is < than the stage 2
+probability and >= the stage 1 probability. If it is, agent->infected is set
+to 2. Etc. If r is >= the stage 4 probability, the agent is uninfected and
+agent->infected is set to 0. Your simulation can have many stages (up to 254,
+but this would almost certainly be unmanageable), so long as they are
+consistently treated across datasets.
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_infect = dataset_gen_infect.csv
 
-- dataset_gen_mating
+******************
+dataset_gen_mating
+******************
 
-  Specifies the location of a dataset used to set the probability of an agent
-  being in the mating pool at the beginning of a simulation. You can have as
-  many columns specifying agent characteristics (i.e. the independent variables)
-  as you wish but the events that use this dataset expect exactly one dependent
-  variable, the probability of the agent being in the initial mating pool.
+Specifies the location of a dataset used to set the probability of an agent
+being in the mating pool at the beginning of a simulation. You can have as many
+columns specifying agent characteristics (i.e. the independent variables) as you
+wish but the events that use this dataset expect exactly one dependent variable,
+the probability of the agent being in the initial mating pool.
 
-  See the data/dataset_gen_mating.csv file for an example of this dataset.
+See the data/dataset_gen_mating.csv file for an example of this dataset.
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_mating = dataset_gen_mating.csv
 
-- dataset_gen_resistant
+*********************
+dataset_gen_resistant
+*********************
 
-  Specifies the location of a dataset used to set the resistance of infected
-  agents, if any, at the beginning of a simulation. The file can have any
-  number of columns specifying agent characteristics (independent variables). It
-  must have exactly one dependent variable column specifying the risk of
-  resistance for agents with a given set of characteristics.
+Specifies the location of a dataset used to set the resistance of infected
+agents, if any, at the beginning of a simulation. The file can have any
+number of columns specifying agent characteristics (independent variables). It
+must have exactly one dependent variable column specifying the risk of
+resistance for agents with a given set of characteristics.
 
-  See the data/dataset_gen_resistant.csv file for an example of this dataset.
+See the data/dataset_gen_resistant.csv file for an example of this dataset.
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_resistant = dataset_gen_resistant.csv
 
 .. note:: This mechanism for modelling resistance is a bit too simple
           and needs to be improved.
 
-- dataset_gen_sex
+***************
+dataset_gen_sex
+***************
 
-  Specifies the location of a dataset used to set the sex of an agent at the
-  beginning of a simulation. The file can have zero or more columns specifying
-  agent characteristics (independent variables). It must have exactly one
-  dependent variable column specifying the probability of the agent being
-  male. Typically this is a one-column dataset with a header and one data row
-  set to 0.5. But if you want need more sophisticated initiation of agent sex
-  (e.g. by age), then this is the dataset in which you specify it.
+Specifies the location of a dataset used to set the sex of an agent at the
+beginning of a simulation. The file can have zero or more columns specifying
+agent characteristics (independent variables). It must have exactly one
+dependent variable column specifying the probability of the agent being
+male. Typically this is a one-column dataset with a header and one data row set
+to 0.5. But if you want need more sophisticated initiation of agent sex (e.g. by
+age), then this is the dataset in which you specify it.
 
-  See the data/dataset_gen_sex.csv file for an example of this dataset.
+See the data/dataset_gen_sex.csv file for an example of this dataset.
 
-  Events used in: _generate_agents, _generate_and_pair
+Events used in: _generate_agents, _generate_and_pair
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_sex = dataset_gen_sex.csv
 
-- dataset_gen_sex_preferred
+*************************
+dataset_gen_sex_preferred
+*************************
 
-  Specifies the location of a dataset used to set the sexual preference of an
-  agent at the beginning of a simulation. The file can have zero or more columns
-  specifying agent characteristics (independent variables). It must have exactly
-  one dependent variable column specifying the probability of the agent
-  preferring a male sexual partner.
+Specifies the location of a dataset used to set the sexual preference of an
+agent at the beginning of a simulation. The file can have zero or more columns
+specifying agent characteristics (independent variables). It must have exactly
+one dependent variable column specifying the probability of the agent preferring
+a male sexual partner.
 
-  See the data/dataset_gen_sex_preferred.csv file for an example of this
-  dataset.
+See the data/dataset_gen_sex_preferred.csv file for an example of this
+dataset.
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_sex_preferred = dataset_gen_sex_preferred.csv
 
-- dataset_gen_treated
+*******************
+dataset_gen_treated
+*******************
 
-  Specifies the location of a dataset used to set the treatment status of an
-  infected agent at the beginning of a simulation. The file can have zero or
-  more columns specifying agent characteristics (independent variables). The
-  number of dependent variable columns must correspond to the number of possible
-  treatment statuses, incrementing from 1. Events that use this dataset generate
-  a uniform random number, r, and then compare r from the first dependent column
-  onwards. If r is less than the probability in a dependent column, the
-  agent's treatment status is set to the dependent column number.
+Specifies the location of a dataset used to set the treatment status of an
+infected agent at the beginning of a simulation. The file can have zero or more
+columns specifying agent characteristics (independent variables). The number of
+dependent variable columns must correspond to the number of possible treatment
+statuses, incrementing from 1. Events that use this dataset generate a uniform
+random number, r, and then compare r from the first dependent column onwards. If
+r is less than the probability in a dependent column, the agent's treatment
+status is set to the dependent column number.
 
-  Here's a mixture of C and pseudocode showing how |PROJECT| does this:
+Here's a mixture of C and pseudocode showing how |PROJECT| does this:
 
   .. code-block:: C
      :linenos:
@@ -427,40 +468,44 @@ parameters:
           }
       }
 
-  See the data/dataset_gen_treated.csv file for an example of this
-  dataset.
+See the data/dataset_gen_treated.csv file for an example of this
+dataset.
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
     dataset_gen_treated = dataset_gen_sex_treated.csv
 
 
-- dataset_infect
+**************
+dataset_infect
+**************
 
-  Specifies the location of a dataset used to determine whether an agent becomes
-  infected by its sexual partner. This is a two-agent dataset, since the
-  probability of infection is a function of the characteristics of both agents. See
-  :ref:`two-agent-dataset-ref` for details on how this works.
+Specifies the location of a dataset used to determine whether an agent becomes
+infected by its sexual partner. This is a two-agent dataset, since the
+probability of infection is a function of the characteristics of both
+agents. See :ref:`two-agent-dataset-ref` for details on how this works.
 
-  Default: _no_op # i.e. there is no dataset file specified.
+Default: _no_op # i.e. there is no dataset file specified.
 
-  Examples: ::
+Examples: ::
 
-    dataset_gen_infect = dataset_gen_infect.csv
+  dataset_gen_infect = dataset_gen_infect.csv
 
 .. _during_events_ref:
 
-- during_events
+*************
+during_events
+*************
 
-  These are the events executed on every time step of a simulation.
+These are the events executed on every time step of a simulation.
 
-  Default: _no_op
+Default: _no_op
 
-  Events used in: None
+Events used in: None
 
-  Examples: ::
+Examples: ::
 
       during_events=_age;_breakup_and_pair;_infect;_stage;_birth;_death
 
@@ -468,20 +513,22 @@ parameters:
 
 .. _report_frequency_ref:
 
-- report_frequency
+****************
+report_frequency
+****************
 
-  Indicates the frequency that the reporting events specified by the
-  during_events parameter should be specified.
+Indicates the frequency that the reporting events specified by the during_events
+parameter should be specified.
 
-  Default: 1, i.e. on every iteration or time step of the simulation. Make sure
-  this is what you really want. If you're executing :ref:`_write_agents_csv_ref`
-  during the simulation, having a report_frequency of 1 will slow your
-  simulation down and use huge amounts of hard drive space.
+Default: 1, i.e. on every iteration or time step of the simulation. Make sure
+this is what you really want. If you're executing :ref:`write_agents_csv_ref`
+during the simulation, having a report_frequency of 1 will slow your simulation
+down and use huge amounts of hard drive space.
 
-  Events used in: _write_agents_csv, _write_live_agents_csv,
-  _write_dead_agents_csv, _report
+Events used in: _write_agents_csv, _write_live_agents_csv,
+_write_dead_agents_csv, _report
 
-  Examples: ::
+Examples: ::
 
     report_frequency = 365 # Report every 365 time steps.
 
@@ -498,8 +545,6 @@ dataset_rel_period; CSV file of values to determine period agent is in relations
 
 dataset_single_period; CSV file of values to determine period agent is single; _no_op
 
-
-during_events; Events executed on every time step of a simulation; _no_op
 
 event_test_freq; Run test cases in test events every nth iteration; 100
 
