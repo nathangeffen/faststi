@@ -1,15 +1,14 @@
-# Takes an results CSV file produced by FastSTI
+# Takes a results CSV file produced by FastSTI
 # and runs a function (default mean) over a
-# statistic (description) grouping the result 
+# statistic (description) grouping the result
 # either by the maximum date or all the dates.
 
-processFastSTIResults <- function(filename="results.csv", 
-                                  sep=";", 
+processFastSTIResults <- function(filename="results.csv",
+                                  sep=";",
                                   description="INFECT_RATE_ALIVE",
                                   fun=mean,
-                                  header=TRUE,
                                   filter_max_date=TRUE) {
-  inp = read.csv(filename, sep=sep, header=header)
+  inp = read.csv(filename, sep=sep, header=TRUE)
   values = inp[inp$description==description,]
   if (filter_max_date) {
     analysisDate = max(as.Date(values$date))
@@ -19,4 +18,3 @@ processFastSTIResults <- function(filename="results.csv",
 }
 
 print(processFastSTIResults())
-

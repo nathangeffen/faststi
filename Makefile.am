@@ -19,5 +19,7 @@ EXTRA_DIST = 	simulations/examples/eg1.ini		\
 		data/dataset_mortality_simple.csv	\
 		data/dataset_rel.csv			\
 		data/dataset_single.csv			\
+		scripts/processResultsFile.py		\
 		scripts/processResultsFile.R		\
 		scripts/README
+
