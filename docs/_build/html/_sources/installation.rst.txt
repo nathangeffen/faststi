@@ -96,7 +96,7 @@ Or::
 
      make install
 
-5. Now test that it works: ::
+6. Now test that it works: ::
 
      FSTI_DATA=./data faststi -t
 
