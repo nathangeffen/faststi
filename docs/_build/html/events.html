@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Events &mdash; FastSTI 0.2.1 documentation</title>
+  <title>Events &mdash; FastSTI 0.2.2 documentation</title>
   
 
   
@@ -702,163 +702,9 @@ want a different infection stage setup, make sure your datasets and
 initial_infect_stage parameter are consistent with each other.</p>
 <p>Dataset: dataset_infect_stage</p>
 <p>This is quite a complicated dataset and is best understood by looking at the
-commented example in the data directory called dataset_infect_stage.csv. For
-convenience here it is:</p>
-<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     # Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
-     #
-     # The first three columns are used for matching and correspond to agent fields
-     # or properties.
-     #
-     # The next six columns are instructions on how and when to change the stage.
-     #
-     # Columns:
-     #
-     #  1. infected - the infection stage of the agent (0 is uninfected)
-     #  2. treated - the treatment regimen of the agent. This particular file
-     #               allows for 3 treatment regimens.
-     #  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
-     #                 1 if the agent is drug-resistant to this treatment regimen
-     #  4. prob_stage_change - probability that the infection stage changes for
-     #                         this time step (1 day)
-     #  5. stage_incr - if a uniformly generated random number &lt; prob_stage_change
-     #                  then change the infect property by this increment
-     #  6. prob_treatment_change - probability treatment changes
-     #  7. treatment_incr - if a uniformly rand number &lt; prob_treatment_change
-     #                      then change the treatment property by this increment
-     #  8. prob_resistant - probability resistance status changes
-     #  9. resistant_incr - if a uniformly random number &lt; prob_resistant_change
-     #                      change the resistant value by this amount
-     #
-     # Note the |6 after resistant_incr means that there are six columns at the end
-     # of each line that are not agent properties.
-     #
-     # Infection stages:;;;;;;;;
-     #  0 = uninfected;;;;;;;;
-     #  1 = virally suppressed (usually on treatment);;;;;;;;
-     #  2 = primary infection (highly infectious);;;;;;;;
-     #  3 = chronic infection;;;;;;;;
-     #  4 = Final stage;;;;;;;;
-     #
-     # HEADER ROW FOLLOWS
-     infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
-     0;0;0;0;0;0;0;0;0
-     0;0;1;0;0;0;0;0;0
-     0;1;0;0;0;0;0;0;0
-     0;1;1;0;0;0;0;0;0
-     0;2;0;0;0;0;0;0;0
-     0;2;1;0;0;0;0;0;0
-     0;3;0;0;0;0;0;0;0
-     0;3;1;0;0;0;0;0;0
-     1;0;0;0.1;1;0.0001;1;0;0
-     1;0;1;0.1;1;0.0001;1;0;0
-     1;1;0;0.00001;1;0.00001;1;0.00001;1
-     1;1;1;0.1;1;0.0001;1;0;0
-     1;2;0;0.00001;1;0.00001;1;0.00001;1
-     1;2;1;0.1;1;0.0001;1;0;0
-     1;3;0;0.00001;1;0;0;0.0001;1
-     1;3;1;0.1;1;0;0;0;0
-     2;0;0;0.1;1;0.001;1;0;0
-     2;0;1;0.1;1;0.001;1;0;0
-     2;1;0;0.1;-1;0;0;0.0001;1
-     2;1;1;0.1;1;0.001;1;0;0
-     2;2;0;0.1;-1;0;0;0.0001;1
-     2;2;1;0.1;1;0.001;1;0;0
-     2;3;0;0.1;-1;0;0;0.0001;1
-     2;3;1;0.1;1;0;0;0;0
-     3;0;0;0.004;1;0.0001;1;0;0
-     3;0;1;0.001;1;0.0001;1;0;0
-     3;1;0;0.1;-1;0;0;0.0001;1
-     3;1;1;0.002;1;0.005;1;0;0
-     3;2;0;0.1;-1;0;0;0.0001;1
-     3;2;1;0.002;1;0.001;1;0;0
-     3;3;0;0.1;-1;0;0;0.0001;1
-     3;3;1;0.002;1;0;0;0;0
-     4;0;0;0;0;0.005;1;0;0
-     4;0;1;0;0;0.005;1;0;0
-     4;1;0;0.1;-1;0;0;0.0001;1
-     4;1;1;0;0;0.01;1;0;0
-     4;2;0;0.1;-1;0;0;0.0001;1
-     4;2;1;0;0;0.01;1;0;0
-     4;3;0;0.1;-1;0;0;0.0001;1
-     4;3;1;0;0;0;0;0;0
-</pre></div>
-</td></tr></table></div>
+commented example in the data directory called dataset_infect_stage.csv. It’s
+also included for convenience in the parameter description of
+<a class="reference internal" href="parameters.html#dataset-infect-stage-ref"><span class="std std-ref">dataset_infect_stage</span></a>.</p>
 </div>
 <div class="section" id="coinfect">
 <h2>_coinfect<a class="headerlink" href="#coinfect" title="Permalink to this headline">¶</a></h2>

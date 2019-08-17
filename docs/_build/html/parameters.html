@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuration file parameters &mdash; FastSTI 0.2.1 documentation</title>
+  <title>Configuration file parameters &mdash; FastSTI 0.2.2 documentation</title>
   
 
   
@@ -117,8 +117,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#dataset-gen-sex-preferred">dataset_gen_sex_preferred</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dataset-gen-treated">dataset_gen_treated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dataset-infect">dataset_infect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-infect-stage">dataset_infect_stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-mortality">dataset_mortality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-rel-period">dataset_rel_period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-single-period">dataset_single_period</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#during-events">during_events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#report-frequency">report_frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-infect-stage">initial_infect_stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#match-k">match_k</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
@@ -585,6 +591,212 @@ agents. See <a class="reference internal" href="inputformats.html#two-agent-data
 </pre></div>
 </div>
 </div>
+<div class="section" id="dataset-infect-stage">
+<span id="dataset-infect-stage-ref"></span><h2>dataset_infect_stage<a class="headerlink" href="#dataset-infect-stage" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the location of a dataset used to determine if an infected agent
+should change the infection stage it is in.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_gen_infect</span> <span class="o">=</span> <span class="n">dataset_gen_infect</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>This is quite a complicated dataset and is best understood by looking at the
+commented example in the data directory called dataset_infect_stage.csv. For
+convenience here it is:</p>
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre></div></td><td class="code"><div class="highlight"><pre><span></span>     # Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
+     #
+     # The first three columns are used for matching and correspond to agent fields
+     # or properties.
+     #
+     # The next six columns are instructions on how and when to change the stage.
+     #
+     # Columns:
+     #
+     #  1. infected - the infection stage of the agent (0 is uninfected)
+     #  2. treated - the treatment regimen of the agent. This particular file
+     #               allows for 3 treatment regimens.
+     #  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
+     #                 1 if the agent is drug-resistant to this treatment regimen
+     #  4. prob_stage_change - probability that the infection stage changes for
+     #                         this time step (1 day)
+     #  5. stage_incr - if a uniformly generated random number &lt; prob_stage_change
+     #                  then change the infect property by this increment
+     #  6. prob_treatment_change - probability treatment changes
+     #  7. treatment_incr - if a uniformly rand number &lt; prob_treatment_change
+     #                      then change the treatment property by this increment
+     #  8. prob_resistant - probability resistance status changes
+     #  9. resistant_incr - if a uniformly random number &lt; prob_resistant_change
+     #                      change the resistant value by this amount
+     #
+     # Note the |6 after resistant_incr means that there are six columns at the end
+     # of each line that are not agent properties.
+     #
+     # Infection stages:;;;;;;;;
+     #  0 = uninfected;;;;;;;;
+     #  1 = virally suppressed (usually on treatment);;;;;;;;
+     #  2 = primary infection (highly infectious);;;;;;;;
+     #  3 = chronic infection;;;;;;;;
+     #  4 = Final stage;;;;;;;;
+     #
+     # HEADER ROW FOLLOWS
+     infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
+     0;0;0;0;0;0;0;0;0
+     0;0;1;0;0;0;0;0;0
+     0;1;0;0;0;0;0;0;0
+     0;1;1;0;0;0;0;0;0
+     0;2;0;0;0;0;0;0;0
+     0;2;1;0;0;0;0;0;0
+     0;3;0;0;0;0;0;0;0
+     0;3;1;0;0;0;0;0;0
+     1;0;0;0.1;1;0.0001;1;0;0
+     1;0;1;0.1;1;0.0001;1;0;0
+     1;1;0;0.00001;1;0.00001;1;0.00001;1
+     1;1;1;0.1;1;0.0001;1;0;0
+     1;2;0;0.00001;1;0.00001;1;0.00001;1
+     1;2;1;0.1;1;0.0001;1;0;0
+     1;3;0;0.00001;1;0;0;0.0001;1
+     1;3;1;0.1;1;0;0;0;0
+     2;0;0;0.1;1;0.001;1;0;0
+     2;0;1;0.1;1;0.001;1;0;0
+     2;1;0;0.1;-1;0;0;0.0001;1
+     2;1;1;0.1;1;0.001;1;0;0
+     2;2;0;0.1;-1;0;0;0.0001;1
+     2;2;1;0.1;1;0.001;1;0;0
+     2;3;0;0.1;-1;0;0;0.0001;1
+     2;3;1;0.1;1;0;0;0;0
+     3;0;0;0.004;1;0.0001;1;0;0
+     3;0;1;0.001;1;0.0001;1;0;0
+     3;1;0;0.1;-1;0;0;0.0001;1
+     3;1;1;0.002;1;0.005;1;0;0
+     3;2;0;0.1;-1;0;0;0.0001;1
+     3;2;1;0.002;1;0.001;1;0;0
+     3;3;0;0.1;-1;0;0;0.0001;1
+     3;3;1;0.002;1;0;0;0;0
+     4;0;0;0;0;0.005;1;0;0
+     4;0;1;0;0;0.005;1;0;0
+     4;1;0;0.1;-1;0;0;0.0001;1
+     4;1;1;0;0;0.01;1;0;0
+     4;2;0;0.1;-1;0;0;0.0001;1
+     4;2;1;0;0;0.01;1;0;0
+     4;3;0;0.1;-1;0;0;0.0001;1
+     4;3;1;0;0;0;0;0;0
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="dataset-mortality">
+<h2>dataset_mortality<a class="headerlink" href="#dataset-mortality" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the location of a dataset used to determine if an agent should die on
+the current time step.</p>
+<p>See the data/dataset_mortality.csv file for an example of this dataset.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_mortality</span> <span class="o">=</span> <span class="n">dataset_mortality</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-rel-period">
+<h2>dataset_rel_period<a class="headerlink" href="#dataset-rel-period" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the location of a dataset used to determine the length of time an
+agent relationship should be.</p>
+<p>This dataset requires two dependent variable columns: scale and shape, which are
+used to draw a random number from a Weibull distribution for each agent in the
+relationship. The values returned are the number of time steps (iterations). The
+duration of the relationship is the mean of the two random numbers drawn.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_rel_period</span> <span class="o">=</span> <span class="n">dataset_rel_period</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-single-period">
+<h2>dataset_single_period<a class="headerlink" href="#dataset-single-period" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the location of a dataset used to determine the length of time an
+agent should remain single.</p>
+<p>This dataset requires two dependent variable columns: scale and shape, which are
+used to draw a random number from a Weibull distribution for the agent. The
+value drawn is the number of time steps the agent should remain single.</p>
+<p>Default: _no_op # i.e. there is no dataset file specified.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_single_period</span> <span class="o">=</span> <span class="n">dataset_single_period</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="during-events">
 <span id="during-events-ref"></span><h2>during_events<a class="headerlink" href="#during-events" title="Permalink to this headline">¶</a></h2>
 <p>These are the events executed on every time step of a simulation.</p>
@@ -611,14 +823,40 @@ _write_dead_agents_csv, _report</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">report_frequency</span> <span class="o">=</span> <span class="mi">365</span> <span class="c1"># Report every 365 time steps.</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="initial-infect-stage">
+<h2>initial_infect_stage<a class="headerlink" href="#initial-infect-stage" title="Permalink to this headline">¶</a></h2>
+<p>When an agent is infected, this parameter determines the initial infection
+stage.</p>
+<p>Default: 2. In the default simulation provided by FastSTI, the agent infected
+property of 1 implies it is on treatment. No one is on treatment when infected,
+so 2 represents the primary infection stage, and this is therefore the default
+value that initial_infect_stage is set to.</p>
+<p>Events used in: _infect</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_infect_stage</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="match-k">
+<h2>match_k<a class="headerlink" href="#match-k" title="Permalink to this headline">¶</a></h2>
+<p>The value of k when using nearest-neighbour type agent matching algorithms. The
+agent matching algorithm supplied with GroundUp (implemented by the
+<a class="reference internal" href="events.html#rkpm-ref"><span class="std std-ref">_rkpm</span></a> event) chooses the best match for the current agent being
+considered for matching in the mating pool from the k unmatched agents adjacent
+to it.</p>
+<p>If k is set to 1, this is random matching matching. If k is set larger than the
+possible number of agents in the mating pool, then this is a kind of brute force
+matching.</p>
+<p>Default: 100 This is usually a good compromise value. The algorithm will execute
+quickly and the agent selected will on average be a better match than 99% of the
+remaining agents in the mating pool.</p>
+<p>Events used in: _rpkm</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match_k</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
 <p>TO DO</p>
-<p>dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op</p>
-<p>dataset_mortality; CSV file of values to determine agent deaths; _no_op</p>
-<p>dataset_rel_period; CSV file of values to determine period agent is in relationship; _no_op</p>
-<p>dataset_single_period; CSV file of values to determine period agent is single; _no_op</p>
-<p>event_test_freq; Run test cases in test events every nth iteration; 100</p>
-<p>initial_infect_stage; When infected this is the integer to set infected to; 2</p>
-<p>match_k; Value for k when using matching algorithms; 100</p>
 <p>max_stage; Maximum infection stage (e.g. 6 for HIV 1=virally suppressed, 2=primary 3-6=WHO 1-4); 6</p>
 <p>mutual_csv_partners; After initializing agents, make all partnerships mutual; 1</p>
 <p>num_agents; Number of agents; 20000</p>

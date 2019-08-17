@@ -327,7 +327,7 @@ unsigned total_partners;
 
 #ifndef FSTI_SET_REL_PERIOD
 #define FSTI_SET_REL_PERIOD(simulation, agent_a, agent_b) do {  \
-        fsti_set_rel_period(simulation, agent_a);                    \
+        fsti_set_rel_period(simulation, agent_a);               \
         agent_b->relchange[0] = agent_a->relchange[0];          \
     } while(0)
 #endif

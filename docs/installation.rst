@@ -20,14 +20,12 @@ On Ubuntu, Debian, Mint etc. this should do the trick: ::
   sudo apt install build-essential libgsl-dev libglib2.0-dev
 
 
-2. Download the |PROJECT| `archived distribution
-<https://www.simhub.online/media/dist/faststi/latest.tar.gz>`_ and decompress
+2. Download |PROJECT| from |DOWNLOAD| and decompress
 it.
 
-E.g. ::
+E.g.
 
-  wget https://www.simhub.online/media/dist/faststi/latest.tar.gz
-  tar xzvf latest.tar.gz
+   |CODE_TO_DOWNLOAD|
 
 This should create a directory called |DIRNAME| which contains the |PROJECT| files.
 

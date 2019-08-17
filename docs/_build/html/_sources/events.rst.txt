@@ -596,89 +596,9 @@ initial_infect_stage parameter are consistent with each other.
 Dataset: dataset_infect_stage
 
 This is quite a complicated dataset and is best understood by looking at the
-commented example in the data directory called dataset_infect_stage.csv. For
-convenience here it is:
-
-.. code-block:: none
-   :linenos:
-
-        # Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
-        #
-        # The first three columns are used for matching and correspond to agent fields
-        # or properties.
-        #
-        # The next six columns are instructions on how and when to change the stage.
-        #
-        # Columns:
-        #
-        #  1. infected - the infection stage of the agent (0 is uninfected)
-        #  2. treated - the treatment regimen of the agent. This particular file
-        #               allows for 3 treatment regimens.
-        #  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
-        #                 1 if the agent is drug-resistant to this treatment regimen
-        #  4. prob_stage_change - probability that the infection stage changes for
-        #                         this time step (1 day)
-        #  5. stage_incr - if a uniformly generated random number < prob_stage_change
-        #                  then change the infect property by this increment
-        #  6. prob_treatment_change - probability treatment changes
-        #  7. treatment_incr - if a uniformly rand number < prob_treatment_change
-        #                      then change the treatment property by this increment
-        #  8. prob_resistant - probability resistance status changes
-        #  9. resistant_incr - if a uniformly random number < prob_resistant_change
-        #                      change the resistant value by this amount
-        #
-        # Note the |6 after resistant_incr means that there are six columns at the end
-        # of each line that are not agent properties.
-        #
-        # Infection stages:;;;;;;;;
-        #  0 = uninfected;;;;;;;;
-        #  1 = virally suppressed (usually on treatment);;;;;;;;
-        #  2 = primary infection (highly infectious);;;;;;;;
-        #  3 = chronic infection;;;;;;;;
-        #  4 = Final stage;;;;;;;;
-        #
-        # HEADER ROW FOLLOWS
-        infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
-        0;0;0;0;0;0;0;0;0
-        0;0;1;0;0;0;0;0;0
-        0;1;0;0;0;0;0;0;0
-        0;1;1;0;0;0;0;0;0
-        0;2;0;0;0;0;0;0;0
-        0;2;1;0;0;0;0;0;0
-        0;3;0;0;0;0;0;0;0
-        0;3;1;0;0;0;0;0;0
-        1;0;0;0.1;1;0.0001;1;0;0
-        1;0;1;0.1;1;0.0001;1;0;0
-        1;1;0;0.00001;1;0.00001;1;0.00001;1
-        1;1;1;0.1;1;0.0001;1;0;0
-        1;2;0;0.00001;1;0.00001;1;0.00001;1
-        1;2;1;0.1;1;0.0001;1;0;0
-        1;3;0;0.00001;1;0;0;0.0001;1
-        1;3;1;0.1;1;0;0;0;0
-        2;0;0;0.1;1;0.001;1;0;0
-        2;0;1;0.1;1;0.001;1;0;0
-        2;1;0;0.1;-1;0;0;0.0001;1
-        2;1;1;0.1;1;0.001;1;0;0
-        2;2;0;0.1;-1;0;0;0.0001;1
-        2;2;1;0.1;1;0.001;1;0;0
-        2;3;0;0.1;-1;0;0;0.0001;1
-        2;3;1;0.1;1;0;0;0;0
-        3;0;0;0.004;1;0.0001;1;0;0
-        3;0;1;0.001;1;0.0001;1;0;0
-        3;1;0;0.1;-1;0;0;0.0001;1
-        3;1;1;0.002;1;0.005;1;0;0
-        3;2;0;0.1;-1;0;0;0.0001;1
-        3;2;1;0.002;1;0.001;1;0;0
-        3;3;0;0.1;-1;0;0;0.0001;1
-        3;3;1;0.002;1;0;0;0;0
-        4;0;0;0;0;0.005;1;0;0
-        4;0;1;0;0;0.005;1;0;0
-        4;1;0;0.1;-1;0;0;0.0001;1
-        4;1;1;0;0;0.01;1;0;0
-        4;2;0;0.1;-1;0;0;0.0001;1
-        4;2;1;0;0;0.01;1;0;0
-        4;3;0;0.1;-1;0;0;0.0001;1
-        4;3;1;0;0;0;0;0;0
+commented example in the data directory called dataset_infect_stage.csv. It's
+also included for convenience in the parameter description of
+:ref:`dataset_infect_stage_ref`.
 
 *********
 _coinfect

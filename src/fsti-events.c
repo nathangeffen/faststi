@@ -687,7 +687,6 @@ fsti_set_rel_period(struct fsti_simulation *simulation,
     shape = fsti_dataset_lookup(simulation->dataset_rel, a, 1);
     iterations = gsl_ran_weibull(simulation->rng, scale, shape);
     a->relchange[0] = simulation->iteration + iterations;
-
 }
 
 static

@@ -26,7 +26,7 @@ author = 'Nathan Geffen and Stefan Scholz'
 # The short X.Y version
 version = '0.2'
 # The full version, including alpha/beta/rc tags
-release = '0.2.1'
+release = '0.2.2'
 
 
 # -- General configuration ---------------------------------------------------
@@ -189,8 +189,9 @@ epub_exclude_files = ['search.html']
 # -- Extension configuration -------------------------------------------------
 
 
-
 rst_prolog = """
 .. |DIRNAME| replace:: faststi-{}
 .. |PROJECT| replace:: {}
-""".format(release, project)
+.. |DOWNLOAD| replace:: https://www.simhub.online/media/dist/faststi/faststi-{}.tar.gz
+.. |CODE_TO_DOWNLOAD| replace::     wget |DOWNLOAD|; tar xzf |DIRNAME|.tar.gz
+""".format(release, project, release)

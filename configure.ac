@@ -1,4 +1,4 @@
-AC_INIT([faststi], [0.2.1], [nathangeffen@quackdown.info])
+AC_INIT([faststi], [0.2.2], [nathangeffen@quackdown.info])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_PROG_CC
 # CFLAGS+=" -std=c11 -Wall -Werror -pedantic"

@@ -493,6 +493,159 @@ Examples: ::
 
   dataset_gen_infect = dataset_gen_infect.csv
 
+
+.. _dataset_infect_stage_ref:
+
+********************
+dataset_infect_stage
+********************
+
+Specifies the location of a dataset used to determine if an infected agent
+should change the infection stage it is in.
+
+Default: _no_op # i.e. there is no dataset file specified.
+
+Examples: ::
+
+  dataset_gen_infect = dataset_gen_infect.csv
+
+This is quite a complicated dataset and is best understood by looking at the
+commented example in the data directory called dataset_infect_stage.csv. For
+convenience here it is:
+
+.. code-block:: none
+   :linenos:
+
+        # Dataset used by _stage event (defined in fsti-events.c as fsti_event_stage)
+        #
+        # The first three columns are used for matching and correspond to agent fields
+        # or properties.
+        #
+        # The next six columns are instructions on how and when to change the stage.
+        #
+        # Columns:
+        #
+        #  1. infected - the infection stage of the agent (0 is uninfected)
+        #  2. treated - the treatment regimen of the agent. This particular file
+        #               allows for 3 treatment regimens.
+        #  3. resistant - 0 if the agent is drug-susceptible to this treatment regimen
+        #                 1 if the agent is drug-resistant to this treatment regimen
+        #  4. prob_stage_change - probability that the infection stage changes for
+        #                         this time step (1 day)
+        #  5. stage_incr - if a uniformly generated random number < prob_stage_change
+        #                  then change the infect property by this increment
+        #  6. prob_treatment_change - probability treatment changes
+        #  7. treatment_incr - if a uniformly rand number < prob_treatment_change
+        #                      then change the treatment property by this increment
+        #  8. prob_resistant - probability resistance status changes
+        #  9. resistant_incr - if a uniformly random number < prob_resistant_change
+        #                      change the resistant value by this amount
+        #
+        # Note the |6 after resistant_incr means that there are six columns at the end
+        # of each line that are not agent properties.
+        #
+        # Infection stages:;;;;;;;;
+        #  0 = uninfected;;;;;;;;
+        #  1 = virally suppressed (usually on treatment);;;;;;;;
+        #  2 = primary infection (highly infectious);;;;;;;;
+        #  3 = chronic infection;;;;;;;;
+        #  4 = Final stage;;;;;;;;
+        #
+        # HEADER ROW FOLLOWS
+        infected;treated;resistant;prob_stage_change;stage_incr;prob_treatment_change;treatment_incr;prob_resistant;resistant_incr|6
+        0;0;0;0;0;0;0;0;0
+        0;0;1;0;0;0;0;0;0
+        0;1;0;0;0;0;0;0;0
+        0;1;1;0;0;0;0;0;0
+        0;2;0;0;0;0;0;0;0
+        0;2;1;0;0;0;0;0;0
+        0;3;0;0;0;0;0;0;0
+        0;3;1;0;0;0;0;0;0
+        1;0;0;0.1;1;0.0001;1;0;0
+        1;0;1;0.1;1;0.0001;1;0;0
+        1;1;0;0.00001;1;0.00001;1;0.00001;1
+        1;1;1;0.1;1;0.0001;1;0;0
+        1;2;0;0.00001;1;0.00001;1;0.00001;1
+        1;2;1;0.1;1;0.0001;1;0;0
+        1;3;0;0.00001;1;0;0;0.0001;1
+        1;3;1;0.1;1;0;0;0;0
+        2;0;0;0.1;1;0.001;1;0;0
+        2;0;1;0.1;1;0.001;1;0;0
+        2;1;0;0.1;-1;0;0;0.0001;1
+        2;1;1;0.1;1;0.001;1;0;0
+        2;2;0;0.1;-1;0;0;0.0001;1
+        2;2;1;0.1;1;0.001;1;0;0
+        2;3;0;0.1;-1;0;0;0.0001;1
+        2;3;1;0.1;1;0;0;0;0
+        3;0;0;0.004;1;0.0001;1;0;0
+        3;0;1;0.001;1;0.0001;1;0;0
+        3;1;0;0.1;-1;0;0;0.0001;1
+        3;1;1;0.002;1;0.005;1;0;0
+        3;2;0;0.1;-1;0;0;0.0001;1
+        3;2;1;0.002;1;0.001;1;0;0
+        3;3;0;0.1;-1;0;0;0.0001;1
+        3;3;1;0.002;1;0;0;0;0
+        4;0;0;0;0;0.005;1;0;0
+        4;0;1;0;0;0.005;1;0;0
+        4;1;0;0.1;-1;0;0;0.0001;1
+        4;1;1;0;0;0.01;1;0;0
+        4;2;0;0.1;-1;0;0;0.0001;1
+        4;2;1;0;0;0.01;1;0;0
+        4;3;0;0.1;-1;0;0;0.0001;1
+        4;3;1;0;0;0;0;0;0
+
+*****************
+dataset_mortality
+*****************
+
+Specifies the location of a dataset used to determine if an agent should die on
+the current time step.
+
+See the data/dataset_mortality.csv file for an example of this dataset.
+
+Default: _no_op # i.e. there is no dataset file specified.
+
+Examples: ::
+
+    dataset_mortality = dataset_mortality.csv
+
+
+******************
+dataset_rel_period
+******************
+
+Specifies the location of a dataset used to determine the length of time an
+agent relationship should be.
+
+This dataset requires two dependent variable columns: scale and shape, which are
+used to draw a random number from a Weibull distribution for each agent in the
+relationship. The values returned are the number of time steps (iterations). The
+duration of the relationship is the mean of the two random numbers drawn.
+
+Default: _no_op # i.e. there is no dataset file specified.
+
+Examples: ::
+
+    dataset_rel_period = dataset_rel_period.csv
+
+
+*********************
+dataset_single_period
+*********************
+
+Specifies the location of a dataset used to determine the length of time an
+agent should remain single.
+
+This dataset requires two dependent variable columns: scale and shape, which are
+used to draw a random number from a Weibull distribution for the agent. The
+value drawn is the number of time steps the agent should remain single.
+
+Default: _no_op # i.e. there is no dataset file specified.
+
+Examples: ::
+
+    dataset_single_period = dataset_single_period.csv
+
 .. _during_events_ref:
 
 *************
@@ -532,25 +685,49 @@ Examples: ::
 
     report_frequency = 365 # Report every 365 time steps.
 
+********************
+initial_infect_stage
+********************
+
+When an agent is infected, this parameter determines the initial infection
+stage.
+
+Default: 2. In the default simulation provided by FastSTI, the agent infected
+property of 1 implies it is on treatment. No one is on treatment when infected,
+so 2 represents the primary infection stage, and this is therefore the default
+value that initial_infect_stage is set to.
+
+Events used in: _infect
+
+Example: ::
+
+  initial_infect_stage = 2
+
+*******
+match_k
+*******
+
+The value of k when using nearest-neighbour type agent matching algorithms. The
+agent matching algorithm supplied with GroundUp (implemented by the
+:ref:`rkpm_ref` event) chooses the best match for the current agent being
+considered for matching in the mating pool from the k unmatched agents adjacent
+to it.
+
+If k is set to 1, this is random matching matching. If k is set larger than the
+possible number of agents in the mating pool, then this is a kind of brute force
+matching.
+
+Default: 100 This is usually a good compromise value. The algorithm will execute
+quickly and the agent selected will on average be a better match than 99% of the
+remaining agents in the mating pool.
+
+Events used in: _rpkm
+
+Example: ::
+
+  match_k = 300
 
 TO DO
-
-
-dataset_infect_stage; CSV file of values to determine when agent advances to next stage of infection; _no_op
-
-dataset_mortality; CSV file of values to determine agent deaths; _no_op
-
-dataset_rel_period; CSV file of values to determine period agent is in relationship; _no_op
-
-
-dataset_single_period; CSV file of values to determine period agent is single; _no_op
-
-
-event_test_freq; Run test cases in test events every nth iteration; 100
-
-initial_infect_stage; When infected this is the integer to set infected to; 2
-
-match_k; Value for k when using matching algorithms; 100
 
 max_stage; Maximum infection stage (e.g. 6 for HIV 1=virally suppressed, 2=primary 3-6=WHO 1-4); 6
 

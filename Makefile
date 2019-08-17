@@ -236,10 +236,10 @@ OBJEXT = o
 PACKAGE = faststi
 PACKAGE_BUGREPORT = nathangeffen@quackdown.info
 PACKAGE_NAME = faststi
-PACKAGE_STRING = faststi 0.2.1
+PACKAGE_STRING = faststi 0.2.2
 PACKAGE_TARNAME = faststi
 PACKAGE_URL = 
-PACKAGE_VERSION = 0.2.1
+PACKAGE_VERSION = 0.2.2
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -247,7 +247,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 0.2.1
+VERSION = 0.2.2
 abs_builddir = /home/nathan/workspace/C/faststi
 abs_srcdir = /home/nathan/workspace/C/faststi
 abs_top_builddir = /home/nathan/workspace/C/faststi
@@ -312,6 +312,7 @@ EXTRA_DIST = simulations/examples/eg1.ini		\
 		data/dataset_mortality_simple.csv	\
 		data/dataset_rel.csv			\
 		data/dataset_single.csv			\
+		scripts/processResultsFile.py		\
 		scripts/processResultsFile.R		\
 		scripts/README
 
