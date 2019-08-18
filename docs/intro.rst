@@ -3,9 +3,12 @@ Introduction
 ############
 
 |PROJECT| is a framework for implementing agent-based models of sexually
-transmitted infection epidemics. It is designed to handle up to tens of millions
-of agents on a mid-range laptop. On a high performance computer it can run
-dozens of large simulations or thousands of small ones in parallel.
+transmitted infection epidemics.
+
+It is designed to handle up to tens of millions of agents on a mid-range laptop,
+or to run many smaller simulations consisting of thousands of agents quickly in
+parallel. On a high performance computer it can run dozens of large simulations
+or hundreds of small ones in parallel.
 
 The output of the simulations is written to CSV files, which can be further
 processed in scripting languages like Python or R.
