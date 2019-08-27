@@ -78,7 +78,8 @@ void fsti_birth_resistant(struct fsti_simulation * simulation,
 void fsti_set_single_period(struct fsti_simulation *simulation,
                             struct fsti_agent *agent);
 void fsti_set_rel_period(struct fsti_simulation *simulation,
-                         struct fsti_agent *agent);
+                         struct fsti_agent *agent_a,
+                         struct fsti_agent *agent_b);
 
 void fsti_event_birth(struct fsti_simulation *simulation);
 void fsti_event_death(struct fsti_simulation *simulation);

@@ -83,7 +83,6 @@ struct fsti_simulation {
     uint32_t iteration;
     uint32_t report_frequency;
     uint32_t match_k;
-    uint8_t max_stage;
     char csv_delimiter;
     FILE *results_file;
     FILE *agents_output_file;
@@ -91,6 +90,8 @@ struct fsti_simulation {
 
     uint32_t age_min;
     uint32_t age_max;
+
+    double max_match_distance;
 
     // Generate agent event vars
     double age_alpha;

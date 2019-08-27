@@ -676,17 +676,23 @@ fsti_event_mating_pool(struct fsti_simulation *simulation)
 
 void
 fsti_set_rel_period(struct fsti_simulation *simulation,
-                    struct fsti_agent *a)
+                    struct fsti_agent *agent_a,
+                    struct fsti_agent *agent_b)
 {
-    double scale, shape;
+    double scale_a, shape_a, scale_b, shape_b;
     uint32_t iterations;
 
     FSTI_ASSERT(simulation->dataset_rel, FSTI_ERR_MISSING_DATASET,
                         "For parameter dataset_rel_period.");
-    scale = fsti_dataset_lookup(simulation->dataset_rel, a, 0);
-    shape = fsti_dataset_lookup(simulation->dataset_rel, a, 1);
-    iterations = gsl_ran_weibull(simulation->rng, scale, shape);
-    a->relchange[0] = simulation->iteration + iterations;
+    scale_a = fsti_dataset_lookup(simulation->dataset_rel, agent_a, 0);
+    shape_a = fsti_dataset_lookup(simulation->dataset_rel, agent_a, 1);
+    scale_b = fsti_dataset_lookup(simulation->dataset_rel, agent_b, 0);
+    shape_b = fsti_dataset_lookup(simulation->dataset_rel, agent_b, 1);
+    iterations = gsl_ran_weibull(simulation->rng,
+                                 (scale_a + scale_b) / 2.0,
+                                 (shape_a + shape_b) / 2.0);
+    agent_a->relchange[0] = simulation->iteration + iterations;
+    agent_b->relchange[0] = agent_a->relchange[0];
 }
 
 static
@@ -794,6 +800,7 @@ fsti_event_knn_match(struct fsti_simulation *simulation)
     size_t num_agents = simulation->mating_pool.len;
     float d, best_dist;
     size_t k = simulation->match_k;
+    const double max_match_distance = simulation->max_match_distance;
 
     // Too few agents to bother
     if (num_agents < 2) return;
@@ -808,7 +815,7 @@ fsti_event_knn_match(struct fsti_simulation *simulation)
         if (FSTI_AGENT_HAS_PARTNER(agent)) continue;
         start = it + 1;
         n = (start + k) < end ? (start + k) : end;
-        best_dist = FLT_MAX;
+        best_dist = max_match_distance;
         partner = NULL;
         for (jt = start; jt < n; jt++) {
             candidate = fsti_agent_ind_arrp(&simulation->mating_pool, jt);

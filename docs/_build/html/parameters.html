@@ -125,6 +125,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#report-frequency">report_frequency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-infect-stage">initial_infect_stage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#match-k">match_k</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mutual-csv-partners">mutual_csv_partners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#num-agents">num_agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#num-simulations">num_simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#partnerships-file">partnerships_file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
@@ -851,17 +855,64 @@ matching.</p>
 <p>Default: 100 This is usually a good compromise value. The algorithm will execute
 quickly and the agent selected will on average be a better match than 99% of the
 remaining agents in the mating pool.</p>
+<p>Default: 100</p>
 <p>Events used in: _rpkm</p>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match_k</span> <span class="o">=</span> <span class="mi">300</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="mutual-csv-partners">
+<h2>mutual_csv_partners<a class="headerlink" href="#mutual-csv-partners" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes a CSV file of agents that is used to initialize a simulation only
+records one of the partners in a relationship. If this is the case then set this
+parameter to 1. FastSTI will then iterate through all the agents after they’ve
+been read in, but before the simulation loop begins, and properly initialise all
+relationships.</p>
+<p>Leaving this at 0 if the CSV file does not mutually record agent relationships
+will give unpredictable results. But setting to 1 is always harmless, albeit
+resulting in very slightly slower execution.</p>
+<p>This parameter has no effect if agents are generated (i.e. not read in via a CSV file).</p>
+<p>Default: 1</p>
+<p>Events used in: _read_agents</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mutual_csv_partners</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="num-agents">
+<h2>num_agents<a class="headerlink" href="#num-agents" title="Permalink to this headline">¶</a></h2>
+<p>Determines the number of agents to generate for a simulation.</p>
+<p>This parameter has no effect if agents are read in from a CSV file.</p>
+<p>Default: 20000</p>
+<p>Events used in: _generate_agents, _generate_and_pair</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_agents</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="num-simulations">
+<h2>num_simulations<a class="headerlink" href="#num-simulations" title="Permalink to this headline">¶</a></h2>
+<p>Indicates the number of times to repeat a simulation in a simulation group.</p>
+<p>Default: 1</p>
+<p>Events used in: None</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="partnerships-file">
+<h2>partnerships_file<a class="headerlink" href="#partnerships-file" title="Permalink to this headline">¶</a></h2>
+<p>The csv file name to output partnerships. Set to empty string for
+stdout. This file will be empty unless one or more of record_breakups,
+record_infections or record_matches are set.</p>
+<p>Default: Empty string (i.e. stdout)</p>
+<p>Events used in: _rkpm,  _infect,  _breakup, _breakup_and_pair, _generate, _generate_and_pair</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">partnerships_file</span> <span class="o">=</span> <span class="s2">&quot;my_partnerships.csv&quot;</span>
+</pre></div>
+</div>
 <p>TO DO</p>
-<p>max_stage; Maximum infection stage (e.g. 6 for HIV 1=virally suppressed, 2=primary 3-6=WHO 1-4); 6</p>
-<p>mutual_csv_partners; After initializing agents, make all partnerships mutual; 1</p>
-<p>num_agents; Number of agents; 20000</p>
-<p>num_simulations; Number of simulations to execute (default is 1); 1</p>
-<p>partnerships_file; File name to output partnerships (empty string for stdout);</p>
 <p>prob_birth_infected_msm; Probability a new msm agent is infected; 0.001000</p>
 <p>prob_birth_infected_msw; Probability a new msw agent is infected; 0.000100</p>
 <p>prob_birth_infected_wsm; Probability a new wsm agent is infected; 0.000500</p>

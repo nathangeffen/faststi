@@ -17,6 +17,8 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stddef.h>
+
 #include "fsti-defs.h"
 #include "fsti-userdefs.h"
 #include "fsti-defaults.h"
@@ -54,6 +56,9 @@ int fsti_config_set_default(struct fsti_config *config)
     FSTI_CONFIG_ADD(config, num_agents, "Number of agents", 20000);
     FSTI_CONFIG_ADD(config, match_k,
                     "Value for k when using matching algorithms", 100);
+    FSTI_CONFIG_ADD_DBL(config, max_match_distance,
+                        "The maximum distance between two agents "
+                        "to allow a match", DBL_MAX);
 
     FSTI_CONFIG_ADD_STR(config, age_min,
                         "Lower end of uniformly distributed age for new or "
@@ -107,9 +112,6 @@ int fsti_config_set_default(struct fsti_config *config)
                     "When infected this is the integer to set infected to",  2);
     FSTI_CONFIG_ADD(config, treatment_infect_stage,
                     "When treated this is the integer to set infected to", 1);
-    FSTI_CONFIG_ADD(config, max_stage,
-                    "Maximum infection stage (e.g. 6 for HIV "
-                    "1=virally suppressed, 2=primary 3-6=WHO 1-4)" , 6);
 
     // Datasets
     FSTI_CONFIG_ADD_STR(config, dataset_mortality,

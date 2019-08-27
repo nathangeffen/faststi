@@ -721,23 +721,90 @@ Default: 100 This is usually a good compromise value. The algorithm will execute
 quickly and the agent selected will on average be a better match than 99% of the
 remaining agents in the mating pool.
 
+Default: 100
+
 Events used in: _rpkm
 
 Example: ::
 
   match_k = 300
 
+*******************
+mutual_csv_partners
+*******************
+
+Sometimes a CSV file of agents that is used to initialize a simulation only
+records one of the partners in a relationship. If this is the case then set this
+parameter to 1. |PROJECT| will then iterate through all the agents after they've
+been read in, but before the simulation loop begins, and properly initialise all
+relationships.
+
+
+Leaving this at 0 if the CSV file does not mutually record agent relationships
+will give unpredictable results. But setting to 1 is always harmless, albeit
+resulting in very slightly slower execution.
+
+This parameter has no effect if agents are generated (i.e. not read in via a CSV file).
+
+
+Default: 1
+
+Events used in: _read_agents
+
+Example: ::
+
+  mutual_csv_partners = 1
+
+**********
+num_agents
+**********
+
+Determines the number of agents to generate for a simulation.
+
+This parameter has no effect if agents are read in from a CSV file.
+
+Default: 20000
+
+Events used in: _generate_agents, _generate_and_pair
+
+Example: ::
+
+  num_agents = 10000
+
+
+***************
+num_simulations
+***************
+
+Indicates the number of times to repeat a simulation in a simulation group.
+
+Default: 1
+
+Events used in: None
+
+Example: ::
+
+  num_simulations = 1
+
+*****************
+partnerships_file
+*****************
+
+The csv file name to output partnerships. Set to empty string for
+stdout. This file will be empty unless one or more of record_breakups,
+record_infections or record_matches are set.
+
+Default: Empty string (i.e. stdout)
+
+Events used in: _rkpm,  _infect,  _breakup, _breakup_and_pair, _generate, _generate_and_pair
+
+Example: ::
+
+  partnerships_file = "my_partnerships.csv"
+
+
 TO DO
 
-max_stage; Maximum infection stage (e.g. 6 for HIV 1=virally suppressed, 2=primary 3-6=WHO 1-4); 6
-
-mutual_csv_partners; After initializing agents, make all partnerships mutual; 1
-
-num_agents; Number of agents; 20000
-
-num_simulations; Number of simulations to execute (default is 1); 1
-
-partnerships_file; File name to output partnerships (empty string for stdout);
 
 prob_birth_infected_msm; Probability a new msm agent is infected; 0.001000
 

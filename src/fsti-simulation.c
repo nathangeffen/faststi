@@ -192,11 +192,11 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
                                                          "simulation_period");
     simulation->match_k = fsti_config_at0_long(&simulation->config,
                                                           "match_k");
+    simulation->max_match_distance = fsti_config_at0_double(&simulation->config,
+                                                            "max_match_distance");
+
     simulation->initial_infect_stage =
         fsti_config_at0_long(&simulation->config, "initial_infect_stage");
-
-    simulation->max_stage = fsti_config_at0_long(&simulation->config,
-                                                 "max_stage");
 
     // Datasets
     if (simulation->dataset_hash.owner)
