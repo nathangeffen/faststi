@@ -47,6 +47,12 @@
 #define FSTI_WSM 2
 #define FSTI_WSW 3
 
+#define FSTI_RISK_VERY_LOW 0
+#define FSTI_RISK_LOW 1
+#define FSTI_RISK_MEDIUM 2
+#define FSTI_RISK_HIGH 3
+#define FSTI_RISK_VERY_HIGH 3
+
 #define FSTI_MINUTE 1
 #define FSTI_HOUR 60
 #define FSTI_DAY 1440

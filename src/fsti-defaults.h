@@ -305,6 +305,19 @@ unsigned total_partners;
 #endif
 
 
+/*
+  Macros that are by default undefined.
+*/
+
+#ifdef FSTI_RECORD_INFECTIONS
+#endif
+
+#ifdef FSTI_RECORD_PARTNERS
+#endif
+
+#ifdef FSTI_RECORD_BREAKUPS
+#endif
+
 /*******************************************************************
  * Advanced macros: Please only override these if you have a
  * good understanding of both C and the FastSTI code.
