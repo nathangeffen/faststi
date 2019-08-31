@@ -51,15 +51,18 @@ struct fsti_agent {
         uint8_t sex_preferred;
         uint8_t orientation;
     };
-    int32_t age;
-    int32_t birthday;
+    union {
+        int32_t age;
+        int32_t birthday;
+    };
     uint8_t infected;
+    uint8_t risk;
     uint8_t treated;
     uint8_t resistant;
     struct fsti_date cured; // Date last cured of last infection
     struct fsti_date date_death;
-    uint8_t coinfected; // For users to use as they see fit
     uint8_t cause_of_death;
+    uint8_t coinfected; // For users to use as they see fit
     uint8_t num_partners;
     uint32_t partners[FSTI_MAX_PARTNERS];
     uint32_t relchange[FSTI_MAX_PARTNERS];
