@@ -172,13 +172,24 @@ by the user. But some modellers are likely to encounter limitations. For
 example, they may want to model TB coinfection with HIV, or implement a cure
 event, or more sophisticated agent generation, or provide additional statistics.</p>
 <p>To do this, you need to program in C. This guide assumes knowledge of C
-programming as well as the source code control system Git.</p>
+programming as well as the source code control system Git. FastSTI is
+developed under GNU/Linux. You need a POSIX compatible system to extend
+it. If you’re using Windows, Cygwin should do the trick.</p>
 <p>We recommend the following approach to developing FastSTI.</p>
+<ul>
+<li><p class="first">Clone the latest version of FastSTI from the <a class="reference external" href="https://github.com/nathangeffen/faststi">Github repository</a>.</p>
+</li>
+<li><p class="first">Use either the gcc or Clang C compiler. We also strongly recommend installing Valgrind.</p>
+</li>
+<li><p class="first">Make sure the GNU autotools are installed. Then run the following to make sure
+FastSTI compiles and runs properly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">autoreconf</span><span class="p">;</span><span class="n">automake</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="p">;</span> <span class="o">./</span><span class="n">configure</span><span class="p">;</span> <span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="n">check</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Spend time looking at the source code in the src directory to understand it
+better. In particular we recommend examining the following files:</p>
 <ul class="simple">
-<li>Clone the latest version of FastSTI from the <a class="reference external" href="https://github.com/nathangeffen/faststi">Github repository</a>.</li>
-<li>Use either the gcc or Clang C compiler.</li>
-<li>Spend time looking at the source code in the src directory to understand it
-better. In particular we recommend examining the following files:<ul>
 <li>fsti-events.c which contains the events provided by FastSTI.</li>
 <li>fsti-defaults.c where all the parameters are defined.</li>
 <li>fsti-defaults.h where many of the macros that can be extended or redefined

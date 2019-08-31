@@ -11,13 +11,21 @@ example, they may want to model TB coinfection with HIV, or implement a cure
 event, or more sophisticated agent generation, or provide additional statistics.
 
 To do this, you need to program in C. This guide assumes knowledge of C
-programming as well as the source code control system Git.
+programming as well as the source code control system Git. |PROJECT| is
+developed under GNU/Linux. You need a POSIX compatible system to extend
+it. If you're using Windows, Cygwin should do the trick.
 
 We recommend the following approach to developing FastSTI.
 
 - Clone the latest version of FastSTI from the `Github repository <https://github.com/nathangeffen/faststi>`_.
 
-- Use either the gcc or Clang C compiler.
+- Use either the gcc or Clang C compiler. We also strongly recommend installing Valgrind.
+
+
+- Make sure the GNU autotools are installed. Then run the following to make sure
+  |PROJECT| compiles and runs properly: ::
+
+    autoreconf;automake --add-missing; ./configure; make -j check
 
 - Spend time looking at the source code in the src directory to understand it
   better. In particular we recommend examining the following files:
