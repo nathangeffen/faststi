@@ -30,4 +30,5 @@ src/Makefile
 .deps/
 src/.deps/
 src/utils/.deps/
+Makefile
 
