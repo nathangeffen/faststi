@@ -20,7 +20,7 @@
 /*
  * Users who wish to extend FastSTI code are encouraged to modify this file and
  * fsti-userdefs.h.
- * It will not modified in FastSTI upgrades.
+ * It will not be modified in FastSTI upgrades.
  *
  */
 
