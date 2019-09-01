@@ -73,7 +73,6 @@ double
 recents_distance(struct fsti_agent *a,
                  struct fsti_agent *b)
 {
-    printf("dist: %d\n", a->risk == b->risk && a->sex == b->sex);
     if (a->risk == b->risk && a->sex == b->sex)
         return 0.0;
     else
