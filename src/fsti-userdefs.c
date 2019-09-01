@@ -24,4 +24,64 @@
  *
  */
 
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_randist.h>
+
 #include "fsti.h"
+
+/*
+  Generates the properties of a new agent
+ */
+
+void
+recents_generate(struct fsti_simulation *simulation,
+                 struct fsti_agent *agent)
+{
+    agent->sex = (gsl_rng_uniform(simulation->rng) < PROB_MALE)
+        ? FSTI_MALE : FSTI_FEMALE;
+    agent->risk = (gsl_rng_uniform(simulation->rng) < PROB_LO) ?
+        LO : HI;
+    double r = gsl_rng_uniform(simulation->rng);
+    if (agent->risk == LO) {
+        if (r < LO_STAGE_UNINFECTED) {
+            agent->infected = STAGE_UNINFECTED;
+        } else if (r < LO_STAGE_TREATED) {
+            agent->infected = STAGE_TREATED;
+        } else if (r < LO_STAGE_PRIMARY) {
+            agent->infected = STAGE_PRIMARY;
+        } else {
+            agent->infected = STAGE_CHRONIC;
+        }
+    } else {
+        if (r < HI_STAGE_UNINFECTED) {
+            agent->infected = STAGE_UNINFECTED;
+        } else if (r < HI_STAGE_TREATED) {
+            agent->infected = STAGE_TREATED;
+        } else if (r < HI_STAGE_PRIMARY) {
+            agent->infected = STAGE_PRIMARY;
+        } else {
+            agent->infected = STAGE_CHRONIC;
+        }
+    }
+}
+
+/*
+  Calculates the suitability of two agents for matching
+ */
+
+double
+recents_distance(struct fsti_agent *a,
+                 struct fsti_agent *b)
+{
+    printf("dist: %d\n", a->risk == b->risk && a->sex == b->sex);
+    if (a->risk == b->risk && a->sex == b->sex)
+        return 0.0;
+    else
+        return 1.0;
+}
+
+
+void recents_events_register()
+{
+    //
+}

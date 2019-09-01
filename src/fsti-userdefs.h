@@ -27,4 +27,45 @@
 #ifndef FSTI_USERDEFS // Don't remove these guards
 #define FSTI_USERDEFS
 
+#define LO 0
+#define HI 1
+
+#define STAGE_UNINFECTED 0
+#define STAGE_TREATED 1
+#define STAGE_PRIMARY 2
+#define STAGE_CHRONIC 3
+
+/* Parameters to change */
+
+#define PROB_MALE 0.5
+#define PROB_LO 0.5
+
+#define HI_STAGE_UNINFECTED 0.6
+#define HI_STAGE_TREATED 0.7
+#define HI_STAGE_PRIMARY 0.71
+
+#define LO_STAGE_UNINFECTED 0.99
+#define LO_STAGE_TREATED 0.995
+#define LO_STAGE_PRIMARY 0.996
+
+
+#define FSTI_AGENT_GENERATE(simulation, agent) \
+    recents_generate(simulation, agent)
+
+#define FSTI_HOOK_EVENTS_REGISTER  recents_events_register()
+
+#define FSTI_AGENT_DISTANCE(agent_a, agent_b) \
+    recents_distance(agent_a, agent_b)
+
+void
+recents_generate(struct fsti_simulation *simulation,
+                 struct fsti_agent *agent);
+
+void
+recents_events_register();
+
+double
+recents_distance(struct fsti_agent *a,
+                 struct fsti_agent *b);
+
 #endif
