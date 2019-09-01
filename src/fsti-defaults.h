@@ -80,13 +80,14 @@ unsigned total_partners;
 
 #ifndef FSTI_AGENT_PRINT_CSV_HEADER
 #define FSTI_AGENT_PRINT_CSV_HEADER(file_handle, delim)                 \
-    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
+    fprintf(file_handle, "%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s%c%s\n", \
             "sim", delim,                                               \
             "date", delim,                                              \
             "id", delim,                                                \
             "age", delim,                                               \
             "sex", delim,                                               \
             "sex_preferred", delim,                                     \
+            "risk", delim,                                              \
             "infected", delim,                                          \
             "treated", delim,                                           \
             "resistant", delim,                                         \
@@ -115,13 +116,14 @@ unsigned total_partners;
                              simulation->time_step,                     \
                              _relchange_date);                          \
         fprintf(simulation->agents_output_file,                         \
-                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",    \
+                "%u%c%s%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%u%c%s%c%ld%c%s\n",    \
                 simulation->sim_number, delim,                          \
                 _current_date, delim,                                   \
                 agent->id, delim,                                       \
                 fsti_time_in_years(agent->age), delim,                  \
                 (unsigned) agent->sex, delim,                           \
                 (unsigned) agent->sex_preferred, delim,                 \
+                (unsigned) agent->risk, delim,                          \
                 agent->infected, delim,                                 \
                 (unsigned) agent->treated, delim,                       \
                 (unsigned) agent->resistant, delim,                     \
@@ -237,6 +239,7 @@ unsigned total_partners;
         {"relchange_3", offsetof(struct fsti_agent, relchange[3]),      \
          UINT, fsti_to_uint32_t},                                       \
         FSTI_AGENT_ELEM_ENTRY(resistant),                               \
+        FSTI_AGENT_ELEM_ENTRY(risk),                               \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred),                           \
         FSTI_AGENT_ELEM_ENTRY(treated)                                  \
