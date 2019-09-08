@@ -90,6 +90,10 @@ void fsti_event_pair(struct fsti_simulation *simulation);
 void fsti_event_generate_and_pair(struct fsti_simulation *simulation);
 void fsti_event_infect(struct fsti_simulation *simulation);
 void fsti_event_no_op(struct fsti_simulation *simulation);
+void fsti_output_partnership(struct fsti_simulation *simulation,
+                             struct fsti_agent *a,
+                             struct fsti_agent *b,
+                             uint8_t type);
 void fsti_event_register_events();
 
 extern struct fsti_agent fsti_global_agent;
