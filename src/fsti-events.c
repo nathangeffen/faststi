@@ -69,11 +69,11 @@ fsti_event_write_partnerships_csv_header(struct fsti_simulation *simulation)
  * Records a new partnership in the partnerships CSV file
  */
 
-static void
-output_partnership(struct fsti_simulation *simulation,
-                   struct fsti_agent *a,
-                   struct fsti_agent *b,
-                   uint8_t type)
+void
+fsti_output_partnership(struct fsti_simulation *simulation,
+                        struct fsti_agent *a,
+                        struct fsti_agent *b,
+                        uint8_t type)
 {
     char desc[20];
     char date[FSTI_DATE_LEN];
@@ -138,7 +138,8 @@ count_initial_partnerships_infections(struct fsti_simulation *simulation)
                 if (b->id > a->id) {
                     ++simulation->initial_matches;
                     if (simulation->record_matches)
-                        output_partnership(simulation, a, b, FSTI_INITIAL_MATCH);
+                        fsti_output_partnership(simulation, a, b,
+                                                FSTI_INITIAL_MATCH);
                 }
             }
         });
@@ -705,11 +706,11 @@ void make_partners(struct fsti_simulation *simulation,
     if (simulation->state == DURING) {
         ++simulation->matches;
         if (simulation->record_matches)
-            output_partnership(simulation, a, b, FSTI_MATCH);
+            fsti_output_partnership(simulation, a, b, FSTI_MATCH);
     } else if (simulation->state == BEFORE) {
         ++simulation->initial_matches;
         if (simulation->record_matches)
-            output_partnership(simulation, a, b, FSTI_INITIAL_MATCH);
+            fsti_output_partnership(simulation, a, b, FSTI_INITIAL_MATCH);
     }
 }
 
@@ -765,7 +766,7 @@ fsti_event_breakup(struct fsti_simulation *simulation)
                 FSTI_SET_SINGLE_PERIOD(simulation, b);
                 simulation->breakups++;
                 if (simulation->record_breakups)
-                    output_partnership(simulation, a, b, FSTI_BREAKUP);
+                    fsti_output_partnership(simulation, a, b, FSTI_BREAKUP);
             }
         });
 }
@@ -875,8 +876,8 @@ fsti_event_infect(struct fsti_simulation *simulation)
                             agent->infected = simulation->initial_infect_stage;
                             simulation->infections++;
                             if (simulation->record_infections)
-                                output_partnership(simulation, agent, partner,
-                                                   FSTI_INFECTION);
+                                fsti_output_partnership(simulation, agent,
+                                                        partner,FSTI_INFECTION);
                             break;
                         }
                     }
