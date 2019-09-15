@@ -68,16 +68,8 @@ struct fsti_agent {
     uint8_t resistant;
 
 #ifdef FSTI_RECORD_INFECTIONS
-    struct fsti_date date_infected;
+    uint32_t date_infected;
     uint32_t infector;
-#endif
-
-#ifdef FSTI_RECORD_PARTNERS
-    struct fsti_partner_event *partner_history;
-#endif
-
-#ifdef FSTI_RECORD_BREAKUPS
-    struct fsti_partner_event *breakup_history;
 #endif
 
     struct fsti_date cured; // Date last cured of last infection

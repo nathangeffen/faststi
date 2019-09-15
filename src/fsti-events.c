@@ -874,6 +874,10 @@ fsti_event_infect(struct fsti_simulation *simulation)
                         r = gsl_rng_uniform(simulation->rng);
                         if (r < d) {
                             agent->infected = simulation->initial_infect_stage;
+#ifdef FSTI_RECORD_INFECTIONS
+                            agent->infector = partner->id;
+                            agent->date_infected = simulation->iteration;
+#endif
                             simulation->infections++;
                             if (simulation->record_infections)
                                 fsti_output_partnership(simulation, agent,
@@ -1112,9 +1116,14 @@ fsti_event_test_knn_match(struct fsti_simulation *simulation)
 void
 fsti_event_test_infect(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *a;
+    struct fsti_agent *a, *partner;
     uint32_t infected_before = 0, infected_after = 0;
     static _Thread_local uint32_t infections = 0;
+
+#ifdef FSTI_RECORD_INFECTIONS
+    static _Thread_local uint32_t error_infections = 0;
+#endif
+
 
     FSTI_FOR_LIVING(*simulation, a, {
             if (a->infected) ++infected_before;
@@ -1122,17 +1131,33 @@ fsti_event_test_infect(struct fsti_simulation *simulation)
 
     fsti_event_infect(simulation);
 
-    FSTI_FOR_LIVING(*simulation, a, {
-            if (a->infected) ++infected_after;
-        });
+    for(size_t *it = fsti_agent_ind_begin(&simulation->living);
+        it != fsti_agent_ind_end(&simulation->living);
+        it++) {
+        a = fsti_agent_ind_arrp(&simulation->living, it);
+        if (a->infected) {
+            ++infected_after;
+#ifdef FSTI_RECORD_INFECTIONS
+            if (a->date_infected > 0) {
+                partner = fsti_agent_arr_at(&simulation->agent_arr, a->infector);
+                if (partner->infected == 0) ++error_infections;
+            }
+#endif
+        }
+    }
     infections += infected_after - infected_before;
 
     if (run_test(simulation))
         TESTEQ(infected_before <= infected_after, true, *fsti_events_tg);
 
-    if (simulation->iteration == simulation->simulation_period - 1) {
+    if (simulation->iteration == simulation->num_iterations - 1) {
         TESTEQ(infections > 0, true, *fsti_events_tg);
         infections = 0;
+#ifdef FSTI_RECORD_INFECTIONS
+        TESTEQ(error_infections == 0, true, *fsti_events_tg);
+        error_infections = 0;
+#endif
+
     }
 }
 

@@ -274,7 +274,6 @@ void fsti_simulation_config_to_vars(struct fsti_simulation *simulation)
 
 void fsti_simulation_run(struct fsti_simulation *simulation)
 {
-    uint32_t num_iterations;
     fsti_simulation_config_to_vars(simulation);
     simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
@@ -285,9 +284,10 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
             exec_events(simulation, &simulation->stabilization_events);
     }
     simulation->state = DURING;
-    num_iterations = simulation->simulation_period / simulation->time_step;
+    simulation->num_iterations = simulation->simulation_period /
+        simulation->time_step;
     for (simulation->iteration = 0;
-         simulation->iteration < num_iterations;
+         simulation->iteration < simulation->num_iterations;
          simulation->iteration++)
 	exec_events(simulation, &simulation->during_events);
 
