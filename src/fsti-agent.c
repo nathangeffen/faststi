@@ -684,15 +684,15 @@ void fsti_agent_test(struct test_group *tg)
 
     a.id = 10;
     a.age = 23;
-    a.cured.date = 2018;
-    a.date_death.date = 2023;
+    a.iter_cured = 100;
+    a.iter_death = 120;
 
     l = fsti_agent_elem_val_by_strname_l("id", &a);
     TESTEQ(l, 10, *tg);
     l = fsti_agent_elem_val_by_strname_l("age", &a);
     TESTEQ(l, 23, *tg);
-    l = fsti_agent_elem_val_by_strname_l("cured", &a);
-    TESTEQ(l, 2018, *tg);
-    l = fsti_agent_elem_val_by_strname_l("date_death", &a);
-    TESTEQ(l, 2023, *tg);
+    l = fsti_agent_elem_val_by_strname_l("iter_cured", &a);
+    TESTEQ(l, 100, *tg);
+    l = fsti_agent_elem_val_by_strname_l("iter_death", &a);
+    TESTEQ(l, 120, *tg);
 }

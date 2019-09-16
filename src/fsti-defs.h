@@ -35,6 +35,8 @@
 #define FSTI_DESC_LEN 200
 #define FSTI_TOKEN_LEN 200
 #define FSTI_DATE_LEN 15
+/* Sets the maximum possible iteration to over 1000 years */
+#define FSTI_MAX_ITERATION 366000
 
 /* Useful constants */
 #define FSTI_MALE 0
@@ -233,6 +235,9 @@ void fsti_time_add_sprint(GDateTime *base, int32_t steps, int32_t step_size,
                           char result[]);
 struct fsti_date
 fsti_time_add_gdatetime(GDateTime *base, int32_t steps, int32_t step_size);
+uint32_t fsti_time_diff_days(GTimeZone *tz,
+                             const struct fsti_date *end,
+                             const struct fsti_date *begin);
 uint16_t fsti_time_in_years(int32_t t);
 char *fsti_make_full_data_filename(const char *filename);
 FILE *fsti_open_data_file(const char *filename, const char *mode);
