@@ -284,7 +284,7 @@ unsigned total_partners;
         fsti_generate_infected(simulation, agent);                      \
         fsti_generate_treated(simulation, agent);                       \
         fsti_generate_resistant(simulation, agent);                     \
-        FSTI_HOOK_GENERATE_AGENT(simulation, agent)                     \
+        FSTI_HOOK_AGENT_GENERATE(simulation, agent)                     \
     } while(0)
 #endif
 
@@ -410,15 +410,15 @@ unsigned total_partners;
 /*
   Hook after an agent is created, but before being put in the agent array.
 */
-#ifndef FSTI_HOOK_CREATE_AGENT
-#define FSTI_HOOK_CREATE_AGENT(simulation, agent)
+#ifndef FSTI_HOOK_AGENT_INIT
+#define FSTI_HOOK_AGENT_INIT(simulation, agent)
 #endif
 
 /*
   Hook after when an agent is generated at beginning of simulation.
 */
-#ifndef FSTI_HOOK_GENERATE_AGENT
-#define FSTI_HOOK_GENERATE_AGENT(simulation, agent)
+#ifndef FSTI_HOOK_AGENT_GENERATE
+#define FSTI_HOOK_AGENT_GENERATE(simulation, agent)
 #endif
 
 
