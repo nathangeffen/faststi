@@ -161,6 +161,9 @@
     FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , secondary_traces,         \
                             "SECONDARY TRACES", "%.0f");
 
+#define FSTI_HOOK_AGENT_INIT(simulation, agent)         \
+    agent->partner_breakup_iter = FSTI_MAX_ITERATION
+
 /* Prototypes */
 
 void recents_generate(struct fsti_simulation *simulation,
