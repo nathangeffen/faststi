@@ -144,10 +144,10 @@ recents_event_breakup(struct fsti_simulation *simulation)
                 if (rnd < risk) {
                     b = fsti_agent_partner_get0(&simulation->agent_arr, a);
                     fsti_agent_break_partners(a, b);
-                    a->last_partner = b;
-                    b->last_partner = a;
-                    a->last_partner_breakup_iteration = simulation->iteration;
-                    b->last_partner_breakup_iteration = simulation->iteration;
+                    a->last_partner = b->id;
+                    b->last_partner = a->id;
+                    a->partner_breakup_iter = simulation->iteration;
+                    b->partner_breakup_iter = a->partner_breakup_iter;
                     simulation->breakups++;
                     if (simulation->record_breakups)
                         fsti_output_partnership(simulation, a, b,
@@ -168,6 +168,7 @@ recents_event_get_tested(struct fsti_simulation *simulation)
 {
     struct fsti_agent *a;
     double prob, rnd;
+    struct fsti_agent *partner;
 
     FSTI_FOR_LIVING(*simulation, a, {
             prob = prob_test[a->sex][a->infected];
@@ -177,9 +178,10 @@ recents_event_get_tested(struct fsti_simulation *simulation)
                     a->infected = STAGE_TREATED;
             }
             if (simulation->trace_partners) {
-                struct fsti_agent *partner = a->last_partner;
-                if (partner && (simulation->iteration -
-                                a->last_partner_breakup_iteration <
+                partner = fsti_agent_arr_at(&simulation->agent_arr,
+                                            a->last_partner);
+                if (partner && ( (int32_t) simulation->iteration -
+                                a->partner_breakup_iter <
                                 MAX_ITERATIONS_BACK) ) {
                     rnd = gsl_rng_uniform(simulation->rng);
                     if (rnd < PROB_TRACE_SUCCESS) {

@@ -27,6 +27,11 @@
 #ifndef FSTI_USERDEFS // Don't remove these guards
 #define FSTI_USERDEFS
 
+#ifndef FSTI_RECORD_INFECTIONS
+#define FSTI_RECORD_INFECTIONS
+#endif
+
+
 /* LO = low-risk agent. HI = high-risk agent */
 
 #define LO 0
@@ -118,8 +123,8 @@
    an agent had and the number of days since breakup.
 */
 #define FSTI_AGENT_FIELDS                       \
-    struct fsti_agent *last_partner;            \
-    uint32_t last_partner_breakup_iteration;
+    uint32_t last_partner;                      \
+    int32_t partner_breakup_iter;
 
 /* Put new fields into struct fsti_simulation */
 #define FSTI_SIMULATION_FIELDS                  \
