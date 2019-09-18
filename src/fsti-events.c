@@ -162,6 +162,11 @@ make_agent(struct fsti_simulation *simulation,
 
     for (i = 0; i < cs->len; i++) {
         memset(&simulation->csv_agent, 0, sizeof(struct fsti_agent));
+#ifdef FSTI_RECORD_INFECTIONS
+        simulation->csv_agent.iter_infected = FSTI_MAX_ITERATION;
+#endif
+        simulation->csv_agent.iter_death = FSTI_MAX_ITERATION;
+        simulation->csv_agent.iter_cured = FSTI_MAX_ITERATION;
         for (j = 0; j < cs->rows[i].len; ++j) {
             process_cell(simulation, &simulation->csv_agent,
                          cs->rows[i].cells[j],
@@ -428,6 +433,11 @@ fsti_event_generate_agents(struct fsti_simulation *simulation)
 
     for (i = 0; i < num_agents; i++) {
         memset(&agent, 0, sizeof(agent));
+#ifdef FSTI_RECORD_INFECTIONS
+        agent.iter_infected = FSTI_MAX_ITERATION;
+#endif
+        agent.iter_death = FSTI_MAX_ITERATION;
+        agent.iter_cured = FSTI_MAX_ITERATION;
         FSTI_AGENT_GENERATE(simulation, &agent);
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
@@ -510,6 +520,11 @@ fsti_event_birth(struct fsti_simulation *simulation)
         for(size_t i = 0; i < births; i++) {
             struct fsti_agent agent;
             memset(&agent, 0, sizeof(agent));
+#ifdef FSTI_RECORD_INFECTIONS
+            agent.iter_infected = FSTI_MAX_ITERATION;
+#endif
+            agent.iter_death = FSTI_MAX_ITERATION;
+            agent.iter_cured = FSTI_MAX_ITERATION;
             FSTI_AGENT_BIRTH(simulation, &agent);
             fsti_agent_arr_push(&simulation->agent_arr, &agent);
             agent.id = simulation->agent_arr.len - 1;
@@ -876,7 +891,7 @@ fsti_event_infect(struct fsti_simulation *simulation)
                             agent->infected = simulation->initial_infect_stage;
 #ifdef FSTI_RECORD_INFECTIONS
                             agent->infector = partner->id;
-                            agent->date_infected = simulation->iteration;
+                            agent->iter_infected = (int32_t) simulation->iteration;
 #endif
                             simulation->infections++;
                             if (simulation->record_infections)
@@ -1138,7 +1153,7 @@ fsti_event_test_infect(struct fsti_simulation *simulation)
         if (a->infected) {
             ++infected_after;
 #ifdef FSTI_RECORD_INFECTIONS
-            if (a->date_infected > 0) {
+            if (a->iter_infected < FSTI_MAX_ITERATION) {
                 partner = fsti_agent_arr_at(&simulation->agent_arr, a->infector);
                 if (partner->infected == 0) ++error_infections;
             }

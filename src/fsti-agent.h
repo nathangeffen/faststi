@@ -68,12 +68,12 @@ struct fsti_agent {
     uint8_t resistant;
 
 #ifdef FSTI_RECORD_INFECTIONS
-    uint32_t date_infected;
+    int32_t iter_infected;
     uint32_t infector;
 #endif
 
-    struct fsti_date cured; // Date last cured of last infection
-    struct fsti_date date_death;
+    int32_t iter_cured; // Iteration of last infection
+    int32_t iter_death; // Iteration of death
     uint8_t cause_of_death;
     uint8_t coinfected; // For users to use as they see fit
     uint8_t num_partners;

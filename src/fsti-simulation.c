@@ -277,6 +277,7 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
     fsti_simulation_config_to_vars(simulation);
     simulation->state = BEFORE;
     exec_events(simulation, &simulation->before_events);
+    assert(simulation->stabilization_steps <= FSTI_MAX_ITERATION);
     if (simulation->stabilization_steps) {
         simulation->state = STABILIZATION;
         simulation->iteration = 0;
@@ -286,6 +287,7 @@ void fsti_simulation_run(struct fsti_simulation *simulation)
     simulation->state = DURING;
     simulation->num_iterations = simulation->simulation_period /
         simulation->time_step;
+    assert(simulation->num_iterations <= FSTI_MAX_ITERATION);
     for (simulation->iteration = 0;
          simulation->iteration < simulation->num_iterations;
          simulation->iteration++)
@@ -308,9 +310,7 @@ void fsti_simulation_kill_agent(struct fsti_simulation *simulation,
         fsti_agent_break_partners(agent, partner);
     }
     fsti_agent_ind_push(&simulation->dead, agent->id);
-    agent->date_death = fsti_time_add_gdatetime(simulation->start_date,
-                                                simulation->iteration,
-                                                simulation->time_step);
+    agent->iter_death = (int32_t) simulation->iteration;
     fsti_agent_ind_remove(&simulation->living, it);
     FSTI_HOOK_POST_DEATH(simulation, agent);
 }
