@@ -167,6 +167,7 @@ make_agent(struct fsti_simulation *simulation,
 #endif
         simulation->csv_agent.iter_death = FSTI_MAX_ITERATION;
         simulation->csv_agent.iter_cured = FSTI_MAX_ITERATION;
+        FSTI_HOOK_AGENT_INIT(simulation, (&simulation->csv_agent) );
         for (j = 0; j < cs->rows[i].len; ++j) {
             process_cell(simulation, &simulation->csv_agent,
                          cs->rows[i].cells[j],
@@ -438,6 +439,7 @@ fsti_event_generate_agents(struct fsti_simulation *simulation)
 #endif
         agent.iter_death = FSTI_MAX_ITERATION;
         agent.iter_cured = FSTI_MAX_ITERATION;
+        FSTI_HOOK_AGENT_INIT(simulation, (&agent));
         FSTI_AGENT_GENERATE(simulation, &agent);
         fsti_agent_arr_push(&simulation->agent_arr, &agent);
     }
@@ -525,6 +527,7 @@ fsti_event_birth(struct fsti_simulation *simulation)
 #endif
             agent.iter_death = FSTI_MAX_ITERATION;
             agent.iter_cured = FSTI_MAX_ITERATION;
+            FSTI_HOOK_AGENT_INIT(simulation, (&agent));
             FSTI_AGENT_BIRTH(simulation, &agent);
             fsti_agent_arr_push(&simulation->agent_arr, &agent);
             agent.id = simulation->agent_arr.len - 1;
