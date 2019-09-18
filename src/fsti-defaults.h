@@ -91,7 +91,7 @@ unsigned total_partners;
             "infected", delim,                                          \
             "treated", delim,                                           \
             "resistant", delim,                                         \
-            "date_death", delim,                                        \
+            "iter_death", delim,                                        \
             "partner", delim,                                           \
             "change_date")
 #endif
@@ -110,7 +110,10 @@ unsigned total_partners;
                              simulation->iteration,                     \
                              simulation->time_step,                     \
                              _current_date);                            \
-        fsti_time_sprint(&agent->date_death, _death_date);              \
+        fsti_time_add_sprint(simulation->start_date,                    \
+                             agent->iter_death,                         \
+                             simulation->time_step,                     \
+                             _death_date);                              \
         fsti_time_add_sprint(simulation->start_date,                    \
                              agent->relchange[0],                       \
                              simulation->time_step,                     \
@@ -217,10 +220,10 @@ unsigned total_partners;
         FSTI_AGENT_ELEM_ENTRY(birthday),                                \
         FSTI_AGENT_ELEM_ENTRY(cause_of_death),                          \
         FSTI_AGENT_ELEM_ENTRY(coinfected),                              \
-        FSTI_AGENT_ELEM_ENTRY(cured),                                   \
-        FSTI_AGENT_ELEM_ENTRY(date_death),                              \
         FSTI_AGENT_ELEM_ENTRY(id),                                      \
         FSTI_AGENT_ELEM_ENTRY(infected),                                \
+        FSTI_AGENT_ELEM_ENTRY(iter_cured),                              \
+        FSTI_AGENT_ELEM_ENTRY(iter_death),                              \
         FSTI_AGENT_ELEM_ENTRY(num_partners),                            \
         {"partners_0", offsetof(struct fsti_agent, partners),           \
          UINT, fsti_to_partner},                                        \
@@ -239,7 +242,7 @@ unsigned total_partners;
         {"relchange_3", offsetof(struct fsti_agent, relchange[3]),      \
          UINT, fsti_to_uint32_t},                                       \
         FSTI_AGENT_ELEM_ENTRY(resistant),                               \
-        FSTI_AGENT_ELEM_ENTRY(risk),                               \
+        FSTI_AGENT_ELEM_ENTRY(risk),                                    \
         FSTI_AGENT_ELEM_ENTRY(sex),                                     \
         FSTI_AGENT_ELEM_ENTRY(sex_preferred),                           \
         FSTI_AGENT_ELEM_ENTRY(treated)                                  \

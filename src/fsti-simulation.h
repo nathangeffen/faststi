@@ -81,6 +81,7 @@ struct fsti_simulation {
     uint32_t stabilization_steps;
     uint32_t simulation_period;
     uint32_t iteration;
+    uint32_t num_iterations;
     uint32_t report_frequency;
     uint32_t match_k;
     char csv_delimiter;
