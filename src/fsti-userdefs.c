@@ -124,6 +124,8 @@ recents_event_mating_pool(struct fsti_simulation *simulation)
         });
 }
 
+
+
 /*
   Breaks up some of the agent partnerships.
  */
@@ -157,6 +159,63 @@ recents_event_breakup(struct fsti_simulation *simulation)
         });
 }
 
+static bool
+is_recent(const struct fsti_simulation *simulation,
+          const struct fsti_agent *agent)
+{
+    if (agent->iter_infected < FSTI_MAX_ITERATION)
+        if (simulation->iteration - agent->iter_infected
+            < simulation->recent_cutoff)
+            return true;
+    return false;
+}
+
+static struct fsti_agent *
+has_secondary_partner(struct fsti_simulation *simulation,
+                      const struct fsti_agent *agent)
+{
+    struct fsti_agent *partner = NULL;
+    if (agent->partner_breakup_iter < FSTI_MAX_ITERATION)
+        if (simulation->iteration - agent->partner_breakup_iter
+            < simulation->secondary_partner_cutoff)
+            partner = fsti_agent_arr_at(&simulation->agent_arr,
+                                        agent->last_partner);
+    return partner;
+}
+
+static void
+trace_partners(struct fsti_simulation *simulation,
+               struct fsti_agent *agent)
+{
+    double rnd;
+    struct fsti_agent *partner;
+
+    if (is_recent(simulation, agent)) {
+        ++simulation->recents;
+        // primary partner
+        if (agent->num_partners > 0) {
+            partner = fsti_agent_arr_at(&simulation->agent_arr,
+                                        agent->partners[0]);
+            rnd = gsl_rng_uniform(simulation->rng);
+            if (rnd < PROB_PRIMARY_TRACE_SUCCESS) {
+                if (partner->infected > STAGE_TREATED) {
+                    partner->infected = STAGE_TREATED;
+                    ++simulation->primary_traces;
+                }
+            }
+        }
+        // secondary partner
+        if ( (partner = has_secondary_partner(simulation, agent)) ) {
+            rnd = gsl_rng_uniform(simulation->rng);
+            if (rnd < PROB_SECONDARY_TRACE_SUCCESS) {
+                if (partner->infected > STAGE_TREATED) {
+                    partner->infected = STAGE_TREATED;
+                    ++simulation->secondary_traces;
+                }
+            }
+        }
+    }
+}
 
 /*
   Tests some of the agents for the disease. If the simulation->trace_partners
@@ -166,32 +225,18 @@ recents_event_breakup(struct fsti_simulation *simulation)
 void
 recents_event_get_tested(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *a;
+    struct fsti_agent *agent;
     double prob, rnd;
-    struct fsti_agent *partner;
 
-    FSTI_FOR_LIVING(*simulation, a, {
-            prob = prob_test[a->sex][a->infected];
+    FSTI_FOR_LIVING(*simulation, agent, {
+            prob = prob_test[agent->sex][agent->infected];
             rnd = gsl_rng_uniform(simulation->rng);
             if (rnd < prob) {
-                if (a->infected > STAGE_TREATED)
-                    a->infected = STAGE_TREATED;
+                if (agent->infected > STAGE_TREATED)
+                    agent->infected = STAGE_TREATED;
             }
-            if (simulation->trace_partners) {
-                partner = fsti_agent_arr_at(&simulation->agent_arr,
-                                            a->last_partner);
-                if (partner && ( (int32_t) simulation->iteration -
-                                a->partner_breakup_iter <
-                                MAX_ITERATIONS_BACK) ) {
-                    rnd = gsl_rng_uniform(simulation->rng);
-                    if (rnd < PROB_TRACE_SUCCESS) {
-                        if (partner->infected > STAGE_TREATED) {
-                            partner->infected = STAGE_TREATED;
-                            ++simulation->traces;
-                        }
-                    }
-                }
-            }
+            if (simulation->trace_partners)
+                trace_partners(simulation, agent);
         });
 }
 
@@ -225,9 +270,15 @@ recents_event_advance(struct fsti_simulation *simulation)
 void
 recents_simulation_config_to_vars(struct fsti_simulation *simulation)
 {
-    simulation->traces = 0;
+    simulation->recents = 0;
+    simulation->primary_traces = 0;
+    simulation->secondary_traces = 0;
     simulation->trace_partners = fsti_config_at0_long(&simulation->config,
                                                      "trace_partners");
+    simulation->recent_cutoff = fsti_config_at0_long(&simulation->config,
+                                                     "recent_cutoff");
+    simulation->secondary_partner_cutoff =
+        fsti_config_at0_long(&simulation->config, "secondary_partner_cutoff");
 }
 
 /*

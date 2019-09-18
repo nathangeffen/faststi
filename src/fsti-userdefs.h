@@ -89,7 +89,8 @@
 #define PROB_TEST_FEMALE_STAGE_4 0.02
 
 /* Probability of last partner being traced in testing event */
-#define PROB_TRACE_SUCCESS 0.9
+#define PROB_PRIMARY_TRACE_SUCCESS 0.9
+#define PROB_SECONDARY_TRACE_SUCCESS 0.6
 
 /* Probability of advancing stages (per day) */
 #define PRIMARY_TO_CHRONIC 0.08
@@ -128,13 +129,23 @@
 
 /* Put new fields into struct fsti_simulation */
 #define FSTI_SIMULATION_FIELDS                  \
+    uint32_t recents;                           \
+    uint32_t primary_traces;                    \
+    uint32_t secondary_traces;                  \
     bool trace_partners;                        \
-    uint32_t traces;
+    uint32_t recent_cutoff;                     \
+    uint32_t secondary_partner_cutoff;
 
 /* Define additional user configurable parameters */
-#define FSTI_ADDITIONAL_CONFIG_VARS(config)                     \
-    FSTI_CONFIG_ADD(config, trace_partners,                     \
-                    "Trace partners of infected agents", 0)
+#define FSTI_ADDITIONAL_CONFIG_VARS(config)                             \
+    FSTI_CONFIG_ADD(config, trace_partners,                             \
+                    "Trace partners of infected agents", 0);            \
+    FSTI_CONFIG_ADD(config, recent_cutoff,                              \
+                    "Number of iterations since "                       \
+                    "infection is considered recent", 90);              \
+    FSTI_CONFIG_ADD(config, secondary_partner_cutoff,                   \
+                    "Number of iterations since previous "              \
+                    "partnership ended that it will be traced", 60);
 
 /* Call function to initialize new struct fsti_simulation fields */
 
@@ -143,8 +154,12 @@
 
 /* Print the number of traced partners in the report event   */
 #define FSTI_HOOK_REPORT                                                \
-    FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , traces,                   \
-                            "TRACES", "%.0f")
+    FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , recents,                  \
+                            "RECENTS", "%.0f");                         \
+    FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , primary_traces,           \
+                            "PRIMARY TRACES", "%.0f");                  \
+    FSTI_REPORT_OUTPUT_PREC(FSTI_SIM_CONST, , secondary_traces,         \
+                            "SECONDARY TRACES", "%.0f");
 
 /* Prototypes */
 
