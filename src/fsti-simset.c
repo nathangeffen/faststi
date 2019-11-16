@@ -32,7 +32,8 @@ static GMutex thread_mutex;
 static GCond thread_cond;
 static unsigned thread_no = 0;
 
-static void init(struct fsti_simset *simset)
+static
+void init(struct fsti_simset *simset)
 {
     fsti_config_init(&simset->config);
     fsti_agent_arr_init(&fsti_saved_agent_arr);
@@ -51,21 +52,24 @@ static void init(struct fsti_simset *simset)
     FSTI_ASSERT(simset->key_file, FSTI_ERR_KEY_FILE_OPEN, "\n");
 }
 
-void fsti_simset_init_with_config(struct fsti_simset *simset,
-                                  const struct fsti_config *config)
+void
+fsti_simset_init_with_config(struct fsti_simset *simset,
+                             const struct fsti_config *config)
 {
     init(simset);
     simset->more_configs = true;
     fsti_config_copy(&simset->config, config);
 }
 
-void fsti_simset_init(struct fsti_simset *simset)
+void
+fsti_simset_init(struct fsti_simset *simset)
 {
     init(simset);
     fsti_config_set_default(&simset->config);
 }
 
-void fsti_simset_free(struct fsti_simset *simset)
+void
+fsti_simset_free(struct fsti_simset *simset)
 {
     fsti_dataset_hash_free(&simset->dataset_hash);
     fsti_config_free(&simset->config);
@@ -75,8 +79,9 @@ void fsti_simset_free(struct fsti_simset *simset)
     fsti_register_free();
 }
 
-void fsti_simset_load_config_file(struct fsti_simset *simset,
-                                  const char *filename)
+void
+fsti_simset_load_config_file(struct fsti_simset *simset,
+                             const char *filename)
 {
     fsti_read_ini(filename, simset->key_file);
 
@@ -85,13 +90,15 @@ void fsti_simset_load_config_file(struct fsti_simset *simset,
     simset->more_configs = true;
 }
 
-void fsti_simset_load_config_strings(struct fsti_simset *simset,
-				     char **config_strings)
+void
+fsti_simset_load_config_strings(struct fsti_simset *simset,
+                                char **config_strings)
 {
     simset->config_strings = config_strings;
 }
 
-static void set_keys(struct fsti_simset *simset)
+void
+fsti_simset_set_keys(struct fsti_simset *simset)
 {
     GError *error = NULL;
     char **keys = g_key_file_get_keys(simset->key_file, *simset->group_ptr,
@@ -116,8 +123,9 @@ static void set_keys(struct fsti_simset *simset)
     FSTI_ASSERT(simset->config_num_simulations > 0,FSTI_ERR_INVALID_VALUE,NULL);
 }
 
-static void set_output_files(struct fsti_simset *simset,
-                             struct fsti_simulation *simulation)
+static
+void set_output_files(struct fsti_simset *simset,
+                      struct fsti_simulation *simulation)
 {
     char *results_file_name,  *agents_file_name, *partnerships_file_name;
 
@@ -165,21 +173,21 @@ static void set_output_files(struct fsti_simset *simset,
 
 }
 
-static void update_config(struct fsti_simset *simset)
+void fsti_simset_update_config(struct fsti_simset *simset)
 {
     if (simset->config_sim_number == 0) {
-        set_keys(simset);
+        fsti_simset_set_keys(simset);
     } else if (simset->config_sim_number >= simset->config_num_simulations) {
         ++simset->group_ptr;
         simset->config_sim_number = 0;
         if (*simset->group_ptr) {
-            update_config(simset);
+            fsti_simset_update_config(simset);
         }
     }
 }
 
-static void setup_simulation(struct fsti_simset *simset,
-                             struct fsti_simulation *simulation)
+void fsti_simset_setup_simulation(struct fsti_simset *simset,
+                                  struct fsti_simulation *simulation)
 {
     fsti_simulation_init(simulation, &simset->config,
                          simset->sim_number,
@@ -191,7 +199,8 @@ static void setup_simulation(struct fsti_simset *simset,
     fsti_dataset_hash_copy(&simulation->dataset_hash, &simset->dataset_hash);
 }
 
-static void *threaded_sim(void *simulation)
+static
+void *threaded_sim(void *simulation)
 {
     fsti_simulation_run(simulation);
     fsti_simulation_free(simulation);
@@ -203,14 +212,15 @@ static void *threaded_sim(void *simulation)
     return NULL;
 }
 
-void fsti_simset_exec(struct fsti_simset *simset)
+void
+fsti_simset_exec(struct fsti_simset *simset)
 {
     struct fsti_simulation *simulation;
     unsigned max_threads;
     GThread *thread;
 
     if (simset->group_ptr == NULL || *simset->group_ptr == NULL) return;
-    set_keys(simset);
+    fsti_simset_set_keys(simset);
 
     while (*simset->group_ptr) {
         max_threads = (unsigned) fsti_config_at0_long(&simset->config,"threads");
@@ -218,7 +228,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
 
         simulation = malloc(sizeof(*simulation));
         FSTI_ASSERT(simulation, FSTI_ERR_NOMEM, NULL);
-        setup_simulation(simset, simulation);
+        fsti_simset_setup_simulation(simset, simulation);
 
         g_mutex_lock(&thread_mutex);
         while (thread_no >= max_threads)
@@ -230,7 +240,7 @@ void fsti_simset_exec(struct fsti_simset *simset)
 
         ++simset->config_sim_number;
         ++simset->sim_number;
-        update_config(simset);
+        fsti_simset_update_config(simset);
     }
 
     g_mutex_lock(&thread_mutex);
@@ -243,7 +253,9 @@ void fsti_simset_exec(struct fsti_simset *simset)
 
 }
 
-void fsti_simset_test(struct test_group *tg, bool valgrind)
+void
+fsti_simset_test(struct test_group *tg,
+                 bool valgrind)
 {
     struct fsti_simset simset;
     FILE *agents_in_file;
@@ -338,7 +350,7 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
             "time_step=DAY\n"
             "simulation_period=10-YEAR\n"
             "during_events=_age;_test_breakup;_test_mating_pool;"
-            "_test_shuffle_mating;_test_rkpm;_test_infect;_stage;_test_birth;_test_death\n"
+           "_test_shuffle_mating;_test_rkpm;_test_infect;_stage;_test_birth;_test_death\n"
             "record_matches=0\n"
             "record_breakups=0\n"
             "record_infections=0\n"
@@ -387,8 +399,8 @@ void fsti_simset_test(struct test_group *tg, bool valgrind)
     fsti_simset_exec(&simset);
     if (valgrind == false)
         TESTEQ(simset.sim_number, 8, *tg);
-
     fsti_simset_free(&simset);
+
     fsti_remove_file(agents_in_filename);
     fsti_remove_file(config_filename);
     fsti_remove_file("fsti_test_agents_out_1234.csv");

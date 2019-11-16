@@ -1219,10 +1219,7 @@ fsti_event_test_death(struct fsti_simulation *simulation)
 void
 fsti_event_register_events()
 {
-    static bool initialized_events = false;
-
-    if (initialized_events == false) {
-        initialized_events = true;
+    if (fsti_register_is_initialized() == false) {
         fsti_register_add("_read_agents", fsti_event_read_agents);
         fsti_register_add("_generate_agents", fsti_event_generate_agents);
         fsti_register_add("_age", fsti_event_age);

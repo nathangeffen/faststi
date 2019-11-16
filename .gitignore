@@ -1,5 +1,17 @@
 *~
 *.o
+*.lo
+*.so
+*.la
+*.pc
+ar-lib
+config.guess
+config.sub
+faststi.pc
+libtool
+ltmain.sh
+m4/
+src/.libs/
 debug
 release
 clangdebug
