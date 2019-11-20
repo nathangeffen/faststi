@@ -5,5 +5,6 @@ if ! [ -x "$(command -v valgrind)" ]; then
 	exit 1
 fi
 export FSTI_DATA=../data
-valgrind --error-exitcode=1 --leak-check=full ./faststi -t
+export LD_LIBRARY_PATH=.libs
+valgrind --error-exitcode=1 --leak-check=full .libs/faststi -t
 

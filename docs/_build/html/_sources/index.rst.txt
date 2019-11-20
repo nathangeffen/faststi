@@ -10,6 +10,7 @@
    getstart
    guide
    example
+   python
    inputformats
    outputformats
    parameters

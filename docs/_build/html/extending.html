@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -177,35 +178,33 @@ developed under GNU/Linux. You need a POSIX compatible system to extend
 it. If you’re using Windows, Cygwin should do the trick.</p>
 <p>We recommend the following approach to developing FastSTI.</p>
 <ul>
-<li><p class="first">Clone the latest version of FastSTI from the <a class="reference external" href="https://github.com/nathangeffen/faststi">Github repository</a>.</p>
-</li>
-<li><p class="first">Use either the gcc or Clang C compiler. We also strongly recommend installing Valgrind.</p>
-</li>
-<li><p class="first">Make sure the GNU autotools are installed. Then run the following to make sure
+<li><p>Clone the latest version of FastSTI from the <a class="reference external" href="https://github.com/nathangeffen/faststi">Github repository</a>.</p></li>
+<li><p>Use either the gcc or Clang C compiler. We also strongly recommend installing Valgrind.</p></li>
+<li><p>Make sure the GNU autotools are installed. Then run the following to make sure
 FastSTI compiles and runs properly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">autoreconf</span><span class="p">;</span><span class="n">automake</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="p">;</span> <span class="o">./</span><span class="n">configure</span><span class="p">;</span> <span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="n">check</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Spend time looking at the source code in the src directory to understand it
+<li><p>Spend time looking at the source code in the src directory to understand it
 better. In particular we recommend examining the following files:</p>
 <ul class="simple">
-<li>fsti-events.c which contains the events provided by FastSTI.</li>
-<li>fsti-defaults.c where all the parameters are defined.</li>
-<li>fsti-defaults.h where many of the macros that can be extended or redefined
+<li><p>fsti-events.c which contains the events provided by FastSTI.</p></li>
+<li><p>fsti-defaults.c where all the parameters are defined.</p></li>
+<li><p>fsti-defaults.h where many of the macros that can be extended or redefined
 are defined. Note the Hooks section. These are macros that you can define in
 fsti-userdefs.h (or a file included by fsti-userdefs.h) to extend existing
-events and other functionality.</li>
-<li>fsti-defs.h where some system wide constants and structs are defined.</li>
-<li>fsti-agent.h where the fsti_agent struct is defined.</li>
-<li>fsti-simulation.h where the fsti_simulation struct is defined.</li>
+events and other functionality.</p></li>
+<li><p>fsti-defs.h where some system wide constants and structs are defined.</p></li>
+<li><p>fsti-agent.h where the fsti_agent struct is defined.</p></li>
+<li><p>fsti-simulation.h where the fsti_simulation struct is defined.</p></li>
 </ul>
 </li>
 </ul>
 <p>Let’s say you want to write an event to coinfect agents with TB. This is what
 you would need to do:</p>
 <ul>
-<li><p class="first">In fsti-userdefs.c write a function to do the coinfection. For example:</p>
+<li><p>In fsti-userdefs.c write a function to do the coinfection. For example:</p>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -224,28 +223,26 @@ you would need to do:</p>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Put the prototype declaration for your event in fsti-userdefs.h. E.g.</p>
+<li><p>Put the prototype declaration for your event in fsti-userdefs.h. E.g.</p>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kt">void</span> <span class="n">tb_coinfect</span><span class="p">(</span><span class="k">struct</span> <span class="n">fsti_simulation</span> <span class="o">*</span><span class="n">simulation</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">In the fsti-userdefs.h file you need to define the FSTI_HOOK_EVENTS_REGISTER
+<li><p>In the fsti-userdefs.h file you need to define the FSTI_HOOK_EVENTS_REGISTER
 macro. This is so that your event can be invoked via the before_events,
 during_events or after_events parameters in the input configuration file.</p>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define FSTI_HOOK_EVENTS_REGISTER fsti_register_add(&quot;tb_coinfect&quot;, tb_coinfect);</span>
 </pre></div>
 </td></tr></table></div>
 </li>
-<li><p class="first">Your event may need new parameters and datasets. It may also need new fields
+<li><p>Your event may need new parameters and datasets. It may also need new fields
 in the fsti_simulation struct and new fields in the fsti_agent struct.</p>
 <ul>
-<li><p class="first">To add new agent fields define them in the FSTI_AGENT_FIELDS macro in
-fsti-userdefs.h (or a file included by fsti-userdefs.h).</p>
-</li>
-<li><p class="first">To add new simulation fields define them in the FSTI_SIMULATION_FIELDS macro
-in fsti-userdefs.h.</p>
-</li>
-<li><p class="first">To provide additional parameters (or datasets) for input configuration files
+<li><p>To add new agent fields define them in the FSTI_AGENT_FIELDS macro in
+fsti-userdefs.h (or a file included by fsti-userdefs.h).</p></li>
+<li><p>To add new simulation fields define them in the FSTI_SIMULATION_FIELDS macro
+in fsti-userdefs.h.</p></li>
+<li><p>To provide additional parameters (or datasets) for input configuration files
 redefine the FSTI_ADDITIONAL_CONFIG_VARS parameter in fsti-userdefs.h. An
 example of how to do this is already in the fsti-defaults.h file.</p>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -261,7 +258,7 @@ example of how to do this is already in the fsti-defaults.h file.</p>
 </td></tr></table></div>
 <p>Note that the name of a dataset parameter must start <em>dataset_</em>.</p>
 </li>
-<li><p class="first">If you want to save parameters or datasets into the current simulation
+<li><p>If you want to save parameters or datasets into the current simulation
 redefine the FSTI_HOOK_CONFIG_TO_VARS macro in fsti-userdefs.h. E.g.</p>
 <div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2

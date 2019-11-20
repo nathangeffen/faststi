@@ -100,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -191,16 +192,16 @@ Library</a> and <a class="reference external" href="https://developer.gnome.org/
 it.</p>
 <p>E.g.</p>
 <blockquote>
-<div>wget <a class="reference external" href="https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz">https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz</a>; tar xzf faststi-0.2.2.tar.gz</div></blockquote>
+<div><p>wget <a class="reference external" href="https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz">https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz</a>; tar xzf faststi-0.2.2.tar.gz</p>
+</div></blockquote>
 <p>This should create a directory called faststi-0.2.2 which contains the FastSTI files.</p>
 <p>Now go to step 3.</p>
 </div>
 <div class="section" id="mac">
 <h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p>
-</li>
-<li><p class="first">Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
+<li><p>Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p></li>
+<li><p>Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">glib</span> <span class="n">gsl</span>
 </pre></div>
 </div>
@@ -217,18 +218,18 @@ to date we have only tested installation with Cygwin.</p>
 <div class="section" id="cygwin">
 <h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Use the Cygwin setup tool to install these packages:</li>
+<li><p>Use the Cygwin setup tool to install these packages:</p></li>
 </ol>
 <ul class="simple">
-<li>gcc-core</li>
-<li>make</li>
-<li>automake</li>
-<li>libgsl-dev</li>
-<li>libglib2.0-devel</li>
-<li>wget</li>
+<li><p>gcc-core</p></li>
+<li><p>make</p></li>
+<li><p>automake</p></li>
+<li><p>libgsl-dev</p></li>
+<li><p>libglib2.0-devel</p></li>
+<li><p>wget</p></li>
 </ul>
 <ol class="arabic" start="2">
-<li><p class="first">After installation open the Cygwin terminal and run these steps:</p>
+<li><p>After installation open the Cygwin terminal and run these steps:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">simhub</span><span class="o">.</span><span class="n">online</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">faststi</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="n">xzvf</span> <span class="n">latest</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
@@ -244,13 +245,13 @@ to date we have only tested installation with Cygwin.</p>
 <p>3. Change into the directory that you’ve decompressed the distribution
 into: faststi-0.2.2</p>
 <ol class="arabic" start="4">
-<li><p class="first">Now run:</p>
+<li><p>Now run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span>
 <span class="n">make</span> <span class="o">-</span><span class="n">j</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Then depending on your system either one of these should install the files:</p>
+<li><p>Then depending on your system either one of these should install the files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -261,7 +262,7 @@ into: faststi-0.2.2</p>
 </pre></div>
 </div>
 <ol class="arabic" start="6">
-<li><p class="first">Now test that it works:</p>
+<li><p>Now test that it works:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FSTI_DATA</span><span class="o">=./</span><span class="n">data</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
 </pre></div>
 </div>
@@ -270,8 +271,8 @@ into: faststi-0.2.2</p>
 <p>This will run the test suite. If everything is properly installed then no
 failures should be reported.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You may be wondering why we prefix the executable with
+<p class="admonition-title">Note</p>
+<p>You may be wondering why we prefix the executable with
 <em>FSTI_DATA=./data</em>. The <em>FSTI_DATA</em> environment variable simply tells
 FastSTI where the data files are stored. As you work on FastSTI you
 may use a different directory for your data files. It’s simply that

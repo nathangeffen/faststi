@@ -22,7 +22,10 @@
 
 #include "utils/test.h"
 
+struct fsti_variant* fsti_py_config_get(struct fsti_simulation *simulation,
+                                        const char *key, size_t index);
 struct fsti_simulation ** fsti_py_simulations_get(struct fsti_simset *simset);
+uint32_t fsti_py_simulation_id(const struct fsti_simulation *simulation);
 void fsti_py_simulations_exec(int n, struct fsti_simulation *sim_arr[]);
 void fsti_py_simulations_free(struct fsti_simulation *sim_arr[]);
 void fsti_py_test(struct test_group *tg, bool valgrind);
