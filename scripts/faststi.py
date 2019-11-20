@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import sys
 import argparse
@@ -147,7 +149,6 @@ class SimulationSet:
                 lines.pop()
         if header not in lines[0]:
             lines.insert(0,"name;sim;num;date;description;value\n")
-        print(lines[0])
         results = open(filename, "w")
         results.writelines(lines)
         results.close()
