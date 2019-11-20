@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Credits &mdash; FastSTI 0.2.2 documentation</title>
+  <title>Running FastSTI from Python &mdash; FastSTI 0.2.2 documentation</title>
   
 
   
@@ -36,7 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="License" href="license.html" /> 
+    <link rel="next" title="Input file formats" href="inputformats.html" />
+    <link rel="prev" title="Interesting example" href="example.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -100,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="improve.html#bugs-and-other-issues">Bugs and other issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
 
             
@@ -146,13 +147,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Credits</li>
+      <li>Running FastSTI from Python</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/credits.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,14 +166,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="credits">
-<h1>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Nathan Geffen designed and implemented FastSTI.</p></li>
-<li><p>Stefan Scholz coded the syphilis model with Nathan.</p></li>
-<li><p>Eduard Grebe wrote the macOS installation instructions.</p></li>
-<li><p>Marcus Low helped get FastSTI running using Cygwin under Windows.</p></li>
-</ul>
+  <div class="section" id="running-project-from-python">
+<h1>Running FastSTI from Python<a class="headerlink" href="#running-project-from-python" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Python interface to FastSTI is highly experimental. We hope
+to make Python the main way to use FastSTI because Python is so
+easy to use and popular among science researchers. But at this
+point we’ve only got the bare basics working. The entire Python
+interface to FastSTI is likely to change. Also currently if
+FastSTI exits because of an error, the Python interpreter also
+exits instead of throwing an exception, which is annoying. We will
+fix this in due course.</p>
+</div>
+<p>A basic Python 3 interface is supported (we don’t support Python 2 and don’t
+intend to). You’ll need to install <a class="reference external" href="https://pandas.pydata.org/">pandas</a>.</p>
+<p>In the scripts directory of the FastSTI folder is faststi.py.</p>
+<p>To see the command line options it supports run (for example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>To execute a set of simulations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">c</span> <span class="n">my_simulations</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Example of how to use faststi in a Python environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">faststi</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">simset1</span> <span class="o">=</span> <span class="n">faststi</span><span class="o">.</span><span class="n">SimulationSet</span><span class="p">(</span><span class="n">config_filename</span><span class="o">=</span><span class="s2">&quot;my_simulations.ini&quot;</span><span class="p">)</span>
+
+<span class="c1"># Runs all the simulations and save the results into a dataframe</span>
+<span class="n">dataframe</span> <span class="o">=</span> <span class="n">simset1</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Slightly more sophisticated example</span>
+<span class="n">simset2</span> <span class="o">=</span> <span class="n">faststi</span><span class="o">.</span><span class="n">SimulationSet</span><span class="p">(</span><span class="n">config_filename</span><span class="o">=</span><span class="s2">&quot;my_simulations.ini&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">simset2</span><span class="o">.</span><span class="n">simulations</span><span class="p">),</span> <span class="s2">&quot;simulations.&quot;</span><span class="p">)</span>
+<span class="c1"># Change the match_k parameter in the third simulation (0-based indexing)</span>
+<span class="n">simset2</span><span class="o">.</span><span class="n">simulations</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_parm</span><span class="p">(</span><span class="s2">&quot;match_k&quot;</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="c1"># Run the first four simulations: 0,1,2,3</span>
+<span class="n">dataframe2</span> <span class="o">=</span> <span class="n">simset2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Run the remaining simulations</span>
+<span class="n">dataframe3</span> <span class="o">=</span> <span class="n">simset2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In time, we hope to make this much more comprehensive, robust and useful.</p>
 </div>
 
 
@@ -183,8 +221,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="inputformats.html" class="btn btn-neutral float-right" title="Input file formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="example.html" class="btn btn-neutral float-left" title="Interesting example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

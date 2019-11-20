@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -214,33 +215,33 @@ at the end of the simulation (after_events).</p>
 </td></tr></table></div>
 <p>This tells FastSTI that before each simulation is run, it must:</p>
 <ul class="simple">
-<li>Write the header line for the output agents csv file
-(_write_agents_csv_header)</li>
-<li>Write the header line for the output results file (_write_results_csv_header)</li>
-<li>Generate and initialize properly a new set of agents and put some of them into
-relationships (_generate_and_pair)</li>
-<li>Write the set of initialised agents to a CSV file.</li>
-<li>Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
-results file (_report).</li>
+<li><p>Write the header line for the output agents csv file
+(_write_agents_csv_header)</p></li>
+<li><p>Write the header line for the output results file (_write_results_csv_header)</p></li>
+<li><p>Generate and initialize properly a new set of agents and put some of them into
+relationships (_generate_and_pair)</p></li>
+<li><p>Write the set of initialised agents to a CSV file.</p></li>
+<li><p>Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
+results file (_report).</p></li>
 </ul>
 <p>On every time step of a simulation, it tells FastSTI to:</p>
 <ul class="simple">
-<li>Increment each living agent’s by the time step (_age).</li>
-<li>Iterate through the living agents and put some of the single ones into
+<li><p>Increment each living agent’s by the time step (_age).</p></li>
+<li><p>Iterate through the living agents and put some of the single ones into
 relationships and break up some of those that are in relationships
-(_breakup_and_pair).</li>
-<li>Iterate through the agents with partners and infect some of those in
-sero-discordant relationships (_infect).</li>
-<li>Iterate through the infected agents and move some of them to a new disease
-stage (e.g. treated, resistant, ill - whatever you specify actually).</li>
-<li>Add some new agents to the simulation at the minimum age (_birth).</li>
-<li>Kill some of the agents (_death).</li>
-<li>Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
-results file (_report).</li>
+(_breakup_and_pair).</p></li>
+<li><p>Iterate through the agents with partners and infect some of those in
+sero-discordant relationships (_infect).</p></li>
+<li><p>Iterate through the infected agents and move some of them to a new disease
+stage (e.g. treated, resistant, ill - whatever you specify actually).</p></li>
+<li><p>Add some new agents to the simulation at the minimum age (_birth).</p></li>
+<li><p>Kill some of the agents (_death).</p></li>
+<li><p>Write some stats (e.g. prevalence, agents alive, agents dead etc) to the
+results file (_report).</p></li>
 </ul>
 <p>At the end of each simulation it tells FastSTI to:</p>
 <ul class="simple">
-<li>Write the final state of the agents to a CSV file (_write_agents_csv).</li>
+<li><p>Write the final state of the agents to a CSV file (_write_agents_csv).</p></li>
 </ul>
 <p>The events provided by FastSTI (which include those in the example above) are
 prefixed with an underscore (_), to differentiate them from other 3rd-party
@@ -269,30 +270,30 @@ generate.</p>
 <p>The default implementation sets the following agent properties: age, sex,
 sex_preferred, infected, treated and resistant.</p>
 <ul class="simple">
-<li>age is set via a random beta distribution determined by the parameters
-<em>age_alpha</em> and <em>age_beta</em>.</li>
-<li>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
-for an example.)</li>
-<li>sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
+<li><p>age is set via a random beta distribution determined by the parameters
+<em>age_alpha</em> and <em>age_beta</em>.</p></li>
+<li><p>sex is set via the dataset dataset_gen_sex. (See data/dataset_gen_sex.csv
+for an example.)</p></li>
+<li><p>sex_preferred is set via the dataset dataset_gen_sex_preferred. (See
 data/dataset_gen_sex_preferred.csv for an example, which sets the agents to
 prefer the opposite sex with a probability of 95%, but you can change this
-according to the needs of your model.)</li>
-<li>infected (i.e. the infection stage of the agent with 0 by convention meaning
+according to the needs of your model.)</p></li>
+<li><p>infected (i.e. the infection stage of the agent with 0 by convention meaning
 the agent isn’t infected) is set via the dataset dataset_gen_infect. (See
-data/dataset_gen_infect.csv for an example.)</li>
-<li>treated (i.e. which treatment line, if any, the agent is on) is set via the
+data/dataset_gen_infect.csv for an example.)</p></li>
+<li><p>treated (i.e. which treatment line, if any, the agent is on) is set via the
 dataset dataset_gen_treated. (See data/dataset_gen_treated.csv for an
-example.)</li>
-<li>resistant (i.e. which treatment regimens the agent is resistant to, if
-any. (See data/dataset_gen_resistant.csv for an example.)</li>
+example.)</p></li>
+<li><p>resistant (i.e. which treatment regimens the agent is resistant to, if
+any. (See data/dataset_gen_resistant.csv for an example.)</p></li>
 </ul>
 <p>If you wish to set additional agent properties, you must provide hook in by
 defining a macro called FSTI_HOOK_GENERATE_AGENT in fsti-userdefs.h. The macro
 takes two parameters: simulation (a pointer to the current simulation) and
 agent (a pointer to the current agent whose property you wish to set).</p>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Instead of using this event, it will usually make more sense to use the
+<p class="admonition-title">Tip</p>
+<p>Instead of using this event, it will usually make more sense to use the
 _generate_and_pair event which generates the initial set of agents,
 places them in a mating pool, shuffles the mating pool, mates the
 agents in the mating pool and then sets the number of time steps each
@@ -374,8 +375,8 @@ in the before_events parameter.</p>
 mating pool. An agent pairing event, such as _rkpm must then be executed in
 order to actually place agents in relationships with each other.</p>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Instead of using this event, it will usually make more sense to use the
+<p class="admonition-title">Tip</p>
+<p>Instead of using this event, it will usually make more sense to use the
 _generate_and_pair event which generates the initial set of agents,
 places them in a mating pool, shuffles the mating pool, mates the
 agents in the mating pool and then sets the number of time steps each
@@ -451,8 +452,8 @@ which people are already in the middle of relationships or a period of being
 being single. This event will on average halve the value of relchange. Whether
 that’s a valid assumption at the beginning of a simulation is unclear to us.</p>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Instead of using this event, it will usually make more sense to use the
+<p class="admonition-title">Tip</p>
+<p>Instead of using this event, it will usually make more sense to use the
 _generate_and_pair event which generates the initial set of agents,
 places them in a mating pool, shuffles the mating pool, mates the
 agents in the mating pool and then sets the number of time steps each
@@ -635,21 +636,21 @@ huge.</p>
 <span id="breakup-and-pair-ref"></span><h2>_breakup_and_pair<a class="headerlink" href="#breakup-and-pair" title="Permalink to this headline">¶</a></h2>
 <p>This is a composite event that executes the following events in this order:</p>
 <ul class="simple">
-<li>_breakup</li>
-<li>_mating</li>
-<li>_shuffle_mating</li>
-<li>_rkpm</li>
+<li><p>_breakup</p></li>
+<li><p>_mating</p></li>
+<li><p>_shuffle_mating</p></li>
+<li><p>_rkpm</p></li>
 </ul>
 </div>
 <div class="section" id="generate-and-pair">
 <span id="generate-and-pair-ref"></span><h2>_generate_and_pair<a class="headerlink" href="#generate-and-pair" title="Permalink to this headline">¶</a></h2>
 <p>This is a composite event that executes the following events in this order:</p>
 <ul class="simple">
-<li>_generate_agents</li>
-<li>_initial_mating</li>
-<li>_shuffle_mating</li>
-<li>_rkpm</li>
-<li>_initial_rel</li>
+<li><p>_generate_agents</p></li>
+<li><p>_initial_mating</p></li>
+<li><p>_shuffle_mating</p></li>
+<li><p>_rkpm</p></li>
+<li><p>_initial_rel</p></li>
 </ul>
 </div>
 <div class="section" id="infect">
@@ -663,11 +664,11 @@ the initial_infect_stage parameter. The default is 2. Although the infection
 stages are entirely user-defined, in the default settings of FastSTI, the
 following default setup is assumed for the infect property:</p>
 <ul class="simple">
-<li>0: The agent is uninfected (this should be the case for any simulation)</li>
-<li>1: The agent is infected but on treatment</li>
-<li>2: The agent is in a primary infection stage</li>
-<li>3: The agent is in a chronic infection stage</li>
-<li>4: The agent is sick or in an end-stage of infection</li>
+<li><p>0: The agent is uninfected (this should be the case for any simulation)</p></li>
+<li><p>1: The agent is infected but on treatment</p></li>
+<li><p>2: The agent is in a primary infection stage</p></li>
+<li><p>3: The agent is in a chronic infection stage</p></li>
+<li><p>4: The agent is sick or in an end-stage of infection</p></li>
 </ul>
 <p>This can be specified differently. But you must make sure that your stages are
 consistent across the simulation, else nonsensical things will happen. If you
@@ -690,11 +691,11 @@ sensible for many models.</p>
 <p>Although the infection stages are entirely user-defined, in the default settings
 of FastSTI, the following default setup is assumed for the infect property:</p>
 <ul class="simple">
-<li>0: The agent is uninfected (this should be the case for any simulation)</li>
-<li>1: The agent is infected but on treatment</li>
-<li>2: The agent is in a primary infection stage</li>
-<li>3: The agent is in a chronic infection stage</li>
-<li>4: The agent is sick or in an end-stage of infection</li>
+<li><p>0: The agent is uninfected (this should be the case for any simulation)</p></li>
+<li><p>1: The agent is infected but on treatment</p></li>
+<li><p>2: The agent is in a primary infection stage</p></li>
+<li><p>3: The agent is in a chronic infection stage</p></li>
+<li><p>4: The agent is sick or in an end-stage of infection</p></li>
 </ul>
 <p>This can be specified differently. But you must make sure that your stages are
 consistent across the simulation, else nonsensical things will happen. If you
@@ -732,24 +733,24 @@ gsl_ran_poisson function is used to determine the number of births.</p>
 <p>Besides age, the default implementation sets the following agent properties:
 sex, sex_preferred, infected, treated and resistant.</p>
 <ul class="simple">
-<li>sex is set, with the proportion of males determined by the prob_birth_male
-parameter.</li>
-<li>sex_preferred is set using the prob_birth_msw (where msw stands for men who
+<li><p>sex is set, with the proportion of males determined by the prob_birth_male
+parameter.</p></li>
+<li><p>sex_preferred is set using the prob_birth_msw (where msw stands for men who
 sex with women), prob_birth_wsm (where wsm stands for women who have sex with
 men) parameters. If the agent’s sex is male, the prob_birth_msw value is used
 to determine the probability that the agent’s preferred sexual partner is a
 female. Likewise if the agent’s sex is female the prob_birth_wsm value is used
 to determine the probability that the agent’s preferred sexual partner is a
-male.</li>
-<li>infected (i.e. the infection stage of the agent with 0 by convention meaning
+male.</p></li>
+<li><p>infected (i.e. the infection stage of the agent with 0 by convention meaning
 the agent isn’t infected) is set via the dataset dataset_birth_infect. (See
-data/dataset_birth_infect.csv for an example.)</li>
-<li>treated (i.e. which treatment line, if any, the agent is on) is set via the
+data/dataset_birth_infect.csv for an example.)</p></li>
+<li><p>treated (i.e. which treatment line, if any, the agent is on) is set via the
 dataset dataset_birth_treated. (See data/dataset_birth_treated.csv for an
-example.)</li>
-<li>resistant (i.e. which treatment regimens the agent is resistant to, if any) is
+example.)</p></li>
+<li><p>resistant (i.e. which treatment regimens the agent is resistant to, if any) is
 set via the dataset dataset_birth_resistant (See
-data/dataset_birth_resistant.csv for an example.)</li>
+data/dataset_birth_resistant.csv for an example.)</p></li>
 </ul>
 <p>If you wish to set additional agent properties, you must provide hook in by
 defining a macro called FSTI_HOOK_BIRTH_AGENT in fsti-userdefs.h. The macro

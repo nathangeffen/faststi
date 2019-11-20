@@ -325,8 +325,10 @@ void fsti_simulation_free(struct fsti_simulation *simulation)
     ARRAY_FREE(simulation->during_events, events);
     ARRAY_FREE(simulation->after_events, events);
     fsti_config_free(&simulation->config);
-    g_date_time_unref(simulation->start_date);
-    g_time_zone_unref(simulation->time_zone);
+    if (simulation->start_date) {
+        g_date_time_unref(simulation->start_date);
+        g_time_zone_unref(simulation->time_zone);
+    }
     FSTI_HOOK_SIMULATION_FREE(simulation);
 }
 

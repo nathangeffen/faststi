@@ -40,6 +40,7 @@ struct fsti_event_register {
     UT_hash_handle hh;
 };
 
+bool fsti_register_is_initialized();
 void fsti_register_add(const char *event_name, fsti_event event);
 fsti_event fsti_register_get(const char *event_name);
 void fsti_register_free();

@@ -123,6 +123,10 @@ enum fsti_struct_part {
     DATA
 };
 
+// Before modifying this, note that the enum values are
+// hardcoded in the python code. I can't see a way around it.
+// So don't modify this without modifying the corresponding
+// values in the Python file.
 enum fsti_type {
     NONE = -1,
     UNKNOWN = 0,

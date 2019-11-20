@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output file formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#results-reports">Results reports</a><ul>
@@ -182,8 +183,8 @@ standard output device (default) or an output file as specified by the
 post-processed by you either in a spreadsheet, or using a scripting language
 like R or Python.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <em>_report</em> event prints out quite basic information. If you feel
+<p class="admonition-title">Note</p>
+<p>The <em>_report</em> event prints out quite basic information. If you feel
 comfortable writing C code, you can enhance it in the fsti_userdefs.h
 file by defining the <em>FSTI_HOOK_REPORT</em> macro. See the <em>FSTI_REPORT</em>
 macro in fsti-defaults.h.</p>
@@ -481,25 +482,25 @@ macro in fsti-defaults.h.</p>
 </pre></div>
 </td></tr></table></div>
 <ul class="simple">
-<li>The first column (name) is the simulation group name as specified in the configuration
-file.</li>
-<li>The second column (sim) is the unique simulation number. In every execution of
-FastSTI, each simulation will have its own unique id, starting from 0.</li>
-<li>The third column (num) is the number of the simulation within the simulation
+<li><p>The first column (name) is the simulation group name as specified in the configuration
+file.</p></li>
+<li><p>The second column (sim) is the unique simulation number. In every execution of
+FastSTI, each simulation will have its own unique id, starting from 0.</p></li>
+<li><p>The third column (num) is the number of the simulation within the simulation
 group. Here each of the two simulation groups (Simulation_0 and Simulation_1)
-executed two simulations each, numbered 0 and 1.</li>
-<li>The fourth column is the date within the simulation that this snapshot report
+executed two simulations each, numbered 0 and 1.</p></li>
+<li><p>The fourth column is the date within the simulation that this snapshot report
 is for. In these simulations, the start date was 1 January 2018, and the end
 date was 1 January 2028. The <em>_report</em> event ran before and after the
-simulation (it can run as often as you like during the simulation as well).</li>
-<li>The fifth column is the description of what’s being reported. These are
-described below.</li>
-<li>The sixth column is the value of what’s being reported. E.g. 10 for TIME_TAKEN
-means the simulation ran in 10 seconds up to that point.</li>
+simulation (it can run as often as you like during the simulation as well).</p></li>
+<li><p>The fifth column is the description of what’s being reported. These are
+described below.</p></li>
+<li><p>The sixth column is the value of what’s being reported. E.g. 10 for TIME_TAKEN
+means the simulation ran in 10 seconds up to that point.</p></li>
 </ul>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The output in the example above is all in chronological order. This is
+<p class="admonition-title">Warning</p>
+<p>The output in the example above is all in chronological order. This is
 because it was a single-threaded sequential execution. Normally you will do a
 multithreaded execution and the report lines will likely <strong>not</strong> come out in
 order. When analysing them in a spreadsheet, R or Python, remember to sort
@@ -507,42 +508,42 @@ the output by the first four columns.</p>
 </div>
 <div class="section" id="what-the-descriptions-mean">
 <h3>What the descriptions mean<a class="headerlink" href="#what-the-descriptions-mean" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>MIN_AGE_ALIVE</dt>
-<dd>is the youngest age, in years, of a currently living agent</dd>
-<dt>MAX_AGE_ALIVE</dt>
-<dd>is the oldest age, in years of a currently living agent</dd>
-<dt>MEAN_AGE_ALIVE</dt>
-<dd>is the mean age, in years, of the living population</dd>
-<dt>MEDIAN_AGE_ALIVE</dt>
-<dd>is the median age, in years, of the living population</dd>
-<dt>INFECT_RATE_ALIVE</dt>
-<dd>is the infection rate of the living population</dd>
-<dt>POP_ALIVE</dt>
-<dd>is the number of living agents</dd>
-<dt>NUM_PARTNERS</dt>
-<dd>is the number of agents in relationships</dd>
-<dt>MIN_AGE_DEAD</dt>
-<dd>is the age of the youngest agent who has died</dd>
-<dt>MAX_AGE_DEAD</dt>
-<dd>is the age of the oldest agent who has died</dd>
-<dt>INFECT_RATE_DEAD</dt>
-<dd>is the infection rate in the dead population</dd>
-<dt>POP_DEAD</dt>
-<dd>is the number of dead agents</dd>
-<dt>INITIAL_INFECTIONS</dt>
-<dd>is the number of infected agents at the start of the simulation</dd>
-<dt>SIMULATION_INFECTIONS</dt>
-<dd>is the number of agents who became infected during the simulation</dd>
-<dt>INITIAL_MATCHES</dt>
-<dd>is the number of pairs of agents in relationships at the start of the
-simulation</dd>
-<dt>SIMULATION_MATCHES</dt>
-<dd>is the number of pairs of agents made during the simulation</dd>
-<dt>BREAKUPS</dt>
-<dd>is the number of pairs that broke up during the simulation</dd>
-<dt>TIME_TAKEN</dt>
-<dd>is the time taken by the simulation in seconds</dd>
+<dl class="simple">
+<dt>MIN_AGE_ALIVE</dt><dd><p>is the youngest age, in years, of a currently living agent</p>
+</dd>
+<dt>MAX_AGE_ALIVE</dt><dd><p>is the oldest age, in years of a currently living agent</p>
+</dd>
+<dt>MEAN_AGE_ALIVE</dt><dd><p>is the mean age, in years, of the living population</p>
+</dd>
+<dt>MEDIAN_AGE_ALIVE</dt><dd><p>is the median age, in years, of the living population</p>
+</dd>
+<dt>INFECT_RATE_ALIVE</dt><dd><p>is the infection rate of the living population</p>
+</dd>
+<dt>POP_ALIVE</dt><dd><p>is the number of living agents</p>
+</dd>
+<dt>NUM_PARTNERS</dt><dd><p>is the number of agents in relationships</p>
+</dd>
+<dt>MIN_AGE_DEAD</dt><dd><p>is the age of the youngest agent who has died</p>
+</dd>
+<dt>MAX_AGE_DEAD</dt><dd><p>is the age of the oldest agent who has died</p>
+</dd>
+<dt>INFECT_RATE_DEAD</dt><dd><p>is the infection rate in the dead population</p>
+</dd>
+<dt>POP_DEAD</dt><dd><p>is the number of dead agents</p>
+</dd>
+<dt>INITIAL_INFECTIONS</dt><dd><p>is the number of infected agents at the start of the simulation</p>
+</dd>
+<dt>SIMULATION_INFECTIONS</dt><dd><p>is the number of agents who became infected during the simulation</p>
+</dd>
+<dt>INITIAL_MATCHES</dt><dd><p>is the number of pairs of agents in relationships at the start of the
+simulation</p>
+</dd>
+<dt>SIMULATION_MATCHES</dt><dd><p>is the number of pairs of agents made during the simulation</p>
+</dd>
+<dt>BREAKUPS</dt><dd><p>is the number of pairs that broke up during the simulation</p>
+</dd>
+<dt>TIME_TAKEN</dt><dd><p>is the time taken by the simulation in seconds</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -608,13 +609,13 @@ the agent’s partner (-1 if the agent is single). The last column is the date t
 agent’s relationship status will change, either to single if it’s in a
 relationship, or to a relationship if it’s single.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">FastSTI’s agent output event assumes an agent has at most one
+<p class="admonition-title">Note</p>
+<p>FastSTI’s agent output event assumes an agent has at most one
 partner. You can extend it if you’re implementing concurrency.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you feel comfortable writing C code, you can modify or extend the
+<p class="admonition-title">Note</p>
+<p>If you feel comfortable writing C code, you can modify or extend the
 output of the <em>_write_agents_csv</em>, <em>_write_living_agents_csv</em> and
 <em>_write_dead_agents_csv</em> events by redefining the
 FSTI_AGENT_PRINT_CSV_HEADER and FSTI_AGENT_PRINT_CSV macros. Put your

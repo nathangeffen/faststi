@@ -22,4 +22,5 @@ EXTRA_DIST = 	simulations/examples/eg1.ini		\
 		scripts/processResultsFile.py		\
 		scripts/processResultsFile.R		\
 		scripts/README
-
+ACLOCAL_AMFLAGS = -I m4
+pkgconfig_DATA = faststi.pc

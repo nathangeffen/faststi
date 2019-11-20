@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Input file formats" href="inputformats.html" />
+    <link rel="next" title="Running FastSTI from Python" href="python.html" />
     <link rel="prev" title="Tutorial: Creating simulations" href="guide.html" /> 
 </head>
 
@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inputformats.html">Input file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputformats.html">Output file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Configuration file parameters</a></li>
@@ -261,12 +262,12 @@ FastSTI in conjunction with a scripting language like R.</p>
 simulation statistics are printed every 100 days, and then at the end, 1 January
 2028. (The dates don’t matter, by the way.)</p>
 <ul class="simple">
-<li>The first group (group 0) is 10,000 agents with random matching.</li>
-<li>The second group is 10,000 agents with k-nearest neighbour matching (using
-FastSTI’s _rkpm event) xwith k=100.</li>
-<li>The third group is 100,000 agents with random matching.</li>
-<li>The fourth group is 100,000 agents with k-nearest neighbour matching with
-k=100.</li>
+<li><p>The first group (group 0) is 10,000 agents with random matching.</p></li>
+<li><p>The second group is 10,000 agents with k-nearest neighbour matching (using
+FastSTI’s _rkpm event) xwith k=100.</p></li>
+<li><p>The third group is 100,000 agents with random matching.</p></li>
+<li><p>The fourth group is 100,000 agents with k-nearest neighbour matching with
+k=100.</p></li>
 </ul>
 <p>The results are written to a file called results.csv. The file is large so we’ve
 <a class="reference external" href="_static/results.tgz">compressed</a> it.  On a mid-range laptop with an i5 with
@@ -333,19 +334,19 @@ scripts/processResultsFile.R. (The equivalent Python script is in scripts/proces
 </td></tr></table></div>
 <p>What do the results tell us?</p>
 <ol class="arabic simple">
-<li>Random matching results in much higher infection rates than “intelligent”
+<li><p>Random matching results in much higher infection rates than “intelligent”
 matching algorithms that try to pair agents using realistic criteria. This is
 expected. With random matching, one would expect an infection to spread quite
 rapidly through a population. With more realistic matching, we expect more
 sexual networks to form and the infection only occasionally moves from one
-network to another.</li>
-<li>Random matching gives the same results irrespective of the number of agents
-(42.8%). This too is expected.</li>
-<li>With “intelligent” matching prevalence decreases as the population increases
+network to another.</p></li>
+<li><p>Random matching gives the same results irrespective of the number of agents
+(42.8%). This too is expected.</p></li>
+<li><p>With “intelligent” matching prevalence decreases as the population increases
 (a mean of 36.5% for the 10,000 agent simulations after ten years vs 23.4%
 for the 100,000 agent simulations). This is not intuitive, at least not to
 us, though we have hypotheses for why it happens. We leave it to you to
-speculate further.</li>
+speculate further.</p></li>
 </ol>
 </div>
 
@@ -357,7 +358,7 @@ speculate further.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="inputformats.html" class="btn btn-neutral float-right" title="Input file formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python.html" class="btn btn-neutral float-right" title="Running FastSTI from Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="guide.html" class="btn btn-neutral float-left" title="Tutorial: Creating simulations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

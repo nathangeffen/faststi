@@ -17,20 +17,16 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef FSTI_H
-#define FSTI_H
+#ifndef FSTI_PYTHONCALLS_H
+#define FSTI_PYTHONCALLS_H
 
-#include "fsti-error.h"
-#include "fsti-defs.h"
-#include "fsti-userdefs.h"
-#include "fsti-agent.h"
-#include "fsti-tests.h"
-#include "fsti-config.h"
-#include "fsti-defaults.h"
-#include "fsti-procini.h"
-#include "fsti-events.h"
-#include "fsti-simset.h"
-#include "fsti-simulation.h"
-#include "fsti-pythoncalls.h"
+#include "utils/test.h"
 
+struct fsti_variant* fsti_py_config_get(struct fsti_simulation *simulation,
+                                        const char *key, size_t index);
+struct fsti_simulation ** fsti_py_simulations_get(struct fsti_simset *simset);
+uint32_t fsti_py_simulation_id(const struct fsti_simulation *simulation);
+void fsti_py_simulations_exec(int n, struct fsti_simulation *sim_arr[]);
+void fsti_py_simulations_free(struct fsti_simulation *sim_arr[]);
+void fsti_py_test(struct test_group *tg, bool valgrind);
 #endif

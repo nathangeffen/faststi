@@ -22,6 +22,11 @@
 
 static struct fsti_event_register *event_register = NULL;
 
+bool fsti_register_is_initialized()
+{
+    return event_register != NULL;
+}
+
 void fsti_register_add(const char *event_name, fsti_event event)
 {
     struct fsti_event_register *entry;
@@ -52,4 +57,5 @@ void fsti_register_free()
 	HASH_DEL(event_register, entry);
 	free(entry);
     }
+    event_register = NULL;
 }

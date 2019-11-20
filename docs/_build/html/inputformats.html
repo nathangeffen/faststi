@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Output file formats" href="outputformats.html" />
-    <link rel="prev" title="Interesting example" href="example.html" /> 
+    <link rel="prev" title="Running FastSTI from Python" href="python.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Tutorial: Creating simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Interesting example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Running FastSTI from Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input file formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a><ul>
@@ -259,35 +260,28 @@ format. Here is an example:</p>
 </pre></div>
 </td></tr></table></div>
 <ul>
-<li><p class="first">Comment lines begin with a #.</p>
-</li>
-<li><p class="first">A # in the middle of a line also denotes a comment until the end of the line.</p>
-</li>
-<li><p class="first">A simulation group name is enclosed in square brackets <em>[]</em>.</p>
-</li>
-<li><p class="first">Within a simulation group, parameters are specified as key-value pairs. A key is
+<li><p>Comment lines begin with a #.</p></li>
+<li><p>A # in the middle of a line also denotes a comment until the end of the line.</p></li>
+<li><p>A simulation group name is enclosed in square brackets <em>[]</em>.</p></li>
+<li><p>Within a simulation group, parameters are specified as key-value pairs. A key is
 separated from its value by an equals sign. White space before and after the =
-sign is ignored.</p>
-</li>
-<li><p class="first">Some parameters (e.g. <em>during_events</em> take multiple values. Each value must be
+sign is ignored.</p></li>
+<li><p>Some parameters (e.g. <em>during_events</em> take multiple values. Each value must be
 separated by a semi-colon <em>;</em>. White space before or after the semi-colon is
-ignored.</p>
-</li>
-<li><p class="first">Blank lines are ignored.</p>
-</li>
-<li><p class="first">Each key must be a predefined parameter. If you use a key that isn’t a
+ignored.</p></li>
+<li><p>Blank lines are ignored.</p></li>
+<li><p>Each key must be a predefined parameter. If you use a key that isn’t a
 predefined parameter, the FastSTI will give an error message and terminate. To
 see all the parameters, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">faststi</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Key-values set in a simulation group are carried through to subsequent groups,
+<li><p>Key-values set in a simulation group are carried through to subsequent groups,
 unless they are specified again in the new group. E,g, in the example above,
 <em>dataset_mortality</em> and <em>match_k</em> are specified again for the simulation group
 called <em>Simulation 1</em>. All the other parameters are identical to <em>Simulation
-0</em>.</p>
-</li>
+0</em>.</p></li>
 </ul>
 <p>Besides setting parameters in the input configuration file, you can modify them
 on the command line using this format:</p>
@@ -379,11 +373,11 @@ when they are initialized.</p>
 <p>In the example HIV model provided, there are five possible values for
 <em>infection</em>:</p>
 <ul class="simple">
-<li>0 = uninfected</li>
-<li>1 = virally suppressed (usually on treatment)</li>
-<li>2 = primary infection (highly infectious)</li>
-<li>3 = chronic infection (usually lasts several years)</li>
-<li>4 = Final stage (AIDS)</li>
+<li><p>0 = uninfected</p></li>
+<li><p>1 = virally suppressed (usually on treatment)</p></li>
+<li><p>2 = primary infection (highly infectious)</p></li>
+<li><p>3 = chronic infection (usually lasts several years)</p></li>
+<li><p>4 = Final stage (AIDS)</p></li>
 </ul>
 <p>Let’s start with the header (line 1). The last column is <em>4|4</em>. The first “4” is
 simply the name of the column (representing stage 4 infection), and could have
@@ -417,13 +411,13 @@ of 1) and agents aged 30 to 39 (third column with a value of 3, i.e. 31 / 3).</p
 <p>To determine if the agent is infected with HIV, the <em>_generate_agents</em> event
 samples a uniform random number, <em>r</em>.</p>
 <ul class="simple">
-<li>If <em>r</em> is less than 0.05 (the value in column 4 of line 11), the agent is in stage 1.</li>
-<li>If <em>r</em> is less than 0.1 (the value in column 5 of line 11), the agent is in stage 2.</li>
-<li>If <em>r</em> is less than 0.15 (the value in column 6 of line 11) the agent is in
-stage 3.</li>
-<li>If <em>r</em> is less than 0.2 (the value in column 7 of line 11) the agent is in
-stage 4.</li>
-<li>Else if <em>r</em> is greater than or equal to 0.2, the agent is uninfected.</li>
+<li><p>If <em>r</em> is less than 0.05 (the value in column 4 of line 11), the agent is in stage 1.</p></li>
+<li><p>If <em>r</em> is less than 0.1 (the value in column 5 of line 11), the agent is in stage 2.</p></li>
+<li><p>If <em>r</em> is less than 0.15 (the value in column 6 of line 11) the agent is in
+stage 3.</p></li>
+<li><p>If <em>r</em> is less than 0.2 (the value in column 7 of line 11) the agent is in
+stage 4.</p></li>
+<li><p>Else if <em>r</em> is greater than or equal to 0.2, the agent is uninfected.</p></li>
 </ul>
 <p>With most events, the agent characteristics you use are up to you. You could
 create a dataset for generating the initial infection status of agents that
@@ -516,41 +510,41 @@ currently quite limited, you’ll probably prefer to supply an agent file.</p>
 must correspond to one or more field names in FastSTI’s agent structure, which is declared
 as <em>struct fsti_agent</em> in the source file <em>src/fsti-agent.h</em>. The fields are:</p>
 <ul class="simple">
-<li>id: unsigned 32 bit integer, unique for each agent (If you do not include this
+<li><p>id: unsigned 32 bit integer, unique for each agent (If you do not include this
 field, FastSTI automatically provides this value for each agent, starting from
-0.)</li>
-<li>sex: unsigned 8 bit integer (0 is male, 1 is female. Higher values are user-defined.)</li>
-<li>Either sex_preferred or orientation, an unsigned 8 bit integer (Do not use
+0.)</p></li>
+<li><p>sex: unsigned 8 bit integer (0 is male, 1 is female. Higher values are user-defined.)</p></li>
+<li><p>Either sex_preferred or orientation, an unsigned 8 bit integer (Do not use
 both fields. We recommend using sex_preferred rather than orientation. For
 sex_preferred 0 is male, 1 is female. For orientation either use 0 and 1 for
 heterosexual and homosexual respectively, or 0, 1, 2 and 3 for MSM, MSW, WSM
-and WSW respectively. Higher values are user-defined.)</li>
-<li>age: a positive year age of an agent between 0 and 120.</li>
-<li>birthday: a signed 32 bit integer (Unless you understand the internal workings
-of FastSTI very well, we recommend you rather use age)</li>
-<li>infected: unsigned 8 bit integer (0 is uninfected. 1 and up can correspond to
-stages of infection.)</li>
-<li>treated: unsigned 8 bit integer (0 is untreated. 1 and up can correspond to
-treatment regimens.)</li>
-<li>resistant: unsigned 8 bit integer (0 is no resistance. You can either use a
+and WSW respectively. Higher values are user-defined.)</p></li>
+<li><p>age: a positive year age of an agent between 0 and 120.</p></li>
+<li><p>birthday: a signed 32 bit integer (Unless you understand the internal workings
+of FastSTI very well, we recommend you rather use age)</p></li>
+<li><p>infected: unsigned 8 bit integer (0 is uninfected. 1 and up can correspond to
+stages of infection.)</p></li>
+<li><p>treated: unsigned 8 bit integer (0 is untreated. 1 and up can correspond to
+treatment regimens.)</p></li>
+<li><p>resistant: unsigned 8 bit integer (0 is no resistance. You can either use a
 simple approach to resistance, whereby 1 means resistant to treatment regimen
 1, 2 to treatment regimen 2 etc, or you can use a more complex binary bitmask
 approach where 1 denotes resistance to regimen 1 only, 10, denotes resistance
-to regimen 2, 11 denotes resistance to regimen 1 and 2 etc.)</li>
-<li>coinfected (0 means not coinfected. 1 and up denotes different types of
+to regimen 2, 11 denotes resistance to regimen 1 and 2 etc.)</p></li>
+<li><p>coinfected (0 means not coinfected. 1 and up denotes different types of
 coinfection as chosen by the user. Once again, as with the resistant field,
-either a simple or bitmask approach can be used.)</li>
-<li>partners_0, partners_1, and partners_2: unsigned 32 bit integers denoting the
+either a simple or bitmask approach can be used.)</p></li>
+<li><p>partners_0, partners_1, and partners_2: unsigned 32 bit integers denoting the
 id of a sexual partner of this agent (-1 implies agent is single. The agents
 are typically numbered from 0. Note: None of the default FastSTI events
 currently caters for concurrency. Only use partners_1 and partners_2 if you
 are implementing events that rely on partner concurrency. If you need more
-partners, change the value of FSTI_MAX_PARTNERS in fsti_userdefs.h.)</li>
-<li>relchange_0, relchange_1, and relchange_2: unsigned 32 bit integers
+partners, change the value of FSTI_MAX_PARTNERS in fsti_userdefs.h.)</p></li>
+<li><p>relchange_0, relchange_1, and relchange_2: unsigned 32 bit integers
 corresponding to the iteration (i.e. time step) in the simulation when the
 agent’s relationship status for partner_0, partner_1 and partner_2
 respectively should change, either to single for agents with partners or to be
-placed in the mating pool if the agent is single</li>
+placed in the mating pool if the agent is single</p></li>
 </ul>
 <p>Here is an example CSV file. The default delimiter is a semi-colon, not a comma. You
 can change this by setting the csv_delimiter.</p>
@@ -591,7 +585,7 @@ can change this by setting the csv_delimiter.</p>
         <a href="outputformats.html" class="btn btn-neutral float-right" title="Output file formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="example.html" class="btn btn-neutral float-left" title="Interesting example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python.html" class="btn btn-neutral float-left" title="Running FastSTI from Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
