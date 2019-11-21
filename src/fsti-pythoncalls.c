@@ -281,7 +281,11 @@ fsti_py_test(struct test_group *tg,
     TESTEQ(strcmp(variant->value.str, ";"), 0, *tg);
     variant = fsti_py_config_get(simulations[1], "num_agents", 0);
     TESTEQ(variant->type, LONG, *tg);
-    TESTEQ(variant->value.longint, 20000, *tg);
+    if (valgrind)
+        TESTEQ(variant->value.longint, 100, *tg);
+    else
+        TESTEQ(variant->value.longint, 20000, *tg);
+    DBG("%ld", variant->value.longint);
 
     fsti_py_simulations_exec(len , &simulations[1]);
 

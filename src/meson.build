@@ -44,18 +44,18 @@ test('Unit tests', exe, args: '-t', env: env)
 
 valgrind = find_program('valgrind', required : false)
 
-#if valgrind.found()
-#  test('Memory leak check',
-#       valgrind,
-#       args : ['--error-exitcode=1',
-#               '--leak-check=full',
-#               exe,
-#               '-m'],
-#       env: env
-#  )
-#else
-#  message('Valgrind not found, so not running memory leak tests')
-#endif
+if valgrind.found()
+  test('Memory leak check',
+       valgrind,
+       args : ['--error-exitcode=1',
+               '--leak-check=full',
+               exe,
+               '-m'],
+       env: env
+  )
+else
+  message('Valgrind not found, so not running memory leak tests')
+endif
 
 
 # Pkgconfig
