@@ -17,7 +17,7 @@ Library <https://www.gnu.org/software/gsl/>`_ and `Gnome's Glib utility library
 
 On Ubuntu, Debian, Mint etc. this should do the trick: ::
 
-  sudo apt install build-essential libgsl-dev libglib2.0-dev
+  sudo apt install build-essential libgsl-dev libglib2.0-dev meson
 
 
 2. Download |PROJECT| from |DOWNLOAD| and decompress
@@ -39,7 +39,7 @@ Mac
 
 2. Using `Homebrew <https://brew.sh/>`_ install the dependencies: ::
 
-     brew install gcc pkg-config glib gsl
+     brew install gcc pkg-config glib gsl meson
 
 This should create a directory called |DIRNAME| which contains the |PROJECT| files.
 
@@ -60,7 +60,7 @@ Cygwin
 
 - gcc-core
 - make
-- automake
+- meson
 - libgsl-dev
 - libglib2.0-devel
 - wget
@@ -81,45 +81,33 @@ On all machines
 3. Change into the directory that you've decompressed the distribution
 into: |DIRNAME|
 
-4. Now run: ::
+4. Now use the meson build system: ::
 
-     ./configure
-     make -j
+     meson --buildtype release release
+     cd release
+     ninja
 
 5. Then depending on your system either one of these should install the files: ::
 
-     sudo make install
+     sudo ninja install
 
 Or::
 
-     make install
+     ninja install
 
 6. Now test that it works: ::
 
-     FSTI_DATA=./data faststi -t
+     FSTI_DATA=../data faststi -t
 
 This will run the test suite. If everything is properly installed then no
 failures should be reported.
 
 .. note:: You may be wondering why we prefix the executable with
-          *FSTI_DATA=./data*. The *FSTI_DATA* environment variable simply tells
-          |PROJECT| where the data files are stored. As you work on |PROJECT| you
-          may use a different directory for your data files. It's simply that
-          the default data files are in the *data* directory.
+          *FSTI_DATA=../data*. The *FSTI_DATA* environment variable simply tells
+          |PROJECT| where the data files are stored. As you work on |PROJECT|
+          you may use a different directory for your data files. It's simply
+          that the default data files are in the *data* directory.
 
-|PROJECT| uses `GNU autotools
-<https://www.gnu.org/software/automake/manual/html_node/index.html>`_ to compile
-which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
-commands work with |PROJECT|.
+To uninstall |PROJECT| simply go into the release directory and run: ::
 
-Incidentally, compiling like this might make |PROJECT| a bit faster: ::
-
-  make clean
-  make "CFLAGS=-DNDEBUG -O3"
-  sudo make install
-
-But results may vary.
-
-To uninstall |PROJECT| simply run: ::
-
-  sudo make uninstall
+  sudo ninja uninstall

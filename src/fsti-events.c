@@ -192,7 +192,6 @@ make_agent(struct fsti_simulation *simulation,
 static void
 read_agents(struct fsti_simulation *simulation)
 {
-    size_t i, j;
     bool process_partners;
     FILE *f;
     struct csv cs;
@@ -210,8 +209,6 @@ read_agents(struct fsti_simulation *simulation)
     cs = csv_read(f, true, simulation->csv_delimiter, filename);
     FSTI_ASSERT(cs.header.len, FSTI_ERR_AGENT_FILE,
                 FSTI_MSG("No header in agent csv file", filename));
-
-    struct fsti_agent_elem *elems[cs.header.len];
 
     make_agent(simulation, &cs, filename);
     fsti_agent_ind_fill_n(&simulation->living, cs.len);
@@ -1134,7 +1131,7 @@ fsti_event_test_knn_match(struct fsti_simulation *simulation)
 void
 fsti_event_test_infect(struct fsti_simulation *simulation)
 {
-    struct fsti_agent *a, *partner;
+    struct fsti_agent *a;
     uint32_t infected_before = 0, infected_after = 0;
     static _Thread_local uint32_t infections = 0;
 

@@ -61,6 +61,7 @@ void fsti_simset_setup_simulation(struct fsti_simset *simset,
                                   struct fsti_simulation *simulation);
 void fsti_simset_update_config(struct fsti_simset *simset);
 void fsti_simset_exec(struct fsti_simset *simset);
+void fsti_simset_exec_fast_and_risky(struct fsti_simset *simset);
 void fsti_simset_free(struct fsti_simset *simset);
 void fsti_simset_setup_config(char **config_text, int valgrind);
 void fsti_simset_test(struct test_group *tg, bool valgrind);

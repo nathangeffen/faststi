@@ -32,6 +32,8 @@ static GMutex thread_mutex;
 static GCond thread_cond;
 static unsigned thread_no = 0;
 
+static int SIMS_PER_THREAD;
+
 static
 void init(struct fsti_simset *simset)
 {
@@ -123,9 +125,9 @@ fsti_simset_set_keys(struct fsti_simset *simset)
     FSTI_ASSERT(simset->config_num_simulations > 0,FSTI_ERR_INVALID_VALUE,NULL);
 }
 
-static
-void set_output_files(struct fsti_simset *simset,
-                      struct fsti_simulation *simulation)
+static void
+set_output_files(struct fsti_simset *simset,
+                 struct fsti_simulation *simulation)
 {
     char *results_file_name,  *agents_file_name, *partnerships_file_name;
 
@@ -133,7 +135,9 @@ void set_output_files(struct fsti_simset *simset,
         results_file_name = fsti_config_at0_str(&simulation->config,
                                                 "results_file");
 
-        if(strcmp(results_file_name, "") && strcmp(results_file_name, "stdout")) {
+        if(simset->close_results_file == false &&
+           strcmp(results_file_name, "") &&
+           strcmp(results_file_name, "stdout")) {
             simset->results_file =
                 simulation->results_file = fopen(results_file_name, "w");
             FSTI_ASSERT(simulation->results_file, FSTI_ERR_FILE, strerror(errno));
@@ -144,7 +148,9 @@ void set_output_files(struct fsti_simset *simset,
 
         agents_file_name = fsti_config_at0_str(&simulation->config,
                                                "agents_output_file");
-        if(strcmp(agents_file_name, "") && strcmp(agents_file_name, "stdout")) {
+        if(simset->close_agents_output_file == false &&
+           strcmp(agents_file_name, "") &&
+           strcmp(agents_file_name, "stdout")) {
             simset->agents_output_file =
                 simulation->agents_output_file = fopen(agents_file_name, "w");
             FSTI_ASSERT(simulation->agents_output_file, FSTI_ERR_FILE,
@@ -156,9 +162,12 @@ void set_output_files(struct fsti_simset *simset,
 
         partnerships_file_name = fsti_config_at0_str(&simulation->config,
                                                      "partnerships_file");
-        if(strcmp(partnerships_file_name, "")) {
+        if(simset->close_partnerships_file == false &&
+           strcmp(partnerships_file_name, "") &&
+           strcmp(partnerships_file_name, "stdout")) {
             simset->partnerships_file =
-                simulation->partnerships_file = fopen(partnerships_file_name, "w");
+                simulation->partnerships_file =
+                fopen(partnerships_file_name, "w");
             FSTI_ASSERT(simulation->partnerships_file, FSTI_ERR_FILE,
                         strerror(errno));
             simset->close_partnerships_file = true;
@@ -199,9 +208,122 @@ void fsti_simset_setup_simulation(struct fsti_simset *simset,
     fsti_dataset_hash_copy(&simulation->dataset_hash, &simset->dataset_hash);
 }
 
-static
-void *
-threaded_sim(void *simulation)
+void
+fsti_simset_simulation_free(struct fsti_simulation *simulation)
+{
+    fsti_simulation_free(simulation);
+    free(simulation);
+}
+
+
+struct thread_info {
+    struct fsti_simulation **sim_arr;
+    int lo;
+    int hi;
+};
+
+static void *
+thread_run(void *p)
+{
+    struct thread_info *t = p;
+    int sims = t->hi - t->lo;
+    if (sims < SIMS_PER_THREAD || sims == 1) {
+        for (int i = t->lo; i < t->hi; i++) {
+            if (t->sim_arr[i]) {
+                fsti_simulation_run(t->sim_arr[i]);
+                fsti_simset_simulation_free(t->sim_arr[i]);
+                t->sim_arr[i] = 0;
+            }
+        }
+    } else {
+        struct thread_info left;
+        struct thread_info right;
+        left.lo = t->lo;
+        left.hi = right.lo = (t->hi + t->lo) / 2;
+        left.sim_arr = right.sim_arr = t->sim_arr;
+        right.hi = t->hi;
+        GThread *thread = g_thread_new(NULL, thread_run, &left);
+        thread_run(&right);
+        g_thread_join(thread);
+    }
+    return NULL;
+}
+
+
+struct fsti_simulation **
+fsti_simset_simulations_get(struct fsti_simset *simset,
+                            int *n)
+{
+    struct fsti_simulation **sim_arr = NULL, *simulation;
+    size_t len = 2;
+    int i = 0;
+
+    sim_arr = malloc(sizeof(simulation) * len);
+
+    if (simset->group_ptr == NULL || *simset->group_ptr == NULL) return NULL;
+    fsti_simset_set_keys(simset);
+
+    while (*simset->group_ptr) {
+        simulation = malloc(sizeof(*simulation));
+        FSTI_ASSERT(simulation, FSTI_ERR_NOMEM, NULL);
+        fsti_simset_setup_simulation(simset, simulation);
+
+        if (i == len) {
+            len *= 2;
+            sim_arr = realloc(sim_arr, len * sizeof(simulation));
+            FSTI_ASSERT(sim_arr, FSTI_ERR_NOMEM, NULL);
+        }
+        sim_arr[i++] = simulation;
+        ++simset->config_sim_number;
+        ++simset->sim_number;
+
+        fsti_simset_update_config(simset);
+    }
+    *n = i;
+    return sim_arr;
+}
+
+void
+fsti_simset_simulations_run(int n,
+                            struct fsti_simulation *sim_arr[])
+{
+    struct thread_info t;
+    int sims_per_thread;
+    int threads;
+    t.lo = 0;
+    t.hi = n;
+    t.sim_arr = sim_arr;
+
+    threads = (int) fsti_config_at0_long(&sim_arr[t.lo]->config, "threads");
+    if (threads == 0)
+        threads = g_get_num_processors();
+    sims_per_thread = n / g_get_num_processors();
+    SIMS_PER_THREAD = (sims_per_thread > 0) ? sims_per_thread : 1;
+    thread_run(&t);
+}
+
+
+void
+fsti_simset_exec(struct fsti_simset *simset)
+{
+    struct fsti_simulation **sim_arr;
+    int n;
+
+    sim_arr = fsti_simset_simulations_get(simset, &n);
+    if (n) {
+        fsti_simset_simulations_run(n, sim_arr);
+    }
+
+    if (simset->close_results_file) fclose(simset->results_file);
+    if (simset->close_agents_output_file) fclose(simset->agents_output_file);
+    if (simset->close_partnerships_file) fclose(simset->partnerships_file);
+
+    free(sim_arr);
+}
+
+
+static void *
+threaded_sim_fast_and_risky(void *simulation)
 {
     fsti_simulation_run(simulation);
     fsti_simulation_free(simulation);
@@ -214,7 +336,7 @@ threaded_sim(void *simulation)
 }
 
 void
-fsti_simset_exec(struct fsti_simset *simset)
+fsti_simset_exec_fast_and_risky(struct fsti_simset *simset)
 {
     struct fsti_simulation *simulation;
     unsigned max_threads;
@@ -234,7 +356,7 @@ fsti_simset_exec(struct fsti_simset *simset)
         g_mutex_lock(&thread_mutex);
         while (thread_no >= max_threads)
             g_cond_wait (&thread_cond, &thread_mutex);
-        thread = g_thread_new(NULL, threaded_sim, simulation);
+        thread = g_thread_new(NULL, threaded_sim_fast_and_risky, simulation);
         g_thread_unref(thread);
         thread_no++;
         g_mutex_unlock(&thread_mutex);
@@ -251,7 +373,6 @@ fsti_simset_exec(struct fsti_simset *simset)
     if (simset->close_results_file) fclose(simset->results_file);
     if (simset->close_agents_output_file) fclose(simset->agents_output_file);
     if (simset->close_partnerships_file) fclose(simset->partnerships_file);
-
 }
 
 void fsti_simset_setup_config(char **config_text, int valgrind)
@@ -268,15 +389,24 @@ void fsti_simset_setup_config(char **config_text, int valgrind)
             "agents_input_file=fsti_test_agents_in_1234.csv\n"
             "agents_output_file=fsti_test_agents_out_1234.csv\n"
             "partnerships_file=fsti_test_partnerships_1234.csv\n"
-            "dataset_gen_mating=dataset_gen_mating.csv\n"
+
+            "dataset_gen_sex=dataset_gen_sex.csv\n"
+            "dataset_gen_sex_preferred=dataset_gen_sex_preferred.csv\n"
             "dataset_gen_infect=dataset_gen_infect.csv\n"
             "dataset_gen_treated=dataset_gen_treated.csv\n"
             "dataset_gen_resistant=dataset_gen_resistant.csv\n"
+            "dataset_gen_mating=dataset_gen_mating.csv\n"
+
+            "dataset_birth_infect=dataset_gen_infect.csv\n"
+            "dataset_birth_treated=dataset_birth_treated.csv\n"
+            "dataset_birth_resistant=dataset_birth_resistant.csv\n"
+
             "dataset_rel_period=dataset_rel.csv\n"
             "dataset_single_period=dataset_single.csv\n"
             "dataset_infect=dataset_infect.csv\n"
             "dataset_infect_stage=dataset_infect_stage.csv\n"
             "dataset_mortality=dataset_mortality_simple.csv\n"
+
             "results_file=fsti_test_results_1234.csv\n"
             "threads=1\n"
             "before_events=_write_agents_csv_header;_generate_agents;_"
@@ -315,6 +445,7 @@ void fsti_simset_setup_config(char **config_text, int valgrind)
             "dataset_infect=dataset_infect.csv\n"
             "dataset_infect_stage=dataset_infect_stage.csv\n"
             "dataset_mortality=dataset_mortality_simple.csv\n"
+
             "results_file=fsti_test_results_1234.csv\n"
             "threads=1\n"
             "[simulation_1]\n"

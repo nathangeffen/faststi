@@ -4,7 +4,7 @@
 #define REPLACE 1
 #define NEW_REPLACE 2
 
-static void
+void
 print_variant(const struct fsti_variant *variant)
 {
     switch(variant->type) {
@@ -39,6 +39,7 @@ fsti_py_config_get(struct fsti_simulation *simulation,
             fprintf(stderr, "Warning in file %s at line %d: "
                     "Key %s not found.",
                     __FILE__, __LINE__, key);
+            return NULL;
         } else {
             return &entry->variants[index];
         }
@@ -221,7 +222,6 @@ fsti_py_test(struct test_group *tg,
     const size_t num_agents = 101;
     struct fsti_simset *simset;
     struct fsti_simulation **simulations;
-    struct fsti_variant *var;
     FILE *agents_in_file;
     char *agents_in_filename = "fsti_test_agents_in_1234.csv";
     FILE *config_file;
@@ -281,7 +281,11 @@ fsti_py_test(struct test_group *tg,
     TESTEQ(strcmp(variant->value.str, ";"), 0, *tg);
     variant = fsti_py_config_get(simulations[1], "num_agents", 0);
     TESTEQ(variant->type, LONG, *tg);
-    TESTEQ(variant->value.longint, 20000, *tg);
+    if (valgrind)
+        TESTEQ(variant->value.longint, 100, *tg);
+    else
+        TESTEQ(variant->value.longint, 20000, *tg);
+    DBG("%ld", variant->value.longint);
 
     fsti_py_simulations_exec(len , &simulations[1]);
 
