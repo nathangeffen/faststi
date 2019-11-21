@@ -1,4 +1,4 @@
-AC_INIT([faststi], [0.5.0], [nathangeffen@quackdown.info])
+AC_INIT([faststi], [0.5.1], [nathangeffen@quackdown.info])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_PROG_AR
