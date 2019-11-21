@@ -31,20 +31,27 @@ lib = shared_library(meson.project_name(),
                      soversion : '0',
                      install : true)
 
+env = environment()
+env.set('FSTI_DATA', meson.source_root() + '/data')
 
 exe = executable('faststi', sources : 'fsti-main.c',
                  dependencies : [glib_dep, gsl_dep, m_dep, thread_dep],
                  link_with : lib,
                  install : true)
 
-test1 = find_program('../scripts/check_faststi.sh')
-test('Unit tests', test1)
+test('Unit tests', exe, args: '-t', env: env)
 
-#valgrind = find_program('valgrind', required : false)
+valgrind = find_program('valgrind', required : false)
 
 #if valgrind.found()
-#  test2 = find_program('../scripts/valgrind_faststi.sh')
-#  test('Memory leak check', test2)
+#  test('Memory leak check',
+#       valgrind,
+#       args : ['--error-exitcode=1',
+#               '--leak-check=full',
+#               exe,
+#               '-m'],
+#       env: env
+#  )
 #else
 #  message('Valgrind not found, so not running memory leak tests')
 #endif
