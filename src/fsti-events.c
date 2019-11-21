@@ -1154,7 +1154,9 @@ fsti_event_test_infect(struct fsti_simulation *simulation)
             ++infected_after;
 #ifdef FSTI_RECORD_INFECTIONS
             if (a->iter_infected < FSTI_MAX_ITERATION) {
-                partner = fsti_agent_arr_at(&simulation->agent_arr, a->infector);
+                struct fsti_agent *partner =
+                    fsti_agent_arr_at(&simulation->agent_arr,
+                                      a->infector);
                 if (partner->infected == 0) ++error_infections;
             }
 #endif
