@@ -20,8 +20,8 @@ cd tmp
 cp "$ROOT"/debug/meson-dist/faststi-0.?.?.tar.xz .
 tar xf faststi-0.?.?.tar.xz
 cd faststi-0.?.?
-meson debug
-cd debug
+meson --buildtype release release
+cd release
 ninja test
 sudo ninja install
 cd "$SCRIPT_DIR"
@@ -29,6 +29,6 @@ gcc testfsti.c `pkg-config --cflags --libs faststi gsl glib-2.0` -o testfsti
 valgrind --leak-check=full ./testfsti
 export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu/
 ./faststi.py -c ~/workspace/C/faststi/simulations/examples/eg1.ini
-cd "$ROOT"/tmp/faststi-0.?.?/debug
+cd "$ROOT"/tmp/faststi-0.?.?/release
 sudo ninja uninstall
 echo Success!
