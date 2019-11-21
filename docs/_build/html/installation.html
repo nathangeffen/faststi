@@ -185,7 +185,7 @@ on a Mac or Windows machine.</p>
 <p>1. FastSTI requires a standard C development environment, the <a class="reference external" href="https://www.gnu.org/software/gsl/">GNU Scientific
 Library</a> and <a class="reference external" href="https://developer.gnome.org/glib/">Gnome’s Glib utility library</a>.</p>
 <p>On Ubuntu, Debian, Mint etc. this should do the trick:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libgsl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglib2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">meson</span>
 </pre></div>
 </div>
 <p>2. Download FastSTI from <a class="reference external" href="https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz">https://www.simhub.online/media/dist/faststi/faststi-0.2.2.tar.gz</a> and decompress
@@ -202,7 +202,7 @@ it.</p>
 <ol class="arabic">
 <li><p>Download and decompress this file: <a class="reference external" href="https://www.simhub.online/media/dist/faststi/latest.tar.gz">https://www.simhub.online/media/dist/faststi/latest.tar.gz</a></p></li>
 <li><p>Using <a class="reference external" href="https://brew.sh/">Homebrew</a> install the dependencies:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">glib</span> <span class="n">gsl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> <span class="n">glib</span> <span class="n">gsl</span> <span class="n">meson</span>
 </pre></div>
 </div>
 </li>
@@ -223,7 +223,7 @@ to date we have only tested installation with Cygwin.</p>
 <ul class="simple">
 <li><p>gcc-core</p></li>
 <li><p>make</p></li>
-<li><p>automake</p></li>
+<li><p>meson</p></li>
 <li><p>libgsl-dev</p></li>
 <li><p>libglib2.0-devel</p></li>
 <li><p>wget</p></li>
@@ -245,25 +245,26 @@ to date we have only tested installation with Cygwin.</p>
 <p>3. Change into the directory that you’ve decompressed the distribution
 into: faststi-0.2.2</p>
 <ol class="arabic" start="4">
-<li><p>Now run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span>
-<span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+<li><p>Now use the meson build system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="o">--</span><span class="n">buildtype</span> <span class="n">release</span> <span class="n">release</span>
+<span class="n">cd</span> <span class="n">release</span>
+<span class="n">ninja</span>
 </pre></div>
 </div>
 </li>
 <li><p>Then depending on your system either one of these should install the files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>Or:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ninja</span> <span class="n">install</span>
 </pre></div>
 </div>
 <ol class="arabic" start="6">
 <li><p>Now test that it works:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FSTI_DATA</span><span class="o">=./</span><span class="n">data</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FSTI_DATA</span><span class="o">=../</span><span class="n">data</span> <span class="n">faststi</span> <span class="o">-</span><span class="n">t</span>
 </pre></div>
 </div>
 </li>
@@ -273,23 +274,13 @@ failures should be reported.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You may be wondering why we prefix the executable with
-<em>FSTI_DATA=./data</em>. The <em>FSTI_DATA</em> environment variable simply tells
-FastSTI where the data files are stored. As you work on FastSTI you
-may use a different directory for your data files. It’s simply that
-the default data files are in the <em>data</em> directory.</p>
+<em>FSTI_DATA=../data</em>. The <em>FSTI_DATA</em> environment variable simply tells
+FastSTI where the data files are stored. As you work on FastSTI
+you may use a different directory for your data files. It’s simply
+that the default data files are in the <em>data</em> directory.</p>
 </div>
-<p>FastSTI uses <a class="reference external" href="https://www.gnu.org/software/automake/manual/html_node/index.html">GNU autotools</a> to compile
-which is the standard on POSIX (Linux, Unix etc) systems. The standard autotools
-commands work with FastSTI.</p>
-<p>Incidentally, compiling like this might make FastSTI a bit faster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
-<span class="n">make</span> <span class="s2">&quot;CFLAGS=-DNDEBUG -O3&quot;</span>
-<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>But results may vary.</p>
-<p>To uninstall FastSTI simply run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">uninstall</span>
+<p>To uninstall FastSTI simply go into the release directory and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ninja</span> <span class="n">uninstall</span>
 </pre></div>
 </div>
 </div>
