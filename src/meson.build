@@ -20,10 +20,9 @@ install_headers('fsti-agent.h', 'fsti-error.h', 'fsti-pythoncalls.h',
                 'fsti-events.h', 'fsti-simset.h', 'fsti-defaults.h',
                 'fsti.h', 'fsti-simulation.h', 'fsti-defs.h',
                 'fsti-procini.h', 'fsti-tests.h', subdir: dir_name)
-install_headers('utils/array.h', 'utils/algorithms.h',
+
+install_headers('utils/utils.h', 'utils/array.h', 'utils/algorithms.h',
                 'utils/csv.h', 'utils/test.h', subdir: include_subdir)
-
-
 
 lib = shared_library(meson.project_name(),
                      sources : src,
@@ -38,18 +37,17 @@ exe = executable('faststi', sources : 'fsti-main.c',
                  link_with : lib,
                  install : true)
 
-test('Unit tests', exe, args : '-t')
+test1 = find_program('../scripts/check_faststi.sh')
+test('Unit tests', test1)
 
-valgrind = find_program('valgrind', required : false)
+#valgrind = find_program('valgrind', required : false)
 
-if valgrind.found()
-  test('Memory leak check', valgrind, args : ['--error-exitcode=1',
-                                              '--leak-check=full',
-                                              exe,
-                                             '-m'])
-else
-  message('Valgrind not found, so not running memory leak tests')
-endif
+#if valgrind.found()
+#  test2 = find_program('../scripts/valgrind_faststi.sh')
+#  test('Memory leak check', test2)
+#else
+#  message('Valgrind not found, so not running memory leak tests')
+#endif
 
 
 # Pkgconfig
