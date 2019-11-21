@@ -22,7 +22,8 @@ install_headers('fsti-agent.h', 'fsti-error.h', 'fsti-pythoncalls.h',
                 'fsti-procini.h', 'fsti-tests.h', subdir: dir_name)
 
 install_headers('utils/utils.h', 'utils/array.h', 'utils/algorithms.h',
-                'utils/csv.h', 'utils/test.h', subdir: include_subdir)
+                'utils/csv.h', 'utils/test.h', 'utils/uthash.h',
+                subdir: include_subdir)
 
 lib = shared_library(meson.project_name(),
                      sources : src,
@@ -32,7 +33,7 @@ lib = shared_library(meson.project_name(),
                      install : true)
 
 env = environment()
-env.set('FSTI_DATA', meson.source_root() + '/data')
+env.set('FSTI_DATA', join_paths(meson.source_root(), 'data'))
 
 exe = executable('faststi', sources : 'fsti-main.c',
                  dependencies : [glib_dep, gsl_dep, m_dep, thread_dep],

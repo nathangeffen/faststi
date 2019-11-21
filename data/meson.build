@@ -9,4 +9,4 @@ install_data([
         'dataset_gen_sex.csv', 'InitialPopulationCalculations.ods',
         'dataset_gen_sex_preferred.csv', 'MortalityCalculations.ods',
         'dataset_gen_treated.csv'],
-        install_dir : get_option('datadir') + '/' + meson.project_name())
+        install_dir : join_paths(get_option('datadir'), meson.project_name()))
