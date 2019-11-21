@@ -1,7 +1,7 @@
 project('faststi',
         'c',
         license : 'GPL3',
-        version : '0.5.2')
+        version : '0.5.3')
 
 # Update these for new releases if necessary
 dir_name = meson.project_name()

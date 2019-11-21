@@ -10,8 +10,11 @@ config.sub
 faststi.pc
 libtool
 ltmain.sh
+tmp/
 m4/
 src/.libs/
+scripts/__pycache__/
+scripts/testfsti
 debug
 release
 clangdebug
