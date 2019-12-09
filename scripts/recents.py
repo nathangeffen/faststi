@@ -479,10 +479,10 @@ if __name__ == '__main__':
                                      "recent infection follow-ups.")
     parser.add_argument('--simulations', '-s', required=False,
                         help='Number of simulations to run', default=2)
-    parser.add_argument('--parameters', '-p', required=False,
+    parser.add_argument('--parameter_list', '-p', required=False,
                         help='Parameters for simulations', default="[{}]")
     args = parser.parse_args()
-    results = multi_threaded_run(parameters=json.loads(args.parameters),
-                                 simulations=args.simulations)
+    results = multi_threaded_run(parameter_list=json.loads(args.parameter_list),
+                                 simulations=int(args.simulations))
     for r in results:
         r.plot()
