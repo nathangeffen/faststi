@@ -98,7 +98,7 @@ double
 recents_distance(struct fsti_agent *a,
                  struct fsti_agent *b)
 {
-    return (a->risk == b->risk && a->sex == b->sex) ? 0.0 : 1.0;
+    return (a->risk == b->risk && a->sex != b->sex) ? 0.0 : 1.0;
 }
 
 /*
