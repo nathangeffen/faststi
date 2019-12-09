@@ -2,10 +2,10 @@ from enum import Enum, IntEnum
 import argparse
 import json
 import numpy
-import math
-import matplotlib
-from multiprocessing import Pool, cpu_count
 import pandas
+import math
+import matplotlib.pyplot as plt
+from multiprocessing import Pool, cpu_count
 import random
 import statistics
 import sys
@@ -19,26 +19,26 @@ PROB_MALE = 0.5
 PROB_LO = 0.5
 
 LO_STAGE_UNINFECTED = 0.9999
-LO_STAGE_TREATED = 0.99995
+LO_STAGE_TREATED = 0.9999
 LO_STAGE_PRIMARY = 0.99996
 LO_STAGE_CHRONIC = 0.99999
 
 HI_STAGE_UNINFECTED = 0.999
-HI_STAGE_TREATED = 0.9995
+HI_STAGE_TREATED = 0.999
 HI_STAGE_PRIMARY = 0.9996
 HI_STAGE_CHRONIC = 0.9999
 
 # Parameters for number of days till single agent enters mating pool
-LO_SINGLE_TO_MATING_MEAN = 150.0
-LO_SINGLE_TO_MATING_SD = 100.0
+LO_SINGLE_TO_MATING_MEAN = 100.0
+LO_SINGLE_TO_MATING_SD = 80.0
 HI_SINGLE_TO_MATING_MEAN = 10.0
-HI_SINGLE_TO_MATING_SD = 5.0
+HI_SINGLE_TO_MATING_SD = 8.0
 
 # Parameters for number of days till paired agents becomes single
 LO_MATING_TO_SINGLE_MEAN = 2.0 * 365.0
-LO_MATING_TO_SINGLE_SD = 300.0
+LO_MATING_TO_SINGLE_SD = 365.0
 HI_MATING_TO_SINGLE_MEAN = 10.0
-HI_MATING_TO_SINGLE_SD = 5.0
+HI_MATING_TO_SINGLE_SD = 8.0
 
 PROB_PRIMARY_TRACE_SUCCESS = 0.8
 PROB_SECONDARY_TRACE_SUCCESS = 0.6
@@ -115,19 +115,19 @@ INFECT_RISK_TABLE = {
         Sex.MALE: {
             Stage.PRIMARY: 0.1,
             Stage.CHRONIC: 0.02,
-            Stage.SICK: 0.02
+            Stage.SICK: 0.05
         },
         Sex.FEMALE: {
-            Stage.PRIMARY: 0.02,
-            Stage.CHRONIC: 0.04,
-            Stage.SICK: 0.04
+            Stage.PRIMARY: 0.05,
+            Stage.CHRONIC: 0.01,
+            Stage.SICK: 0.06
         },
     },
     Sex.FEMALE: {
         Sex.MALE: {
-            Stage.PRIMARY: 0.048,
-            Stage.CHRONIC: 0.02,
-            Stage.SICK: 0.02
+            Stage.PRIMARY: 0.08,
+            Stage.CHRONIC: 0.015,
+            Stage.SICK: 0.055
         },
         Sex.FEMALE: {
             Stage.PRIMARY: 0.0008,
@@ -194,6 +194,8 @@ class Simulation:
 
         # Parameters
         self.proc_no = parameters["proc_no"] if "proc_no" in parameters else 0
+        self.name = parameters["name"] if "name" in parameters \
+                    else "Untitled-" + str(self.proc_no)
         self.num_agents = parameters["num_agents"] \
                           if "num_agents" in parameters else 20000
         self.burn_in_iterations = parameters["burn_in_iterations"] \
@@ -227,8 +229,10 @@ class Simulation:
                        if "match_k" in parameters else 100
         self.trace_partners = parameters["trace_partners"] \
                         if "trace_partners" in parameters else True
-        self.cutoff = parameters["cutoff"] \
-                      if "cutoff" in parameters else 60
+        self.infection_cutoff = parameters["infection_cutoff"] \
+                      if "infection_cutoff" in parameters else 60
+        self.partner_cutoff = parameters["partner_cutoff"] \
+                      if "partner_cutoff" in parameters else 120
         self.agents = parameters["agents"] \
                       if "agents" in parameters \
                          else [Agent(i) for i in range(0, self.num_agents)]
@@ -267,7 +271,7 @@ class Simulation:
 
     def is_recent(self, agent):
         return True if (self.iteration - agent.infection_iter <
-                            self.cutoff) else False
+                            self.infection_cutoff) else False
 
     def trace(self, agent):
         if self.is_recent(agent):
@@ -280,7 +284,7 @@ class Simulation:
                         self.primary_traces = self.primary_traces + 1
 
             if agent.last_partner is not None:
-                if self.iteration - agent.breakup_iter < self.cutoff:
+                if self.iteration - agent.breakup_iter < self.partner_cutoff:
                     partner = self.agents[agent.last_partner]
                     if random.random() < PROB_SECONDARY_TRACE_SUCCESS:
                         if partner.infected > Stage.TREATED:
@@ -432,14 +436,16 @@ class Simulation:
         for event in self.after_events:
             event()
 
-    def plot(self, col="infected"):
+    def plot(self):
         df = pandas.DataFrame(self.report_table, columns=CSV_COLUMNS)
         start = self.burn_in_iterations
-        series = pandas.Series(df[col][start:], index=df["iteration"][start:])
-        series.plot.line()
-        matplotlib.pyplot.show()
+        series1 = pandas.Series(df["infected"][start:])
+        series2 = pandas.Series(df["treated"][start:])
+        indices = pandas.Series(df["iteration"][start:])
+        plt.plot(indices, series1, "b-", indices, series2, "b--")
+        plt.show()
 
-def run(parameters={}):
+def run_single_simulation(parameters={}):
     proc_no = parameters["proc_no"] if "proc_no" in parameters else 0
     s = Simulation(parameters)
     start = time.time()
@@ -448,9 +454,9 @@ def run(parameters={}):
     s.time_taken = end - start
     return s
 
-def multi_threaded_run(parameter_list=[{}],
-                       simulations=4,
-                       threads=cpu_count()):
+def run(parameter_list=[{}],
+        simulations=4,
+        threads=cpu_count()):
 
     if len(parameter_list) == 1:
         parameter_list = [parameter_list[0].copy() for _ in range(simulations)]
@@ -470,19 +476,52 @@ def multi_threaded_run(parameter_list=[{}],
     for i in range(simulations // threads + 1):
         parameters = parameter_list[i * threads: i * threads + threads]
         with Pool(threads) as p:
-            results = results + p.map(run, parameters)
+            results = results + p.map(run_single_simulation, parameters)
 
     return results
 
+def plot(simulations):
+    colors = ["r","g","b","y",]
+    series = []
+    indices = []
+    i = 0
+    for s in simulations:
+        df = pandas.DataFrame(s.report_table, columns=CSV_COLUMNS)
+        start = s.burn_in_iterations
+        indices = pandas.Series(df["iteration"][start:])
+        series = series + \
+                 [indices,
+                  pandas.Series(df["infected"][start:]),
+                  colors[i % 4] + "-",
+                  indices,
+                  pandas.Series(df["treated"][start:]),
+                  colors[i % 4] + "--"]
+        i = i + 1
+
+    plt.plot(*series)
+    plt.xlabel("Infected and treated")
+    plt.ylabel("Iteration")
+    legends = []
+    for s in simulations:
+        legends = legends + [s.name + "(inf)", s.name + "(treat)"]
+    plt.legend(legends)
+    plt.show()
+
 if __name__ == '__main__':
+    default_parameter_list = [
+        {"name":"Recent", "trace_partners": True, "burn_in_iterations":365*20},
+        {"name":"All", "infection_cutoff": 20000, "burn_in_iterations": 365*20},
+        {"name": "None", "trace_partners":False, "burn_in_iterations":365*20}
+    ]
     parser = argparse.ArgumentParser(description="Run simulations of "
                                      "recent infection follow-ups.")
     parser.add_argument('--simulations', '-s', required=False,
                         help='Number of simulations to run', default=2)
     parser.add_argument('--parameter_list', '-p', required=False,
-                        help='Parameters for simulations', default="[{}]")
+                        help='Parameters for simulations', default=None)
     args = parser.parse_args()
-    results = multi_threaded_run(parameter_list=json.loads(args.parameter_list),
-                                 simulations=int(args.simulations))
-    for r in results:
-        r.plot()
+    parameter_list = default_parameter_list if args.parameter_list is None \
+                     else json.loads(args.parameter_list)
+    results = run(parameter_list=parameter_list,
+                  simulations=int(args.simulations))
+    plot(results)
