@@ -436,15 +436,6 @@ class Simulation:
         for event in self.after_events:
             event()
 
-    def plot(self):
-        df = pandas.DataFrame(self.report_table, columns=CSV_COLUMNS)
-        start = self.burn_in_iterations
-        series1 = pandas.Series(df["infected"][start:])
-        series2 = pandas.Series(df["treated"][start:])
-        indices = pandas.Series(df["iteration"][start:])
-        plt.plot(indices, series1, "b-", indices, series2, "b--")
-        plt.show()
-
 def run_single_simulation(parameters={}):
     proc_no = parameters["proc_no"] if "proc_no" in parameters else 0
     s = Simulation(parameters)
